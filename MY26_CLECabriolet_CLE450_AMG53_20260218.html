@@ -64,10 +64,96 @@ section {
 /* FADE */
 .fade {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .6s ease, transform .6s ease;
+  transform: translateY(24px);
+  transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
 }
 .fade.visible { opacity: 1; transform: translateY(0); }
+
+/* Gold shimmer on cover line */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.cover-line {
+  animation: shimmer 3s linear infinite;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 40%, var(--gold-light) 50%, var(--gold) 60%, transparent 100%);
+  background-size: 200% auto;
+}
+
+/* Price glow pulse */
+@keyframes goldPulse {
+  0%, 100% { text-shadow: 0 0 12px rgba(201,169,110,.15); }
+  50%       { text-shadow: 0 0 28px rgba(201,169,110,.45), 0 0 8px rgba(201,169,110,.2); }
+}
+@keyframes redPulse {
+  0%, 100% { text-shadow: 0 0 12px rgba(232,112,112,.15); }
+  50%       { text-shadow: 0 0 28px rgba(232,112,112,.45), 0 0 8px rgba(232,112,112,.2); }
+}
+.cl-price { animation: goldPulse 3s ease-in-out infinite; }
+.cl-price.amg-price { animation: redPulse 3s ease-in-out infinite; }
+.sh .pr { animation: goldPulse 3s ease-in-out infinite; }
+.sh .pr.amg-pr { animation: redPulse 3s ease-in-out infinite; }
+
+/* Card hover lift */
+.cl-card {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.cl-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(201,169,110,.12);
+  border-color: rgba(201,169,110,.5);
+}
+.cl-card.amg-card:hover {
+  box-shadow: 0 8px 24px rgba(232,112,112,.12);
+  border-color: rgba(155,50,50,.75);
+}
+
+/* Spec card hover */
+.rg-item {
+  transition: transform .2s ease, border-color .2s ease;
+}
+.rg-item:hover { transform: translateY(-2px); border-color: rgba(201,169,110,.3); }
+.rg-item.up:hover { border-color: rgba(201,169,110,.65); }
+
+/* Rec card hover */
+.rec-card {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.rec-card:hover { transform: translateY(-3px); }
+.rec-card.cle-rec:hover { box-shadow: 0 10px 30px rgba(42,90,170,.15); }
+.rec-card.amg-rec:hover { box-shadow: 0 10px 30px rgba(155,38,38,.15); }
+
+/* Tag hover */
+.tag { transition: background .2s, border-color .2s; cursor: default; }
+.tag:hover { background: rgba(201,169,110,.16); border-color: rgba(201,169,110,.4); }
+.tag.amg-tag:hover { background: rgba(232,112,112,.16); border-color: rgba(232,112,112,.5); }
+
+/* CTA buttons */
+.intro-cta-btn, .contact-cta-btn {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.intro-cta-btn:hover { transform: translateY(-3px) scale(1.02); }
+.contact-cta-btn:hover { transform: translateY(-3px) scale(1.02); }
+
+/* Stat hover */
+.intro-stat { transition: transform .2s ease; }
+.intro-stat:hover { transform: translateY(-2px); }
+
+/* Cover bg pulse */
+@keyframes coverGlow {
+  0%, 100% { opacity: .6; }
+  50%       { opacity: 1; }
+}
+#cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(110,26,26,.18) 0%, transparent 70%);
+  animation: coverGlow 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+.cover-inner { position: relative; z-index: 1; }
 
 /* ===========================
    PAGE 1: COVER
@@ -1209,12 +1295,37 @@ section {
 </section>
 
 <script>
+// stagger delay 부여
+document.querySelectorAll('.fade').forEach((el, i) => {
+  // 같은 부모 안의 형제 순서에 따라 delay
+  const siblings = Array.from(el.parentElement.querySelectorAll(':scope > .fade, .fade'));
+  const idx = siblings.indexOf(el);
+  el.style.transitionDelay = (idx * 0.08) + 's';
+});
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('visible');
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target); // 한번 보이면 해제
+    }
   });
-}, { threshold: 0.08 });
+}, {
+  threshold: 0.05,
+  rootMargin: '0px 0px -40px 0px'
+});
+
 document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+// 페이지 로드 시 이미 뷰포트에 있는 요소 즉시 처리
+window.addEventListener('load', () => {
+  document.querySelectorAll('.fade:not(.visible)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('visible');
+    }
+  });
+});
 </script>
 </body>
 </html>
