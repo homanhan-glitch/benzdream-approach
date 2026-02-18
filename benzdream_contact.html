@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BenzDream 한호만 팀장 | 벤츠 고양 전시장 상담</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700;900&family=Playfair+Display:wght@400;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: #0d0f14;
+  --navy: #141824;
+  --card: #181c28;
+  --gold: #c9a96e;
+  --gold-light: #ddc08a;
+  --gold-dim: #8a7a50;
+  --silver: #a8aab0;
+  --light: #e2e3e7;
+  --white: #f5f5f7;
+  --kakao: #FEE500;
+  --naver: #03C75A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--dark);
+  color: var(--light);
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 배경 효과 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(201,169,110,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 90%, rgba(201,169,110,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* 헤더 */
+.hd {
+  padding: 48px 0 32px;
+  text-align: center;
+}
+
+.hd-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hd-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(201,169,110,0.3);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.hd-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--silver);
+  letter-spacing: 0.05em;
+}
+
+/* 골드 구분선 */
+.div {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 24px auto;
+}
+
+/* 카운터 섹션 */
+.cnt-section {
+  background: var(--navy);
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.cnt-title {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gold-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.cnt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.cnt-card {
+  background: var(--card);
+  border: 1px solid rgba(201,169,110,0.1);
+  border-radius: 12px;
+  padding: 16px 8px;
+  text-align: center;
+}
+
+.cnt-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+  min-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cnt-num.loading {
+  font-size: 1rem;
+  color: var(--gold-dim);
+}
+
+.cnt-num span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gold-dim);
+  margin-left: 2px;
+}
+
+.cnt-label {
+  font-size: 0.65rem;
+  color: var(--silver);
+  line-height: 1.4;
+}
+
+/* 강조 카드 */
+.cnt-card.highlight {
+  border-color: rgba(201,169,110,0.3);
+  background: linear-gradient(135deg, #181c28, #1e2235);
+}
+
+.cnt-card.highlight .cnt-num {
+  text-shadow: 0 0 20px rgba(201,169,110,0.4);
+}
+
+/* CTA 버튼들 */
+.cta-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 24px;
+  border-radius: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.15s;
+}
+
+.btn:active::after {
+  background: rgba(255,255,255,0.08);
+}
+
+.btn-phone {
+  background: linear-gradient(135deg, #1a2035, #252d45);
+  border: 1.5px solid rgba(201,169,110,0.5);
+  color: var(--gold-light);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.btn-phone:hover {
+  border-color: var(--gold);
+  box-shadow: 0 6px 24px rgba(201,169,110,0.15);
+  transform: translateY(-1px);
+}
+
+.btn-kakao {
+  background: var(--kakao);
+  color: #3C1E1E;
+}
+
+.btn-kakao:hover {
+  background: #FFD700;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(254,229,0,0.3);
+}
+
+.btn-naver {
+  background: var(--naver);
+  color: #fff;
+}
+
+.btn-naver:hover {
+  background: #02a84c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(3,199,90,0.3);
+}
+
+.btn-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.btn-text {
+  flex: 1;
+  text-align: left;
+}
+
+.btn-main {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.btn-sub {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.75;
+  margin-top: 1px;
+}
+
+.btn-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: rgba(201,169,110,0.2);
+  color: var(--gold);
+  border: 1px solid rgba(201,169,110,0.3);
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+.btn-kakao .btn-badge {
+  background: rgba(60,30,30,0.2);
+  color: #5a3a1a;
+  border-color: rgba(60,30,30,0.3);
+}
+
+.btn-naver .btn-badge {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* 전화번호 표시 */
+.phone-display {
+  background: var(--card);
+  border: 1px solid rgba(201,169,110,0.1);
+  border-radius: 12px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.phone-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.phone-label {
+  font-size: 0.7rem;
+  color: var(--silver);
+}
+
+/* 오늘 실시간 배지 */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,169,110,0.08);
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin: 0 auto 20px;
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #4caf50;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* 프로필 */
+.profile {
+  background: var(--navy);
+  border: 1px solid rgba(201,169,110,0.12);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  border: 2px solid rgba(201,169,110,0.3);
+}
+
+.profile-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.profile-title {
+  font-size: 0.75rem;
+  color: var(--silver);
+  margin-bottom: 5px;
+}
+
+.profile-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  background: rgba(201,169,110,0.12);
+  color: var(--gold);
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+/* 유튜브 링크 */
+.yt-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,0,0,0.08);
+  border: 1px solid rgba(255,0,0,0.15);
+  border-radius: 12px;
+  padding: 14px 18px;
+  text-decoration: none;
+  color: var(--light);
+  margin-bottom: 16px;
+  transition: all 0.2s;
+}
+
+.yt-link:hover {
+  background: rgba(255,0,0,0.12);
+  border-color: rgba(255,0,0,0.25);
+}
+
+.yt-icon { font-size: 1.4rem; }
+
+.yt-text .main { font-size: 0.85rem; font-weight: 700; }
+.yt-text .sub { font-size: 0.7rem; color: var(--silver); }
+
+.yt-sub-count {
+  margin-left: auto;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ff4444;
+}
+
+/* 주소 */
+.addr {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--silver);
+  line-height: 1.8;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 8px;
+}
+
+/* 토스트 알림 */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--navy);
+  border: 1px solid rgba(201,169,110,0.3);
+  color: var(--gold);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 페이드인 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hd { animation: fadeUp 0.5s ease both; }
+.cnt-section { animation: fadeUp 0.5s 0.1s ease both; }
+.cta-section { animation: fadeUp 0.5s 0.2s ease both; }
+.profile { animation: fadeUp 0.5s 0.3s ease both; }
+.yt-link { animation: fadeUp 0.5s 0.35s ease both; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 헤더 -->
+  <div class="hd">
+    <div class="hd-label">Mercedes-Benz Official Dealer</div>
+    <div class="hd-brand">BenzDream</div>
+    <div class="hd-sub">벤츠 고양 전시장 · 한호만 팀장</div>
+    <div class="div"></div>
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      실시간 상담 현황
+    </div>
+  </div>
+
+  <!-- 카운터 -->
+  <div class="cnt-section">
+    <div class="cnt-title">📊 상담 & 출고 현황</div>
+    <div class="cnt-grid">
+      <div class="cnt-card highlight">
+        <div class="cnt-num" id="cnt-today">
+          <span class="loading">···</span>
+        </div>
+        <div class="cnt-label">오늘<br>상담신청</div>
+      </div>
+      <div class="cnt-card highlight">
+        <div class="cnt-num" id="cnt-total">
+          <span class="loading">···</span>
+        </div>
+        <div class="cnt-label">누적<br>상담신청</div>
+      </div>
+      <div class="cnt-card">
+        <div class="cnt-num">500<span>+</span></div>
+        <div class="cnt-label">직접출고<br>대수</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 전화번호 -->
+  <div class="phone-display">
+    <div>
+      <div class="phone-label">직통 전화</div>
+      <div class="phone-num">010-2182-3479</div>
+    </div>
+    <div style="font-size:0.7rem;color:var(--silver);text-align:right;">
+      평일 9:00–19:00<br>주말 가능
+    </div>
+  </div>
+
+  <!-- CTA 버튼들 -->
+  <div class="cta-section">
+
+    <!-- 전화 -->
+    <a href="tel:01021823479" class="btn btn-phone" onclick="handleClick('phone')">
+      <span class="btn-icon">📞</span>
+      <div class="btn-text">
+        <span class="btn-main">지금 바로 전화상담</span>
+        <span class="btn-sub">010-2182-3479 · 클릭하면 바로 연결</span>
+      </div>
+      <span class="btn-badge" id="badge-phone">0명</span>
+    </a>
+
+    <!-- 카카오톡 -->
+    <a href="https://open.kakao.com/o/soFA0ckg" target="_blank" class="btn btn-kakao" onclick="handleClick('kakao')">
+      <span class="btn-icon">💬</span>
+      <div class="btn-text">
+        <span class="btn-main">카카오톡 상담</span>
+        <span class="btn-sub">오픈채팅 · 24시간 문자 남기기 가능</span>
+      </div>
+      <span class="btn-badge" id="badge-kakao">0명</span>
+    </a>
+
+    <!-- 네이버폼 -->
+    <a href="https://naver.me/xRPKkxBA" target="_blank" class="btn btn-naver" onclick="handleClick('naver')">
+      <span class="btn-icon">📋</span>
+      <div class="btn-text">
+        <span class="btn-main">네이버 상담신청폼</span>
+        <span class="btn-sub">정보 남기시면 먼저 연락드립니다</span>
+      </div>
+      <span class="btn-badge" id="badge-naver">0명</span>
+    </a>
+
+  </div>
+
+  <!-- 프로필 -->
+  <div class="profile">
+    <div class="profile-avatar">🎖</div>
+    <div>
+      <div class="profile-name">한호만 팀장</div>
+      <div class="profile-title">BenzDream · 벤츠 고양 전시장 · 모터원고양</div>
+      <div class="profile-badge">벤츠 유튜브 채널 구독자 No.1 영업사원</div>
+    </div>
+  </div>
+
+  <!-- 유튜브 -->
+  <a href="https://youtube.com/@benzdream" target="_blank" class="yt-link" onclick="handleClick('youtube')">
+    <span class="yt-icon">▶️</span>
+    <div class="yt-text">
+      <div class="main">유튜브 채널 보러가기</div>
+      <div class="sub">벤츠 실구매 정보 · 출고 영상 · 차량 리뷰</div>
+    </div>
+    <span class="yt-sub-count">1.2만+</span>
+  </a>
+
+  <!-- 주소 -->
+  <div class="addr">
+    📍 경기도 고양시 덕양구 의장로 110 모터원고양<br>
+    벤츠 고양 전시장 · BenzDream
+  </div>
+
+</div>
+
+<!-- 토스트 -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── 설정 ───────────────────────────────────────────
+const NAMESPACE = 'benzdream-homan';
+const TODAY_KEY = 'today-consult';
+const TOTAL_KEY = 'total-consult';
+const PHONE_KEY = 'phone-click';
+const KAKAO_KEY = 'kakao-click';
+const NAVER_KEY = 'naver-click';
+
+// countapi.xyz 호출 (무료, CORS 가능, 영구 누적)
+async function hit(key) {
+  try {
+    const r = await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${key}`);
+    const d = await r.json();
+    return d.value;
+  } catch(e) { return null; }
+}
+
+async function get(key) {
+  try {
+    const r = await fetch(`https://api.countapi.xyz/get/${NAMESPACE}/${key}`);
+    const d = await r.json();
+    return d.value || 0;
+  } catch(e) { return 0; }
+}
+
+// 오늘 날짜 키 (날짜별 리셋)
+function todayKey() {
+  const d = new Date();
+  const ymd = `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
+  return `today-${ymd}`;
+}
+
+// 숫자 포맷
+function fmt(n) {
+  if (n === null || n === undefined) return '—';
+  if (n >= 1000) return (n/1000).toFixed(1) + 'k';
+  return String(n);
+}
+
+// 카운터 로드
+async function loadCounters() {
+  const [todayVal, totalVal, phoneVal, kakaoVal, naverVal] = await Promise.all([
+    get(todayKey()),
+    get(TOTAL_KEY),
+    get(PHONE_KEY),
+    get(KAKAO_KEY),
+    get(NAVER_KEY)
+  ]);
+
+  document.getElementById('cnt-today').innerHTML = fmt(todayVal) + '<span>건</span>';
+  document.getElementById('cnt-total').innerHTML = fmt(totalVal) + '<span>건</span>';
+  document.getElementById('badge-phone').textContent = fmt(phoneVal) + '명';
+  document.getElementById('badge-kakao').textContent = fmt(kakaoVal) + '명';
+  document.getElementById('badge-naver').textContent = fmt(naverVal) + '명';
+}
+
+// 클릭 핸들러
+async function handleClick(type) {
+  // 오늘 카운터 + 전체 카운터 동시 증가
+  if (type === 'phone' || type === 'kakao' || type === 'naver') {
+    hit(todayKey());
+    hit(TOTAL_KEY);
+  }
+
+  // 개별 카운터
+  const keyMap = { phone: PHONE_KEY, kakao: KAKAO_KEY, naver: NAVER_KEY, youtube: 'youtube-click' };
+  if (keyMap[type]) {
+    const val = await hit(keyMap[type]);
+    const badgeId = 'badge-' + type;
+    const el = document.getElementById(badgeId);
+    if (el && val) el.textContent = fmt(val) + '명';
+  }
+
+  // 토스트
+  const msgs = {
+    phone: '📞 전화 연결 중...',
+    kakao: '💬 카카오톡 오픈채팅으로 이동합니다',
+    naver: '📋 네이버 상담신청폼으로 이동합니다',
+    youtube: '▶️ 유튜브 채널로 이동합니다'
+  };
+  showToast(msgs[type] || '');
+
+  // 오늘/전체 카운터 즉시 갱신
+  if (type !== 'youtube') {
+    setTimeout(loadCounters, 800);
+  }
+}
+
+// 토스트
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+// 초기 로드
+loadCounters();
+</script>
+</body>
+</html>
