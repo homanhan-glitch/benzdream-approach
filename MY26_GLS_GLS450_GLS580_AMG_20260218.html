@@ -145,6 +145,45 @@ body{font-family:"Noto Sans KR",sans-serif;background:var(--dark);color:var(--li
 .fi.v{opacity:1;transform:translateY(0)}
 @media print{section{page-break-after:always}body{background:#fff;color:#222}}
 @media(max-width:768px){.sh{flex-direction:column;align-items:flex-start;gap:8px;padding:20px}.sh .n{font-size:1.2rem}.intro-why{grid-template-columns:1fr}.intro-process{grid-template-columns:repeat(3,1fr)}.intro-process .intro-ps:nth-child(3)::after{display:none}.intro-cta{grid-template-columns:1fr}.co-grid{grid-template-columns:1fr}.rec{grid-template-columns:1fr}.cv-trims{flex-direction:column;align-items:center}.sg{grid-template-columns:1fr 1fr}}
+
+/* ─── Counter + CTA System ─── */
+.cnt-section{background:var(--navy,#141824);border:1px solid rgba(201,169,110,.15);border-radius:16px;padding:20px;margin-bottom:16px}
+.cnt-title{font-size:.68rem;font-weight:500;color:var(--gold-dim,#8a7a50);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;text-align:center}
+.cnt-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.cnt-card{background:var(--card,#181c28);border:1px solid rgba(201,169,110,.1);border-radius:10px;padding:14px 6px;text-align:center}
+.cnt-card.highlight{border-color:rgba(201,169,110,.3);background:linear-gradient(135deg,#181c28,#1e2235)}
+.cnt-num{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700;color:var(--gold,#c9a96e);line-height:1;margin-bottom:5px;min-height:1.8rem;display:flex;align-items:center;justify-content:center}
+.cnt-card.highlight .cnt-num{text-shadow:0 0 20px rgba(201,169,110,.4)}
+.cnt-num.loading{font-size:.9rem;color:var(--gold-dim,#8a7a50)}
+.cnt-num span{font-size:.75rem;font-weight:500;color:var(--gold-dim,#8a7a50);margin-left:2px}
+.cnt-label{font-size:.6rem;color:var(--silver,#a8aab0);line-height:1.3}
+.cta-buttons{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.cta-btn{display:flex;align-items:center;gap:10px;padding:16px 20px;border-radius:12px;font-family:'Noto Sans KR',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;border:none;transition:all .2s ease;position:relative;overflow:hidden}
+.cta-btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .15s}
+.cta-btn:active::after{background:rgba(255,255,255,.08)}
+.cta-btn-phone{background:linear-gradient(135deg,#1a2035,#252d45);border:1.5px solid rgba(201,169,110,.5);color:var(--gold-light,#ddc08a);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.cta-btn-phone:hover{border-color:var(--gold,#c9a96e);box-shadow:0 6px 24px rgba(201,169,110,.15);transform:translateY(-1px)}
+.cta-btn-kakao{background:#FEE500;color:#3C1E1E}
+.cta-btn-kakao:hover{background:#FFD700;transform:translateY(-1px);box-shadow:0 6px 24px rgba(254,229,0,.3)}
+.cta-btn-form{background:#4285F4;color:#fff}
+.cta-btn-form:hover{background:#3367D6;transform:translateY(-1px);box-shadow:0 6px 24px rgba(66,133,244,.3)}
+.cta-btn-icon{font-size:1.2rem;flex-shrink:0}
+.cta-btn-text{flex:1;text-align:left}
+.cta-btn-main{display:block;font-size:.9rem;font-weight:700}
+.cta-btn-sub{display:block;font-size:.68rem;font-weight:400;opacity:.75;margin-top:1px}
+.cta-btn-badge{font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;background:rgba(201,169,110,.2);color:var(--gold,#c9a96e);border:1px solid rgba(201,169,110,.3);padding:2px 7px;border-radius:20px}
+.cta-btn-kakao .cta-btn-badge{background:rgba(60,30,30,.2);color:#5a3a1a;border-color:rgba(60,30,30,.3)}
+.cta-btn-form .cta-btn-badge{background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3)}
+.co-yt{display:flex;align-items:center;gap:10px;background:rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.15);border-radius:10px;padding:12px 16px;text-decoration:none;color:var(--light,#e2e3e7);margin-bottom:14px;transition:all .2s}
+.co-yt:hover{background:rgba(255,0,0,.12);border-color:rgba(255,0,0,.25)}
+.co-yt-icon{font-size:1.2rem}
+.co-yt-main{font-size:.82rem;font-weight:600;color:var(--white,#f5f5f7)}
+.co-yt-sub{font-size:.68rem;color:var(--silver,#a8aab0)}
+.co-yt-cnt{font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:600;color:rgba(255,0,0,.7);margin-left:auto}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(20,24,36,.95);color:var(--gold,#c9a96e);border:1px solid rgba(201,169,110,.3);padding:12px 24px;border-radius:30px;font-size:.82rem;font-weight:500;opacity:0;transition:all .3s ease;z-index:9999;pointer-events:none;backdrop-filter:blur(10px);white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:768px){.cnt-grid{grid-template-columns:1fr 1fr 1fr}.cnt-num{font-size:1.3rem}.cta-btn{padding:14px 16px}}
+
 </style>
 </head><body>
 
@@ -478,27 +517,102 @@ body{font-family:"Noto Sans KR",sans-serif;background:var(--dark);color:var(--li
 <div class="co-badge">Brand Experiencer</div>
 <div class="co-name">한호만</div>
 <div class="co-title">벤츠 고양 전시장 BenzDream 팀장</div>
-<div class="co-grid">
-<a class="co-card" href="https://youtube.com/@benzdream" target="_blank">
-<div class="co-card-icon" style="font-size:0;line-height:0;"><svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" rx="4.5" fill="#FF0000"/><path d="M11.5 14V6L19 10L11.5 14Z" fill="white"/></svg></div><div class="co-card-label">YouTube</div>
-<div class="co-card-val">@benzdream<br>구독자 1.2만+</div></a>
-<a class="co-card" href="https://open.kakao.com/o/soFA0ckg" target="_blank">
-<div class="co-card-icon">💬</div><div class="co-card-label">KakaoTalk</div>
-<div class="co-card-val">오픈채팅 상담</div></a>
-<a class="co-card" href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank">
-<div class="co-card-icon">📝</div><div class="co-card-label">상담신청</div>
-<div class="co-card-val">상담 신청서</div></a>
+
+<div class="cnt-section">
+<div class="cnt-title">📊 실시간 상담 현황</div>
+<div class="cnt-grid">
+<div class="cnt-card highlight">
+<div class="cnt-num loading" id="cnt-today">···</div>
+<div class="cnt-label">오늘<br>상담신청</div>
 </div>
+<div class="cnt-card highlight">
+<div class="cnt-num loading" id="cnt-total">···</div>
+<div class="cnt-label">누적<br>상담신청</div>
+</div>
+<div class="cnt-card">
+<div class="cnt-num">500<span>+</span></div>
+<div class="cnt-label">직접출고<br>대수</div>
+</div>
+</div>
+</div>
+
+<div class="cta-buttons">
+<a href="tel:01021823479" class="cta-btn cta-btn-phone" onclick="handleClick('phone')">
+<span class="cta-btn-icon">📞</span>
+<div class="cta-btn-text">
+<span class="cta-btn-main">지금 바로 전화상담</span>
+<span class="cta-btn-sub">010-2182-3479 · 클릭하면 바로 연결</span>
+</div>
+<span class="cta-btn-badge" id="badge-phone">—</span>
+</a>
+<a href="https://open.kakao.com/o/soFA0ckg" target="_blank" class="cta-btn cta-btn-kakao" onclick="handleClick('kakao')">
+<span class="cta-btn-icon">💬</span>
+<div class="cta-btn-text">
+<span class="cta-btn-main">카카오톡 상담</span>
+<span class="cta-btn-sub">오픈채팅 · 24시간 문자 남기기 가능</span>
+</div>
+<span class="cta-btn-badge" id="badge-kakao">—</span>
+</a>
+<a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-btn cta-btn-form" onclick="handleClick('naver')">
+<span class="cta-btn-icon">📝</span>
+<div class="cta-btn-text">
+<span class="cta-btn-main">내가 원할 때 상담받기</span>
+<span class="cta-btn-sub">정보 남기시면 먼저 연락드립니다</span>
+</div>
+<span class="cta-btn-badge" id="badge-naver">—</span>
+</a>
+</div>
+
+<a href="https://youtube.com/@benzdream?si=BUcHGGGEnOFeyO0B" target="_blank" class="co-yt">
+<span class="co-yt-icon">▶️</span>
+<div>
+<div class="co-yt-main">유튜브 채널 보러가기</div>
+<div class="co-yt-sub">벤츠 실구매 정보 · 출고 영상</div>
+</div>
+<span class="co-yt-cnt">1.2만+</span>
+</a>
+
 <div class="co-loc">
 <div class="co-loc-label">SHOWROOM</div>
 <div class="co-loc-addr">📍 경기도 고양시 덕양구 의장로 110 · 모터원 고양 전시장</div>
 </div>
-<p style="font-size:.72rem;color:var(--silver);font-weight:300;margin-bottom:16px">편하게 문의 주세요.</p>
 <div class="co-copy">© 2026 BenzDream. GLS-Class X167 GLS 450 vs GLS 580 어프로치북 — 고객 전달용 비매품<br>본 자료는 2026년 2월 기준이며, 사전 예고 없이 변경될 수 있습니다.</div>
 </section>
+
+<div class="toast" id="toast"></div>
+
 
 <script>
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("v");io.unobserve(e.target)}})},{threshold:.15});
 document.querySelectorAll(".fi").forEach(el=>io.observe(el));
+</script>
+
+<script>
+
+// ─── 실시간 카운터 (countapi.xyz) ───
+const NS='benzdream-homan';
+const TOTAL_KEY='total-consult',PHONE_KEY='phone-click',KAKAO_KEY='kakao-click',NAVER_KEY='naver-click';
+function todayKey(){const d=new Date();return `today-${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;}
+async function cntHit(key){try{const r=await fetch(`https://api.countapi.xyz/hit/${NS}/${key}`);const d=await r.json();return d.value;}catch(e){return null;}}
+async function cntGet(key){try{const r=await fetch(`https://api.countapi.xyz/get/${NS}/${key}`);const d=await r.json();return d.value||0;}catch(e){return 0;}}
+function fmt(n){if(n===null||n===undefined)return'—';if(n>=1000)return(n/1000).toFixed(1)+'k';return String(n);}
+async function loadCounters(){
+const[tv,tl,pv,kv,nv]=await Promise.all([cntGet(todayKey()),cntGet(TOTAL_KEY),cntGet(PHONE_KEY),cntGet(KAKAO_KEY),cntGet(NAVER_KEY)]);
+const ce=(id,v,u)=>{const el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span>'+u+'</span>';};
+ce('cnt-today',tv,'건');ce('cnt-total',tl,'건');
+const be=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=fmt(v)+'명';};
+be('badge-phone',pv);be('badge-kakao',kv);be('badge-naver',nv);
+}
+async function handleClick(type){
+if(type==='phone'||type==='kakao'||type==='naver'){cntHit(todayKey());cntHit(TOTAL_KEY);}
+const km={phone:PHONE_KEY,kakao:KAKAO_KEY,naver:NAVER_KEY};
+if(km[type]){const val=await cntHit(km[type]);const el=document.getElementById('badge-'+type);if(el&&val)el.textContent=fmt(val)+'명';}
+const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다'};
+showToast(msgs[type]||'');
+if(type!=='youtube')setTimeout(loadCounters,800);
+}
+function showToast(msg){const el=document.getElementById('toast');if(!el)return;el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
+loadCounters();
+
 </script>
 </body></html>
