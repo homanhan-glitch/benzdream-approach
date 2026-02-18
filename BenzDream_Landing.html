@@ -158,8 +158,56 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 }
 
 /* ── APPROACH BOOKS ── */
+.class-group{margin-bottom:40px;}
+.class-label{
+  display:flex;align-items:center;gap:12px;
+  font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dim);
+  margin-bottom:14px;
+}
+.class-label::after{content:'';flex:1;height:1px;background:rgba(201,169,110,.15);}
 .approach-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;
+}
+
+/* ── PRICE LIST ── */
+.pl-card{
+  background:var(--card);border-radius:16px;
+  border:1px solid rgba(201,169,110,.2);
+  padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  text-decoration:none;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  animation:fadeUp .6s ease both;
+}
+.pl-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(201,169,110,.5);
+  box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(201,169,110,.15);
+}
+.pl-left{display:flex;align-items:center;gap:20px;}
+.pl-icon{
+  width:52px;height:52px;border-radius:12px;
+  background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+}
+.pl-info{}
+.pl-title{
+  font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:600;
+  color:var(--white);margin-bottom:4px;
+}
+.pl-desc{font-size:.78rem;color:var(--silver);line-height:1.5;}
+.pl-cta{
+  font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;
+  color:var(--gold);white-space:nowrap;
+  display:flex;align-items:center;gap:6px;
+  transition:gap .2s;
+}
+.pl-card:hover .pl-cta{gap:12px;}
+@media(max-width:600px){
+  .pl-card{flex-direction:column;align-items:flex-start;}
+  .pl-cta{margin-top:4px;}
 }
 .ab-card{
   background:var(--card);border-radius:16px;
@@ -341,51 +389,119 @@ footer{
 <section class="reveal">
   <p class="sec-label">Digital Brochure</p>
   <h2 class="sec-title">차종별 어프로치북</h2>
-  <div class="approach-grid">
 
-    <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_EClass_E220d_E300_EX_20260218.html" target="_blank" class="ab-card">
-      <div class="ab-chip">E-Class · MY26</div>
-      <p class="ab-model">E 220d · E 300 4MATIC</p>
-      <p class="ab-trim">EXCLUSIVE vs EXCLUSIVE<br>트림 비교 어프로치북</p>
-      <div class="ab-arrow">자세히 보기 →</div>
-    </a>
+  <!-- SEDAN CLASS -->
+  <div class="class-group">
+    <div class="class-label">Sedan · 세단</div>
+    <div class="approach-grid">
 
-    <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_SClass_S500_S580_20260218.html" target="_blank" class="ab-card">
-      <div class="ab-chip">S-Class · MY26</div>
-      <p class="ab-model">S 500 · S 580</p>
-      <p class="ab-trim">4MATIC L 트림 비교<br>어프로치북</p>
-      <div class="ab-arrow">자세히 보기 →</div>
-    </a>
+      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_EClass_E220d_E300_EX_20260218.html" target="_blank" class="ab-card">
+        <div class="ab-chip">E-Class · MY26</div>
+        <p class="ab-model">E 220d · E 300 4MATIC</p>
+        <p class="ab-trim">EXCLUSIVE vs EXCLUSIVE<br>트림 비교 어프로치북</p>
+        <div class="ab-arrow">자세히 보기 →</div>
+      </a>
 
-    <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_CClass_C200_AVG_AMG_20260218.html" target="_blank" class="ab-card">
-      <div class="ab-chip">C-Class · MY26</div>
-      <p class="ab-model">C 200 AVANTGARDE · AMG Line</p>
-      <p class="ab-trim">AVANTGARDE vs AMG Line<br>트림 비교 어프로치북</p>
-      <div class="ab-arrow">자세히 보기 →</div>
-    </a>
+      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_EClass_E450_AMG_EX_20260218.html" target="_blank" class="ab-card">
+        <div class="ab-chip">E-Class · MY26</div>
+        <p class="ab-model">E 450 4MATIC</p>
+        <p class="ab-trim">AMG Line vs EXCLUSIVE<br>트림 비교 어프로치북</p>
+        <div class="ab-arrow">자세히 보기 →</div>
+      </a>
 
-    <div class="ab-card coming">
-      <div class="ab-chip" style="background:rgba(168,170,176,.08);color:var(--silver);border-color:rgba(168,170,176,.15);">GLC · 준비중</div>
-      <p class="ab-model" style="color:var(--silver);">GLC 300 4MATIC</p>
-      <p class="ab-trim">EXCLUSIVE vs AMG Line<br>곧 업데이트 예정</p>
-      <div class="ab-arrow" style="color:rgba(168,170,176,.4);">준비중 —</div>
+      <div class="ab-card coming">
+        <div class="ab-chip" style="background:rgba(168,170,176,.08);color:var(--silver);border-color:rgba(168,170,176,.15);">C-Class · 준비중</div>
+        <p class="ab-model" style="color:var(--silver);">C 200 · C 300</p>
+        <p class="ab-trim">AVANTGARDE vs AMG Line<br>곧 업데이트 예정</p>
+        <div class="ab-arrow" style="color:rgba(168,170,176,.4);">준비중 —</div>
+      </div>
+
+      <div class="ab-card coming">
+        <div class="ab-chip" style="background:rgba(168,170,176,.08);color:var(--silver);border-color:rgba(168,170,176,.15);">S-Class · 준비중</div>
+        <p class="ab-model" style="color:var(--silver);">S 500 · S 580</p>
+        <p class="ab-trim">4MATIC L 트림 비교<br>곧 업데이트 예정</p>
+        <div class="ab-arrow" style="color:rgba(168,170,176,.4);">준비중 —</div>
+      </div>
+
     </div>
-
-    <div class="ab-card coming">
-      <div class="ab-chip" style="background:rgba(168,170,176,.08);color:var(--silver);border-color:rgba(168,170,176,.15);">GLE · 준비중</div>
-      <p class="ab-model" style="color:var(--silver);">GLE 300d · GLE 450</p>
-      <p class="ab-trim">트림 비교 어프로치북<br>곧 업데이트 예정</p>
-      <div class="ab-arrow" style="color:rgba(168,170,176,.4);">준비중 —</div>
-    </div>
-
-    <div class="ab-card coming">
-      <div class="ab-chip" style="background:rgba(168,170,176,.08);color:var(--silver);border-color:rgba(168,170,176,.15);">CLE · 준비중</div>
-      <p class="ab-model" style="color:var(--silver);">CLE 200 쿠페 · 카브리올레</p>
-      <p class="ab-trim">트림 비교 어프로치북<br>곧 업데이트 예정</p>
-      <div class="ab-arrow" style="color:rgba(168,170,176,.4);">준비중 —</div>
-    </div>
-
   </div>
+
+  <!-- SUV CLASS -->
+  <div class="class-group">
+    <div class="class-label">SUV · 스포츠 유틸리티</div>
+    <div class="approach-grid">
+
+      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_GLC_GLC220d_GLC300_AV_AMG_20260218.html" target="_blank" class="ab-card">
+        <div class="ab-chip">GLC · MY26</div>
+        <p class="ab-model">GLC 220d · GLC 300 4MATIC</p>
+        <p class="ab-trim">AVANTGARDE vs AMG Line<br>3트림 비교 어프로치북</p>
+        <div class="ab-arrow">자세히 보기 →</div>
+      </a>
+
+      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_GLE_300d_350_450_AMG_20260218.html" target="_blank" class="ab-card">
+        <div class="ab-chip">GLE · MY26</div>
+        <p class="ab-model">GLE 300d · GLE 350 · GLE 450</p>
+        <p class="ab-trim">4MATIC 전 트림 비교<br>4트림 어프로치북</p>
+        <div class="ab-arrow">자세히 보기 →</div>
+      </a>
+
+      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_GLECoupe_GLE450d_GLE450_AMG_20260218.html" target="_blank" class="ab-card">
+        <div class="ab-chip">GLE Coupe · MY26</div>
+        <p class="ab-model">GLE 450d · GLE 450 AMG</p>
+        <p class="ab-trim">쿠페 트림 비교<br>어프로치북</p>
+        <div class="ab-arrow">자세히 보기 →</div>
+      </a>
+
+      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_GLS_GLS450_GLS580_AMG_20260218.html" target="_blank" class="ab-card">
+        <div class="ab-chip">GLS · MY26</div>
+        <p class="ab-model">GLS 450 · GLS 580 4MATIC</p>
+        <p class="ab-trim">AMG Line 트림 비교<br>어프로치북</p>
+        <div class="ab-arrow">자세히 보기 →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- COUPE / CABRIOLET CLASS -->
+  <div class="class-group">
+    <div class="class-label">Coupé &amp; Cabriolet · 쿠페 &amp; 카브리올레</div>
+    <div class="approach-grid">
+
+      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_CLECabriolet_CLE450_AMG53_20260218.html" target="_blank" class="ab-card">
+        <div class="ab-chip">CLE Cabriolet · MY26</div>
+        <p class="ab-model">CLE 450 · AMG CLE 53</p>
+        <p class="ab-trim">4MATIC+ 트림 비교<br>카브리올레 어프로치북</p>
+        <div class="ab-arrow">자세히 보기 →</div>
+      </a>
+
+      <div class="ab-card coming">
+        <div class="ab-chip" style="background:rgba(168,170,176,.08);color:var(--silver);border-color:rgba(168,170,176,.15);">CLE Coupé · 준비중</div>
+        <p class="ab-model" style="color:var(--silver);">CLE 200 · CLE 300</p>
+        <p class="ab-trim">쿠페 트림 비교<br>곧 업데이트 예정</p>
+        <div class="ab-arrow" style="color:rgba(168,170,176,.4);">준비중 —</div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- PRICE LIST -->
+<section class="reveal">
+  <p class="sec-label">2026 Price Guide</p>
+  <h2 class="sec-title">벤츠 가격표</h2>
+
+  <a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_PriceList_2026.html" target="_blank" class="pl-card">
+    <div class="pl-left">
+      <div class="pl-icon">₩</div>
+      <div class="pl-info">
+        <p class="pl-title">2026 Mercedes-Benz 전 차종 가격표</p>
+        <p class="pl-desc">세단 · SUV · 쿠페 · 카브리올레 · AMG · 마이바흐 전 라인업<br>MY26 기준 출고가 · 트림별 옵션 가격 포함</p>
+      </div>
+    </div>
+    <div class="pl-cta">가격표 보기 →</div>
+  </a>
+
 </section>
 
 <!-- TAGLINE -->
