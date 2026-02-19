@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BenzDream 즉시출고 재고현황 2026.02.19</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0d0f14;
+  --card: #181c28;
+  --border: rgba(201,169,110,.2);
+  --gold: #c9a96e;
+  --silver: #a0a4b0;
+  --light: #e2e3e7;
+  --white: #f5f5f7;
+}
+body {
+  background: var(--bg);
+  color: var(--light);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  min-height: 100vh;
+}
+
+/* ========== HEADER ========== */
+header {
+  background: #141824;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.header-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: .05em;
+  flex-shrink: 0;
+}
+.header-meta {
+  font-size: .8rem;
+  color: var(--silver);
+}
+.header-total {
+  margin-left: auto;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.header-total span {
+  font-size: .8rem;
+  color: var(--silver);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* ========== SEARCH ========== */
+.search-wrap {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 24px;
+}
+#search {
+  width: 100%;
+  max-width: 400px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--light);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: .9rem;
+  outline: none;
+}
+#search:focus { border-color: var(--gold); }
+#search::placeholder { color: var(--silver); }
+
+/* ========== FILTER TABS ========== */
+.filter-wrap {
+  max-width: 1200px;
+  margin: 16px auto 0;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.fbtn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--silver);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.fbtn span { font-family:'Outfit',sans-serif; font-weight:600; margin-left:4px; }
+.fbtn:hover, .fbtn.active {
+  background: rgba(201,169,110,.15);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ========== MAIN CONTENT ========== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ========== CATEGORY SECTION ========== */
+.cat-section { margin-bottom: 40px; }
+.cat-section.hidden { display: none; }
+.cat-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.catlabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.cat-count {
+  font-family: 'Outfit', sans-serif;
+  font-size: .9rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ========== CARDS GRID ========== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  transition: border-color .2s;
+}
+.card:hover { border-color: rgba(201,169,110,.5); }
+.card.hidden { display: none; }
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+.cname {
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.4;
+}
+.ctotal {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ========== COLOR TAGS ========== */
+.ctags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ctag {
+  font-size: .72rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ========== NO RESULTS ========== */
+#no-results {
+  display: none;
+  text-align: center;
+  color: var(--silver);
+  padding: 60px 0;
+  font-size: 1rem;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid var(--border);
+  color: var(--silver);
+  font-size: .8rem;
+  line-height: 1.8;
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+/* ========== MOBILE ========== */
+@media (max-width: 600px) {
+  .header-title { font-size: 1rem; }
+  .header-total { font-size: 1.3rem; }
+  .cards { grid-template-columns: 1fr; }
+  .filter-wrap { gap: 6px; }
+  .fbtn { font-size: .75rem; padding: 5px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="header-title">BenzDream 즉시출고 재고현황</div>
+      <div class="header-meta">2026년 2월 19일 기준 · 벤츠 고양 전시장 한호만 팀장</div>
+    </div>
+    <div class="header-total">633<span>대 즉시출고 가능</span></div>
+  </div>
+</header>
+
+<!-- ========== SEARCH ========== -->
+<div class="search-wrap">
+  <input type="text" id="search" placeholder="차종 검색... (예: GLE, E450, AMG)">
+</div>
+
+<!-- ========== FILTER TABS ========== -->
+<div class="filter-wrap">
+  <button class="fbtn active" data-filter="all">전체 <span>633</span></button><button class="fbtn" data-filter="E-Class">E-Class <span>91</span></button><button class="fbtn" data-filter="C-Class">C-Class <span>8</span></button><button class="fbtn" data-filter="S-Class">S-Class <span>39</span></button><button class="fbtn" data-filter="A-Class">A-Class <span>20</span></button><button class="fbtn" data-filter="GLE">GLE <span>77</span></button><button class="fbtn" data-filter="GLC">GLC <span>12</span></button><button class="fbtn" data-filter="GLB">GLB <span>18</span></button><button class="fbtn" data-filter="CLE">CLE <span>27</span></button><button class="fbtn" data-filter="AMG">AMG <span>255</span></button><button class="fbtn" data-filter="EQ 전기">EQ 전기 <span>45</span></button><button class="fbtn" data-filter="Maybach">Maybach <span>41</span></button>
+</div>
+
+<!-- ========== MAIN ========== -->
+<main>
+  <div id="no-results">검색 결과가 없습니다.</div>
+  
+<!-- ===== E-Class 섹션 ===== -->
+<section class="cat-section" data-cat="E-Class">
+  <h2 class="cat-title"><span class="catlabel">E-Class</span><span class="cat-count">91대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="e 450 4matic exclusive">
+  <div class="card-top">
+    <span class="cname">E 450 4MATIC Exclusive</span>
+    <span class="ctotal">77대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 45대</span><span class="ctag" style="background:#6b6b6b;color:#eee">그라파이트 그레이 18대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 12대</span><span class="ctag" style="background:#2e5c8a;color:#eee">노틱 블루 1대</span><span class="ctag" style="background:#5c3d2e;color:#eee">벨벳 브라운 1대</span></div>
+</div>
+<div class="card" data-name="e 350 e 4matic">
+  <div class="card-top">
+    <span class="cname">E 350 e 4MATIC</span>
+    <span class="ctotal">11대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 10대</span><span class="ctag" style="background:#c0c0c0;color:#eee">베르데 실버 1대</span></div>
+</div>
+<div class="card" data-name="e 200 avantgarde">
+  <div class="card-top">
+    <span class="cname">E 200 Avantgarde</span>
+    <span class="ctotal">2대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#5c3d2e;color:#eee">벨벳 브라운 2대</span></div>
+</div>
+<div class="card" data-name="e 300 4m ex">
+  <div class="card-top">
+    <span class="cname">E 300 4M EX</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 1대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== C-Class 섹션 ===== -->
+<section class="cat-section" data-cat="C-Class">
+  <h2 class="cat-title"><span class="catlabel">C-Class</span><span class="cat-count">8대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="c 200 avantgarde">
+  <div class="card-top">
+    <span class="cname">C 200 Avantgarde</span>
+    <span class="ctotal">8대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 5대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 3대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== S-Class 섹션 ===== -->
+<section class="cat-section" data-cat="S-Class">
+  <h2 class="cat-title"><span class="catlabel">S-Class</span><span class="cat-count">39대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="s 450 4matic l">
+  <div class="card-top">
+    <span class="cname">S 450 4MATIC L</span>
+    <span class="ctotal">24대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 20대</span><span class="ctag" style="background:#f0ede8;color:#111">MANUFAKTUR 오팔라이트 화이트 브라이트 2대</span><span class="ctag" style="background:#6b6b6b;color:#eee">그라파이트 그레이 2대</span></div>
+</div>
+<div class="card" data-name="s 500 4matic l">
+  <div class="card-top">
+    <span class="cname">S 500 4MATIC L</span>
+    <span class="ctotal">13대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 6대</span><span class="ctag" style="background:#6b6b6b;color:#eee">그라파이트 그레이 6대</span><span class="ctag" style="background:#2e5c8a;color:#eee">노틱 블루 1대</span></div>
+</div>
+<div class="card" data-name="s 580 4matic l">
+  <div class="card-top">
+    <span class="cname">S 580 4MATIC L</span>
+    <span class="ctotal">2대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 2대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== A-Class 섹션 ===== -->
+<section class="cat-section" data-cat="A-Class">
+  <h2 class="cat-title"><span class="catlabel">A-Class</span><span class="cat-count">20대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="a 220">
+  <div class="card-top">
+    <span class="cname">A 220</span>
+    <span class="ctotal">20대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 16대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 3대</span><span class="ctag" style="background:#111;color:#eee">코스모스 블랙 1대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== GLE 섹션 ===== -->
+<section class="cat-section" data-cat="GLE">
+  <h2 class="cat-title"><span class="catlabel">GLE</span><span class="cat-count">77대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="gle 450 4matic">
+  <div class="card-top">
+    <span class="cname">GLE 450 4MATIC</span>
+    <span class="ctotal">51대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 31대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 18대</span><span class="ctag" style="background:#888;color:#eee">하이 테크 실버 1대</span><span class="ctag" style="background:#888;color:#eee">셀레나이트 그레이 1대</span></div>
+</div>
+<div class="card" data-name="gle 350 4matic">
+  <div class="card-top">
+    <span class="cname">GLE 350 4MATIC</span>
+    <span class="ctotal">17대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 13대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 4대</span></div>
+</div>
+<div class="card" data-name="gle 300 d 4matic">
+  <div class="card-top">
+    <span class="cname">GLE 300 d 4MATIC</span>
+    <span class="ctotal">9대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 8대</span><span class="ctag" style="background:#888;color:#eee">하이 테크 실버 1대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== GLC 섹션 ===== -->
+<section class="cat-section" data-cat="GLC">
+  <h2 class="cat-title"><span class="catlabel">GLC</span><span class="cat-count">12대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="glc 220 d 4matic">
+  <div class="card-top">
+    <span class="cname">GLC 220 d 4MATIC</span>
+    <span class="ctotal">11대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 10대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 1대</span></div>
+</div>
+<div class="card" data-name="glc 300 4m coupe av">
+  <div class="card-top">
+    <span class="cname">GLC 300 4M Coupe AV</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 1대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== GLB 섹션 ===== -->
+<section class="cat-section" data-cat="GLB">
+  <h2 class="cat-title"><span class="catlabel">GLB</span><span class="cat-count">18대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="glb 250 4matic">
+  <div class="card-top">
+    <span class="cname">GLB 250 4MATIC</span>
+    <span class="ctotal">18대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 11대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 4대</span><span class="ctag" style="background:#111;color:#eee">코스모스 블랙 3대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== CLE 섹션 ===== -->
+<section class="cat-section" data-cat="CLE">
+  <h2 class="cat-title"><span class="catlabel">CLE</span><span class="cat-count">27대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="cle 200 cabriolet">
+  <div class="card-top">
+    <span class="cname">CLE 200 Cabriolet</span>
+    <span class="ctotal">20대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 14대</span><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 4대</span><span class="ctag" style="background:#6b6b6b;color:#eee">그라파이트 그레이 2대</span></div>
+</div>
+<div class="card" data-name="cle 450 4m coupe">
+  <div class="card-top">
+    <span class="cname">CLE 450 4M Coupe</span>
+    <span class="ctotal">6대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 6대</span></div>
+</div>
+<div class="card" data-name="cle 450 4m cabriolet">
+  <div class="card-top">
+    <span class="cname">CLE 450 4M Cabriolet</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 1대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== AMG 섹션 ===== -->
+<section class="cat-section" data-cat="AMG">
+  <h2 class="cat-title"><span class="catlabel">AMG</span><span class="cat-count">255대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="gle 450 4m coupe amg line">
+  <div class="card-top">
+    <span class="cname">GLE 450 4M Coupe AMG Line</span>
+    <span class="ctotal">50대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 31대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 19대</span></div>
+</div>
+<div class="card" data-name="glc 300 4matic amg line">
+  <div class="card-top">
+    <span class="cname">GLC 300 4MATIC AMG Line</span>
+    <span class="ctotal">32대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 24대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 8대</span></div>
+</div>
+<div class="card" data-name="cla 250 4m amg line">
+  <div class="card-top">
+    <span class="cname">CLA 250 4M AMG Line</span>
+    <span class="ctotal">25대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 19대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 6대</span></div>
+</div>
+<div class="card" data-name="gle 450 4m amg line">
+  <div class="card-top">
+    <span class="cname">GLE 450 4M AMG Line</span>
+    <span class="ctotal">22대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 21대</span><span class="ctag" style="background:#888;color:#eee">하이 테크 실버 1대</span></div>
+</div>
+<div class="card" data-name="gle 450 d 4m coupe amg line">
+  <div class="card-top">
+    <span class="cname">GLE 450 d 4M Coupe AMG Line</span>
+    <span class="ctotal">22대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 16대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 6대</span></div>
+</div>
+<div class="card" data-name="amg gt 43 4matic+">
+  <div class="card-top">
+    <span class="cname">AMG GT 43 4MATIC+</span>
+    <span class="ctotal">18대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 9대</span><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 5대</span><span class="ctag" style="background:#888;color:#eee">Designo 셀레나이트 그레이 3대</span><span class="ctag" style="background:#4a4a4a;color:#eee">MANUFAKTUR 그라파이트 그레이 마그노 1대</span></div>
+</div>
+<div class="card" data-name="eqb 300 4m amg line">
+  <div class="card-top">
+    <span class="cname">EQB 300 4M AMG Line</span>
+    <span class="ctotal">12대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 10대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 2대</span></div>
+</div>
+<div class="card" data-name="amg e 53 hybrid 4matic+">
+  <div class="card-top">
+    <span class="cname">AMG E 53 Hybrid 4MATIC+</span>
+    <span class="ctotal">12대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 6대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 4대</span><span class="ctag" style="background:#6b6b6b;color:#eee">그라파이트 그레이 2대</span></div>
+</div>
+<div class="card" data-name="amg glb 35 4matic">
+  <div class="card-top">
+    <span class="cname">AMG GLB 35 4MATIC</span>
+    <span class="ctotal">11대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 8대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 2대</span><span class="ctag" style="background:#111;color:#eee">코스모스 블랙 1대</span></div>
+</div>
+<div class="card" data-name="gla 250 4m amg line">
+  <div class="card-top">
+    <span class="cname">GLA 250 4M AMG Line</span>
+    <span class="ctotal">10대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 6대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 3대</span><span class="ctag" style="background:#909090;color:#eee">마운틴 그레이 1대</span></div>
+</div>
+<div class="card" data-name="amg cle 53 4m cabriolet">
+  <div class="card-top">
+    <span class="cname">AMG CLE 53 4M Cabriolet</span>
+    <span class="ctotal">6대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f0ede8;color:#111">MANUFAKTUR 오팔라이트 화이트 브라이트 3대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 2대</span><span class="ctag" style="background:#4a4a4a;color:#eee">MANUFAKTUR 그라파이트 그레이 마그노 1대</span></div>
+</div>
+<div class="card" data-name="amg cla 45 s 4matic+">
+  <div class="card-top">
+    <span class="cname">AMG CLA 45 S 4MATIC+</span>
+    <span class="ctotal">5대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 3대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 1대</span><span class="ctag" style="background:#888;color:#eee">MANUFAKTUR 마운틴 그레이 마그노 1대</span></div>
+</div>
+<div class="card" data-name="c 200 amg line">
+  <div class="card-top">
+    <span class="cname">C 200 AMG Line</span>
+    <span class="ctotal">4대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 3대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 1대</span></div>
+</div>
+<div class="card" data-name="eqa 250 amg line">
+  <div class="card-top">
+    <span class="cname">EQA 250 AMG Line</span>
+    <span class="ctotal">4대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 4대</span></div>
+</div>
+<div class="card" data-name="amg gle 53 4matic+">
+  <div class="card-top">
+    <span class="cname">AMG GLE 53 4MATIC+</span>
+    <span class="ctotal">4대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 3대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 1대</span></div>
+</div>
+<div class="card" data-name="amg s 63 e performance">
+  <div class="card-top">
+    <span class="cname">AMG S 63 e Performance</span>
+    <span class="ctotal">4대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f0ede8;color:#111">MANUFAKTUR 오팔라이트 화이트 브라이트 3대</span><span class="ctag" style="background:#888;color:#eee">MANUFAKTUR 오팔라이트 화이트 마그노 1대</span></div>
+</div>
+<div class="card" data-name="amg glc 43 4matic">
+  <div class="card-top">
+    <span class="cname">AMG GLC 43 4MATIC</span>
+    <span class="ctotal">3대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 2대</span><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 1대</span></div>
+</div>
+<div class="card" data-name="amg a 45 s 4matic+">
+  <div class="card-top">
+    <span class="cname">AMG A 45 S 4MATIC+</span>
+    <span class="ctotal">3대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 2대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 1대</span></div>
+</div>
+<div class="card" data-name="amg gt 43 4matic+ kr1">
+  <div class="card-top">
+    <span class="cname">AMG GT 43 4MATIC+ KR1</span>
+    <span class="ctotal">2대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 1대</span><span class="ctag" style="background:#4a4a4a;color:#eee">MANUFAKTUR 그라파이트 그레이 마그노 1대</span></div>
+</div>
+<div class="card" data-name="amg gt 63 s e performance">
+  <div class="card-top">
+    <span class="cname">AMG GT 63 S e Performance</span>
+    <span class="ctotal">2대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f8f8f8;color:#111">브릴리안트 화이트 1대</span><span class="ctag" style="background:#888;color:#eee">MANUFAKTUR 나이트 블랙 마그노 1대</span></div>
+</div>
+<div class="card" data-name="e 300 4m amg line">
+  <div class="card-top">
+    <span class="cname">E 300 4M AMG Line</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#6b6b6b;color:#eee">그라파이트 그레이 1대</span></div>
+</div>
+<div class="card" data-name="amg cle 53 4m coupe">
+  <div class="card-top">
+    <span class="cname">AMG CLE 53 4M Coupe</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f0ede8;color:#111">MANUFAKTUR 오팔라이트 화이트 브라이트 1대</span></div>
+</div>
+<div class="card" data-name="amg cle 53 4m+ cabriolet limited edition">
+  <div class="card-top">
+    <span class="cname">AMG CLE 53 4M+ Cabriolet Limited Edition</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1e3a5f;color:#eee">MANUFAKTUR 스펙트럴 블루 마그노 1대</span></div>
+</div>
+<div class="card" data-name="amg sl 43">
+  <div class="card-top">
+    <span class="cname">AMG SL 43</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#4a4a4a;color:#eee">MANUFAKTUR 그라파이트 그레이 마그노 1대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== EQ 전기 섹션 ===== -->
+<section class="cat-section" data-cat="EQ 전기">
+  <h2 class="cat-title"><span class="catlabel">EQ 전기</span><span class="cat-count">45대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="eqb 300 4m progressive">
+  <div class="card-top">
+    <span class="cname">EQB 300 4M Progressive</span>
+    <span class="ctotal">25대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 19대</span><span class="ctag" style="background:#0a0a0a;color:#eee">나이트 블랙 4대</span><span class="ctag" style="background:#888;color:#eee">하이 테크 실버 2대</span></div>
+</div>
+<div class="card" data-name="eqe 350+ suv">
+  <div class="card-top">
+    <span class="cname">EQE 350+ SUV</span>
+    <span class="ctotal">9대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 7대</span><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 2대</span></div>
+</div>
+<div class="card" data-name="eqa 250 progressive">
+  <div class="card-top">
+    <span class="cname">EQA 250 Progressive</span>
+    <span class="ctotal">5대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 4대</span><span class="ctag" style="background:#909090;color:#eee">마운틴 그레이 1대</span></div>
+</div>
+<div class="card" data-name="eqe 500 4m suv">
+  <div class="card-top">
+    <span class="cname">EQE 500 4M SUV</span>
+    <span class="ctotal">4대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 3대</span><span class="ctag" style="background:#7a7a7a;color:#eee">MANUFAKTUR 알파인 그레이 1대</span></div>
+</div>
+<div class="card" data-name="eqs 450 4m suv">
+  <div class="card-top">
+    <span class="cname">EQS 450 4M SUV</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#f5f5f0;color:#111">폴라 화이트 1대</span></div>
+</div>
+<div class="card" data-name="eqe 350+">
+  <div class="card-top">
+    <span class="cname">EQE 350+</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#6b6b6b;color:#eee">그라파이트 그레이 1대</span></div>
+</div>
+  </div>
+</section>
+<!-- ===== Maybach 섹션 ===== -->
+<section class="cat-section" data-cat="Maybach">
+  <h2 class="cat-title"><span class="catlabel">Maybach</span><span class="cat-count">41대</span></h2>
+  <div class="cards">
+
+<div class="card" data-name="maybach s 580 4m">
+  <div class="card-top">
+    <span class="cname">Maybach S 580 4M</span>
+    <span class="ctotal">17대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 12대</span><span class="ctag" style="background:#f0ede8;color:#111">MANUFAKTUR 오팔라이트 화이트 브라이트 2대</span><span class="ctag" style="background:#888;color:#eee">MANUFAKTUR 그라파이트 2대</span><span class="ctag" style="background:#6b6b6b;color:#eee">그라파이트 그레이 1대</span></div>
+</div>
+<div class="card" data-name="maybach s 680 4m">
+  <div class="card-top">
+    <span class="cname">Maybach S 680 4M</span>
+    <span class="ctotal">10대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 8대</span><span class="ctag" style="background:#f0ede8;color:#111">MANUFAKTUR 오팔라이트 화이트 브라이트 1대</span><span class="ctag" style="background:#f8f8f8;color:#111">브릴리안트 화이트 1대</span></div>
+</div>
+<div class="card" data-name="maybach gls 600 4matic">
+  <div class="card-top">
+    <span class="cname">Maybach GLS 600 4MATIC</span>
+    <span class="ctotal">8대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#1c1c1c;color:#eee">옵시디안 블랙 5대</span><span class="ctag" style="background:#f0ede8;color:#111">MANUFAKTUR 오팔라이트 화이트 브라이트 3대</span></div>
+</div>
+<div class="card" data-name="maybach sl 680">
+  <div class="card-top">
+    <span class="cname">Maybach SL 680</span>
+    <span class="ctotal">3대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#888;color:#eee">MANUFAKTUR 오팔라이트 화이트 마그노 3대</span></div>
+</div>
+<div class="card" data-name="maybach gls 600 4m manufak">
+  <div class="card-top">
+    <span class="cname">Maybach GLS 600 4M Manufak</span>
+    <span class="ctotal">2대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#888;color:#eee">MANUFAKTUR 코트다쥐르 블루 2대</span></div>
+</div>
+<div class="card" data-name="maybach eqs 680 suv">
+  <div class="card-top">
+    <span class="cname">Maybach EQS 680 SUV</span>
+    <span class="ctotal">1대</span>
+  </div>
+  <div class="ctags"><span class="ctag" style="background:#5c3d2e;color:#eee">벨벳 브라운 1대</span></div>
+</div>
+  </div>
+</section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <p>벤츠 고양 전시장 · 모터원고양 · 경기도 고양시 덕양구 의장로 110</p>
+  <p>한호만 팀장 · <a href="https://open.kakao.com/o/soFA0ckg">카카오톡 상담</a> · <a href="https://youtube.com/@benzdream">유튜브</a> · <a href="https://naver.me/xRPKkxBA">네이버 상담폼</a></p>
+  <p style="margin-top:8px;font-size:.72rem">본 재고현황은 2026년 2월 19일 기준이며, 사전 예고 없이 변경될 수 있습니다.</p>
+</footer>
+
+<!-- ========== BACK BUTTON ========== -->
+<div style="text-align:center;margin:0 0 32px;">
+  <a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_Landing.html"
+     style="display:inline-flex;align-items:center;gap:8px;color:var(--gold);border:1px solid rgba(201,169,110,.4);padding:10px 24px;border-radius:40px;font-family:'Outfit',sans-serif;font-size:.85rem;text-decoration:none;letter-spacing:.05em;">
+    &#8592; 전체 어프로치북 목록 보기
+  </a>
+</div>
+
+<!-- ========== JS (최소화) ========== -->
+<script>
+// --- 필터 ---
+const btns = document.querySelectorAll('.fbtn');
+const sections = document.querySelectorAll('.cat-section');
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    sections.forEach(s => {
+      s.classList.toggle('hidden', f !== 'all' && s.dataset.cat !== f);
+    });
+  });
+});
+
+// --- 검색 ---
+const searchEl = document.getElementById('search');
+const noResults = document.getElementById('no-results');
+searchEl.addEventListener('input', () => {
+  const q = searchEl.value.toLowerCase().trim();
+  // 검색 시 필터 초기화
+  if (q) {
+    btns.forEach(b => b.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('hidden'));
+  }
+  let anyVisible = false;
+  sections.forEach(sec => {
+    const cards = sec.querySelectorAll('.card');
+    let secVisible = false;
+    cards.forEach(card => {
+      const match = !q || card.dataset.name.includes(q);
+      card.classList.toggle('hidden', !match);
+      if (match) secVisible = true;
+    });
+    sec.classList.toggle('hidden', !secVisible);
+    if (secVisible) anyVisible = true;
+  });
+  noResults.style.display = anyVisible ? 'none' : 'block';
+});
+</script>
+
+</body>
+</html>
