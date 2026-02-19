@@ -853,8 +853,10 @@ async function loadCounters(){
 async function handleClick(type){
   var km={phone:'phone-click',kakao:'kakao-click',naver:'form-click'};
   if(km[type]){
-    fetch(GS_URL+'?action=hit&key=total-consult', {mode:'no-cors'}).catch(function(){});
-    fetch(GS_URL+'?action=hit&key='+km[type], {mode:'no-cors'}).catch(function(){});
+    var pg=encodeURIComponent(location.pathname.split('/').pop()||'landing');
+    var ua=encodeURIComponent(navigator.userAgent.substring(0,120));
+    fetch(GS_URL+'?action=hit&key=total-consult&page='+pg+'&ua='+ua, {mode:'no-cors'}).catch(function(){});
+    fetch(GS_URL+'?action=hit&key='+km[type]+'&page='+pg+'&ua='+ua, {mode:'no-cors'}).catch(function(){});
     setTimeout(loadCounters, 1500);
   }
   var msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다',youtube:'▶️ 유튜브 채널로 이동합니다'};
