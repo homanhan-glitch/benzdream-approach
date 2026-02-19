@@ -195,6 +195,12 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 }
 
 /* ── PRICE LIST ── */
+/* ── INVENTORY ── */
+.inv-card{border-color:rgba(93,184,168,.2);background:linear-gradient(135deg,var(--card) 0%,rgba(93,184,168,.04) 100%);}
+.inv-card:hover{border-color:rgba(93,184,168,.5);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(93,184,168,.15);}
+.inv-icon{background:rgba(93,184,168,.1);border-color:rgba(93,184,168,.25);color:#5db8a8;}
+.inv-card .pl-cta{color:#5db8a8;}
+.inv-update{font-size:.68rem;color:#5db8a8;margin-top:4px;font-family:'Outfit',sans-serif;font-weight:500;letter-spacing:.03em;}
 .pl-card{
   background:var(--card);border-radius:16px;
   border:1px solid rgba(201,169,110,.2);
@@ -778,6 +784,27 @@ footer{
       </div>
     </div>
     <div class="pl-cta">가격표 보기 →</div>
+  </a>
+
+</section>
+
+<!-- INVENTORY STATUS -->
+<section class="reveal">
+  <p class="sec-label">Live Inventory</p>
+  <h2 class="sec-title">실시간 재고현황</h2>
+
+  <a href="https://homanhan-glitch.github.io/benzdream-approach/inventory.html" target="_blank" class="pl-card inv-card">
+    <div class="pl-left">
+      <div class="pl-icon inv-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="pl-info">
+        <p class="pl-title">Mercedes-Benz 전 차종 재고현황</p>
+        <p class="pl-desc">세단 · SUV · EQ · AMG · 마이바흐 전 라인업<br>외장색 · 내장색 조합별 즉시출고 / 대기 여부 확인</p>
+        <p class="inv-update">최종 업데이트: 2026.02.19</p>
+      </div>
+    </div>
+    <div class="pl-cta">재고 확인하기 →</div>
   </a>
 
 </section>
