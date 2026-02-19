@@ -811,63 +811,62 @@ document.querySelectorAll('.ab-card').forEach((c,i)=>{
   c.style.animationDelay = `${i*0.1}s`;
 });
 
-// ─── 실시간 카운터 (Google Sheets JSONP) ───
+// ─── 실시간 카운터 (Google Sheets) ───
 const GS_URL = 'https://script.google.com/macros/s/AKfycbwl8N-DS7w4vG2uVx2qW8fhy886qYC0yk6ZOyXGnsJKOaFcvI93gKFQQUg5o0O0DSYA/exec';
-let _cbId = 0;
+const SHEET_ID = '1UapWQlp6DHraDflX50sphJAofwkYefq513awD1PJgWM';
 
 function fmt(n){
-  if(n===null||n===undefined||n===0) return '0';
+  if(n===null||n===undefined) return '0';
+  n = parseInt(n) || 0;
   if(n>=1000) return (n/1000).toFixed(1)+'k';
   return String(n);
 }
 
-function gsJsonp(params){
-  return new Promise((resolve)=>{
-    const cbName = '_gsCb' + (++_cbId);
-    const timeout = setTimeout(()=>{ delete window[cbName]; resolve(null); }, 8000);
-    window[cbName] = function(data){ clearTimeout(timeout); delete window[cbName]; resolve(data); };
-    const qs = new URLSearchParams(params);
-    qs.set('callback', cbName);
-    const s = document.createElement('script');
-    s.src = GS_URL + '?' + qs.toString();
-    s.onerror = ()=>{ clearTimeout(timeout); delete window[cbName]; resolve(null); };
-    document.head.appendChild(s);
-    s.onload = ()=> s.remove();
-  });
-}
-
 async function loadCounters(){
-  const data = await gsJsonp({action:'getall'});
-  if(!data || !data.counters) return;
-  const c = data.counters;
-  const ce=(id,v,u)=>{const el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span>'+u+'</span>';};
-  ce('cnt-today',c['total-consult']||0,'건');
-  ce('cnt-total',c['total-consult']||0,'건');
-  const be=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=fmt(v)+'명';};
-  be('badge-phone',c['phone-click']||0);
-  be('badge-kakao',c['kakao-click']||0);
-  be('badge-naver',c['form-click']||0);
+  try {
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=counters&t=${Date.now()}`;
+    const res = await fetch(url);
+    if(!res.ok) return;
+    const csv = await res.text();
+    const rows = csv.trim().split('
+').slice(1);
+    const c = {};
+    rows.forEach(row => {
+      const parts = row.split(',');
+      if(parts.length >= 2){
+        const key = parts[0].replace(/"/g,'').trim();
+        const val = parseInt(parts[1].replace(/"/g,'').trim()) || 0;
+        c[key] = val;
+      }
+    });
+    const ce=(id,v,u)=>{const el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span>'+u+'</span>';};
+    ce('cnt-today', c['total-consult']||0, '건');
+    ce('cnt-total', c['total-consult']||0, '건');
+    const be=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=fmt(v)+'명';};
+    be('badge-phone', c['phone-click']||0);
+    be('badge-kakao', c['kakao-click']||0);
+    be('badge-naver', c['form-click']||0);
+  } catch(err) {
+    console.warn('Counter load failed:', err);
+  }
 }
 
 async function handleClick(type){
   const km={phone:'phone-click',kakao:'kakao-click',naver:'form-click'};
   if(km[type]){
-    gsJsonp({action:'hit',key:'total-consult'});
-    const res = await gsJsonp({action:'hit',key:km[type]});
-    if(res && res.value){
-      const el=document.getElementById('badge-'+type);
-      if(el) el.textContent=fmt(res.value)+'명';
-    }
+    fetch(GS_URL+'?action=hit&key=total-consult', {mode:'no-cors'}).catch(()=>{});
+    fetch(GS_URL+'?action=hit&key='+km[type], {mode:'no-cors'}).catch(()=>{});
+    setTimeout(loadCounters, 1500);
   }
   const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다',youtube:'▶️ 유튜브 채널로 이동합니다'};
   showToast(msgs[type]||'');
-  if(type!=='youtube') setTimeout(loadCounters,1500);
 }
 
 function showToast(msg){
   const el=document.getElementById('toast');
   if(!el) return;
-  el.textContent=msg; el.classList.add('show');
+  el.textContent=msg;
+  el.classList.add('show');
   setTimeout(()=>el.classList.remove('show'),2500);
 }
 
