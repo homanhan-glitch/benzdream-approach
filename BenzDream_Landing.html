@@ -824,25 +824,24 @@ function fmt(n){
 
 async function loadCounters(){
   try {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=counters&t=${Date.now()}`;
+    const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv&sheet=counters&t=' + Date.now();
     const res = await fetch(url);
     if(!res.ok) return;
     const csv = await res.text();
-    const rows = csv.trim().split('
-').slice(1);
+    const rows = csv.trim().split('\n').slice(1);
     const c = {};
-    rows.forEach(row => {
-      const parts = row.split(',');
+    rows.forEach(function(row){
+      var parts = row.split(',');
       if(parts.length >= 2){
-        const key = parts[0].replace(/"/g,'').trim();
-        const val = parseInt(parts[1].replace(/"/g,'').trim()) || 0;
+        var key = parts[0].replace(/"/g,"").trim();
+        var val = parseInt(parts[1].replace(/"/g,"").trim()) || 0;
         c[key] = val;
       }
     });
-    const ce=(id,v,u)=>{const el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span>'+u+'</span>';};
+    var ce=function(id,v,u){var el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span>'+u+'</span>';};
     ce('cnt-today', c['total-consult']||0, '건');
     ce('cnt-total', c['total-consult']||0, '건');
-    const be=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=fmt(v)+'명';};
+    var be=function(id,v){var el=document.getElementById(id);if(el)el.textContent=fmt(v)+'명';};
     be('badge-phone', c['phone-click']||0);
     be('badge-kakao', c['kakao-click']||0);
     be('badge-naver', c['form-click']||0);
@@ -852,22 +851,22 @@ async function loadCounters(){
 }
 
 async function handleClick(type){
-  const km={phone:'phone-click',kakao:'kakao-click',naver:'form-click'};
+  var km={phone:'phone-click',kakao:'kakao-click',naver:'form-click'};
   if(km[type]){
-    fetch(GS_URL+'?action=hit&key=total-consult', {mode:'no-cors'}).catch(()=>{});
-    fetch(GS_URL+'?action=hit&key='+km[type], {mode:'no-cors'}).catch(()=>{});
+    fetch(GS_URL+'?action=hit&key=total-consult', {mode:'no-cors'}).catch(function(){});
+    fetch(GS_URL+'?action=hit&key='+km[type], {mode:'no-cors'}).catch(function(){});
     setTimeout(loadCounters, 1500);
   }
-  const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다',youtube:'▶️ 유튜브 채널로 이동합니다'};
+  var msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다',youtube:'▶️ 유튜브 채널로 이동합니다'};
   showToast(msgs[type]||'');
 }
 
 function showToast(msg){
-  const el=document.getElementById('toast');
+  var el=document.getElementById('toast');
   if(!el) return;
   el.textContent=msg;
   el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),2500);
+  setTimeout(function(){el.classList.remove('show');},2500);
 }
 
 loadCounters();
