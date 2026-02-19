@@ -674,6 +674,12 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 
 <script>
 
+// ─── 페이드인 애니메이션 ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('v'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
 // ─── 실시간 카운터 (countapi.xyz) ───
 const NS='benzdream-homan';
 const TOTAL_KEY='total-consult',PHONE_KEY='phone-click',KAKAO_KEY='kakao-click',NAVER_KEY='naver-click';

@@ -677,6 +677,12 @@ EQB는 벤츠 전기차 라인업 중 <strong style="color:var(--gold)">유일�
 
 <script>
 
+// ─── 페이드인 애니메이션 ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('v'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
 // ─── 실시간 카운터 (countapi.xyz) ───
 const NS='benzdream-homan';
 const TOTAL_KEY='total-consult',PHONE_KEY='phone-click',KAKAO_KEY='kakao-click',NAVER_KEY='naver-click';
