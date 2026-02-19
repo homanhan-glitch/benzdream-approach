@@ -683,30 +683,12 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.fi').forEach(el => observer.observe(el));
 
-// ─── 실시간 카운터 (countapi.xyz) ───
-const NS='benzdream-homan';
-const TOTAL_KEY='total-consult',PHONE_KEY='phone-click',KAKAO_KEY='kakao-click',NAVER_KEY='naver-click';
-function todayKey(){const d=new Date();return `today-${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;}
-async function cntHit(key){try{const r=await fetch(`https://api.countapi.xyz/hit/${NS}/${key}`);const d=await r.json();return d.value;}catch(e){return null;}}
-async function cntGet(key){try{const r=await fetch(`https://api.countapi.xyz/get/${NS}/${key}`);const d=await r.json();return d.value||0;}catch(e){return 0;}}
-function fmt(n){if(n===null||n===undefined)return'—';if(n>=1000)return(n/1000).toFixed(1)+'k';return String(n);}
-async function loadCounters(){
-const[tv,tl,pv,kv,nv]=await Promise.all([cntGet(todayKey()),cntGet(TOTAL_KEY),cntGet(PHONE_KEY),cntGet(KAKAO_KEY),cntGet(NAVER_KEY)]);
-const ce=(id,v,u)=>{const el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span>'+u+'</span>';};
-ce('cnt-today',tv,'건');ce('cnt-total',tl,'건');
-const be=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=fmt(v)+'명';};
-be('badge-phone',pv);be('badge-kakao',kv);be('badge-naver',nv);
-}
-async function handleClick(type){
-if(type==='phone'||type==='kakao'||type==='naver'){cntHit(todayKey());cntHit(TOTAL_KEY);}
-const km={phone:PHONE_KEY,kakao:KAKAO_KEY,naver:NAVER_KEY};
-if(km[type]){const val=await cntHit(km[type]);const el=document.getElementById('badge-'+type);if(el&&val)el.textContent=fmt(val)+'명';}
+// ─── CTA 클릭 처리 ───
+function handleClick(type){
 const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다'};
 showToast(msgs[type]||'');
-if(type!=='youtube')setTimeout(loadCounters,800);
 }
 function showToast(msg){const el=document.getElementById('toast');if(!el)return;el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
-loadCounters();
 
 </script>
 

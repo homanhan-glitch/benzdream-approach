@@ -282,144 +282,24 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 }
 
 /* ── CONTACT ── */
-.contact-wrap{max-width:520px;margin:0 auto;}
-
-/* 실시간 배지 */
-.live-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);
-  border-radius:20px;padding:6px 14px;margin:0 auto 24px;
-  font-size:.72rem;color:var(--gold-dim);
+.contact-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;
 }
-.live-dot{
-  width:6px;height:6px;background:#4caf50;border-radius:50%;
-  animation:pulse-live 1.5s infinite;
+.contact-card{
+  background:var(--card);border-radius:16px;
+  border:1px solid rgba(201,169,110,.12);
+  padding:28px 24px;text-align:center;
+  text-decoration:none;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
 }
-@keyframes pulse-live{
-  0%,100%{opacity:1;transform:scale(1);}
-  50%{opacity:.4;transform:scale(.8);}
+.contact-card:hover{
+  border-color:rgba(201,169,110,.4);
+  box-shadow:0 12px 40px rgba(0,0,0,.4);
+  transform:translateY(-4px);
 }
-
-/* 카운터 그리드 */
-.cnt-section{
-  background:var(--navy);border:1px solid rgba(201,169,110,.15);
-  border-radius:16px;padding:24px;margin-bottom:20px;
-}
-.cnt-title{
-  font-size:.72rem;font-weight:500;color:var(--gold-dim);
-  letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;text-align:center;
-}
-.cnt-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
-.cnt-card{
-  background:var(--card);border:1px solid rgba(201,169,110,.1);
-  border-radius:12px;padding:16px 8px;text-align:center;
-}
-.cnt-card.highlight{
-  border-color:rgba(201,169,110,.3);
-  background:linear-gradient(135deg,#181c28,#1e2235);
-}
-.cnt-num{
-  font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:700;
-  color:var(--gold);line-height:1;margin-bottom:6px;
-  min-height:2.2rem;display:flex;align-items:center;justify-content:center;
-}
-.cnt-card.highlight .cnt-num{text-shadow:0 0 20px rgba(201,169,110,.4);}
-.cnt-num.loading{font-size:1rem;color:var(--gold-dim);}
-.cnt-num span{font-size:.9rem;font-weight:500;color:var(--gold-dim);margin-left:2px;}
-.cnt-label{font-size:.65rem;color:var(--silver);line-height:1.4;}
-
-/* CTA 버튼들 */
-.cta-buttons{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
-.cta-btn{
-  display:flex;align-items:center;gap:10px;
-  padding:18px 24px;border-radius:14px;
-  font-family:'Noto Sans KR',sans-serif;font-size:1rem;font-weight:700;
-  cursor:pointer;text-decoration:none;border:none;
-  transition:all .2s ease;position:relative;overflow:hidden;
-}
-.cta-btn::after{
-  content:'';position:absolute;inset:0;
-  background:rgba(255,255,255,0);transition:background .15s;
-}
-.cta-btn:active::after{background:rgba(255,255,255,.08);}
-.cta-btn-phone{
-  background:linear-gradient(135deg,#1a2035,#252d45);
-  border:1.5px solid rgba(201,169,110,.5);color:var(--gold-light);
-  box-shadow:0 4px 20px rgba(0,0,0,.3);
-}
-.cta-btn-phone:hover{border-color:var(--gold);box-shadow:0 6px 24px rgba(201,169,110,.15);transform:translateY(-1px);}
-.cta-btn-kakao{background:#FEE500;color:#3C1E1E;}
-.cta-btn-kakao:hover{background:#FFD700;transform:translateY(-1px);box-shadow:0 6px 24px rgba(254,229,0,.3);}
-.cta-btn-naver{background:#4285F4;color:#fff;}
-.cta-btn-naver:hover{background:#3367D6;transform:translateY(-1px);box-shadow:0 6px 24px rgba(66,133,244,.3);}
-.cta-btn-icon{font-size:1.3rem;flex-shrink:0;}
-.cta-btn-text{flex:1;text-align:left;}
-.cta-btn-main{display:block;font-size:.95rem;font-weight:700;}
-.cta-btn-sub{display:block;font-size:.72rem;font-weight:400;opacity:.75;margin-top:1px;}
-.cta-btn-badge{
-  font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;
-  background:rgba(201,169,110,.2);color:var(--gold);
-  border:1px solid rgba(201,169,110,.3);padding:3px 8px;border-radius:20px;
-}
-.cta-btn-kakao .cta-btn-badge{background:rgba(60,30,30,.2);color:#5a3a1a;border-color:rgba(60,30,30,.3);}
-.cta-btn-naver .cta-btn-badge{background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3);}
-
-/* 전화번호 표시 */
-.phone-display{
-  background:var(--card);border:1px solid rgba(201,169,110,.1);
-  border-radius:12px;padding:14px 20px;
-  display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;
-}
-.phone-num{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold);letter-spacing:.05em;}
-.phone-label{font-size:.7rem;color:var(--silver);}
-
-/* 프로필 카드 */
-.contact-profile{
-  background:var(--navy);border:1px solid rgba(201,169,110,.12);
-  border-radius:16px;padding:20px;margin-bottom:16px;
-  display:flex;align-items:center;gap:16px;
-}
-.cp-avatar{
-  width:56px;height:56px;border-radius:50%;
-  background:linear-gradient(135deg,var(--gold-dim),var(--gold));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;flex-shrink:0;border:2px solid rgba(201,169,110,.3);
-}
-.cp-name{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:3px;}
-.cp-title{font-size:.75rem;color:var(--silver);margin-bottom:5px;}
-.cp-badge{
-  display:inline-block;font-size:.65rem;
-  background:rgba(201,169,110,.12);color:var(--gold);
-  border:1px solid rgba(201,169,110,.25);border-radius:4px;padding:2px 8px;
-}
-
-/* 유튜브 링크 */
-.contact-yt{
-  display:flex;align-items:center;gap:10px;
-  background:rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.15);
-  border-radius:12px;padding:14px 18px;text-decoration:none;color:var(--light);
-  margin-bottom:16px;transition:all .2s;
-}
-.contact-yt:hover{background:rgba(255,0,0,.12);border-color:rgba(255,0,0,.25);}
-.contact-yt .yt-icon{font-size:1.4rem;}
-.contact-yt .yt-main{font-size:.85rem;font-weight:700;}
-.contact-yt .yt-sub{font-size:.7rem;color:var(--silver);}
-.contact-yt .yt-count{
-  margin-left:auto;font-family:'Outfit',sans-serif;
-  font-size:.8rem;font-weight:700;color:#ff4444;
-}
-
-/* 토스트 */
-.toast{
-  position:fixed;bottom:24px;left:50%;
-  transform:translateX(-50%) translateY(20px);
-  background:var(--navy);border:1px solid rgba(201,169,110,.3);
-  color:var(--gold);padding:12px 24px;border-radius:30px;
-  font-size:.82rem;font-weight:500;opacity:0;
-  transition:all .3s ease;z-index:1000;white-space:nowrap;
-  box-shadow:0 8px 32px rgba(0,0,0,.4);
-}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.contact-icon{font-size:2rem;margin-bottom:14px;}
+.contact-name{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:6px;}
+.contact-desc{font-size:.78rem;color:var(--silver);line-height:1.5;}
 
 /* ── TAGLINE ── */
 .tagline-section{
@@ -461,17 +341,10 @@ footer{
   .stat-num{font-size:1.5rem;}
   .yt-card{flex-direction:column;text-align:center;gap:20px;}
   .yt-sub{font-size:.95rem;}
-  .cnt-num{font-size:1.5rem;}
-  .cta-btn{padding:16px 18px;}
-  .cta-btn-main{font-size:.88rem;}
-  .phone-display{padding:12px 16px;}
 }
 @media(max-width:480px){
   .banner-info{grid-template-columns:1fr;}
   .stat{display:flex;align-items:center;gap:12px;text-align:left;}
-  .cnt-grid{gap:8px;}
-  .cnt-card{padding:12px 6px;}
-  .cnt-num{font-size:1.3rem;}
 }
 </style>
 </head>
@@ -631,20 +504,6 @@ footer{
         <div class="ab-arrow">자세히 보기 →</div>
       </a>
 
-      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_EQA_EQA250_PRG_AMG_20260219.html" target="_blank" class="ab-card">
-        <div class="ab-chip">EQA · MY26</div>
-        <p class="ab-model">EQA 250</p>
-        <p class="ab-trim">Progressive vs AMG Line<br>전기 SUV 어프로치북</p>
-        <div class="ab-arrow">자세히 보기 →</div>
-      </a>
-
-      <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_EQB_EQB300_PRG_AMG_20260219.html" target="_blank" class="ab-card">
-        <div class="ab-chip">EQB · MY26</div>
-        <p class="ab-model">EQB 300 4MATIC</p>
-        <p class="ab-trim">Progressive vs AMG Line<br>7인승 전기 SUV 어프로치북</p>
-        <div class="ab-arrow">자세히 보기 →</div>
-      </a>
-
     </div>
   </div>
 
@@ -700,90 +559,21 @@ footer{
 <section class="reveal">
   <p class="sec-label">Contact</p>
   <h2 class="sec-title">상담 연결하기</h2>
-  <div class="contact-wrap">
-    <div style="text-align:center;">
-      <div class="live-badge">
-        <span class="live-dot"></span>
-        실시간 상담 현황
-      </div>
-    </div>
-
-    <!-- 카운터 -->
-    <div class="cnt-section">
-      <div class="cnt-title">📊 상담 & 출고 현황</div>
-      <div class="cnt-grid">
-        <div class="cnt-card highlight">
-          <div class="cnt-num" id="cnt-today"><span class="loading">···</span></div>
-          <div class="cnt-label">오늘<br>상담신청</div>
-        </div>
-        <div class="cnt-card highlight">
-          <div class="cnt-num" id="cnt-total"><span class="loading">···</span></div>
-          <div class="cnt-label">누적<br>상담신청</div>
-        </div>
-        <div class="cnt-card">
-          <div class="cnt-num">500<span>+</span></div>
-          <div class="cnt-label">직접출고<br>대수</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 전화번호 -->
-    <div class="phone-display">
-      <div>
-        <div class="phone-label">직통 전화</div>
-        <div class="phone-num">010-2182-3479</div>
-      </div>
-      <div style="font-size:.7rem;color:var(--silver);text-align:right;">
-        평일 9:00–19:00<br>주말 가능
-      </div>
-    </div>
-
-    <!-- CTA 버튼들 -->
-    <div class="cta-buttons">
-      <a href="tel:01021823479" class="cta-btn cta-btn-phone" onclick="handleClick('phone')">
-        <span class="cta-btn-icon">📞</span>
-        <div class="cta-btn-text">
-          <span class="cta-btn-main">지금 바로 전화상담</span>
-          <span class="cta-btn-sub">010-2182-3479 · 클릭하면 바로 연결</span>
-        </div>
-        <span class="cta-btn-badge" id="badge-phone">0명</span>
-      </a>
-      <a href="https://open.kakao.com/o/soFA0ckg" target="_blank" class="cta-btn cta-btn-kakao" onclick="handleClick('kakao')">
-        <span class="cta-btn-icon">💬</span>
-        <div class="cta-btn-text">
-          <span class="cta-btn-main">카카오톡 상담</span>
-          <span class="cta-btn-sub">오픈채팅 · 24시간 문자 남기기 가능</span>
-        </div>
-        <span class="cta-btn-badge" id="badge-kakao">0명</span>
-      </a>
-      <a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-btn cta-btn-naver" onclick="handleClick('naver')">
-        <span class="cta-btn-icon">📝</span>
-        <div class="cta-btn-text">
-          <span class="cta-btn-main">내가 원할 때 상담받기</span>
-          <span class="cta-btn-sub">정보 남기시면 먼저 연락드립니다</span>
-        </div>
-        <span class="cta-btn-badge" id="badge-naver">0명</span>
-      </a>
-    </div>
-
-    <!-- 프로필 -->
-    <div class="contact-profile">
-      <div class="cp-avatar">🎖</div>
-      <div>
-        <div class="cp-name">한호만 팀장</div>
-        <div class="cp-title">BenzDream · 벤츠 고양 전시장 · 모터원고양</div>
-        <div class="cp-badge">벤츠 유튜브 채널 구독자 No.1 영업사원</div>
-      </div>
-    </div>
-
-    <!-- 유튜브 -->
-    <a href="https://youtube.com/@benzdream?si=BUcHGGGEnOFeyO0B" target="_blank" class="contact-yt" onclick="handleClick('youtube')">
-      <span class="yt-icon">▶️</span>
-      <div>
-        <div class="yt-main">유튜브 채널 보러가기</div>
-        <div class="yt-sub">벤츠 실구매 정보 · 출고 영상 · 차량 리뷰</div>
-      </div>
-      <span class="yt-count">1.2만+</span>
+  <div class="contact-grid">
+    <a href="https://open.kakao.com/o/soFA0ckg" target="_blank" class="contact-card">
+      <div class="contact-icon">💬</div>
+      <p class="contact-name">카카오톡 상담</p>
+      <p class="contact-desc">블로그 전용 오픈채팅<br>빠른 답변 드립니다</p>
+    </a>
+    <a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="contact-card">
+      <div class="contact-icon">📋</div>
+      <p class="contact-name">상담신청</p>
+      <p class="contact-desc">차종·예산·문의사항<br>간편하게 신청</p>
+    </a>
+    <a href="https://youtube.com/@benzdream?si=BUcHGGGEnOFeyO0B" target="_blank" class="contact-card">
+      <div class="contact-icon">▶</div>
+      <p class="contact-name">유튜브 채널</p>
+      <p class="contact-desc">실구매가·프로모션<br>영상으로 먼저 확인</p>
     </a>
   </div>
 </section>
@@ -796,9 +586,6 @@ footer{
   <p style="margin-top:8px;font-size:.7rem;opacity:.5;">© 2026 BenzDream 한호만. All rights reserved.</p>
 </footer>
 
-<!-- 토스트 -->
-<div class="toast" id="toast"></div>
-
 <script>
 // Scroll reveal
 const obs = new IntersectionObserver((entries)=>{
@@ -810,60 +597,6 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.querySelectorAll('.ab-card').forEach((c,i)=>{
   c.style.animationDelay = `${i*0.1}s`;
 });
-
-// ─── 실시간 카운터 (Google Sheets 백엔드) ───
-const GS_URL = 'https://script.google.com/macros/s/AKfycbwl8N-DS7w4vG2uVx2qW8fhy886qYC0yk6ZOyXGnsJKOaFcvI93gKFQQUg5o0O0DSYA/exec';
-
-function fmt(n){
-  if(n===null||n===undefined||n===0) return '0';
-  if(n>=1000) return (n/1000).toFixed(1)+'k';
-  return String(n);
-}
-
-async function gsGet(key){
-  try{ const r=await fetch(GS_URL+'?action=get&key='+key); const d=await r.json(); return d.value||0; }
-  catch(e){ return 0; }
-}
-
-async function gsHit(key){
-  try{ const r=await fetch(GS_URL+'?action=hit&key='+key); const d=await r.json(); return d.value; }
-  catch(e){ return null; }
-}
-
-async function gsGetAll(){
-  try{ const r=await fetch(GS_URL+'?action=getall'); const d=await r.json(); return d.counters||{}; }
-  catch(e){ return {}; }
-}
-
-async function loadCounters(){
-  const c=await gsGetAll();
-  const ce=(id,v,u)=>{ const el=document.getElementById(id); if(el) el.innerHTML=fmt(v)+'<span>'+u+'</span>'; };
-  ce('cnt-today',c['total-consult']||0,'건'); ce('cnt-total',c['total-consult']||0,'건');
-  const be=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=fmt(v)+'명'; };
-  be('badge-phone',c['phone-click']||0); be('badge-kakao',c['kakao-click']||0); be('badge-naver',c['form-click']||0);
-}
-
-async function handleClick(type){
-  const km={phone:'phone-click',kakao:'kakao-click',naver:'form-click'};
-  if(km[type]){
-    gsHit('total-consult');
-    const val=await gsHit(km[type]);
-    const el=document.getElementById('badge-'+type);
-    if(el&&val) el.textContent=fmt(val)+'명';
-  }
-  const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다',youtube:'▶️ 유튜브 채널로 이동합니다'};
-  showToast(msgs[type]||'');
-  if(type!=='youtube') setTimeout(loadCounters,1200);
-}
-
-function showToast(msg){
-  const el=document.getElementById('toast');
-  if(!el) return;
-  el.textContent=msg; el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),2500);
-}
-
-loadCounters();
 </script>
 </body>
 </html>
