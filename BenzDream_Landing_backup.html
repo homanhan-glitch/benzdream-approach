@@ -7,8 +7,18 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7T2ECBWN0K');
+    // IP 필터 — 내부 트래픽 제외
+    const BLOCKED_IPS = ["59.7.219.188"];
+    fetch("https://api.ipify.org?format=json")
+      .then(r=>r.json())
+      .then(d=>{
+        if(BLOCKED_IPS.includes(d.ip)) return;
+        gtag('js', new Date());
+        gtag('config', 'G-7T2ECBWN0K');
+      }).catch(()=>{
+        gtag('js', new Date());
+        gtag('config', 'G-7T2ECBWN0K');
+      });
   </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BenzDream 한호만 팀장 · 벤츠 고양 전시장</title>
