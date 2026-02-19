@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BenzDream 재고현황</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!--
+====================================================
+  BenzDream 재고현황 페이지
+  업데이트 방법:
+  1. JS 섹션의 DATA 배열만 교체하면 됨
+  2. UPDATED 상수의 날짜 변경
+  3. 색상코드·모델명 구조는 그대로 유지
+====================================================
+-->
+
+<style>
+:root {
+  --bg:    #0d0f14;
+  --bg2:   #131720;
+  --card:  #181c28;
+  --brd:   rgba(201,169,110,.14);
+  --gold:  #c9a96e;
+  --gold2: #ddc08a;
+  --dim:   #8a7a50;
+  --sv:    #9a9ca4;
+  --txt:   #dde0e8;
+  --wh:    #f4f4f6;
+  --ok:    #4dba8a;   /* 즉시출고 */
+  --wait:  #e0a855;   /* 대기필요 */
+  --ok-bg: rgba(77,186,138,.10);
+  --wait-bg: rgba(224,168,85,.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── 헤더 ── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,15,20,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--brd);
+  padding: 0 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px; gap: 12px;
+}
+.hd-logo {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--gold); letter-spacing: .04em;
+  white-space: nowrap;
+}
+.hd-logo em { color: var(--sv); font-style: normal; font-weight: 300; font-size: .8rem; margin-left: 6px; }
+.hd-date {
+  font-family: "Outfit", sans-serif;
+  font-size: .78rem; color: var(--sv);
+  white-space: nowrap;
+}
+.hd-date strong { color: var(--gold2); }
+
+/* ── 범례 바 ── */
+.legend {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--brd);
+  padding: 10px 20px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.leg-item { display: flex; align-items: center; gap: 6px; font-size: .75rem; color: var(--sv); }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.ok   { background: var(--ok); }
+.dot.wait { background: var(--wait); }
+
+/* ── 필터 탭 ── */
+.filter-bar {
+  padding: 12px 20px;
+  display: flex; gap: 6px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--brd);
+  background: var(--bg);
+  position: sticky; top: 56px; z-index: 90;
+}
+.tab {
+  font-family: "Outfit", sans-serif;
+  font-size: .74rem; font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--brd);
+  background: transparent;
+  color: var(--sv);
+  cursor: pointer;
+  transition: all .18s;
+  white-space: nowrap;
+}
+.tab:hover { border-color: var(--dim); color: var(--gold); }
+.tab.on    { background: var(--gold); color: #0d0f14; border-color: var(--gold); font-weight: 600; }
+
+/* ── 메인 그리드 ── */
+main { padding: 20px; }
+
+/* 카테고리 섹션 */
+.cat-section { margin-bottom: 32px; }
+.cat-title {
+  font-family: "Outfit", sans-serif;
+  font-size: .7rem; font-weight: 600;
+  color: var(--dim);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--brd);
+  margin-bottom: 12px;
+}
+
+/* 모델 카드 그리드 */
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+/* 모델 카드 */
+.model-card {
+  background: var(--card);
+  border: 1px solid var(--brd);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.model-card:hover { border-color: var(--dim); }
+
+.mc-head {
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--brd);
+}
+.mc-name {
+  font-family: "Outfit", sans-serif;
+  font-size: .88rem; font-weight: 600;
+  color: var(--wh);
+  line-height: 1.3;
+}
+.mc-name.amg { color: #e05555; }
+.mc-name.maybach { color: var(--gold); }
+
+/* 색상 행 목록 */
+.mc-colors { padding: 4px 0; }
+
+.color-row {
+  display: flex; align-items: center;
+  padding: 7px 14px;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.03);
+  transition: background .15s;
+}
+.color-row:last-child { border-bottom: none; }
+.color-row:hover { background: rgba(255,255,255,.03); }
+
+/* 색상 코드 칩 */
+.cc {
+  font-family: "Outfit", sans-serif;
+  font-size: .68rem; font-weight: 600;
+  color: var(--dim);
+  background: rgba(255,255,255,.05);
+  border-radius: 4px;
+  padding: 2px 6px;
+  min-width: 36px;
+  text-align: center;
+  letter-spacing: .04em;
+  flex-shrink: 0;
+}
+
+/* 색상명 */
+.cn {
+  font-size: .78rem; color: var(--sv);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 상태 뱃지 */
+.badge {
+  font-family: "Outfit", sans-serif;
+  font-size: .66rem; font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: .02em;
+}
+.badge.ok   { background: var(--ok-bg);   color: var(--ok);   border: 1px solid rgba(77,186,138,.25); }
+.badge.wait { background: var(--wait-bg); color: var(--wait); border: 1px solid rgba(224,168,85,.2); }
+
+/* 숨김 처리 */
+.model-card.hidden { display: none; }
+.cat-section.hidden { display: none; }
+
+/* 빈 상태 */
+#empty-msg {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--sv);
+  font-size: .9rem;
+}
+
+/* 하단 복귀 버튼 */
+.footer {
+  text-align: center;
+  padding: 32px 20px 40px;
+  border-top: 1px solid var(--brd);
+}
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--gold);
+  border: 1px solid var(--dim);
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-family: "Outfit", sans-serif;
+  font-size: .85rem;
+  text-decoration: none;
+  letter-spacing: .04em;
+  transition: background .2s;
+}
+.back-btn:hover { background: rgba(201,169,110,.08); }
+
+/* 모바일 */
+@media (max-width: 520px) {
+  header { height: 52px; padding: 0 14px; }
+  .filter-bar { top: 52px; padding: 10px 14px; }
+  main { padding: 14px; }
+  .model-grid { grid-template-columns: 1fr; }
+  .cn { font-size: .75rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-logo">BenzDream <em>재고현황</em></div>
+  <div class="hd-date">기준일 <strong id="updated-date"></strong></div>
+</header>
+
+<div class="legend">
+  <div class="leg-item"><div class="dot ok"></div> 즉시출고 가능</div>
+  <div class="leg-item"><div class="dot wait"></div> 대기 필요</div>
+  <div class="leg-item" style="margin-left:auto; font-size:.72rem; color:var(--dim);">
+    ※ 재고 수량은 표기하지 않습니다 · 상담 문의 시 확인 가능
+  </div>
+</div>
+
+<div class="filter-bar" id="filter-bar">
+  <!-- JS 렌더링 -->
+</div>
+
+<main id="main-content">
+  <!-- JS 렌더링 -->
+</main>
+
+<div id="empty-msg">해당 조건의 재고가 없습니다.</div>
+
+<div class="footer">
+  <a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_Landing.html" class="back-btn">
+    ← 전체 어프로치북 목록 보기
+  </a>
+</div>
+
+<script>
+// ============================================================
+//  📌 업데이트 방법
+//  1. UPDATED 날짜 변경
+//  2. DATA 배열 전체 교체 (구조 동일하게 유지)
+//  3. CATEGORIES는 모델 추가/삭제 시에만 수정
+// ============================================================
+
+const UPDATED = "2026.02.19";
+
+const DATA = [
+  {model:'A 220',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'},
+    {code:'191',name:'코스모스 블랙',s:'available'}
+  ]},
+  {model:'AMG A 45 S 4MATIC+',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'}
+  ]},
+  {model:'CLA 250 4M AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'}
+  ]},
+  {model:'AMG CLA 45 S 4MATIC+',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'662',name:'MANUFAKTUR 마운틴 그레이 마그노',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'}
+  ]},
+  {model:'C 200 Avantgarde',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'C 200 AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'CLE 200 Coupe',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'}
+  ]},
+  {model:'CLE 450 4M Coupe',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'}
+  ]},
+  {model:'AMG CLE 53 4M Coupe',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'available'}
+  ]},
+  {model:'AMG CLE 53 4MATIC Coupe Limited Edition',colors:[
+    {code:'818',name:'MANUFAKTUR 그라파이트 그레이 마그노',s:'wait'}
+  ]},
+  {model:'CLE 200 Cabriolet',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'831',name:'그라파이트 그레이',s:'available'}
+  ]},
+  {model:'CLE 450 4M Cabriolet',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'}
+  ]},
+  {model:'AMG CLE 53 4M Cabriolet',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'available'},
+    {code:'818',name:'MANUFAKTUR 그라파이트 그레이 마그노',s:'available'}
+  ]},
+  {model:'AMG CLE 53 4M+ Cabriolet Limited Edition',colors:[
+    {code:'593',name:'MANUFAKTUR 스펙트럴 블루 마그노',s:'available'}
+  ]},
+  {model:'E 200 Avantgarde',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'831',name:'그라파이트 그레이',s:'wait'},
+    {code:'188',name:'베르데 실버',s:'wait'},
+    {code:'771',name:'벨벳 브라운',s:'available'}
+  ]},
+  {model:'E 200 AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'831',name:'그라파이트 그레이',s:'wait'}
+  ]},
+  {model:'E 220 d 4MATIC Exclusive',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'}
+  ]},
+  {model:'E 300 4M EX',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'831',name:'그라파이트 그레이',s:'wait'}
+  ]},
+  {model:'E 300 4M AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'831',name:'그라파이트 그레이',s:'available'},
+    {code:'956',name:'MANUFAKTUR 알파인 그레이',s:'wait'}
+  ]},
+  {model:'E 350 e 4MATIC',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'188',name:'베르데 실버',s:'available'}
+  ]},
+  {model:'E 450 4MATIC Exclusive',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'831',name:'그라파이트 그레이',s:'available'},
+    {code:'595',name:'노틱 블루',s:'available'},
+    {code:'771',name:'벨벳 브라운',s:'available'},
+    {code:'922',name:'하이 테크 실버',s:'wait'}
+  ]},
+  {model:'E 450 4M AMG Line',colors:[
+    {code:'831',name:'그라파이트 그레이',s:'wait'}
+  ]},
+  {model:'AMG E 53 Hybrid 4MATIC+',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'831',name:'그라파이트 그레이',s:'available'}
+  ]},
+  {model:'S 450 4MATIC L',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'available'},
+    {code:'831',name:'그라파이트 그레이',s:'available'}
+  ]},
+  {model:'S 500 4MATIC L',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'831',name:'그라파이트 그레이',s:'available'},
+    {code:'595',name:'노틱 블루',s:'available'},
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'wait'}
+  ]},
+  {model:'S 580 4MATIC L',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'AMG S 63 e Performance',colors:[
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'available'},
+    {code:'659',name:'MANUFAKTUR 오팔라이트 화이트 마그노',s:'available'}
+  ]},
+  {model:'AMG GT 43 4MATIC+',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'297',name:'Designo 셀레나이트 그레이',s:'available'},
+    {code:'818',name:'MANUFAKTUR 그라파이트 그레이 마그노',s:'available'}
+  ]},
+  {model:'AMG GT 43 4MATIC+ KR1',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'818',name:'MANUFAKTUR 그라파이트 그레이 마그노',s:'available'}
+  ]},
+  {model:'AMG GT 55 4M Coupe',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'wait'}
+  ]},
+  {model:'AMG GT 63 S e Performance',colors:[
+    {code:'190',name:'코드 190',s:'available'},
+    {code:'056',name:'MANUFAKTUR 나이트 블랙 마그노',s:'available'}
+  ]},
+  {model:'AMG SL 43',colors:[
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'wait'},
+    {code:'818',name:'MANUFAKTUR 그라파이트 그레이 마그노',s:'available'}
+  ]},
+  {model:'G 450 d',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'}
+  ]},
+  {model:'GLA 250 4M AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'},
+    {code:'787',name:'마운틴 그레이',s:'available'}
+  ]},
+  {model:'GLB 250 4MATIC',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'},
+    {code:'191',name:'코스모스 블랙',s:'available'}
+  ]},
+  {model:'AMG GLB 35 4MATIC',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'},
+    {code:'191',name:'코스모스 블랙',s:'available'}
+  ]},
+  {model:'GLC 220 d 4MATIC',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'GLC 300 4MATIC AV',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'956',name:'MANUFAKTUR 알파인 그레이',s:'wait'},
+    {code:'831',name:'그라파이트 그레이',s:'wait'}
+  ]},
+  {model:'GLC 300 4MATIC AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'AMG GLC 43 4MATIC',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'149',name:'폴라 화이트',s:'available'}
+  ]},
+  {model:'GLC 300 4M Coupe AV',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'956',name:'MANUFAKTUR 알파인 그레이',s:'wait'}
+  ]},
+  {model:'GLC 300 4M Coupe AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'}
+  ]},
+  {model:'AMG GLC 43 4M Coupe',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'wait'}
+  ]},
+  {model:'GLE 300 d 4MATIC',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'922',name:'하이 테크 실버',s:'available'}
+  ]},
+  {model:'GLE 350 4MATIC',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'GLE 450 4MATIC',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'922',name:'하이 테크 실버',s:'available'},
+    {code:'992',name:'셀레나이트 그레이',s:'available'}
+  ]},
+  {model:'GLE 450 4M AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'922',name:'하이 테크 실버',s:'available'},
+    {code:'992',name:'셀레나이트 그레이',s:'wait'}
+  ]},
+  {model:'AMG GLE 53 4MATIC+',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'GLE 450 4M Coupe AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'GLE 450 d 4M Coupe AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'AMG GLE 53 4M Coupe',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'956',name:'MANUFAKTUR 알파인 그레이',s:'wait'}
+  ]},
+  {model:'EQA 250 Progressive',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'787',name:'마운틴 그레이',s:'available'}
+  ]},
+  {model:'EQA 250 AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'}
+  ]},
+  {model:'EQB 300 4M Progressive',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'},
+    {code:'922',name:'하이 테크 실버',s:'available'},
+    {code:'787',name:'마운틴 그레이',s:'wait'}
+  ]},
+  {model:'EQB 300 4M AMG Line',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'696',name:'나이트 블랙',s:'available'}
+  ]},
+  {model:'EQE 350+',colors:[
+    {code:'831',name:'그라파이트 그레이',s:'available'}
+  ]},
+  {model:'EQE 350+ SUV',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'197',name:'옵시디안 블랙',s:'available'}
+  ]},
+  {model:'EQE 500 4M SUV',colors:[
+    {code:'149',name:'폴라 화이트',s:'available'},
+    {code:'956',name:'MANUFAKTUR 알파인 그레이',s:'available'}
+  ]},
+  {model:'EQS 450 4M SUV',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'wait'},
+    {code:'149',name:'폴라 화이트',s:'available'}
+  ]},
+  {model:'Maybach EQS 680 SUV',colors:[
+    {code:'149',name:'폴라 화이트',s:'wait'},
+    {code:'771',name:'벨벳 브라운',s:'available'}
+  ]},
+  {model:'Maybach GLS 600 4MATIC',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'available'}
+  ]},
+  {model:'Maybach GLS 600 4M Manufak',colors:[
+    {code:'385',name:'MANUFAKTUR 코트다쥐르 블루',s:'available'},
+    {code:'C20',name:'마이바흐 투톤, 하이테크 실버/노틱 블루',s:'wait'}
+  ]},
+  {model:'Maybach S 580 4M',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'041',name:'MANUFAKTUR 그라파이트',s:'available'},
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'available'},
+    {code:'831',name:'그라파이트 그레이',s:'available'}
+  ]},
+  {model:'Maybach S 680 4M',colors:[
+    {code:'197',name:'옵시디안 블랙',s:'available'},
+    {code:'190',name:'코드 190',s:'available'},
+    {code:'885',name:'MANUFAKTUR 오팔라이트 화이트 브라이트',s:'available'}
+  ]},
+  {model:'Maybach SL 680',colors:[
+    {code:'659',name:'MANUFAKTUR 오팔라이트 화이트 마그노',s:'available'}
+  ]}
+];
+
+const CATEGORIES = {"A클래스": ["A 220", "AMG A 45 S 4MATIC+"], "C클래스": ["C 200 Avantgarde", "C 200 AMG Line"], "CLA": ["CLA 250 4M AMG Line", "AMG CLA 45 S 4MATIC+"], "CLE": ["CLE 200 Coupe", "CLE 450 4M Coupe", "AMG CLE 53 4M Coupe", "AMG CLE 53 4MATIC Coupe Limited Edition", "CLE 200 Cabriolet", "CLE 450 4M Cabriolet", "AMG CLE 53 4M Cabriolet", "AMG CLE 53 4M+ Cabriolet Limited Edition"], "E클래스": ["E 200 Avantgarde", "E 200 AMG Line", "E 220 d 4MATIC Exclusive", "E 300 4M EX", "E 300 4M AMG Line", "E 350 e 4MATIC", "E 450 4MATIC Exclusive", "E 450 4M AMG Line", "AMG E 53 Hybrid 4MATIC+"], "S클래스": ["S 450 4MATIC L", "S 500 4MATIC L", "S 580 4MATIC L", "AMG S 63 e Performance"], "AMG GT·SL": ["AMG GT 43 4MATIC+", "AMG GT 43 4MATIC+ KR1", "AMG GT 55 4M Coupe", "AMG GT 63 S e Performance", "AMG SL 43"], "G클래스": ["G 450 d"], "GLA·GLB": ["GLA 250 4M AMG Line", "GLB 250 4MATIC", "AMG GLB 35 4MATIC"], "GLC": ["GLC 220 d 4MATIC", "GLC 300 4MATIC AV", "GLC 300 4MATIC AMG Line", "AMG GLC 43 4MATIC", "GLC 300 4M Coupe AV", "GLC 300 4M Coupe AMG Line", "AMG GLC 43 4M Coupe"], "GLE": ["GLE 300 d 4MATIC", "GLE 350 4MATIC", "GLE 450 4MATIC", "GLE 450 4M AMG Line", "AMG GLE 53 4MATIC+", "GLE 450 4M Coupe AMG Line", "GLE 450 d 4M Coupe AMG Line", "AMG GLE 53 4M Coupe"], "전동화 EQ": ["EQA 250 Progressive", "EQA 250 AMG Line", "EQB 300 4M Progressive", "EQB 300 4M AMG Line", "EQE 350+", "EQE 350+ SUV", "EQE 500 4M SUV", "EQS 450 4M SUV"], "Maybach": ["Maybach EQS 680 SUV", "Maybach GLS 600 4MATIC", "Maybach GLS 600 4M Manufak", "Maybach S 580 4M", "Maybach S 680 4M", "Maybach SL 680"]};
+
+// ────────────────────────────────────────────────────────────
+//  이하 로직 — 수정 불필요
+// ────────────────────────────────────────────────────────────
+
+document.getElementById("updated-date").textContent = UPDATED;
+
+// 카테고리 순서
+const CAT_ORDER = ["A클래스","CLA","C클래스","CLE","E클래스","S클래스","AMG GT·SL","G클래스","GLA·GLB","GLC","GLE","전동화 EQ","Maybach"];
+
+// 모델 → 카테고리 역매핑
+const modelToCat = {};
+for (const [cat, models] of Object.entries(CATEGORIES)) {
+  models.forEach(m => { modelToCat[m] = cat; });
+}
+
+// 필터 탭 생성
+const fb = document.getElementById("filter-bar");
+const tabs = ["전체", ...CAT_ORDER];
+tabs.forEach(t => {
+  const btn = document.createElement("button");
+  btn.className = "tab" + (t === "전체" ? " on" : "");
+  btn.textContent = t;
+  btn.onclick = () => applyFilter(t);
+  fb.appendChild(btn);
+});
+
+// 렌더링
+const mainEl = document.getElementById("main-content");
+
+function buildPage() {
+  // 카테고리별로 묶기
+  const catMap = {};
+  CAT_ORDER.forEach(c => { catMap[c] = []; });
+  
+  DATA.forEach(group => {
+    const cat = modelToCat[group.model] || "기타";
+    if (!catMap[cat]) catMap[cat] = [];
+    catMap[cat].push(group);
+  });
+
+  CAT_ORDER.forEach(cat => {
+    if (!catMap[cat] || catMap[cat].length === 0) return;
+    
+    const sec = document.createElement("div");
+    sec.className = "cat-section";
+    sec.dataset.cat = cat;
+    
+    sec.innerHTML = `<div class="cat-title">${cat}</div>`;
+    
+    const grid = document.createElement("div");
+    grid.className = "model-grid";
+    
+    catMap[cat].forEach(group => {
+      const isAMG = group.model.startsWith("AMG");
+      const isMaybach = group.model.startsWith("Maybach");
+      
+      const card = document.createElement("div");
+      card.className = "model-card";
+      card.dataset.model = group.model;
+      card.dataset.cat = cat;
+      
+      const nameClass = isAMG ? "mc-name amg" : isMaybach ? "mc-name maybach" : "mc-name";
+      
+      let colorRows = "";
+      group.colors.forEach(c => {
+        const badgeClass = c.s === "available" ? "ok" : "wait";
+        const badgeText = c.s === "available" ? "즉시출고 가능" : "대기 필요";
+        colorRows += `
+          <div class="color-row">
+            <span class="cc">${c.code}</span>
+            <span class="cn">${c.name}</span>
+            <span class="badge ${badgeClass}">${badgeText}</span>
+          </div>`;
+      });
+      
+      card.innerHTML = `
+        <div class="mc-head">
+          <div class="${nameClass}">${group.model}</div>
+        </div>
+        <div class="mc-colors">${colorRows}</div>`;
+      
+      grid.appendChild(card);
+    });
+    
+    sec.appendChild(grid);
+    mainEl.appendChild(sec);
+  });
+}
+
+buildPage();
+
+// 필터 적용
+let currentFilter = "전체";
+
+function applyFilter(cat) {
+  currentFilter = cat;
+  
+  // 탭 활성화
+  document.querySelectorAll(".tab").forEach(t => {
+    t.classList.toggle("on", t.textContent === cat);
+  });
+  
+  // 카테고리 섹션 토글
+  document.querySelectorAll(".cat-section").forEach(sec => {
+    const show = (cat === "전체" || sec.dataset.cat === cat);
+    sec.classList.toggle("hidden", !show);
+  });
+  
+  // 빈 상태 체크
+  const visible = document.querySelectorAll(".cat-section:not(.hidden)");
+  document.getElementById("empty-msg").style.display = visible.length === 0 ? "block" : "none";
+  
+  // 스크롤 복귀
+  window.scrollTo({top: 56, behavior: "smooth"});
+}
+</script>
+</body>
+</html>
