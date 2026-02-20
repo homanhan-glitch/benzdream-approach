@@ -968,7 +968,7 @@ async function loadCounters(){
       }
     });
     var ce=function(id,v,u){var el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span>'+u+'</span>';};
-    ce('cnt-today', c['total-consult']||0, '건');
+    ce('cnt-today', c['today-consult']||0, '건');
     ce('cnt-total', c['total-consult']||0, '건');
     var be=function(id,v){var el=document.getElementById(id);if(el)el.textContent=fmt(v)+'명';};
     be('badge-phone', c['phone-click']||0);
