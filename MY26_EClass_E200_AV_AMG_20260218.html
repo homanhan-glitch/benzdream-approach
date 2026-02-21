@@ -235,6 +235,17 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @media(max-width:768px){.cta-btn{padding:14px 16px}}
 
+
+/* ── CONTACT UPGRADE (랜딩페이지 스타일) ── */
+.phone-display{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.phone-label{font-size:.7rem;color:var(--silver,#a8aab0);letter-spacing:.08em;margin-bottom:4px;}
+.phone-num{font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:700;color:var(--gold,#c9a96e);letter-spacing:.02em;}
+.contact-profile{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px;margin-top:14px;}
+.cp-avatar{width:48px;height:48px;background:linear-gradient(135deg,var(--gold,#c9a96e),var(--gold-dim,#8a7a50));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+.cp-name{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white,#f5f5f7);}
+.cp-title{font-size:.75rem;color:var(--silver,#a8aab0);margin-top:2px;}
+.cp-badge{font-size:.68rem;color:var(--gold,#c9a96e);background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.2);border-radius:20px;padding:2px 8px;display:inline-block;margin-top:4px;}
+
 </style>
 </head><body>
 
@@ -627,9 +638,48 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 <div class="co-name">한호만</div>
 <div class="co-title">벤츠 고양 전시장 BenzDream 팀장</div>
 
-
+<!-- 전화번호 -->
+<div class="phone-display">
+  <div>
+    <div class="phone-label">직통 전화</div>
+    <div class="phone-num">010-2182-3479</div>
+  </div>
+  <div style="font-size:.7rem;color:var(--silver,#a8aab0);text-align:right;">평일 9:00–19:00<br>주말 가능</div>
 </div>
 
+<div class="cta-buttons">
+<a href="tel:01021823479" class="cta-btn cta-btn-phone" onclick="handleClick('phone')">
+<span class="cta-btn-icon">📞</span>
+<div class="cta-btn-text">
+<span class="cta-btn-main">지금 바로 전화상담</span>
+<span class="cta-btn-sub">010-2182-3479 · 클릭하면 바로 연결</span>
+</div>
+</a>
+<a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="cta-btn cta-btn-kakao" onclick="handleClick('kakao')">
+<span class="cta-btn-icon">💬</span>
+<div class="cta-btn-text">
+<span class="cta-btn-main">카카오톡 상담</span>
+<span class="cta-btn-sub">24시간 문자 남기기 가능</span>
+</div>
+</a>
+<a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-btn cta-btn-form" onclick="handleClick('naver')">
+<span class="cta-btn-icon">📝</span>
+<div class="cta-btn-text">
+<span class="cta-btn-main">내가 원할 때 상담받기</span>
+<span class="cta-btn-sub">정보 남기시면 먼저 연락드립니다</span>
+</div>
+</a>
+</div>
+
+<!-- 프로필 -->
+<div class="contact-profile">
+  <div class="cp-avatar">🎖</div>
+  <div>
+    <div class="cp-name">한호만 팀장</div>
+    <div class="cp-title">BenzDream · 벤츠 고양 전시장 · 모터원고양</div>
+    <div class="cp-badge">벤츠 유튜브 채널 구독자 No.1 영업사원</div>
+  </div>
+</div>
 <div class="cta-buttons">
 <a href="tel:01021823479" class="cta-btn cta-btn-phone" onclick="handleClick('phone')">
 <span class="cta-btn-icon">📞</span>
