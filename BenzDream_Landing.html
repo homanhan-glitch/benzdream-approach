@@ -317,48 +317,8 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 .contact-wrap{max-width:520px;margin:0 auto;}
 
 /* 실시간 배지 */
-.live-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);
-  border-radius:20px;padding:6px 14px;margin:0 auto 24px;
-  font-size:.72rem;color:var(--gold-dim);
-}
-.live-dot{
-  width:6px;height:6px;background:#4caf50;border-radius:50%;
-  animation:pulse-live 1.5s infinite;
-}
-@keyframes pulse-live{
-  0%,100%{opacity:1;transform:scale(1);}
   50%{opacity:.4;transform:scale(.8);}
 }
-
-/* 카운터 그리드 */
-.cnt-section{
-  background:var(--navy);border:1px solid rgba(201,169,110,.15);
-  border-radius:16px;padding:24px;margin-bottom:20px;
-}
-.cnt-title{
-  font-size:.72rem;font-weight:500;color:var(--gold-dim);
-  letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;text-align:center;
-}
-.cnt-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
-.cnt-card{
-  background:var(--card);border:1px solid rgba(201,169,110,.1);
-  border-radius:12px;padding:16px 8px;text-align:center;
-}
-.cnt-card.highlight{
-  border-color:rgba(201,169,110,.3);
-  background:linear-gradient(135deg,#181c28,#1e2235);
-}
-.cnt-num{
-  font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:700;
-  color:var(--gold);line-height:1;margin-bottom:6px;
-  min-height:2.2rem;display:flex;align-items:center;justify-content:center;
-}
-.cnt-card.highlight .cnt-num{text-shadow:0 0 20px rgba(201,169,110,.4);}
-.cnt-num.loading{font-size:1rem;color:var(--gold-dim);}
-.cnt-num span{font-size:.9rem;font-weight:500;color:var(--gold-dim);margin-left:2px;}
-.cnt-label{font-size:.65rem;color:var(--silver);line-height:1.4;}
 
 /* CTA 버튼들 */
 .cta-buttons{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
@@ -486,7 +446,6 @@ footer{
   .stat-num{font-size:1.5rem;}
   .yt-card{flex-direction:column;text-align:center;gap:20px;}
   .yt-sub{font-size:.95rem;}
-  .cnt-num{font-size:1.5rem;}
   .cta-btn{padding:16px 18px;}
   .cta-btn-main{font-size:.88rem;}
   .phone-display{padding:12px 16px;}
@@ -494,9 +453,6 @@ footer{
 @media(max-width:480px){
   .banner-info{grid-template-columns:1fr;}
   .stat{display:flex;align-items:center;gap:12px;text-align:left;}
-  .cnt-grid{gap:8px;}
-  .cnt-card{padding:12px 6px;}
-  .cnt-num{font-size:1.3rem;}
 }
 </style>
 </head>
@@ -830,30 +786,6 @@ footer{
   <p class="sec-label">Contact</p>
   <h2 class="sec-title">상담 연결하기</h2>
   <div class="contact-wrap">
-    <div style="text-align:center;">
-      <div class="live-badge">
-        <span class="live-dot"></span>
-        실시간 상담 현황
-      </div>
-    </div>
-
-    <!-- 카운터 -->
-    <div class="cnt-section">
-      <div class="cnt-title">📊 상담 & 출고 현황</div>
-      <div class="cnt-grid">
-        <div class="cnt-card highlight">
-          <div class="cnt-num" id="cnt-today"><span class="loading">···</span></div>
-          <div class="cnt-label">오늘<br>상담신청</div>
-        </div>
-        <div class="cnt-card highlight">
-          <div class="cnt-num" id="cnt-total"><span class="loading">···</span></div>
-          <div class="cnt-label">누적<br>상담신청</div>
-        </div>
-        <div class="cnt-card">
-          <div class="cnt-num">500<span>+</span></div>
-          <div class="cnt-label">직접출고<br>대수</div>
-        </div>
-      </div>
     </div>
 
     <!-- 전화번호 -->
@@ -869,21 +801,21 @@ footer{
 
     <!-- CTA 버튼들 -->
     <div class="cta-buttons">
-      <a href="tel:01021823479" class="cta-btn cta-btn-phone" onclick="handleClick()">
+      <a href="tel:01021823479" class="cta-btn cta-btn-phone">
         <span class="cta-btn-icon">📞</span>
         <div class="cta-btn-text">
           <span class="cta-btn-main">지금 바로 전화상담</span>
           <span class="cta-btn-sub">010-2182-3479 · 클릭하면 바로 연결</span>
         </div>
       </a>
-      <a href="https://open.kakao.com/o/soFA0ckg" target="_blank" class="cta-btn cta-btn-kakao" onclick="handleClick()">
+      <a href="https://open.kakao.com/o/soFA0ckg" target="_blank" class="cta-btn cta-btn-kakao">
         <span class="cta-btn-icon">💬</span>
         <div class="cta-btn-text">
           <span class="cta-btn-main">카카오톡 상담</span>
           <span class="cta-btn-sub">오픈채팅 · 24시간 문자 남기기 가능</span>
         </div>
       </a>
-      <a href="https://naver.me/xRPKkxBA" target="_blank" class="cta-btn cta-btn-naver" onclick="handleClick()">
+      <a href="https://naver.me/xRPKkxBA" target="_blank" class="cta-btn cta-btn-naver">
         <span class="cta-btn-icon">📝</span>
         <div class="cta-btn-text">
           <span class="cta-btn-main">내가 원할 때 상담받기</span>
@@ -903,7 +835,7 @@ footer{
     </div>
 
     <!-- 유튜브 -->
-    <a href="https://youtube.com/@benzdream?si=BUcHGGGEnOFeyO0B" target="_blank" class="contact-yt" onclick="handleClick('youtube')">
+    <a href="https://youtube.com/@benzdream?si=BUcHGGGEnOFeyO0B" target="_blank" class="contact-yt">
       <span class="yt-icon">▶️</span>
       <div>
         <div class="yt-main">유튜브 채널 보러가기</div>
@@ -937,55 +869,6 @@ document.querySelectorAll('.ab-card').forEach((c,i)=>{
   c.style.animationDelay = `${i*0.1}s`;
 });
 
-// ─── 상담 카운터 (localStorage 기반 — CORS 이슈 없음) ───
-function fmt(n){
-  n = parseInt(n) || 0;
-  if(n >= 1000) return (n/1000).toFixed(1) + 'k';
-  return String(n);
-}
-
-function todayStr(){
-  var d = new Date();
-  return d.getFullYear()
-    + String(d.getMonth()+1).padStart(2,'0')
-    + String(d.getDate()).padStart(2,'0');
-}
-
-function loadCounters(){
-  try {
-    var today = todayStr();
-    var savedDate = localStorage.getItem('cnt_date') || '';
-    // 날짜 바뀌면 오늘 카운터 리셋
-    if(savedDate !== today){
-      localStorage.setItem('cnt_date', today);
-      localStorage.setItem('cnt_today', '0');
-    }
-    var todayCount = parseInt(localStorage.getItem('cnt_today')) || 0;
-    var totalCount = parseInt(localStorage.getItem('cnt_total')) || 0;
-    var el;
-    el = document.getElementById('cnt-today');
-    if(el) el.innerHTML = fmt(todayCount) + '<span>건</span>';
-    el = document.getElementById('cnt-total');
-    if(el) el.innerHTML = fmt(totalCount) + '<span>건</span>';
-  } catch(err){}
-}
-
-function handleClick(){
-  try {
-    var today = todayStr();
-    var savedDate = localStorage.getItem('cnt_date') || '';
-    if(savedDate !== today){
-      localStorage.setItem('cnt_date', today);
-      localStorage.setItem('cnt_today', '0');
-    }
-    var todayCount = (parseInt(localStorage.getItem('cnt_today')) || 0) + 1;
-    var totalCount = (parseInt(localStorage.getItem('cnt_total')) || 0) + 1;
-    localStorage.setItem('cnt_today', String(todayCount));
-    localStorage.setItem('cnt_total', String(totalCount));
-    loadCounters();
-  } catch(err){}
-}
-
 function showToast(msg){
   var el = document.getElementById('toast');
   if(!el) return;
@@ -994,7 +877,6 @@ function showToast(msg){
   setTimeout(function(){ el.classList.remove('show'); }, 2500);
 }
 
-loadCounters();
 </script>
 </body>
 </html>
