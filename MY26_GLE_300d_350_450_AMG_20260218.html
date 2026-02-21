@@ -482,7 +482,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 <span class="cta-btn-icon">💬</span>
 <div class="cta-btn-text">
 <span class="cta-btn-main">카카오톡 상담</span>
-<span class="cta-btn-sub">오픈채팅 · 24시간 문자 남기기 가능</span>
+<span class="cta-btn-sub">24시간 문자 남기기 가능</span>
 </div>
 </a>
 <a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-btn cta-btn-form" onclick="handleClick('naver')">
@@ -527,7 +527,7 @@ secs.forEach(s=>sobs.observe(s));
 
 // ─── CTA 클릭 처리 ───
 function handleClick(type){
-const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다'};
+const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 채널로 이동합니다',naver:'📝 상담신청폼으로 이동합니다'};
 showToast(msgs[type]||'');
 }
 function showToast(msg){const el=document.getElementById('toast');if(!el)return;el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}

@@ -363,7 +363,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 <!-- CTA -->
 <div class="intro-cta fi">
 <a class="intro-ci" href="https://youtube.com/@benzdream?si=BUcHGGGEnOFeyO0B" target="_blank"><div class="intro-ci-icon" style="font-size:0;line-height:0;"><svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="28" height="20" rx="4.5" fill="#FF0000"/><path d="M11.5 14V6L19 10L11.5 14Z" fill="white"/></svg></div><div><div class="intro-ci-label">YouTube</div><div class="intro-ci-val">@benzdream</div></div></a>
-<a class="intro-ci" href="http://pf.kakao.com/_UqxiIX/chat" target="_blank"><div class="intro-ci-icon">💬</div><div><div class="intro-ci-label">KakaoTalk</div><div class="intro-ci-val">오픈채팅 상담</div></div></a>
+<a class="intro-ci" href="http://pf.kakao.com/_UqxiIX/chat" target="_blank"><div class="intro-ci-icon">💬</div><div><div class="intro-ci-label">KakaoTalk</div><div class="intro-ci-val">카카오톡 상담</div></div></a>
 <a class="intro-ci" href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank"><div class="intro-ci-icon">📝</div><div><div class="intro-ci-label">상담신청</div><div class="intro-ci-val">상담 신청서</div></div></a>
 </div>
 <div class="intro-tagline fi">THE BEST OR NOTHING — BENZDREAM</div>
@@ -662,7 +662,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 <span class="cta-btn-icon">💬</span>
 <div class="cta-btn-text">
 <span class="cta-btn-main">카카오톡 상담</span>
-<span class="cta-btn-sub">오픈채팅 · 24시간 문자 남기기 가능</span>
+<span class="cta-btn-sub">24시간 문자 남기기 가능</span>
 </div>
 <span class="cta-btn-badge" id="badge-kakao">—</span>
 </a>
@@ -702,7 +702,7 @@ document.querySelectorAll('.fi').forEach(el => observer.observe(el));
 
 // ─── CTA 클릭 처리 ───
 function handleClick(type){
-const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다'};
+const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 채널로 이동합니다',naver:'📝 상담신청폼으로 이동합니다'};
 showToast(msgs[type]||'');
 }
 function showToast(msg){const el=document.getElementById('toast');if(!el)return;el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
