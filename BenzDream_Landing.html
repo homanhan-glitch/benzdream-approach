@@ -937,10 +937,8 @@ document.querySelectorAll('.ab-card').forEach((c,i)=>{
   c.style.animationDelay = `${i*0.1}s`;
 });
 
-// ─── 상담 카운터 (단순화 버전) ───
-// 기록: Apps Script → log 시트에 타임스탬프 행 추가
-// 읽기: action=read → JSON {total, today} 반환
-const GS_URL = 'https://script.google.com/macros/s/AKfycbwWVIgObEZRrWgRJk7MbaZoaSDtcBQRKtrz_pAf7Xs-fWG7LczDgtwzsi-BbPvtLYkx/exec';
+// ─── 상담 카운터 (CounterAPI — 가입/설정 불필요) ───
+const NS = 'benzdream-homan2026';
 
 function fmt(n){
   n = parseInt(n) || 0;
@@ -948,25 +946,38 @@ function fmt(n){
   return String(n);
 }
 
+function todayKey(){
+  var d = new Date();
+  return 'consult-' + d.getFullYear()
+    + String(d.getMonth()+1).padStart(2,'0')
+    + String(d.getDate()).padStart(2,'0');
+}
+
 async function loadCounters(){
   try {
-    const res = await fetch(GS_URL + '?action=read&t=' + Date.now());
-    if(!res.ok) return;
-    const data = await res.json();
+    var tk = todayKey();
+    var [todayRes, totalRes] = await Promise.all([
+      fetch('https://api.counterapi.dev/v1/' + NS + '/' + tk + '/get'),
+      fetch('https://api.counterapi.dev/v1/' + NS + '/consult-total/get')
+    ]);
+    var todayData = await todayRes.json();
+    var totalData = await totalRes.json();
     var el;
     el = document.getElementById('cnt-today');
-    if(el) el.innerHTML = fmt(data.today||0) + '<span>건</span>';
+    if(el) el.innerHTML = fmt(todayData.count||0) + '<span>건</span>';
     el = document.getElementById('cnt-total');
-    if(el) el.innerHTML = fmt(data.total||0) + '<span>건</span>';
+    if(el) el.innerHTML = fmt(totalData.count||0) + '<span>건</span>';
   } catch(err) {
-    // 로드 실패 시 기존 표시 유지 (0 표시)
+    // 로드 실패 시 무시
   }
 }
 
 function handleClick(){
-  // 어떤 상담 버튼이든 동일하게 1회 카운트
-  fetch(GS_URL + '?action=hit', {mode:'no-cors'}).catch(function(){});
-  setTimeout(loadCounters, 1800);
+  var tk = todayKey();
+  // 오늘 카운터 + 누적 카운터 동시 증가
+  fetch('https://api.counterapi.dev/v1/' + NS + '/' + tk + '/up').catch(function(){});
+  fetch('https://api.counterapi.dev/v1/' + NS + '/consult-total/up').catch(function(){});
+  setTimeout(loadCounters, 1500);
 }
 
 function showToast(msg){
