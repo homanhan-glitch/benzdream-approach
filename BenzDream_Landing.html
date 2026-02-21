@@ -937,47 +937,53 @@ document.querySelectorAll('.ab-card').forEach((c,i)=>{
   c.style.animationDelay = `${i*0.1}s`;
 });
 
-// ─── 상담 카운터 (CounterAPI — 가입/설정 불필요) ───
-const NS = 'benzdream-homan2026';
-
+// ─── 상담 카운터 (localStorage 기반 — CORS 이슈 없음) ───
 function fmt(n){
   n = parseInt(n) || 0;
   if(n >= 1000) return (n/1000).toFixed(1) + 'k';
   return String(n);
 }
 
-function todayKey(){
+function todayStr(){
   var d = new Date();
-  return 'consult-' + d.getFullYear()
+  return d.getFullYear()
     + String(d.getMonth()+1).padStart(2,'0')
     + String(d.getDate()).padStart(2,'0');
 }
 
-async function loadCounters(){
+function loadCounters(){
   try {
-    var tk = todayKey();
-    var [todayRes, totalRes] = await Promise.all([
-      fetch('https://api.counterapi.dev/v1/' + NS + '/' + tk),
-      fetch('https://api.counterapi.dev/v1/' + NS + '/consult-total')
-    ]);
-    var todayData = await todayRes.json();
-    var totalData = await totalRes.json();
+    var today = todayStr();
+    var savedDate = localStorage.getItem('cnt_date') || '';
+    // 날짜 바뀌면 오늘 카운터 리셋
+    if(savedDate !== today){
+      localStorage.setItem('cnt_date', today);
+      localStorage.setItem('cnt_today', '0');
+    }
+    var todayCount = parseInt(localStorage.getItem('cnt_today')) || 0;
+    var totalCount = parseInt(localStorage.getItem('cnt_total')) || 0;
     var el;
     el = document.getElementById('cnt-today');
-    if(el) el.innerHTML = fmt(todayData.value||0) + '<span>건</span>';
+    if(el) el.innerHTML = fmt(todayCount) + '<span>건</span>';
     el = document.getElementById('cnt-total');
-    if(el) el.innerHTML = fmt(totalData.value||0) + '<span>건</span>';
-  } catch(err) {
-    // 로드 실패 시 무시
-  }
+    if(el) el.innerHTML = fmt(totalCount) + '<span>건</span>';
+  } catch(err){}
 }
 
 function handleClick(){
-  var tk = todayKey();
-  // 오늘 카운터 + 누적 카운터 동시 증가
-  fetch('https://api.counterapi.dev/v1/' + NS + '/' + tk + '/up').catch(function(){});
-  fetch('https://api.counterapi.dev/v1/' + NS + '/consult-total/up').catch(function(){});
-  setTimeout(loadCounters, 1800);
+  try {
+    var today = todayStr();
+    var savedDate = localStorage.getItem('cnt_date') || '';
+    if(savedDate !== today){
+      localStorage.setItem('cnt_date', today);
+      localStorage.setItem('cnt_today', '0');
+    }
+    var todayCount = (parseInt(localStorage.getItem('cnt_today')) || 0) + 1;
+    var totalCount = (parseInt(localStorage.getItem('cnt_total')) || 0) + 1;
+    localStorage.setItem('cnt_today', String(todayCount));
+    localStorage.setItem('cnt_total', String(totalCount));
+    loadCounters();
+  } catch(err){}
 }
 
 function showToast(msg){
