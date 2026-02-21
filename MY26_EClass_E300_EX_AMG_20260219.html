@@ -193,7 +193,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 @media(max-width:768px){.cta-btn{padding:14px 16px}}
 
 
-/* ── CONTACT UPGRADE (랜딩페이지 스타일) ── */
+/* ── CONTACT UPGRADE (랜딩페이지 스타일 통일) ── */
 .phone-display{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
 .phone-label{font-size:.7rem;color:var(--silver,#a8aab0);letter-spacing:.08em;margin-bottom:4px;}
 .phone-num{font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:700;color:var(--gold,#c9a96e);letter-spacing:.02em;}
@@ -203,6 +203,35 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 .cp-title{font-size:.75rem;color:var(--silver,#a8aab0);margin-top:2px;}
 .cp-badge{font-size:.68rem;color:var(--gold,#c9a96e);background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.2);border-radius:20px;padding:2px 8px;display:inline-block;margin-top:4px;}
 
+/* ── CONTACT UPGRADE (랜딩페이지 스타일 통일) ── */
+.cta-buttons{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
+.cta-btn{display:flex;align-items:center;gap:10px;padding:18px 24px;border-radius:14px;font-family:'Noto Sans KR',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;border:none;transition:all .2s ease;position:relative;overflow:hidden;}
+.cta-btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .15s;}
+.cta-btn:active::after{background:rgba(255,255,255,.08);}
+.cta-btn-phone{background:linear-gradient(135deg,#1a2035,#252d45);border:1.5px solid rgba(201,169,110,.5);color:var(--gold-light,#ddc08a);box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.cta-btn-phone:hover{border-color:var(--gold,#c9a96e);box-shadow:0 6px 24px rgba(201,169,110,.15);transform:translateY(-1px);}
+.cta-btn-kakao{background:#FEE500;color:#3C1E1E;}
+.cta-btn-kakao:hover{background:#FFD700;transform:translateY(-1px);box-shadow:0 6px 24px rgba(254,229,0,.3);}
+.cta-btn-form,.cta-btn-naver{background:#4285F4;color:#fff;}
+.cta-btn-form:hover,.cta-btn-naver:hover{background:#3367D6;transform:translateY(-1px);box-shadow:0 6px 24px rgba(66,133,244,.3);}
+.cta-btn-icon{font-size:1.3rem;flex-shrink:0;}
+.cta-btn-text{flex:1;text-align:left;}
+.cta-btn-main{display:block;font-size:.95rem;font-weight:700;}
+.cta-btn-sub{display:block;font-size:.72rem;font-weight:400;opacity:.75;margin-top:1px;}
+.phone-display{background:rgba(24,28,40,.8);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.phone-label{font-size:.7rem;color:var(--silver,#a8aab0);}
+.phone-num{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold,#c9a96e);letter-spacing:.05em;}
+.contact-profile{background:var(--navy,#141824);border:1px solid rgba(201,169,110,.12);border-radius:16px;padding:20px;margin-bottom:16px;display:flex;align-items:center;gap:16px;}
+.cp-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim,#8a7a50),var(--gold,#c9a96e));display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;border:2px solid rgba(201,169,110,.3);}
+.cp-name{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white,#f5f5f7);margin-bottom:3px;}
+.cp-title{font-size:.75rem;color:var(--silver,#a8aab0);margin-bottom:5px;}
+.cp-badge{display:inline-block;font-size:.65rem;background:rgba(201,169,110,.12);color:var(--gold,#c9a96e);border:1px solid rgba(201,169,110,.25);border-radius:4px;padding:2px 8px;}
+.co-yt{display:flex;align-items:center;gap:10px;background:rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.15);border-radius:12px;padding:14px 18px;text-decoration:none;color:var(--light,#e2e3e7);margin-bottom:16px;transition:all .2s;}
+.co-yt:hover{background:rgba(255,0,0,.12);border-color:rgba(255,0,0,.25);}
+.co-yt-icon{font-size:1.4rem;}
+.co-yt-main{font-size:.85rem;font-weight:700;}
+.co-yt-sub{font-size:.7rem;color:var(--silver,#a8aab0);}
+.co-yt-cnt{margin-left:auto;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:#ff4444;}
 </style>
 </head><body>
 
