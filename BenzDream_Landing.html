@@ -957,16 +957,16 @@ async function loadCounters(){
   try {
     var tk = todayKey();
     var [todayRes, totalRes] = await Promise.all([
-      fetch('https://api.counterapi.dev/v1/' + NS + '/' + tk + '/get'),
-      fetch('https://api.counterapi.dev/v1/' + NS + '/consult-total/get')
+      fetch('https://api.counterapi.dev/v1/' + NS + '/' + tk),
+      fetch('https://api.counterapi.dev/v1/' + NS + '/consult-total')
     ]);
     var todayData = await todayRes.json();
     var totalData = await totalRes.json();
     var el;
     el = document.getElementById('cnt-today');
-    if(el) el.innerHTML = fmt(todayData.count||0) + '<span>건</span>';
+    if(el) el.innerHTML = fmt(todayData.value||0) + '<span>건</span>';
     el = document.getElementById('cnt-total');
-    if(el) el.innerHTML = fmt(totalData.count||0) + '<span>건</span>';
+    if(el) el.innerHTML = fmt(totalData.value||0) + '<span>건</span>';
   } catch(err) {
     // 로드 실패 시 무시
   }
@@ -977,7 +977,7 @@ function handleClick(){
   // 오늘 카운터 + 누적 카운터 동시 증가
   fetch('https://api.counterapi.dev/v1/' + NS + '/' + tk + '/up').catch(function(){});
   fetch('https://api.counterapi.dev/v1/' + NS + '/consult-total/up').catch(function(){});
-  setTimeout(loadCounters, 1500);
+  setTimeout(loadCounters, 1800);
 }
 
 function showToast(msg){
