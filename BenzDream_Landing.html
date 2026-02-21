@@ -388,13 +388,6 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 .cta-btn-text{flex:1;text-align:left;}
 .cta-btn-main{display:block;font-size:.95rem;font-weight:700;}
 .cta-btn-sub{display:block;font-size:.72rem;font-weight:400;opacity:.75;margin-top:1px;}
-.cta-btn-badge{
-  font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;
-  background:rgba(201,169,110,.2);color:var(--gold);
-  border:1px solid rgba(201,169,110,.3);padding:3px 8px;border-radius:20px;
-}
-.cta-btn-kakao .cta-btn-badge{background:rgba(60,30,30,.2);color:#5a3a1a;border-color:rgba(60,30,30,.3);}
-.cta-btn-naver .cta-btn-badge{background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3);}
 
 /* 전화번호 표시 */
 .phone-display{
@@ -876,29 +869,26 @@ footer{
 
     <!-- CTA 버튼들 -->
     <div class="cta-buttons">
-      <a href="tel:01021823479" class="cta-btn cta-btn-phone" onclick="handleClick('phone')">
+      <a href="tel:01021823479" class="cta-btn cta-btn-phone" onclick="handleClick()">
         <span class="cta-btn-icon">📞</span>
         <div class="cta-btn-text">
           <span class="cta-btn-main">지금 바로 전화상담</span>
           <span class="cta-btn-sub">010-2182-3479 · 클릭하면 바로 연결</span>
         </div>
-        <span class="cta-btn-badge" id="badge-phone">0명</span>
       </a>
-      <a href="https://open.kakao.com/o/soFA0ckg" target="_blank" class="cta-btn cta-btn-kakao" onclick="handleClick('kakao')">
+      <a href="https://open.kakao.com/o/soFA0ckg" target="_blank" class="cta-btn cta-btn-kakao" onclick="handleClick()">
         <span class="cta-btn-icon">💬</span>
         <div class="cta-btn-text">
           <span class="cta-btn-main">카카오톡 상담</span>
           <span class="cta-btn-sub">오픈채팅 · 24시간 문자 남기기 가능</span>
         </div>
-        <span class="cta-btn-badge" id="badge-kakao">0명</span>
       </a>
-      <a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-btn cta-btn-naver" onclick="handleClick('naver')">
+      <a href="https://naver.me/xRPKkxBA" target="_blank" class="cta-btn cta-btn-naver" onclick="handleClick()">
         <span class="cta-btn-icon">📝</span>
         <div class="cta-btn-text">
           <span class="cta-btn-main">내가 원할 때 상담받기</span>
           <span class="cta-btn-sub">정보 남기시면 먼저 연락드립니다</span>
         </div>
-        <span class="cta-btn-badge" id="badge-naver">0명</span>
       </a>
     </div>
 
@@ -947,64 +937,44 @@ document.querySelectorAll('.ab-card').forEach((c,i)=>{
   c.style.animationDelay = `${i*0.1}s`;
 });
 
-// ─── 실시간 카운터 (Google Sheets) ───
+// ─── 상담 카운터 (단순화 버전) ───
+// 기록: Apps Script → log 시트에 타임스탬프 행 추가
+// 읽기: action=read → JSON {total, today} 반환
 const GS_URL = 'https://script.google.com/macros/s/AKfycbwl8N-DS7w4vG2uVx2qW8fhys86qYC0yk6ZOyXGnsJKOaFcvI93gKFQQUg5o0O0DSYA/exec';
-const SHEET_ID = '1UapWQlp6DHraDflX50sphJAofwkYefq513awD1PJgWM';
 
 function fmt(n){
-  if(n===null||n===undefined) return '0';
   n = parseInt(n) || 0;
-  if(n>=1000) return (n/1000).toFixed(1)+'k';
+  if(n >= 1000) return (n/1000).toFixed(1) + 'k';
   return String(n);
 }
 
 async function loadCounters(){
   try {
-    const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv&sheet=counters&t=' + Date.now();
-    const res = await fetch(url);
+    const res = await fetch(GS_URL + '?action=read&t=' + Date.now());
     if(!res.ok) return;
-    const csv = await res.text();
-    const rows = csv.trim().split('\n').slice(1);
-    const c = {};
-    rows.forEach(function(row){
-      var parts = row.split(',');
-      if(parts.length >= 2){
-        var key = parts[0].replace(/"/g,"").trim();
-        var val = parseInt(parts[1].replace(/"/g,"").trim()) || 0;
-        c[key] = val;
-      }
-    });
-    var ce=function(id,v,u){var el=document.getElementById(id);if(el)el.innerHTML=fmt(v)+'<span>'+u+'</span>';};
-    ce('cnt-today', c['today-consult']||0, '건');
-    ce('cnt-total', c['total-consult']||0, '건');
-    var be=function(id,v){var el=document.getElementById(id);if(el)el.textContent=fmt(v)+'명';};
-    be('badge-phone', c['phone-click']||0);
-    be('badge-kakao', c['kakao-click']||0);
-    be('badge-naver', c['form-click']||0);
+    const data = await res.json();
+    var el;
+    el = document.getElementById('cnt-today');
+    if(el) el.innerHTML = fmt(data.today||0) + '<span>건</span>';
+    el = document.getElementById('cnt-total');
+    if(el) el.innerHTML = fmt(data.total||0) + '<span>건</span>';
   } catch(err) {
-    console.warn('Counter load failed:', err);
+    // 로드 실패 시 기존 표시 유지 (0 표시)
   }
 }
 
-async function handleClick(type){
-  var km={phone:'phone-click',kakao:'kakao-click',naver:'form-click'};
-  if(km[type]){
-    var pg=encodeURIComponent(location.pathname.split('/').pop()||'landing');
-    var ua=encodeURIComponent(navigator.userAgent.substring(0,120));
-    fetch(GS_URL+'?action=hit&key=total-consult&page='+pg+'&ua='+ua, {mode:'no-cors'}).catch(function(){});
-    fetch(GS_URL+'?action=hit&key='+km[type]+'&page='+pg+'&ua='+ua, {mode:'no-cors'}).catch(function(){});
-    setTimeout(loadCounters, 1500);
-  }
-  var msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 오픈채팅으로 이동합니다',naver:'📝 상담신청폼으로 이동합니다',youtube:'▶️ 유튜브 채널로 이동합니다'};
-  showToast(msgs[type]||'');
+function handleClick(){
+  // 어떤 상담 버튼이든 동일하게 1회 카운트
+  fetch(GS_URL + '?action=hit', {mode:'no-cors'}).catch(function(){});
+  setTimeout(loadCounters, 1800);
 }
 
 function showToast(msg){
-  var el=document.getElementById('toast');
+  var el = document.getElementById('toast');
   if(!el) return;
-  el.textContent=msg;
+  el.textContent = msg;
   el.classList.add('show');
-  setTimeout(function(){el.classList.remove('show');},2500);
+  setTimeout(function(){ el.classList.remove('show'); }, 2500);
 }
 
 loadCounters();
