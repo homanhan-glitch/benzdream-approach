@@ -267,6 +267,69 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 .upsell-item .ui-a{font-size:.8rem;color:var(--light);font-weight:300;line-height:1.65;}
 @media(max-width:768px){.upsell-grid{grid-template-columns:1fr;}}
 </style>
+<style>
+
+/* Maybach theme overrides */
+:root {
+  --maybach: #7a1a3a;
+  --maybach-light: #a02050;
+  --maybach-dim: #4a1025;
+}
+.mby { color: var(--maybach-light); }
+.mby-bg { background: rgba(122,26,58,.15); border-color: rgba(122,26,58,.35) !important; }
+.cv-tc.maybach { border-color: rgba(160,32,80,.5) !important; }
+.cv-badge.m { background: rgba(122,26,58,.25); color: #d080a0; border-color: rgba(160,32,80,.4) !important; }
+.sh .b { font-family: 'Outfit', sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .15em; color: var(--gold); text-transform: uppercase; }
+.sh .n { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--white); margin-top: 6px; }
+.sh .sl h2 { font-family: 'Outfit', sans-serif; font-weight: 700; }
+.maybach-badge { display:inline-block; background:linear-gradient(135deg,rgba(122,26,58,.3),rgba(160,32,80,.15)); border:1px solid rgba(160,32,80,.4); color:#d080a0; font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.1em; padding:3px 10px; border-radius:20px; text-transform:uppercase; }
+.gls-badge { display:inline-block; background:linear-gradient(135deg,rgba(26,58,110,.3),rgba(42,90,174,.15)); border:1px solid rgba(42,90,174,.4); color:#80a0e0; font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.1em; padding:3px 10px; border-radius:20px; text-transform:uppercase; }
+.trim-hero { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1100px; margin:0 auto 40px; padding:0 15px; }
+@media(max-width:768px){ .trim-hero { grid-template-columns:1fr; } }
+.trim-card { background:var(--card); border:1px solid rgba(201,169,110,.15); border-radius:20px; padding:32px 28px; }
+.trim-card.maybach-card { border-color:rgba(160,32,80,.3); background:linear-gradient(135deg,#181c28,#1e1018); }
+.tc-badge { font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; margin-bottom:10px; }
+.tc-name { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:6px; }
+.tc-price { font-family:'Outfit',sans-serif; font-size:2rem; font-weight:700; color:var(--gold); margin-bottom:16px; }
+.tc-sub { font-family:'Noto Sans KR',sans-serif; font-size:.78rem; color:var(--silver); font-weight:300; margin-bottom:20px; line-height:1.6; }
+.tc-specs { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.tc-spec { background:rgba(255,255,255,.04); border-radius:10px; padding:12px; }
+.tcs-label { font-family:'Outfit',sans-serif; font-size:.6rem; font-weight:600; letter-spacing:.1em; color:var(--silver); text-transform:uppercase; margin-bottom:4px; }
+.tcs-val { font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700; color:var(--white); }
+.tcs-unit { font-size:.65rem; color:var(--silver); font-weight:400; }
+.diff-section { max-width:1100px; margin:0 auto 40px; padding:0 15px; }
+.diff-header { display:flex; gap:16px; margin-bottom:20px; align-items:center; }
+.diff-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+@media(max-width:768px){ .diff-cards { grid-template-columns:1fr; } }
+.diff-card { background:var(--card); border:1px solid rgba(201,169,110,.12); border-radius:16px; padding:22px; }
+.diff-icon { font-size:2rem; margin-bottom:12px; }
+.diff-title { font-family:'Outfit',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.1em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
+.diff-desc { font-family:'Noto Sans KR',sans-serif; font-size:.82rem; color:var(--silver); line-height:1.7; font-weight:300; }
+.manufaktur-box { max-width:1100px; margin:0 auto 40px; padding:0 15px; }
+.mf-inner { background:linear-gradient(135deg,rgba(122,26,58,.12),rgba(201,169,110,.06)); border:1px solid rgba(160,32,80,.25); border-radius:20px; padding:32px; }
+.mf-label { font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.2em; color:#d080a0; text-transform:uppercase; margin-bottom:12px; }
+.mf-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--white); margin-bottom:8px; }
+.mf-price { font-family:'Outfit',sans-serif; font-size:1.8rem; font-weight:700; color:var(--gold); margin-bottom:16px; }
+.mf-items { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.mf-item { display:flex; gap:10px; align-items:flex-start; }
+.mf-dot { width:6px; height:6px; background:#d080a0; border-radius:50%; margin-top:6px; flex-shrink:0; }
+.mf-text { font-family:'Noto Sans KR',sans-serif; font-size:.82rem; color:var(--light); font-weight:300; line-height:1.5; }
+
+/* Row layout for spec tables */
+.rw{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+.rl{font-family:'Noto Sans KR',sans-serif;font-size:.78rem;color:var(--silver);font-weight:300;flex-shrink:0;min-width:90px;}
+.rv{font-family:'Noto Sans KR',sans-serif;font-size:.82rem;color:var(--light);font-weight:400;text-align:right;}
+/* Section padding */
+.sp{padding:60px 15px;}
+/* Price heading */
+.p{font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);}
+
+.s580-badge{display:inline-block;background:linear-gradient(135deg,rgba(26,58,90,.3),rgba(90,160,192,.15));border:1px solid rgba(90,160,192,.4);color:#5aa0c0;font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;padding:3px 10px;border-radius:20px;text-transform:uppercase;}
+.trim-card.s580-card{border-color:rgba(90,160,192,.25);background:linear-gradient(135deg,#181c28,#0e1820);}
+.maybach-badge-s{display:inline-block;background:linear-gradient(135deg,rgba(61,10,30,.35),rgba(201,168,76,.15));border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;padding:3px 10px;border-radius:20px;text-transform:uppercase;}
+.trim-card.maybach-s-card{border-color:rgba(201,168,76,.3);background:linear-gradient(135deg,#181c28,#1e1810);}
+
+</style>
 </head>
 <body>
 <section id="cover" class="cover">
@@ -366,247 +429,175 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 <div class="intro-tagline fi">THE BEST OR NOTHING — BENZDREAM</div>
 </div>
 </section>
-<section id="s580">
-<div class="sh">
-  <div class="sh-l">
-    <span class="b">S-Class W223 · MY26</span>
-    <span class="n">S 580 4MATIC</span>
-    <span class="fuel-tag gas">GASOLINE V8</span>
+<section id="s580" class="sp">
+<div class="sl" style="max-width:1100px;margin:0 auto 30px">
+  <span class="b">S-Class W223 · MY26</span>
+  <span class="n">S 580 4MATIC</span>
+</div>
+
+<div class="trim-hero">
+  <div class="trim-card s580-card">
+    <div class="s580-badge">S 580 4MATIC · V8 Flagship</div>
+    <div class="tc-name">S 580 4MATIC</div>
+    <div class="tc-price">2억 5,860만원</div>
+    <div class="tc-sub">V8 바이터보 가솔린 · 4MATIC 사륜구동 · S클래스 최상위 트림<br>쇼퍼 패키지 · MBUX AR HUD · 리어 액슬 스티어링 10° 기본 사양</div>
+    <div class="tc-specs">
+      <div class="tc-spec">
+        <div class="tcs-label">최고출력</div>
+        <div class="tcs-val" style="color:#5aa0c0">503<span class="tcs-unit"> ps</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">최대토크</div>
+        <div class="tcs-val">71.4<span class="tcs-unit"> kgm</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">0→100km/h</div>
+        <div class="tcs-val">4.4<span class="tcs-unit"> 초</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">복합연비</div>
+        <div class="tcs-val">6.9<span class="tcs-unit"> km/ℓ</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">배기량</div>
+        <div class="tcs-val">3,982<span class="tcs-unit"> cc</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">공차중량</div>
+        <div class="tcs-val">2,320<span class="tcs-unit"> kg</span></div>
+      </div>
+    </div>
   </div>
-  <div><span class="p">2억 5,860만원</span><span class="pn">차량 기본 가격 (부가세 포함)</span></div>
-</div>
-<div class="tc">
 
-<div class="photo-guide fi">📌 사진 삽입 → "벤츠 S580 4MATIC 외관 전면" (블랙 차체 · 20인치 멀티스포크 단조)</div>
-
-<div class="fi"><div class="sl"><h2>주요 제원 <span>카탈로그 공식 기준</span></h2></div>
-<div class="sg">
-<div class="sc"><div class="sl2">엔진</div><div class="sv">M176, V형 8기통 바이터보 / 48V ISG</div></div>
-<div class="sc"><div class="sl2">배기량</div><div class="sv">3,982cc</div></div>
-<div class="sc"><div class="sl2">최고출력</div><div class="sv">503ps / 5,500rpm</div></div>
-<div class="sc"><div class="sl2">최대토크</div><div class="sv">71.4kgm / 2,000~4,500rpm</div></div>
-<div class="sc"><div class="sl2">변속기</div><div class="sv">9G-TRONIC (자동 9단)</div></div>
-<div class="sc"><div class="sl2">구동방식</div><div class="sv">4MATIC (사륜구동)</div></div>
-<div class="sc"><div class="sl2">복합연비</div><div class="sv">8.6km/l (5등급)</div></div>
-<div class="sc"><div class="sl2">도심 / 고속</div><div class="sv">7.3 / 10.9 km/l</div></div>
-<div class="sc"><div class="sl2">0→100km/h</div><div class="sv">4.4초</div></div>
-<div class="sc"><div class="sl2">최고속도</div><div class="sv">250km/h</div></div>
-<div class="sc"><div class="sl2">타이어(전/후)</div><div class="sv">255/40R20</div></div>
-<div class="sc"><div class="sl2">전장 × 전폭 × 전고</div><div class="sv">5,290 × 1,920 × 1,505mm</div></div>
-<div class="sc"><div class="sl2">휠베이스</div><div class="sv">3,216mm</div></div>
-<div class="sc"><div class="sl2">공차중량</div><div class="sv">2,150kg</div></div>
-<div class="sc"><div class="sl2">연료탱크</div><div class="sv">76L</div></div>
-<div class="sc"><div class="sl2">트렁크</div><div class="sv">535L</div></div>
-<div class="sc"><div class="sl2">서스펜션</div><div class="sv">멀티링크 / 멀티링크 / 에어 스프링</div></div>
-</div></div>
-
-<div class="photo-guide fi">📌 사진 삽입 → "벤츠 S580 실내 후석" (쇼퍼 패키지 / 이그제큐티브 시트)</div>
-
-<div class="fi"><div class="sl"><h2>기본 사양 — 공식 카탈로그 기준</h2></div>
-<div class="oc"><div class="och"><span class="ob bd">Powertrain</span></div><div class="oi">
-<span class="ot">M176 V8 4.0L 바이터보 + 48V ISG</span>
-<span class="ot">9G-TRONIC (자동 9단)</span>
-<span class="ot">AIRMATIC 서스펜션 (에어 스프링)</span>
-<span class="ot">MOS 저소음 타이어 (Tire-fit)</span>
-<span class="ot">리어 액슬 스티어링 (10°) — S580 기본</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob be">외관 사양</span></div><div class="oi">
-<span class="ot">프로젝션 디지털 라이트 + 어댑티브 상향등 어시스트 플러스</span>
-<span class="ot">스탠다드 익스테리어 패키지</span>
-<span class="ot">메르세데스 벤츠 로고 프로젝션</span>
-<span class="ot">20″ 멀티스포크 단조 휠 (60R)</span>
-<span class="ot">파노라마 선루프</span>
-<span class="ot">IR 라미네이티드 글래스</span>
-<span class="ot">앞·뒷좌석 발광 도어 실 패널</span>
-<span class="ot">플러시 도어 핸들 + KEYLESS-GO + 파워 클로징</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob bi">실내 사양</span></div><div class="oi">
-<span class="ot">익스클루시브 나파 가죽 시트</span>
-<span class="ot">앞좌석 액티브 멀티컨투어 시트 (럭셔리 헤드레스트)</span>
-<span class="ot">뒷좌석 컴포트 패키지 &amp; 쇼퍼 패키지 / 이그제큐티브 시트</span>
-<span class="ot">익스클루시브 패키지 (DINAMICA 헤드라이너)</span>
-<span class="ot">뒷좌석 다리 마사지 / 목·어깨 히팅 / 열선·통풍</span>
-<span class="ot">뒷좌석 에어백 / 사이드백 / 벨트 피더</span>
-<span class="ot">MBUX 하이엔드 뒷좌석 엔터테인먼트 시스템</span>
-<span class="ot">MBUX 뒷좌석 태블릿</span>
-<span class="ot">더블 선블라인드</span>
-<span class="ot">나파 / 우드 터치컨트롤 스티어링 휠 / 열선</span>
-<span class="ot">MANUFAKTUR 플로잉 라인 래커 트림+</span>
-<span class="ot">블랙 도트라인 크리스탈 록 센터콘솔</span>
-<span class="ot">액티브 앰비언트 라이트</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob bc">텔레매틱스</span></div><div class="oi">
-<span class="ot">12.3인치 3D 계기반 + 지문인식 12.8인치 OLED 디스플레이</span>
-<span class="ot">MBUX + 프리미엄 AR 내비게이션 + DMB</span>
-<span class="ot">MBUX 증강현실 헤드업 디스플레이</span>
-<span class="ot">무선 안드로이드 오토 + 애플 카플레이</span>
-<span class="ot">어댑티브 뒷좌석 라이트</span>
-<span class="ot">부메스터 3D 서라운드 사운드 시스템 (15개, 710W)</span>
-<span class="ot">Mercedes Me Connect (원격시동, 896-디지털 차량 키)</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob bco">편의 사양</span></div><div class="oi">
-<span class="ot">4존 에어컨디셔너 + 에어 퀄리티 패키지</span>
-<span class="ot">전자식 에너자이징 패키지 + 에어 밸런스 패키지</span>
-<span class="ot">서라운드 카메라 + 능동형 주차 어시스트</span>
-<span class="ot">원격 주차 어시스트 + 메모리 주차 어시스트</span>
-<span class="ot">매직 비전 컨트롤</span>
-<span class="ot">앞좌석 휴대폰 무선 충전 + USB 플러스 패키지</span>
-<span class="ot">벤츠 순정형 블랙박스 &amp; 하이패스</span>
-<span class="ot">전동식 트렁크 + 핸즈프리 액세스</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob bs">안전 사양</span></div><div class="oi">
-<span class="ot">드라이빙 어시스턴트 패키지 PLUS (P20)</span>
-<span class="ot">능동형 사각지대 어시스트 + 추구 경고 어시스트</span>
-<span class="ot">능동형 차선 유지 / 차선 변경 어시스트</span>
-<span class="ot">Active Brake Assist with cross-traffic function</span>
-<span class="ot">Active Distance Assist DISTRONIC</span>
-<span class="ot">경로 기반 속도 조절 / 능동형 속도 제한 어시스트</span>
-<span class="ot">PRE-SAFE, PRE-SAFE Sound, PRE-SAFE PLUS, PRE-SAFE Impulse side</span>
-<span class="ot">Active Bonnet / ADAPTIVE BRAKE (HOLD 기능)</span>
-<span class="ot">에어백 13개</span>
-</div></div>
+  <div class="trim-card s580-card">
+    <div class="s580-badge">S 580 기본 사양 하이라이트</div>
+    <div style="margin-top:8px">
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(90,160,192,.1)">
+        <span class="rl">서스펜션</span><span class="rv" style="color:#5aa0c0">에어매틱 + E-액티브 바디컨트롤</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(90,160,192,.1)">
+        <span class="rl">리어 스티어링</span><span class="rv" style="color:#5aa0c0">리어 액슬 스티어링 10° (기본)</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(90,160,192,.1)">
+        <span class="rl">HUD</span><span class="rv">MBUX 증강현실 AR 헤드업 디스플레이</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(90,160,192,.1)">
+        <span class="rl">쇼퍼 패키지</span><span class="rv" style="color:#5aa0c0">후석 리클라이닝 · 차양 · 풋레스트 (기본)</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(90,160,192,.1)">
+        <span class="rl">실내</span><span class="rv">나파 가죽 · 부메스터® 3D 서라운드 사운드</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(90,160,192,.1)">
+        <span class="rl">디스플레이</span><span class="rv">12.8인치 OLED + 12.3인치 MBUX 2세대</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(90,160,192,.1)">
+        <span class="rl">후석 마사지</span><span class="rv" style="color:#5aa0c0">후석 등받이 마사지 (기본)</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(90,160,192,.1)">
+        <span class="rl">안전</span><span class="rv">PRE-SAFE® · 드라이빙 어시스턴스 패키지</span>
+      </div>
+      <div class="rw" style="padding:12px 0">
+        <span class="rl">에어백</span><span class="rv">에어백 13개</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="tn fi">
-<p>※ 가격은 2026년 1월 기준 공식 출고가이며, 옵션에 따라 변동될 수 있습니다.</p>
-<p>※ 외장색 885 MANUFAKTUR 오팔라이트 화이트 브라이트 선택 시 (+) 257만원</p>
-<p>※ 20″ 멀티-스포크 단조 휠 (60R) 은 S 580 기본 사양입니다.</p>
-</div>
-</div>
-<div class="ft"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>S 580 4MATIC | 26년식 | 2026.02 기준</span></div>
+<div class="ft" style="max-width:1100px;margin:0 auto"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>S 580 4MATIC | 2026.02 기준</span></div>
 </section>
-<section id="maybach" style="background:linear-gradient(180deg,#080408,#0c090c,var(--dark));">
-<div class="sh" style="border-top:3px solid var(--myg);">
-  <div class="sh-l">
-    <span class="b">Mercedes-Maybach · W223 · MY26</span>
-    <span class="n">Maybach S 580 4MATIC</span>
-    <span class="fuel-tag gas" style="background:rgba(201,168,76,.15);border-color:var(--myg);color:var(--myg);">ULTRA LUXURY V8</span>
+<section id="maybach" class="sp" style="background:linear-gradient(180deg,#0d0f14 0%,#130c10 100%)">
+<div class="sl" style="max-width:1100px;margin:0 auto 30px">
+  <span class="b" style="color:#c9a84c">Mercedes-Maybach · S-Class W223 · MY26</span>
+  <span class="n">마이바흐 S 580 4MATIC</span>
+</div>
+
+<div class="trim-hero">
+  <div class="trim-card maybach-s-card">
+    <div class="maybach-badge-s">MAYBACH S 580 4MATIC · Ultra Luxury</div>
+    <div class="tc-name" style="font-size:1.4rem">마이바흐 S 580 4MATIC</div>
+    <div class="tc-price" style="color:#c9a84c">3억 1,560만원</div>
+    <div class="tc-sub">V8 바이터보 가솔린 · 4MATIC 사륜구동 · 휠베이스 +180mm 연장<br>마이바흐 전용 외관 · 익스클루시브 나파 가죽 · 파워 클로징 도어</div>
+    <div class="tc-specs">
+      <div class="tc-spec">
+        <div class="tcs-label">최고출력</div>
+        <div class="tcs-val" style="color:#c9a84c">503<span class="tcs-unit"> ps</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">최대토크</div>
+        <div class="tcs-val">71.4<span class="tcs-unit"> kgm</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">0→100km/h</div>
+        <div class="tcs-val">4.4<span class="tcs-unit"> 초</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">복합연비</div>
+        <div class="tcs-val">6.9<span class="tcs-unit"> km/ℓ</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">휠베이스</div>
+        <div class="tcs-val" style="color:#c9a84c">3,396<span class="tcs-unit"> mm</span></div>
+      </div>
+      <div class="tc-spec">
+        <div class="tcs-label">공차중량</div>
+        <div class="tcs-val">2,460<span class="tcs-unit"> kg</span></div>
+      </div>
+    </div>
   </div>
-  <div><span class="p" style="color:var(--myg);">3억 1,560만원</span><span class="pn">차량 기본 가격 (부가세 포함)</span></div>
-</div>
-<div class="tc">
 
-<div class="photo-guide fi">📌 사진 삽입 → "마이바흐 S580 외관 전면" (투톤 컬러 · MAYBACH C필러 로고 · 20인치 5홀 단조)</div>
-
-<div class="fi"><div class="sl"><h2>주요 제원 <span>카탈로그 공식 기준</span></h2></div>
-<div class="sg">
-<div class="sc"><div class="sl2">엔진</div><div class="sv">M176, V형 8기통 바이터보 / 48V ISG</div></div>
-<div class="sc"><div class="sl2">배기량</div><div class="sv">3,982cc</div></div>
-<div class="sc"><div class="sl2">최고출력</div><div class="sv">503ps / 5,500rpm</div></div>
-<div class="sc"><div class="sl2">최대토크</div><div class="sv">71.4kgm / 2,000~4,500rpm</div></div>
-<div class="sc"><div class="sl2">변속기</div><div class="sv">9G-TRONIC (자동 9단)</div></div>
-<div class="sc"><div class="sl2">구동방식</div><div class="sv">4MATIC (사륜구동)</div></div>
-<div class="sc"><div class="sl2">복합연비</div><div class="sv">8.3km/l (5등급)</div></div>
-<div class="sc"><div class="sl2">도심 / 고속</div><div class="sv">5.0 / 8.3 km/l</div></div>
-<div class="sc"><div class="sl2">0→100km/h</div><div class="sv">4.4초</div></div>
-<div class="sc"><div class="sl2">최고속도</div><div class="sv">250km/h</div></div>
-<div class="sc"><div class="sl2">타이어(전/후)</div><div class="sv">255/40R20</div></div>
-<div class="sc"><div class="sl2">전장 × 전폭 × 전고</div><div class="sv" style="color:var(--myg);font-weight:600;">5,470 × 1,920 × 1,510mm (+180mm)</div></div>
-<div class="sc"><div class="sl2">휠베이스</div><div class="sv" style="color:var(--myg);font-weight:600;">3,396mm (+180mm vs S580)</div></div>
-<div class="sc"><div class="sl2">공차중량</div><div class="sv">2,200kg</div></div>
-<div class="sc"><div class="sl2">연료탱크</div><div class="sv">76L</div></div>
-<div class="sc"><div class="sl2">트렁크</div><div class="sv">495L</div></div>
-<div class="sc"><div class="sl2">서스펜션</div><div class="sv">멀티링크 / 멀티링크 / 에어 스프링</div></div>
-</div></div>
-
-<div class="photo-guide fi">📌 사진 삽입 → "마이바흐 S580 후석 이그제큐티브 시트" (MAYBACH 나파 가죽 / 파워 클로징 도어)</div>
-
-<div class="fi"><div class="sl"><h2>기본 사양 — 공식 카탈로그 기준</h2></div>
-<div class="oc"><div class="och"><span class="ob bd">Powertrain</span></div><div class="oi">
-<span class="ot">M176 V8 4.0L 바이터보 + 48V ISG</span>
-<span class="ot">9G-TRONIC (자동 9단)</span>
-<span class="ot">AIRMATIC 서스펜션 (에어 스프링)</span>
-<span class="ot">MOS 저소음 타이어 (Tire-fit)</span>
-<span class="ot">리어 액슬 스티어링 (10°) — 마이바흐 기본</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob be">외관 사양 ★ 마이바흐 전용</span></div><div class="oi">
-<span class="ot">디지털 라이트 + 어댑티브 상향등 어시스트 플러스</span>
-<span class="ot">마이바흐 익스클루시브 프론트 범퍼</span>
-<span class="ot">크롬 트림 스트립 (사이드 전체)</span>
-<span class="ot">C필러 Mercedes-Maybach 로고 ★</span>
-<span class="ot">MAYBACH 로고 프로젝터 ★</span>
-<span class="ot">20″ MAYBACH 5홀 단조 휠 ★</span>
-<span class="ot">파노라마 선루프</span>
-<span class="ot">IR 라미네이티드 글래스</span>
-<span class="ot">MAYBACH 발광 도어 실 패널 ★</span>
-<span class="ot">플러시 도어 핸들 + KEYLESS-GO + 파워 클로징</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob bi">실내 사양 ★ 마이바흐 전용</span></div><div class="oi">
-<span class="ot">MAYBACH 익스클루시브 나파 가죽 시트 ★</span>
-<span class="ot">앞좌석 액티브 멀티컨투어 시트 (럭셔리 헤드레스트)</span>
-<span class="ot">뒷좌석 컴포트 패키지 &amp; 쇼퍼 패키지 기본 ★</span>
-<span class="ot">이그제큐티브 시트 (뒷좌석 전동 리클라이닝) ★</span>
-<span class="ot">MAYBACH 파워 클로징 도어 ★</span>
-<span class="ot">뒷좌석 다리 마사지 / 목·어깨 히팅 / 열선·통풍</span>
-<span class="ot">뒷좌석 에어백 / 사이드백 / 벨트 피더</span>
-<span class="ot">MBUX 하이엔드 뒷좌석 엔터테인먼트 시스템</span>
-<span class="ot">MBUX 뒷좌석 태블릿</span>
-<span class="ot">전동 선 블라인드 ★</span>
-<span class="ot">나파 터치컨트롤 스티어링 휠 / 열선 / 열선</span>
-<span class="ot">MANUFAKTUR 브라운 오픈 포어 월넛 우드 &amp; 알루미늄 라인+ ★</span>
-<span class="ot">블랙 크리스탈 록 센터콘솔</span>
-<span class="ot">액티브 앰비언트 라이트</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob bc">텔레매틱스</span></div><div class="oi">
-<span class="ot">12.3인치 3D 계기반 + 지문인식 12.8인치 OLED 디스플레이</span>
-<span class="ot">MBUX + 프리미엄 AR 내비게이션 + DMB</span>
-<span class="ot">MBUX 증강현실 헤드업 디스플레이</span>
-<span class="ot">무선 안드로이드 오토 + 애플 카플레이</span>
-<span class="ot">부메스터 3D 서라운드 사운드 시스템 (15개, 710W)</span>
-<span class="ot">Mercedes Me Connect (원격시동, 896-디지털 차량 키)</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob bco">편의 사양</span></div><div class="oi">
-<span class="ot">4존 에어컨디셔너 + 에어 퀄리티 패키지</span>
-<span class="ot">앞·뒷좌석 에너자이징 패키지 &amp; 에어 밸런스 패키지</span>
-<span class="ot">서라운드 카메라 + 능동형 주차 어시스트</span>
-<span class="ot">원격 주차 어시스트 + 메모리 주차 어시스트</span>
-<span class="ot">뒷좌석 휴대폰 무선 충전</span>
-<span class="ot">벤츠 순정형 블랙박스 &amp; 하이패스</span>
-<span class="ot">전동식 트렁크 + 핸즈프리 액세스</span>
-</div></div>
-<div class="oc"><div class="och"><span class="ob bs">안전 사양</span></div><div class="oi">
-<span class="ot">드라이빙 어시스턴트 패키지 PLUS (P20)</span>
-<span class="ot">능동형 사각지대 어시스트 + 추구 경고 어시스트</span>
-<span class="ot">능동형 차선 유지 / 차선 변경 어시스트</span>
-<span class="ot">Active Brake Assist with cross-traffic function</span>
-<span class="ot">Active Distance Assist DISTRONIC</span>
-<span class="ot">PRE-SAFE, PRE-SAFE Sound, PRE-SAFE PLUS, PRE-SAFE Impulse side</span>
-<span class="ot">Active Bonnet / ADAPTIVE BRAKE (HOLD 기능)</span>
-<span class="ot">에어백 13개</span>
-</div></div>
-</div>
-
-<!-- 왜 마이바흐인가 -->
-<div class="upsell-box fi">
-  <h3>왜 마이바흐인가</h3>
-  <div class="upsell-grid">
-    <div class="upsell-item">
-      <div class="ui-q">180mm가 만드는 다른 세계</div>
-      <div class="ui-a">S 580과 마이바흐 S 580의 휠베이스 차이는 단 180mm입니다. 하지만 그 180mm는 후석 무릎 공간을 비즈니스 클래스 수준으로 바꿔놓습니다. 숫자가 아니라 탑승 순간 체감으로 느껴집니다.</div>
-    </div>
-    <div class="upsell-item">
-      <div class="ui-q">이동이 아닌 공간</div>
-      <div class="ui-a">마이바흐는 목적지까지 이동하는 차가 아닙니다. 전동 리클라이닝 후석, 파워 클로징 도어, MAYBACH 전용 나파 가죽 — 차 안에 있는 시간 자체가 경험이 됩니다.</div>
-    </div>
-    <div class="upsell-item">
-      <div class="ui-q">C필러의 무게</div>
-      <div class="ui-a">C필러에 새겨진 MAYBACH 로고는 단순한 엠블럼이 아닙니다. 1세기가 넘는 독립 럭셔리 브랜드의 역사가 담긴 아이덴티티입니다. 도로에서 S클래스와 즉각 구분됩니다.</div>
-    </div>
-    <div class="upsell-item">
-      <div class="ui-q">Ultra Luxury, 합리적 유지</div>
-      <div class="ui-a">롤스로이스·벤틀리와 동일한 Ultra Luxury 포지셔닝이지만, 서비스 네트워크는 전국 벤츠 딜러 그대로입니다. 유지비는 S클래스와 동급으로 관리됩니다.</div>
+  <div class="trim-card maybach-s-card">
+    <div class="maybach-badge-s">마이바흐 전용 기본 사양</div>
+    <div style="margin-top:8px">
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(201,168,76,.12)">
+        <span class="rl">휠베이스</span><span class="rv" style="color:#c9a84c">S 580 대비 +180mm 연장 (3,396mm)</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(201,168,76,.12)">
+        <span class="rl">외관</span><span class="rv" style="color:#c9a84c">마이바흐 전용 라디에이터 그릴 · 크롬 스트럿</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(201,168,76,.12)">
+        <span class="rl">도어</span><span class="rv" style="color:#c9a84c">파워 클로징 도어 (기본)</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(201,168,76,.12)">
+        <span class="rl">실내</span><span class="rv">MAYBACH 전용 익스클루시브 나파 가죽</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(201,168,76,.12)">
+        <span class="rl">후석 시트</span><span class="rv" style="color:#c9a84c">전동 리클라이닝 · 멀티컨투어 (기본)</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(201,168,76,.12)">
+        <span class="rl">휠</span><span class="rv">20인치 마이바흐 5스포크 단조 휠</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(201,168,76,.12)">
+        <span class="rl">엠블럼</span><span class="rv" style="color:#c9a84c">C필러 MAYBACH 로고 · 전용 플로어매트</span>
+      </div>
+      <div class="rw" style="padding:12px 0;border-bottom:1px solid rgba(201,168,76,.12)">
+        <span class="rl">사운드</span><span class="rv">부메스터® 3D 서라운드 사운드</span>
+      </div>
+      <div class="rw" style="padding:12px 0">
+        <span class="rl">안전</span><span class="rv">에어백 13개 · PRE-SAFE®</span>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- 마이바흐 핵심 포인트 박스 -->
+<div class="manufaktur-box">
+  <div class="mf-inner">
+    <div class="mf-label" style="color:#c9a84c">왜 마이바흐인가</div>
+    <div class="mf-title">S 580 대비 5,700만원의 가치</div>
+    <div class="mf-price" style="color:#c9a84c">+5,700만원 · 동일 엔진 · 같은 유지비</div>
+    <p style="font-family:'Noto Sans KR',sans-serif;font-size:.82rem;color:var(--silver);font-weight:300;margin:0 0 20px;line-height:1.7">
+      파워트레인은 S 580과 동일합니다. 차이는 180mm 더 긴 차체, 마이바흐 전용 후석 경험, 그리고 C필러의 MAYBACH 로고입니다.
+    </p>
+    <div class="mf-items">
+      <div class="mf-item"><div class="mf-dot" style="background:#c9a84c"></div><div class="mf-text">+180mm 휠베이스 → 후석 비즈니스 클래스 수준 레그룸</div></div>
+      <div class="mf-item"><div class="mf-dot" style="background:#c9a84c"></div><div class="mf-text">파워 클로징 도어 · MAYBACH 전용 나파 가죽 기본</div></div>
+      <div class="mf-item"><div class="mf-dot" style="background:#c9a84c"></div><div class="mf-text">C필러 MAYBACH 로고 · 전용 라디에이터 그릴 아이덴티티</div></div>
+      <div class="mf-item"><div class="mf-dot" style="background:#c9a84c"></div><div class="mf-text">롤스로이스·벤틀리 대안 · 유지비는 S클래스와 동급</div></div>
+    </div>
+  </div>
 </div>
 
-<div class="tn fi">
-<p>※ 가격은 2026년 1월 기준 공식 출고가이며, 옵션에 따라 변동될 수 있습니다.</p>
-<p>※ 뒷좌석 일등석 시트(224) 적용 시 860만원 추가 / 접이식 테이블(449)은 추가 사양입니다.</p>
-<p>※ 마이바흐 전용 투톤 컬러 선택 시 별도 추가 비용이 발생할 수 있습니다.</p>
-</div>
-</div>
-<div class="ft"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>Maybach S 580 4MATIC | 26년식 | 2026.02 기준</span></div>
+<div class="ft" style="max-width:1100px;margin:0 auto"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>마이바흐 S 580 4MATIC | 2026.02 기준</span></div>
 </section>
 <section id="compare" class="cp">
 <div class="cph fi"><h2>S 580 vs 마이바흐 S 580 — 핵심 차이</h2></div>
