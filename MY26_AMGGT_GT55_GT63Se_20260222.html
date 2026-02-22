@@ -244,62 +244,6 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 .co-yt-cnt{margin-left:auto;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:#ff4444;}
 @media(max-width:768px){.cta-btn{padding:14px 16px;}}
 </style>
-<style>
-/* Maybach theme overrides */
-:root {
-  --maybach: #7a1a3a;
-  --maybach-light: #a02050;
-  --maybach-dim: #4a1025;
-}
-.mby { color: var(--maybach-light); }
-.mby-bg { background: rgba(122,26,58,.15); border-color: rgba(122,26,58,.35) !important; }
-.cv-tc.maybach { border-color: rgba(160,32,80,.5) !important; }
-.cv-badge.m { background: rgba(110,26,26,.25); color: #e87070; border-color: rgba(110,26,26,.5) !important; }
-.sh .b { font-family: 'Outfit', sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .15em; color: var(--gold); text-transform: uppercase; }
-.sh .n { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--white); margin-top: 6px; }
-.sh .sl h2 { font-family: 'Outfit', sans-serif; font-weight: 700; }
-.amg-badge { display:inline-block; background:linear-gradient(135deg,rgba(122,26,58,.3),rgba(110,26,26,.2)); border:1px solid rgba(110,26,26,.5); color:#e87070; font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.1em; padding:3px 10px; border-radius:20px; text-transform:uppercase; }
-.gls-badge { display:inline-block; background:linear-gradient(135deg,rgba(26,58,110,.3),rgba(42,90,174,.15)); border:1px solid rgba(42,90,174,.4); color:#80a0e0; font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.1em; padding:3px 10px; border-radius:20px; text-transform:uppercase; }
-.trim-hero { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1100px; margin:0 auto 40px; padding:0 15px; }
-@media(max-width:768px){ .trim-hero { grid-template-columns:1fr; } }
-.trim-card { background:var(--card); border:1px solid rgba(201,169,110,.15); border-radius:20px; padding:32px 28px; }
-.trim-card.amg-card { border-color:rgba(110,26,26,.4); background:linear-gradient(135deg,#181c28,#160e0e); }
-.tc-badge { font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; margin-bottom:10px; }
-.tc-name { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; color:var(--white); margin-bottom:6px; }
-.tc-price { font-family:'Outfit',sans-serif; font-size:2rem; font-weight:700; color:var(--gold); margin-bottom:16px; }
-.tc-sub { font-family:'Noto Sans KR',sans-serif; font-size:.78rem; color:var(--silver); font-weight:300; margin-bottom:20px; line-height:1.6; }
-.tc-specs { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.tc-spec { background:rgba(255,255,255,.04); border-radius:10px; padding:12px; }
-.tcs-label { font-family:'Outfit',sans-serif; font-size:.6rem; font-weight:600; letter-spacing:.1em; color:var(--silver); text-transform:uppercase; margin-bottom:4px; }
-.tcs-val { font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700; color:var(--white); }
-.tcs-unit { font-size:.65rem; color:var(--silver); font-weight:400; }
-.diff-section { max-width:1100px; margin:0 auto 40px; padding:0 15px; }
-.diff-header { display:flex; gap:16px; margin-bottom:20px; align-items:center; }
-.diff-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
-@media(max-width:768px){ .diff-cards { grid-template-columns:1fr; } }
-.diff-card { background:var(--card); border:1px solid rgba(201,169,110,.12); border-radius:16px; padding:22px; }
-.diff-icon { font-size:2rem; margin-bottom:12px; }
-.diff-title { font-family:'Outfit',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.1em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
-.diff-desc { font-family:'Noto Sans KR',sans-serif; font-size:.82rem; color:var(--silver); line-height:1.7; font-weight:300; }
-.manufaktur-box { max-width:1100px; margin:0 auto 40px; padding:0 15px; }
-.mf-inner { background:linear-gradient(135deg,rgba(110,26,26,.12),rgba(201,169,110,.06)); border:1px solid rgba(110,26,26,.35); border-radius:20px; padding:32px; }
-.mf-label { font-family:'Outfit',sans-serif; font-size:.65rem; font-weight:700; letter-spacing:.2em; color:#e87070; text-transform:uppercase; margin-bottom:12px; }
-.mf-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--white); margin-bottom:8px; }
-.mf-price { font-family:'Outfit',sans-serif; font-size:1.8rem; font-weight:700; color:var(--gold); margin-bottom:16px; }
-.mf-items { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
-.mf-item { display:flex; gap:10px; align-items:flex-start; }
-.mf-dot { width:6px; height:6px; background:#e87070; border-radius:50%; margin-top:6px; flex-shrink:0; }
-.mf-text { font-family:'Noto Sans KR',sans-serif; font-size:.82rem; color:var(--light); font-weight:300; line-height:1.5; }
-
-/* Row layout for spec tables */
-.rw{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
-.rl{font-family:'Noto Sans KR',sans-serif;font-size:.78rem;color:var(--silver);font-weight:300;flex-shrink:0;min-width:90px;}
-.rv{font-family:'Noto Sans KR',sans-serif;font-size:.82rem;color:var(--light);font-weight:400;text-align:right;}
-/* Section padding */
-.sp{padding:60px 15px;}
-/* Price heading */
-.p{font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gold);}
-</style>
 </head>
 <body>
 
@@ -322,8 +266,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 </div>
 <div class="cv-tc maybach" style="border-color:rgba(110,26,26,.5)">
   <div class="cv-badge m" style="background:rgba(110,26,26,.25);color:#e87070;border-color:rgba(110,26,26,.5)">MAYBACH · 최상위 럭셔리</div>
-  <div class="cv-tn">마이바흐 GLS 600 4MATIC</div>
-  <div class="cv-tp">2억 9,360만원</div>
+  <div class="cv-tn">AMG GT 63 S E Performance</div>
+  <div class="cv-tp">2억 7,860만원</div>
   <div class="cv-tt">V8 가솔린 · 557ps · 5등급 · 4MATIC · 5인승</div>
 </div>
 </div></div>
@@ -379,8 +323,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 <div class="intro-wc-desc">고객님의 예산, 용도, 라이프스타일을 분석하여 최적의 차종과 트림을 추천드립니다. 데이터 기반의 정확한 컨설팅.</div></div>
 <div class="intro-wc"><div class="intro-wc-icon">📋</div><div class="intro-wc-title">출고 후까지 책임</div>
 <div class="intro-wc-desc">계약 → 출고 → 서비스까지 원스톱. 출고 이후에도 보험, AS, 리콜 안내까지 지속적으로 관리해드립니다.</div></div>
-<div class="intro-wc"><div class="intro-wc-icon">🏆</div><div class="intro-wc-title">GLS·마이바흐 전문 상담</div>
-<div class="intro-wc-desc">GLS 580부터 마이바흐 GLS 600까지. 트림·옵션 선택부터 금융설계까지, 최상위 SUV 구매의 모든 것을 안내해드립니다.</div></div>
+<div class="intro-wc"><div class="intro-wc-icon">🏆</div><div class="intro-wc-title">AMG GT 전문 상담</div>
+<div class="intro-wc-desc">AMG GT 55부터 AMG GT 63 S E Performance까지. 퍼포먼스 트림 선택과 금융설계까지, AMG GT 구매의 모든 것을 안내해드립니다.</div></div>
 </div>
 <!-- Core -->
 <div class="intro-core fi">
@@ -405,7 +349,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 </div>
 </section>
 
-<!-- PAGE 3: GLS 580 상세 -->
+<!-- PAGE 3: AMG GT 55 상세 -->
 <section id="gt55" class="sp">
 <div class="sl" style="max-width:1100px;margin:0 auto 30px">
   <span class="b">Mercedes-AMG · C192 · MY26</span>
@@ -729,7 +673,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 <div class="co-loc-label">SHOWROOM</div>
 <div class="co-loc-addr">📍 경기도 고양시 덕양구 의장로 110 · 모터원 고양 전시장</div>
 </div>
-<div class="co-copy">© 2026 BenzDream. GLS-Class X167 GLS 580 vs 마이바흐 GLS 600 어프로치북 — 고객 전달용 비매품 · 본 자료는 2026년 2월 기준이며, 사전 예고 없이 변경될 수 있습니다.</div>
+<div class="co-copy">© 2026 BenzDream. AMG GT C192 GT 55 vs GT 63 S E Performance 어프로치북 — 고객 전달용 비매품 · 본 자료는 2026년 2월 기준이며, 사전 예고 없이 변경될 수 있습니다.</div>
 </section>
 
 <!-- 랜딩페이지 복귀 버튼 -->
