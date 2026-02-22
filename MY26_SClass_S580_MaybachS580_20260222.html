@@ -2,192 +2,299 @@
 <html lang="ko"><head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
   <script>
+    // IP 필터 — 내부 트래픽 제외
     const BLOCKED_IPS = ["59.7.219.188"];
     fetch("https://api.ipify.org?format=json")
       .then(r=>r.json())
       .then(d=>{
-        if(BLOCKED_IPS.includes(d.ip)) return;
+        if(BLOCKED_IPS.includes(d.ip)) return; // 차단 IP → GA 미실행
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag("js", new Date());
         gtag("config", "G-7T2ECBWN0K");
       }).catch(()=>{
+        // fetch 실패시 GA 정상 실행
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag("js", new Date());
         gtag("config", "G-7T2ECBWN0K");
       });
-  </script>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BenzDream S 580 vs 마이바흐 S 580 어프로치북</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+KR:wght@200;300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-  <style>
+  </script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BenzDream 벤츠 S580 vs 마이바흐 S580 어프로치북</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#0d0f14;--navy:#141824;--card:#181c28;--gold:#c9a96e;--gold-light:#ddc08a;--gold-dim:#8a7a50;--silver:#a8aab0;--light:#e2e3e7;--white:#f5f5f7;--diesel:#1a4a2e;--diesel-light:#2a6b3c;--gas:#1a3a6e;--gas-light:#2a5aae;--green:#2a6b3c;--red:#8b2020}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--light);line-height:1.7;-webkit-font-smoothing:antialiased}
 
-:root{--dark:#0d0f14;--navy:#141824;--card:#181c28;--gold:#c9a96e;--gold-light:#ddc08a;--gold-dim:#8a7a50;--silver:#a8aab0;--light:#e2e3e7;--white:#f5f5f7;--s580c:#1a3050;--mayc:#3d0a1e;--may-gold:#c9a84c;--green:#2a6b3c;--red:#8b2020}
-/* Maybach 섹션 컬러 오버라이드 */
-.may-accent{color:var(--may-gold)!important}
-.may-bg{background:linear-gradient(135deg,rgba(61,10,30,.3),rgba(201,168,76,.05))}
-.s580-accent{color:#6ab4d0!important}
-.s580-bg{background:linear-gradient(135deg,rgba(26,48,80,.3),rgba(106,180,208,.05))}
-/* 마이바흐 전용 뱃지 */
-.may-badge{display:inline-block;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.35);border-radius:4px;padding:3px 10px;font-size:.7rem;font-weight:600;color:var(--may-gold);letter-spacing:1px;text-transform:uppercase;margin-left:8px}
-.s580-badge{display:inline-block;background:rgba(106,180,208,.12);border:1px solid rgba(106,180,208,.35);border-radius:4px;padding:3px 10px;font-size:.7rem;font-weight:600;color:#6ab4d0;letter-spacing:1px;text-transform:uppercase;margin-left:8px}
-/* 커버 스타일 */
-.cover-may{background:radial-gradient(ellipse at 30% 20%,rgba(201,168,76,.08) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(61,10,30,.12) 0%,transparent 50%),linear-gradient(180deg,#080608,#0d0a0c 40%,#100d12)}
-.cover-may::before,.cover-may::after{background:linear-gradient(90deg,transparent,var(--may-gold),transparent)}
-/* 섹션 공통 */
-.trim-section{min-height:100vh;padding:80px 30px 60px;position:relative;overflow:hidden}
-.trim-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.ts-s580::before{background:linear-gradient(90deg,transparent,#6ab4d0,transparent)}
-.ts-may::before{background:linear-gradient(90deg,transparent,var(--may-gold),transparent)}
-.sl{text-align:left;max-width:1100px;margin:0 auto 40px;padding:0 15px}
-.sl h2{font-family:'Outfit',sans-serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--white);margin-bottom:8px}
-.sl .b{display:block;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;font-weight:400}
-.sl .n{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--white);display:block;line-height:1.1;margin-bottom:6px}
-.sl .sub{font-size:.85rem;color:var(--silver);font-weight:300}
-/* 사양 그리드 */
-.sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:rgba(255,255,255,.04);border-radius:12px;overflow:hidden;max-width:1100px;margin:0 auto 30px}
-.sv-item{background:var(--card);padding:18px 16px;text-align:center}
-.sv-label{font-size:.7rem;color:var(--silver);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;font-weight:300}
-.sv{font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:500;color:var(--white)}
-.sv .unit{font-size:.8rem;color:var(--silver);font-weight:400;margin-left:2px}
-/* 피처 카드 */
-.rg{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1100px;margin:0 auto 30px;padding:0 15px}
-.rc{background:var(--card);border-radius:12px;padding:24px;border:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden;transition:all .3s}
-.rc::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px}
-.ts-s580 .rc::before{background:linear-gradient(90deg,#6ab4d0,transparent)}
-.ts-may .rc::before{background:linear-gradient(90deg,var(--may-gold),transparent)}
-.rc:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
-.rc-icon{font-size:1.5rem;margin-bottom:10px}
-.rc-title{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:8px}
-.rc-desc{font-size:.8rem;font-weight:300;color:var(--silver);line-height:1.7}
-.rc-val{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;margin-top:8px}
-/* 비교표 */
-.cp{padding:80px 30px 60px;background:linear-gradient(180deg,var(--dark),var(--navy),var(--dark))}
-.cp::before{content:'';display:block;height:2px;background:linear-gradient(90deg,transparent,var(--may-gold),var(--gold),transparent);margin-bottom:60px}
-.cw{max-width:1100px;margin:0 auto;overflow-x:auto;padding:0 15px}
-.ct{width:100%;border-collapse:collapse;font-size:.82rem}
-.ct th{padding:16px 14px;text-align:center;font-weight:600;border-bottom:2px solid rgba(255,255,255,.1);font-family:'Outfit',sans-serif;font-size:.85rem}
-.ct td{padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle}
-.ct td:first-child{color:var(--silver);font-size:.78rem;font-weight:300;letter-spacing:.5px}
-.ct tr:hover{background:rgba(255,255,255,.02)}
-.ts5{color:#6ab4d0;font-weight:700}
-.tmay{color:var(--may-gold);font-weight:700}
-.ct td.ts5{color:#6ab4d0}
-.ct td.tmay{color:var(--may-gold);font-weight:500}
-.ct td.tmay-bold{color:var(--may-gold);font-weight:700}
-/* 추천 카드 */
-.rec{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:0 auto;padding:0 15px}
-.rec-c{background:var(--card);border-radius:12px;padding:28px;border:1px solid rgba(255,255,255,.06)}
-.rec-c h3{font-size:1rem;font-weight:700;margin-bottom:16px}
-.rec-c ul{list-style:none;padding:0}
-.rec-c ul li{font-size:.82rem;font-weight:300;color:var(--silver);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);padding-left:14px;position:relative;line-height:1.5}
-.rec-c ul li::before{content:'·';position:absolute;left:0;color:var(--gold)}
-/* 연락처 */
-.co{padding:80px 30px 60px;background:linear-gradient(180deg,var(--navy),#080608)}
-.co::before{content:'';display:block;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin-bottom:60px}
-.cog{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto 40px;padding:0 15px}
-.co-c{background:var(--card);border-radius:12px;padding:28px 20px;text-align:center;border:1px solid rgba(255,255,255,.06);text-decoration:none;transition:all .3s;display:block}
-.co-c:hover{border-color:rgba(201,169,110,.3);transform:translateY(-3px)}
-.co-icon{font-size:2rem;margin-bottom:12px}
-.co-title{font-size:.85rem;font-weight:700;color:var(--white);margin-bottom:6px}
-.co-sub{font-size:.75rem;color:var(--silver);font-weight:300}
-.co-addr{text-align:center;font-size:.75rem;color:var(--gold-dim);margin-top:20px;letter-spacing:1px}
-.ft{display:flex;justify-content:space-between;font-size:.72rem;color:var(--silver);font-weight:300;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;margin-top:30px;max-width:1100px;margin-left:auto;margin-right:auto}
-.fb{color:var(--gold);font-weight:600}
-/* 업셀 포인트 */
-.upsell{max-width:1100px;margin:30px auto;padding:28px;background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(61,10,30,.2));border-radius:16px;border:1px solid rgba(201,168,76,.2)}
-.upsell-title{font-size:.78rem;color:var(--may-gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;font-weight:600}
-.upsell-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.upsell-item{background:rgba(0,0,0,.2);border-radius:8px;padding:14px 16px;border-left:3px solid var(--may-gold)}
-.upsell-item .ui-label{font-size:.72rem;color:var(--may-gold);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
-.upsell-item .ui-val{font-size:.82rem;color:var(--light);font-weight:300;line-height:1.5}
-/* 네비 */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,15,20,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,169,110,.1);display:flex;align-items:center;justify-content:space-between;padding:0 30px;height:52px}
-.nav-brand{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--gold);letter-spacing:4px;font-weight:400;text-decoration:none}
-.nav-links{display:flex;gap:24px}
-.nav-links a{font-size:.72rem;color:var(--silver);text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:var(--gold)}
-.pv{width:8px;height:8px;background:rgba(201,169,110,.3);border-radius:50%;cursor:pointer;transition:all .2s;position:relative}
-.pv.active{background:var(--gold);transform:scale(1.3)}
-@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.fi{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-.fi.visible{opacity:1;transform:translateY(0)}
-@media(max-width:768px){
-.rg,.rec,.upsell-grid{grid-template-columns:1fr}
-.sg{grid-template-columns:1fr 1fr}
-.cog{grid-template-columns:1fr}
-.nav-links{display:none}
-.pv{display:none}
-.ct th,.ct td{padding:10px 8px;font-size:.75rem}
-}
+/* Cover */
+.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:radial-gradient(ellipse at 30% 20%,rgba(201,169,110,.07) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(42,106,62,.06) 0%,transparent 50%),linear-gradient(180deg,#0a0c10,#0d0f14 40%,#111420);text-align:center;padding:60px 30px;position:relative}
+.cover::before,.cover::after{content:'';position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.cover::before{top:0}.cover::after{bottom:0}
+.cv-dealer{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:300;color:var(--gold);letter-spacing:6px;text-transform:uppercase;margin-bottom:32px;opacity:0;animation:fu .8s .3s ease forwards}
+.cv-model{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,8vw,5.5rem);font-weight:400;color:var(--white);letter-spacing:-1px;margin-bottom:8px;opacity:0;animation:fu .8s .5s ease forwards}
+.cv-sub{font-weight:200;font-size:.9rem;color:var(--silver);letter-spacing:4px;margin-bottom:40px;opacity:0;animation:fu .8s .7s ease forwards}
+.cv-div{width:60px;height:1px;background:var(--gold);margin:0 auto 40px;opacity:0;animation:fu .8s .8s ease forwards}
+.cv-ko{font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:6px;opacity:0;animation:fu .8s .9s ease forwards}
+.cv-en{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:300;color:var(--silver);letter-spacing:3px;margin-bottom:60px;opacity:0;animation:fu .8s 1s ease forwards}
+.cv-focus{opacity:0;animation:fu .8s 1.1s ease forwards;margin-bottom:70px}
+.cv-fl{font-size:.7rem;color:var(--gold-dim);letter-spacing:5px;text-transform:uppercase;margin-bottom:20px}
+.cv-trims{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
+.cv-tc{background:rgba(255,255,255,.03);border:1px solid rgba(201,169,110,.15);border-radius:8px;padding:24px 36px;min-width:240px;transition:border-color .3s;position:relative;overflow:hidden}
+.cv-tc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.cv-tc.diesel::before{background:linear-gradient(90deg,var(--diesel-light),rgba(42,106,62,.3))}
+.cv-tc.gas::before{background:linear-gradient(90deg,var(--gas-light),rgba(42,90,174,.3))}
+.cv-tc:hover{border-color:rgba(201,169,110,.4)}
+.cv-tn{font-size:1.15rem;font-weight:600;color:var(--white);margin-bottom:6px}
+.cv-tp{font-family:'Outfit',sans-serif;font-size:1.8rem;font-weight:500;color:var(--gold);letter-spacing:-.5px;text-shadow:0 0 20px rgba(201,169,110,.2)}
+.cv-tt{font-size:.72rem;color:var(--silver);margin-top:10px;letter-spacing:1px}
+.cv-badge{display:inline-block;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:10px;font-weight:600}
+.cv-badge.d{background:rgba(42,106,62,.2);color:#7db885;border:1px solid rgba(42,106,62,.3)}
+.cv-badge.g{background:rgba(42,90,174,.2);color:#7aabdf;border:1px solid rgba(42,90,174,.3)}
+.cv-bot{opacity:0;animation:fu .8s 1.3s ease forwards}
+
+/* INTRO */
+.intro{min-height:100vh;background:radial-gradient(ellipse at 20% 15%,rgba(0,80,120,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 85%,rgba(42,106,62,.04) 0%,transparent 50%),linear-gradient(180deg,#0d1117,var(--dark) 40%,var(--dark));padding:60px 30px 50px;position:relative;overflow:hidden}
+.intro::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.intro-inner{max-width:900px;margin:0 auto}
+.intro-hero-banner{position:relative;width:100%;max-width:900px;margin:0 auto 0;border-radius:16px 16px 0 0;overflow:hidden;border:1px solid rgba(201,169,110,.2);border-bottom:none;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.intro-hero-banner img{width:100%;height:auto;display:block;object-fit:cover}
+.banner-placeholder{width:100%;height:280px;background:linear-gradient(135deg,#141824 0%,#1a2035 40%,#141824 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+.banner-placeholder-icon{font-size:2.5rem;opacity:.3}
+.banner-placeholder-text{font-size:.75rem;color:rgba(201,169,110,.4);letter-spacing:3px;text-transform:uppercase}
+.ihb-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(10,12,18,.92) 0%,rgba(10,12,18,.7) 25%,rgba(10,12,18,.25) 50%,rgba(10,12,18,.05) 70%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:32px 40px;text-align:left}
+.ihb-info-below{display:none;background:var(--card);border:1px solid rgba(201,169,110,.2);border-top:none;border-radius:0 0 16px 16px;padding:24px 20px;margin:0 auto 40px;max-width:900px}
+.ihb-label{font-family:'Cormorant Garamond',serif;font-size:clamp(.6rem,1.2vw,.75rem);color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;font-weight:400;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.ihb-name{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3rem);font-weight:700;color:var(--white);margin-bottom:4px;text-shadow:0 2px 16px rgba(0,0,0,.7);line-height:1.2}
+.ihb-name span{font-family:'Noto Sans KR',sans-serif;font-size:clamp(.9rem,1.8vw,1.15rem);font-weight:300;color:var(--silver);margin-left:8px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.ihb-title{font-size:clamp(.68rem,1.1vw,.82rem);font-weight:300;color:rgba(255,255,255,.75);margin-bottom:18px;text-shadow:0 1px 6px rgba(0,0,0,.6);letter-spacing:.5px}
+.ihb-badge{display:inline-block;background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.35);border-radius:24px;padding:9px 24px;font-size:clamp(.65rem,1vw,.8rem);font-weight:600;color:var(--gold-light);backdrop-filter:blur(8px);text-shadow:0 1px 4px rgba(0,0,0,.4);letter-spacing:.5px}
+.ihb-sub{font-size:clamp(.55rem,.9vw,.65rem);color:rgba(201,169,110,.5);letter-spacing:3px;margin-top:14px;text-transform:uppercase}
 @media(max-width:600px){
 .ihb-overlay{display:none!important}
 .ihb-info-below{display:block}
-.intro-hero-banner{border-radius:16px 16px 0 0}
-.intro-why,.intro-cta{grid-template-columns:1fr}
-.intro-process{grid-template-columns:repeat(3,1fr)}
-.sg{grid-template-columns:1fr 1fr}
+.intro-hero-banner{border-radius:16px 16px 0 0;margin-bottom:0}
 }
+.intro-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,169,110,.08);border-radius:12px;overflow:hidden;margin-bottom:40px}
+.intro-stat{background:var(--card);padding:24px 16px;text-align:center}
+.intro-stat-num{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:700;color:var(--white)}
+.intro-stat-num .acc{color:var(--gold);font-size:1.3rem}
+.intro-stat-label{font-size:.75rem;font-weight:300;color:var(--silver);margin-top:4px}
+.intro-role{text-align:center;margin-bottom:40px;padding:28px 24px;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(255,255,255,.04)}
+.intro-role-old{font-size:.85rem;color:#666;text-decoration:line-through;margin-bottom:8px}
+.intro-role-arrow{color:var(--gold);font-size:1rem;margin-bottom:8px}
+.intro-role-new{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:12px}
+.intro-role-new em{color:var(--gold);font-style:normal}
+.intro-role-desc{font-size:.82rem;font-weight:300;color:var(--silver);line-height:1.7;max-width:600px;margin:0 auto}
+.intro-why-title{font-size:.78rem;color:var(--gold);letter-spacing:4px;text-transform:uppercase;text-align:center;margin-bottom:20px}
+.intro-why{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px}
+.intro-wc{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:20px;position:relative;overflow:hidden;transition:all .3s}
+.intro-wc::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.intro-wc:hover{border-color:rgba(201,169,110,.2);transform:translateY(-2px)}
+.intro-wc:hover::before{opacity:1}
+.intro-wc-icon{font-size:1.3rem;margin-bottom:8px}
+.intro-wc-title{font-size:.9rem;font-weight:700;color:var(--gold-light);margin-bottom:6px}
+.intro-wc-desc{font-size:.78rem;font-weight:300;color:var(--silver);line-height:1.6}
+.intro-core{text-align:center;margin-bottom:32px;padding:24px;background:linear-gradient(135deg,rgba(201,169,110,.06),rgba(201,169,110,.02));border-radius:12px;border:1px solid rgba(201,169,110,.12)}
+.intro-core-quote{font-size:1.05rem;font-weight:400;color:var(--light);line-height:1.8;margin-bottom:8px}
+.intro-core-quote em{color:var(--gold);font-style:normal;font-weight:700}
+.intro-core-sub{font-size:.7rem;color:var(--gold-dim);letter-spacing:2px}
+.intro-process{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:36px}
+.intro-ps{text-align:center;padding:16px 8px;background:var(--card);border-radius:8px;border:1px solid rgba(255,255,255,.04);position:relative}
+.intro-ps:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--gold-dim);font-size:.7rem;z-index:2}
+.intro-ps-num{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700;color:var(--gold);margin-bottom:4px}
+.intro-ps-title{font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.intro-ps-desc{font-size:.68rem;font-weight:300;color:var(--silver);line-height:1.4}
+.intro-cta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.intro-ci{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:14px 16px;text-decoration:none;transition:all .3s}
+.intro-ci:hover{border-color:rgba(201,169,110,.3);transform:translateY(-2px)}
+.intro-ci-icon{font-size:1.3rem;flex-shrink:0}
+.intro-ci-label{font-size:.68rem;color:var(--gold);letter-spacing:1px;font-weight:500}
+.intro-ci-val{font-size:.8rem;font-weight:300;color:var(--silver)}
+.intro-tagline{text-align:center;font-size:.65rem;color:var(--gold-dim);letter-spacing:3px;padding-top:16px;border-top:1px solid rgba(201,169,110,.1)}
 
-  </style>
+/* Section Header */
+.sh{background:linear-gradient(135deg,var(--navy),var(--dark));padding:28px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,169,110,.2);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.sh-l{display:flex;align-items:baseline;gap:16px}
+.sh .b{font-size:.65rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase}
+.sh .n{font-family:'Outfit',sans-serif;font-size:1.55rem;font-weight:700;color:var(--white)}
+.sh .p{font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:500;color:var(--gold);margin-right:12px;letter-spacing:-.5px;text-shadow:0 0 20px rgba(201,169,110,.2)}
+.sh .pn{font-size:.65rem;font-weight:300;color:var(--silver)}
+.sh .fuel-tag{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:4px;font-weight:600;margin-left:10px;vertical-align:middle}
+.sh .fuel-tag.diesel{background:rgba(42,106,62,.2);color:#7db885;border:1px solid rgba(42,106,62,.3)}
+.sh .fuel-tag.gas{background:rgba(42,90,174,.2);color:#7aabdf;border:1px solid rgba(42,90,174,.3)}
+
+/* Trim Content */
+.tc{max-width:1100px;margin:0 auto;padding:40px 30px}
+.sl{margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid rgba(201,169,110,.15)}
+.sl h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white);letter-spacing:.5px}
+.sl h2 span{font-size:.75rem;font-weight:300;color:var(--gold);margin-left:12px}
+
+/* Spec Grid */
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px;background:rgba(201,169,110,.05);border-radius:10px;overflow:hidden;margin-bottom:30px}
+.sc{display:flex;align-items:center;justify-content:space-between;background:var(--card);padding:14px 18px}
+.sl2{font-size:.82rem;font-weight:400;color:var(--silver)}
+.sv{font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:500;color:var(--white);text-align:right}
+.sv.a{color:var(--gold-light)}
+.sv.d{color:#7db885}
+
+/* Option Cards */
+.oc{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:10px;margin-bottom:12px;overflow:hidden;transition:border-color .3s}
+.oc:hover{border-color:rgba(201,169,110,.15)}
+.och{padding:14px 18px;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:10px}
+.ob{font-size:.65rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px}
+.ob.bd{background:rgba(201,169,110,.12);color:var(--gold)}
+.ob.be{background:rgba(100,140,180,.12);color:#7ab}
+.ob.bi{background:rgba(160,120,80,.12);color:#ca8}
+.ob.bc{background:rgba(80,160,120,.12);color:#8b8}
+.ob.bs{background:rgba(180,80,80,.12);color:#c88}
+.ob.bco{background:rgba(120,80,160,.12);color:#a8c}
+.oi{padding:16px 18px;display:flex;flex-wrap:wrap;gap:8px}
+.ot{font-size:.78rem;font-weight:300;color:var(--light);background:rgba(255,255,255,.03);padding:7px 15px;border-radius:20px;border:1px solid rgba(255,255,255,.06);line-height:1.4}
+.ot.up{background:rgba(201,169,110,.08);border-color:rgba(201,169,110,.2);color:var(--gold-light);font-weight:500}
+.up-note{font-size:.72rem;color:var(--silver);margin-bottom:16px;padding-left:2px;font-weight:300}
+
+/* Photo guide */
+.photo-guide{background:rgba(201,169,110,.04);border:1px dashed rgba(201,169,110,.2);border-radius:8px;padding:14px 18px;margin-bottom:24px;font-size:.75rem;color:var(--gold-dim);letter-spacing:1px}
+
+/* Footnotes */
+.tn{margin-top:20px;padding:16px 20px;background:rgba(255,255,255,.02);border-radius:8px;border:1px solid rgba(255,255,255,.04)}
+.tn p{font-size:.75rem;color:var(--silver);font-weight:300;line-height:1.7;margin-bottom:4px}
+.tn p:last-child{margin-bottom:0}
+
+/* Footer per page */
+.ft{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:var(--navy);border-top:1px solid rgba(201,169,110,.1);font-size:.72rem;color:var(--silver)}
+.fb{color:var(--gold);font-weight:600}
+
+/* Comparison */
+.cp{min-height:100vh;background:linear-gradient(180deg,var(--dark),#0e1018);padding:50px 30px}
+.cw{max-width:1100px;margin:0 auto;overflow-x:auto}
+.ct{width:100%;border-collapse:collapse;font-size:.85rem}
+.ct th{background:var(--navy);color:var(--gold-light);font-weight:600;padding:14px 16px;text-align:center;border:1px solid rgba(201,169,110,.1);letter-spacing:.5px;position:sticky;top:0}
+.ct td{padding:12px 16px;border:1px solid rgba(255,255,255,.05);text-align:center;background:var(--card);color:var(--light);font-weight:300;vertical-align:top}
+.ct td:first-child{font-weight:500;color:var(--silver);text-align:left;background:rgba(255,255,255,.02);white-space:nowrap}
+.ct tr:hover td{background:rgba(201,169,110,.04)}
+.tsd{color:#7db885;font-weight:500}
+.tsg{color:#7aabdf;font-weight:500}
+.rec{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin-left:auto;margin-right:auto}
+.rec-c{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:24px;text-align:center}
+.rec-c h3{font-size:1rem;font-weight:700;margin-bottom:12px}
+.rec-c ul{list-style:none;text-align:left}
+.rec-c li{font-size:.82rem;font-weight:300;color:var(--silver);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.rec-c li:last-child{border-bottom:none}
+.rec-c li::before{content:'✓ ';color:var(--gold)}
+
+/* Contact */
+.co{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 50%,rgba(201,169,110,.04) 0%,transparent 60%),var(--dark);text-align:center;padding:60px 30px}
+.co-badge{font-family:'Cormorant Garamond',serif;font-size:.75rem;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:24px}
+.co-name{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.co-title{font-size:.85rem;font-weight:300;color:var(--silver);margin-bottom:50px}
+.co-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:700px;width:100%;margin-bottom:50px}
+.co-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:28px 20px;transition:all .3s;text-decoration:none}
+.co-card:hover{border-color:rgba(201,169,110,.3);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.co-card-icon{font-size:1.8rem;margin-bottom:12px}
+.co-card-label{font-size:.72rem;color:var(--gold);letter-spacing:2px;margin-bottom:6px;text-transform:uppercase}
+.co-card-val{font-size:.85rem;font-weight:300;color:var(--light);line-height:1.5;word-break:break-all}
+.co-loc{margin-bottom:40px}
+.co-loc-label{font-size:.65rem;color:var(--gold-dim);letter-spacing:3px;margin-bottom:8px}
+.co-loc-addr{font-size:.92rem;font-weight:300;color:var(--silver)}
+.co-copy{font-size:.6rem;color:#555;letter-spacing:1px}
+
+/* Animation */
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fi{opacity:0;transform:translateY(20px);transition:all .6s ease}
+.fi.v{opacity:1;transform:translateY(0)}
+
+/* Responsive */
+@media print{section{page-break-after:always}body{background:#fff;color:#222}.cover,.intro,.co{background:#fff}.sh{position:relative}.ct th{background:#e8e0d0;color:#333}.ct td{background:#fff;color:#222;border-color:#ddd}.oc{border-color:#ddd}.ot{background:#f5f5f5;border-color:#ddd;color:#333}.ot.up{background:#fdf5e6;color:#8a6d3b}}
+@media(max-width:768px){.sh{flex-direction:column;align-items:flex-start;gap:8px;padding:20px}.sh .b{font-size:.6rem}.intro-why{grid-template-columns:1fr}.intro-process{grid-template-columns:repeat(3,1fr)}.intro-process .intro-ps:nth-child(3)::after{display:none}.intro-cta{grid-template-columns:1fr}.co-grid{grid-template-columns:1fr}.rec{grid-template-columns:1fr}.cv-trims{flex-direction:column;align-items:center}.sg{grid-template-columns:1fr}.ft{flex-direction:column;gap:4px;text-align:center;padding:12px 20px}}
+
+/* ─── CTA System ─── */
+.cnt-card.highlight .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(20,24,36,.95);color:var(--gold,#c9a96e);border:1px solid rgba(201,169,110,.3);padding:12px 24px;border-radius:30px;font-size:.82rem;font-weight:500;opacity:0;transition:all .3s ease;z-index:9999;pointer-events:none;backdrop-filter:blur(10px);white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+
+
+.cta-btn-form,.cta-btn-form:hover,/* ── CONTACT (랜딩페이지 완전 통일) ── */
+.cta-buttons{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
+.cta-btn{display:flex;align-items:center;gap:10px;padding:18px 24px;border-radius:14px;font-family:'Noto Sans KR',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;border:none;transition:all .2s ease;position:relative;overflow:hidden;}
+.cta-btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .15s;}
+.cta-btn:active::after{background:rgba(255,255,255,.08);}
+.cta-btn-phone{background:linear-gradient(135deg,#1a2035,#252d45);border:1.5px solid rgba(201,169,110,.5);color:var(--gold-light,#ddc08a);box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.cta-btn-phone:hover{border-color:var(--gold,#c9a96e);box-shadow:0 6px 24px rgba(201,169,110,.15);transform:translateY(-1px);}
+.cta-btn-kakao{background:#FEE500;color:#3C1E1E;}
+.cta-btn-kakao:hover{background:#FFD700;transform:translateY(-1px);box-shadow:0 6px 24px rgba(254,229,0,.3);}
+.cta-btn-form,.cta-btn-naver{background:#4285F4;color:#fff;}
+.cta-btn-form:hover,.cta-btn-naver:hover{background:#3367D6;transform:translateY(-1px);box-shadow:0 6px 24px rgba(66,133,244,.3);}
+.cta-btn-icon{font-size:1.3rem;flex-shrink:0;}
+.cta-btn-text{flex:1;text-align:left;}
+.cta-btn-main{display:block;font-size:.95rem;font-weight:700;}
+.cta-btn-sub{display:block;font-size:.72rem;font-weight:400;opacity:.75;margin-top:1px;}
+.phone-display{background:rgba(24,28,40,.8);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.phone-label{font-size:.7rem;color:var(--silver,#a8aab0);}
+.phone-num{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold,#c9a96e);letter-spacing:.05em;}
+.contact-profile{background:var(--navy,#141824);border:1px solid rgba(201,169,110,.12);border-radius:16px;padding:20px;margin-bottom:16px;display:flex;align-items:center;gap:16px;}
+.cp-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim,#8a7a50),var(--gold,#c9a96e));display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;border:2px solid rgba(201,169,110,.3);}
+.cp-name{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white,#f5f5f7);margin-bottom:3px;}
+.cp-title{font-size:.75rem;color:var(--silver,#a8aab0);margin-bottom:5px;}
+.cp-badge{display:inline-block;font-size:.65rem;background:rgba(201,169,110,.12);color:var(--gold,#c9a96e);border:1px solid rgba(201,169,110,.25);border-radius:4px;padding:2px 8px;}
+.co-yt{display:flex;align-items:center;gap:10px;background:rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.15);border-radius:12px;padding:14px 18px;text-decoration:none;color:var(--light,#e2e3e7);margin-bottom:16px;transition:all .2s;}
+.co-yt:hover{background:rgba(255,0,0,.12);border-color:rgba(255,0,0,.25);}
+.co-yt-icon{font-size:1.4rem;}
+.co-yt-main{font-size:.85rem;font-weight:700;}
+.co-yt-sub{font-size:.7rem;color:var(--silver,#a8aab0);}
+.co-yt-cnt{margin-left:auto;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:#ff4444;}
+@media(max-width:768px){.cta-btn{padding:14px 16px;}}
+
+/* ── S580 vs 마이바흐 전용 ── */
+:root{--s5c:#1a3a5a;--s5a:#5aa0c0;--myc:#3d0a1e;--myg:#c9a84c;}
+.s5-top{border-top:3px solid var(--s5a)!important;}
+.my-top{border-top:3px solid var(--myg)!important;}
+.ts5{color:var(--s5a)!important;font-weight:700;}
+.tmay{color:var(--myg)!important;font-weight:700;}
+/* 업셀 박스 */
+.upsell-box{max-width:1100px;margin:24px auto 0;padding:24px 28px;
+  background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(61,10,30,.18));
+  border-radius:14px;border:1px solid rgba(201,168,76,.2);}
+.upsell-box h3{font-size:.72rem;color:var(--myg);letter-spacing:3px;
+  text-transform:uppercase;margin:0 0 16px;font-weight:600;}
+.upsell-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.upsell-item{background:rgba(0,0,0,.25);border-radius:8px;padding:14px 16px;
+  border-left:3px solid var(--myg);}
+.upsell-item .ui-q{font-size:.72rem;color:var(--myg);font-weight:600;
+  margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;}
+.upsell-item .ui-a{font-size:.8rem;color:var(--light);font-weight:300;line-height:1.65;}
+@media(max-width:768px){.upsell-grid{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <a href="#cover" class="nav-brand">BENZDREAM</a>
-  <div class="nav-links">
-    <a href="#about">소개</a>
-    <a href="#s580">S 580</a>
-    <a href="#maybach">Maybach S 580</a>
-    <a href="#compare">비교</a>
-    <a href="#contact">상담</a>
-  </div>
-</nav>
-
-<!-- PAGE 1: COVER -->
-<section id="cover" class="cover cover-may" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 30px;position:relative;">
-  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#c9a84c,#c9a96e,#c9a84c,transparent)"></div>
-
-  <div class="cv-dealer fi" style="font-family:'Cormorant Garamond',serif;font-size:.9rem;color:#c9a84c;letter-spacing:6px;text-transform:uppercase;margin-bottom:32px;opacity:0;animation:fu .8s .3s ease forwards">
-    Mercedes-Benz · Maybach Official Dealer
-  </div>
-
-  <div style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,4.5rem);font-weight:700;color:var(--white);margin-bottom:6px;opacity:0;animation:fu .8s .5s ease forwards;letter-spacing:-1px">
-    S 580 <span style="color:var(--silver);font-weight:300;font-size:60%">vs</span> Maybach S 580
-  </div>
-  <div style="font-size:.8rem;color:var(--silver);letter-spacing:4px;margin-bottom:40px;opacity:0;animation:fu .8s .7s ease forwards">
-    4MATIC · S클래스 최상위 라인업 완전 비교
-  </div>
-  <div style="width:60px;height:1px;background:linear-gradient(90deg,#c9a96e,#c9a84c);margin:0 auto 40px;opacity:0;animation:fu .8s .8s ease forwards"></div>
-
-  <div style="opacity:0;animation:fu .8s .9s ease forwards;margin-bottom:70px">
-    <div style="font-size:.7rem;color:var(--gold-dim);letter-spacing:5px;text-transform:uppercase;margin-bottom:20px">FOCUS LINEUP</div>
-    <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
-
-      <div style="background:rgba(26,48,80,.3);border:1px solid rgba(106,180,208,.2);border-radius:8px;padding:24px 36px;min-width:220px;border-top:3px solid #6ab4d0">
-        <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:4px">S 580 4MATIC</div>
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#6ab4d0">2억 5,860<span style="font-size:.9rem;color:var(--silver)">만원</span></div>
-        <div style="font-size:.72rem;color:var(--silver);margin-top:8px">V8 503ps · S-Class 최상위</div>
+<section id="cover">
+<div class="cv"><div class="cv-l">
+  <div class="cv-dealer fi">Mercedes-Benz &amp; Maybach Official Dealer · 벤츠 고양 전시장</div>
+  <div class="cv-model fi">S-Class · Maybach S-Class</div>
+  <div class="cv-sub fi">W 223 · MY 26 · COMPARE</div>
+  <div class="cv-div fi"></div>
+  <div class="cv-ko fi">S 580 4MATIC vs 마이바흐 S 580 4MATIC</div>
+  <div class="cv-en fi">Mercedes-Benz Flagship vs Ultra Luxury</div>
+  <div class="cv-focus fi">
+    <div class="cv-fl">FOCUS LINEUP</div>
+    <div class="cv-trims">
+      <div class="cv-tc s5-top">
+        <span class="cv-tn">S 580 4MATIC</span>
+        <span class="cv-tp ts5">2억 5,860만원</span>
+        <span class="cv-tt">V8 503ps · 리어액슬 10° · S클래스 최상위</span>
       </div>
-
-      <div style="background:rgba(61,10,30,.3);border:1px solid rgba(201,168,76,.25);border-radius:8px;padding:24px 36px;min-width:220px;border-top:3px solid #c9a84c">
-        <div style="font-size:1rem;font-weight:600;color:var(--white);margin-bottom:4px">Maybach S 580 4MATIC</div>
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#c9a84c">3억 2,600<span style="font-size:.9rem;color:var(--silver)">만원~</span></div>
-        <div style="font-size:.72rem;color:var(--silver);margin-top:8px">V8 503ps · +180mm 롱휠베이스</div>
+      <div class="cv-tc my-top">
+        <span class="cv-tn">마이바흐 S 580 4MATIC</span>
+        <span class="cv-tp tmay">3억 1,560만원</span>
+        <span class="cv-tt">V8 503ps · 휠베이스 +180mm · Ultra Luxury</span>
       </div>
-
     </div>
   </div>
-
-  <div style="opacity:0;animation:fu .8s 1.2s ease forwards;font-size:.72rem;color:var(--gold-dim);letter-spacing:2px">
-    벤츠 고양 전시장 · BenzDream 한호만 팀장
-  </div>
-  <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#c9a84c,#c9a96e,#c9a84c,transparent)"></div>
+  <div class="cv-bot fi">벤츠 고양 전시장 BenzDream 한호만 팀장</div>
+</div></div>
 </section>
-
-<!-- PAGE 2: ABOUT (E200 원본 그대로) -->
 <section id="about" class="intro">
 <div class="intro-inner">
 <!-- Banner: BenzDream 배너 이미지 삽입 영역 -->
@@ -236,12 +343,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,15,20,.92
 <div class="intro-wc-desc">고객님의 예산, 용도, 라이프스타일을 분석하여 최적의 차종과 트림을 추천드립니다. 데이터 기반의 정확한 컨설팅.</div></div>
 <div class="intro-wc"><div class="intro-wc-icon">📋</div><div class="intro-wc-title">출고 후까지 책임</div>
 <div class="intro-wc-desc">계약 → 출고 → 서비스까지 원스톱. 출고 이후에도 보험, AS, 리콜 안내까지 지속적으로 관리해드립니다.</div></div>
-<div class="intro-wc"><div class="intro-wc-icon">🏆</div><div class="intro-wc-title">S클래스 · 마이바흐 전문</div>
-<div class="intro-wc-desc">S클래스·마이바흐 전 트림에 대한 깊은 이해. S580과 마이바흐 S580의 차이부터 금융설계·업셀링 전략까지 안내해드립니다.</div></div>
+<div class="intro-wc"><div class="intro-wc-icon">🏆</div><div class="intro-wc-title">S클래스 · 마이바흐 전문 상담</div>
+<div class="intro-wc-desc">S클래스 · 마이바흐 전 트림에 대한 깊은 이해. S 580과 마이바흐 S 580의 차이, 업셀링 포인트, 금융설계까지 안내해드립니다.</div></div>
 </div>
 <!-- Core -->
 <div class="intro-core fi">
-<div class="intro-core-quote">"S클래스와 마이바흐를 고민하시는 고객님께<br><em>가장 명확한 기준</em>과 <em>가장 솔직한 어드바이스</em>를 드리겠습니다."</div>
+<div class="intro-core-quote">"E클래스를 고민하시는 고객님께<br><em>가장 정확한 정보</em>와 <em>가장 편안한 경험</em>을 드리겠습니다."</div>
 <div class="intro-core-sub">— 한호만 팀장</div>
 </div>
 <!-- Process -->
@@ -261,250 +368,352 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,15,20,.92
 <div class="intro-tagline fi">THE BEST OR NOTHING — BENZDREAM</div>
 </div>
 </section>
-
-<!-- PAGE 3: S 580 4MATIC -->
-<section id="s580" class="trim-section ts-s580" style="background:linear-gradient(180deg,#0a0f18,var(--dark) 30%,var(--dark));">
-  <div class="sl fi">
-    <span class="b" style="color:#6ab4d0">S-Class W223 · MY26</span>
-    <span class="n">S 580 4MATIC EXCLUSIVE</span>
-    <span class="sub">V8 4.0L 바이터보 · 503ps · 71.4kgm · 0→100 4.4초</span>
+<section id="s580">
+<div class="sh">
+  <div class="sh-l">
+    <span class="b">S-Class W223 · MY26</span>
+    <span class="n">S 580 4MATIC</span>
+    <span class="fuel-tag gas">GASOLINE V8</span>
   </div>
+  <div><span class="p">2억 5,860만원</span><span class="pn">차량 기본 가격 (부가세 포함)</span></div>
+</div>
+<div class="tc">
 
-  <!-- 핵심 수치 -->
-  <div class="sg fi" style="margin-bottom:30px">
-    <div class="sv-item"><div class="sv-label">최고출력</div><div class="sv">503<span class="unit">ps</span></div></div>
-    <div class="sv-item"><div class="sv-label">최대토크</div><div class="sv">71.4<span class="unit">kgm</span></div></div>
-    <div class="sv-item"><div class="sv-label">0→100km/h</div><div class="sv">4.4<span class="unit">초</span></div></div>
-    <div class="sv-item"><div class="sv-label">엔진</div><div class="sv" style="font-size:1.1rem">V8 4.0L</div></div>
-    <div class="sv-item"><div class="sv-label">전장</div><div class="sv">5,289<span class="unit">mm</span></div></div>
-    <div class="sv-item"><div class="sv-label">출고가</div><div class="sv" style="font-size:1.1rem">2.58<span class="unit">억</span></div></div>
-  </div>
+<div class="photo-guide fi">📌 사진 삽입 → "벤츠 S580 4MATIC 외관 전면" (블랙 차체 · 20인치 멀티스포크 단조)</div>
 
-  <!-- 피처 카드 -->
-  <div class="rg fi">
-    <div class="rc">
-      <div class="rc-icon">🏎️</div>
-      <div class="rc-title">V8 바이터보 엔진</div>
-      <div class="rc-desc">M176 4.0L V8 바이터보. 71.4kgm의 폭발적인 토크가 저회전부터 선형으로 올라오며, 플래그십 세단답지 않은 4.4초의 제로백을 실현합니다.</div>
-      <div class="rc-val s580-accent">503ps / 5,500rpm</div>
-    </div>
-    <div class="rc">
-      <div class="rc-icon">🔄</div>
-      <div class="rc-title">리어 액슬 스티어링 10°</div>
-      <div class="rc-desc">일반 S클래스 4.5° 대비 2배 이상. 5.3m 전장임에도 최소회전반경이 압도적으로 줄어들어 도심 주차가 체감상 C클래스 수준입니다.</div>
-      <div class="rc-val s580-accent">10° 리어 스티어링</div>
-    </div>
-    <div class="rc">
-      <div class="rc-icon">🛋️</div>
-      <div class="rc-title">익스클루시브 나파 + 쇼퍼 패키지</div>
-      <div class="rc-desc">익스클루시브 나파 가죽 시트 기본 포함. 쇼퍼 패키지(앞좌석 접이, 뒷좌석 발받침), MBUX 뒷좌석 엔터테인먼트 시스템 기본 제공.</div>
-      <div class="rc-val s580-accent">쇼퍼 패키지 기본 내장</div>
-    </div>
-    <div class="rc">
-      <div class="rc-icon">🌟</div>
-      <div class="rc-title">MBUX 증강현실 HUD + 에너자이징</div>
-      <div class="rc-desc">증강현실 헤드업 디스플레이로 실제 도로 위에 내비게이션을 투영. 에너자이징 패키지와 에어 밸런스 시스템으로 주행 중 피로감을 최소화합니다.</div>
-      <div class="rc-val s580-accent">S580 전용 풀 사양</div>
-    </div>
-  </div>
+<div class="fi"><div class="sl"><h2>주요 제원 <span>카탈로그 공식 기준</span></h2></div>
+<div class="sg">
+<div class="sc"><div class="sl2">엔진</div><div class="sv">M176, V형 8기통 바이터보 / 48V ISG</div></div>
+<div class="sc"><div class="sl2">배기량</div><div class="sv">3,982cc</div></div>
+<div class="sc"><div class="sl2">최고출력</div><div class="sv">503ps / 5,500rpm</div></div>
+<div class="sc"><div class="sl2">최대토크</div><div class="sv">71.4kgm / 2,000~4,500rpm</div></div>
+<div class="sc"><div class="sl2">변속기</div><div class="sv">9G-TRONIC (자동 9단)</div></div>
+<div class="sc"><div class="sl2">구동방식</div><div class="sv">4MATIC (사륜구동)</div></div>
+<div class="sc"><div class="sl2">복합연비</div><div class="sv">8.6km/l (5등급)</div></div>
+<div class="sc"><div class="sl2">도심 / 고속</div><div class="sv">7.3 / 10.9 km/l</div></div>
+<div class="sc"><div class="sl2">0→100km/h</div><div class="sv">4.4초</div></div>
+<div class="sc"><div class="sl2">최고속도</div><div class="sv">250km/h</div></div>
+<div class="sc"><div class="sl2">타이어(전/후)</div><div class="sv">255/40R20</div></div>
+<div class="sc"><div class="sl2">전장 × 전폭 × 전고</div><div class="sv">5,290 × 1,920 × 1,505mm</div></div>
+<div class="sc"><div class="sl2">휠베이스</div><div class="sv">3,216mm</div></div>
+<div class="sc"><div class="sl2">공차중량</div><div class="sv">2,150kg</div></div>
+<div class="sc"><div class="sl2">연료탱크</div><div class="sv">76L</div></div>
+<div class="sc"><div class="sl2">트렁크</div><div class="sv">535L</div></div>
+<div class="sc"><div class="sl2">서스펜션</div><div class="sv">멀티링크 / 멀티링크 / 에어 스프링</div></div>
+</div></div>
 
-  <!-- 추천 고객 -->
-  <div style="max-width:1100px;margin:0 auto;padding:0 15px">
-    <div class="rc fi" style="border-top:3px solid #6ab4d0">
-      <div class="rc-title" style="color:#6ab4d0;font-size:1rem;margin-bottom:12px">✅ S 580을 선택해야 하는 고객</div>
-      <div class="rc-desc" style="font-size:.85rem;line-height:2">
-        직접 핸들을 잡는 오너드리버 · V8 엔진의 파워감을 즐기는 분 · AMG 스포티함 + 럭셔리 밸런스를 원하는 분<br>
-        예산 2.5~2.8억 안에서 S클래스 최상위 경험을 원하는 분 · 리어 액슬 스티어링으로 도심 주차 편의성을 극대화하고 싶은 분
-      </div>
-    </div>
-  </div>
+<div class="photo-guide fi">📌 사진 삽입 → "벤츠 S580 실내 후석" (쇼퍼 패키지 / 이그제큐티브 시트)</div>
 
-  <div class="ft fi"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>S 580 4MATIC · MY26 · 2026.02 기준</span></div>
+<div class="fi"><div class="sl"><h2>기본 사양 — 공식 카탈로그 기준</h2></div>
+<div class="oc"><div class="och"><span class="ob bd">Powertrain</span></div><div class="oi">
+<span class="ot">M176 V8 4.0L 바이터보 + 48V ISG</span>
+<span class="ot">9G-TRONIC (자동 9단)</span>
+<span class="ot">AIRMATIC 서스펜션 (에어 스프링)</span>
+<span class="ot">MOS 저소음 타이어 (Tire-fit)</span>
+<span class="ot">리어 액슬 스티어링 (10°) — S580 기본</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob be">외관 사양</span></div><div class="oi">
+<span class="ot">프로젝션 디지털 라이트 + 어댑티브 상향등 어시스트 플러스</span>
+<span class="ot">스탠다드 익스테리어 패키지</span>
+<span class="ot">메르세데스 벤츠 로고 프로젝션</span>
+<span class="ot">20″ 멀티스포크 단조 휠 (60R)</span>
+<span class="ot">파노라마 선루프</span>
+<span class="ot">IR 라미네이티드 글래스</span>
+<span class="ot">앞·뒷좌석 발광 도어 실 패널</span>
+<span class="ot">플러시 도어 핸들 + KEYLESS-GO + 파워 클로징</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob bi">실내 사양</span></div><div class="oi">
+<span class="ot">익스클루시브 나파 가죽 시트</span>
+<span class="ot">앞좌석 액티브 멀티컨투어 시트 (럭셔리 헤드레스트)</span>
+<span class="ot">뒷좌석 컴포트 패키지 &amp; 쇼퍼 패키지 / 이그제큐티브 시트</span>
+<span class="ot">익스클루시브 패키지 (DINAMICA 헤드라이너)</span>
+<span class="ot">뒷좌석 다리 마사지 / 목·어깨 히팅 / 열선·통풍</span>
+<span class="ot">뒷좌석 에어백 / 사이드백 / 벨트 피더</span>
+<span class="ot">MBUX 하이엔드 뒷좌석 엔터테인먼트 시스템</span>
+<span class="ot">MBUX 뒷좌석 태블릿</span>
+<span class="ot">더블 선블라인드</span>
+<span class="ot">나파 / 우드 터치컨트롤 스티어링 휠 / 열선</span>
+<span class="ot">MANUFAKTUR 플로잉 라인 래커 트림+</span>
+<span class="ot">블랙 도트라인 크리스탈 록 센터콘솔</span>
+<span class="ot">액티브 앰비언트 라이트</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob bc">텔레매틱스</span></div><div class="oi">
+<span class="ot">12.3인치 3D 계기반 + 지문인식 12.8인치 OLED 디스플레이</span>
+<span class="ot">MBUX + 프리미엄 AR 내비게이션 + DMB</span>
+<span class="ot">MBUX 증강현실 헤드업 디스플레이</span>
+<span class="ot">무선 안드로이드 오토 + 애플 카플레이</span>
+<span class="ot">어댑티브 뒷좌석 라이트</span>
+<span class="ot">부메스터 3D 서라운드 사운드 시스템 (15개, 710W)</span>
+<span class="ot">Mercedes Me Connect (원격시동, 896-디지털 차량 키)</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob bco">편의 사양</span></div><div class="oi">
+<span class="ot">4존 에어컨디셔너 + 에어 퀄리티 패키지</span>
+<span class="ot">전자식 에너자이징 패키지 + 에어 밸런스 패키지</span>
+<span class="ot">서라운드 카메라 + 능동형 주차 어시스트</span>
+<span class="ot">원격 주차 어시스트 + 메모리 주차 어시스트</span>
+<span class="ot">매직 비전 컨트롤</span>
+<span class="ot">앞좌석 휴대폰 무선 충전 + USB 플러스 패키지</span>
+<span class="ot">벤츠 순정형 블랙박스 &amp; 하이패스</span>
+<span class="ot">전동식 트렁크 + 핸즈프리 액세스</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob bs">안전 사양</span></div><div class="oi">
+<span class="ot">드라이빙 어시스턴트 패키지 PLUS (P20)</span>
+<span class="ot">능동형 사각지대 어시스트 + 추구 경고 어시스트</span>
+<span class="ot">능동형 차선 유지 / 차선 변경 어시스트</span>
+<span class="ot">Active Brake Assist with cross-traffic function</span>
+<span class="ot">Active Distance Assist DISTRONIC</span>
+<span class="ot">경로 기반 속도 조절 / 능동형 속도 제한 어시스트</span>
+<span class="ot">PRE-SAFE, PRE-SAFE Sound, PRE-SAFE PLUS, PRE-SAFE Impulse side</span>
+<span class="ot">Active Bonnet / ADAPTIVE BRAKE (HOLD 기능)</span>
+<span class="ot">에어백 13개</span>
+</div></div>
+</div>
+
+<div class="tn fi">
+<p>※ 가격은 2026년 1월 기준 공식 출고가이며, 옵션에 따라 변동될 수 있습니다.</p>
+<p>※ 외장색 885 MANUFAKTUR 오팔라이트 화이트 브라이트 선택 시 (+) 257만원</p>
+<p>※ 20″ 멀티-스포크 단조 휠 (60R) 은 S 580 기본 사양입니다.</p>
+</div>
+</div>
+<div class="ft"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>S 580 4MATIC | 26년식 | 2026.02 기준</span></div>
 </section>
-
-<!-- PAGE 4: 마이바흐 S 580 -->
-<section id="maybach" class="trim-section ts-may" style="background:linear-gradient(180deg,#080408,#0d0a0c 30%,var(--dark));">
-  <div class="sl fi">
-    <span class="b" style="color:#c9a84c">Mercedes-Maybach · W223 · MY26</span>
-    <span class="n" style="background:linear-gradient(90deg,var(--white),#c9a84c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Maybach S 580 4MATIC</span>
-    <span class="sub">V8 4.0L 바이터보 · 503ps · 휠베이스 +180mm · 극한의 후석 럭셔리</span>
+<section id="maybach" style="background:linear-gradient(180deg,#080408,#0c090c,var(--dark));">
+<div class="sh" style="border-top:3px solid var(--myg);">
+  <div class="sh-l">
+    <span class="b">Mercedes-Maybach · W223 · MY26</span>
+    <span class="n">Maybach S 580 4MATIC</span>
+    <span class="fuel-tag gas" style="background:rgba(201,168,76,.15);border-color:var(--myg);color:var(--myg);">ULTRA LUXURY V8</span>
   </div>
+  <div><span class="p" style="color:var(--myg);">3억 1,560만원</span><span class="pn">차량 기본 가격 (부가세 포함)</span></div>
+</div>
+<div class="tc">
 
-  <!-- 핵심 수치 -->
-  <div class="sg fi" style="margin-bottom:30px">
-    <div class="sv-item" style="border-top:2px solid rgba(201,168,76,.4)"><div class="sv-label">최고출력</div><div class="sv" style="color:#c9a84c">503<span class="unit">ps</span></div></div>
-    <div class="sv-item" style="border-top:2px solid rgba(201,168,76,.4)"><div class="sv-label">휠베이스</div><div class="sv" style="color:#c9a84c">3,396<span class="unit">mm</span></div></div>
-    <div class="sv-item" style="border-top:2px solid rgba(201,168,76,.4)"><div class="sv-label">S580 대비</div><div class="sv" style="color:#c9a84c">+180<span class="unit">mm</span></div></div>
-    <div class="sv-item" style="border-top:2px solid rgba(201,168,76,.4)"><div class="sv-label">전장</div><div class="sv" style="color:#c9a84c">5,469<span class="unit">mm</span></div></div>
-    <div class="sv-item" style="border-top:2px solid rgba(201,168,76,.4)"><div class="sv-label">0→100km/h</div><div class="sv" style="color:#c9a84c">4.8<span class="unit">초</span></div></div>
-    <div class="sv-item" style="border-top:2px solid rgba(201,168,76,.4)"><div class="sv-label">출고가</div><div class="sv" style="color:#c9a84c;font-size:1.1rem">3.26<span class="unit">억~</span></div></div>
+<div class="photo-guide fi">📌 사진 삽입 → "마이바흐 S580 외관 전면" (투톤 컬러 · MAYBACH C필러 로고 · 20인치 5홀 단조)</div>
+
+<div class="fi"><div class="sl"><h2>주요 제원 <span>카탈로그 공식 기준</span></h2></div>
+<div class="sg">
+<div class="sc"><div class="sl2">엔진</div><div class="sv">M176, V형 8기통 바이터보 / 48V ISG</div></div>
+<div class="sc"><div class="sl2">배기량</div><div class="sv">3,982cc</div></div>
+<div class="sc"><div class="sl2">최고출력</div><div class="sv">503ps / 5,500rpm</div></div>
+<div class="sc"><div class="sl2">최대토크</div><div class="sv">71.4kgm / 2,000~4,500rpm</div></div>
+<div class="sc"><div class="sl2">변속기</div><div class="sv">9G-TRONIC (자동 9단)</div></div>
+<div class="sc"><div class="sl2">구동방식</div><div class="sv">4MATIC (사륜구동)</div></div>
+<div class="sc"><div class="sl2">복합연비</div><div class="sv">8.3km/l (5등급)</div></div>
+<div class="sc"><div class="sl2">도심 / 고속</div><div class="sv">5.0 / 8.3 km/l</div></div>
+<div class="sc"><div class="sl2">0→100km/h</div><div class="sv">4.4초</div></div>
+<div class="sc"><div class="sl2">최고속도</div><div class="sv">250km/h</div></div>
+<div class="sc"><div class="sl2">타이어(전/후)</div><div class="sv">255/40R20</div></div>
+<div class="sc"><div class="sl2">전장 × 전폭 × 전고</div><div class="sv" style="color:var(--myg);font-weight:600;">5,470 × 1,920 × 1,510mm (+180mm)</div></div>
+<div class="sc"><div class="sl2">휠베이스</div><div class="sv" style="color:var(--myg);font-weight:600;">3,396mm (+180mm vs S580)</div></div>
+<div class="sc"><div class="sl2">공차중량</div><div class="sv">2,200kg</div></div>
+<div class="sc"><div class="sl2">연료탱크</div><div class="sv">76L</div></div>
+<div class="sc"><div class="sl2">트렁크</div><div class="sv">495L</div></div>
+<div class="sc"><div class="sl2">서스펜션</div><div class="sv">멀티링크 / 멀티링크 / 에어 스프링</div></div>
+</div></div>
+
+<div class="photo-guide fi">📌 사진 삽입 → "마이바흐 S580 후석 이그제큐티브 시트" (MAYBACH 나파 가죽 / 파워 클로징 도어)</div>
+
+<div class="fi"><div class="sl"><h2>기본 사양 — 공식 카탈로그 기준</h2></div>
+<div class="oc"><div class="och"><span class="ob bd">Powertrain</span></div><div class="oi">
+<span class="ot">M176 V8 4.0L 바이터보 + 48V ISG</span>
+<span class="ot">9G-TRONIC (자동 9단)</span>
+<span class="ot">AIRMATIC 서스펜션 (에어 스프링)</span>
+<span class="ot">MOS 저소음 타이어 (Tire-fit)</span>
+<span class="ot">리어 액슬 스티어링 (10°) — 마이바흐 기본</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob be">외관 사양 ★ 마이바흐 전용</span></div><div class="oi">
+<span class="ot">디지털 라이트 + 어댑티브 상향등 어시스트 플러스</span>
+<span class="ot">마이바흐 익스클루시브 프론트 범퍼</span>
+<span class="ot">크롬 트림 스트립 (사이드 전체)</span>
+<span class="ot">C필러 Mercedes-Maybach 로고 ★</span>
+<span class="ot">MAYBACH 로고 프로젝터 ★</span>
+<span class="ot">20″ MAYBACH 5홀 단조 휠 ★</span>
+<span class="ot">파노라마 선루프</span>
+<span class="ot">IR 라미네이티드 글래스</span>
+<span class="ot">MAYBACH 발광 도어 실 패널 ★</span>
+<span class="ot">플러시 도어 핸들 + KEYLESS-GO + 파워 클로징</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob bi">실내 사양 ★ 마이바흐 전용</span></div><div class="oi">
+<span class="ot">MAYBACH 익스클루시브 나파 가죽 시트 ★</span>
+<span class="ot">앞좌석 액티브 멀티컨투어 시트 (럭셔리 헤드레스트)</span>
+<span class="ot">뒷좌석 컴포트 패키지 &amp; 쇼퍼 패키지 기본 ★</span>
+<span class="ot">이그제큐티브 시트 (뒷좌석 전동 리클라이닝) ★</span>
+<span class="ot">MAYBACH 파워 클로징 도어 ★</span>
+<span class="ot">뒷좌석 다리 마사지 / 목·어깨 히팅 / 열선·통풍</span>
+<span class="ot">뒷좌석 에어백 / 사이드백 / 벨트 피더</span>
+<span class="ot">MBUX 하이엔드 뒷좌석 엔터테인먼트 시스템</span>
+<span class="ot">MBUX 뒷좌석 태블릿</span>
+<span class="ot">전동 선 블라인드 ★</span>
+<span class="ot">나파 터치컨트롤 스티어링 휠 / 열선 / 열선</span>
+<span class="ot">MANUFAKTUR 브라운 오픈 포어 월넛 우드 &amp; 알루미늄 라인+ ★</span>
+<span class="ot">블랙 크리스탈 록 센터콘솔</span>
+<span class="ot">액티브 앰비언트 라이트</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob bc">텔레매틱스</span></div><div class="oi">
+<span class="ot">12.3인치 3D 계기반 + 지문인식 12.8인치 OLED 디스플레이</span>
+<span class="ot">MBUX + 프리미엄 AR 내비게이션 + DMB</span>
+<span class="ot">MBUX 증강현실 헤드업 디스플레이</span>
+<span class="ot">무선 안드로이드 오토 + 애플 카플레이</span>
+<span class="ot">부메스터 3D 서라운드 사운드 시스템 (15개, 710W)</span>
+<span class="ot">Mercedes Me Connect (원격시동, 896-디지털 차량 키)</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob bco">편의 사양</span></div><div class="oi">
+<span class="ot">4존 에어컨디셔너 + 에어 퀄리티 패키지</span>
+<span class="ot">앞·뒷좌석 에너자이징 패키지 &amp; 에어 밸런스 패키지</span>
+<span class="ot">서라운드 카메라 + 능동형 주차 어시스트</span>
+<span class="ot">원격 주차 어시스트 + 메모리 주차 어시스트</span>
+<span class="ot">뒷좌석 휴대폰 무선 충전</span>
+<span class="ot">벤츠 순정형 블랙박스 &amp; 하이패스</span>
+<span class="ot">전동식 트렁크 + 핸즈프리 액세스</span>
+</div></div>
+<div class="oc"><div class="och"><span class="ob bs">안전 사양</span></div><div class="oi">
+<span class="ot">드라이빙 어시스턴트 패키지 PLUS (P20)</span>
+<span class="ot">능동형 사각지대 어시스트 + 추구 경고 어시스트</span>
+<span class="ot">능동형 차선 유지 / 차선 변경 어시스트</span>
+<span class="ot">Active Brake Assist with cross-traffic function</span>
+<span class="ot">Active Distance Assist DISTRONIC</span>
+<span class="ot">PRE-SAFE, PRE-SAFE Sound, PRE-SAFE PLUS, PRE-SAFE Impulse side</span>
+<span class="ot">Active Bonnet / ADAPTIVE BRAKE (HOLD 기능)</span>
+<span class="ot">에어백 13개</span>
+</div></div>
+</div>
+
+<!-- 업셀링 박스 -->
+<div class="upsell-box fi">
+  <h3>💡 S580 → 마이바흐 업셀링 핵심 멘트</h3>
+  <div class="upsell-grid">
+    <div class="upsell-item">
+      <div class="ui-q">후석 탑승자 언급 시</div>
+      <div class="ui-a">"가족분이나 VIP가 뒷좌석을 이용하신다면 마이바흐 후석을 꼭 경험해보시길 권합니다. 180mm가 만드는 공간은 비즈니스 클래스 수준입니다."</div>
+    </div>
+    <div class="upsell-item">
+      <div class="ui-q">가격 차이 질문 시</div>
+      <div class="ui-a">"S580 대비 약 5,700만원인데, 그 차이로 받으시는 공간·외장 아이덴티티·브랜드 위상은 가격 이상입니다. 유지비는 S클래스와 동일합니다."</div>
+    </div>
+    <div class="upsell-item">
+      <div class="ui-q">롤스·벤틀리 비교 시</div>
+      <div class="ui-a">"마이바흐는 롤스 대비 절반 가격으로 동급 경험을 드립니다. 서비스 네트워크는 전국 벤츠 딜러 그대로 즉시 대응 가능합니다."</div>
+    </div>
+    <div class="upsell-item">
+      <div class="ui-q">"엔진 같은데 왜 비싸냐"</div>
+      <div class="ui-a">"차이는 엔진이 아닙니다. 180mm의 후석 공간, MAYBACH 나파 가죽, C필러 로고 — 돈으로 살 수 있는 것 중 가장 큰 차이입니다."</div>
+    </div>
   </div>
+</div>
 
-  <!-- 마이바흐 4대 차별점 -->
-  <div class="rg fi">
-    <div class="rc" style="border:1px solid rgba(201,168,76,.15)">
-      <div class="rc-icon">📐</div>
-      <div class="rc-title">휠베이스 +180mm — 후석의 차원이 다름</div>
-      <div class="rc-desc">S580 3,216mm → 마이바흐 3,396mm. 이 180mm가 만들어내는 후석 무릎 공간은 비즈니스 클래스 항공기 수준. 탑승하는 순간 체감됩니다.</div>
-      <div class="rc-val may-accent">+180mm · 비즈니스 클래스 후석</div>
-    </div>
-    <div class="rc" style="border:1px solid rgba(201,168,76,.15)">
-      <div class="rc-icon">💺</div>
-      <div class="rc-title">마이바흐 전용 이그제큐티브 시트</div>
-      <div class="rc-desc">팔걸이 일체형 풀 리클라이닝 + 다리받침(오토마틱) 기본. 마이바흐 노피라 라인 나파 가죽, 파워클로징 도어. S580의 쇼퍼 패키지를 넘어서는 수준.</div>
-      <div class="rc-val may-accent">마이바흐 전용 챔피언십 시트</div>
-    </div>
-    <div class="rc" style="border:1px solid rgba(201,168,76,.15)">
-      <div class="rc-icon">✨</div>
-      <div class="rc-title">마이바흐 전용 익스클루시브 외장</div>
-      <div class="rc-desc">C필러 마이바흐 엠블럼, 트윈-스트라입 크롬 사이드 라인, 전용 20/21인치 마이바흐 휠. 도로에서 S클래스와 즉각적으로 구분되는 존재감.</div>
-      <div class="rc-val may-accent">마이바흐 전용 외장 아이덴티티</div>
-    </div>
-    <div class="rc" style="border:1px solid rgba(201,168,76,.15)">
-      <div class="rc-icon">💎</div>
-      <div class="rc-title">희소성 & 브랜드 지위</div>
-      <div class="rc-desc">국내 연간 판매량 극히 제한. 롤스로이스·벤틀리와 동일한 Ultra Luxury 포지셔닝. 유지비와 서비스 네트워크는 S클래스 동급으로 합리적.</div>
-      <div class="rc-val may-accent">Ultra Luxury · 롤스 대비 절반 유지비</div>
-    </div>
-  </div>
-
-  <!-- 업셀링 포인트 박스 -->
-  <div class="upsell fi">
-    <div class="upsell-title">💡 S580 → 마이바흐 업셀링 핵심 멘트</div>
-    <div class="upsell-grid">
-      <div class="upsell-item">
-        <div class="ui-label">후석 탑승자 언급 시</div>
-        <div class="ui-val">"가족분이나 VIP 손님이 뒷좌석을 이용하신다면, 마이바흐 후석을 꼭 한 번 경험해보시길 추천드립니다."</div>
-      </div>
-      <div class="upsell-item">
-        <div class="ui-label">가격 차이 질문 시</div>
-        <div class="ui-val">"S580 대비 약 6~7천만원인데, 그 차이로 받으시는 공간과 브랜드 경험은 훨씬 큽니다."</div>
-      </div>
-      <div class="upsell-item">
-        <div class="ui-label">롤스·벤틀리 비교 시</div>
-        <div class="ui-val">"마이바흐는 롤스의 절반 가격으로 유사한 경험. 서비스 네트워크는 전국 어디서나 즉시 대응 가능합니다."</div>
-      </div>
-      <div class="upsell-item">
-        <div class="ui-label">"엔진이 같은데 왜 더 비싸냐" 반박 시</div>
-        <div class="ui-val">"차이는 엔진이 아니라 공간·소재·브랜드입니다. 돈으로 살 수 없는 게 있어요 — 180mm와 마이바흐 엠블럼."</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 추천 고객 -->
-  <div style="max-width:1100px;margin:0 auto;padding:0 15px">
-    <div class="rc fi" style="border-top:3px solid #c9a84c;background:linear-gradient(135deg,rgba(61,10,30,.3),var(--card))">
-      <div class="rc-title" style="color:#c9a84c;font-size:1rem;margin-bottom:12px">✅ 마이바흐 S 580을 선택해야 하는 고객</div>
-      <div class="rc-desc" style="font-size:.85rem;line-height:2">
-        기사 운전 · 후석 이용 비중이 높은 분 · 롤스로이스·벤틀리 대안을 찾는 분<br>
-        C필러 마이바흐 엠블럼이 주는 사회적 시그널이 중요한 분 · 예산 3억 이상 · UHNWI 클라이언트
-      </div>
-    </div>
-  </div>
-
-  <div class="ft fi"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>Maybach S 580 4MATIC · MY26 · 2026.02 기준</span></div>
+<div class="tn fi">
+<p>※ 가격은 2026년 1월 기준 공식 출고가이며, 옵션에 따라 변동될 수 있습니다.</p>
+<p>※ 뒷좌석 일등석 시트(224) 적용 시 860만원 추가 / 접이식 테이블(449)은 추가 사양입니다.</p>
+<p>※ 마이바흐 전용 투톤 컬러 선택 시 별도 추가 비용이 발생할 수 있습니다.</p>
+</div>
+</div>
+<div class="ft"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>Maybach S 580 4MATIC | 26년식 | 2026.02 기준</span></div>
 </section>
-
-<!-- PAGE 5: 비교 -->
 <section id="compare" class="cp">
-  <div class="sl" style="max-width:1100px;margin:0 auto 10px;text-align:left">
-    <h2>S 580 vs Maybach S 580 — 핵심 차이</h2>
-  </div>
-  <p style="max-width:1100px;margin:0 auto 30px;padding-left:15px;font-size:.78rem;color:var(--silver);font-weight:300">
-    가격 차이 <strong style="color:#c9a84c">+약 6,740만원</strong> · 휠베이스·후석·소재·브랜드 아이덴티티가 핵심 포인트
-  </p>
+<div class="cph fi"><h2>S 580 vs 마이바흐 S 580 — 핵심 차이</h2></div>
+<div class="cpd fi" style="color:var(--silver);font-size:.78rem;margin-bottom:8px;">가격 차이 <strong style="color:var(--myg);">+5,700만원</strong> · 휠베이스·후석·외장 브랜드 아이덴티티가 핵심</div>
+<div class="cw">
+<table class="ct">
+<thead>
+<tr>
+  <th>구분</th>
+  <th><span class="ts5">S 580 4MATIC</span><br><span style="font-size:.75rem;color:var(--silver);font-weight:400;">2억 5,860만원</span></th>
+  <th><span class="tmay">마이바흐 S 580 4MATIC</span><br><span style="font-size:.75rem;color:var(--silver);font-weight:400;">3억 1,560만원</span></th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="cp-title">엔진</td><td>V8 3,982cc 바이터보</td><td>V8 3,982cc 바이터보 (동일)</td></tr>
+<tr><td class="cp-title">최고출력</td><td>503ps / 5,500rpm</td><td>503ps / 5,500rpm (동일)</td></tr>
+<tr><td class="cp-title">최대토크</td><td>71.4kgm</td><td>71.4kgm (동일)</td></tr>
+<tr><td class="cp-title">0→100km/h</td><td>4.4초</td><td>4.4초 (동일)</td></tr>
+<tr><td class="cp-title">전장</td><td>5,290mm</td><td class="tmay">5,470mm (+180mm) ★</td></tr>
+<tr><td class="cp-title">휠베이스</td><td>3,216mm</td><td class="tmay">3,396mm (+180mm) ★★</td></tr>
+<tr><td class="cp-title">후석 공간</td><td>S클래스 플래그십</td><td class="tmay">비즈니스 클래스 수준 ★★</td></tr>
+<tr><td class="cp-title">후석 시트</td><td>익스클루시브 나파 + 쇼퍼</td><td class="tmay">MAYBACH 전용 이그제큐티브 ★★</td></tr>
+<tr><td class="cp-title">파워 클로징 도어</td><td>기본</td><td class="tmay">마이바흐 전용 ★</td></tr>
+<tr><td class="cp-title">C필러 로고</td><td>—</td><td class="tmay">MAYBACH 로고 ★★</td></tr>
+<tr><td class="cp-title">전용 휠</td><td>20″ 멀티스포크 단조</td><td class="tmay">20″ MAYBACH 5홀 단조 ★</td></tr>
+<tr><td class="cp-title">로고 프로젝터</td><td>벤츠 로고</td><td class="tmay">MAYBACH 로고 프로젝터 ★</td></tr>
+<tr><td class="cp-title">외장 트림</td><td>스탠다드 익스테리어</td><td class="tmay">크롬 트림 스트립 (사이드 전체) ★</td></tr>
+<tr><td class="cp-title">리어 액슬 스티어링</td><td class="ts5">10° 기본</td><td>10° 기본 (동일)</td></tr>
+<tr><td class="cp-title">MBUX AR HUD</td><td class="ts5">기본</td><td>기본 (동일)</td></tr>
+<tr><td class="cp-title">부메스터 3D</td><td class="ts5">710W 기본</td><td>710W 기본 (동일)</td></tr>
+<tr><td class="cp-title">브랜드 포지션</td><td>Mercedes-Benz 최상위</td><td class="tmay">Ultra Luxury 독립 브랜드 ★★</td></tr>
+<tr><td class="cp-title">경쟁 차종</td><td>BMW 7시리즈, G90</td><td class="tmay">Rolls-Royce, Bentley 대안</td></tr>
+</tbody>
+</table>
+</div>
 
-  <div class="cw">
-    <table class="ct">
-      <thead>
-        <tr>
-          <th style="text-align:left;width:22%">구분</th>
-          <th><span class="ts5">S 580 4MATIC</span><br><span style="font-size:.75rem;color:var(--silver);font-weight:400">2억 5,860만원</span></th>
-          <th><span class="tmay">Maybach S 580 4MATIC</span><br><span style="font-size:.75rem;color:var(--silver);font-weight:400">3억 2,600만원~</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>엔진</td><td>M176 V8 4.0L 바이터보</td><td class="tmay">M176 V8 4.0L 바이터보 (동일)</td></tr>
-        <tr><td>최고출력</td><td>503ps / 5,500rpm</td><td class="tmay">503ps / 5,500rpm (동일)</td></tr>
-        <tr><td>최대토크</td><td>71.4kgm / 2,000~4,500</td><td class="tmay">71.4kgm / 2,000~4,500 (동일)</td></tr>
-        <tr><td>0→100km/h</td><td>4.4초</td><td>4.8초 (차중 증가)</td></tr>
-        <tr><td>전장</td><td>5,289mm</td><td class="tmay-bold">5,469mm (+180mm)</td></tr>
-        <tr><td>휠베이스</td><td>3,216mm</td><td class="tmay-bold">3,396mm (+180mm) ★</td></tr>
-        <tr><td>후석 공간</td><td>플래그십 세단 기준</td><td class="tmay-bold">비즈니스 클래스 수준 ★★</td></tr>
-        <tr><td>후석 시트</td><td>익스클루시브 나파 + 쇼퍼 패키지</td><td class="tmay-bold">마이바흐 전용 이그제큐티브 리클라이닝 ★★</td></tr>
-        <tr><td>후석 파워클로징 도어</td><td>—</td><td class="tmay-bold">기본 ★</td></tr>
-        <tr><td>외장 아이덴티티</td><td>AMG Line 또는 스탠다드</td><td class="tmay-bold">마이바흐 트윈-스트라입 + C필러 엠블럼 ★</td></tr>
-        <tr><td>전용 휠</td><td>21" AMG 멀티 스포크</td><td class="tmay">20/21" 마이바흐 전용 휠</td></tr>
-        <tr><td>가죽 소재</td><td>익스클루시브 나파</td><td class="tmay-bold">마이바흐 노피라 라인 나파 ★</td></tr>
-        <tr><td>리어 액슬 스티어링</td><td class="ts5">10° (S580 전용)</td><td>10°</td></tr>
-        <tr><td>증강현실 HUD</td><td class="ts5">기본</td><td class="tmay">기본</td></tr>
-        <tr><td>에너자이징 패키지</td><td class="ts5">기본</td><td class="tmay">기본</td></tr>
-        <tr><td>브랜드 포지셔닝</td><td>Mercedes-Benz 최상위</td><td class="tmay-bold">Ultra Luxury 독립 브랜드 ★★</td></tr>
-        <tr><td>경쟁 포지셔닝</td><td>BMW 7시리즈, 제네시스 G90</td><td class="tmay-bold">Rolls-Royce, Bentley 대안</td></tr>
-      </tbody>
-    </table>
+<div class="rec fi">
+  <div class="rec-a" style="border-top:3px solid var(--s5a);">
+    <h3 class="ts5">S 580 4MATIC 추천 고객</h3>
+    <ul>
+      <li>직접 운전하는 오너드라이버 — V8 파워감을 즐기는 분</li>
+      <li>리어 액슬 스티어링 10°로 도심 주차 편의를 극대화하고 싶은 분</li>
+      <li>S클래스 최상위 사양을 2억대에서 해결하고 싶은 분</li>
+      <li>마이바흐 이전 단계의 벤츠 플래그십을 원하시는 분</li>
+    </ul>
   </div>
+  <div class="rec-b" style="border-top:3px solid var(--myg);background:linear-gradient(135deg,rgba(61,10,30,.18),var(--card));">
+    <h3 class="tmay">마이바흐 S 580 4MATIC 추천 고객</h3>
+    <ul>
+      <li>기사 운전·후석 이용 비중이 높은 오너</li>
+      <li>롤스로이스·벤틀리의 Ultra Luxury 대안을 찾는 분</li>
+      <li>C필러 MAYBACH 로고의 브랜드 시그널이 중요한 분</li>
+      <li>예산 3억 이상 · 유지비는 S클래스와 동급으로 관리하고 싶은 분</li>
+    </ul>
+  </div>
+</div>
 
-  <div class="rec" style="margin-top:30px">
-    <div class="rec-c" style="border-top:3px solid #6ab4d0">
-      <h3 style="color:#6ab4d0">S 580 4MATIC 추천 고객</h3>
-      <ul>
-        <li>직접 운전하며 V8 파워를 즐기는 오너드리버</li>
-        <li>플래그십 럭셔리 + 스포티 밸런스를 원하는 분</li>
-        <li>리어 액슬 스티어링으로 도심 주차 편의 극대화</li>
-        <li>예산 2.5~2.8억 · 쇼퍼 패키지 풀 사양 원하는 분</li>
-        <li>마이바흐 이전, S클래스 최상위를 원하시는 분</li>
-      </ul>
+<div class="ft"><span><span class="fb">BenzDream</span> | 한호만 팀장</span><span>S 580 vs 마이바흐 S 580 비교 | 26년식 | 2026.02 기준</span></div>
+</section>
+<section id="contact" class="co">
+<div class="co-top fi">
+  <h2>편하게 문의 주세요.</h2>
+  <div class="co-title">24시간 문자 남기기 가능 · S 580 / 마이바흐 S 580 상담 환영</div>
+</div>
+<div class="co-cards fi">
+  <a class="co-card" href="https://youtube.com/@benzdream" target="_blank" onclick="handleClick('naver')">
+    <div class="co-icon">
+      <svg width="36" height="25" viewBox="0 0 36 25" fill="none"><rect width="36" height="25" rx="5" fill="#FF0000"/><path d="M14 18V7L25 12.5L14 18Z" fill="white"/></svg>
     </div>
-    <div class="rec-c" style="border-top:3px solid #c9a84c;background:linear-gradient(135deg,rgba(61,10,30,.2),var(--card))">
-      <h3 style="color:#c9a84c">Maybach S 580 4MATIC 추천 고객</h3>
-      <ul>
-        <li>기사 운전 · 후석 탑승 비중이 높은 오너</li>
-        <li>롤스로이스·벤틀리의 Ultra Luxury 대안을 찾는 분</li>
-        <li>C필러 마이바흐 엠블럼의 브랜드 시그널이 중요한 분</li>
-        <li>예산 3억 이상 · UHNWI 클라이언트</li>
-        <li>합리적 유지비로 초럭셔리 경험을 원하시는 분</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="ft" style="max-width:1100px;margin:30px auto 0;padding:0 15px">
-    <span><span class="fb">BenzDream</span> | 한호만 팀장</span>
-    <span>S 580 vs Maybach S 580 비교 | 2026.02 기준</span>
-  </div>
+    <div class="co-name">유튜브 채널</div>
+    <div class="co-desc">@benzdream</div>
+  </a>
+  <a class="co-card" href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" onclick="handleClick('kakao')">
+    <div class="co-icon">💬</div>
+    <div class="co-name">카카오톡 상담</div>
+    <div class="co-desc">카카오톡 채널로 이동합니다</div>
+  </a>
+  <a class="co-card" href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" onclick="handleClick('naver')">
+    <div class="co-icon">📝</div>
+    <div class="co-name">구글 상담폼</div>
+    <div class="co-desc">상담 신청서 작성</div>
+  </a>
+</div>
+<div class="co-addr fi">경기도 고양시 덕양구 의장로 110 모터원고양</div>
+<div class="co-disc fi">본 자료는 2026년 2월 기준이며, 사전 예고 없이 변경될 수 있습니다.</div>
 </section>
 
-<!-- PAGE 6: 연락처 -->
-<section id="contact" class="co">
-  <div class="sl" style="max-width:900px;margin:0 auto 40px;text-align:center;padding:0 15px">
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;color:var(--white);margin-bottom:8px">편하게 문의 주세요.</h2>
-    <p style="font-size:.85rem;color:var(--silver);font-weight:300">24시간 문자 남기기 가능 · S 580 / 마이바흐 S 580 상담 환영</p>
-  </div>
 
-  <div class="cog">
-    <a class="co-c" href="https://youtube.com/@benzdream" target="_blank">
-      <div class="co-icon"><svg width="40" height="28" viewBox="0 0 40 28" fill="none"><rect width="40" height="28" rx="6" fill="#FF0000"/><path d="M16 20V8L28 14L16 20Z" fill="white"/></svg></div>
-      <div class="co-title">유튜브 채널</div>
-      <div class="co-sub">@benzdream</div>
-    </a>
-    <a class="co-c" href="http://pf.kakao.com/_UqxiIX/chat" target="_blank">
-      <div class="co-icon">💬</div>
-      <div class="co-title">카카오톡 상담</div>
-      <div class="co-sub">카카오톡 채널로 이동합니다</div>
-    </a>
-    <a class="co-c" href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank">
-      <div class="co-icon">📝</div>
-      <div class="co-title">구글 상담폼</div>
-      <div class="co-sub">상담 신청서 작성</div>
-    </a>
-  </div>
+<div class="toast" id="toast"></div>
 
-  <div class="co-addr">
-    경기도 고양시 덕양구 의장로 110 모터원고양<br>
-    <span style="color:var(--gold-dim);font-size:.7rem;margin-top:8px;display:block">
-      본 자료는 2026년 2월 기준이며, 사전 예고 없이 변경될 수 있습니다.
-    </span>
-  </div>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+
+<script>
+
+// ─── CTA 클릭 처리 ───
+function handleClick(type){
+const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 채널로 이동합니다',naver:'📝 상담신청폼으로 이동합니다'};
+showToast(msgs[type]||'');
+}
+function showToast(msg){const el=document.getElementById('toast');if(!el)return;el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2500);}
+
+</script>
 
   <!-- 랜딩페이지 복귀 버튼 -->
   <div style="text-align:center; margin-top:48px; padding-bottom:24px;">
@@ -513,19 +722,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,15,20,.92
               color:#c9a96e; border:1px solid #8a7a50;
               padding:12px 28px; border-radius:40px;
               font-family:'Outfit',sans-serif; font-size:.9rem;
-              text-decoration:none; letter-spacing:.05em;">
-      ← 전체 어프로치북 목록 보기
+              text-decoration:none; letter-spacing:.05em;
+              transition: background .2s;"
+       onmouseover="this.style.background='rgba(201,169,110,.08)'"
+       onmouseout="this.style.background='transparent'">
+      &#8592; 전체 어프로치북 목록 보기
     </a>
   </div>
-</section>
 
-<script>
-// Intersection Observer — 스크롤 애니메이션
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
-}, {threshold:0.1});
-document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-</script>
 </body></html>
