@@ -739,4 +739,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
   </a>
 </div>
 
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
 </body></html>
