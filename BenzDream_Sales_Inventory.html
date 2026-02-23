@@ -3019,8 +3019,10 @@ CAT_ORDER.forEach(cat=>{
         </div>
         <span class="badge ${bc}">${bt}</span>
         <div class="crow-count">
-          <strong class="${bc}">${c.avail}</strong>
-          <span>/ ${c.total}</span>
+          ${c.s==='available'
+            ? `<strong class="ok">${c.avail}</strong><span>/ ${c.total}대</span>`
+            : `<strong class="wt">${c.total - c.avail}</strong><span>명 대기</span>`
+          }
         </div>
       </div>`;
     }).join("");
