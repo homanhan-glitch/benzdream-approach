@@ -3021,7 +3021,7 @@ CAT_ORDER.forEach(cat=>{
         <div class="crow-count">
           ${c.s==='available'
             ? `<strong class="ok">${c.avail}</strong><span>/ ${c.total}대</span>`
-            : `<strong class="wt">${c.total - c.avail}</strong><span>명 대기</span>`
+            : `<strong class="wt">${c.total - c.avail}명</strong><span>대기 / ${c.total}대</span>`
           }
         </div>
       </div>`;
