@@ -159,12 +159,14 @@ body{
   border:1px solid rgba(201,169,110,.2);
   box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(201,169,110,.05);
   animation:fadeUp .9s .2s ease both;
+  line-height:0;
 }
-.banner-card img{width:100%;display:block;object-fit:cover;}
+.banner-card img{width:100%;display:block;object-fit:cover;vertical-align:bottom;font-size:0;}
 .banner-info{
   padding:28px 32px;
   background:linear-gradient(to bottom,var(--card),var(--navy));
   display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;
+  line-height:1.4;
 }
 .stat{text-align:center;}
 .stat-num{
