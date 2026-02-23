@@ -222,9 +222,9 @@ main{padding:16px 20px;}
     <div class="stat-sub">대</div>
   </div>
   <div class="stat-card contract">
-    <div class="stat-label">계약/배정</div>
+    <div class="stat-label">현재 대기</div>
     <div class="stat-val" id="st-contract">-</div>
-    <div class="stat-sub">대</div>
+    <div class="stat-sub">명</div>
   </div>
   <div class="stat-card" style="border-color:rgba(100,120,200,.3);flex:2;justify-content:center;">
     <div class="stat-label">즉시출고율</div>
@@ -3046,14 +3046,14 @@ function filter(cat){
 
 // ── 영업용 통계 계산 ──────────────────────────────────────
 (function(){
-  let total=0, avail=0;
+  let total=0, avail=0, contract=0;
   DATA.forEach(g=>{
     g.combos.forEach(c=>{
       total += c.total;
       avail += c.avail;
+      if(c.s === 'wait') contract += c.total; // 즉시출고 0인 조합의 계약 대기 인원
     });
   });
-  const contract = total - avail;
   const rate = total > 0 ? Math.round(avail/total*100) : 0;
   document.getElementById('st-total').textContent = total.toLocaleString();
   document.getElementById('st-avail').textContent = avail.toLocaleString();
