@@ -3051,7 +3051,7 @@ function filter(cat){
     g.combos.forEach(c=>{
       total += c.total;
       avail += c.avail;
-      if(c.s === 'wait') contract += c.total; // 즉시출고 0인 조합의 계약 대기 인원
+      contract += (c.total - c.avail); // 전체 계약/배정 인원
     });
   });
   const rate = total > 0 ? Math.round(avail/total*100) : 0;
