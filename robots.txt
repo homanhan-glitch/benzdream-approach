@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://homanhan-glitch.github.io/benzdream-approach/sitemap.xml
