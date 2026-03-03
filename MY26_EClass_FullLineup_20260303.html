@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="ko"><head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
   <script>
     // IP 필터 — 내부 트래픽 제외
@@ -8,20 +7,19 @@
     fetch("https://api.ipify.org?format=json")
       .then(r=>r.json())
       .then(d=>{
-        if(BLOCKED_IPS.includes(d.ip)) return; // 차단 IP → GA 미실행
+        if(BLOCKED_IPS.includes(d.ip)) return;
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag("js", new Date());
         gtag("config", "G-7T2ECBWN0K");
       }).catch(()=>{
-        // fetch 실패시 GA 정상 실행
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag("js", new Date());
         gtag("config", "G-7T2ECBWN0K");
       });
   </script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BenzDream E-Class E220d vs E300 EXCLUSIVE 어프로치북</title>
+<title>BenzDream E-Class Full Lineup 어프로치북</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--dark:#0d0f14;--navy:#141824;--card:#181c28;--gold:#c9a96e;--gold-light:#ddc08a;--gold-dim:#8a7a50;--silver:#a8aab0;--light:#e2e3e7;--white:#f5f5f7;--diesel:#1a4a2e;--diesel-light:#2a6b3c;--gas:#1a3a6e;--gas-light:#2a5aae;--green:#2a6b3c;--red:#8b2020}
@@ -248,7 +246,20 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 .co-yt-cnt{margin-left:auto;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:#ff4444;}
 @media(max-width:768px){.cta-btn{padding:14px 16px;}}
 
-/* E-Class Lineup specific styles */
+/* === FULL LINEUP COVER OVERRIDE === */
+.cover .cv-trims{gap:12px!important}
+.cover .cv-tc{min-width:200px;padding:16px 24px}
+.cover .cv-tp{font-size:1.4rem}
+.cover .cv-tt{font-size:.65rem}
+@media(max-width:768px){.cover .cv-tc{min-width:140px;padding:12px 16px}.cover .cv-tn{font-size:.95rem}.cover .cv-tp{font-size:1.1rem}}
+
+/* === FULL LINEUP SPECIFIC === */
+.sec{padding:40px 16px}
+.inn{max-width:1100px;margin:0 auto}
+.fi{opacity:0;transform:translateY(20px);transition:all .6s ease}
+.fi.v{opacity:1;transform:none}
+
+/* Lineup comparison table */
 .lineup-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px}
 .lineup-tbl{width:100%;border-collapse:separate;border-spacing:0;border:1px solid rgba(201,169,110,.12);border-radius:12px;overflow:hidden;min-width:800px;font-size:.78rem}
 .lineup-tbl thead{background:var(--navy)}
@@ -259,7 +270,6 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 .lineup-tbl td.df{color:var(--gold-light);font-weight:500;background:rgba(201,169,110,.04)}
 .lineup-tbl td.hi{color:#fff;font-weight:600;background:rgba(201,169,110,.08)}
 .lineup-tbl tr:hover td{background:rgba(201,169,110,.06)}
-.lineup-tbl .tp{font-size:.65rem;color:var(--gold-dim);display:block;margin-top:2px}
 .lineup-tbl .check{color:var(--gold)}
 .lineup-tbl .dash{color:rgba(255,255,255,.2)}
 
@@ -269,11 +279,11 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 .tier-top{color:#c9a96e;font-size:.6rem;letter-spacing:1px}
 .tier-flag{color:#d4836a;font-size:.6rem;letter-spacing:1px}
 
-/* Price highlight */
+/* Price tag in table header */
 .price-tag{font-family:'Outfit',sans-serif;font-weight:600;font-size:.82rem;color:var(--white)}
 .price-tag .unit{font-size:.65rem;font-weight:400;color:var(--silver)}
 
-/* Trim highlight cards */
+/* Trim selection guide grid */
 .trim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:24px}
 .trim-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:14px;padding:20px;position:relative;overflow:hidden}
 .trim-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
@@ -285,94 +295,79 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 .trim-card .trim-price{font-family:'Outfit',sans-serif;font-size:.85rem;color:var(--gold);margin-bottom:12px}
 .trim-card ul{list-style:none;padding:0;margin:0}
 .trim-card li{font-size:.78rem;color:var(--light);padding:4px 0;padding-left:18px;position:relative;line-height:1.4}
-.trim-card li::before{content:'✔';position:absolute;left:0;color:var(--gold-dim);font-size:.7rem}
+.trim-card li::before{content:'\2714';position:absolute;left:0;color:var(--gold-dim);font-size:.7rem}
 .trim-card .trim-tag{display:inline-block;font-size:.6rem;padding:2px 8px;border-radius:20px;margin-bottom:8px;letter-spacing:1px}
-.trim-card.entry .trim-tag{background:rgba(106,160,206,.15);color:#6aa0ce}
-.trim-card.mid .trim-tag{background:rgba(74,158,110,.15);color:#4a9e6e}
-.trim-card.top .trim-tag{background:rgba(201,169,110,.15);color:#c9a96e}
-.trim-card.flag .trim-tag{background:rgba(212,131,106,.15);color:#d4836a}
+.trim-card.entry .trim-tag{background:rgba(106,160,206,.15);color:#6aa0ce;border:1px solid rgba(106,160,206,.2)}
+.trim-card.mid .trim-tag{background:rgba(74,158,110,.15);color:#4a9e6e;border:1px solid rgba(74,158,110,.2)}
+.trim-card.top .trim-tag{background:rgba(201,169,110,.15);color:#c9a96e;border:1px solid rgba(201,169,110,.2)}
+.trim-card.flag .trim-tag{background:rgba(212,131,106,.15);color:#d4836a;border:1px solid rgba(212,131,106,.2)}
 
-/* Section divider */
-.sec-divider{text-align:center;padding:24px 0;opacity:.5}
-.sec-divider span{display:inline-block;width:60px;height:1px;background:var(--gold-dim);vertical-align:middle;margin:0 12px}
-
-/* Scroll hint */
+/* Scroll hint and notes */
 .scroll-hint{text-align:center;font-size:.7rem;color:var(--gold-dim);margin-bottom:8px;display:none}
 @media(max-width:900px){.scroll-hint{display:block}}
-
-/* Responsive adjustments */
-@media(max-width:768px){
-  .trim-grid{grid-template-columns:1fr}
-  .lineup-tbl{font-size:.7rem}
-  .lineup-tbl th{font-size:.65rem;padding:8px 4px}
-  .lineup-tbl td{font-size:.68rem;padding:6px 4px}
-}
-
-.cmp-tbl{width:100%;border-collapse:separate;border-spacing:0;border:1px solid rgba(201,169,110,.12);border-radius:10px;overflow:hidden;margin-bottom:24px;font-size:.78rem}
-.cmp-tbl thead{background:var(--navy)}
-.cmp-tbl th{padding:12px 8px;color:var(--gold-light);font-weight:600;text-align:center;border-bottom:1px solid rgba(201,169,110,.15);font-size:.74rem}
-.cmp-tbl th:first-child{text-align:left;color:var(--silver);font-weight:400;width:18%}
-.cmp-tbl td{padding:9px 8px;border-bottom:1px solid rgba(255,255,255,.03);text-align:center;background:var(--card);font-size:.76rem}
-.cmp-tbl td:first-child{text-align:left;color:var(--silver);background:rgba(20,24,36,.6);font-size:.72rem}
-.cmp-tbl td.df{color:var(--gold-light);font-weight:500;background:rgba(201,169,110,.04)}
-.cmp-tbl .tsd{color:#6aa0ce;font-size:.7rem}
-.cmp-tbl .tss{color:#4a9e6e;font-size:.7rem}
-.cmp-tbl .tsm{color:#9e8e4a;font-size:.7rem}
-.cmp-tbl .tsa{color:#ce6a6a;font-size:.7rem}
-.cmp-tbl{font-size:.68rem}
-.cmp-tbl td,.cmp-tbl th{padding:6px 4px}
-.rec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
-.rec-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:10px;padding:22px 18px}
-.rec-card h4{font-size:.82rem;font-weight:600;margin-bottom:12px}
-.rec-card.diesel h4{color:#6aa0ce}
-.rec-card.std h4{color:#4a9e6e}
-.rec-card.mid h4{color:#9e8e4a}
-.rec-card.amg h4{color:#ce6a6a}
-.rec-card ul{list-style:none;padding:0}
-.rec-card li{font-size:.74rem;color:var(--silver);padding:3px 0;padding-left:14px;position:relative;line-height:1.5}
-.rec-card li::before{content:"·";position:absolute;left:0;color:var(--gold)}
-.rec-grid{grid-template-columns:1fr}
 .same-note{max-width:1100px;margin:20px auto 0;padding:16px 20px;background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.12);border-radius:8px;text-align:center;font-size:.82rem;color:var(--gold-light)}
-.tsd{color:#6aa0ce;font-size:.7rem}
-.tss{color:#4a9e6e;font-size:.7rem}
-.tsm{color:#9e8e4a;font-size:.7rem}
-.tsa{color:#ce6a6a;font-size:.7rem}
-.df{color:var(--gold-light);font-weight:500;background:rgba(201,169,110,.04)}
-@media(max-width:768px){
-.sec{padding:40px 16px}
-.sh{padding:14px 20px;flex-direction:column;align-items:flex-start;gap:6px}
-.rg{grid-template-columns:1fr}.sg{grid-template-columns:1fr 1fr}
-.intro-why{grid-template-columns:1fr}.intro-process{grid-template-columns:repeat(3,1fr)}.intro-cta{grid-template-columns:1fr}
-.cv-cards{grid-template-columns:1fr}.rec-grid{grid-template-columns:1fr}.ct-cards{grid-template-columns:1fr}
-.cmp-tbl{font-size:.68rem}.cmp-tbl td,.cmp-tbl th{padding:6px 4px}
-.pv{display:none}
-}
 
 </style>
-</head>
-<body>
-<nav class="pv"><a href="#cover"></a><a href="#about"></a><a href="#spec"></a><a href="#options"></a><a href="#guide"></a><a href="#contact"></a></nav>
-<!-- COVER -->
-<section id="cover" class="cv">
-<div class="cv-label">Mercedes-Benz Official Dealer · Motor One Goyang</div>
-<div class="cv-model" style="font-size:clamp(2.5rem,6vw,4.2rem)">E-Class</div>
+</head><body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<section id="cover" class="cover">
+<div class="cv-dealer">BenzDream · Brand Experiencer</div>
+<div class="cv-model">E-Class</div>
 <div class="cv-sub">W214 · MY26 · Full Lineup</div>
-<div class="cv-focus" style="max-width:700px">
-<div class="cv-focus-title">FOCUS LINEUP</div>
-<div class="cv-focus-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:12px">
-<div class="cv-focus-card" style="border-color:rgba(106,160,206,.3)"><span style="font-size:.6rem;color:#6aa0ce;letter-spacing:1px">ENTRY</span><br><strong>E 200</strong><br><span class="cv-fc-price">7,650만~</span></div>
-<div class="cv-focus-card" style="border-color:rgba(74,158,110,.3)"><span style="font-size:.6rem;color:#4a9e6e;letter-spacing:1px">DIESEL</span><br><strong>E 220d 4M</strong><br><span class="cv-fc-price">8,610만</span></div>
-<div class="cv-focus-card" style="border-color:rgba(201,169,110,.3)"><span style="font-size:.6rem;color:#c9a96e;letter-spacing:1px">MID</span><br><strong>E 300 4M</strong><br><span class="cv-fc-price">9,360만~</span></div>
-<div class="cv-focus-card" style="border-color:rgba(212,131,106,.3)"><span style="font-size:.6rem;color:#d4836a;letter-spacing:1px">FLAGSHIP</span><br><strong>E 450 4M</strong><br><span class="cv-fc-price">1억 1,460만~</span></div>
+<div class="cv-div"></div>
+<div class="cv-ko">벤츠 E클래스 전 트림 비교 가이드</div>
+<div class="cv-en">The Best or Nothing</div>
+<div class="cv-focus">
+<div class="cv-fl">Focus Lineup — 7개 트림 한눈에</div>
+<div class="cv-trims" style="flex-wrap:wrap;gap:16px">
+<div class="cv-tc gas">
+  <div class="cv-badge g">ENTRY · 가솔린 후륜</div>
+  <div class="cv-tn">E 200 AVANTGARDE</div>
+  <div class="cv-tp">7,650만원</div>
+  <div class="cv-tt">직4 · 204ps · 3등급 · RWD</div>
 </div>
+<div class="cv-tc gas" style="border-color:rgba(110,26,26,.4)">
+  <div class="cv-badge" style="background:rgba(110,26,26,.2);color:#e07070;border-color:rgba(110,26,26,.3)">AMG LINE · 가솔린 후륜</div>
+  <div class="cv-tn">E 200 AMG Line</div>
+  <div class="cv-tp">8,000만원</div>
+  <div class="cv-tt">직4 · 204ps · 3등급 · RWD</div>
 </div>
-<div class="cv-bottom">
-<div class="cv-dealer">BenzDream 한호만 팀장</div>
-<div class="cv-loc">모터원 메르세데스-벤츠 고양 전시장</div>
-<div class="cv-date">2026년 3월 기준 · 26년식</div>
+<div class="cv-tc diesel">
+  <div class="cv-badge d">DIESEL · 사륜</div>
+  <div class="cv-tn">E 220d 4MATIC EX</div>
+  <div class="cv-tp">8,610만원</div>
+  <div class="cv-tt">직4 디젤 · 197ps · 1등급 · AWD</div>
 </div>
+<div class="cv-tc gas">
+  <div class="cv-badge g">MID · 가솔린 사륜</div>
+  <div class="cv-tn">E 300 4MATIC EX</div>
+  <div class="cv-tp">9,360만원</div>
+  <div class="cv-tt">직4 · 258ps · 4등급 · AWD</div>
+</div>
+<div class="cv-tc gas" style="border-color:rgba(110,26,26,.4)">
+  <div class="cv-badge" style="background:rgba(110,26,26,.2);color:#e07070;border-color:rgba(110,26,26,.3)">MID · AMG LINE · 사륜</div>
+  <div class="cv-tn">E 300 4MATIC AMG</div>
+  <div class="cv-tp">9,770만원</div>
+  <div class="cv-tt">직4 · 258ps · 4등급 · AWD</div>
+</div>
+<div class="cv-tc gas">
+  <div class="cv-badge" style="background:rgba(212,131,106,.15);color:#d4836a;border-color:rgba(212,131,106,.3)">FLAGSHIP · AMG · 직6</div>
+  <div class="cv-tn">E 450 4MATIC AMG</div>
+  <div class="cv-tp">1억 1,460만원</div>
+  <div class="cv-tt">직6 · 381ps · 4등급 · AWD</div>
+</div>
+<div class="cv-tc gas">
+  <div class="cv-badge" style="background:rgba(212,131,106,.15);color:#d4836a;border-color:rgba(212,131,106,.3)">FLAGSHIP · EX · 직6 · 럭셔리</div>
+  <div class="cv-tn">E 450 4MATIC EX</div>
+  <div class="cv-tp">1억 2,820만원</div>
+  <div class="cv-tt">직6 · 381ps · 4등급 · AWD</div>
+</div>
+</div></div>
+<div class="cv-bot"><p style="font-size:.7rem;color:var(--silver);font-weight:300">2026.03 기준 · 공식 카탈로그 및 가격표 기반 · 벤츠 고양 전시장 BenzDream 한호만 팀장</p></div>
 </section>
 
+<!-- ==================== PAGE 2: ABOUT ==================== -->
 <section id="about" class="intro">
 <div class="intro-inner">
 <!-- Banner: BenzDream 배너 이미지 삽입 영역 -->
@@ -446,7 +441,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 <div class="intro-tagline fi">THE BEST OR NOTHING — BENZDREAM</div>
 </div>
 </section>
-<!-- SPEC COMPARISON -->
+
+<!-- ==================== PAGE 3: SPEC COMPARISON ==================== -->
 <section class="sec" id="spec" style="background:linear-gradient(180deg,var(--navy) 0%,var(--dark) 100%)"><div class="inn fi">
 <div style="text-align:center;margin-bottom:28px">
 <div style="font-family:'Cormorant Garamond',serif;font-size:.8rem;color:var(--gold-dim);letter-spacing:4px;margin-bottom:8px">POWERTRAIN & PERFORMANCE</div>
@@ -482,7 +478,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--dark);color:var(--li
 </div>
 </div></section>
 
-<!-- OPTION COMPARISON -->
+<!-- ==================== PAGE 4: OPTIONS COMPARISON ==================== -->
 <section class="sec" id="options" style="background:var(--dark)"><div class="inn fi">
 <div style="text-align:center;margin-bottom:28px">
 <div style="font-family:'Cormorant Garamond',serif;font-size:.8rem;color:var(--gold-dim);letter-spacing:4px;margin-bottom:8px">KEY EQUIPMENT COMPARISON</div>
@@ -544,7 +540,7 @@ DAP 플러스(안전) · 360° 카메라 · 파크트로닉 · 프리세이프 �
 </div>
 </div></section>
 
-<!-- RECOMMENDATION GUIDE -->
+<!-- ==================== PAGE 5: TRIM GUIDE ==================== -->
 <section class="sec" id="guide" style="background:linear-gradient(180deg,var(--dark) 0%,var(--navy) 100%)"><div class="inn fi">
 <div style="text-align:center;margin-bottom:28px">
 <div style="font-family:'Cormorant Garamond',serif;font-size:.8rem;color:var(--gold-dim);letter-spacing:4px;margin-bottom:8px">TRIM SELECTION GUIDE</div>
@@ -646,7 +642,7 @@ DAP 플러스(안전) · 360° 카메라 · 파크트로닉 · 프리세이프 �
 
 </div>
 </div></section>
-
+<!-- ==================== PAGE 6: CONTACT ==================== -->
 <section id="contact" class="co">
 <div class="co-badge">Brand Experiencer</div>
 <div class="co-name">한호만</div>
@@ -675,7 +671,7 @@ DAP 플러스(안전) · 360° 카메라 · 파크트로닉 · 프리세이프 �
 <span class="cta-btn-sub">24시간 문자 남기기 가능</span>
 </div>
 </a>
-<a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-btn cta-btn-form" onclick="handleClick('naver')">
+<a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-btn cta-btn-form" onclick="handleClick('form')">
 <span class="cta-btn-icon">📝</span>
 <div class="cta-btn-text">
 <span class="cta-btn-main">내가 원할 때 상담받기</span>
@@ -702,8 +698,10 @@ DAP 플러스(안전) · 360° 카메라 · 파크트로닉 · 프리세이프 �
 <div class="co-loc-label">SHOWROOM</div>
 <div class="co-loc-addr">📍 경기도 고양시 덕양구 의장로 110 · 모터원 고양 전시장</div>
 </div>
-<div class="co-copy">© 2026 BenzDream. E-Class W214 E200 어프로치북 — 고객 전달용 비매품 · 본 자료는 2026년 2월 기준이며, 사전 예고 없이 변경될 수 있습니다.</div>
+<div class="co-copy">© 2026 BenzDream. E-Class W214 Full Lineup 어프로치북 — 고객 전달용 비매품 · 본 자료는 2026년 3월 기준이며, 사전 예고 없이 변경될 수 있습니다.</div>
 </section>
+
+<!-- Back to Landing -->
 <div style="text-align:center; margin-top:48px; padding-bottom:24px;">
   <a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_Landing.html"
      style="display:inline-flex; align-items:center; gap:8px;
@@ -714,9 +712,18 @@ DAP 플러스(안전) · 360° 카메라 · 파크트로닉 · 프리세이프 �
     ← 전체 어프로치북 목록 보기
   </a>
 </div>
-<div style="text-align:center;padding:20px;font-size:.65rem;color:rgba(255,255,255,.3);line-height:1.6">
-본 자료는 2026년 3월 기준이며, 사전 예고 없이 변경될 수 있습니다.<br>
-정확한 가격 및 사양은 벤츠 고양 전시장 BenzDream 한호만 팀장에게 문의해 주세요.
-</div>
-</body>
-</html>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+function handleClick(t){
+const msgs={phone:'📞 전화 연결 중...',kakao:'💬 카카오톡 채널로 이동합니다',form:'📝 상담신청폼으로 이동합니다'};
+const toast=document.createElement('div');
+toast.textContent=msgs[t]||'';
+toast.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(201,169,110,.95);color:#0d0f14;padding:12px 24px;border-radius:8px;font-size:.85rem;font-weight:600;z-index:9999;animation:fu .3s ease';
+document.body.appendChild(toast);
+setTimeout(()=>toast.remove(),2500);
+}
+</script>
+</body></html>
