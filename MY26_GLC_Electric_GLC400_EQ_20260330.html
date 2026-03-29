@@ -169,6 +169,25 @@ table.ct tr:nth-child(even) td{background:rgba(42,138,190,.02)}
 .co-loc-addr{font-size:.88rem;font-weight:300;color:var(--silver)}
 .co-copy{font-size:.6rem;color:#555;letter-spacing:1px}
 
+/* Image Gallery */
+.gallery-section{padding:40px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.gallery-grid.two-col{grid-template-columns:repeat(2,1fr)}
+.gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(42,138,190,.12);background:var(--card);transition:all .3s}
+.gallery-item:hover{border-color:rgba(42,138,190,.35);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.gallery-item img{width:100%;height:auto;display:block;object-fit:cover}
+.gallery-item.hero img{aspect-ratio:16/9;object-fit:cover}
+.gallery-item.square img{aspect-ratio:1/1;object-fit:cover}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(10,12,18,.92) 0%,rgba(10,12,18,.5) 60%,transparent 100%);padding:20px 14px 12px;font-size:.72rem;color:var(--silver);line-height:1.5}
+.gallery-caption strong{display:block;font-size:.82rem;color:var(--white);margin-bottom:3px}
+.gallery-cat-title{font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:700;color:var(--ev-light);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(42,138,190,.15)}
+.section-hero{width:100%;max-width:900px;margin:0 auto 24px;border-radius:14px;overflow:hidden;border:1px solid rgba(42,138,190,.15)}
+.section-hero img{width:100%;height:auto;display:block}
+.inline-img{width:100%;border-radius:10px;overflow:hidden;margin:16px 0;border:1px solid rgba(42,138,190,.1)}
+.inline-img img{width:100%;height:auto;display:block}
+.cover-bg{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0;opacity:.18;background-size:cover;background-position:center}
+.cover>*{position:relative;z-index:1}
+
 /* Fade-in */
 .fi{opacity:0;transform:translateY(20px);transition:.6s ease}
 .fi.v{opacity:1;transform:translateY(0)}
@@ -193,6 +212,11 @@ table.ct tr:nth-child(even) td{background:rgba(42,138,190,.02)}
   .rec{grid-template-columns:1fr}
   .cv-trims{flex-direction:column;align-items:center}
   .cv-tc{min-width:280px}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid.two-col{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .gallery-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -203,6 +227,7 @@ table.ct tr:nth-child(even) td{background:rgba(42,138,190,.02)}
 
 <!-- ===== COVER ===== -->
 <section class="cover" id="p1">
+<div class="cover-bg" style="background-image:url('https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-all-eletric-glc-2400x2400-07-2025.jpg')"></div>
 <div class="cv-dealer">Mercedes-Benz Official Dealer</div>
 <div class="cv-model">GLC Electric</div>
 <div class="cv-sub">X254 EV · 순수 전기 SUV</div>
@@ -229,10 +254,7 @@ table.ct tr:nth-child(even) td{background:rgba(42,138,190,.02)}
 <div class="intro-inner">
 
 <div class="intro-hero-banner fi">
-<div class="banner-placeholder">
-<div class="banner-placeholder-icon">⚡</div>
-<div class="banner-placeholder-text">BenzDream · 한호만 팀장</div>
-</div>
+<img src="https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-exterior-2400x2400-07-2025.jpg" alt="신형 GLC Electric 익스테리어" style="width:100%;height:280px;object-fit:cover;display:block">
 <div class="ihb-overlay">
 <div class="ihb-label">Mercedes-Benz Official Dealer</div>
 <div class="ihb-name">한호만 <span>팀장</span></div>
@@ -434,10 +456,25 @@ table.ct tr:nth-child(even) td{background:rgba(42,138,190,.02)}
 <div class="ev-card-desc">360kW, 800Nm의 강력한 듀얼 모터 4MATIC 시스템. 정지 상태에서 100km/h까지 단 4.3초 — SUV의 역동성을 재정의합니다.</div>
 </div>
 <div class="ev-card">
+<div class="ev-card">
 <div class="ev-card-icon">✨</div>
 <div class="ev-card-title">MBUX 하이퍼스크린</div>
 <div class="ev-card-val">39.1"</div>
 <div class="ev-card-desc">운전석에서 조수석까지 하나의 유리면으로 이어지는 99.3cm 대형 디스플레이. 인스트루먼트 패널 전체를 아우르는 몰입형 디지털 경험.</div>
+</div>
+</div>
+
+<!-- Key Feature Images -->
+<div class="fi" style="margin-top:20px">
+<div class="gallery-grid two-col">
+<div class="gallery-item hero">
+<img src="https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-hyperscreen-2400x2400-07-2025.jpg" alt="MBUX 하이퍼스크린" loading="lazy">
+<div class="gallery-caption"><strong>MBUX Hyperscreen</strong>39.1인치 커브드 디스플레이</div>
+</div>
+<div class="gallery-item hero">
+<img src="https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-panoramic-roof-2400x2400-07-2025.jpg" alt="SKY CONTROL 파노라마 루프" loading="lazy">
+<div class="gallery-caption"><strong>SKY CONTROL</strong>파노라마 루프 & 앰비언트 라이트</div>
+</div>
 </div>
 </div>
 
@@ -584,6 +621,201 @@ table.ct tr:nth-child(even) td{background:rgba(42,138,190,.02)}
 차이는 외관 스타일과 내장 소재 / 디자인에 있습니다.<br>
 <em style="color:var(--silver);font-style:normal;font-size:.78rem">국내 출시 시 트림 구성과 가격은 변경될 수 있습니다. 편하게 상담 문의 주세요.</em>
 </p>
+</div>
+</div>
+</section>
+
+<!-- ===== PHOTO GALLERY ===== -->
+<section class="sec" id="gallery">
+<div class="sh">
+  <div>
+    <span class="b">OFFICIAL GALLERY · MERCEDES-BENZ.DE</span>
+    <span class="n">신형 GLC Electric 포토 갤러리</span>
+  </div>
+</div>
+<div class="gallery-section">
+
+<!-- Exterior -->
+<div class="gallery-cat-title fi">EXTERIOR · 익스테리어</div>
+<div class="gallery-grid fi">
+<div class="gallery-item hero" style="grid-column:1/-1">
+<img src="https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-all-eletric-glc-2400x2400-07-2025.jpg" alt="GLC Electric 전면" loading="lazy">
+<div class="gallery-caption"><strong>The All-Electric GLC</strong>순수 전기 SUV의 새로운 기준</div>
+</div>
+<div class="gallery-item">
+<img src="https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-exterior-2400x2400-07-2025.jpg" alt="GLC Electric 익스테리어" loading="lazy">
+<div class="gallery-caption"><strong>외관 디자인</strong>우아한 SUV 실루엣</div>
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/d/8c/247205405f9fb1285894824f781c355c4afa1.jpg" alt="GLC Electric" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/d/09/79e1ebbb4380491e226eae27b612f53c8e5e8.jpg" alt="GLC Electric 블랙" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/d/ab/cc88f5e1206e2c458cb3464304ad547fd25bd.jpg" alt="투명 후드 뷰" loading="lazy">
+<div class="gallery-caption"><strong>투명 후드</strong>Transparent Bonnet</div>
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/0/d5/352a908134bc873f5a3fee7018bbc7956228f.jpg" alt="GLC Electric 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/3/fc/6574797ba55a0ada610c1fb323cd612f2a3f9.jpg" alt="GLC Electric 디테일" loading="lazy">
+</div>
+</div>
+
+<!-- Interior & Technology -->
+<div class="gallery-cat-title fi" style="margin-top:32px">INTERIOR & TECHNOLOGY · 인테리어 & 테크놀로지</div>
+<div class="gallery-grid fi">
+<div class="gallery-item hero" style="grid-column:1/-1">
+<img src="https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-hyperscreen-2400x2400-07-2025.jpg" alt="MBUX 하이퍼스크린" loading="lazy">
+<div class="gallery-caption"><strong>MBUX Hyperscreen</strong>39.1인치 원 피스 커브드 디스플레이</div>
+</div>
+<div class="gallery-item">
+<img src="https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-panoramic-roof-2400x2400-07-2025.jpg" alt="SKY CONTROL 파노라마 루프" loading="lazy">
+<div class="gallery-caption"><strong>SKY CONTROL</strong>파노라마 루프</div>
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/e/54/ceedcaee30c340285e67961695b4b4524274d.jpg" alt="MBUX 증강 내비게이션 HUD" loading="lazy">
+<div class="gallery-caption"><strong>증강 내비게이션</strong>Head-Up Display</div>
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/b/1e/cca722ea151a69219ac75c709379d80637b2e.jpg" alt="Burmester 4D 서라운드" loading="lazy">
+<div class="gallery-caption"><strong>Burmester®</strong>하이엔드 4D 서라운드</div>
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/6/d4/bef5ef9aa66308d42c0cc5384958a218f388c.jpg" alt="GLC 인테리어" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/c/eb/b05860300610551a856766f428808373f5254.jpg" alt="GLC 인테리어" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/b/dc/4446d0f54dd99a0653cfd4c9e07bc6bd6d81f.jpg" alt="GLC 인테리어 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/6/c3/89e52c4a4777826911a118f1e425830e82d6a.jpg" alt="GLC 인테리어" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/3/58/3bde4d8d5278f1710b154012faa967287d6dc.jpg" alt="GLC 인테리어" loading="lazy">
+</div>
+</div>
+
+<!-- Driving & Comfort -->
+<div class="gallery-cat-title fi" style="margin-top:32px">DRIVING & COMFORT · 주행 & 컴포트</div>
+<div class="gallery-grid fi">
+<div class="gallery-item hero" style="grid-column:1/-1">
+<img src="https://www.mercedes-benz.de/content/dam/hq/passengercars/cars/glc/glc-suv-x540-pi/pad/spa/07-2025/images/mercedes-benz-glc-x540-pad-spa-agility-comfort-package-2400x2400-07-2025.jpg" alt="AIRMATIC 에어 서스펜션" loading="lazy">
+<div class="gallery-caption"><strong>AIRMATIC 에어 서스펜션</strong>Agility Comfort Package</div>
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/8/b7/4c1bc270f9f51018341da47037d405177cc3f.jpg" alt="GLC 주행" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/4/ff/44ff3e0bca476ee2eb751a1da52ad57cb11b7.jpg" alt="GLC 주행" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/b/4d/1e24e0d4b8d0b0e42315856b1deb6bbb0520d.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/7/ae/e55cf10b9e0dbb74ff05dbe3dcbdd1e4c5f15.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/0/94/c2b58b45b08e1e2e8e2a5e4f4eeb97f8f9b3e.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/0/62/9f80b962cef3bfa4e47a2f40e6dcfade13fb2.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+</div>
+
+<!-- Safety & Assistance -->
+<div class="gallery-cat-title fi" style="margin-top:32px">SAFETY & ASSISTANCE · 안전 & 어시스턴스</div>
+<div class="gallery-grid fi">
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/9/67/609e86a6859d76c5c3faef577eb6c27aac0af.jpg" alt="GLC 안전 시스템" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/9/59/ea675b8795a65390cc5acd6993a4ea0e23fee.jpg" alt="GLC 안전 시스템" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/7/5b/611d0347ba934118837ee3e6c67d6a21bd3f6.jpg" alt="GLC 안전 시스템" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/0/24/a416cad195285b17cd63247afa9ee6c2e843c.jpg" alt="GLC 어시스턴스" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/d/10/a749d3ab66bb69e7ec54799771d875f4c18a7.jpg" alt="GLC 어시스턴스" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/f/77/7f2d3d9072b416547895cb35acbc0081a4d04.jpg" alt="GLC 어시스턴스" loading="lazy">
+</div>
+</div>
+
+<!-- Charging & EV -->
+<div class="gallery-cat-title fi" style="margin-top:32px">CHARGING & EV · 충전 & 전기 시스템</div>
+<div class="gallery-grid fi">
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/a/f8/a19f243664249af2b9004adad4fc14c07f4e2.jpg" alt="GLC 충전" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/6/c4/a942e56c7f1d4ead5e8a07ac5566cf852035a.jpg" alt="GLC 충전" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/d/29/a5956dd18fbfa3a1ae52a2d4dd5b828365e20.jpg" alt="GLC 충전 시스템" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/5/75/e2a2cb5f59e3be91e7de5e7e3e2a7ee3ef18a.jpg" alt="GLC EV" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/e/fd/9b22b6215f397e8b27b8e2a5c5d76f3e48d8a.jpg" alt="GLC EV" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/a/d3/63e8f9cfca63e0a58e2c98c0d32e4a3d2946d.jpg" alt="GLC EV" loading="lazy">
+</div>
+</div>
+
+<!-- More Details -->
+<div class="gallery-cat-title fi" style="margin-top:32px">MORE DETAILS · 상세 디테일</div>
+<div class="gallery-grid fi">
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/1/6d/2f05ea9a7dc2a87b30ed3cbe3b0c8cbb9e6c6.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/8/d2/66eacc9d07e8ffc973fb6cfafb4c9a71e0cc1.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/a/66/ba8ce37b9af05c03f16c1123b3608f1a75862.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/d/ba/d370e4a0d503312d88a83fe49ffea421415c6.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/b/fb/e296a96d6ef96207a652e2416eee93cde1685.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/d/74/01a92d84f16c29486733ae2c412beed077903.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/c/a0/283c8f0c5188b83c0c89d04830bbcee7557f2.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/5/5d/de0706a520dcc203959cec6ff7346a9c85289.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/5/8e/5fe8eda4a073f5d0d80685830db2b8a1f999e.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/b/52/a619813fbb4c54158ba7c5582c6d51991af2e.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/9/72/dc9f3c88175a28a11c114cec1cecae7690db6.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+<div class="gallery-item">
+<img src="https://media.oneweb.mercedes-benz.com/images/static/v1/22392/7/69/23f64db82a60b9f95f3568a40e458eee31fe4.jpg" alt="GLC 디테일" loading="lazy">
+</div>
+</div>
+
+<div class="fi" style="margin-top:24px;padding:16px;background:rgba(42,138,190,.05);border-radius:10px;border:1px solid rgba(42,138,190,.12);text-align:center">
+<p style="font-size:.75rem;color:var(--silver)">이미지 출처: mercedes-benz.de 독일 공식 페이지 (2026.03 기준) · 국내 출시 사양과 다를 수 있습니다</p>
 </div>
 </div>
 </section>
