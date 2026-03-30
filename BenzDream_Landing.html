@@ -222,6 +222,18 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
   display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;
 }
 
+
+/* ── MODEL SECTION IMAGE ── */
+.ms-img{
+  width:100%;height:180px;object-fit:cover;object-position:center;
+  border-radius:12px;margin-bottom:14px;
+  opacity:.85;transition:opacity .3s;
+}
+.model-section:hover .ms-img{opacity:1;}
+@media(max-width:768px){
+  .ms-img{height:140px;border-radius:10px;margin-bottom:10px;}
+}
+
 /* ── PRICE LIST ── */
 /* ── INVENTORY ── */
 .inv-card{border-color:rgba(93,184,168,.2);background:linear-gradient(135deg,var(--card) 0%,rgba(93,184,168,.04) 100%);}
@@ -594,6 +606,7 @@ footer{
     <!-- A-Class -->
     <div class="model-section">
       <div class="model-section-label">A-Class</div>
+      <img src="images/A-Class.webp" alt="A-Class" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="MY26_AClass_A220_Hatch_Sedan_20260330.html" target="_blank" class="ab-card">
           <div class="ab-chip">A-Class · MY26</div>
@@ -607,6 +620,7 @@ footer{
     <!-- CLA -->
     <div class="model-section">
       <div class="model-section-label">CLA</div>
+      <img src="images/CLA_Coupe.webp" alt="CLA" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="MY26_CLA_CLA250_AMG_20260330.html" target="_blank" class="ab-card">
           <div class="ab-chip">CLA · MY26</div>
@@ -625,6 +639,7 @@ footer{
     <!-- C-Class -->
     <div class="model-section">
       <div class="model-section-label">C-Class</div>
+      <img src="images/C-Class.webp" alt="C-Class" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_CClass_C200_AV_AMG_20260330.html" target="_blank" class="ab-card">
           <div class="ab-chip">C-Class · MY26</div>
@@ -638,6 +653,7 @@ footer{
     <!-- E-Class -->
     <div class="model-section">
       <div class="model-section-label">E-Class</div>
+      <img src="images/E-Class.webp" alt="E-Class" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_EClass_FullLineup_20260303.html" target="_blank" class="ab-card" style="border-color:rgba(201,169,110,.3)">
           <div class="ab-chip" style="background:rgba(201,169,110,.15);color:#c9a96e">E-Class · MY26 · 전체 라인업</div>
@@ -692,6 +708,7 @@ footer{
     <!-- S-Class -->
     <div class="model-section">
       <div class="model-section-label">S-Class</div>
+      <img src="images/S-Class_Long.webp" alt="S-Class" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_SClass_S350d_S450SWB_20260330.html" target="_blank" class="ab-card">
           <div class="ab-chip">S-Class · MY26</div>
@@ -744,6 +761,7 @@ footer{
 <!-- GLA·GLB 섹션 -->
     <div class="model-section">
       <div class="model-section-label">GLA · GLB</div>
+      <img src="images/GLA.webp" alt="GLA GLB" class="ms-img" loading="lazy">
       <div class="sub-class-label">컴팩트 SUV</div>
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_GLA_GLB_250_4M_20260330.html" target="_blank" class="ab-card">
@@ -758,6 +776,7 @@ footer{
     <!-- GLC 섹션 -->
     <div class="model-section">
       <div class="model-section-label">GLC</div>
+      <img src="images/GLC.webp" alt="GLC" class="ms-img" loading="lazy">
       <div class="body-type-grid">
         <div>
           <div class="sub-class-label">일반형</div>
@@ -783,6 +802,7 @@ footer{
     <!-- GLE 섹션 -->
     <div class="model-section">
       <div class="model-section-label">GLE</div>
+      <img src="images/GLE.webp" alt="GLE" class="ms-img" loading="lazy">
       <div class="body-type-grid">
         <div>
           <div class="sub-class-label">일반형</div>
@@ -809,6 +829,7 @@ footer{
     <div class="sub-class-label">GLS · 풀사이즈</div>
     <div class="model-section" style="border-color:rgba(201,169,110,.2);background:rgba(201,169,110,.02);">
       <div class="model-section-label" style="color:#c9a96e;">GLS · 마이바흐</div>
+      <img src="images/GLS.webp" alt="GLS" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_GLS_GLS450_GLS580_AMG_20260329.html" target="_blank" class="ab-card">
           <div class="ab-chip">GLS · MY26</div>
@@ -838,6 +859,7 @@ footer{
 
     <div class="model-section" style="border-color:rgba(93,184,168,.2);background:rgba(93,184,168,.02);">
       <div class="model-section-label" style="color:#5db8a8;">EQA · EQB</div>
+      <img src="images/EQA.webp" alt="EQA EQB" class="ms-img" loading="lazy">
       <div class="approach-grid">
 <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_EQA_EQA250_PRG_AMG_20260330.html" target="_blank" class="ab-card eq-card">
           <div class="ab-chip eq-chip">EQA · MY26</div>
@@ -855,6 +877,7 @@ footer{
       </div>
 
       <div class="model-section-label" style="color:#5db8a8;">EQE SUV</div>
+      <img src="images/EQE_SUV.webp" alt="EQE SUV" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY25_EQESUV_EQE350_EQE500_20260228.html" target="_blank" class="ab-card eq-card">
           <div class="ab-chip eq-chip">EQE SUV · MY25</div>
@@ -873,6 +896,7 @@ footer{
     <!-- CLE Coupé -->
     <div class="model-section">
       <div class="model-section-label">CLE Coupé</div>
+      <img src="images/CLE_Coupe.webp" alt="CLE Coupe" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_CLECoupe_CLE450_AMG53_20260223.html" target="_blank" class="ab-card" style="border-top:3px solid #b01020">
           <div class="ab-chip" style="background:rgba(176,16,32,.15);color:#e06070;border-color:rgba(176,16,32,.3);">CLE Coupé · AMG · MY26</div>
@@ -886,6 +910,7 @@ footer{
     <!-- CLE Coupé -->
     <div class="model-section">
       <div class="model-section-label">CLE Coupé</div>
+      <img src="images/CLE_Coupe.webp" alt="CLE Coupe" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_CLECoupe_CLE200_CLE450_20260330.html" target="_blank" class="ab-card">
           <div class="ab-chip">CLE Coupé · MY26</div>
@@ -899,6 +924,7 @@ footer{
     <!-- CLE Cabriolet -->
     <div class="model-section">
       <div class="model-section-label">CLE Cabriolet</div>
+      <img src="images/CLE_Cabriolet.webp" alt="CLE Cabriolet" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_CLECabriolet_CLE450_AMG53_20260330.html" target="_blank" class="ab-card" style="border-top:3px solid #b01020">
           <div class="ab-chip" style="background:rgba(176,16,32,.15);color:#e03050;border-color:rgba(176,16,32,.3)">CLE Cabriolet · MY26</div>
@@ -926,6 +952,7 @@ footer{
     <!-- AMG SL · GT -->
     <div class="model-section">
       <div class="model-section-label">AMG SL · GT</div>
+      <img src="images/AMG_GT_Coupe.webp" alt="AMG GT SL" class="ms-img" loading="lazy">
       <div class="approach-grid">
         <a href="https://homanhan-glitch.github.io/benzdream-approach/MY26_SL_SL43_SL63_20260330.html" target="_blank" class="ab-card" style="border-top:3px solid #b01020">
           <div class="ab-chip" style="background:rgba(176,16,32,.15);color:#e03050;border-color:rgba(176,16,32,.3)">AMG SL · MY26</div>
