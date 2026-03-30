@@ -225,18 +225,18 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 
 /* ── MODEL SECTION IMAGE ── */
 .ms-img-wrap{
-  position:relative;width:100%;height:160px;margin-bottom:12px;
-  overflow:hidden;
-  -webkit-mask-image:linear-gradient(to bottom, black 50%, transparent 100%);
-  mask-image:linear-gradient(to bottom, black 50%, transparent 100%);
+  width:100%;height:180px;overflow:hidden;margin-bottom:8px;
+  display:flex;align-items:center;justify-content:center;
 }
 .ms-img-wrap img{
-  width:100%;height:100%;object-fit:cover;object-position:center 35%;
-  display:block;transition:transform .6s ease;
+  height:100%;width:auto;max-width:100%;
+  object-fit:contain;
+  display:block;transition:transform .5s ease;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,.4));
 }
-.model-section:hover .ms-img-wrap img{transform:scale(1.04);}
+.model-section:hover .ms-img-wrap img{transform:scale(1.05);}
 @media(max-width:768px){
-  .ms-img-wrap{height:120px;margin-bottom:8px;}
+  .ms-img-wrap{height:130px;margin-bottom:6px;}
 }
 
 /* ── PRICE LIST ── */
