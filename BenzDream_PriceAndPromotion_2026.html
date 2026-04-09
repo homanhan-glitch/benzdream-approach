@@ -81,16 +81,16 @@ body {
 }
 .hero-banner {
   width: 100%;
-  height: 240px;
+  height: 320px;
   object-fit: cover;
-  object-position: center top;
+  object-position: right center;
   display: block;
-  opacity: .85;
+  opacity: 1;
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(13,15,20,.92) 45%, rgba(13,15,20,.5) 100%);
+  background: linear-gradient(to right, rgba(13,15,20,.96) 0%, rgba(13,15,20,.85) 35%, rgba(13,15,20,.1) 70%, rgba(13,15,20,0) 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -375,8 +375,8 @@ body {
 .scroll-top:hover { background: rgba(201,169,110,.3); }
 
 @media (max-width: 600px) {
-  .hero-overlay { padding: 0 20px; }
-  .hero-banner { height: 180px; }
+  .hero-overlay { padding: 0 20px; background: linear-gradient(to bottom, rgba(13,15,20,.92) 0%, rgba(13,15,20,.78) 55%, rgba(13,15,20,.35) 100%); }
+  .hero-banner { height: 260px; object-position: right center; opacity: 1; }
   .hero-title { font-size: 1.6rem; }
   .content { padding: 24px 14px 60px; }
   .cta-bar { flex-direction: column; align-items: flex-start; }
