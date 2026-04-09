@@ -84,21 +84,20 @@ body {
 }
 .hero-banner {
   width: 100%;
-  height: 320px;
+  height: 380px;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 25%;
   display: block;
-  opacity: .28;
-  filter: blur(1px);
+  opacity: 1;
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(13,15,20,.55) 0%, rgba(13,15,20,.85) 100%);
+  background: linear-gradient(to bottom, rgba(13,15,20,0) 0%, rgba(13,15,20,0) 35%, rgba(13,15,20,.7) 65%, rgba(13,15,20,.95) 100%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0 40px;
+  justify-content: flex-end;
+  padding: 0 40px 28px;
 }
 .hero-label {
   font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
@@ -379,8 +378,8 @@ body {
 .scroll-top:hover { background: rgba(201,169,110,.3); }
 
 @media (max-width: 600px) {
-  .hero-overlay { padding: 0 20px; background: radial-gradient(ellipse at center, rgba(13,15,20,.6) 0%, rgba(13,15,20,.9) 100%); }
-  .hero-banner { height: 260px; object-position: center center; opacity: .25; }
+  .hero-overlay { padding: 0 20px 22px; background: linear-gradient(to bottom, rgba(13,15,20,0) 0%, rgba(13,15,20,0) 30%, rgba(13,15,20,.75) 60%, rgba(13,15,20,.96) 100%); }
+  .hero-banner { height: 340px; object-position: center 22%; opacity: 1; }
   .hero-title { font-size: 1.6rem; }
   .content { padding: 24px 14px 60px; }
   .cta-bar { flex-direction: column; align-items: flex-start; }
@@ -448,13 +447,14 @@ body {
   letter-spacing: .3px;
 }
 .extra-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
   font-size: .82rem;
   color: var(--light);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 .extra-tag {
   font-family: 'MBK CorpoA', 'Outfit', sans-serif;
@@ -462,18 +462,18 @@ body {
   font-weight: 700;
   color: var(--dark);
   background: var(--gold);
-  padding: 4px 10px;
+  padding: 6px 10px;
   border-radius: 4px;
   letter-spacing: .8px;
   white-space: nowrap;
-  flex-shrink: 0;
-  margin-top: 1px;
+  text-align: center;
 }
+.extra-desc { display: block; }
 .extra-desc strong { color: var(--gold-light); font-family: 'MBK CorpoA', 'Outfit', sans-serif; font-weight: 700; }
 @media (max-width: 600px) {
   .extra-notice { padding: 16px 14px; }
-  .extra-item { flex-direction: column; gap: 4px; font-size: .76rem; }
-  .extra-tag { align-self: flex-start; }
+  .extra-item { grid-template-columns: 1fr; gap: 6px; font-size: .78rem; }
+  .extra-tag { justify-self: start; }
 }
 </style>
 </head>
@@ -515,8 +515,8 @@ body {
 
   <div class="extra-notice">
     <div class="extra-title">공통 추가 할인 적용 안내</div>
-    <div class="extra-item"><span class="extra-tag">Cash Retention</span><span class="extra-desc">재구매 고객 — AMG · Maybach · S-Class · G-Class <strong>+2%</strong> / 이외 모든 차량 <strong>+1%</strong></span></div>
-    <div class="extra-item"><span class="extra-tag">Conquest</span><span class="extra-desc">GLC · GLE — BMW · Audi · Genesis · Volvo · Porsche · Land Rover 보유 고객 <strong>+1%</strong></span></div>
+    <div class="extra-item"><span class="extra-tag">Cash Retention</span><span class="extra-desc">재구매 고객 — AMG · Maybach · S-Class · G-Class <strong>+2%</strong><br>그 외 모든 차량 <strong>+1%</strong></span></div>
+    <div class="extra-item"><span class="extra-tag">Conquest</span><span class="extra-desc">GLC · GLE 구매 시 — BMW · Audi · Genesis · Volvo · Porsche · Land Rover<br>보유 고객 <strong>+1%</strong></span></div>
   </div>
 
 
