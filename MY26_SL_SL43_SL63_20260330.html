@@ -28,6 +28,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'MBK CorpoA';src:url('fonts/MBKCorpoA.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'MBK CorpoS Light';src:url('fonts/MBKCorporateSLight.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'MBK CorpoA Cond';src:url('fonts/MBKCorporateACon.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+
 :root {
   --dark: #0d0f14;
   --navy: #141824;
@@ -48,7 +52,7 @@ html { font-size: 16px; scroll-behavior: smooth; }
 body {
   background: var(--dark);
   color: var(--light);
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'MBK CorpoS Light','Noto Sans KR', sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
 }
@@ -193,7 +197,7 @@ section {
   gap: 0;
 }
 .cover-dealer-label {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'MBK CorpoA','Cormorant Garamond', serif;
   font-size: .75rem;
   letter-spacing: 3px;
   color: var(--gold-dim);
@@ -201,7 +205,7 @@ section {
   margin-bottom: 28px;
 }
 .cover-class {
-  font-family: 'Playfair Display', serif;
+  font-family: 'MBK CorpoA Cond','Playfair Display', serif;
   font-size: clamp(3rem, 10vw, 5rem);
   font-weight: 700;
   line-height: 1.0;
@@ -210,7 +214,7 @@ section {
 }
 .cover-class span { color: var(--gold); }
 .cover-sub {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'MBK CorpoA','Cormorant Garamond', serif;
   font-size: 1rem;
   font-weight: 300;
   color: var(--silver);
@@ -257,14 +261,14 @@ section {
 }
 .cl-label.amg-label { color: #c07070; }
 .cl-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: .95rem;
   font-weight: 600;
   color: var(--white);
   line-height: 1.3;
 }
 .cl-price {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.55rem;
   font-weight: 700;
   color: var(--gold);
@@ -289,7 +293,7 @@ section {
 }
 .cover-dealer strong { color: var(--gold); font-weight: 500; }
 .cover-date {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'MBK CorpoA','Cormorant Garamond', serif;
   font-size: .75rem;
   color: var(--gold-dim);
   text-align: right;
@@ -334,7 +338,7 @@ section {
   margin-bottom: 6px;
 }
 .intro-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.7rem;
   font-weight: 700;
   color: var(--white);
@@ -379,7 +383,7 @@ section {
   border-radius: 10px;
 }
 .intro-stat-num {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.9rem;
   font-weight: 700;
   color: var(--gold);
@@ -407,7 +411,7 @@ section {
   letter-spacing: 1.5px;
 }
 .intro-role-main {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--gold);
@@ -463,7 +467,7 @@ section {
 }
 .intro-ps-item { text-align: center; }
 .intro-ps-num {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--gold);
@@ -504,7 +508,7 @@ section {
 .intro-tagline {
   text-align: center;
   margin-top: 18px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'MBK CorpoA','Cormorant Garamond', serif;
   font-size: .74rem;
   letter-spacing: 2.5px;
   color: var(--gold-dim);
@@ -542,13 +546,13 @@ section {
   letter-spacing: 1.5px;
 }
 .sh .n {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.0rem;
   font-weight: 700;
   color: var(--white);
 }
 .sh .pr {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.55rem;
   font-weight: 700;
   color: var(--gold);
@@ -582,7 +586,7 @@ section {
 .rg-item.up { border-color: rgba(201,169,110,.38); background: rgba(201,169,110,.06); }
 .rl { font-size: .74rem; color: var(--silver); font-weight: 300; }
 .rv {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: .84rem;
   font-weight: 500;
   color: var(--white);
@@ -591,7 +595,7 @@ section {
 
 /* Section title */
 .sec-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.0rem;
   font-weight: 700;
   color: var(--white);
@@ -634,7 +638,7 @@ section {
   margin-bottom: 28px;
 }
 .compare-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'MBK CorpoA Cond','Playfair Display', serif;
   font-size: 1.7rem;
   font-weight: 700;
   color: var(--white);
@@ -654,7 +658,7 @@ section {
 .compare-table th {
   padding: 12px 10px;
   text-align: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-weight: 600;
   font-size: .78rem;
   letter-spacing: .5px;
@@ -673,7 +677,7 @@ section {
 .compare-table tr:nth-child(even) td { background: rgba(255,255,255,.018); }
 .df {
   color: var(--gold) !important;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-weight: 600;
 }
 .df.amg-df { color: #e87070 !important; }
@@ -709,7 +713,7 @@ section {
 .rec-tag.cle-tag { background: var(--cle); color: var(--white); }
 .rec-tag.amg-tag { background: var(--amg); color: var(--white); }
 .rec-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: .92rem;
   font-weight: 700;
   color: var(--white);
@@ -741,7 +745,7 @@ section {
   padding: 50px 28px;
 }
 .contact-logo {
-  font-family: 'Playfair Display', serif;
+  font-family: 'MBK CorpoA Cond','Playfair Display', serif;
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--gold);
@@ -749,7 +753,7 @@ section {
   margin-bottom: 3px;
 }
 .contact-tagline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'MBK CorpoA','Cormorant Garamond', serif;
   font-size: .82rem;
   letter-spacing: 3.5px;
   color: var(--gold-dim);
@@ -757,7 +761,7 @@ section {
   margin-bottom: 20px;
 }
 .contact-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit', sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--white);
@@ -870,7 +874,7 @@ section {
 /* Contact section base */
 .co{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center;background:var(--dark,#0d0f14)}
 .co-badge{font-size:.65rem;color:var(--gold,#c9a96e);letter-spacing:3px;margin-bottom:10px;text-transform:uppercase}
-.co-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--white,#f5f5f7);margin-bottom:6px}
+.co-name{font-family:'MBK CorpoA Cond','Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--white,#f5f5f7);margin-bottom:6px}
 .co-title{font-size:.85rem;font-weight:300;color:var(--silver,#a8aab0);margin-bottom:40px}
 .co-loc{margin-bottom:30px}
 .co-loc-label{font-size:.65rem;color:var(--gold-dim,#8a7a50);letter-spacing:3px;margin-bottom:8px}
@@ -885,7 +889,7 @@ section {
 
 .cta-btn-form,.cta-btn-form:hover,/* ── CONTACT (랜딩페이지 완전 통일) ── */
 .cta-buttons{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
-.cta-btn{display:flex;align-items:center;gap:10px;padding:18px 24px;border-radius:14px;font-family:'Noto Sans KR',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;border:none;transition:all .2s ease;position:relative;overflow:hidden;}
+.cta-btn{display:flex;align-items:center;gap:10px;padding:18px 24px;border-radius:14px;font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;border:none;transition:all .2s ease;position:relative;overflow:hidden;}
 .cta-btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .15s;}
 .cta-btn:active::after{background:rgba(255,255,255,.08);}
 .cta-btn-phone{background:linear-gradient(135deg,#1a2035,#252d45);border:1.5px solid rgba(201,169,110,.5);color:var(--gold-light,#ddc08a);box-shadow:0 4px 20px rgba(0,0,0,.3);}
@@ -900,10 +904,10 @@ section {
 .cta-btn-sub{display:block;font-size:.72rem;font-weight:400;opacity:.75;margin-top:1px;}
 .phone-display{background:rgba(24,28,40,.8);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
 .phone-label{font-size:.7rem;color:var(--silver,#a8aab0);}
-.phone-num{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold,#c9a96e);letter-spacing:.05em;}
+.phone-num{font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold,#c9a96e);letter-spacing:.05em;}
 .contact-profile{background:var(--navy,#141824);border:1px solid rgba(201,169,110,.12);border-radius:16px;padding:20px;margin-bottom:16px;display:flex;align-items:center;gap:16px;}
 .cp-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim,#8a7a50),var(--gold,#c9a96e));display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;border:2px solid rgba(201,169,110,.3);}
-.cp-name{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white,#f5f5f7);margin-bottom:3px;}
+.cp-name{font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white,#f5f5f7);margin-bottom:3px;}
 .cp-title{font-size:.75rem;color:var(--silver,#a8aab0);margin-bottom:5px;}
 .cp-badge{display:inline-block;font-size:.65rem;background:rgba(201,169,110,.12);color:var(--gold,#c9a96e);border:1px solid rgba(201,169,110,.25);border-radius:4px;padding:2px 8px;}
 .co-yt{display:flex;align-items:center;gap:10px;background:rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.15);border-radius:12px;padding:14px 18px;text-decoration:none;color:var(--light,#e2e3e7);margin-bottom:16px;transition:all .2s;}
@@ -911,7 +915,7 @@ section {
 .co-yt-icon{font-size:1.4rem;}
 .co-yt-main{font-size:.85rem;font-weight:700;}
 .co-yt-sub{font-size:.7rem;color:var(--silver,#a8aab0);}
-.co-yt-cnt{margin-left:auto;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;color:#ff4444;}
+.co-yt-cnt{margin-left:auto;font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.8rem;font-weight:700;color:#ff4444;}
 @media(max-width:768px){.cta-btn{padding:14px 16px;}}
 </style>
 </head>
@@ -1405,13 +1409,13 @@ section {
   </div>
 </div>
 <div style="background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(201,169,110,.03));border:1px solid rgba(201,169,110,.25);border-radius:16px;padding:28px 20px;text-align:center;margin-top:14px;">
-  <p style="font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.15em;color:var(--gold,#c9a96e);margin:0 0 8px;">KAKAO CHANNEL</p>
-  <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--white,#f5f5f7);margin:0 0 8px;font-weight:700;">매월 프로모션 리포트 받아보기</h3>
-  <p style="font-family:'Noto Sans KR',sans-serif;font-size:.82rem;color:var(--silver,#a8aab0);line-height:1.7;margin:0 0 20px;">카카오 채널을 추가하시면<br>매월 <span style="color:var(--gold-light,#ddc08a);font-weight:500;">차종별 프로모션 및 구매전략 리포트</span>를 발송드립니다.</p>
-  <a href="http://pf.kakao.com/_UqxiIX" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#FEE500;color:#3C1E1E;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;padding:12px 28px;border-radius:50px;text-decoration:none;letter-spacing:.03em;">
+  <p style="font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.15em;color:var(--gold,#c9a96e);margin:0 0 8px;">KAKAO CHANNEL</p>
+  <h3 style="font-family:'MBK CorpoA Cond','Playfair Display',serif;font-size:1.25rem;color:var(--white,#f5f5f7);margin:0 0 8px;font-weight:700;">매월 프로모션 리포트 받아보기</h3>
+  <p style="font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif;font-size:.82rem;color:var(--silver,#a8aab0);line-height:1.7;margin:0 0 20px;">카카오 채널을 추가하시면<br>매월 <span style="color:var(--gold-light,#ddc08a);font-weight:500;">차종별 프로모션 및 구매전략 리포트</span>를 발송드립니다.</p>
+  <a href="http://pf.kakao.com/_UqxiIX" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#FEE500;color:#3C1E1E;font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.9rem;font-weight:700;padding:12px 28px;border-radius:50px;text-decoration:none;letter-spacing:.03em;">
     💬 카카오 채널 추가하기
   </a>
-  <p style="font-family:'Noto Sans KR',sans-serif;font-size:.72rem;color:var(--gold-dim,#8a7a50);margin:12px 0 0;">채널 추가 후 리포트를 무료로 받아보실 수 있습니다.</p>
+  <p style="font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif;font-size:.72rem;color:var(--gold-dim,#8a7a50);margin:12px 0 0;">채널 추가 후 리포트를 무료로 받아보실 수 있습니다.</p>
 </div>
 <div class="co-loc">
 <div class="co-loc-label">SHOWROOM</div>
@@ -1475,7 +1479,7 @@ function showToast(msg){const el=document.getElementById('toast');if(!el)return;
        style="display:inline-flex; align-items:center; gap:8px;
               color:#c9a96e; border:1px solid #8a7a50;
               padding:12px 28px; border-radius:40px;
-              font-family:'Outfit',sans-serif; font-size:.9rem;
+              font-family:'MBK CorpoA','Outfit',sans-serif; font-size:.9rem;
               text-decoration:none; letter-spacing:.05em;
               transition: background .2s;"
        onmouseover="this.style.background='rgba(201,169,110,.08)'"
