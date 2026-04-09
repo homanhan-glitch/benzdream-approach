@@ -27,6 +27,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700;900&family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'MBK CorpoA';
+  src: url('fonts/MBKCorpoA.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MBK CorpoS Light';
+  src: url('fonts/MBKCorporateSLight.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MBK CorpoA Cond';
+  src: url('fonts/MBKCorporateACon.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --dark: #0d0f14;
   --navy: #141824;
@@ -44,7 +66,7 @@ html { font-size: 16px; scroll-behavior: smooth; }
 body {
   background: var(--dark);
   color: var(--light);
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'MBK CorpoS Light', 'Noto Sans KR', sans-serif;
   font-weight: 300;
   min-height: 100vh;
 }
@@ -75,7 +97,7 @@ body {
   padding: 0 40px;
 }
 .hero-label {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
   font-size: .8rem;
   letter-spacing: 3px;
   color: var(--gold-dim);
@@ -83,7 +105,7 @@ body {
   margin-bottom: 8px;
 }
 .hero-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'MBK CorpoA Cond', 'Playfair Display', serif;
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 700;
   color: var(--white);
@@ -99,7 +121,7 @@ body {
 }
 .hero-date {
   margin-top: 10px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .75rem;
   color: var(--gold-dim);
   letter-spacing: 1px;
@@ -125,7 +147,7 @@ body {
   align-items: center;
 }
 .nav-btn {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'MBK CorpoS Light', 'Noto Sans KR', sans-serif;
   font-size: .75rem;
   font-weight: 400;
   color: var(--silver);
@@ -175,7 +197,7 @@ body {
   flex-shrink: 0;
 }
 .section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'MBK CorpoA Cond', 'Playfair Display', serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--white);
@@ -183,7 +205,7 @@ body {
 .section-sub {
   font-size: .75rem;
   color: var(--gold-dim);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
@@ -193,7 +215,7 @@ body {
   margin-bottom: 24px;
 }
 .sub-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .72rem;
   font-weight: 600;
   color: var(--gold-dim);
@@ -237,7 +259,7 @@ body {
   font-weight: 200;
 }
 .price-val {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .95rem;
   font-weight: 600;
   color: var(--gold);
@@ -263,7 +285,7 @@ body {
 /* YEAR TAG */
 .year-tag {
   display: inline-block;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .65rem;
   font-weight: 700;
   padding: 2px 7px;
@@ -288,7 +310,7 @@ body {
   flex-wrap: wrap;
 }
 .cta-text .t1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'MBK CorpoA Cond', 'Playfair Display', serif;
   font-size: 1.1rem;
   color: var(--white);
   margin-bottom: 4px;
@@ -304,7 +326,7 @@ body {
   flex-wrap: wrap;
 }
 .cta-btn {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .78rem;
   font-weight: 600;
   padding: 9px 18px;
@@ -364,7 +386,7 @@ body {
 
 .price-table thead tr.thead-row { border-bottom: 1px solid rgba(201,169,110,.3); }
 .price-table thead th {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .68rem;
   font-weight: 600;
   color: var(--gold-dim);
@@ -376,7 +398,7 @@ body {
 .price-table thead th.th-right { text-align: right; }
 .price-table thead th.th-center { text-align: center; }
 .discount-cell {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .85rem;
   font-weight: 600;
   color: #e07b7b;
@@ -384,7 +406,7 @@ body {
   white-space: nowrap;
 }
 .real-val {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .98rem;
   font-weight: 700;
   color: var(--white);
@@ -414,7 +436,7 @@ body {
   box-shadow: 0 0 24px rgba(201,169,110,.15);
 }
 .extra-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'MBK CorpoA Cond', 'Playfair Display', serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--gold);
@@ -431,7 +453,7 @@ body {
   line-height: 1.6;
 }
 .extra-tag {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA', 'Outfit', sans-serif;
   font-size: .68rem;
   font-weight: 700;
   color: var(--dark);
@@ -443,7 +465,7 @@ body {
   flex-shrink: 0;
   margin-top: 1px;
 }
-.extra-desc strong { color: var(--gold-light); font-family: 'Outfit', sans-serif; font-weight: 700; }
+.extra-desc strong { color: var(--gold-light); font-family: 'MBK CorpoA', 'Outfit', sans-serif; font-weight: 700; }
 @media (max-width: 600px) {
   .extra-notice { padding: 16px 14px; }
   .extra-item { flex-direction: column; gap: 4px; font-size: .76rem; }

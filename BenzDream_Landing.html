@@ -41,6 +41,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'MBK CorpoA';
+  src: url('fonts/MBKCorpoA.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MBK CorpoS Light';
+  src: url('fonts/MBKCorporateSLight.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MBK CorpoA Cond';
+  src: url('fonts/MBKCorporateACon.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --dark:#0d0f14;
@@ -58,7 +77,7 @@ html{scroll-behavior:smooth}
 body{
   background:var(--dark);
   color:var(--light);
-  font-family:'Noto Sans KR',sans-serif;
+  font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif;
   font-weight:300;
   min-height:100vh;
   overflow-x:hidden;
@@ -96,7 +115,7 @@ body{
   animation:fadeUp .9s ease both;
 }
 .hero-label{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'MBK CorpoA','Cormorant Garamond',serif;
   font-size:.85rem;
   font-weight:400;
   letter-spacing:.35em;
@@ -106,7 +125,7 @@ body{
   opacity:.85;
 }
 .hero-name{
-  font-family:'Playfair Display',serif;
+  font-family:'MBK CorpoA Cond','Playfair Display',serif;
   font-size:clamp(2.8rem,9vw,5.5rem);
   font-weight:700;
   color:var(--white);
@@ -117,7 +136,7 @@ body{
 }
 .hero-name span{color:var(--gold);}
 .hero-sub{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'MBK CorpoA','Cormorant Garamond',serif;
   font-size:clamp(1.1rem,3vw,1.6rem);
   font-weight:300;
   color:var(--silver);
@@ -172,7 +191,7 @@ body{
 }
 .stat{text-align:center;}
 .stat-num{
-  font-family:'Outfit',sans-serif;font-size:2rem;font-weight:700;
+  font-family:'MBK CorpoA','Outfit',sans-serif;font-size:2rem;font-weight:700;
   color:var(--gold);display:block;
   text-shadow:0 0 20px var(--glow);
 }
@@ -181,12 +200,12 @@ body{
 /* ── SECTION COMMON ── */
 section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 .sec-label{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'MBK CorpoA','Cormorant Garamond',serif;
   font-size:.8rem;letter-spacing:.3em;color:var(--gold);
   text-transform:uppercase;margin-bottom:12px;opacity:.8;
 }
 .sec-title{
-  font-family:'Playfair Display',serif;
+  font-family:'MBK CorpoA Cond','Playfair Display',serif;
   font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;
   color:var(--white);margin-bottom:40px;
   padding-bottom:20px;
@@ -197,13 +216,13 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 .class-group{margin-bottom:40px;}
 .class-label{
   display:flex;align-items:center;gap:12px;
-  font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:600;
+  font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.75rem;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dim);
   margin-bottom:14px;
 }
 .class-label::after{content:'';flex:1;height:1px;background:rgba(201,169,110,.15);}
 .sub-class-label{
-  font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:600;
+  font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.7rem;font-weight:600;
   letter-spacing:.1em;text-transform:uppercase;color:var(--silver);
   margin:20px 0 10px;padding-left:2px;
   display:flex;align-items:center;gap:8px;
@@ -216,7 +235,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 .eq-card{border-color:rgba(93,184,168,.15);}
 .eq-card:hover{border-color:rgba(93,184,168,.45);box-shadow:0 4px 24px rgba(93,184,168,.1);}
 .model-section{border:1px solid rgba(201,169,110,.1);border-radius:14px;padding:20px 20px 16px;margin-bottom:20px;background:rgba(201,169,110,.02);}
-.model-section-label{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:4px;}
+.model-section-label{font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:4px;}
 .model-section .sub-class-label{margin-top:14px;}
 .approach-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;
@@ -245,7 +264,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 .inv-card:hover{border-color:rgba(93,184,168,.5);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(93,184,168,.15);}
 .inv-icon{background:rgba(93,184,168,.1);border-color:rgba(93,184,168,.25);color:#5db8a8;}
 .inv-card .pl-cta{color:#5db8a8;}
-.inv-update{font-size:.68rem;color:#5db8a8;margin-top:4px;font-family:'Outfit',sans-serif;font-weight:500;letter-spacing:.03em;}
+.inv-update{font-size:.68rem;color:#5db8a8;margin-top:4px;font-family:'MBK CorpoA','Outfit',sans-serif;font-weight:500;letter-spacing:.03em;}
 .pl-card{
   background:var(--card);border-radius:16px;
   border:1px solid rgba(201,169,110,.2);
@@ -269,12 +288,12 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 }
 .pl-info{}
 .pl-title{
-  font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:600;
+  font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1.05rem;font-weight:600;
   color:var(--white);margin-bottom:4px;
 }
 .pl-desc{font-size:.78rem;color:var(--silver);line-height:1.5;}
 .pl-cta{
-  font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:600;
+  font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.82rem;font-weight:600;
   color:var(--gold);white-space:nowrap;
   display:flex;align-items:center;gap:6px;
   transition:gap .2s;
@@ -299,7 +318,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
   box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(201,169,110,.15);
 }
 .ab-model{
-  font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;
+  font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1.1rem;font-weight:600;
   color:var(--white);
 }
 .ab-trim{font-size:.8rem;color:var(--silver);line-height:1.5;}
@@ -311,7 +330,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
   width:fit-content;
 }
 .ab-arrow{
-  margin-top:auto;font-family:'Outfit',sans-serif;font-size:.8rem;
+  margin-top:auto;font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.8rem;
   color:var(--gold-dim);display:flex;align-items:center;gap:6px;
   transition:gap .2s,color .2s;
 }
@@ -340,10 +359,10 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
   font-size:1.8rem;
 }
 .yt-info{flex:1;}
-.yt-name{font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:6px;}
+.yt-name{font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:6px;}
 .yt-desc{font-size:.85rem;color:var(--silver);line-height:1.6;}
 .yt-sub{
-  font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;
+  font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1.1rem;font-weight:700;
   color:var(--gold);white-space:nowrap;
   text-shadow:0 0 20px var(--glow);
 }
@@ -360,7 +379,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 .cta-btn{
   display:flex;align-items:center;gap:10px;
   padding:18px 24px;border-radius:14px;
-  font-family:'Noto Sans KR',sans-serif;font-size:1rem;font-weight:700;
+  font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif;font-size:1rem;font-weight:700;
   cursor:pointer;text-decoration:none;border:none;
   transition:all .2s ease;position:relative;overflow:hidden;
 }
@@ -390,7 +409,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
   border-radius:12px;padding:14px 20px;
   display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;
 }
-.phone-num{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold);letter-spacing:.05em;}
+.phone-num{font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1.1rem;font-weight:600;color:var(--gold);letter-spacing:.05em;}
 .phone-label{font-size:.7rem;color:var(--silver);}
 
 /* 프로필 카드 */
@@ -405,7 +424,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
   display:flex;align-items:center;justify-content:center;
   font-size:1.5rem;flex-shrink:0;border:2px solid rgba(201,169,110,.3);
 }
-.cp-name{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:3px;}
+.cp-name{font-family:'MBK CorpoA','Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:3px;}
 .cp-title{font-size:.75rem;color:var(--silver);margin-bottom:5px;}
 .cp-badge{
   display:inline-block;font-size:.65rem;
@@ -425,7 +444,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
 .contact-yt .yt-main{font-size:.85rem;font-weight:700;}
 .contact-yt .yt-sub{font-size:.7rem;color:var(--silver);}
 .contact-yt .yt-count{
-  margin-left:auto;font-family:'Outfit',sans-serif;
+  margin-left:auto;font-family:'MBK CorpoA','Outfit',sans-serif;
   font-size:.8rem;font-weight:700;color:#ff4444;
 }
 
@@ -451,7 +470,7 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
   margin-bottom:80px;
 }
 .tagline-text{
-  font-family:'Cormorant Garamond',serif;
+  font-family:'MBK CorpoA','Cormorant Garamond',serif;
   font-size:clamp(1.1rem,3vw,1.6rem);
   font-weight:400;font-style:italic;
   color:var(--gold-light);
@@ -559,9 +578,9 @@ footer{
     text-align: center;
     margin-bottom: 0;
   ">
-    <p style="font-family:'Outfit',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; color:var(--gold); margin:0 0 10px;">KAKAO CHANNEL</p>
-    <h2 style="font-family:'Playfair Display',serif; font-size:1.55rem; color:var(--white); margin:0 0 12px; font-weight:700;">매월 프로모션 리포트 받아보기</h2>
-    <p style="font-family:'Noto Sans KR',sans-serif; font-size:.92rem; color:var(--silver); line-height:1.8; margin:0 0 28px;">
+    <p style="font-family:'MBK CorpoA','Outfit',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; color:var(--gold); margin:0 0 10px;">KAKAO CHANNEL</p>
+    <h2 style="font-family:'MBK CorpoA Cond','Playfair Display',serif; font-size:1.55rem; color:var(--white); margin:0 0 12px; font-weight:700;">매월 프로모션 리포트 받아보기</h2>
+    <p style="font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif; font-size:.92rem; color:var(--silver); line-height:1.8; margin:0 0 28px;">
       카카오 채널을 추가하시면<br>
       매월 <span style="color:var(--gold-light); font-weight:500;">차종별 프로모션 및 구매전략 리포트</span>를 발송드립니다.
     </p>
@@ -571,7 +590,7 @@ footer{
       gap: 10px;
       background: #FEE500;
       color: #3C1E1E;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'MBK CorpoA','Outfit',sans-serif;
       font-size: .95rem;
       font-weight: 700;
       padding: 14px 32px;
@@ -593,7 +612,7 @@ footer{
       </svg>
       카카오 채널 추가하기
     </a>
-    <p style="font-family:'Noto Sans KR',sans-serif; font-size:.78rem; color:var(--gold-dim); margin:16px 0 0;">
+    <p style="font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif; font-size:.78rem; color:var(--gold-dim); margin:16px 0 0;">
       채널 추가 후 리포트를 무료로 받아보실 수 있습니다.
     </p>
   </div>
@@ -1076,9 +1095,9 @@ footer{
     padding: 36px 32px;
     text-align: center;
   ">
-    <p style="font-family:'Outfit',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; color:var(--gold); margin:0 0 10px;">KAKAO CHANNEL</p>
-    <h2 style="font-family:'Playfair Display',serif; font-size:1.55rem; color:var(--white); margin:0 0 12px; font-weight:700;">매월 프로모션 리포트 받아보기</h2>
-    <p style="font-family:'Noto Sans KR',sans-serif; font-size:.92rem; color:var(--silver); line-height:1.8; margin:0 0 28px;">
+    <p style="font-family:'MBK CorpoA','Outfit',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; color:var(--gold); margin:0 0 10px;">KAKAO CHANNEL</p>
+    <h2 style="font-family:'MBK CorpoA Cond','Playfair Display',serif; font-size:1.55rem; color:var(--white); margin:0 0 12px; font-weight:700;">매월 프로모션 리포트 받아보기</h2>
+    <p style="font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif; font-size:.92rem; color:var(--silver); line-height:1.8; margin:0 0 28px;">
       카카오 채널을 추가하시면<br>
       매월 <span style="color:var(--gold-light); font-weight:500;">차종별 프로모션 및 구매전략 리포트</span>를 발송드립니다.
     </p>
@@ -1088,7 +1107,7 @@ footer{
       gap: 10px;
       background: #FEE500;
       color: #3C1E1E;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'MBK CorpoA','Outfit',sans-serif;
       font-size: .95rem;
       font-weight: 700;
       padding: 14px 32px;
@@ -1108,7 +1127,7 @@ footer{
       </svg>
       카카오 채널 추가하기
     </a>
-    <p style="font-family:'Noto Sans KR',sans-serif; font-size:.78rem; color:var(--gold-dim); margin:16px 0 0;">
+    <p style="font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif; font-size:.78rem; color:var(--gold-dim); margin:16px 0 0;">
       채널 추가 후 리포트를 무료로 받아보실 수 있습니다.
     </p>
   </div>
@@ -1116,7 +1135,7 @@ footer{
 
 <!-- FOOTER -->
 <footer>
-  <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:12px;">BenzDream</p>
+  <p style="font-family:'MBK CorpoA Cond','Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:12px;">BenzDream</p>
   <p>벤츠 고양 전시장 · 모터원고양</p>
   <p>경기도 고양시 덕양구 의장로 110</p>
   <p style="margin-top:8px;font-size:.7rem;opacity:.5;">© 2026 BenzDream 한호만. All rights reserved.</p>
