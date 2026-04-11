@@ -128,6 +128,30 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
 .class-block ul li::before{content:"—";position:absolute;left:0;color:var(--gold);font-weight:700}
 .class-block ul li b{color:var(--ink);font-weight:600}
 
+/* ===== Price Table (증권사 리포트 데이터 테이블 스타일) ===== */
+.ptbl-wrap{margin:16px 0 6px;border:1px solid var(--line);background:var(--paper-2)}
+.ptbl-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--ink);color:#fff}
+.ptbl-head-label{font-family:'MBK CorpoA',sans-serif;font-size:.65rem;letter-spacing:.15em;font-weight:500}
+.ptbl-head-unit{font-family:'MBK CorpoA',sans-serif;font-size:.62rem;letter-spacing:.08em;color:#8a909e}
+table.ptbl{width:100%;border-collapse:collapse;font-family:'MBK CorpoA',sans-serif}
+table.ptbl thead th{font-size:.64rem;font-weight:500;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;padding:9px 12px;background:#f4f5f7;border-bottom:1px solid var(--line);text-align:right}
+table.ptbl thead th:first-child{text-align:left}
+table.ptbl tbody td{font-size:.82rem;color:var(--ink-2);padding:10px 12px;border-bottom:1px solid var(--line-soft);text-align:right;font-weight:500}
+table.ptbl tbody td:first-child{text-align:left;font-weight:500;color:var(--ink);font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif}
+table.ptbl tbody tr:last-child td{border-bottom:none}
+table.ptbl tbody tr:hover{background:#fafbfc}
+table.ptbl td.pct{color:var(--gold-dark);font-weight:600}
+table.ptbl td.net{color:var(--ink);font-weight:700}
+table.ptbl td.dash{color:var(--muted-2);font-weight:400}
+table.ptbl tr.hl td{background:#fbf8f0}
+table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-size:.7rem}
+@media (max-width:640px){
+  table.ptbl thead th,table.ptbl tbody td{padding:8px 8px;font-size:.72rem}
+  table.ptbl tbody td:first-child{font-size:.72rem}
+  .ptbl-head-label{font-size:.58rem}
+  .ptbl-head-unit{font-size:.55rem}
+}
+
 /* ===== CTA ===== */
 .cta{background:var(--ink);color:#fff;margin:0;padding:48px}
 .cta-label{font-family:'MBK CorpoA',sans-serif;font-size:.7rem;letter-spacing:.2em;color:var(--gold);margin-bottom:10px;font-weight:500}
@@ -326,6 +350,15 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <span class="class-view view-hold">HOLD · 현 상태 유지</span>
     </div>
     <p>무난한 수준의 프로모션입니다. 재고가 많지 않아 <strong>향후 급격한 변동은 없을 것으로 예상</strong>됩니다. 지금 필요하시면 지금 사시는 게 답입니다.</p>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">A-Class · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>A 220 Hatch</td><td>4,810</td><td class="pct">10%</td><td class="net">4,329</td></tr>
+<tr><td>A 220 Sedan</td><td>4,990</td><td class="pct">5%</td><td class="net">4,740</td></tr>
+<tr><td>Mercedes-AMG A 35 4MATIC</td><td>6,770</td><td class="dash">—</td><td class="net">6,770</td></tr>
+<tr><td>Mercedes-AMG A 45 S 4MATIC+</td><td>8,040</td><td class="pct">9%</td><td class="net">7,316</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -339,6 +372,14 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
     <ul>
       <li><b>CLA 45 S Final Edition</b> — 니치 수요층에겐 매력적인 모델. AMG 45 S의 내연기관 피날레 성격.</li>
     </ul>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">CLA · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>CLA 250 4MATIC AMG Line</td><td>6,370</td><td class="pct">7%</td><td class="net">5,924</td></tr>
+<tr><td>Mercedes-AMG CLA 45 S 4MATIC+</td><td>9,060</td><td class="pct">5%</td><td class="net">8,607</td></tr>
+<tr class="hl"><td>Mercedes-AMG CLA 45 S Final Edition</td><td>9,580</td><td class="dash">—</td><td class="net">9,580</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -351,6 +392,15 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <li><b>GLA</b> — 소형 SUV의 명확한 수요층이 있는 모델. 현재 재고 대비 구매 조건이 좋아 <strong>적극 추천</strong>.</li>
       <li><b>GLB</b> — CLA와 함께 하반기 전동화/하이브리드 모델 출시 예정. 재고도 충분해 <em>프로모션이 더 상승할 여지</em>가 있는 모델로, 급하지 않으시다면 대기 전략도 유효합니다.</li>
     </ul>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">GLA · GLB · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr class="hl"><td>GLA 250 4MATIC AMG Line</td><td>6,910</td><td class="pct">11%</td><td class="net">6,149</td></tr>
+<tr><td>GLB 200 d</td><td>6,330</td><td class="dash">—</td><td class="net">6,330</td></tr>
+<tr><td>GLB 250 4MATIC</td><td>7,110</td><td class="pct">11%</td><td class="net">6,327</td></tr>
+<tr><td>Mercedes-AMG GLB 35 4MATIC</td><td>7,850</td><td class="pct">11%</td><td class="net">6,986</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -360,6 +410,13 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <span class="class-view view-buy">BUY · 매수 추천</span>
     </div>
     <p><strong>기존 대비 프로모션이 오히려 상승한 구간</strong>입니다. 그래서 오히려 지금이 좋은 타이밍입니다. 특히 <em>베이지 시트 같은 인기 색상</em>은 수요층에게 재고 자체가 프로모션보다 더 중요한 포인트 — 색상 재고 확인을 먼저 하시는 걸 추천드립니다.</p>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">C-Class · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>C 200 AVANTGARDE</td><td>6,430</td><td class="pct">11%</td><td class="net">5,722</td></tr>
+<tr class="hl"><td>C 200 AMG Line</td><td>6,750</td><td class="pct">11%</td><td class="net">6,007</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -376,6 +433,21 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <li><b>E 300 4MATIC AMG Line (140주년 Edition)</b> — 상품성 + 희소성 조합, 적극 추천.</li>
       <li><b>E 450 4MATIC EXCLUSIVE</b> — 프로모션 대폭 축소. 한동안 관망층이 많을 것으로 예상되는 모델로, 급하지 않으시면 대기도 전략.</li>
     </ul>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">E-Class · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr class="hl"><td>E 200 AVANTGARDE</td><td>7,650</td><td class="pct">16%</td><td class="net">6,426</td></tr>
+<tr><td>E 200 EXCLUSIVE</td><td>7,660</td><td class="pct">5%</td><td class="net">7,277</td></tr>
+<tr><td>E 200 AMG Line</td><td>8,000</td><td class="pct">11%</td><td class="net">7,120</td></tr>
+<tr><td>E 220 d 4MATIC EXCLUSIVE</td><td>8,610</td><td class="pct">9%</td><td class="net">7,835</td></tr>
+<tr><td>E 300 4MATIC EXCLUSIVE</td><td>9,360</td><td class="pct">11%</td><td class="net">8,330</td></tr>
+<tr><td>E 300 4MATIC AMG Line</td><td>9,770</td><td class="pct">11%</td><td class="net">8,695</td></tr>
+<tr><td>E 350 e 4MATIC EXCLUSIVE</td><td>9,870</td><td class="pct">11%</td><td class="net">8,784</td></tr>
+<tr><td>E 450 4MATIC AMG Line</td><td>11,460</td><td class="pct">11%</td><td class="net">10,199</td></tr>
+<tr><td>E 450 4MATIC EXCLUSIVE</td><td>12,820</td><td class="pct">11%</td><td class="net">11,409</td></tr>
+<tr><td>Mercedes-AMG E 53 HYBRID 4MATIC+</td><td>14,160</td><td class="pct">10%</td><td class="net">12,744</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -389,6 +461,21 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <li><b>SWB 엔트리 (S 350 d · S 450 4MATIC)</b> — <strong>지금이 최적기</strong>. 상품성 개선 대비 가격 상승이 미미하며, 재고도 생각보다 빠르게 줄고 있습니다. (Top Pick 03 참고)</li>
       <li><b>S 450 Long · S 500 · S 580 · Maybach</b> — 프로모션이 대폭 줄었지만 <em>애초에 재고 자체가 매우 적습니다</em>. 할인폭 축소가 실제 구매에 주는 영향은 제한적. 추가 입항 물량이 들어올 때까지 <strong>관망 권장</strong>.</li>
     </ul>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">S-Class · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr class="hl"><td>S 350 d 4MATIC</td><td>15,260</td><td class="pct">10%</td><td class="net">13,734</td></tr>
+<tr class="hl"><td>S 350 d 4MATIC (CY25/2)</td><td>15,360</td><td class="pct">10%</td><td class="net">13,824</td></tr>
+<tr class="hl"><td>S 450 4MATIC</td><td>15,960</td><td class="pct">8%</td><td class="net">14,683</td></tr>
+<tr class="hl"><td>S 450 4MATIC (CY25/2)</td><td>16,060</td><td class="pct">8%</td><td class="net">14,775</td></tr>
+<tr><td>S 450 4MATIC (Long)</td><td>19,160</td><td class="pct">10%</td><td class="net">17,244</td></tr>
+<tr><td>S 450 4MATIC (Long) (CY25/2)</td><td>19,360</td><td class="pct">10%</td><td class="net">17,424</td></tr>
+<tr><td>S 500 4MATIC</td><td>21,360</td><td class="pct">10%</td><td class="net">19,224</td></tr>
+<tr><td>S 500 4MATIC (CY25/2)</td><td>21,560</td><td class="pct">10%</td><td class="net">19,404</td></tr>
+<tr><td>S 580 4MATIC</td><td>25,860</td><td class="pct">10%</td><td class="net">23,274</td></tr>
+<tr><td>Mercedes-AMG S 63 E Performance</td><td>29,760</td><td class="pct">10%</td><td class="net">26,784</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -399,6 +486,19 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
     </div>
     <p>오픈카 시즌에 맞춰 <strong>카브리올레 물량이 대거 입항</strong>했습니다. 구매 조건도 상당히 좋은 만큼 카브리올레 중심으로 적극 추천드립니다. <b>140주년 Edition</b>도 함께 검토해볼 만합니다.</p>
     <p>참고로 53의 인기가 높아지면서 <em>향후 450 물량은 점진적으로 줄고 53 물량이 늘어날 것</em>으로 예상됩니다.</p>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">CLE · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>CLE 200 Coupé AMG Line</td><td>7,570</td><td class="pct">5%</td><td class="net">7,191</td></tr>
+<tr><td>CLE 450 4MATIC Coupé AMG Line</td><td>9,840</td><td class="pct">9%</td><td class="net">8,954</td></tr>
+<tr><td>Mercedes-AMG CLE 53 4MATIC+ Coupé</td><td>10,770</td><td class="pct">3%</td><td class="net">10,446</td></tr>
+<tr><td>AMG CLE 53 Coupé Limited Edition</td><td>13,130</td><td class="dash">—</td><td class="net">13,130</td></tr>
+<tr class="hl"><td>CLE 200 Cabriolet AMG Line</td><td>8,210</td><td class="pct">4%</td><td class="net">7,881</td></tr>
+<tr class="hl"><td>CLE 450 4MATIC Cabriolet AMG Line</td><td>10,260</td><td class="pct">6%</td><td class="net">9,644</td></tr>
+<tr class="hl"><td>Mercedes-AMG CLE 53 Cabriolet</td><td>11,360</td><td class="pct">3%</td><td class="net">11,019</td></tr>
+<tr class="hl"><td>AMG CLE 53 Cabriolet Limited Edition</td><td>13,730</td><td class="dash">—</td><td class="net">13,730</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -408,6 +508,18 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <span class="class-view view-buy">BUY · 선택지 확대</span>
     </div>
     <p>기존과 큰 차이 없는 프로모션입니다. 다만 중요한 변화 하나 — <strong>할인율 차이로 AVANTGARDE와 AMG Line의 가격차가 현실적인 수준으로 줄었습니다</strong>. 그동안은 "가격이 부담되니 AVANTGARDE"가 정석이었다면, 이제는 <em>본인 니즈에 따라 선택</em>하시는 것이 맞습니다. AMG Line의 가치가 가격차를 충분히 상쇄합니다.</p>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">GLC · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>GLC 220 d 4MATIC</td><td>8,120</td><td class="pct">7%</td><td class="net">7,551</td></tr>
+<tr><td>GLC 300 4MATIC AVANTGARDE</td><td>8,140</td><td class="pct">9%</td><td class="net">7,407</td></tr>
+<tr class="hl"><td>GLC 300 4MATIC AMG Line</td><td>9,140</td><td class="pct">12%</td><td class="net">8,043</td></tr>
+<tr><td>Mercedes-AMG GLC 43 4MATIC</td><td>10,230</td><td class="pct">7%</td><td class="net">9,513</td></tr>
+<tr><td>GLC 300 4MATIC Coupé AVANTGARDE</td><td>8,550</td><td class="pct">9%</td><td class="net">7,780</td></tr>
+<tr><td>GLC 300 4MATIC Coupé AMG Line</td><td>9,570</td><td class="pct">9%</td><td class="net">8,708</td></tr>
+<tr><td>Mercedes-AMG GLC 43 4MATIC Coupé</td><td>10,690</td><td class="pct">3%</td><td class="net">10,369</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -417,6 +529,19 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <span class="class-view view-buy">STRONG BUY · 최우선 추천</span>
     </div>
     <p>이번 달 <strong>가장 추천드리는 카테고리</strong>입니다. 상세 내용은 Top Pick 01 참고. AMG Line은 이미 빠르게 소진되고 있어 관심 있으신 분은 서두르시는 것이 좋습니다.</p>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">GLE · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>GLE 350 4MATIC</td><td>11,660</td><td class="pct">10%</td><td class="net">10,494</td></tr>
+<tr><td>GLE 300 d 4MATIC</td><td>11,780</td><td class="pct">8%</td><td class="net">10,837</td></tr>
+<tr class="hl"><td>GLE 450 4MATIC</td><td>12,760</td><td class="pct">14%</td><td class="net">10,973</td></tr>
+<tr class="hl"><td>GLE 450 4MATIC AMG Line</td><td>13,760</td><td class="pct">14%</td><td class="net">11,833</td></tr>
+<tr><td>Mercedes-AMG GLE 53 4MATIC+</td><td>16,460</td><td class="pct">8%</td><td class="net">15,143</td></tr>
+<tr><td>GLE 450 d 4MATIC Coupé AMG Line</td><td>13,260</td><td class="pct">8%</td><td class="net">12,199</td></tr>
+<tr class="hl"><td>GLE 450 4MATIC Coupé AMG Line</td><td>14,110</td><td class="pct">14%</td><td class="net">12,134</td></tr>
+<tr><td>Mercedes-AMG GLE 53 4MATIC+ Coupé</td><td>16,860</td><td class="pct">5%</td><td class="net">16,017</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -426,6 +551,17 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <span class="class-view view-watch">WATCH · 입항 대기</span>
     </div>
     <p><strong>재고가 거의 없어 현재 프로모션은 사실상 무의미한 상황</strong>입니다. 구매 조건 자체는 좋기 때문에, 향후 입항 예정 물량에 대한 <em>사전 계약 검토</em>가 필요합니다. GLS 관심 있으신 분은 카톡 주시면 입항 일정 공유드리겠습니다.</p>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">GLS · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>GLS 450 d 4MATIC AMG Line</td><td>15,260</td><td class="pct">3%</td><td class="net">14,802</td></tr>
+<tr><td>GLS 450 4MATIC AMG Line</td><td>15,260</td><td class="pct">6%</td><td class="net">14,344</td></tr>
+<tr><td>GLS 450 d 4MATIC AMG Line Premium</td><td>15,710</td><td class="dash">—</td><td class="net">15,710</td></tr>
+<tr><td>GLS 450 4MATIC AMG Line Premium</td><td>15,710</td><td class="dash">—</td><td class="net">15,710</td></tr>
+<tr><td>GLS 580 4MATIC AMG Line</td><td>19,200</td><td class="pct">7%</td><td class="net">17,856</td></tr>
+<tr><td>Mercedes-AMG GLS 63 4MATIC+</td><td>20,860</td><td class="pct">1%</td><td class="net">20,651</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -436,6 +572,15 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
     </div>
     <p>상황이 복잡합니다. <strong>수출시장 이슈로 기존 대기 계약이 지나치게 많아</strong> 현재 시점으로는 구매 시기 특정이 어렵습니다.</p>
     <p>다만 중요한 변화가 예정되어 있습니다 — 향후 3개월 내 <em>수출 목적 계약들이 상당수 정리될 전망</em>입니다. 실수요자 입장에서는 <strong>대기 계약을 미리 걸어두시면 예상보다 빠르게 출고받으실 가능성</strong>이 있습니다. 전략적 대기를 권장드립니다.</p>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">G-Class · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>G 450 d</td><td>19,350</td><td class="dash">—</td><td class="net">19,350</td></tr>
+<tr><td>G 450 d MANUFAKTUR</td><td>21,770</td><td class="dash">—</td><td class="net">21,770</td></tr>
+<tr><td>Mercedes-AMG G 63</td><td>26,120</td><td class="dash">—</td><td class="net">26,120</td></tr>
+<tr><td>Mercedes-AMG G 63 MANUFAKTUR</td><td>28,840</td><td class="dash">—</td><td class="net">28,840</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -450,6 +595,21 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <li><b>EQB</b> — 재고 충분. <em>오히려 향후 조건이 더 좋아질 가능성</em>.</li>
       <li><b>EQE 350+ SUV</b> — 기존보다 합리적인 가격대로 출시. <strong>1억 언더 전동 SUV 실수요층에게 메리트 있는 구간</strong>.</li>
     </ul>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">전동화 EQ · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>EQA 250 Progressive</td><td>7,000</td><td class="pct">10%</td><td class="net">6,300</td></tr>
+<tr><td>EQA 250 AMG Line</td><td>7,580</td><td class="pct">10%</td><td class="net">6,822</td></tr>
+<tr><td>EQB 300 4MATIC Progressive</td><td>7,880</td><td class="pct">10%</td><td class="net">7,092</td></tr>
+<tr><td>EQB 300 4MATIC AMG Line</td><td>8,430</td><td class="pct">10%</td><td class="net">7,587</td></tr>
+<tr class="hl"><td>EQE 350+ SUV</td><td>10,600</td><td class="pct">10%</td><td class="net">9,540</td></tr>
+<tr><td>EQE 350+</td><td>11,000</td><td class="pct">10%</td><td class="net">9,900</td></tr>
+<tr><td>EQE 500 4MATIC SUV</td><td>14,080</td><td class="pct">10%</td><td class="net">12,672</td></tr>
+<tr><td>EQS 450 4MATIC SUV</td><td>16,460</td><td class="pct">10%</td><td class="net">14,814</td></tr>
+<tr><td>EQS 580 4MATIC SUV</td><td>19,060</td><td class="dash">—</td><td class="net">19,060</td></tr>
+<tr><td>G 580 with EQ Technology</td><td>21,470</td><td class="dash">—</td><td class="net">21,470</td></tr>
+</tbody></table></div>
   </div>
 
   <div class="class-block">
@@ -459,6 +619,18 @@ em{font-style:normal;color:var(--gold-dark);font-weight:500}
       <span class="class-view view-watch">WATCH · 관망</span>
     </div>
     <p>브랜드 가치 보존 목적으로 <strong>프로모션이 대폭 축소</strong>되었습니다. 다만 이것이 부정적 신호는 아닙니다 — <em>실제 재고 자체가 워낙 적어 프로모션을 올릴 필요도 없는 상황</em>입니다. 향후 입항 예정 물량에 따라 변동 가능성을 염두에 두고 관망을 권장드립니다.</p>
+  
+    <div class="ptbl-wrap">
+<div class="ptbl-head"><span class="ptbl-head-label">Maybach · 4월 프로모션</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
+<table class="ptbl"><thead><tr><th>모델</th><th>권장가</th><th>할인</th><th>실구매가</th></tr></thead><tbody>
+<tr><td>Mercedes-Maybach S 580</td><td>31,560</td><td class="pct">9%</td><td class="net">28,719</td></tr>
+<tr><td>Mercedes-Maybach S 680</td><td>40,160</td><td class="pct">9%</td><td class="net">36,545</td></tr>
+<tr><td>Mercedes-Maybach S 680 "V12 Edition"</td><td>47,800</td><td class="dash">—</td><td class="net">47,800</td></tr>
+<tr><td>Mercedes-Maybach SL 680</td><td>34,260</td><td class="pct">2%</td><td class="net">33,574</td></tr>
+<tr><td>Mercedes-Maybach GLS 600</td><td>29,360</td><td class="pct">6%</td><td class="net">27,598</td></tr>
+<tr><td>Mercedes-Maybach GLS 600 MANUFAKTUR</td><td>33,560</td><td class="pct">6%</td><td class="net">31,546</td></tr>
+<tr><td>Mercedes-Maybach EQS 680 SUV</td><td>23,360</td><td class="dash">—</td><td class="net">23,360</td></tr>
+</tbody></table></div>
   </div>
 </section>
 
