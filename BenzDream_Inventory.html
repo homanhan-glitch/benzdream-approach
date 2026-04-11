@@ -40,6 +40,10 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 .kpi-1 .kpi-num{color:#c9a96e} .kpi-2 .kpi-num{color:#10b981}
 .kpi-3 .kpi-num{color:#f59e0b} .kpi-4 .kpi-num{color:#3b82f6}
 
+
+.kpi-note{background:#0f1119;border-radius:8px;padding:9px 12px;margin-bottom:12px;font-size:10px;color:#888;line-height:1.6}
+.kpi-note b{color:#3b82f6;font-family:'Outfit',sans-serif}
+
 /* Tabs */
 .tabs{display:flex;gap:3px;background:#141824;border-radius:10px;padding:3px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
@@ -154,6 +158,18 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
   <div class="updated" id="updated">최종 업데이트 2026-04-10</div>
 </div>
 
+<!-- 용어 정의 -->
+<div class="glossary">
+  <div class="gl-title">📖 용어 정의</div>
+  <div class="gl-items">
+    <div class="gl-item"><b style="color:#c9a96e">전체 재고</b> = 판매가능 + 계약중 (타파트너사가 가진 재고는 미포함)</div>
+    <div class="gl-item"><b style="color:#10b981">판매 가능</b> = 아직 아무도 계약하지 않은 차량 (모터원·타사 영업 가능)</div>
+    <div class="gl-item"><b style="color:#f59e0b">계약 중</b> = 모터원 영업사원이 가계약 체결한 차량 (담당자 배정됨)</div>
+    <div class="gl-item"><b style="color:#ef4444">계약률</b> = 계약중 ÷ 전체 × 100 (해당 트림이 얼마나 빨리 빠지는지)</div>
+    <div class="gl-item note-warn">⚠️ 타파트너사 영업사원의 계약 현황은 이 재고표에서 확인 불가. 계약률은 <b>모터원 계약분만</b> 집계됨</div>
+  </div>
+</div>
+
 <!-- 입항예정 알림 -->
 <div class="arrival" id="arrivalBanner">
   <div class="arrival-row">
@@ -174,6 +190,11 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
   <div class="kpi kpi-4"><div class="kpi-num" id="k4">0%</div><div class="kpi-lbl">계약률</div><div class="kpi-delta flat" id="d4">-</div></div>
 </div>
 
+<div class="kpi-note">
+  <b>계약률 5.0%</b> = 전체 3,815대 중 192대가 모터원 영업사원에게 가계약 체결 상태<br>
+  <span style="color:#666">델타(▲▼) = 어제(4/9) 대비 변동 · 계약률은 %p 단위</span>
+</div>
+
 <div class="tabs">
   <button class="tab active" onclick="showTab('top20',this)">🔥 Top 20</button>
   <button class="tab" onclick="showTab('trending',this)">📈 상승 트림</button>
@@ -185,35 +206,74 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 </div>
 
 <div id="t-top20" class="tab-content">
-  <div class="note"><b>재고 많은순 Top 20</b> · 계약률 변동으로 시장 관심도 확인<br><span style="color:#666">계약률 우측 ▲▼ = 어제 대비 %p 변동</span></div>
+  <div class="legend">
+  <div class="legend-title">🔥 재고 많은순 Top 20</div>
+  <div class="legend-desc">MBK 전체 재고 중 모델별 대수가 가장 많은 20개 트림. <b style="color:#c9a96e">재고가 많다 = 공급 충분</b>, <b style="color:#ef4444">계약률이 높다 = 수요 뜨거움</b></div>
+  <div class="legend-cols">
+    <div class="legend-col"><b class="col-gold">대수</b> 전체 재고 (판매가능+계약)</div>
+    <div class="legend-col"><b class="col-orange">계약률</b> 계약 ÷ 전체 × 100</div>
+    <div class="legend-col"><b>▲▼</b> 어제 대비 변동</div>
+  </div>
+</div>
   <div class="section">
     <div class="top20" id="top20List"></div>
   </div>
 </div>
 
 <div id="t-trending" class="tab-content" style="display:none">
-  <div class="note"><b>계약률 급상승 트림 Top 20</b> · 최소 10대 이상 재고 중 어제 대비 계약률 변동이 큰 트림<br>시장의 분위기가 몰리는 방향을 보여줍니다</div>
+  <div class="legend">
+  <div class="legend-title">📈 계약률 급상승 트림 Top 20</div>
+  <div class="legend-desc">어제 대비 <b style="color:#ef4444">계약률이 가장 많이 오른</b> 트림. 오늘 시장에서 고객들이 몰린 차량을 보여줍니다. <span style="color:#666">(재고 10대 이상만 집계 — 소수 재고 변동 노이즈 제거)</span></div>
+  <div class="legend-cols">
+    <div class="legend-col"><b class="col-gold">대수</b> 현재 전체 재고</div>
+    <div class="legend-col"><b class="col-orange">계약률</b> 현재 % + 어제 대비 변동</div>
+    <div class="legend-col"><b>▲14.4%p</b> 예: 어제 5.6% → 오늘 20%</div>
+  </div>
+</div>
   <div class="section">
     <div id="trendingList"></div>
   </div>
 </div>
 
 <div id="t-class1" class="tab-content" style="display:none">
-  <div class="note"><b>Class1 세그먼트 계약률</b> · 직판 공식 분류 기준. 어떤 세그먼트가 시장에서 뜨거운지</div>
+  <div class="legend">
+  <div class="legend-title">🏆 Class1 세그먼트 계약률</div>
+  <div class="legend-desc">MBK 공식 차급 분류(E/S/SUV/AMG/EQ 등) 기준 계약률 순위. <b>어떤 세그먼트가 전체 시장에서 뜨거운지</b> 한 눈에 확인</div>
+  <div class="legend-cols">
+    <div class="legend-col"><b class="col-gold">총</b> 전체 재고 대수</div>
+    <div class="legend-col"><b class="col-orange">계약</b> 계약 중 대수 (전일 대비 ▲▼)</div>
+    <div class="legend-col"><b class="col-red">%</b> 계약률</div>
+  </div>
+</div>
   <div class="section">
     <div class="class1-grid" id="class1Grid"></div>
   </div>
 </div>
 
 <div id="t-cat" class="tab-content" style="display:none">
-  <div class="note"><b>BenzDream 카테고리별 계약률</b> · 13개 분류 기준</div>
+  <div class="legend">
+  <div class="legend-title">📊 BenzDream 카테고리별 계약률</div>
+  <div class="legend-desc">BenzDream 13개 카테고리(Maybach / EQ / GLE / E클래스 등) 기준. Class1과 달리 <b>고객 상담 관점 분류</b></div>
+  <div class="legend-cols">
+    <div class="legend-col"><b class="col-gold">대수</b> 카테고리 전체 재고</div>
+    <div class="legend-col"><b class="col-orange">%</b> 계약률 + 어제 대비</div>
+    <div class="legend-col"><b>바</b> 계약률 시각화</div>
+  </div>
+</div>
   <div class="section">
     <div class="cat-grid" id="catGrid"></div>
   </div>
 </div>
 
 <div id="t-arrival" class="tab-content" style="display:none">
-  <div class="note"><b>🚢 입항예정 차량</b> · 향후 입항될 예정인 물량. 배정 기회 포착용<br>다음주부터 본격적으로 표시됩니다</div>
+  <div class="legend">
+  <div class="legend-title">🚢 입항예정 차량</div>
+  <div class="legend-desc">현재 재고에 포함되어 있지만 <b>입항 예정일이 오늘 이후</b>인 차량. 아직 국내에 들어오지 않았지만 배정 가능한 물량입니다</div>
+  <div class="legend-cols">
+    <div class="legend-col"><b>대수</b> 모델별 입항예정 물량</div>
+    <div class="legend-col" style="color:#c9a96e">※ 다음주부터 더 많은 물량 표시 예정</div>
+  </div>
+</div>
   <div class="section">
     <div class="sec-title"><div class="sec-name">🚢 입항예정 모델별</div><div class="sec-sub" id="arrSub">-</div></div>
     <div class="arr-list" id="arrivalList"></div>
@@ -221,11 +281,29 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 </div>
 
 <div id="t-all" class="tab-content" style="display:none">
+  <div class="legend">
+    <div class="legend-title">📋 전체 모델 리스트</div>
+    <div class="legend-desc">85개 트림 전체. 카테고리별로 접기/펼치기. 검색창에 모델명 입력 가능</div>
+    <div class="legend-cols">
+      <div class="legend-col"><b class="col-gold">1열</b> 총 재고</div>
+      <div class="legend-col"><b class="col-green">2열</b> 판매가능</div>
+      <div class="legend-col"><b class="col-red">3열</b> 계약률</div>
+    </div>
+  </div>
   <div class="search"><input type="text" id="searchInput" placeholder="모델명 검색..."></div>
   <div id="allModels"></div>
 </div>
 
 <div id="t-trend" class="tab-content" style="display:none">
+  <div class="legend">
+    <div class="legend-title">📉 일별 추이 차트</div>
+    <div class="legend-desc">매일 누적되는 데이터로 <b>재고 흐름과 계약률 변화</b> 시각화. 7일/30일/전체 선택 가능</div>
+    <div class="legend-cols">
+      <div class="legend-col"><b class="col-gold">골드선</b> 전체 재고</div>
+      <div class="legend-col"><b class="col-orange">오렌지선</b> 계약 중</div>
+      <div class="legend-col"><b class="col-red">빨강선</b> 계약률 %</div>
+    </div>
+  </div>
   <div class="trend-section">
     <h3><span>📉 전체 재고 추이</span><span class="days" id="trendDays">데이터 수집 중</span></h3>
     <div class="trend-period">
