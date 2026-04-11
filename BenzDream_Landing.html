@@ -299,6 +299,34 @@ section{width:100%;max-width:900px;margin:0 auto;padding:0 24px 80px;}
   transition:gap .2s;
 }
 .pl-card:hover .pl-cta{gap:12px;}
+
+/* ===== Monthly Report Card (pl-card 확장) ===== */
+.pl-card.report-card{
+  border-color:rgba(201,169,110,.4);
+  background:linear-gradient(180deg, rgba(201,169,110,.04) 0%, var(--card) 60%);
+  position:relative;
+}
+.pl-card.report-card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg, var(--gold) 0%, rgba(201,169,110,.3) 100%);
+  border-radius:16px 0 0 16px;
+}
+.pl-card.report-card:hover{
+  border-color:rgba(201,169,110,.7);
+}
+.pl-icon.report-icon{
+  background:rgba(201,169,110,.18);
+  border-color:rgba(201,169,110,.35);
+}
+.report-issue{
+  font-family:'MBK CorpoA','Outfit',sans-serif;
+  font-size:.64rem;font-weight:500;letter-spacing:.12em;
+  color:var(--gold-dim);text-transform:uppercase;
+  margin-bottom:8px;
+}
+.report-issue span{
+  color:var(--gold);font-weight:600;
+}
 @media(max-width:600px){
   .pl-card{flex-direction:column;align-items:flex-start;}
   .pl-cta{margin-top:4px;}
@@ -616,6 +644,25 @@ footer{
       채널 추가 후 리포트를 무료로 받아보실 수 있습니다.
     </p>
   </div>
+</section>
+
+<!-- MONTHLY STRATEGY REPORT -->
+<section class="reveal">
+  <p class="sec-label">Monthly Strategy Report</p>
+  <h2 class="sec-title">이달의 구매전략 리포트</h2>
+
+  <a href="BenzDream_MonthlyReport_202604.html" class="pl-card report-card">
+    <div class="pl-left">
+      <div class="pl-icon report-icon">📊</div>
+      <div class="pl-info">
+        <p class="report-issue"><span>ISSUE NO. 2026-04</span> · 발행 2026.04.12</p>
+        <p class="pl-title">4월 벤츠 구매전략 리포트</p>
+        <p class="pl-desc">직판제 시행을 앞둔 4월, 지금 꼭 알아야 할 구매 포인트<br>클래스별 프로모션 · 재고 · 구매 타이밍 종합 분석</p>
+      </div>
+    </div>
+    <div class="pl-cta">리포트 읽기 →</div>
+  </a>
+
 </section>
 
 <!-- PRICE & PROMOTION -->
