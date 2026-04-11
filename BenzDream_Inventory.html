@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>BenzDream 재고 트래킹 대시보드</title>
+<title>BenzDream 재고 트래킹</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -17,24 +17,32 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 .hero-sub{font-size:10px;color:#666;margin-top:2px}
 .updated{display:inline-block;margin-top:8px;padding:4px 12px;background:#141824;border:1px solid #2a3040;border-radius:20px;font-family:'Outfit',sans-serif;font-size:10px;color:#c9a96e;font-weight:600}
 
-/* KPI Cards */
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
 .kpi{background:linear-gradient(135deg,#141824,#0f1119);border:1px solid #1f2430;border-radius:12px;padding:10px 8px;text-align:center}
 .kpi-num{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;line-height:1;color:#fff}
-.kpi-lbl{font-size:9px;color:#777;letter-spacing:.5px;margin-top:3px;text-transform:uppercase}
-.kpi-delta{font-size:9px;margin-top:2px;font-family:'Outfit',sans-serif;font-weight:600}
+.kpi-lbl{font-size:9px;color:#777;letter-spacing:.5px;margin-top:3px}
+.kpi-delta{font-size:10px;margin-top:3px;font-family:'Outfit',sans-serif;font-weight:700}
 .kpi-delta.up{color:#10b981}
 .kpi-delta.down{color:#ef4444}
 .kpi-delta.flat{color:#555}
-.kpi-1 .kpi-num{color:#c9a96e}
-.kpi-2 .kpi-num{color:#10b981}
-.kpi-3 .kpi-num{color:#f59e0b}
-.kpi-4 .kpi-num{color:#3b82f6}
+.kpi-1 .kpi-num{color:#c9a96e} .kpi-2 .kpi-num{color:#10b981}
+.kpi-3 .kpi-num{color:#f59e0b} .kpi-4 .kpi-num{color:#3b82f6}
 
-/* Tabs */
+/* Daily summary strip */
+.daily-strip{background:linear-gradient(135deg,#1a1a2a,#141824);border:1px solid #c9a96e33;border-radius:12px;padding:12px 14px;margin-bottom:14px}
+.daily-strip .dt{font-size:9px;color:#c9a96e;font-weight:700;letter-spacing:1px;margin-bottom:8px}
+.daily-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.daily-item{text-align:center}
+.daily-item .n{font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;line-height:1}
+.daily-item .l{font-size:9px;color:#888;margin-top:3px}
+.daily-item.plus .n{color:#10b981}
+.daily-item.minus .n{color:#ef4444}
+.daily-item.contract .n{color:#f59e0b}
+.daily-item.deliver .n{color:#c9a96e}
+
 .tabs{display:flex;gap:3px;background:#141824;border-radius:10px;padding:3px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:1;min-width:70px;padding:8px 6px;border:none;border-radius:7px;cursor:pointer;font-size:11px;font-weight:600;background:transparent;color:#888;font-family:inherit;white-space:nowrap;transition:all .2s}
+.tab{flex:1;min-width:68px;padding:8px 5px;border:none;border-radius:7px;cursor:pointer;font-size:10.5px;font-weight:600;background:transparent;color:#888;font-family:inherit;white-space:nowrap;transition:all .2s}
 .tab.active{background:linear-gradient(135deg,#c9a96e,#ddc08a);color:#0a0a0f}
 
 .section{background:#141824;border:1px solid #1f2430;border-radius:14px;padding:14px 12px;margin-bottom:12px}
@@ -42,93 +50,77 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 .sec-name{font-size:13px;font-weight:700;color:#fff}
 .sec-sub{font-size:10px;color:#666}
 
-/* Table style */
 .row{display:grid;gap:8px;padding:9px 10px;background:#0f1119;border-radius:8px;margin-bottom:4px;align-items:center;border-left:3px solid transparent}
-.row:hover{background:#13151f}
 .row.hot{border-left-color:#ef4444}
 .row.warm{border-left-color:#f59e0b}
 .row.cold{border-left-color:#3b82f6}
-.row-rank{font-family:'Outfit',sans-serif;font-size:13px;font-weight:800;color:#666;min-width:22px}
+.row-rank{font-family:'Outfit',sans-serif;font-size:13px;font-weight:800;color:#666;min-width:22px;text-align:center}
 .row-name{font-size:12px;font-weight:600;color:#f0f0f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .row-cat{font-size:9px;color:#888;margin-top:1px}
 .row-num{font-family:'Outfit',sans-serif;font-weight:700;text-align:right}
 .row-num .unit{font-size:9px;color:#666;margin-left:1px;font-weight:500}
 
-/* Top20 grid */
-.top20 .row{grid-template-columns:22px 1fr 50px 60px}
-.top20 .n-tot{color:#c9a96e;font-size:15px}
+.top20 .row{grid-template-columns:22px 1fr 54px 52px}
+.top20 .n-tot{color:#c9a96e;font-size:14px}
 .top20 .n-rate{font-size:11px;color:#f59e0b}
 
-/* Bar viz */
-.bar-wrap{position:relative;background:#1a1a2a;border-radius:4px;height:5px;margin-top:4px;overflow:hidden}
-.bar{height:100%;border-radius:4px;transition:width .4s}
+.hot-list .row{grid-template-columns:22px 1fr 48px 48px}
+.hot-list .n-rate{color:#ef4444;font-size:13px}
+.hot-list .n-remain{color:#10b981;font-size:11px}
 
-/* Category cards */
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .cat-card{background:#0f1119;border-radius:10px;padding:10px 12px;border-left:3px solid #c9a96e}
 .cat-card .cn{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px}
 .cat-card .cs{display:flex;justify-content:space-between;font-size:10px;color:#888}
 .cat-card .cs b{color:#c9a96e;font-family:'Outfit',sans-serif}
-.cat-card .cr{margin-top:6px;font-size:9px;color:#f59e0b}
+.cat-card .cr{margin-top:4px;font-size:9px;color:#f59e0b}
 
-/* Heat model */
-.hot-list .row{grid-template-columns:22px 1fr 50px 45px}
-.hot-list .n-rate{color:#ef4444;font-size:14px}
-.hot-list .n-remain{color:#10b981;font-size:11px}
-
-/* Color bar */
-.color-row{display:grid;grid-template-columns:1fr 35px;gap:8px;padding:6px 10px;font-size:11px;align-items:center}
-.color-label{color:#c0c0cc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.color-label .ci{color:#666;font-size:9px}
-.color-cnt{text-align:right;color:#c9a96e;font-family:'Outfit',sans-serif;font-weight:700}
-
-/* Branch */
-.br-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
-.br-card{background:#0f1119;border-radius:8px;padding:8px;text-align:center;border-top:2px solid}
-.br-card .bn{font-size:11px;font-weight:700;margin-bottom:2px}
-.br-card .bc{font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;color:#fff}
-.br-0{border-color:#3b82f6} .br-0 .bn{color:#3b82f6}
-.br-1{border-color:#f59e0b} .br-1 .bn{color:#f59e0b}
-.br-2{border-color:#10b981} .br-2 .bn{color:#10b981}
-.br-3{border-color:#8b5cf6} .br-3 .bn{color:#8b5cf6}
-
-/* All models collapsible */
-.cat-block{margin-bottom:14px}
-.cat-header{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#0f1119;border-radius:8px;cursor:pointer;margin-bottom:6px}
-.cat-header:hover{background:#13151f}
+.cat-block{margin-bottom:12px}
+.cat-header{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#0f1119;border-radius:8px;cursor:pointer;margin-bottom:4px}
 .cat-header.open{border-left:3px solid #c9a96e}
 .cat-header .cnm{font-size:13px;font-weight:700;color:#fff}
 .cat-header .cct{font-size:10px;color:#c9a96e;font-family:'Outfit',sans-serif}
 .cat-models{display:none;padding-left:4px}
 .cat-models.open{display:block}
-.cat-models .row{grid-template-columns:1fr 40px 50px 50px;font-size:11px}
+.cat-models .row{grid-template-columns:1fr 44px 44px 44px;font-size:11px}
 .cat-models .n-av{color:#10b981}
 .cat-models .n-as{color:#f59e0b}
 .cat-models .n-cr{color:#ef4444}
 
-/* Search in all models */
-.search{margin-bottom:10px;position:relative}
+.search{margin-bottom:10px}
 .search input{width:100%;background:#0f1119;border:1px solid #2a3040;border-radius:8px;padding:10px 14px;color:#fff;font-size:12px;font-family:inherit;outline:none}
 .search input:focus{border-color:#c9a96e}
-.search input::placeholder{color:#556}
 
-/* Alert */
 .alert{background:linear-gradient(135deg,#1a0f0f,#14080a);border:1px solid #ef444444;border-radius:10px;padding:12px;margin-bottom:10px}
-.alert-title{font-size:11px;font-weight:700;color:#ef4444;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.alert-title{font-size:11px;font-weight:700;color:#ef4444;margin-bottom:8px}
 .alert-row{display:grid;grid-template-columns:1fr 40px 45px;gap:8px;padding:6px 0;border-bottom:1px solid #2a1010;font-size:11px;align-items:center}
 .alert-row:last-child{border:none}
-.alert-name{color:#f0f0f5}
-.alert-tot{text-align:right;color:#888;font-family:'Outfit',sans-serif}
 .alert-rate{text-align:right;color:#ef4444;font-family:'Outfit',sans-serif;font-weight:800}
+.alert-tot{text-align:right;color:#888;font-family:'Outfit',sans-serif}
+
+.change-group{margin-bottom:14px}
+.change-title{font-size:11px;font-weight:700;color:#c9a96e;margin-bottom:6px;display:flex;align-items:center;gap:6px;padding:0 2px}
+.change-title.minus{color:#ef4444}
+.change-title.plus{color:#10b981}
+.change-title.contract{color:#f59e0b}
+.change-row{display:grid;grid-template-columns:1fr 40px;gap:8px;padding:7px 10px;background:#0f1119;border-radius:6px;margin-bottom:3px;font-size:11px;align-items:center}
+.change-row .cn{color:#e0e0e6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.change-row .cv{text-align:right;font-family:'Outfit',sans-serif;font-weight:700}
+
+.sm-card{display:grid;grid-template-columns:24px 1fr 30px;gap:8px;padding:7px 10px;background:#0f1119;border-radius:6px;margin-bottom:3px;font-size:11px;align-items:center}
+.sm-card .r{font-family:'Outfit',sans-serif;font-weight:800;color:#666;text-align:center}
+.sm-card .n{color:#f0f0f5;font-weight:600}
+.sm-card .b{font-size:9px;color:#888;margin-left:4px}
+.sm-card .c{text-align:right;color:#c9a96e;font-family:'Outfit',sans-serif;font-weight:700}
 
 .footer{text-align:center;font-size:9px;color:#444;margin-top:20px;line-height:1.8}
-.footer b{color:#c9a96e;font-weight:600}
+.footer b{color:#c9a96e}
 
 @media (max-width:420px){
   .kpi-num{font-size:17px}
   .kpi-lbl{font-size:8px}
   .cat-grid{grid-template-columns:1fr}
-  .br-grid{grid-template-columns:repeat(2,1fr)}
+  .daily-grid{grid-template-columns:repeat(2,1fr);gap:10px}
 }
 </style>
 </head>
@@ -137,218 +129,212 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 <div class="hero">
   <div class="hero-tag">Motor One · Inventory Tracking</div>
   <h1 class="hero-title">재고 트래킹 대시보드</h1>
-  <div class="hero-sub">직판제 전국재고 실시간 모니터링 · 일/주/월 트렌드</div>
+  <div class="hero-sub">직판제 전국재고 실시간 모니터링</div>
   <div class="updated" id="updated">최종 업데이트 2026-04-10</div>
 </div>
 
-<!-- KPIs -->
+<!-- KPI with delta -->
 <div class="kpis">
   <div class="kpi kpi-1"><div class="kpi-num" id="k1">0</div><div class="kpi-lbl">전체 재고</div><div class="kpi-delta flat" id="d1">-</div></div>
   <div class="kpi kpi-2"><div class="kpi-num" id="k2">0</div><div class="kpi-lbl">판매 가능</div><div class="kpi-delta flat" id="d2">-</div></div>
-  <div class="kpi kpi-3"><div class="kpi-num" id="k3">0</div><div class="kpi-lbl">계약 (가계약)</div><div class="kpi-delta flat" id="d3">-</div></div>
+  <div class="kpi kpi-3"><div class="kpi-num" id="k3">0</div><div class="kpi-lbl">계약 중</div><div class="kpi-delta flat" id="d3">-</div></div>
   <div class="kpi kpi-4"><div class="kpi-num" id="k4">0%</div><div class="kpi-lbl">계약률</div><div class="kpi-delta flat" id="d4">-</div></div>
 </div>
 
-<!-- Tabs -->
+<!-- Daily activity strip -->
+<div class="daily-strip" id="dailyStrip"></div>
+
 <div class="tabs">
   <button class="tab active" onclick="showTab('top20',this)">🔥 Top 20</button>
-  <button class="tab" onclick="showTab('hot',this)">⚡ 세일즈 속도</button>
+  <button class="tab" onclick="showTab('hot',this)">⚡ 계약률</button>
+  <button class="tab" onclick="showTab('changes',this)">🔄 변동</button>
   <button class="tab" onclick="showTab('cat',this)">📊 카테고리</button>
-  <button class="tab" onclick="showTab('all',this)">📋 전체 모델</button>
+  <button class="tab" onclick="showTab('all',this)">📋 전체</button>
   <button class="tab" onclick="showTab('trend',this)">📈 추이</button>
 </div>
 
-<!-- Tab: Top 20 -->
 <div id="t-top20" class="tab-content">
-  <!-- Alert: 급소 모델 -->
   <div class="alert" id="alertBox"></div>
-  
   <div class="section">
-    <div class="sec-title"><div class="sec-name">🔥 재고 Top 20 (많은순)</div><div class="sec-sub">판매 가능 기준</div></div>
+    <div class="sec-title"><div class="sec-name">🔥 재고 Top 20</div><div class="sec-sub">많은순</div></div>
     <div class="top20" id="top20List"></div>
   </div>
 </div>
 
-<!-- Tab: 세일즈 속도 -->
 <div id="t-hot" class="tab-content" style="display:none">
   <div class="section">
-    <div class="sec-title"><div class="sec-name">⚡ 계약률 Top 20</div><div class="sec-sub">세일즈 속도 · 최소 10대 이상</div></div>
+    <div class="sec-title"><div class="sec-name">⚡ 계약률 Top 20</div><div class="sec-sub">세일즈 속도 · 10대↑</div></div>
     <div class="hot-list" id="hotList"></div>
   </div>
 </div>
 
-<!-- Tab: 카테고리 -->
+<div id="t-changes" class="tab-content" style="display:none">
+  <div class="section">
+    <div class="sec-title"><div class="sec-name">🔄 4/9 → 4/10 변동</div><div class="sec-sub">VIN 기준</div></div>
+    <div id="changesBox"></div>
+  </div>
+</div>
+
 <div id="t-cat" class="tab-content" style="display:none">
   <div class="section">
     <div class="sec-title"><div class="sec-name">📊 카테고리별 현황</div></div>
     <div class="cat-grid" id="catGrid"></div>
   </div>
   <div class="section">
-    <div class="sec-title"><div class="sec-name">🎨 카테고리 재고 분포</div></div>
+    <div class="sec-title"><div class="sec-name">🎨 카테고리 분포</div></div>
     <canvas id="catChart" height="200"></canvas>
   </div>
 </div>
 
-<!-- Tab: 전체 모델 -->
 <div id="t-all" class="tab-content" style="display:none">
   <div class="search"><input type="text" id="searchInput" placeholder="모델명 검색..."></div>
   <div id="allModels"></div>
 </div>
 
-<!-- Tab: 추이 -->
 <div id="t-trend" class="tab-content" style="display:none">
   <div class="section">
-    <div class="sec-title"><div class="sec-name">📈 일별 추이</div><div class="sec-sub" id="trendDays">데이터 수집 중</div></div>
-    <canvas id="trendChart" height="200"></canvas>
-  </div>
-  <div class="section" style="text-align:center;padding:30px 20px">
-    <div style="font-size:11px;color:#666;line-height:1.8">
-      📅 첫 스냅샷: <b style="color:#c9a96e" id="firstDate">2026-04-10</b><br>
-      매일 업데이트하면 누적 추이가 자동 생성됩니다.<br>
-      최소 2일치 데이터부터 변동 표시, 7일치부터 추이 차트가 나타납니다.
-    </div>
+    <div class="sec-title"><div class="sec-name">📈 일별 추이</div><div class="sec-sub" id="trendDays"></div></div>
+    <canvas id="trendChart" height="220"></canvas>
   </div>
 </div>
 
 <div class="footer">
-  <b>BenzDream Analytics</b><br>
-  직판제 전환 후 전국재고 통합 트래킹 · 모터원 고양전시장 한호만 팀장<br>
-  allocation 전국재고 + 위탁재고 + 전시차재고 통합
+  <b>BenzDream Analytics</b> · 직판제 전국재고 통합 트래킹<br>
+  매일 업로드 시 VIN 레벨 변동 자동 계산
 </div>
 
 <script>
 const DATA = {"date": "2026-04-10", "total": 3815, "totalAvailable": 3623, "totalAssigned": 192, "overallContractRate": 5.0, "categories": {"Maybach": {"total": 38, "available": 37, "assigned": 1, "contractRate": 2.6, "models": 6}, "전동화 EQ": {"total": 424, "available": 423, "assigned": 1, "contractRate": 0.2, "models": 9}, "GLE": {"total": 245, "available": 224, "assigned": 21, "contractRate": 8.6, "models": 8}, "GLC": {"total": 427, "available": 365, "assigned": 62, "contractRate": 14.5, "models": 11}, "GLA·GLB": {"total": 356, "available": 350, "assigned": 6, "contractRate": 1.7, "models": 6}, "AMG GT·SL": {"total": 37, "available": 34, "assigned": 3, "contractRate": 8.1, "models": 3}, "S클래스": {"total": 66, "available": 52, "assigned": 14, "contractRate": 21.2, "models": 8}, "CLE": {"total": 316, "available": 305, "assigned": 11, "contractRate": 3.5, "models": 11}, "E클래스": {"total": 1672, "available": 1617, "assigned": 55, "contractRate": 3.3, "models": 13}, "C클래스": {"total": 138, "available": 134, "assigned": 4, "contractRate": 2.9, "models": 3}, "CLA": {"total": 42, "available": 40, "assigned": 2, "contractRate": 4.8, "models": 3}, "A클래스": {"total": 44, "available": 42, "assigned": 2, "contractRate": 4.5, "models": 2}}, "models": {"A 220": {"cat": "A클래스", "tot": 31, "av": 29, "as": 2, "cr": 6.5, "colors": [{"ext": "폴라 화이트", "int": "아티코 인조 가죽, 마키아토 베이지 /블랙", "cnt": 13}, {"ext": "나이트 블랙", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 8}, {"ext": "나이트 블랙", "int": "아티코 인조 가죽, 마키아토 베이지 /블랙", "cnt": 5}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 4}, {"ext": "마운틴 그레이 메탈릭", "int": "아티코 인조 가죽, 마키아토 베이지 /블랙", "cnt": 1}], "branches": {"고양 SR": 1, "일산 SR": 1}}, "AMG A 45 S 4MATIC+": {"cat": "A클래스", "tot": 13, "av": 13, "as": 0, "cr": 0.0, "colors": [{"ext": "코스모스 블랙", "int": "아티코 인조 가죽/다이나미카 블랙", "cnt": 5}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽/다이나미카 블랙", "cnt": 5}, {"ext": "폴라 화이트", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 2}, {"ext": "코스모스 블랙", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 1}], "branches": {}}, "AMG CLA 45 S 4M+ Final Edition": {"cat": "CLA", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "colors": [{"ext": "MANUFAKTUR 마운틴 그레이 마그노", "int": "아티코 가죽/마이크로컷 마이크로파이버 블랙 (AMG)", "cnt": 2}], "branches": {}}, "AMG CLA 45 S 4MATIC+ Coupé": {"cat": "CLA", "tot": 4, "av": 2, "as": 2, "cr": 50.0, "colors": [{"ext": "MANUFAKTUR 마운틴 그레이 마그노", "int": "아티코 인조 가죽/다이나미카 AMG 블랙", "cnt": 4}], "branches": {"고양 SR": 2}}, "AMG CLE 53 4M+ COUPE": {"cat": "CLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "MANUFAKTUR 알파인 그레이", "int": "AMG 나파 가죽, 블랙/클래식 레드", "cnt": 1}], "branches": {}}, "AMG CLE 53 4M+ Cabriolet": {"cat": "CLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "AMG 나파 가죽, 블랙", "cnt": 1}], "branches": {}}, "AMG CLE 53 4MATIC+ Cabriolet": {"cat": "CLE", "tot": 23, "av": 19, "as": 4, "cr": 17.4, "colors": [{"ext": "옵시디안 블랙", "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙", "cnt": 7}, {"ext": "옵시디안 블랙", "int": "AMG 나파 가죽, 블랙", "cnt": 7}, {"ext": "MANUFAKTUR 오팔라이트 화이트", "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙", "cnt": 6}, {"ext": "MANUFAKTUR 오팔라이트 화이트", "int": "AMG 나파 가죽, 블랙", "cnt": 3}], "branches": {"고양 SR": 2, "의정부 SR": 1, "일산 SR": 1}}, "AMG CLE 53 4MATIC+ Coupe": {"cat": "CLE", "tot": 3, "av": 1, "as": 2, "cr": 66.7, "colors": [{"ext": "MANUFAKTUR 오팔라이트 화이트", "int": "AMG 나파 가죽, 블랙", "cnt": 1}, {"ext": "MANUFAKTUR 오팔라이트 화이트", "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙", "cnt": 1}, {"ext": "옵시디안 블랙", "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙", "cnt": 1}], "branches": {"고양 SR": 2}}, "AMG E 53 HYBRID 4M+": {"cat": "E클래스", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "AMG 나파 가죽, 블랙", "cnt": 1}], "branches": {}}, "AMG GLB 35 4M": {"cat": "GLA·GLB", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽/마이크로컷 마이크로파이버 블랙", "cnt": 1}], "branches": {}}, "AMG GLB 35 4MATIC": {"cat": "GLA·GLB", "tot": 55, "av": 55, "as": 0, "cr": 0.0, "colors": [{"ext": "코스모스 블랙", "int": "아티코 가죽/다이나미카 블랙", "cnt": 16}, {"ext": "폴라 화이트", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 14}, {"ext": "코스모스 블랙", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 12}, {"ext": "폴라 화이트", "int": "아티코 가죽/다이나미카 블랙", "cnt": 4}, {"ext": "마운틴 그레이 메탈릭", "int": "아티코 가죽/다이나미카 블랙", "cnt": 3}, {"ext": "나이트 블랙", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 2}, {"ext": "마운틴 그레이 메탈릭", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 2}, {"ext": "코스모스 블랙", "int": "가죽, 투톤 레드 페퍼 / 블랙", "cnt": 1}], "branches": {}}, "AMG GLC 43 4M": {"cat": "GLC", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "AMG 가죽, 블랙", "cnt": 1}, {"ext": "폴라 화이트", "int": "AMG 가죽, 블랙", "cnt": 1}], "branches": {}}, "AMG GLC 43 4MATIC": {"cat": "GLC", "tot": 28, "av": 27, "as": 1, "cr": 3.6, "colors": [{"ext": "옵시디안 블랙", "int": "블랙, AMG 가죽", "cnt": 17}, {"ext": "폴라 화이트", "int": "블랙, AMG 가죽", "cnt": 9}, {"ext": "MANUFAKTUR 알파인 그레이 솔리드", "int": "블랙, AMG 가죽", "cnt": 1}, {"ext": "MANUFAKTUR 그라파이트 그레이 마그노", "int": "블랙, AMG 가죽", "cnt": 1}], "branches": {"고양 SR": 1}}, "AMG GLC 43 4MATIC Coupé": {"cat": "GLC", "tot": 16, "av": 15, "as": 1, "cr": 6.2, "colors": [{"ext": "폴라 화이트", "int": "블랙, AMG 가죽", "cnt": 12}, {"ext": "옵시디안 블랙", "int": "블랙, AMG 가죽", "cnt": 4}], "branches": {"일산 SR": 1}}, "AMG GLE 53 4M+": {"cat": "GLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "기타", "cnt": 1}], "branches": {}}, "AMG GLE 53 4MATIC+": {"cat": "GLE", "tot": 8, "av": 5, "as": 3, "cr": 37.5, "colors": [{"ext": "옵시디안 블랙", "int": "AMG 나파 가죽, 블랙", "cnt": 3}, {"ext": "폴라 화이트", "int": "AMG 나파 가죽, 마키아토 베이지/블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "AMG 나파 가죽, 블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "AMG 나파 가죽, 내추럴 베이지", "cnt": 1}], "branches": {"고양 SR": 3}}, "AMG GT 43 4MATIC+": {"cat": "AMG GT·SL", "tot": 30, "av": 28, "as": 2, "cr": 6.7, "colors": [{"ext": "옵시디안 블랙", "int": "나파 가죽, 블랙", "cnt": 9}, {"ext": "폴라 화이트", "int": "나파 가죽, 블랙", "cnt": 7}, {"ext": "폴라 화이트", "int": "익스클루시브 나파 가죽, 레드 페퍼/블랙", "cnt": 4}, {"ext": "옵시디안 블랙", "int": "MANUFAKTUR 익스클루시브 나파 가죽. 클래식 레드/블랙", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "MANUFAKTUR 익스클루시브 나파 가죽, 마키아토 베이지/마그마 그레이", "cnt": 2}, {"ext": "MANUFAKTUR 그라파이트 그레이 마그노", "int": "나파 가죽, 블랙", "cnt": 1}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "MANUFAKTUR 익스클루시브 나파 가죽, 마키아토 베이지/마그마 그레이", "cnt": 1}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "익스클루시브 나파 가죽, 레드 페퍼/블랙", "cnt": 1}], "branches": {"의정부 SR": 1, "일산 SR": 1}}, "AMG GT 63 S E PERFORMANCE": {"cat": "AMG GT·SL", "tot": 1, "av": 0, "as": 1, "cr": 100.0, "colors": [{"ext": "MANUFAKTUR 실리콘 그레이 솔리드", "int": "나파 가죽, 레드 페퍼/블랙", "cnt": 1}], "branches": {"고양 SR": 1}}, "AMG S 63 E Performance": {"cat": "S클래스", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "colors": [{"ext": "MANUFAKTUR 나이트 블랙 마그노", "int": "시에나 브라운/블랙", "cnt": 1}, {"ext": "MANUFAKTUR 오팔라이트 화이트 마그노", "int": "시에나 브라운/블랙", "cnt": 1}], "branches": {}}, "AMG SL 43": {"cat": "AMG GT·SL", "tot": 6, "av": 6, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "나파 가죽, 레드 페퍼/블랙", "cnt": 4}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "나파 가죽, 레드 페퍼/블랙", "cnt": 1}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "나파 가죽, 시에나 브라운/블랙", "cnt": 1}], "branches": {}}, "C 200 AMG Line": {"cat": "C클래스", "tot": 64, "av": 64, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 29}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 네바 그레이/블랙", "cnt": 10}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙", "cnt": 9}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 8}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 네바 그레이/블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 블랙", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 블랙", "cnt": 1}], "branches": {}}, "C 200 AV": {"cat": "C클래스", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "아티코 가죽, 블랙", "cnt": 1}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 1}, {"ext": "폴라 화이트", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 1}], "branches": {}}, "C 200 AVANTGARDE": {"cat": "C클래스", "tot": 71, "av": 67, "as": 4, "cr": 5.6, "colors": [{"ext": "폴라 화이트", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 26}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 17}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 10}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 10}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 3}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 2}, {"ext": "그라파이트 그레이", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 1}, {"ext": "셀레나이트 그레이", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 1}], "branches": {"고양 SR": 1, "의정부 SR": 2, "일산 SR": 1}}, "CLA 250 4MATIC AMG Line Coupé": {"cat": "CLA", "tot": 36, "av": 36, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 17}, {"ext": "나이트 블랙", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 11}, {"ext": "폴라 화이트", "int": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙", "cnt": 5}, {"ext": "나이트 블랙", "int": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙", "cnt": 2}, {"ext": "마운틴 그레이 메탈릭", "int": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙", "cnt": 1}], "branches": {}}, "CLE 200 Cabriolet": {"cat": "CLE", "tot": 9, "av": 9, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 8}, {"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 1}], "branches": {}}, "CLE 200 Cabriolet AMG Line": {"cat": "CLE", "tot": 151, "av": 148, "as": 3, "cr": 2.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 47}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 27}, {"ext": "폴라 화이트", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 21}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 21}, {"ext": "폴라 화이트", "int": "가죽, 파워 레드/블랙", "cnt": 18}, {"ext": "폴라 화이트", "int": "아티코 가죽, 블랙", "cnt": 7}, {"ext": "옵시디안 블랙", "int": "가죽, 파워 레드/블랙", "cnt": 4}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 블랙", "cnt": 3}], "branches": {"고양 SR": 1, "의정부 SR": 1, "일산 SR": 1}}, "CLE 200 Coupe": {"cat": "CLE", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "가죽, 파워 레드/블랙", "cnt": 1}, {"ext": "폴라 화이트", "int": "아티코 가죽, 블랙", "cnt": 1}], "branches": {}}, "CLE 200 Coupé AMG Line": {"cat": "CLE", "tot": 82, "av": 81, "as": 1, "cr": 1.2, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 21}, {"ext": "폴라 화이트", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 17}, {"ext": "폴라 화이트", "int": "가죽, 파워 레드/블랙", "cnt": 16}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 10}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 8}, {"ext": "옵시디안 블랙", "int": "가죽, 파워 레드/블랙", "cnt": 4}, {"ext": "폴라 화이트", "int": "아티코 가죽, 블랙", "cnt": 3}, {"ext": "MANUFAKTUR 알파인 그레이", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 1}], "branches": {"고양 SR": 1}}, "CLE 450 4M Coupe": {"cat": "CLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "가죽, 통카 브라운/블랙", "cnt": 1}], "branches": {}}, "CLE 450 4MATIC Cabriolet AMG Line": {"cat": "CLE", "tot": 22, "av": 21, "as": 1, "cr": 4.5, "colors": [{"ext": "폴라 화이트", "int": "가죽, 파워 레드/블랙", "cnt": 11}, {"ext": "옵시디안 블랙", "int": "가죽, 파워 레드/블랙", "cnt": 7}, {"ext": "MANUFAKTUR 알파인 그레이", "int": "가죽, 파워 레드/블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "가죽, 마키아토 베이지/블랙", "cnt": 2}], "branches": {"고양 SR": 1}}, "CLE 450 4MATIC Coupé AMG Line": {"cat": "CLE", "tot": 21, "av": 21, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "가죽, 파워 레드/블랙", "cnt": 12}, {"ext": "옵시디안 블랙", "int": "가죽, 통카 브라운/블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "가죽, 마키아토 베이지/블랙", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "가죽, 파워 레드/블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "가죽, 통카 브라운/블랙", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "가죽, 마키아토 베이지/블랙", "cnt": 1}], "branches": {}}, "E 200 AMG Line": {"cat": "E클래스", "tot": 600, "av": 595, "as": 5, "cr": 0.8, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 314}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 79}, {"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 70}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 39}, {"ext": "폴라 화이트", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 37}, {"ext": "그라파이트 그레이", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 23}, {"ext": "MANUFAKTUR 알파인 그레이", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 13}, {"ext": "그라파이트 그레이", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 11}], "branches": {"고양 SR": 3, "의정부 SR": 2}}, "E 200 AV": {"cat": "E클래스", "tot": 15, "av": 15, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 13}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 2}], "branches": {}}, "E 200 AVANTGARDE": {"cat": "E클래스", "tot": 95, "av": 91, "as": 4, "cr": 4.2, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 32}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 28}, {"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 15}, {"ext": "그라파이트 그레이", "int": "아티코 가죽, 통카 브라운/블랙", "cnt": 6}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 5}, {"ext": "폴라 화이트", "int": "아티코 가죽, 블랙", "cnt": 5}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 블랙", "cnt": 2}, {"ext": "그라파이트 그레이", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 2}], "branches": {"고양 SR": 1, "의정부 SR": 1, "일산 SR": 2}}, "E 220 d 4M": {"cat": "E클래스", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 블랙", "cnt": 1}, {"ext": "폴라 화이트", "int": "아티코 가죽, 통카 브라운", "cnt": 1}], "branches": {}}, "E 220 d 4MATIC EXCLUSIVE": {"cat": "E클래스", "tot": 103, "av": 101, "as": 2, "cr": 1.9, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 통카 브라운", "cnt": 60}, {"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지", "cnt": 13}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 통카 브라운", "cnt": 11}, {"ext": "폴라 화이트", "int": "아티코 가죽, 블랙", "cnt": 9}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 블랙", "cnt": 8}, {"ext": "옵시디안 블랙", "int": "아티코 가죽, 마키아토 베이지", "cnt": 2}], "branches": {"의정부 SR": 1, "일산 SR": 1}}, "E 300 4M AMG Line": {"cat": "E클래스", "tot": 19, "av": 19, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "가죽, 통카 브라운", "cnt": 13}, {"ext": "옵시디안 블랙", "int": "가죽, 통카 브라운", "cnt": 3}, {"ext": "폴라 화이트", "int": "가죽, 마키아토 베이지/블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "가죽, 블랙", "cnt": 1}], "branches": {}}, "E 300 4M EX": {"cat": "E클래스", "tot": 21, "av": 21, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "가죽, 통카 브라운", "cnt": 9}, {"ext": "폴라 화이트", "int": "가죽, 마키아토 베이지", "cnt": 6}, {"ext": "옵시디안 블랙", "int": "가죽, 통카 브라운", "cnt": 4}, {"ext": "옵시디안 블랙", "int": "가죽, 마키아토 베이지", "cnt": 1}, {"ext": "폴라 화이트", "int": "가죽, 블랙", "cnt": 1}], "branches": {}}, "E 300 4MATIC AMG Line": {"cat": "E클래스", "tot": 149, "av": 112, "as": 37, "cr": 24.8, "colors": [{"ext": "폴라 화이트", "int": "가죽, 블랙", "cnt": 41}, {"ext": "폴라 화이트", "int": "가죽, 통카 브라운", "cnt": 39}, {"ext": "폴라 화이트", "int": "가죽, 마키아토 베이지/블랙", "cnt": 32}, {"ext": "MANUFAKTUR 알파인 그레이", "int": "가죽, 통카 브라운", "cnt": 31}, {"ext": "옵시디안 블랙", "int": "가죽, 통카 브라운", "cnt": 3}, {"ext": "옵시디안 블랙", "int": "가죽, 마키아토 베이지/블랙", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "가죽, 블랙", "cnt": 1}], "branches": {"고양 SR": 6, "일산 SR": 31}}, "E 300 4MATIC EXCLUSIVE": {"cat": "E클래스", "tot": 232, "av": 228, "as": 4, "cr": 1.7, "colors": [{"ext": "폴라 화이트", "int": "가죽, 통카 브라운", "cnt": 86}, {"ext": "옵시디안 블랙", "int": "가죽, 통카 브라운", "cnt": 51}, {"ext": "폴라 화이트", "int": "가죽, 마키아토 베이지", "cnt": 35}, {"ext": "폴라 화이트", "int": "가죽, 블랙", "cnt": 35}, {"ext": "옵시디안 블랙", "int": "가죽, 마키아토 베이지", "cnt": 15}, {"ext": "옵시디안 블랙", "int": "가죽, 블랙", "cnt": 10}], "branches": {"의정부 SR": 2, "파주 SR": 2}}, "E 350 e 4M EX": {"cat": "E클래스", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "가죽, 블랙", "cnt": 2}], "branches": {}}, "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": {"cat": "E클래스", "tot": 258, "av": 256, "as": 2, "cr": 0.8, "colors": [{"ext": "폴라 화이트", "int": "가죽, 통카 브라운", "cnt": 152}, {"ext": "옵시디안 블랙", "int": "가죽, 통카 브라운", "cnt": 33}, {"ext": "폴라 화이트", "int": "가죽, 마키아토 베이지", "cnt": 33}, {"ext": "옵시디안 블랙", "int": "가죽, 마키아토 베이지", "cnt": 17}, {"ext": "폴라 화이트", "int": "가죽, 블랙", "cnt": 7}, {"ext": "옵시디안 블랙", "int": "가죽, 블랙", "cnt": 5}, {"ext": "MANUFAKTUR 알파인 그레이 솔리드", "int": "가죽, 통카 브라운", "cnt": 3}, {"ext": "그라파이트 그레이", "int": "가죽, 마키아토 베이지", "cnt": 2}], "branches": {"고양 SR": 1, "의정부 SR": 1}}, "E 450 4MATIC EXCLUSIVE": {"cat": "E클래스", "tot": 175, "av": 174, "as": 1, "cr": 0.6, "colors": [{"ext": "폴라 화이트", "int": "나파 가죽, 통카 브라운/블랙", "cnt": 114}, {"ext": "폴라 화이트", "int": "나파 가죽, 네바 그레이/블랙", "cnt": 18}, {"ext": "폴라 화이트", "int": "나파 가죽, 블랙", "cnt": 14}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 통카 브라운/블랙", "cnt": 10}, {"ext": "그라파이트 그레이", "int": "나파 가죽, 통카 브라운/블랙", "cnt": 8}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 네바 그레이/블랙", "cnt": 5}, {"ext": "MANUFAKTUR 알파인 그레이 솔리드", "int": "나파 가죽, 네바 그레이/블랙", "cnt": 3}, {"ext": "베르데 실버", "int": "나파 가죽, 블랙", "cnt": 1}], "branches": {"일산 SR": 1}}, "EQA 250 AMG Line": {"cat": "전동화 EQ", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽/마이크로컷 마이크로파이버 블랙", "cnt": 1}], "branches": {}}, "EQA 250 Progressive": {"cat": "전동화 EQ", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 1}], "branches": {}}, "EQB 300 4M Progressive": {"cat": "전동화 EQ", "tot": 4, "av": 4, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 2}, {"ext": "코스모스 블랙", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 1}, {"ext": "폴라 화이트", "int": "아티코 가죽, 블랙", "cnt": 1}], "branches": {}}, "EQB 300 4MATIC AMG Line": {"cat": "전동화 EQ", "tot": 73, "av": 73, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽/마이크로컷 마이크로파이버  블랙", "cnt": 43}, {"ext": "코스모스 블랙", "int": "아티코 가죽/마이크로컷 마이크로파이버  블랙", "cnt": 10}, {"ext": "마운틴 그레이", "int": "아티코 가죽/마이크로컷 마이크로파이버  블랙", "cnt": 7}, {"ext": "나이트 블랙", "int": "아티코 가죽/마이크로컷 마이크로파이버  블랙", "cnt": 5}, {"ext": "폴라 화이트", "int": "아티코 가죽 세이지 그레이 / 블랙", "cnt": 4}, {"ext": "나이트 블랙", "int": "아티코 가죽 세이지 그레이 / 블랙", "cnt": 1}, {"ext": "마운틴 그레이", "int": "아티코 가죽 세이지 그레이 / 블랙", "cnt": 1}, {"ext": "코스모스 블랙", "int": "아티코 가죽 세이지 그레이 / 블랙", "cnt": 1}], "branches": {}}, "EQB 300 4MATIC Progressive": {"cat": "전동화 EQ", "tot": 187, "av": 187, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 43}, {"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 36}, {"ext": "코스모스 블랙", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 29}, {"ext": "마운틴 그레이", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 24}, {"ext": "코스모스 블랙", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 15}, {"ext": "나이트 블랙", "int": "아티코 인조 가죽, 블랙/블랙", "cnt": 15}, {"ext": "마운틴 그레이", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 13}, {"ext": "폴라 화이트", "int": "아티코 가죽 세이지 그레이 / 블랙", "cnt": 4}], "branches": {}}, "EQE 350+": {"cat": "전동화 EQ", "tot": 25, "av": 25, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "가죽, 네바 그레이/비스케이 블루", "cnt": 6}, {"ext": "폴라 화이트", "int": "가죽, 네바 그레이/비스케이 블루", "cnt": 5}, {"ext": "옵시디안 블랙", "int": "가죽, 블랙/발라오 브라운", "cnt": 4}, {"ext": "폴라 화이트", "int": "가죽, 블랙/발라오 브라운", "cnt": 4}, {"ext": "옵시디안 블랙", "int": "가죽, 네바 그레이/발라오 브라운", "cnt": 3}, {"ext": "폴라 화이트", "int": "가죽, 네바 그레이/발라오 브라운", "cnt": 2}, {"ext": "폴라 화이트", "int": "가죽, 블랙/스페이스 그레이", "cnt": 1}], "branches": {}}, "EQE 350+ SUV": {"cat": "전동화 EQ", "tot": 77, "av": 77, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "NEOTEX/ARTICO 네바 그레이/발바오 브라운", "cnt": 17}, {"ext": "폴라 화이트", "int": "NEOTEX/ARTICO 블랙/스페이스 그레이", "cnt": 16}, {"ext": "옵시디안 블랙", "int": "NEOTEX/ARTICO 블랙/스페이스 그레이", "cnt": 10}, {"ext": "폴라 화이트", "int": "NEOTEX/ARTICO 블랙/발바오 브라운", "cnt": 7}, {"ext": "옵시디안 블랙", "int": "NEOTEX/ARTICO 네바 그레이/발바오 브라운", "cnt": 7}, {"ext": "폴라 화이트", "int": "NEOTEX/ARTICO 네바 그레이/비스케이 블루", "cnt": 6}, {"ext": "옵시디안 블랙", "int": "NEOTEX/ARTICO 네바 그레이/비스케이 블루", "cnt": 6}, {"ext": "옵시디안 블랙", "int": "NEOTEX/ARTICO 블랙/발바오 브라운", "cnt": 4}], "branches": {}}, "EQE 500 4MATIC SUV": {"cat": "전동화 EQ", "tot": 27, "av": 26, "as": 1, "cr": 3.7, "colors": [{"ext": "폴라 화이트", "int": "가죽, 네바 그레이/발라오 브라운", "cnt": 6}, {"ext": "폴라 화이트", "int": "가죽, 네바 그레이/비스케이 블루", "cnt": 4}, {"ext": "폴라 화이트", "int": "가죽, 블랙/발라오 브라운", "cnt": 3}, {"ext": "옵시디안 블랙", "int": "가죽, 블랙/발라오 브라운", "cnt": 3}, {"ext": "옵시디안 블랙", "int": "가죽, 네바 그레이/비스케이 블루", "cnt": 3}, {"ext": "옵시디안 블랙", "int": "가죽, 네바 그레이/발라오 브라운", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "가죽, 블랙/스페이스 그레이", "cnt": 2}, {"ext": "폴라 화이트", "int": "가죽, 블랙/스페이스 그레이", "cnt": 2}], "branches": {"의정부 SR": 1}}, "EQS 450 4MATIC SUV": {"cat": "전동화 EQ", "tot": 29, "av": 29, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "가죽, 네바 그레이/발라오 브라운", "cnt": 9}, {"ext": "옵시디안 블랙", "int": "가죽, 블랙/스페이스 그레이", "cnt": 6}, {"ext": "옵시디안 블랙", "int": "가죽, 마키아토 베이지/스페이스 그레이", "cnt": 5}, {"ext": "폴라 화이트", "int": "가죽, 네바 그레이/발라오 브라운", "cnt": 4}, {"ext": "폴라 화이트", "int": "가죽, 블랙/스페이스 그레이", "cnt": 3}, {"ext": "셀레나이트 그레이", "int": "가죽, 블랙/스페이스 그레이", "cnt": 1}, {"ext": "MANUFAKTUR 알파일 그레이 솔리드", "int": "가죽, 마키아토 베이지/스페이스 그레이", "cnt": 1}], "branches": {}}, "GLA 250 4M": {"cat": "GLA·GLB", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "colors": [{"ext": "나이트 블랙", "int": "아티코 가죽/마이크로파이버 브라운/블랙", "cnt": 1}, {"ext": "폴라 화이트", "int": "아티코 가죽/마이크로파이버 브라운/블랙", "cnt": 1}], "branches": {}}, "GLA 250 4MATIC AMG Line": {"cat": "GLA·GLB", "tot": 45, "av": 40, "as": 5, "cr": 11.1, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 20}, {"ext": "나이트 블랙", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 13}, {"ext": "폴라 화이트", "int": "아티코 가죽/다이나미카 블랙", "cnt": 10}, {"ext": "나이트 블랙", "int": "아티코 가죽/다이나미카 블랙", "cnt": 2}], "branches": {"고양 SR": 1, "의정부 SR": 2, "일산 SR": 1, "파주 SR": 1}}, "GLB 250 4M": {"cat": "GLA·GLB", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "colors": [{"ext": "나이트 블랙", "int": "아티코 가죽/마이크로컷 마이크로파이버 블랙", "cnt": 1}, {"ext": "나이트 블랙", "int": "아티코 가죽/마이크로파이버 브라운/블랙", "cnt": 1}, {"ext": "폴라 화이트", "int": "아티코 가죽/마이크로파이버 브라운/블랙", "cnt": 1}], "branches": {}}, "GLB 250 4MATIC AMG Line": {"cat": "GLA·GLB", "tot": 250, "av": 249, "as": 1, "cr": 0.4, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 76}, {"ext": "폴라 화이트", "int": "아티코 가죽/다이나미카 블랙", "cnt": 56}, {"ext": "나이트 블랙", "int": "아티코 가죽/다이나미카 블랙", "cnt": 48}, {"ext": "나이트 블랙", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 40}, {"ext": "마운틴 그레이 메탈릭", "int": "아티코 가죽/다이나미카 블랙", "cnt": 11}, {"ext": "나이트 블랙", "int": "아티코 가죽 세이지 그레이 / 블랙", "cnt": 7}, {"ext": "마운틴 그레이 메탈릭", "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙", "cnt": 7}, {"ext": "폴라 화이트", "int": "아티코 가죽 세이지 그레이 / 블랙", "cnt": 3}], "branches": {"일산 SR": 1}}, "GLC 220 d 4M": {"cat": "GLC", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 1}], "branches": {}}, "GLC 220 d 4MATIC": {"cat": "GLC", "tot": 104, "av": 103, "as": 1, "cr": 1.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 42}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 21}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 19}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙", "cnt": 10}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 9}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 블랙", "cnt": 3}], "branches": {"파주 SR": 1}}, "GLC 300 4M AV": {"cat": "GLC", "tot": 11, "av": 11, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 8}, {"ext": "폴라 화이트", "int": "아티코 가죽, 마키아토 베이지/블랙", "cnt": 2}, {"ext": "폴라 화이트", "int": "아티코 가죽, 블랙", "cnt": 1}], "branches": {}}, "GLC 300 4M Coupe AV": {"cat": "GLC", "tot": 7, "av": 7, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "아티코 가죽, 시에나 브라운/블랙", "cnt": 7}], "branches": {}}, "GLC 300 4MATIC AMG Line": {"cat": "GLC", "tot": 64, "av": 46, "as": 18, "cr": 28.1, "colors": [{"ext": "MANUFAKTUR 알파인 그레이 솔리드", "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙", "cnt": 64}], "branches": {"고양 SR": 14, "일산 SR": 4}}, "GLC 300 4MATIC AVANTGARDE": {"cat": "GLC", "tot": 96, "av": 91, "as": 5, "cr": 5.2, "colors": [{"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 32}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 18}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 17}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 13}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙", "cnt": 13}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 블랙", "cnt": 3}], "branches": {"고양 SR": 3, "의정부 SR": 1, "일산 SR": 1}}, "GLC 300 4MATIC Coupé AMG Line": {"cat": "GLC", "tot": 27, "av": 0, "as": 27, "cr": 100.0, "colors": [{"ext": "MANUFAKTUR 알파인 그레이 솔리드", "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙", "cnt": 27}], "branches": {"고양 SR": 3, "일산 SR": 24}}, "GLC 300 4MATIC Coupé AVANTGARDE": {"cat": "GLC", "tot": 69, "av": 60, "as": 9, "cr": 13.0, "colors": [{"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 27}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙", "cnt": 14}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 10}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 10}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 블랙", "cnt": 5}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 시에나 브라운/블랙", "cnt": 3}], "branches": {"고양 SR": 1, "의정부 SR": 4, "일산 SR": 3, "파주 SR": 1}}, "GLE 300 d 4MATIC": {"cat": "GLE", "tot": 27, "av": 20, "as": 7, "cr": 25.9, "colors": [{"ext": "폴라 화이트", "int": "아티코 인조 가죽, 바히아 브라운/블랙", "cnt": 20}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 4}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 블랙", "cnt": 1}], "branches": {"고양 SR": 3, "일산 SR": 4}}, "GLE 350 4MATIC": {"cat": "GLE", "tot": 26, "av": 23, "as": 3, "cr": 11.5, "colors": [{"ext": "폴라 화이트", "int": "아티코 인조 가죽, 바히아 브라운/블랙", "cnt": 18}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙", "cnt": 4}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 바히아 브라운/블랙", "cnt": 2}, {"ext": "셀레나이트 그레이", "int": "아티코 인조 가죽, 바히아 브라운/블랙", "cnt": 1}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 1}], "branches": {"일산 SR": 3}}, "GLE 450 4M": {"cat": "GLE", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "기타", "cnt": 3}], "branches": {}}, "GLE 450 4M AMG Line": {"cat": "GLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "셀레나이트 그레이", "int": "기타", "cnt": 1}], "branches": {}}, "GLE 450 4MATIC": {"cat": "GLE", "tot": 65, "av": 57, "as": 8, "cr": 12.3, "colors": [{"ext": "폴라 화이트", "int": "나파 가죽, 블랙", "cnt": 11}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 10}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 블랙", "cnt": 10}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 바히아 브라운/블랙", "cnt": 9}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 마키아토 베이지/블랙", "cnt": 8}, {"ext": "폴라 화이트", "int": "아티코 인조 가죽, 바히아 브라운/블랙", "cnt": 8}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 블랙", "cnt": 5}, {"ext": "옵시디안 블랙", "int": "아티코 인조 가죽, 블랙", "cnt": 4}], "branches": {"고양 SR": 3, "의정부 SR": 3, "일산 SR": 2}}, "GLE 450 4MATIC Coupé AMG Line": {"cat": "GLE", "tot": 114, "av": 114, "as": 0, "cr": 0.0, "colors": [{"ext": "폴라 화이트", "int": "나파 가죽, 블랙", "cnt": 114}], "branches": {}}, "GLS 450 4MATIC AMG Line": {"cat": "기타", "tot": 6, "av": 0, "as": 6, "cr": 100.0, "colors": [{"ext": "옵시디안 블랙", "int": "가죽, 블랙", "cnt": 5}, {"ext": "옵시디안 블랙", "int": "가죽, 바히아 브라운/블랙", "cnt": 1}], "branches": {"일산 SR": 6}}, "GLS 450 d 4MATIC AMG Line": {"cat": "기타", "tot": 4, "av": 0, "as": 4, "cr": 100.0, "colors": [{"ext": "옵시디안 블랙", "int": "가죽, 바히아 브라운/블랙", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "가죽, 블랙", "cnt": 1}, {"ext": "폴라 화이트", "int": "가죽, 블랙", "cnt": 1}], "branches": {"의정부 SR": 1, "일산 SR": 3}}, "Maybach GLS 600": {"cat": "Maybach", "tot": 1, "av": 0, "as": 1, "cr": 100.0, "colors": [{"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "익스클루시브 나파 가죽, 자바", "cnt": 1}], "branches": {"의정부 SR": 1}}, "Maybach S 580": {"cat": "Maybach", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "기타", "cnt": 1}], "branches": {}}, "Maybach S 580 4MATIC": {"cat": "Maybach", "tot": 21, "av": 21, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄", "cnt": 13}, {"ext": "옵시디안 블랙", "int": "마이바흐 익스클루시브 나파 가죽, 블랙", "cnt": 5}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄", "cnt": 1}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙", "cnt": 1}, {"ext": "옵시디안 블랙", "int": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙", "cnt": 1}], "branches": {}}, "Maybach S 680": {"cat": "Maybach", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "기타", "cnt": 1}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 마키아토 베이지/브론즈 브라운 펄", "cnt": 1}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 발라오 브라운 펄/에스프레소 브라운", "cnt": 1}], "branches": {}}, "Maybach S 680 4MATIC": {"cat": "Maybach", "tot": 9, "av": 9, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙", "cnt": 7}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄", "cnt": 1}, {"ext": "옵시디안 블랙", "int": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄", "cnt": 1}], "branches": {}}, "Maybach SL 680 Monogram Series": {"cat": "Maybach", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "colors": [{"ext": "MANUFAKTUR 오팔라이트 화이트 마그노", "int": "MANUFAKTUR 익스클루시브 나파 가죽, 크리스탈 화이트", "cnt": 2}, {"ext": "MANUFAKTUR 가넷 레드 메탈릭", "int": "MANUFAKTUR 익스클루시브 나파 가죽, 크리스탈 화이트", "cnt": 1}], "branches": {}}, "S 350 d 4MATIC": {"cat": "S클래스", "tot": 15, "av": 12, "as": 3, "cr": 20.0, "colors": [{"ext": "옵시디안 블랙", "int": "가죽, 시에나 브라운/블랙", "cnt": 12}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "가죽, 마키아토 베이지/마그마 그레이", "cnt": 1}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "블랙", "cnt": 1}, {"ext": "노틱 블루", "int": "가죽, 마키아토 베이지/마그마 그레이", "cnt": 1}], "branches": {"고양 SR": 3}}, "S 450 4M": {"cat": "S클래스", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "나파 가죽, 베이지/그레이", "cnt": 2}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 통카 브라운/블랙", "cnt": 1}], "branches": {}}, "S 450 4MATIC Sedan": {"cat": "S클래스", "tot": 35, "av": 25, "as": 10, "cr": 28.6, "colors": [{"ext": "옵시디안 블랙", "int": "나파 가죽, 시에나 브라운/블랙", "cnt": 17}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 블랙", "cnt": 14}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 마키아토 베이지/마그마 그레이", "cnt": 3}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "나파 가죽, 시에나 브라운/블랙", "cnt": 1}], "branches": {"고양 SR": 2, "의정부 SR": 2, "일산 SR": 4, "파주 SR": 2}}, "S 450 4MATIC Sedan long": {"cat": "S클래스", "tot": 1, "av": 0, "as": 1, "cr": 100.0, "colors": [{"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "나파 가죽, 시에나 브라운/블랙", "cnt": 1}], "branches": {"고양 SR": 1}}, "S 500 4M": {"cat": "S클래스", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "나파 가죽, 통카 브라운/블랙", "cnt": 1}], "branches": {}}, "S 500 4MATIC Sedan long": {"cat": "S클래스", "tot": 5, "av": 5, "as": 0, "cr": 0.0, "colors": [{"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "나파 가죽, 마키아토 베이지/마그마 그레이", "cnt": 2}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "나파 가죽, 블랙", "cnt": 1}, {"ext": "노틱 블루", "int": "나파 가죽, 마키아토 베이지/마그마 그레이", "cnt": 1}, {"ext": "옵시디안 블랙", "int": "나파 가죽, 마키아토 베이지/마그마 그레이", "cnt": 1}], "branches": {}}, "S 580 4MATIC Sedan long": {"cat": "S클래스", "tot": 4, "av": 4, "as": 0, "cr": 0.0, "colors": [{"ext": "옵시디안 블랙", "int": "익스클루시브 나파 가죽, 시에나 브라운/블랙", "cnt": 2}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "익스클루시브 나파 가죽, 마키아토 베이지/마그마 그레이", "cnt": 1}, {"ext": "MANUFAKTUR 오팔라이트 화이트 브라이트", "int": "익스클루시브 나파 가죽, 시에나 브라운/블랙", "cnt": 1}], "branches": {}}}};
+const PRELOAD = {"history": [{"date": "2026-04-09", "total": 3699, "available": 3526, "assigned": 173, "rate": 4.7}, {"date": "2026-04-10", "total": 3815, "available": 3623, "assigned": 192, "rate": 5.0}], "changes": {"from": "2026-04-09", "to": "2026-04-10", "new": 214, "gone": 98, "converted": 29, "released": 8, "delivered": 8, "newContracts": 37, "convertedModels": [{"model": "GLC 300 4MATIC AMG Line", "cnt": 4}, {"model": "AMG CLE 53 4MATIC+ Cabriolet", "cnt": 3}, {"model": "E 300 4MATIC EXCLUSIVE", "cnt": 3}, {"model": "AMG CLA 45 S 4MATIC+ Coupé", "cnt": 2}, {"model": "GLA 250 4MATIC AMG Line", "cnt": 2}, {"model": "C 200 AVANTGARDE", "cnt": 2}, {"model": "GLE 300 d 4MATIC", "cnt": 2}, {"model": "GLC 300 4MATIC AVANTGARDE", "cnt": 2}], "newStockModels": [{"model": "E 200 AMG Line", "cnt": 48}, {"model": "E 300 4M EX", "cnt": 21}, {"model": "E 300 4M AMG Line", "cnt": 19}, {"model": "E 200 AV", "cnt": 15}, {"model": "GLC 300 4M AV", "cnt": 11}, {"model": "CLE 200 Cabriolet", "cnt": 9}, {"model": "GLC 300 4M Coupe AV", "cnt": 7}, {"model": "CLE 200 Cabriolet AMG Line", "cnt": 6}], "topSalesmen": [{"name": "한호만", "branch": "고양", "cnt": 3}, {"name": "이동민", "branch": "의정부", "cnt": 2}, {"name": "이기복", "branch": "고양", "cnt": 2}, {"name": "이호찬", "branch": "일산", "cnt": 2}, {"name": "주건영", "branch": "고양", "cnt": 2}, {"name": "김나영", "branch": "일산", "cnt": 2}, {"name": "양국승", "branch": "고양", "cnt": 2}], "deliveredBy": [{"name": "주건영", "branch": "고양", "cnt": 3}, {"name": "김대일", "branch": "고양", "cnt": 2}, {"name": "홍진우", "branch": "일산", "cnt": 1}, {"name": "김세화", "branch": "일산", "cnt": 1}, {"name": "윤영상", "branch": "일산", "cnt": 1}]}};
 
-// ── Local storage for history ──
-const STORAGE_KEY = 'benzdream_inventory_history';
-function loadHistory(){
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  }catch(e){return []}
-}
-function saveHistory(h){
-  try{localStorage.setItem(STORAGE_KEY, JSON.stringify(h))}catch(e){}
-}
+const STORAGE_KEY = 'benzdream_inv_history_v2';
+function loadHist(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]}catch(e){return[]}}
+function saveHist(h){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(h))}catch(e){}}
 
-// Save today's snapshot if not already saved
-function updateHistory(){
-  const h = loadHistory();
-  const today = DATA.date;
-  const exists = h.find(s=>s.date===today);
-  if(!exists){
-    h.push({
-      date: today,
-      total: DATA.total,
-      available: DATA.totalAvailable,
-      assigned: DATA.totalAssigned,
-      rate: DATA.overallContractRate,
-    });
-    // Keep last 60 days
-    while(h.length>60) h.shift();
-    saveHistory(h);
-  }
-  return h;
-}
+// Merge preload with existing
+let history = loadHist();
+PRELOAD.history.forEach(p=>{
+  if(!history.find(h=>h.date===p.date)) history.push(p);
+});
+history.sort((a,b)=>a.date.localeCompare(b.date));
+while(history.length>60) history.shift();
+saveHist(history);
 
-function getDelta(today, yesterday){
-  if(!yesterday) return null;
-  return {
-    total: today.total - yesterday.total,
-    available: today.available - yesterday.available,
-    assigned: today.assigned - yesterday.assigned,
-    rate: (today.rate - yesterday.rate).toFixed(1),
-  };
-}
-
-function fmtDelta(v, suffix=''){
-  if(v===null||v===undefined) return '-';
-  if(v===0) return '→ 0';
-  if(v>0) return '▲ +' + v + suffix;
-  return '▼ ' + v + suffix;
-}
-function deltaClass(v){
-  if(v===null||v===undefined||v===0) return 'flat';
-  return v>0 ? 'up' : 'down';
-}
-
-const history = updateHistory();
 const today = history[history.length-1];
 const yesterday = history.length>1 ? history[history.length-2] : null;
-const delta = getDelta(today, yesterday);
 
-// ── KPIs ──
+function fmtD(v,suffix=''){
+  if(v===null||v===undefined) return '-';
+  const n = parseFloat(v);
+  if(n===0) return '→ 0';
+  if(n>0) return '▲ +'+v+suffix;
+  return '▼ '+v+suffix;
+}
+function dCls(v){
+  if(v===null||v===undefined) return 'flat';
+  const n = parseFloat(v);
+  if(n===0) return 'flat';
+  return n>0?'up':'down';
+}
+
+// KPI
 document.getElementById('k1').textContent = DATA.total.toLocaleString();
 document.getElementById('k2').textContent = DATA.totalAvailable.toLocaleString();
 document.getElementById('k3').textContent = DATA.totalAssigned.toLocaleString();
-document.getElementById('k4').textContent = DATA.overallContractRate + '%';
-document.getElementById('updated').textContent = '최종 업데이트 ' + DATA.date;
-document.getElementById('firstDate').textContent = history[0].date;
+document.getElementById('k4').textContent = DATA.overallContractRate+'%';
+document.getElementById('updated').textContent = '최종 업데이트 '+DATA.date;
 
-if(delta){
-  const sets = [['d1',delta.total],['d2',delta.available],['d3',delta.assigned],['d4',delta.rate+'%']];
-  document.getElementById('d1').textContent = fmtDelta(delta.total);
-  document.getElementById('d1').className = 'kpi-delta '+deltaClass(delta.total);
-  document.getElementById('d2').textContent = fmtDelta(delta.available);
-  document.getElementById('d2').className = 'kpi-delta '+deltaClass(delta.available);
-  document.getElementById('d3').textContent = fmtDelta(delta.assigned);
-  document.getElementById('d3').className = 'kpi-delta '+deltaClass(delta.assigned);
-  document.getElementById('d4').textContent = delta.rate>0 ? '▲ +'+delta.rate+'%p' : (delta.rate<0 ? '▼ '+delta.rate+'%p' : '→ 0');
-  document.getElementById('d4').className = 'kpi-delta '+deltaClass(parseFloat(delta.rate));
-}else{
-  document.getElementById('d1').textContent = '기준일';
-  document.getElementById('d2').textContent = '기준일';
-  document.getElementById('d3').textContent = '기준일';
-  document.getElementById('d4').textContent = '기준일';
+if(yesterday){
+  const dt = today.total - yesterday.total;
+  const da = today.available - yesterday.available;
+  const dc = today.assigned - yesterday.assigned;
+  const dr = (today.rate - yesterday.rate).toFixed(1);
+  document.getElementById('d1').textContent = fmtD(dt);
+  document.getElementById('d1').className = 'kpi-delta '+dCls(dt);
+  document.getElementById('d2').textContent = fmtD(da);
+  document.getElementById('d2').className = 'kpi-delta '+dCls(da);
+  document.getElementById('d3').textContent = fmtD(dc);
+  document.getElementById('d3').className = 'kpi-delta '+dCls(dc);
+  document.getElementById('d4').textContent = dr==='0.0'?'→ 0%p':(dr>0?'▲ +'+dr+'%p':'▼ '+dr+'%p');
+  document.getElementById('d4').className = 'kpi-delta '+dCls(dr);
 }
 
-// ── Top 20 (by total) ──
+// Daily activity strip
+const ch = PRELOAD.changes;
+document.getElementById('dailyStrip').innerHTML = `
+  <div class="dt">📅 ${ch.from} → ${ch.to} 활동</div>
+  <div class="daily-grid">
+    <div class="daily-item plus"><div class="n">+${ch.new}</div><div class="l">신규 입고</div></div>
+    <div class="daily-item contract"><div class="n">+${ch.newContracts}</div><div class="l">신규 계약</div></div>
+    <div class="daily-item deliver"><div class="n">${ch.delivered}</div><div class="l">출고 완료</div></div>
+    <div class="daily-item minus"><div class="n">-${ch.gone}</div><div class="l">소멸/이동</div></div>
+  </div>
+`;
+
+// Top 20
 const modelArr = Object.entries(DATA.models).map(([name,d])=>({name,...d}));
 const top20 = [...modelArr].sort((a,b)=>b.tot-a.tot).slice(0,20);
-
-const top20Html = top20.map((m,i)=>{
-  const rateClass = m.cr>=20?'hot':m.cr>=10?'warm':'cold';
-  return `<div class="row ${rateClass}">
+document.getElementById('top20List').innerHTML = top20.map((m,i)=>{
+  const rc = m.cr>=20?'hot':m.cr>=10?'warm':'cold';
+  return `<div class="row ${rc}">
     <div class="row-rank">${i+1}</div>
     <div><div class="row-name">${m.name}</div><div class="row-cat">${m.cat}</div></div>
     <div class="row-num n-tot">${m.tot}<span class="unit">대</span></div>
     <div class="row-num n-rate">${m.cr}%</div>
   </div>`;
 }).join('');
-document.getElementById('top20List').innerHTML = top20Html;
 
-// ── Alert: 급소 모델 (계약률 높고 재고 적음) ──
-const hotModels = modelArr
-  .filter(m=>m.tot>=10 && m.cr>=15)
-  .sort((a,b)=>b.cr-a.cr)
-  .slice(0,5);
-
+// Alert
+const hotModels = modelArr.filter(m=>m.tot>=10 && m.cr>=15).sort((a,b)=>b.cr-a.cr).slice(0,5);
 if(hotModels.length>0){
-  let alertHtml = '<div class="alert-title">⚠️ 세일즈 팁 · 계약 몰린 모델</div>';
+  let html='<div class="alert-title">⚠️ 계약 몰린 모델 · 세일즈 팁</div>';
   hotModels.forEach(m=>{
-    alertHtml += `<div class="alert-row"><div class="alert-name">${m.name}</div><div class="alert-tot">${m.tot}대</div><div class="alert-rate">${m.cr}%</div></div>`;
+    html += `<div class="alert-row"><div>${m.name}</div><div class="alert-tot">${m.tot}대</div><div class="alert-rate">${m.cr}%</div></div>`;
   });
-  document.getElementById('alertBox').innerHTML = alertHtml;
+  document.getElementById('alertBox').innerHTML = html;
 }else{
   document.getElementById('alertBox').style.display='none';
 }
 
-// ── Hot List (by contract rate) ──
-const hotList = modelArr
-  .filter(m=>m.tot>=10)
-  .sort((a,b)=>b.cr-a.cr)
-  .slice(0,20);
-
-const hotHtml = hotList.map((m,i)=>`
+// Hot list
+const hotList = modelArr.filter(m=>m.tot>=10).sort((a,b)=>b.cr-a.cr).slice(0,20);
+document.getElementById('hotList').innerHTML = hotList.map((m,i)=>`
   <div class="row ${m.cr>=20?'hot':m.cr>=10?'warm':'cold'}">
     <div class="row-rank">${i+1}</div>
     <div><div class="row-name">${m.name}</div><div class="row-cat">${m.cat}</div></div>
     <div class="row-num n-remain">${m.av}<span class="unit">대</span></div>
     <div class="row-num n-rate">${m.cr}%</div>
   </div>`).join('');
-document.getElementById('hotList').innerHTML = hotHtml;
 
-// ── Categories ──
+// Changes tab
+let changesHtml = '';
+changesHtml += '<div class="change-group"><div class="change-title contract">📝 신규 계약 전환 (전국→배정)</div>';
+ch.convertedModels.forEach(m=>{
+  changesHtml += `<div class="change-row"><div class="cn">${m.model}</div><div class="cv" style="color:#f59e0b">+${m.cnt}</div></div>`;
+});
+changesHtml += '</div>';
+
+changesHtml += '<div class="change-group"><div class="change-title plus">📦 신규 입고 Top 8</div>';
+ch.newStockModels.forEach(m=>{
+  changesHtml += `<div class="change-row"><div class="cn">${m.model}</div><div class="cv" style="color:#10b981">+${m.cnt}</div></div>`;
+});
+changesHtml += '</div>';
+
+changesHtml += '<div class="change-group"><div class="change-title contract">🏆 신규 계약 영업사원</div>';
+ch.topSalesmen.forEach((s,i)=>{
+  changesHtml += `<div class="sm-card"><div class="r">${i+1}</div><div><span class="n">${s.name}</span><span class="b">${s.branch}</span></div><div class="c">+${s.cnt}</div></div>`;
+});
+changesHtml += '</div>';
+
+changesHtml += '<div class="change-group"><div class="change-title">🚚 출고 완료 영업사원</div>';
+ch.deliveredBy.forEach((s,i)=>{
+  changesHtml += `<div class="sm-card"><div class="r">${i+1}</div><div><span class="n">${s.name}</span><span class="b">${s.branch}</span></div><div class="c" style="color:#ef4444">-${s.cnt}</div></div>`;
+});
+changesHtml += '</div>';
+
+document.getElementById('changesBox').innerHTML = changesHtml;
+
+// Categories
 const cats = DATA.categories;
 let catHtml = '';
 Object.entries(cats).forEach(([cn,cd])=>{
@@ -360,8 +346,8 @@ Object.entries(cats).forEach(([cn,cd])=>{
 });
 document.getElementById('catGrid').innerHTML = catHtml;
 
-// ── All Models by category (collapsible) ──
-function renderAllModels(filter=''){
+// All models
+function renderAll(filter=''){
   let html = '';
   const byCat = {};
   Object.entries(DATA.models).forEach(([n,d])=>{
@@ -369,40 +355,34 @@ function renderAllModels(filter=''){
     if(!byCat[d.cat]) byCat[d.cat]=[];
     byCat[d.cat].push({name:n,...d});
   });
-  
   Object.keys(cats).forEach(cat=>{
-    if(!byCat[cat] || byCat[cat].length===0) return;
+    if(!byCat[cat]||byCat[cat].length===0) return;
     const models = byCat[cat].sort((a,b)=>b.tot-a.tot);
-    const catTot = models.reduce((s,m)=>s+m.tot,0);
+    const ct = models.reduce((s,m)=>s+m.tot,0);
     const isOpen = filter ? 'open' : '';
     html += `<div class="cat-block">
       <div class="cat-header ${isOpen}" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
         <div class="cnm">${cat}</div>
-        <div class="cct">${models.length}모델 · ${catTot}대</div>
+        <div class="cct">${models.length}모델 · ${ct}대</div>
       </div>
       <div class="cat-models ${isOpen}">`;
     models.forEach(m=>{
       html += `<div class="row">
         <div class="row-name">${m.name}</div>
-        <div class="row-num">${m.tot}<span class="unit">대</span></div>
+        <div class="row-num">${m.tot}</div>
         <div class="row-num n-av">${m.av}</div>
         <div class="row-num n-cr">${m.cr}%</div>
       </div>`;
     });
     html += '</div></div>';
   });
-  
-  if(html==='') html = '<div style="text-align:center;padding:40px;color:#555">검색 결과 없음</div>';
+  if(!html) html='<div style="text-align:center;padding:40px;color:#555">검색 결과 없음</div>';
   document.getElementById('allModels').innerHTML = html;
 }
-renderAllModels();
+renderAll();
+document.getElementById('searchInput').addEventListener('input',e=>renderAll(e.target.value));
 
-document.getElementById('searchInput').addEventListener('input',e=>{
-  renderAllModels(e.target.value);
-});
-
-// ── Tabs ──
-function showTab(id, btn){
+function showTab(id,btn){
   document.querySelectorAll('.tab-content').forEach(el=>el.style.display='none');
   document.getElementById('t-'+id).style.display='block';
   document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
@@ -411,48 +391,30 @@ function showTab(id, btn){
   if(id==='trend') renderTrend();
 }
 
-// ── Category chart ──
-let catChartInst = null;
+let catChartInst=null;
 function renderCatChart(){
   if(catChartInst) return;
   const ctx = document.getElementById('catChart').getContext('2d');
   const labels = Object.keys(cats);
-  const av = labels.map(l=>cats[l].available);
-  const asg = labels.map(l=>cats[l].assigned);
   catChartInst = new Chart(ctx,{
     type:'bar',
     data:{labels,datasets:[
-      {label:'판매가능',data:av,backgroundColor:'#10b981',borderRadius:4},
-      {label:'계약',data:asg,backgroundColor:'#f59e0b',borderRadius:4},
+      {label:'판매가능',data:labels.map(l=>cats[l].available),backgroundColor:'#10b981',borderRadius:4},
+      {label:'계약',data:labels.map(l=>cats[l].assigned),backgroundColor:'#f59e0b',borderRadius:4},
     ]},
-    options:{
-      responsive:true,maintainAspectRatio:false,
+    options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{labels:{color:'#888',font:{size:10}}}},
-      scales:{
-        x:{stacked:true,ticks:{color:'#888',font:{size:9}},grid:{display:false}},
-        y:{stacked:true,ticks:{color:'#888',font:{size:9}},grid:{color:'#1f2430'}}
-      }
+      scales:{x:{stacked:true,ticks:{color:'#888',font:{size:9}},grid:{display:false}},
+              y:{stacked:true,ticks:{color:'#888',font:{size:9}},grid:{color:'#1f2430'}}}
     }
   });
 }
 
-// ── Trend chart ──
-let trendInst = null;
+let trendInst=null;
 function renderTrend(){
   if(trendInst) return;
+  document.getElementById('trendDays').textContent = history.length+'일치 데이터';
   const ctx = document.getElementById('trendChart').getContext('2d');
-  document.getElementById('trendDays').textContent = history.length + '일치 데이터';
-  
-  if(history.length<2){
-    const canvas = document.getElementById('trendChart');
-    const c = canvas.getContext('2d');
-    c.fillStyle = '#444';
-    c.font = '12px sans-serif';
-    c.textAlign = 'center';
-    c.fillText('2일 이상 누적되면 추이가 표시됩니다', canvas.width/2, canvas.height/2);
-    return;
-  }
-  
   trendInst = new Chart(ctx,{
     type:'line',
     data:{
@@ -463,18 +425,14 @@ function renderTrend(){
         {label:'계약',data:history.map(h=>h.assigned),borderColor:'#f59e0b',backgroundColor:'#f59e0b22',tension:.3,yAxisID:'y1'},
       ]
     },
-    options:{
-      responsive:true,maintainAspectRatio:false,
+    options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{labels:{color:'#888',font:{size:10}}}},
-      scales:{
-        x:{ticks:{color:'#888',font:{size:9}},grid:{display:false}},
-        y:{ticks:{color:'#888',font:{size:9}},grid:{color:'#1f2430'}},
-        y1:{position:'right',ticks:{color:'#f59e0b',font:{size:9}},grid:{display:false}}
-      }
+      scales:{x:{ticks:{color:'#888',font:{size:9}},grid:{display:false}},
+              y:{ticks:{color:'#888',font:{size:9}},grid:{color:'#1f2430'}},
+              y1:{position:'right',ticks:{color:'#f59e0b',font:{size:9}},grid:{display:false}}}
     }
   });
 }
-
 </script>
 </body>
 </html>
