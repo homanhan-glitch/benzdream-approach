@@ -17,16 +17,23 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 .hero-sub{font-size:10px;color:#666;margin-top:2px}
 .updated{display:inline-block;margin-top:8px;padding:4px 12px;background:#141824;border:1px solid #2a3040;border-radius:20px;font-family:'Outfit',sans-serif;font-size:10px;color:#c9a96e;font-weight:600}
 
-/* 입항예정 알림 배너 */
-.arrival{background:linear-gradient(135deg,#1a2a0a,#0f1a05);border:1px solid #10b98144;border-radius:12px;padding:12px 14px;margin-bottom:12px;cursor:pointer;position:relative;overflow:hidden}
-.arrival::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,#10b98122,transparent 60%);animation:pulse 2.5s infinite}
-@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
-.arrival-row{display:flex;align-items:center;gap:12px;position:relative}
-.arrival-icon{font-size:22px}
-.arrival-txt{flex:1;font-size:11px;color:#ccc;line-height:1.4}
-.arrival-txt b{color:#10b981;font-weight:700}
-.arrival-num{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:#10b981}
-.arrival-num span{font-size:10px;color:#888;margin-left:2px}
+/* 정보 박스 (ⓘ 아이콘으로 접기/펼치기) */
+.info-box{background:#0f1119;border:1px solid #1f2430;border-radius:10px;margin-bottom:12px;overflow:hidden;transition:all .2s}
+.info-head{display:flex;align-items:center;gap:8px;padding:10px 12px;cursor:pointer;user-select:none}
+.info-head:hover{background:#13151f}
+.info-icon{width:18px;height:18px;border-radius:50%;background:#c9a96e22;color:#c9a96e;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.info-title{flex:1;font-size:11px;color:#aaa;font-weight:500}
+.info-toggle{color:#555;font-size:10px;font-family:'Outfit',sans-serif}
+.info-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.info-body.open{max-height:500px}
+.info-content{padding:0 12px 12px;font-size:10.5px;color:#888;line-height:1.6;border-top:1px solid #1a1a2a}
+.info-content > div{padding-top:10px}
+.info-content b{color:#c9a96e;font-weight:600}
+.info-content .col-g{color:#10b981;font-weight:600}
+.info-content .col-r{color:#ef4444;font-weight:600}
+.info-content .col-o{color:#f59e0b;font-weight:600}
+.info-content .col-b{color:#3b82f6;font-weight:600}
+.info-content .warn{display:block;margin-top:8px;padding:8px 10px;background:#1a0f05;border-radius:6px;color:#ccc;border-left:2px solid #c9a96e}
 
 /* KPI */
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
@@ -37,26 +44,29 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 .kpi-delta.up{color:#10b981}
 .kpi-delta.down{color:#ef4444}
 .kpi-delta.flat{color:#555}
-.kpi-1 .kpi-num{color:#c9a96e} .kpi-2 .kpi-num{color:#10b981}
-.kpi-3 .kpi-num{color:#f59e0b} .kpi-4 .kpi-num{color:#3b82f6}
+.kpi-1 .kpi-num{color:#c9a96e} .kpi-2 .kpi-num{color:#ef4444}
+.kpi-3 .kpi-num{color:#10b981} .kpi-4 .kpi-num{color:#3b82f6}
 
+/* Arrival banner */
+.arrival{background:linear-gradient(135deg,#1a2a0a,#0f1a05);border:1px solid #10b98144;border-radius:12px;padding:12px 14px;margin-bottom:12px;cursor:pointer;position:relative;overflow:hidden}
+.arrival::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,#10b98122,transparent 60%);animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.arrival-row{display:flex;align-items:center;gap:12px;position:relative}
+.arrival-icon{font-size:22px}
+.arrival-txt{flex:1;font-size:11px;color:#ccc;line-height:1.4}
+.arrival-txt b{color:#10b981;font-weight:700}
+.arrival-num{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:#10b981}
+.arrival-num span{font-size:10px;color:#888;margin-left:2px}
 
-.kpi-note{background:#0f1119;border-radius:8px;padding:9px 12px;margin-bottom:12px;font-size:10px;color:#888;line-height:1.6}
-.kpi-note b{color:#3b82f6;font-family:'Outfit',sans-serif}
-
-/* Tabs */
 .tabs{display:flex;gap:3px;background:#141824;border-radius:10px;padding:3px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:1;min-width:70px;padding:9px 6px;border:none;border-radius:7px;cursor:pointer;font-size:11px;font-weight:600;background:transparent;color:#888;font-family:inherit;white-space:nowrap;transition:all .2s}
+.tab{flex:1;min-width:68px;padding:9px 5px;border:none;border-radius:7px;cursor:pointer;font-size:10.5px;font-weight:600;background:transparent;color:#888;font-family:inherit;white-space:nowrap;transition:all .2s}
 .tab.active{background:linear-gradient(135deg,#c9a96e,#ddc08a);color:#0a0a0f}
 
 .section{background:#141824;border:1px solid #1f2430;border-radius:14px;padding:14px 12px;margin-bottom:12px}
 .sec-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 2px}
 .sec-name{font-size:13px;font-weight:700;color:#fff}
 .sec-sub{font-size:10px;color:#666}
-
-.note{font-size:10px;color:#888;line-height:1.6;padding:10px 12px;background:#0f1119;border-radius:8px;margin-bottom:10px}
-.note b{color:#c9a96e}
 
 /* Row */
 .row{display:grid;gap:6px;padding:9px 10px;background:#0f1119;border-radius:8px;margin-bottom:4px;align-items:center;border-left:3px solid transparent;font-size:11.5px}
@@ -70,39 +80,35 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 
 /* Delta chip */
 .delta{display:inline-block;font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:4px}
-.delta.up{background:#10b98122;color:#10b981}
-.delta.down{background:#ef444422;color:#ef4444}
+.delta.up{background:#ef444422;color:#ef4444}
+.delta.down{background:#10b98122;color:#10b981}
 .delta.flat{background:#1f2430;color:#555}
 
-/* Top 20 layout */
-.top20 .row{grid-template-columns:22px minmax(0,1fr) 42px 60px}
-.top20 .n-tot{color:#c9a96e}
-.top20 .n-rate{color:#f59e0b;font-size:11px}
+/* Tab layouts */
+.top-contract .row{grid-template-columns:22px minmax(0,1fr) 42px 50px}
+.top-contract .n-av{color:#10b981}
+.top-contract .n-ct{color:#ef4444;font-size:13px}
 
-/* Trending list */
-.trend-row{display:grid;grid-template-columns:22px minmax(0,1fr) 42px 56px;gap:6px;padding:9px 10px;background:#0f1119;border-radius:8px;margin-bottom:4px;align-items:center;border-left:3px solid #f59e0b;font-size:11.5px}
-.trend-row .tr-rate{color:#f59e0b;font-size:12px;font-family:'Outfit',sans-serif;font-weight:800;text-align:right}
-.trend-row .tr-tot{color:#c9a96e;font-size:11px;font-family:'Outfit',sans-serif;font-weight:700;text-align:right}
+.top-stock .row{grid-template-columns:22px minmax(0,1fr) 42px 50px}
+.top-stock .n-av{color:#10b981;font-size:13px}
+.top-stock .n-ct{color:#ef4444;font-size:11px}
 
 /* Class1 cards */
 .class1-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .c1-card{background:#0f1119;border-radius:10px;padding:10px 12px;border-left:3px solid #c9a96e}
 .c1-card .n{font-size:12px;font-weight:700;color:#fff;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
-.c1-card .n .rate{font-family:'Outfit',sans-serif;font-size:15px;color:#ef4444;font-weight:800}
-.c1-card .bar{height:5px;background:#1a1a2a;border-radius:3px;overflow:hidden;margin-bottom:6px}
-.c1-card .bar-fill{height:100%;background:linear-gradient(90deg,#c9a96e,#ef4444);transition:width .4s}
-.c1-card .nums{display:flex;justify-content:space-between;font-size:10px;color:#888}
-.c1-card .nums b{color:#c9a96e;font-family:'Outfit',sans-serif}
+.c1-card .n .rate{font-family:'Outfit',sans-serif;font-size:14px;color:#ef4444;font-weight:800}
+.c1-card .nums{display:flex;justify-content:space-between;font-size:10px;color:#888;margin-top:4px}
+.c1-card .nums b{color:#10b981;font-family:'Outfit',sans-serif;font-weight:700}
+.c1-card .nums .ct b{color:#ef4444}
 
 /* Category */
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .cat-card{background:#0f1119;border-radius:10px;padding:11px 12px;border-left:3px solid #c9a96e}
-.cat-card .cn{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px;display:flex;justify-content:space-between}
-.cat-card .cn .rate{color:#f59e0b;font-family:'Outfit',sans-serif}
-.cat-card .bar{height:4px;background:#1a1a2a;border-radius:2px;overflow:hidden;margin:6px 0}
-.cat-card .bar-fill{height:100%;background:linear-gradient(90deg,#10b981,#f59e0b)}
-.cat-card .cs{display:flex;justify-content:space-between;font-size:10px;color:#888}
-.cat-card .cs b{color:#c9a96e;font-family:'Outfit',sans-serif}
+.cat-card .cn{font-size:12px;font-weight:700;color:#fff;margin-bottom:6px}
+.cat-card .cs{display:flex;justify-content:space-between;font-size:10px;color:#888;margin-top:4px}
+.cat-card .cs b{color:#10b981;font-family:'Outfit',sans-serif;font-weight:700}
+.cat-card .cs .ct b{color:#ef4444}
 
 /* All models */
 .cat-block{margin-bottom:12px}
@@ -112,7 +118,7 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 .cat-header .cct{font-size:10px;color:#c9a96e;font-family:'Outfit',sans-serif}
 .cat-models{display:none;padding-left:4px}
 .cat-models.open{display:block}
-.cat-models .row{grid-template-columns:minmax(0,1fr) 32px 32px 36px;font-size:11px}
+.cat-models .row{grid-template-columns:minmax(0,1fr) 36px 36px;font-size:11px}
 
 .search{margin-bottom:10px}
 .search input{width:100%;background:#0f1119;border:1px solid #2a3040;border-radius:8px;padding:10px 14px;color:#fff;font-size:12px;font-family:inherit;outline:none}
@@ -122,7 +128,7 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 .arr-list .row{grid-template-columns:22px minmax(0,1fr) 50px}
 .arr-list .row .row-num{color:#10b981}
 
-/* Trend tab — 확 키움 */
+/* Trend tab */
 .trend-section{background:#141824;border:1px solid #1f2430;border-radius:14px;padding:16px 14px;margin-bottom:12px}
 .trend-section h3{font-size:13px;font-weight:700;color:#fff;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
 .trend-section h3 .days{font-size:10px;color:#666;font-weight:500}
@@ -134,9 +140,9 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 .trend-summary .ts{text-align:center;padding:8px 4px;background:#0f1119;border-radius:8px}
 .trend-summary .ts .ts-l{font-size:9px;color:#777}
 .trend-summary .ts .ts-n{font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;margin-top:3px}
-.ts-tot .ts-n{color:#c9a96e}
-.ts-as .ts-n{color:#f59e0b}
-.ts-cr .ts-n{color:#ef4444}
+.ts-av .ts-n{color:#10b981}
+.ts-ct .ts-n{color:#ef4444}
+.ts-nw .ts-n{color:#c9a96e}
 
 .footer{text-align:center;font-size:9px;color:#444;margin-top:20px;line-height:1.8}
 .footer b{color:#c9a96e}
@@ -154,19 +160,27 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 <div class="hero">
   <div class="hero-tag">Motor One · National Inventory Trend</div>
   <h1 class="hero-title">전국재고 트렌드</h1>
-  <div class="hero-sub">직판제 전국재고 시장 분위기 파악</div>
+  <div class="hero-sub">직판제 판매가능 재고 실시간 모니터링</div>
   <div class="updated" id="updated">최종 업데이트 2026-04-10</div>
 </div>
 
-<!-- 용어 정의 -->
-<div class="glossary">
-  <div class="gl-title">📖 용어 정의</div>
-  <div class="gl-items">
-    <div class="gl-item"><b style="color:#c9a96e">전체 재고</b> = 판매가능 + 계약중 (타파트너사가 가진 재고는 미포함)</div>
-    <div class="gl-item"><b style="color:#10b981">판매 가능</b> = 아직 아무도 계약하지 않은 차량 (모터원·타사 영업 가능)</div>
-    <div class="gl-item"><b style="color:#f59e0b">계약 중</b> = 모터원 영업사원이 가계약 체결한 차량 (담당자 배정됨)</div>
-    <div class="gl-item"><b style="color:#ef4444">계약률</b> = 계약중 ÷ 전체 × 100 (해당 트림이 얼마나 빨리 빠지는지)</div>
-    <div class="gl-item note-warn">⚠️ 타파트너사 영업사원의 계약 현황은 이 재고표에서 확인 불가. 계약률은 <b>모터원 계약분만</b> 집계됨</div>
+<!-- 용어 정의 (접기/펼치기) -->
+<div class="info-box">
+  <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
+    <div class="info-icon">ⓘ</div>
+    <div class="info-title">데이터 해석 가이드</div>
+    <div class="info-toggle">펼치기 ▼</div>
+  </div>
+  <div class="info-body">
+    <div class="info-content">
+      <div>
+        <b>판매 가능</b> · MBK가 보유한 <span class="col-g">타파트너사 계약이 되지 않은 전국재고</span>. 누구든 계약 가능한 상태의 차량.<br>
+        <b>오늘 계약</b> · <span class="col-r">어제 판매가능이었다가 오늘 사라진 VIN 수</span>. 모터원+타사 전체 계약 합계.<br>
+        <b>신규 입항</b> · <span class="col-b">오늘 새로 재고표에 추가된 VIN</span>. MBK에 새로 들어온 물량.<br>
+        <b>회전율</b> · 오늘 계약 ÷ 어제 판매가능 × 100. 재고가 얼마나 빨리 빠지는지.
+        <div class="warn">⚠️ 모터원 영업사원 배정재고(192대)는 이 대시보드에서 제외됨. 오직 <b>판매가능 재고</b>만 집계. 모터원 영업 실적은 별도 페이지에서 확인 예정.</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -175,7 +189,7 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
   <div class="arrival-row">
     <div class="arrival-icon">🚢</div>
     <div class="arrival-txt">
-      <b>입항예정 물량</b><br>
+      <b>신규 입항 VIN</b><br>
       <span id="arrivalMsg">-</span>
     </div>
     <div class="arrival-num" id="arrivalNum">0<span>대</span></div>
@@ -184,110 +198,128 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 
 <!-- KPI -->
 <div class="kpis">
-  <div class="kpi kpi-1"><div class="kpi-num" id="k1">0</div><div class="kpi-lbl">전체 재고</div><div class="kpi-delta flat" id="d1">-</div></div>
-  <div class="kpi kpi-2"><div class="kpi-num" id="k2">0</div><div class="kpi-lbl">판매 가능</div><div class="kpi-delta flat" id="d2">-</div></div>
-  <div class="kpi kpi-3"><div class="kpi-num" id="k3">0</div><div class="kpi-lbl">계약 중</div><div class="kpi-delta flat" id="d3">-</div></div>
-  <div class="kpi kpi-4"><div class="kpi-num" id="k4">0%</div><div class="kpi-lbl">계약률</div><div class="kpi-delta flat" id="d4">-</div></div>
-</div>
-
-<div class="kpi-note">
-  <b>계약률 5.0%</b> = 전체 3,815대 중 192대가 모터원 영업사원에게 가계약 체결 상태<br>
-  <span style="color:#666">델타(▲▼) = 어제(4/9) 대비 변동 · 계약률은 %p 단위</span>
+  <div class="kpi kpi-1"><div class="kpi-num" id="k1">0</div><div class="kpi-lbl">판매 가능</div><div class="kpi-delta flat" id="d1">-</div></div>
+  <div class="kpi kpi-2"><div class="kpi-num" id="k2">0</div><div class="kpi-lbl">오늘 계약</div><div class="kpi-delta flat" id="d2">-</div></div>
+  <div class="kpi kpi-3"><div class="kpi-num" id="k3">0</div><div class="kpi-lbl">신규 입항</div><div class="kpi-delta flat" id="d3">-</div></div>
+  <div class="kpi kpi-4"><div class="kpi-num" id="k4">0%</div><div class="kpi-lbl">회전율</div><div class="kpi-delta flat" id="d4">-</div></div>
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="showTab('top20',this)">🔥 Top 20</button>
-  <button class="tab" onclick="showTab('trending',this)">📈 상승 트림</button>
+  <button class="tab active" onclick="showTab('contract',this)">🔥 오늘 계약</button>
+  <button class="tab" onclick="showTab('stock',this)">📦 재고 Top</button>
   <button class="tab" onclick="showTab('class1',this)">🏆 Class1</button>
   <button class="tab" onclick="showTab('cat',this)">📊 카테고리</button>
-  <button class="tab" onclick="showTab('arrival',this)">🚢 입항예정</button>
+  <button class="tab" onclick="showTab('arrival',this)">🚢 신규입항</button>
   <button class="tab" onclick="showTab('all',this)">📋 전체</button>
   <button class="tab" onclick="showTab('trend',this)">📉 추이</button>
 </div>
 
-<div id="t-top20" class="tab-content">
-  <div class="legend">
-  <div class="legend-title">🔥 재고 많은순 Top 20</div>
-  <div class="legend-desc">MBK 전체 재고 중 모델별 대수가 가장 많은 20개 트림. <b style="color:#c9a96e">재고가 많다 = 공급 충분</b>, <b style="color:#ef4444">계약률이 높다 = 수요 뜨거움</b></div>
-  <div class="legend-cols">
-    <div class="legend-col"><b class="col-gold">대수</b> 전체 재고 (판매가능+계약)</div>
-    <div class="legend-col"><b class="col-orange">계약률</b> 계약 ÷ 전체 × 100</div>
-    <div class="legend-col"><b>▲▼</b> 어제 대비 변동</div>
+<div id="t-contract" class="tab-content">
+  <div class="info-box">
+    <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
+      <div class="info-icon">ⓘ</div>
+      <div class="info-title">오늘 계약 Top 20 · 해석 가이드</div>
+      <div class="info-toggle">펼치기 ▼</div>
+    </div>
+    <div class="info-body">
+      <div class="info-content"><div>
+        어제(4/9) 판매가능 재고 중 오늘 사라진 VIN을 트림별로 집계. <span class="col-r">계약 건수가 많을수록</span> 오늘 시장 수요가 몰린 트림입니다.<br>
+        <b class="col-g">재고</b> = 오늘 판매가능 대수 · <b class="col-r">계약</b> = 오늘 하루 빠진 VIN 수
+      </div></div>
+    </div>
   </div>
-</div>
   <div class="section">
-    <div class="top20" id="top20List"></div>
+    <div class="sec-title"><div class="sec-name">🔥 오늘 계약 Top 20</div><div class="sec-sub" id="contractSub"></div></div>
+    <div class="top-contract" id="contractList"></div>
   </div>
 </div>
 
-<div id="t-trending" class="tab-content" style="display:none">
-  <div class="legend">
-  <div class="legend-title">📈 계약률 급상승 트림 Top 20</div>
-  <div class="legend-desc">어제 대비 <b style="color:#ef4444">계약률이 가장 많이 오른</b> 트림. 오늘 시장에서 고객들이 몰린 차량을 보여줍니다. <span style="color:#666">(재고 10대 이상만 집계 — 소수 재고 변동 노이즈 제거)</span></div>
-  <div class="legend-cols">
-    <div class="legend-col"><b class="col-gold">대수</b> 현재 전체 재고</div>
-    <div class="legend-col"><b class="col-orange">계약률</b> 현재 % + 어제 대비 변동</div>
-    <div class="legend-col"><b>▲14.4%p</b> 예: 어제 5.6% → 오늘 20%</div>
+<div id="t-stock" class="tab-content" style="display:none">
+  <div class="info-box">
+    <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
+      <div class="info-icon">ⓘ</div>
+      <div class="info-title">재고 많은순 Top 20 · 해석 가이드</div>
+      <div class="info-toggle">펼치기 ▼</div>
+    </div>
+    <div class="info-body">
+      <div class="info-content"><div>
+        현재 판매가능 재고가 많은 순서. <b class="col-g">재고 많음</b> = 공급 여유 있음. 옆의 <b class="col-r">오늘 계약 수</b>로 수요 강도 확인.
+      </div></div>
+    </div>
   </div>
-</div>
   <div class="section">
-    <div id="trendingList"></div>
+    <div class="top-stock" id="stockList"></div>
   </div>
 </div>
 
 <div id="t-class1" class="tab-content" style="display:none">
-  <div class="legend">
-  <div class="legend-title">🏆 Class1 세그먼트 계약률</div>
-  <div class="legend-desc">MBK 공식 차급 분류(E/S/SUV/AMG/EQ 등) 기준 계약률 순위. <b>어떤 세그먼트가 전체 시장에서 뜨거운지</b> 한 눈에 확인</div>
-  <div class="legend-cols">
-    <div class="legend-col"><b class="col-gold">총</b> 전체 재고 대수</div>
-    <div class="legend-col"><b class="col-orange">계약</b> 계약 중 대수 (전일 대비 ▲▼)</div>
-    <div class="legend-col"><b class="col-red">%</b> 계약률</div>
+  <div class="info-box">
+    <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
+      <div class="info-icon">ⓘ</div>
+      <div class="info-title">Class1 세그먼트 회전율 · 해석 가이드</div>
+      <div class="info-toggle">펼치기 ▼</div>
+    </div>
+    <div class="info-body">
+      <div class="info-content"><div>
+        MBK 공식 차급 분류 기준. <b class="col-r">회전율</b>이 높은 세그먼트 = 시장에서 가장 빨리 팔리는 카테고리.<br>
+        <b>회전율</b> = 오늘 계약 ÷ 어제 판매가능 × 100
+      </div></div>
+    </div>
   </div>
-</div>
   <div class="section">
     <div class="class1-grid" id="class1Grid"></div>
   </div>
 </div>
 
 <div id="t-cat" class="tab-content" style="display:none">
-  <div class="legend">
-  <div class="legend-title">📊 BenzDream 카테고리별 계약률</div>
-  <div class="legend-desc">BenzDream 13개 카테고리(Maybach / EQ / GLE / E클래스 등) 기준. Class1과 달리 <b>고객 상담 관점 분류</b></div>
-  <div class="legend-cols">
-    <div class="legend-col"><b class="col-gold">대수</b> 카테고리 전체 재고</div>
-    <div class="legend-col"><b class="col-orange">%</b> 계약률 + 어제 대비</div>
-    <div class="legend-col"><b>바</b> 계약률 시각화</div>
+  <div class="info-box">
+    <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
+      <div class="info-icon">ⓘ</div>
+      <div class="info-title">BenzDream 카테고리별 현황 · 해석 가이드</div>
+      <div class="info-toggle">펼치기 ▼</div>
+    </div>
+    <div class="info-body">
+      <div class="info-content"><div>
+        BenzDream 13개 카테고리(고객 상담 관점 분류). 각 카드에 재고/오늘 계약 수 표시
+      </div></div>
+    </div>
   </div>
-</div>
   <div class="section">
     <div class="cat-grid" id="catGrid"></div>
   </div>
 </div>
 
 <div id="t-arrival" class="tab-content" style="display:none">
-  <div class="legend">
-  <div class="legend-title">🚢 입항예정 차량</div>
-  <div class="legend-desc">현재 재고에 포함되어 있지만 <b>입항 예정일이 오늘 이후</b>인 차량. 아직 국내에 들어오지 않았지만 배정 가능한 물량입니다</div>
-  <div class="legend-cols">
-    <div class="legend-col"><b>대수</b> 모델별 입항예정 물량</div>
-    <div class="legend-col" style="color:#c9a96e">※ 다음주부터 더 많은 물량 표시 예정</div>
+  <div class="info-box">
+    <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
+      <div class="info-icon">ⓘ</div>
+      <div class="info-title">신규 입항 VIN · 해석 가이드</div>
+      <div class="info-toggle">펼치기 ▼</div>
+    </div>
+    <div class="info-body">
+      <div class="info-content"><div>
+        <b class="col-b">어제 재고표에 없었는데 오늘 새로 추가된 VIN</b>. MBK에 신규 배정된 물량. 배정 기회 포착용.<br>
+        <span style="color:#666">기존 재고에 대한 PDD/입항예정일 아님 — 어제→오늘 사이 <b>실제 VIN 증가분</b>입니다</span>
+      </div></div>
+    </div>
   </div>
-</div>
   <div class="section">
-    <div class="sec-title"><div class="sec-name">🚢 입항예정 모델별</div><div class="sec-sub" id="arrSub">-</div></div>
+    <div class="sec-title"><div class="sec-name">🚢 신규 입항 모델별</div><div class="sec-sub" id="arrSub">-</div></div>
     <div class="arr-list" id="arrivalList"></div>
   </div>
 </div>
 
 <div id="t-all" class="tab-content" style="display:none">
-  <div class="legend">
-    <div class="legend-title">📋 전체 모델 리스트</div>
-    <div class="legend-desc">85개 트림 전체. 카테고리별로 접기/펼치기. 검색창에 모델명 입력 가능</div>
-    <div class="legend-cols">
-      <div class="legend-col"><b class="col-gold">1열</b> 총 재고</div>
-      <div class="legend-col"><b class="col-green">2열</b> 판매가능</div>
-      <div class="legend-col"><b class="col-red">3열</b> 계약률</div>
+  <div class="info-box">
+    <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
+      <div class="info-icon">ⓘ</div>
+      <div class="info-title">전체 모델 리스트 · 해석 가이드</div>
+      <div class="info-toggle">펼치기 ▼</div>
+    </div>
+    <div class="info-body">
+      <div class="info-content"><div>
+        카테고리별 접기/펼치기. <b class="col-g">왼쪽 숫자</b> = 재고 · <b class="col-r">오른쪽 숫자</b> = 오늘 계약
+      </div></div>
     </div>
   </div>
   <div class="search"><input type="text" id="searchInput" placeholder="모델명 검색..."></div>
@@ -295,17 +327,21 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 </div>
 
 <div id="t-trend" class="tab-content" style="display:none">
-  <div class="legend">
-    <div class="legend-title">📉 일별 추이 차트</div>
-    <div class="legend-desc">매일 누적되는 데이터로 <b>재고 흐름과 계약률 변화</b> 시각화. 7일/30일/전체 선택 가능</div>
-    <div class="legend-cols">
-      <div class="legend-col"><b class="col-gold">골드선</b> 전체 재고</div>
-      <div class="legend-col"><b class="col-orange">오렌지선</b> 계약 중</div>
-      <div class="legend-col"><b class="col-red">빨강선</b> 계약률 %</div>
+  <div class="info-box">
+    <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
+      <div class="info-icon">ⓘ</div>
+      <div class="info-title">일별 추이 차트 · 해석 가이드</div>
+      <div class="info-toggle">펼치기 ▼</div>
+    </div>
+    <div class="info-body">
+      <div class="info-content"><div>
+        누적 데이터로 재고/계약 흐름 시각화. <b class="col-g">초록</b>=판매가능 · <b class="col-r">빨강</b>=오늘 계약 · <b class="col-o">골드</b>=신규입항<br>
+        데이터가 쌓일수록 요일/주간 패턴이 드러납니다
+      </div></div>
     </div>
   </div>
   <div class="trend-section">
-    <h3><span>📉 전체 재고 추이</span><span class="days" id="trendDays">데이터 수집 중</span></h3>
+    <h3><span>📉 판매가능 재고 추이</span><span class="days" id="trendDays">데이터 수집 중</span></h3>
     <div class="trend-period">
       <button class="active" onclick="setPeriod('7',this)">7일</button>
       <button onclick="setPeriod('30',this)">30일</button>
@@ -313,36 +349,42 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
     </div>
     <div class="trend-wrap"><canvas id="trendChart"></canvas></div>
     <div class="trend-summary">
-      <div class="ts ts-tot"><div class="ts-l">전체 재고 변동</div><div class="ts-n" id="tsTot">-</div></div>
-      <div class="ts ts-as"><div class="ts-l">계약 변동</div><div class="ts-n" id="tsAs">-</div></div>
-      <div class="ts ts-cr"><div class="ts-l">계약률 변동</div><div class="ts-n" id="tsCr">-</div></div>
+      <div class="ts ts-av"><div class="ts-l">재고 변동</div><div class="ts-n" id="tsAv">-</div></div>
+      <div class="ts ts-ct"><div class="ts-l">누적 계약</div><div class="ts-n" id="tsCt">-</div></div>
+      <div class="ts ts-nw"><div class="ts-l">누적 입항</div><div class="ts-n" id="tsNw">-</div></div>
     </div>
   </div>
   
   <div class="trend-section">
-    <h3>📊 계약률 추이</h3>
-    <div class="trend-wrap" style="height:200px"><canvas id="rateChart"></canvas></div>
+    <h3>🔥 일별 계약/입항 대비</h3>
+    <div class="trend-wrap" style="height:220px"><canvas id="flowChart"></canvas></div>
   </div>
 </div>
 
 <div class="footer">
-  <b>BenzDream Analytics</b> · 직판제 전국재고 시장 트렌드<br>
-  일/주/월 기준 계약률 변동 자동 추적
+  <b>BenzDream Analytics</b> · 직판제 판매가능 재고 트렌드<br>
+  매일 업로드 시 VIN 레벨 변동 자동 계산
 </div>
 
 <script>
-const DATA = {"date": "2026-04-10", "prevDate": "2026-04-09", "total": 3815, "totalAvailable": 3623, "totalAssigned": 192, "overallContractRate": 5.0, "prev": {"total": 3699, "totalAvailable": 3526, "totalAssigned": 173, "overallContractRate": 4.7}, "categories": {"Maybach": {"tot": 38, "av": 37, "as": 1, "cr": 2.6, "models": 6, "tot_d": 5, "as_d": 0, "cr_d": -0.4}, "전동화 EQ": {"tot": 424, "av": 423, "as": 1, "cr": 0.2, "models": 9, "tot_d": 7, "as_d": 0, "cr_d": 0.0}, "GLE": {"tot": 245, "av": 224, "as": 21, "cr": 8.6, "models": 8, "tot_d": -10, "as_d": 0, "cr_d": 0.4}, "GLC": {"tot": 427, "av": 365, "as": 62, "cr": 14.5, "models": 11, "tot_d": 8, "as_d": 5, "cr_d": 0.9}, "GLA·GLB": {"tot": 356, "av": 350, "as": 6, "cr": 1.7, "models": 6, "tot_d": 6, "as_d": 2, "cr_d": 0.6}, "AMG GT·SL": {"tot": 37, "av": 34, "as": 3, "cr": 8.1, "models": 3, "tot_d": -3, "as_d": 1, "cr_d": 3.1}, "S클래스": {"tot": 66, "av": 52, "as": 14, "cr": 21.2, "models": 8, "tot_d": -4, "as_d": 0, "cr_d": 1.2}, "CLE": {"tot": 316, "av": 305, "as": 11, "cr": 3.5, "models": 11, "tot_d": 19, "as_d": 3, "cr_d": 0.8}, "E클래스": {"tot": 1672, "av": 1617, "as": 55, "cr": 3.3, "models": 13, "tot_d": 83, "as_d": 5, "cr_d": 0.2}, "C클래스": {"tot": 138, "av": 134, "as": 4, "cr": 2.9, "models": 3, "tot_d": 3, "as_d": 2, "cr_d": 1.4}, "CLA": {"tot": 42, "av": 40, "as": 2, "cr": 4.8, "models": 3, "tot_d": 2, "as_d": 2, "cr_d": 4.8}, "A클래스": {"tot": 44, "av": 42, "as": 2, "cr": 4.5, "models": 2, "tot_d": 0, "as_d": -1, "cr_d": -2.3}}, "class1Stats": {"AMG": {"tot": 198, "as": 16, "cr": 8.1, "cr_d": 1.1, "as_d": 2}, "C": {"tot": 138, "as": 4, "cr": 2.9, "cr_d": 1.4, "as_d": 2}, "Compact": {"tot": 367, "as": 8, "cr": 2.2, "cr_d": 0.3, "as_d": 1}, "Dream": {"tot": 291, "as": 5, "cr": 1.7, "cr_d": 0.6, "as_d": 2}, "E": {"tot": 1671, "as": 55, "cr": 3.3, "cr_d": 0.2, "as_d": 5}, "EQ": {"tot": 424, "as": 1, "cr": 0.2, "cr_d": 0.0, "as_d": 0}, "S": {"tot": 98, "as": 14, "cr": 14.3, "cr_d": 0.0, "as_d": 0}, "SUV": {"tot": 628, "as": 89, "cr": 14.2, "cr_d": 1.1, "as_d": 7}}, "models": {"CLE 200 Coupe": {"cat": "CLE", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "tot_d": 2, "as_d": 0, "cr_d": 0.0}, "AMG GLC 43 4MATIC": {"cat": "GLC", "tot": 28, "av": 27, "as": 1, "cr": 3.6, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "GLC 300 4MATIC AVANTGARDE": {"cat": "GLC", "tot": 96, "av": 91, "as": 5, "cr": 5.2, "tot_d": -1, "as_d": 2, "cr_d": 2.1}, "E 200 AMG Line": {"cat": "E클래스", "tot": 600, "av": 595, "as": 5, "cr": 0.8, "tot_d": 40, "as_d": 0, "cr_d": -0.1}, "AMG E 53 HYBRID 4M+": {"cat": "E클래스", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "EQE 350+ SUV": {"cat": "전동화 EQ", "tot": 77, "av": 77, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "AMG GT 43 4MATIC+": {"cat": "AMG GT·SL", "tot": 30, "av": 28, "as": 2, "cr": 6.7, "tot_d": -1, "as_d": 0, "cr_d": 0.2}, "AMG GT 63 S E PERFORMANCE": {"cat": "AMG GT·SL", "tot": 1, "av": 0, "as": 1, "cr": 100.0, "tot_d": 0, "as_d": 1, "cr_d": 100.0}, "CLE 200 Cabriolet": {"cat": "CLE", "tot": 9, "av": 9, "as": 0, "cr": 0.0, "tot_d": 9, "as_d": 0, "cr_d": 0.0}, "CLE 450 4M Coupe": {"cat": "CLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "E 300 4M EX": {"cat": "E클래스", "tot": 21, "av": 21, "as": 0, "cr": 0.0, "tot_d": 21, "as_d": 0, "cr_d": 0.0}, "EQB 300 4MATIC AMG Line": {"cat": "전동화 EQ", "tot": 73, "av": 73, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "GLC 300 4M AV": {"cat": "GLC", "tot": 11, "av": 11, "as": 0, "cr": 0.0, "tot_d": 11, "as_d": 0, "cr_d": 0.0}, "AMG GLC 43 4MATIC Coupé": {"cat": "GLC", "tot": 16, "av": 15, "as": 1, "cr": 6.2, "tot_d": -4, "as_d": 0, "cr_d": 1.2}, "AMG GLE 53 4M+": {"cat": "GLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": {"cat": "E클래스", "tot": 258, "av": 256, "as": 2, "cr": 0.8, "tot_d": -1, "as_d": 0, "cr_d": 0.0}, "AMG CLE 53 4M+ COUPE": {"cat": "CLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "Maybach GLS 600": {"cat": "Maybach", "tot": 1, "av": 0, "as": 1, "cr": 100.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "AMG CLE 53 4MATIC+ Cabriolet": {"cat": "CLE", "tot": 23, "av": 19, "as": 4, "cr": 17.4, "tot_d": 0, "as_d": 1, "cr_d": 4.4}, "Maybach S 680": {"cat": "Maybach", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "tot_d": 3, "as_d": 0, "cr_d": 0.0}, "Maybach S 680 4MATIC": {"cat": "Maybach", "tot": 9, "av": 9, "as": 0, "cr": 0.0, "tot_d": 2, "as_d": 0, "cr_d": 0.0}, "E 200 AV": {"cat": "E클래스", "tot": 15, "av": 15, "as": 0, "cr": 0.0, "tot_d": 15, "as_d": 0, "cr_d": 0.0}, "CLE 200 Cabriolet AMG Line": {"cat": "CLE", "tot": 151, "av": 148, "as": 3, "cr": 2.0, "tot_d": 5, "as_d": 1, "cr_d": 0.6}, "C 200 AMG Line": {"cat": "C클래스", "tot": 64, "av": 64, "as": 0, "cr": 0.0, "tot_d": 3, "as_d": 0, "cr_d": 0.0}, "A 220": {"cat": "A클래스", "tot": 31, "av": 29, "as": 2, "cr": 6.5, "tot_d": 0, "as_d": -1, "cr_d": -3.2}, "Maybach S 580": {"cat": "Maybach", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "E 220 d 4MATIC EXCLUSIVE": {"cat": "E클래스", "tot": 103, "av": 101, "as": 2, "cr": 1.9, "tot_d": -1, "as_d": 1, "cr_d": 0.9}, "E 200 AVANTGARDE": {"cat": "E클래스", "tot": 95, "av": 91, "as": 4, "cr": 4.2, "tot_d": -3, "as_d": 1, "cr_d": 1.1}, "GLA 250 4MATIC AMG Line": {"cat": "GLA·GLB", "tot": 45, "av": 40, "as": 5, "cr": 11.1, "tot_d": 0, "as_d": 2, "cr_d": 4.4}, "GLB 250 4MATIC AMG Line": {"cat": "GLA·GLB", "tot": 250, "av": 249, "as": 1, "cr": 0.4, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "E 300 4M AMG Line": {"cat": "E클래스", "tot": 19, "av": 19, "as": 0, "cr": 0.0, "tot_d": 19, "as_d": 0, "cr_d": 0.0}, "GLB 250 4M": {"cat": "GLA·GLB", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "tot_d": 3, "as_d": 0, "cr_d": 0.0}, "AMG A 45 S 4MATIC+": {"cat": "A클래스", "tot": 13, "av": 13, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "GLS 450 d 4MATIC AMG Line": {"cat": "기타", "tot": 4, "av": 0, "as": 4, "cr": 100.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "GLC 300 4MATIC Coupé AVANTGARDE": {"cat": "GLC", "tot": 69, "av": 60, "as": 9, "cr": 13.0, "tot_d": -2, "as_d": 0, "cr_d": 0.3}, "E 300 4MATIC AMG Line": {"cat": "E클래스", "tot": 149, "av": 112, "as": 37, "cr": 24.8, "tot_d": -3, "as_d": 0, "cr_d": 0.5}, "S 450 4MATIC Sedan long": {"cat": "S클래스", "tot": 1, "av": 0, "as": 1, "cr": 100.0, "tot_d": 0, "as_d": 1, "cr_d": 100.0}, "S 580 4MATIC Sedan long": {"cat": "S클래스", "tot": 4, "av": 4, "as": 0, "cr": 0.0, "tot_d": -1, "as_d": -1, "cr_d": -20.0}, "GLA 250 4M": {"cat": "GLA·GLB", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "tot_d": 2, "as_d": 0, "cr_d": 0.0}, "GLE 450 4M": {"cat": "GLE", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "tot_d": 3, "as_d": 0, "cr_d": 0.0}, "AMG S 63 E Performance": {"cat": "S클래스", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "EQE 350+": {"cat": "전동화 EQ", "tot": 25, "av": 25, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "AMG GLB 35 4M": {"cat": "GLA·GLB", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "AMG CLE 53 4M+ Cabriolet": {"cat": "CLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "CLE 450 4MATIC Coupé AMG Line": {"cat": "CLE", "tot": 21, "av": 21, "as": 0, "cr": 0.0, "tot_d": -1, "as_d": 0, "cr_d": 0.0}, "S 500 4MATIC Sedan long": {"cat": "S클래스", "tot": 5, "av": 5, "as": 0, "cr": 0.0, "tot_d": -1, "as_d": 0, "cr_d": 0.0}, "GLE 450 4MATIC": {"cat": "GLE", "tot": 65, "av": 57, "as": 8, "cr": 12.3, "tot_d": -5, "as_d": 1, "cr_d": 2.3}, "CLE 200 Coupé AMG Line": {"cat": "CLE", "tot": 82, "av": 81, "as": 1, "cr": 1.2, "tot_d": -1, "as_d": 0, "cr_d": 0.0}, "AMG CLE 53 4MATIC+ Coupe": {"cat": "CLE", "tot": 3, "av": 1, "as": 2, "cr": 66.7, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "GLC 300 4MATIC AMG Line": {"cat": "GLC", "tot": 64, "av": 46, "as": 18, "cr": 28.1, "tot_d": -7, "as_d": 3, "cr_d": 7.0}, "GLE 450 4M AMG Line": {"cat": "GLE", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "Maybach S 580 4MATIC": {"cat": "Maybach", "tot": 21, "av": 21, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "S 350 d 4MATIC": {"cat": "S클래스", "tot": 15, "av": 12, "as": 3, "cr": 20.0, "tot_d": -3, "as_d": 2, "cr_d": 14.4}, "GLC 220 d 4M": {"cat": "GLC", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "tot_d": 3, "as_d": 0, "cr_d": 0.0}, "AMG SL 43": {"cat": "AMG GT·SL", "tot": 6, "av": 6, "as": 0, "cr": 0.0, "tot_d": -2, "as_d": 0, "cr_d": 0.0}, "EQB 300 4M Progressive": {"cat": "전동화 EQ", "tot": 4, "av": 4, "as": 0, "cr": 0.0, "tot_d": 4, "as_d": 0, "cr_d": 0.0}, "C 200 AV": {"cat": "C클래스", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "tot_d": 3, "as_d": 0, "cr_d": 0.0}, "EQA 250 Progressive": {"cat": "전동화 EQ", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "AMG CLA 45 S 4MATIC+ Coupé": {"cat": "CLA", "tot": 4, "av": 2, "as": 2, "cr": 50.0, "tot_d": 0, "as_d": 2, "cr_d": 50.0}, "GLE 300 d 4MATIC": {"cat": "GLE", "tot": 27, "av": 20, "as": 7, "cr": 25.9, "tot_d": -3, "as_d": 1, "cr_d": 5.9}, "AMG GLC 43 4M": {"cat": "GLC", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "tot_d": 2, "as_d": 0, "cr_d": 0.0}, "EQE 500 4MATIC SUV": {"cat": "전동화 EQ", "tot": 27, "av": 26, "as": 1, "cr": 3.7, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "GLC 300 4MATIC Coupé AMG Line": {"cat": "GLC", "tot": 27, "av": 0, "as": 27, "cr": 100.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "E 350 e 4M EX": {"cat": "E클래스", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "tot_d": 2, "as_d": 0, "cr_d": 0.0}, "GLS 450 4MATIC AMG Line": {"cat": "기타", "tot": 6, "av": 0, "as": 6, "cr": 100.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "E 450 4MATIC EXCLUSIVE": {"cat": "E클래스", "tot": 175, "av": 174, "as": 1, "cr": 0.6, "tot_d": -3, "as_d": 0, "cr_d": 0.0}, "EQA 250 AMG Line": {"cat": "전동화 EQ", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "GLE 350 4MATIC": {"cat": "GLE", "tot": 26, "av": 23, "as": 3, "cr": 11.5, "tot_d": -3, "as_d": 0, "cr_d": 1.2}, "GLC 300 4M Coupe AV": {"cat": "GLC", "tot": 7, "av": 7, "as": 0, "cr": 0.0, "tot_d": 7, "as_d": 0, "cr_d": 0.0}, "E 300 4MATIC EXCLUSIVE": {"cat": "E클래스", "tot": 232, "av": 228, "as": 4, "cr": 1.7, "tot_d": -6, "as_d": 3, "cr_d": 1.3}, "Maybach SL 680 Monogram Series": {"cat": "Maybach", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "EQB 300 4MATIC Progressive": {"cat": "전동화 EQ", "tot": 187, "av": 187, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "C 200 AVANTGARDE": {"cat": "C클래스", "tot": 71, "av": 67, "as": 4, "cr": 5.6, "tot_d": -3, "as_d": 2, "cr_d": 2.9}, "S 500 4M": {"cat": "S클래스", "tot": 1, "av": 1, "as": 0, "cr": 0.0, "tot_d": 1, "as_d": 0, "cr_d": 0.0}, "CLE 450 4MATIC Cabriolet AMG Line": {"cat": "CLE", "tot": 22, "av": 21, "as": 1, "cr": 4.5, "tot_d": 2, "as_d": 1, "cr_d": 4.5}, "E 220 d 4M": {"cat": "E클래스", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "tot_d": 2, "as_d": 0, "cr_d": 0.0}, "S 450 4MATIC Sedan": {"cat": "S클래스", "tot": 35, "av": 25, "as": 10, "cr": 28.6, "tot_d": -4, "as_d": -2, "cr_d": -2.2}, "AMG GLB 35 4MATIC": {"cat": "GLA·GLB", "tot": 55, "av": 55, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "GLC 220 d 4MATIC": {"cat": "GLC", "tot": 104, "av": 103, "as": 1, "cr": 1.0, "tot_d": -1, "as_d": 0, "cr_d": 0.0}, "EQS 450 4MATIC SUV": {"cat": "전동화 EQ", "tot": 29, "av": 29, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "CLA 250 4MATIC AMG Line Coupé": {"cat": "CLA", "tot": 36, "av": 36, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "GLE 450 4MATIC Coupé AMG Line": {"cat": "GLE", "tot": 114, "av": 114, "as": 0, "cr": 0.0, "tot_d": 0, "as_d": 0, "cr_d": 0.0}, "S 450 4M": {"cat": "S클래스", "tot": 3, "av": 3, "as": 0, "cr": 0.0, "tot_d": 3, "as_d": 0, "cr_d": 0.0}, "AMG GLE 53 4MATIC+": {"cat": "GLE", "tot": 8, "av": 5, "as": 3, "cr": 37.5, "tot_d": -2, "as_d": -2, "cr_d": -12.5}, "AMG CLA 45 S 4M+ Final Edition": {"cat": "CLA", "tot": 2, "av": 2, "as": 0, "cr": 0.0, "tot_d": 2, "as_d": 0, "cr_d": 0.0}}, "futureArrivalCount": 148, "futureByModel": {"E 300 4MATIC AMG Line": 121, "S 450 4MATIC Sedan": 25, "S 500 4MATIC Sedan long": 1, "S 580 4MATIC Sedan long": 1}};
-const STORAGE_KEY = 'benzdream_inv_v4';
+const DATA = {"date": "2026-04-10", "prevDate": "2026-04-09", "total": 3623, "totalPrev": 3526, "contractedToday": 119, "newInToday": 216, "net": 97, "models": {"E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": {"cat": "E클래스", "av": 256, "av_prev": 257, "contracted": 1, "new_in": 0, "net": -1}, "Maybach S 680 4MATIC": {"cat": "Maybach", "av": 9, "av_prev": 7, "contracted": 0, "new_in": 1, "net": 2}, "GLE 350 4MATIC": {"cat": "GLE", "av": 23, "av_prev": 26, "contracted": 4, "new_in": 1, "net": -3}, "GLC 220 d 4MATIC": {"cat": "GLC", "av": 103, "av_prev": 104, "contracted": 1, "new_in": 0, "net": -1}, "GLC 300 4MATIC Coupé AVANTGARDE": {"cat": "GLC", "av": 60, "av_prev": 62, "contracted": 2, "new_in": 0, "net": -2}, "S 450 4MATIC Sedan": {"cat": "S클래스", "av": 25, "av_prev": 27, "contracted": 6, "new_in": 4, "net": -2}, "Maybach S 680": {"cat": "Maybach", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "CLE 450 4MATIC Cabriolet AMG Line": {"cat": "CLE", "av": 21, "av_prev": 20, "contracted": 0, "new_in": 1, "net": 1}, "S 580 4MATIC Sedan long": {"cat": "S클래스", "av": 4, "av_prev": 4, "contracted": 1, "new_in": 1, "net": 0}, "EQE 350+": {"cat": "전동화 EQ", "av": 25, "av_prev": 25, "contracted": 0, "new_in": 0, "net": 0}, "EQB 300 4MATIC Progressive": {"cat": "전동화 EQ", "av": 187, "av_prev": 187, "contracted": 0, "new_in": 0, "net": 0}, "EQB 300 4MATIC AMG Line": {"cat": "전동화 EQ", "av": 73, "av_prev": 73, "contracted": 0, "new_in": 0, "net": 0}, "E 350 e 4M EX": {"cat": "E클래스", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "Mercedes-Maybach S 680 4MATIC": {"cat": "Maybach", "av": 0, "av_prev": 1, "contracted": 0, "new_in": 0, "net": -1}, "Mercedes-AMG GLE 53 4MATIC+": {"cat": "GLE", "av": 0, "av_prev": 2, "contracted": 1, "new_in": 0, "net": -2}, "CLE 200 Coupé AMG Line": {"cat": "CLE", "av": 81, "av_prev": 82, "contracted": 5, "new_in": 4, "net": -1}, "E 220 d 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 101, "av_prev": 103, "contracted": 2, "new_in": 0, "net": -2}, "E 200 AV": {"cat": "E클래스", "av": 15, "av_prev": 0, "contracted": 0, "new_in": 15, "net": 15}, "CLE 450 4M Coupe": {"cat": "CLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "C 200 AV": {"cat": "C클래스", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "AMG SL 43": {"cat": "AMG GT·SL", "av": 6, "av_prev": 8, "contracted": 3, "new_in": 1, "net": -2}, "CLA 250 4MATIC AMG Line Coupé": {"cat": "CLA", "av": 36, "av_prev": 36, "contracted": 0, "new_in": 0, "net": 0}, "GLB 250 4MATIC AMG Line": {"cat": "GLA·GLB", "av": 249, "av_prev": 249, "contracted": 0, "new_in": 0, "net": 0}, "Maybach SL 680 Monogram Series": {"cat": "Maybach", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "E 300 4M EX": {"cat": "E클래스", "av": 21, "av_prev": 0, "contracted": 0, "new_in": 21, "net": 21}, "GLE 450 4M": {"cat": "GLE", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "GLE 450 4M AMG Line": {"cat": "GLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "AMG GT 63 S E PERFORMANCE": {"cat": "AMG GT·SL", "av": 0, "av_prev": 1, "contracted": 1, "new_in": 0, "net": -1}, "AMG GLC 43 4MATIC Coupé": {"cat": "GLC", "av": 15, "av_prev": 19, "contracted": 4, "new_in": 0, "net": -4}, "GLE 450 4MATIC": {"cat": "GLE", "av": 57, "av_prev": 63, "contracted": 8, "new_in": 2, "net": -6}, "A 220": {"cat": "A클래스", "av": 29, "av_prev": 28, "contracted": 1, "new_in": 2, "net": 1}, "GLE 300 d 4MATIC": {"cat": "GLE", "av": 20, "av_prev": 24, "contracted": 5, "new_in": 1, "net": -4}, "EQA 250 AMG Line": {"cat": "전동화 EQ", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "C 200 AVANTGARDE": {"cat": "C클래스", "av": 67, "av_prev": 72, "contracted": 5, "new_in": 0, "net": -5}, "AMG GLC 43 4M": {"cat": "GLC", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "AMG CLE 53 4M+ COUPE": {"cat": "CLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "CLE 200 Coupe": {"cat": "CLE", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "Maybach S 580": {"cat": "Maybach", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "S 450 4MATIC Sedan long": {"cat": "S클래스", "av": 0, "av_prev": 1, "contracted": 1, "new_in": 0, "net": -1}, "AMG GLB 35 4M": {"cat": "GLA·GLB", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "GLA 250 4M": {"cat": "GLA·GLB", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "EQE 500 4MATIC SUV": {"cat": "전동화 EQ", "av": 26, "av_prev": 26, "contracted": 0, "new_in": 0, "net": 0}, "AMG GLC 43 4MATIC": {"cat": "GLC", "av": 27, "av_prev": 27, "contracted": 1, "new_in": 1, "net": 0}, "AMG E 53 HYBRID 4M+": {"cat": "E클래스", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "GLC 300 4MATIC AMG Line": {"cat": "GLC", "av": 46, "av_prev": 56, "contracted": 10, "new_in": 0, "net": -10}, "AMG CLE 53 4MATIC+ Cabriolet": {"cat": "CLE", "av": 19, "av_prev": 20, "contracted": 4, "new_in": 3, "net": -1}, "E 300 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 228, "av_prev": 237, "contracted": 10, "new_in": 1, "net": -9}, "GLC 300 4MATIC AVANTGARDE": {"cat": "GLC", "av": 91, "av_prev": 94, "contracted": 4, "new_in": 1, "net": -3}, "EQA 250 Progressive": {"cat": "전동화 EQ", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "AMG CLE 53 4M+ Cabriolet": {"cat": "CLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "E 220 d 4M": {"cat": "E클래스", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "Maybach S 580 4MATIC": {"cat": "Maybach", "av": 21, "av_prev": 21, "contracted": 0, "new_in": 0, "net": 0}, "E 200 AVANTGARDE": {"cat": "E클래스", "av": 91, "av_prev": 95, "contracted": 7, "new_in": 3, "net": -4}, "AMG A 45 S 4MATIC+": {"cat": "A클래스", "av": 13, "av_prev": 13, "contracted": 0, "new_in": 0, "net": 0}, "GLC 300 4M AV": {"cat": "GLC", "av": 11, "av_prev": 0, "contracted": 0, "new_in": 11, "net": 11}, "AMG CLA 45 S 4MATIC+ Coupé": {"cat": "CLA", "av": 2, "av_prev": 4, "contracted": 2, "new_in": 0, "net": -2}, "AMG CLA 45 S 4M+ Final Edition": {"cat": "CLA", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "S 350 d 4MATIC": {"cat": "S클래스", "av": 12, "av_prev": 17, "contracted": 5, "new_in": 0, "net": -5}, "S 500 4M": {"cat": "S클래스", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "AMG S 63 E Performance": {"cat": "S클래스", "av": 2, "av_prev": 1, "contracted": 0, "new_in": 1, "net": 1}, "CLE 450 4MATIC Coupé AMG Line": {"cat": "CLE", "av": 21, "av_prev": 22, "contracted": 1, "new_in": 0, "net": -1}, "AMG GT 43 4MATIC+": {"cat": "AMG GT·SL", "av": 28, "av_prev": 29, "contracted": 2, "new_in": 1, "net": -1}, "CLE 200 Cabriolet AMG Line": {"cat": "CLE", "av": 148, "av_prev": 144, "contracted": 1, "new_in": 5, "net": 4}, "E 300 4MATIC AMG Line": {"cat": "E클래스", "av": 112, "av_prev": 115, "contracted": 4, "new_in": 1, "net": -3}, "E 300 4M AMG Line": {"cat": "E클래스", "av": 19, "av_prev": 0, "contracted": 0, "new_in": 19, "net": 19}, "CLE 200 Cabriolet": {"cat": "CLE", "av": 9, "av_prev": 0, "contracted": 0, "new_in": 9, "net": 9}, "AMG GLE 53 4M+": {"cat": "GLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "GLC 300 4M Coupe AV": {"cat": "GLC", "av": 7, "av_prev": 0, "contracted": 0, "new_in": 7, "net": 7}, "S 500 4MATIC Sedan long": {"cat": "S클래스", "av": 5, "av_prev": 6, "contracted": 1, "new_in": 0, "net": -1}, "EQB 300 4M Progressive": {"cat": "전동화 EQ", "av": 4, "av_prev": 0, "contracted": 0, "new_in": 4, "net": 4}, "GLC 220 d 4M": {"cat": "GLC", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "AMG CLE 53 4MATIC+ Coupe": {"cat": "CLE", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "EQE 350+ SUV": {"cat": "전동화 EQ", "av": 77, "av_prev": 76, "contracted": 0, "new_in": 1, "net": 1}, "GLB 250 4M": {"cat": "GLA·GLB", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "GLE 450 4MATIC Coupé AMG Line": {"cat": "GLE", "av": 114, "av_prev": 114, "contracted": 0, "new_in": 0, "net": 0}, "E 450 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 174, "av_prev": 177, "contracted": 4, "new_in": 1, "net": -3}, "E 200 AMG Line": {"cat": "E클래스", "av": 595, "av_prev": 555, "contracted": 8, "new_in": 48, "net": 40}, "GLA 250 4MATIC AMG Line": {"cat": "GLA·GLB", "av": 40, "av_prev": 42, "contracted": 2, "new_in": 0, "net": -2}, "C 200 AMG Line": {"cat": "C클래스", "av": 64, "av_prev": 61, "contracted": 1, "new_in": 4, "net": 3}, "AMG GLB 35 4MATIC": {"cat": "GLA·GLB", "av": 55, "av_prev": 55, "contracted": 0, "new_in": 0, "net": 0}, "AMG GLE 53 4MATIC+": {"cat": "GLE", "av": 5, "av_prev": 5, "contracted": 1, "new_in": 0, "net": 0}, "EQS 450 4MATIC SUV": {"cat": "전동화 EQ", "av": 29, "av_prev": 29, "contracted": 0, "new_in": 0, "net": 0}, "S 450 4M": {"cat": "S클래스", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}}, "categories": {"Maybach": {"av": 37, "av_prev": 32, "contracted": 0, "new_in": 5, "models": 5}, "전동화 EQ": {"av": 423, "av_prev": 416, "contracted": 0, "new_in": 7, "models": 9}, "GLE": {"av": 224, "av_prev": 234, "contracted": 19, "new_in": 9, "models": 8}, "GLC": {"av": 365, "av_prev": 362, "contracted": 22, "new_in": 25, "models": 10}, "GLA·GLB": {"av": 350, "av_prev": 346, "contracted": 2, "new_in": 6, "models": 6}, "AMG GT·SL": {"av": 34, "av_prev": 38, "contracted": 6, "new_in": 2, "models": 2}, "S클래스": {"av": 52, "av_prev": 56, "contracted": 14, "new_in": 10, "models": 7}, "CLE": {"av": 305, "av_prev": 289, "contracted": 11, "new_in": 27, "models": 11}, "E클래스": {"av": 1617, "av_prev": 1539, "contracted": 36, "new_in": 114, "models": 13}, "C클래스": {"av": 134, "av_prev": 133, "contracted": 6, "new_in": 7, "models": 3}, "CLA": {"av": 40, "av_prev": 40, "contracted": 2, "new_in": 2, "models": 3}, "A클래스": {"av": 42, "av_prev": 41, "contracted": 1, "new_in": 2, "models": 2}}, "class1Stats": {"Compact": {"av": 359, "av_prev": 355, "contracted": 3, "turnover": 0.8}, "Dream": {"av": 286, "av_prev": 271, "contracted": 7, "turnover": 2.6}, "SUV": {"av": 539, "av_prev": 543, "contracted": 34, "turnover": 6.3}, "EQ": {"av": 423, "av_prev": 416, "contracted": 0, "turnover": 0.0}, "C": {"av": 134, "av_prev": 133, "contracted": 6, "turnover": 4.5}, "E": {"av": 1616, "av_prev": 1539, "contracted": 36, "turnover": 2.3}, "S": {"av": 84, "av_prev": 84, "contracted": 14, "turnover": 16.7}, "AMG": {"av": 182, "av_prev": 185, "contracted": 19, "turnover": 10.3}}, "contractsByModel": {"E 300 4MATIC EXCLUSIVE": 10, "GLC 300 4MATIC AMG Line": 10, "GLE 450 4MATIC": 8, "E 200 AMG Line": 8, "E 200 AVANTGARDE": 7, "S 450 4MATIC Sedan": 6, "CLE 200 Coupé AMG Line": 5, "C 200 AVANTGARDE": 5, "GLE 300 d 4MATIC": 5, "S 350 d 4MATIC": 5, "E 450 4MATIC EXCLUSIVE": 4, "GLC 300 4MATIC AVANTGARDE": 4, "AMG CLE 53 4MATIC+ Cabriolet": 4, "E 300 4MATIC AMG Line": 4, "AMG GLC 43 4MATIC Coupé": 4, "GLE 350 4MATIC": 4, "AMG SL 43": 3, "AMG GT 43 4MATIC+": 2, "AMG CLA 45 S 4MATIC+ Coupé": 2, "GLA 250 4MATIC AMG Line": 2, "E 220 d 4MATIC EXCLUSIVE": 2, "GLC 300 4MATIC Coupé AVANTGARDE": 2, "CLE 450 4MATIC Coupé AMG Line": 1, "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 1, "A 220": 1, "S 450 4MATIC Sedan long": 1, "C 200 AMG Line": 1, "AMG GLC 43 4MATIC": 1, "AMG GLE 53 4MATIC+": 1, "S 580 4MATIC Sedan long": 1, "CLE 200 Cabriolet AMG Line": 1, "GLC 220 d 4MATIC": 1, "AMG GT 63 S E PERFORMANCE": 1, "S 500 4MATIC Sedan long": 1, "Mercedes-AMG GLE 53 4MATIC+": 1}, "newByModel": {"E 200 AMG Line": 48, "E 300 4M EX": 21, "E 300 4M AMG Line": 19, "E 200 AV": 15, "GLC 300 4M AV": 11, "CLE 200 Cabriolet": 9, "GLC 300 4M Coupe AV": 7, "CLE 200 Cabriolet AMG Line": 5, "CLE 200 Coupé AMG Line": 4, "S 450 4MATIC Sedan": 4, "C 200 AMG Line": 4, "EQB 300 4M Progressive": 4, "AMG CLE 53 4MATIC+ Cabriolet": 3, "E 200 AVANTGARDE": 3, "GLE 450 4M": 3, "C 200 AV": 3, "GLB 250 4M": 3, "GLC 220 d 4M": 3, "Maybach S 680": 3, "S 450 4M": 3, "A 220": 2, "GLE 450 4MATIC": 2, "AMG CLA 45 S 4M+ Final Edition": 2, "AMG GLC 43 4M": 2, "CLE 200 Coupe": 2, "E 220 d 4M": 2, "E 350 e 4M EX": 2, "GLA 250 4M": 2, "E 450 4MATIC EXCLUSIVE": 1, "Maybach S 680 4MATIC": 1, "AMG GT 43 4MATIC+": 1, "AMG S 63 E Performance": 1, "AMG SL 43": 1, "GLE 300 d 4MATIC": 1, "S 580 4MATIC Sedan long": 1, "CLE 450 4MATIC Cabriolet AMG Line": 1, "E 300 4MATIC AMG Line": 1, "E 300 4MATIC EXCLUSIVE": 1, "AMG GLC 43 4MATIC": 1, "GLC 300 4MATIC AVANTGARDE": 1, "GLE 350 4MATIC": 1, "AMG CLE 53 4M+ Cabriolet": 1, "AMG CLE 53 4M+ COUPE": 1, "AMG E 53 HYBRID 4M+": 1, "AMG GLB 35 4M": 1, "AMG GLE 53 4M+": 1, "EQA 250 AMG Line": 1, "EQE 350+ SUV": 1, "CLE 450 4M Coupe": 1, "EQA 250 Progressive": 1, "Maybach S 580": 1, "GLE 450 4M AMG Line": 1, "S 500 4M": 1}};
+
+const STORAGE_KEY = 'benzdream_inv_v5';
 function loadHist(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]}catch(e){return[]}}
 function saveHist(h){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(h))}catch(e){}}
 
+// Preload — 4/9, 4/10 두 날짜
 const PRELOAD = [
-  {date:"2026-04-09",total:DATA.prev.total,available:DATA.prev.totalAvailable,assigned:DATA.prev.totalAssigned,rate:DATA.prev.overallContractRate},
-  {date:"2026-04-10",total:DATA.total,available:DATA.totalAvailable,assigned:DATA.totalAssigned,rate:DATA.overallContractRate},
+  {date:"2026-04-09",available:DATA.totalPrev,contracted:0,newIn:0,turnover:0},
+  {date:"2026-04-10",available:DATA.total,contracted:DATA.contractedToday,newIn:DATA.newInToday,turnover:+(DATA.contractedToday/DATA.totalPrev*100).toFixed(1)},
 ];
 
 let history = loadHist();
-PRELOAD.forEach(p=>{if(!history.find(h=>h.date===p.date)) history.push(p)});
+PRELOAD.forEach(p=>{
+  const ex = history.find(h=>h.date===p.date);
+  if(!ex) history.push(p);
+  else Object.assign(ex, p);
+});
 history.sort((a,b)=>a.date.localeCompare(b.date));
 while(history.length>60) history.shift();
 saveHist(history);
@@ -351,113 +393,107 @@ const today = history[history.length-1];
 const yesterday = history.length>1 ? history[history.length-2] : null;
 
 function fmtD(v,s=''){if(v===null||v===undefined)return'-';const n=parseFloat(v);if(n===0)return'→ 0';return n>0?'▲ +'+v+s:'▼ '+v+s}
-function dCls(v){if(v===null||v===undefined)return'flat';const n=parseFloat(v);return n===0?'flat':(n>0?'up':'down')}
+function dCls(v,reverse=false){
+  if(v===null||v===undefined)return'flat';const n=parseFloat(v);
+  if(n===0)return'flat';
+  if(reverse) return n>0?'down':'up'; // 재고는 줄어야 좋음... 아니 늘어도 상관없으니 flat
+  return n>0?'up':'down';
+}
 
 // KPI
 document.getElementById('k1').textContent = DATA.total.toLocaleString();
-document.getElementById('k2').textContent = DATA.totalAvailable.toLocaleString();
-document.getElementById('k3').textContent = DATA.totalAssigned.toLocaleString();
-document.getElementById('k4').textContent = DATA.overallContractRate+'%';
-document.getElementById('updated').textContent = '최종 업데이트 '+DATA.date;
+document.getElementById('k2').textContent = DATA.contractedToday.toLocaleString();
+document.getElementById('k3').textContent = DATA.newInToday.toLocaleString();
+const turnover = (DATA.contractedToday / DATA.totalPrev * 100).toFixed(1);
+document.getElementById('k4').textContent = turnover + '%';
+document.getElementById('updated').textContent = '최종 업데이트 ' + DATA.date;
 
 if(yesterday){
-  const dt = today.total - yesterday.total;
-  const da = today.available - yesterday.available;
-  const dc = today.assigned - yesterday.assigned;
-  const dr = (today.rate - yesterday.rate).toFixed(1);
-  document.getElementById('d1').textContent = fmtD(dt);
-  document.getElementById('d1').className = 'kpi-delta '+dCls(dt);
-  document.getElementById('d2').textContent = fmtD(da);
-  document.getElementById('d2').className = 'kpi-delta '+dCls(da);
-  document.getElementById('d3').textContent = fmtD(dc);
-  document.getElementById('d3').className = 'kpi-delta '+dCls(dc);
-  document.getElementById('d4').textContent = dr==='0.0'?'→ 0%p':(dr>0?'▲ +'+dr+'%p':'▼ '+dr+'%p');
-  document.getElementById('d4').className = 'kpi-delta '+dCls(dr);
+  const dAv = today.available - yesterday.available;
+  document.getElementById('d1').textContent = fmtD(dAv);
+  document.getElementById('d1').className = 'kpi-delta ' + (dAv===0?'flat':(dAv>0?'up':'down'));
 }
+// 다른 KPI는 오늘만 있는 값이라 델타 없음
+document.getElementById('d2').textContent = '어제→오늘';
+document.getElementById('d3').textContent = '신규 VIN';
+document.getElementById('d4').textContent = '계약÷어제재고';
 
 // Arrival
-if(DATA.futureArrivalCount>0){
-  document.getElementById('arrivalNum').innerHTML = DATA.futureArrivalCount+'<span>대</span>';
-  document.getElementById('arrivalMsg').textContent = '향후 입항예정 차량 확인 · 배정 기회';
-  document.getElementById('arrivalBanner').onclick = ()=>{
-    document.querySelectorAll('.tab').forEach(t=>{if(t.textContent.includes('입항')) t.click()});
-    window.scrollTo({top:0,behavior:'smooth'});
-  };
-}else{
-  document.getElementById('arrivalBanner').style.display='none';
+document.getElementById('arrivalNum').innerHTML = DATA.newInToday + '<span>대</span>';
+document.getElementById('arrivalMsg').textContent = '어제→오늘 MBK에 새로 추가된 차량';
+document.getElementById('arrivalBanner').onclick = ()=>{
+  document.querySelectorAll('.tab').forEach(t=>{if(t.textContent.includes('입항')) t.click()});
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+// Delta chip — 재고 변동은 중립, 계약은 양수 강조
+function stockDeltaChip(v) {
+  if(v === 0 || v === undefined) return '';
+  const cls = v > 0 ? 'down' : 'up';  // 재고 늘면 green, 줄면 red
+  const sign = v > 0 ? '+' : '';
+  return `<span class="delta ${cls}">${sign}${v}</span>`;
 }
 
-// Delta chip helper
-function deltaChip(v, suffix='') {
-  if(v === 0 || v === undefined || v === null) return '';
-  const cls = v > 0 ? 'up' : 'down';
-  const sign = v > 0 ? '▲' : '▼';
-  return `<span class="delta ${cls}">${sign}${Math.abs(v)}${suffix}</span>`;
-}
-
-// Top 20 - 재고 많은 순, 계약률 변동 표시
+// 오늘 계약 Top 20 (계약 건수 많은순)
 const modelArr = Object.entries(DATA.models).map(([name,d])=>({name,...d}));
-const top20 = [...modelArr].sort((a,b)=>b.tot-a.tot).slice(0,20);
-document.getElementById('top20List').innerHTML = top20.map((m,i)=>{
-  const rc = m.cr>=20?'hot':m.cr>=10?'warm':'cold';
+const contractTop = modelArr.filter(m => m.contracted > 0).sort((a,b)=>b.contracted-a.contracted).slice(0,20);
+document.getElementById('contractSub').textContent = `총 ${DATA.contractedToday}대 계약`;
+document.getElementById('contractList').innerHTML = contractTop.map((m,i)=>{
+  const rc = m.contracted >= 8 ? 'hot' : m.contracted >= 4 ? 'warm' : 'cold';
   return `<div class="row ${rc}">
     <div class="row-rank">${i+1}</div>
     <div><div class="row-name">${m.name}</div><div class="row-cat">${m.cat}</div></div>
-    <div class="row-num n-tot">${m.tot}${deltaChip(m.tot_d)}</div>
-    <div class="row-num n-rate">${m.cr}%${deltaChip(m.cr_d,'%p')}</div>
+    <div class="row-num n-av">${m.av}</div>
+    <div class="row-num n-ct">${m.contracted}대</div>
   </div>`;
 }).join('');
 
-// Trending - 계약률 변동 큰 순 (10대 이상)
-const trendingList = [...modelArr]
-  .filter(m => m.tot >= 10)
-  .sort((a,b)=> b.cr_d - a.cr_d)
-  .slice(0,20);
-document.getElementById('trendingList').innerHTML = trendingList.map((m,i)=>{
-  const chip = m.cr_d > 0 ? `<span class="delta up">▲${m.cr_d}%p</span>` :
-               m.cr_d < 0 ? `<span class="delta down">▼${Math.abs(m.cr_d)}%p</span>` :
-               `<span class="delta flat">→</span>`;
-  return `<div class="trend-row">
+// 재고 Top 20
+const stockTop = [...modelArr].sort((a,b)=>b.av-a.av).slice(0,20);
+document.getElementById('stockList').innerHTML = stockTop.map((m,i)=>{
+  const rc = m.contracted >= 8 ? 'hot' : m.contracted >= 4 ? 'warm' : 'cold';
+  return `<div class="row ${rc}">
     <div class="row-rank">${i+1}</div>
     <div><div class="row-name">${m.name}</div><div class="row-cat">${m.cat}</div></div>
-    <div class="tr-tot">${m.tot}대</div>
-    <div class="tr-rate">${m.cr}%${chip}</div>
+    <div class="row-num n-av">${m.av}</div>
+    <div class="row-num n-ct">${m.contracted>0?m.contracted+'대':'·'}</div>
   </div>`;
 }).join('');
 
-// Class1
-const c1Sorted = Object.entries(DATA.class1Stats).sort((a,b)=>b[1].cr-a[1].cr);
-document.getElementById('class1Grid').innerHTML = c1Sorted.map(([cn,cd])=>{
-  const width = Math.min(100, cd.cr*3);
-  return `<div class="c1-card">
-    <div class="n"><span>${cn}</span><span class="rate">${cd.cr}%</span></div>
-    <div class="bar"><div class="bar-fill" style="width:${width}%"></div></div>
-    <div class="nums"><span>총 <b>${cd.tot}</b></span><span>계약 <b>${cd.as}</b>${deltaChip(cd.as_d)}</span></div>
-  </div>`;
-}).join('');
+// Class1 — 회전율 순
+const c1Sorted = Object.entries(DATA.class1Stats).sort((a,b)=>b[1].turnover - a[1].turnover);
+document.getElementById('class1Grid').innerHTML = c1Sorted.map(([cn,cd])=>`
+  <div class="c1-card">
+    <div class="n"><span>${cn}</span><span class="rate">${cd.turnover}%</span></div>
+    <div class="nums">
+      <span>재고 <b>${cd.av}</b></span>
+      <span class="ct">계약 <b>${cd.contracted}</b></span>
+    </div>
+  </div>
+`).join('');
 
 // Categories
 const cats = DATA.categories;
 document.getElementById('catGrid').innerHTML = Object.entries(cats).map(([cn,cd])=>{
-  const width = Math.min(100, cd.cr*3);
+  const turn = cd.av_prev>0 ? (cd.contracted/cd.av_prev*100).toFixed(1) : 0;
   return `<div class="cat-card">
-    <div class="cn"><span>${cn}</span><span class="rate">${cd.cr}%${deltaChip(cd.cr_d,'%p')}</span></div>
-    <div class="bar"><div class="bar-fill" style="width:${width}%"></div></div>
-    <div class="cs"><span>${cd.models}모델 · <b>${cd.tot}</b>대</span><span>계약 <b>${cd.as}</b>${deltaChip(cd.as_d)}</span></div>
+    <div class="cn">${cn}</div>
+    <div class="cs"><span>${cd.models}모델</span><b>${cd.av}대</b></div>
+    <div class="cs ct"><span>오늘 계약</span><b>${cd.contracted}대 (${turn}%)</b></div>
   </div>`;
 }).join('');
 
-// Arrival list
-const arrModels = Object.entries(DATA.futureByModel||{}).sort((a,b)=>b[1]-a[1]);
-document.getElementById('arrSub').textContent = `총 ${DATA.futureArrivalCount}대`;
+// Arrival
+const arrModels = Object.entries(DATA.newByModel || {}).sort((a,b)=>b[1]-a[1]);
+document.getElementById('arrSub').textContent = `총 ${DATA.newInToday}대`;
 if(arrModels.length === 0){
-  document.getElementById('arrivalList').innerHTML = '<div style="text-align:center;padding:30px;color:#555;font-size:11px">현재 입항예정 물량 없음</div>';
+  document.getElementById('arrivalList').innerHTML = '<div style="text-align:center;padding:30px;color:#555;font-size:11px">오늘 신규 입항 물량 없음</div>';
 }else{
   document.getElementById('arrivalList').innerHTML = arrModels.map(([m,c],i)=>`
     <div class="row cold">
       <div class="row-rank">${i+1}</div>
-      <div><div class="row-name">${m}</div><div class="row-cat">입항예정</div></div>
-      <div class="row-num">${c}대</div>
+      <div><div class="row-name">${m}</div><div class="row-cat">신규 VIN</div></div>
+      <div class="row-num">+${c}대</div>
     </div>
   `).join('');
 }
@@ -468,26 +504,27 @@ function renderAll(filter=''){
   const byCat = {};
   Object.entries(DATA.models).forEach(([n,d])=>{
     if(filter && !n.toLowerCase().includes(filter.toLowerCase())) return;
+    if(d.av === 0) return; // 재고 없는 모델 제외
     if(!byCat[d.cat]) byCat[d.cat]=[];
     byCat[d.cat].push({name:n,...d});
   });
   Object.keys(cats).forEach(cat=>{
     if(!byCat[cat]||byCat[cat].length===0) return;
-    const models = byCat[cat].sort((a,b)=>b.tot-a.tot);
-    const ct = models.reduce((s,m)=>s+m.tot,0);
+    const models = byCat[cat].sort((a,b)=>b.av-a.av);
+    const ct = models.reduce((s,m)=>s+m.av,0);
+    const cc = models.reduce((s,m)=>s+(m.contracted||0),0);
     const isOpen = filter ? 'open' : '';
     html += `<div class="cat-block">
       <div class="cat-header ${isOpen}" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
         <div class="cnm">${cat}</div>
-        <div class="cct">${models.length}모델 · ${ct}대</div>
+        <div class="cct">${models.length}모델 · ${ct}대 · 계약 ${cc}</div>
       </div>
       <div class="cat-models ${isOpen}">`;
     models.forEach(m=>{
       html += `<div class="row">
         <div class="row-name">${m.name}</div>
-        <div class="row-num" style="color:#c9a96e">${m.tot}</div>
         <div class="row-num" style="color:#10b981">${m.av}</div>
-        <div class="row-num" style="color:#ef4444">${m.cr}%</div>
+        <div class="row-num" style="color:#ef4444">${m.contracted>0?m.contracted:'·'}</div>
       </div>`;
     });
     html += '</div></div>';
@@ -498,19 +535,16 @@ function renderAll(filter=''){
 renderAll();
 document.getElementById('searchInput').addEventListener('input',e=>renderAll(e.target.value));
 
-// Tab switching
 function showTab(id,btn){
   document.querySelectorAll('.tab-content').forEach(el=>el.style.display='none');
   document.getElementById('t-'+id).style.display='block';
   document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
   btn.classList.add('active');
-  if(id==='trend') {
-    setTimeout(renderTrend, 50);
-  }
+  if(id==='trend') setTimeout(renderTrend, 50);
 }
 
-// Trend — 크고 명확하게
-let trendInst=null, rateInst=null, currentPeriod='7';
+// Trend
+let trendInst=null, flowInst=null, currentPeriod='7';
 function getHistSlice(){
   if(currentPeriod==='all') return history;
   const n = parseInt(currentPeriod);
@@ -521,70 +555,63 @@ function renderTrend(){
   const data = getHistSlice();
   document.getElementById('trendDays').textContent = history.length+'일치 / 표시 '+data.length+'일';
   
-  // Summary
   if(data.length>=2){
     const first = data[0], last = data[data.length-1];
-    const dTot = last.total - first.total;
-    const dAs = last.assigned - first.assigned;
-    const dCr = (last.rate - first.rate).toFixed(1);
-    document.getElementById('tsTot').textContent = (dTot>=0?'+':'')+dTot;
-    document.getElementById('tsAs').textContent = (dAs>=0?'+':'')+dAs;
-    document.getElementById('tsCr').textContent = (parseFloat(dCr)>=0?'+':'')+dCr+'%p';
-  }else{
-    document.getElementById('tsTot').textContent = '-';
-    document.getElementById('tsAs').textContent = '-';
-    document.getElementById('tsCr').textContent = '-';
+    const dAv = last.available - first.available;
+    const totalCt = data.reduce((s,h)=>s+(h.contracted||0),0);
+    const totalNw = data.reduce((s,h)=>s+(h.newIn||0),0);
+    document.getElementById('tsAv').textContent = (dAv>=0?'+':'')+dAv;
+    document.getElementById('tsCt').textContent = totalCt;
+    document.getElementById('tsNw').textContent = totalNw;
   }
   
-  // Destroy previous
   if(trendInst){ trendInst.destroy(); trendInst=null; }
-  if(rateInst){ rateInst.destroy(); rateInst=null; }
+  if(flowInst){ flowInst.destroy(); flowInst=null; }
   
   const ctx = document.getElementById('trendChart').getContext('2d');
   trendInst = new Chart(ctx,{
     type:'line',
     data:{
       labels:data.map(h=>h.date.slice(5)),
-      datasets:[
-        {label:'전체 재고',data:data.map(h=>h.total),borderColor:'#c9a96e',backgroundColor:'#c9a96e33',tension:.3,borderWidth:3,pointRadius:5,pointBackgroundColor:'#c9a96e',fill:true,yAxisID:'y'},
-        {label:'계약 중',data:data.map(h=>h.assigned),borderColor:'#f59e0b',backgroundColor:'#f59e0b22',tension:.3,borderWidth:2.5,pointRadius:4,pointBackgroundColor:'#f59e0b',yAxisID:'y1'},
-      ]
+      datasets:[{
+        label:'판매가능 재고',data:data.map(h=>h.available),
+        borderColor:'#10b981',backgroundColor:'#10b98133',
+        tension:.3,borderWidth:3,pointRadius:5,pointBackgroundColor:'#10b981',fill:true
+      }]
     },
     options:{
       responsive:true,maintainAspectRatio:false,
       interaction:{intersect:false,mode:'index'},
       plugins:{
-        legend:{labels:{color:'#ccc',font:{size:12,family:'Noto Sans KR'},padding:12,usePointStyle:true}},
-        tooltip:{backgroundColor:'#0a0a0f',titleColor:'#c9a96e',bodyColor:'#fff',borderColor:'#2a3040',borderWidth:1,padding:10}
+        legend:{labels:{color:'#ccc',font:{size:12}}},
+        tooltip:{backgroundColor:'#0a0a0f',titleColor:'#10b981',bodyColor:'#fff',borderColor:'#2a3040',borderWidth:1,padding:10}
       },
       scales:{
-        x:{ticks:{color:'#aaa',font:{size:11}},grid:{color:'#1a1a2a',drawBorder:false}},
-        y:{position:'left',ticks:{color:'#c9a96e',font:{size:11,weight:'bold'},callback:v=>v.toLocaleString()},grid:{color:'#1a1a2a'},title:{display:true,text:'전체 재고',color:'#c9a96e',font:{size:10}}},
-        y1:{position:'right',ticks:{color:'#f59e0b',font:{size:11,weight:'bold'}},grid:{display:false},title:{display:true,text:'계약 중',color:'#f59e0b',font:{size:10}}}
+        x:{ticks:{color:'#aaa',font:{size:11}},grid:{color:'#1a1a2a'}},
+        y:{ticks:{color:'#10b981',font:{size:11,weight:'bold'},callback:v=>v.toLocaleString()},grid:{color:'#1a1a2a'}}
       }
     }
   });
   
-  const ctx2 = document.getElementById('rateChart').getContext('2d');
-  rateInst = new Chart(ctx2,{
-    type:'line',
+  const ctx2 = document.getElementById('flowChart').getContext('2d');
+  flowInst = new Chart(ctx2,{
+    type:'bar',
     data:{
       labels:data.map(h=>h.date.slice(5)),
-      datasets:[{
-        label:'계약률 (%)',data:data.map(h=>h.rate),
-        borderColor:'#ef4444',backgroundColor:'#ef444433',
-        tension:.3,borderWidth:3,pointRadius:5,pointBackgroundColor:'#ef4444',fill:true
-      }]
+      datasets:[
+        {label:'계약 (-)',data:data.map(h=>-(h.contracted||0)),backgroundColor:'#ef4444',borderRadius:4},
+        {label:'신규 입항 (+)',data:data.map(h=>h.newIn||0),backgroundColor:'#c9a96e',borderRadius:4},
+      ]
     },
     options:{
       responsive:true,maintainAspectRatio:false,
       plugins:{
-        legend:{labels:{color:'#ccc',font:{size:12}}},
-        tooltip:{backgroundColor:'#0a0a0f',titleColor:'#ef4444',bodyColor:'#fff',borderColor:'#2a3040',borderWidth:1,padding:10,callbacks:{label:ctx=>ctx.parsed.y+'%'}}
+        legend:{labels:{color:'#ccc',font:{size:11}}},
+        tooltip:{backgroundColor:'#0a0a0f',bodyColor:'#fff',borderColor:'#2a3040',borderWidth:1,padding:10,callbacks:{label:ctx=>ctx.dataset.label+': '+Math.abs(ctx.parsed.y)+'대'}}
       },
       scales:{
         x:{ticks:{color:'#aaa',font:{size:11}},grid:{color:'#1a1a2a'}},
-        y:{ticks:{color:'#ef4444',font:{size:11,weight:'bold'},callback:v=>v+'%'},grid:{color:'#1a1a2a'}}
+        y:{ticks:{color:'#aaa',font:{size:11},callback:v=>Math.abs(v)},grid:{color:'#1a1a2a'}}
       }
     }
   });
