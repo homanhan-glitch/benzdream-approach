@@ -177,7 +177,7 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
         <b>판매 가능</b> · MBK가 보유한 <span class="col-g">타파트너사 계약이 되지 않은 전국재고</span>. 누구든 계약 가능한 상태의 차량.<br>
         <b>오늘 계약</b> · <span class="col-r">어제 판매가능이었다가 오늘 사라진 VIN 수</span>. 모터원+타사 전체 계약 합계.<br>
         <b>신규 입항</b> · <span class="col-b">오늘 새로 재고표에 추가된 VIN</span>. MBK에 새로 들어온 물량.<br>
-        <b>회전율</b> · 오늘 계약 ÷ 어제 판매가능 × 100. 재고가 얼마나 빨리 빠지는지.
+        <b>순변동</b> · 신규 입항 − 계약. 양수면 재고 증가, 음수면 감소.
         <div class="warn">⚠️ 모터원 영업사원 배정재고(192대)는 이 대시보드에서 제외됨. 오직 <b>판매가능 재고</b>만 집계. 모터원 영업 실적은 별도 페이지에서 확인 예정.</div>
       </div>
     </div>
@@ -201,7 +201,7 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
   <div class="kpi kpi-1"><div class="kpi-num" id="k1">0</div><div class="kpi-lbl">판매 가능</div><div class="kpi-delta flat" id="d1">-</div></div>
   <div class="kpi kpi-2"><div class="kpi-num" id="k2">0</div><div class="kpi-lbl">오늘 계약</div><div class="kpi-delta flat" id="d2">-</div></div>
   <div class="kpi kpi-3"><div class="kpi-num" id="k3">0</div><div class="kpi-lbl">신규 입항</div><div class="kpi-delta flat" id="d3">-</div></div>
-  <div class="kpi kpi-4"><div class="kpi-num" id="k4">0%</div><div class="kpi-lbl">회전율</div><div class="kpi-delta flat" id="d4">-</div></div>
+  <div class="kpi kpi-4"><div class="kpi-num" id="k4">0</div><div class="kpi-lbl">순변동</div><div class="kpi-delta flat" id="d4">-</div></div>
 </div>
 
 <div class="tabs">
@@ -256,13 +256,12 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
   <div class="info-box">
     <div class="info-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.info-toggle').textContent=this.nextElementSibling.classList.contains('open')?'접기 ▲':'펼치기 ▼'">
       <div class="info-icon">ⓘ</div>
-      <div class="info-title">Class1 세그먼트 회전율 · 해석 가이드</div>
+      <div class="info-title">Class1 세그먼트 · 오늘 계약 현황</div>
       <div class="info-toggle">펼치기 ▼</div>
     </div>
     <div class="info-body">
       <div class="info-content"><div>
-        MBK 공식 차급 분류 기준. <b class="col-r">회전율</b>이 높은 세그먼트 = 시장에서 가장 빨리 팔리는 카테고리.<br>
-        <b>회전율</b> = 오늘 계약 ÷ 어제 판매가능 × 100
+        MBK 공식 차급 분류 기준. <b class="col-r">오늘 계약 수</b>가 많은 세그먼트가 시장 수요가 몰린 카테고리
       </div></div>
     </div>
   </div>
@@ -356,8 +355,17 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
   </div>
   
   <div class="trend-section">
-    <h3>🔥 일별 계약/입항 대비</h3>
+    <h3>🔥 일별 계약 vs 신규 입항</h3>
     <div class="trend-wrap" style="height:220px"><canvas id="flowChart"></canvas></div>
+  </div>
+  
+  <div class="trend-section">
+    <h3><span>📊 Top 20 모델 일별 계약</span><span class="days" id="top20Days">-</span></h3>
+    <div style="font-size:10px;color:#666;margin-bottom:10px;line-height:1.5">
+      누적 계약 수 기준 상위 20개 모델의 일별 계약 추이. 같은 모델이라도 날짜별 수요 강도 변화를 확인할 수 있습니다
+    </div>
+    <div class="trend-wrap" style="height:400px"><canvas id="top20Chart"></canvas></div>
+    <div id="top20Legend" style="margin-top:10px;font-size:10px;color:#aaa;line-height:1.7"></div>
   </div>
 </div>
 
@@ -367,22 +375,22 @@ body{background:#08080d;color:#e8e8ed;font-family:'Noto Sans KR',sans-serif;font
 </div>
 
 <script>
-const DATA = {"date": "2026-04-10", "prevDate": "2026-04-09", "total": 3623, "totalPrev": 3704, "contractedToday": 119, "newInToday": 38, "net": -81, "models": {"CLE 200 Cabriolet": {"cat": "CLE", "av": 9, "av_prev": 9, "contracted": 0, "new_in": 0, "net": 0}, "E 300 4M EX": {"cat": "E클래스", "av": 21, "av_prev": 21, "contracted": 0, "new_in": 0, "net": 0}, "GLB 250 4MATIC AMG Line": {"cat": "GLA·GLB", "av": 249, "av_prev": 249, "contracted": 0, "new_in": 0, "net": 0}, "GLE 450 4M": {"cat": "GLE", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "C 200 AMG Line": {"cat": "C클래스", "av": 64, "av_prev": 65, "contracted": 1, "new_in": 0, "net": -1}, "AMG GLE 53 4MATIC+": {"cat": "GLE", "av": 5, "av_prev": 5, "contracted": 1, "new_in": 0, "net": 0}, "S 350 d 4MATIC": {"cat": "S클래스", "av": 12, "av_prev": 17, "contracted": 5, "new_in": 0, "net": -5}, "E 200 AV": {"cat": "E클래스", "av": 15, "av_prev": 15, "contracted": 0, "new_in": 0, "net": 0}, "E 350 e 4M EX": {"cat": "E클래스", "av": 2, "av_prev": 2, "contracted": 0, "new_in": 0, "net": 0}, "CLE 200 Cabriolet AMG Line": {"cat": "CLE", "av": 148, "av_prev": 144, "contracted": 1, "new_in": 5, "net": 4}, "EQE 350+ SUV": {"cat": "전동화 EQ", "av": 77, "av_prev": 77, "contracted": 0, "new_in": 0, "net": 0}, "S 450 4MATIC Sedan long": {"cat": "S클래스", "av": 0, "av_prev": 1, "contracted": 1, "new_in": 0, "net": -1}, "GLB 250 4M": {"cat": "GLA·GLB", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "S 500 4M": {"cat": "S클래스", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "CLE 450 4M Coupe": {"cat": "CLE", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "EQE 350+": {"cat": "전동화 EQ", "av": 25, "av_prev": 25, "contracted": 0, "new_in": 0, "net": 0}, "E 450 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 174, "av_prev": 177, "contracted": 4, "new_in": 1, "net": -3}, "EQB 300 4M Progressive": {"cat": "전동화 EQ", "av": 4, "av_prev": 4, "contracted": 0, "new_in": 0, "net": 0}, "AMG GT 63 S E PERFORMANCE": {"cat": "AMG GT·SL", "av": 0, "av_prev": 1, "contracted": 1, "new_in": 0, "net": -1}, "EQA 250 AMG Line": {"cat": "전동화 EQ", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "AMG A 45 S 4MATIC+": {"cat": "A클래스", "av": 13, "av_prev": 13, "contracted": 0, "new_in": 0, "net": 0}, "AMG GLC 43 4MATIC Coupé": {"cat": "GLC", "av": 15, "av_prev": 19, "contracted": 4, "new_in": 0, "net": -4}, "GLE 350 4MATIC": {"cat": "GLE", "av": 23, "av_prev": 26, "contracted": 4, "new_in": 1, "net": -3}, "GLC 300 4M AV": {"cat": "GLC", "av": 11, "av_prev": 11, "contracted": 0, "new_in": 0, "net": 0}, "Mercedes-Maybach S 680 4MATIC": {"cat": "Maybach", "av": 0, "av_prev": 1, "contracted": 0, "new_in": 0, "net": -1}, "AMG CLA 45 S 4M+ Final Edition": {"cat": "CLA", "av": 2, "av_prev": 2, "contracted": 0, "new_in": 0, "net": 0}, "CLE 450 4MATIC Cabriolet AMG Line": {"cat": "CLE", "av": 21, "av_prev": 20, "contracted": 0, "new_in": 1, "net": 1}, "GLA 250 4MATIC AMG Line": {"cat": "GLA·GLB", "av": 40, "av_prev": 42, "contracted": 2, "new_in": 0, "net": -2}, "E 300 4M AMG Line": {"cat": "E클래스", "av": 19, "av_prev": 19, "contracted": 0, "new_in": 0, "net": 0}, "S 580 4MATIC Sedan long": {"cat": "S클래스", "av": 4, "av_prev": 4, "contracted": 1, "new_in": 1, "net": 0}, "E 220 d 4M": {"cat": "E클래스", "av": 2, "av_prev": 2, "contracted": 0, "new_in": 0, "net": 0}, "E 300 4MATIC AMG Line": {"cat": "E클래스", "av": 112, "av_prev": 115, "contracted": 4, "new_in": 1, "net": -3}, "GLC 300 4MATIC Coupé AVANTGARDE": {"cat": "GLC", "av": 60, "av_prev": 62, "contracted": 2, "new_in": 0, "net": -2}, "E 200 AVANTGARDE": {"cat": "E클래스", "av": 91, "av_prev": 95, "contracted": 7, "new_in": 3, "net": -4}, "S 450 4M": {"cat": "S클래스", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "GLC 300 4MATIC AVANTGARDE": {"cat": "GLC", "av": 91, "av_prev": 94, "contracted": 4, "new_in": 1, "net": -3}, "CLE 200 Coupe": {"cat": "CLE", "av": 2, "av_prev": 2, "contracted": 0, "new_in": 0, "net": 0}, "AMG SL 43": {"cat": "AMG GT·SL", "av": 6, "av_prev": 8, "contracted": 3, "new_in": 1, "net": -2}, "GLE 450 4MATIC": {"cat": "GLE", "av": 57, "av_prev": 63, "contracted": 8, "new_in": 2, "net": -6}, "EQA 250 Progressive": {"cat": "전동화 EQ", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "AMG GLC 43 4M": {"cat": "GLC", "av": 2, "av_prev": 2, "contracted": 0, "new_in": 0, "net": 0}, "CLE 450 4MATIC Coupé AMG Line": {"cat": "CLE", "av": 21, "av_prev": 22, "contracted": 1, "new_in": 0, "net": -1}, "CLE 200 Coupé AMG Line": {"cat": "CLE", "av": 81, "av_prev": 82, "contracted": 5, "new_in": 4, "net": -1}, "EQE 500 4MATIC SUV": {"cat": "전동화 EQ", "av": 26, "av_prev": 26, "contracted": 0, "new_in": 0, "net": 0}, "S 500 4MATIC Sedan long": {"cat": "S클래스", "av": 5, "av_prev": 6, "contracted": 1, "new_in": 0, "net": -1}, "AMG CLA 45 S 4MATIC+ Coupé": {"cat": "CLA", "av": 2, "av_prev": 4, "contracted": 2, "new_in": 0, "net": -2}, "AMG GLB 35 4MATIC": {"cat": "GLA·GLB", "av": 55, "av_prev": 55, "contracted": 0, "new_in": 0, "net": 0}, "E 300 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 228, "av_prev": 237, "contracted": 10, "new_in": 1, "net": -9}, "CLA 250 4MATIC AMG Line Coupé": {"cat": "CLA", "av": 36, "av_prev": 36, "contracted": 0, "new_in": 0, "net": 0}, "AMG S 63 E Performance": {"cat": "S클래스", "av": 2, "av_prev": 1, "contracted": 0, "new_in": 1, "net": 1}, "E 200 AMG Line": {"cat": "E클래스", "av": 595, "av_prev": 601, "contracted": 8, "new_in": 2, "net": -6}, "GLE 300 d 4MATIC": {"cat": "GLE", "av": 20, "av_prev": 24, "contracted": 5, "new_in": 1, "net": -4}, "Maybach S 580 4MATIC": {"cat": "Maybach", "av": 21, "av_prev": 21, "contracted": 0, "new_in": 0, "net": 0}, "S 450 4MATIC Sedan": {"cat": "S클래스", "av": 25, "av_prev": 27, "contracted": 6, "new_in": 4, "net": -2}, "AMG GLC 43 4MATIC": {"cat": "GLC", "av": 27, "av_prev": 27, "contracted": 1, "new_in": 1, "net": 0}, "GLC 300 4MATIC AMG Line": {"cat": "GLC", "av": 46, "av_prev": 56, "contracted": 10, "new_in": 0, "net": -10}, "EQS 450 4MATIC SUV": {"cat": "전동화 EQ", "av": 29, "av_prev": 29, "contracted": 0, "new_in": 0, "net": 0}, "Maybach SL 680 Monogram Series": {"cat": "Maybach", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "AMG CLE 53 4M+ COUPE": {"cat": "CLE", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": {"cat": "E클래스", "av": 256, "av_prev": 257, "contracted": 1, "new_in": 0, "net": -1}, "GLC 220 d 4MATIC": {"cat": "GLC", "av": 103, "av_prev": 104, "contracted": 1, "new_in": 0, "net": -1}, "AMG GLE 53 4M+": {"cat": "GLE", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "Maybach S 680": {"cat": "Maybach", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "GLA 250 4M": {"cat": "GLA·GLB", "av": 2, "av_prev": 2, "contracted": 0, "new_in": 0, "net": 0}, "E 220 d 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 101, "av_prev": 103, "contracted": 2, "new_in": 0, "net": -2}, "AMG CLE 53 4MATIC+ Coupe": {"cat": "CLE", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "EQB 300 4MATIC AMG Line": {"cat": "전동화 EQ", "av": 73, "av_prev": 73, "contracted": 0, "new_in": 0, "net": 0}, "AMG E 53 HYBRID 4M+": {"cat": "E클래스", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "AMG CLE 53 4M+ Cabriolet": {"cat": "CLE", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "Mercedes-AMG GLE 53 4MATIC+": {"cat": "GLE", "av": 0, "av_prev": 2, "contracted": 1, "new_in": 0, "net": -2}, "AMG CLE 53 4MATIC+ Cabriolet": {"cat": "CLE", "av": 19, "av_prev": 20, "contracted": 4, "new_in": 3, "net": -1}, "AMG GT 43 4MATIC+": {"cat": "AMG GT·SL", "av": 28, "av_prev": 29, "contracted": 2, "new_in": 1, "net": -1}, "GLC 300 4M Coupe AV": {"cat": "GLC", "av": 7, "av_prev": 7, "contracted": 0, "new_in": 0, "net": 0}, "GLE 450 4M AMG Line": {"cat": "GLE", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "C 200 AV": {"cat": "C클래스", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "AMG GLB 35 4M": {"cat": "GLA·GLB", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "Maybach S 680 4MATIC": {"cat": "Maybach", "av": 9, "av_prev": 7, "contracted": 0, "new_in": 1, "net": 2}, "EQB 300 4MATIC Progressive": {"cat": "전동화 EQ", "av": 187, "av_prev": 187, "contracted": 0, "new_in": 0, "net": 0}, "A 220": {"cat": "A클래스", "av": 29, "av_prev": 28, "contracted": 1, "new_in": 2, "net": 1}, "Maybach S 580": {"cat": "Maybach", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "C 200 AVANTGARDE": {"cat": "C클래스", "av": 67, "av_prev": 72, "contracted": 5, "new_in": 0, "net": -5}, "GLC 220 d 4M": {"cat": "GLC", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "GLE 450 4MATIC Coupé AMG Line": {"cat": "GLE", "av": 114, "av_prev": 114, "contracted": 0, "new_in": 0, "net": 0}}, "categories": {"Maybach": {"av": 37, "av_prev": 36, "contracted": 0, "new_in": 1, "models": 5}, "전동화 EQ": {"av": 423, "av_prev": 423, "contracted": 0, "new_in": 0, "models": 9}, "GLE": {"av": 224, "av_prev": 239, "contracted": 19, "new_in": 4, "models": 8}, "GLC": {"av": 365, "av_prev": 385, "contracted": 22, "new_in": 2, "models": 10}, "GLA·GLB": {"av": 350, "av_prev": 352, "contracted": 2, "new_in": 0, "models": 6}, "AMG GT·SL": {"av": 34, "av_prev": 38, "contracted": 6, "new_in": 2, "models": 2}, "S클래스": {"av": 52, "av_prev": 60, "contracted": 14, "new_in": 6, "models": 7}, "CLE": {"av": 305, "av_prev": 303, "contracted": 11, "new_in": 13, "models": 11}, "E클래스": {"av": 1617, "av_prev": 1645, "contracted": 36, "new_in": 8, "models": 13}, "C클래스": {"av": 134, "av_prev": 140, "contracted": 6, "new_in": 0, "models": 3}, "CLA": {"av": 40, "av_prev": 42, "contracted": 2, "new_in": 0, "models": 3}, "A클래스": {"av": 42, "av_prev": 41, "contracted": 1, "new_in": 2, "models": 2}}, "class1Stats": {"AMG": {"av": 182, "av_prev": 194, "contracted": 19, "turnover": 9.8}, "Compact": {"av": 359, "av_prev": 360, "contracted": 3, "turnover": 0.8}, "S": {"av": 84, "av_prev": 92, "contracted": 14, "turnover": 15.2}, "C": {"av": 134, "av_prev": 140, "contracted": 6, "turnover": 4.3}, "EQ": {"av": 423, "av_prev": 423, "contracted": 0, "turnover": 0.0}, "SUV": {"av": 539, "av_prev": 568, "contracted": 34, "turnover": 6.0}, "Dream": {"av": 286, "av_prev": 283, "contracted": 7, "turnover": 2.5}, "E": {"av": 1616, "av_prev": 1644, "contracted": 36, "turnover": 2.2}}, "contractsByModel": {"E 300 4MATIC EXCLUSIVE": 10, "GLC 300 4MATIC AMG Line": 10, "GLE 450 4MATIC": 8, "E 200 AMG Line": 8, "E 200 AVANTGARDE": 7, "S 450 4MATIC Sedan": 6, "CLE 200 Coupé AMG Line": 5, "C 200 AVANTGARDE": 5, "GLE 300 d 4MATIC": 5, "S 350 d 4MATIC": 5, "E 450 4MATIC EXCLUSIVE": 4, "GLC 300 4MATIC AVANTGARDE": 4, "AMG CLE 53 4MATIC+ Cabriolet": 4, "E 300 4MATIC AMG Line": 4, "AMG GLC 43 4MATIC Coupé": 4, "GLE 350 4MATIC": 4, "AMG SL 43": 3, "AMG GT 43 4MATIC+": 2, "AMG CLA 45 S 4MATIC+ Coupé": 2, "GLA 250 4MATIC AMG Line": 2, "E 220 d 4MATIC EXCLUSIVE": 2, "GLC 300 4MATIC Coupé AVANTGARDE": 2, "CLE 450 4MATIC Coupé AMG Line": 1, "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 1, "A 220": 1, "S 450 4MATIC Sedan long": 1, "C 200 AMG Line": 1, "AMG GLC 43 4MATIC": 1, "AMG GLE 53 4MATIC+": 1, "S 580 4MATIC Sedan long": 1, "CLE 200 Cabriolet AMG Line": 1, "GLC 220 d 4MATIC": 1, "AMG GT 63 S E PERFORMANCE": 1, "S 500 4MATIC Sedan long": 1, "Mercedes-AMG GLE 53 4MATIC+": 1}, "newByModel": {"CLE 200 Cabriolet AMG Line": 5, "CLE 200 Coupé AMG Line": 4, "S 450 4MATIC Sedan": 4, "AMG CLE 53 4MATIC+ Cabriolet": 3, "E 200 AVANTGARDE": 3, "A 220": 2, "GLE 450 4MATIC": 2, "E 200 AMG Line": 2, "E 450 4MATIC EXCLUSIVE": 1, "Maybach S 680 4MATIC": 1, "AMG GT 43 4MATIC+": 1, "AMG S 63 E Performance": 1, "AMG SL 43": 1, "GLE 300 d 4MATIC": 1, "S 580 4MATIC Sedan long": 1, "CLE 450 4MATIC Cabriolet AMG Line": 1, "E 300 4MATIC AMG Line": 1, "E 300 4MATIC EXCLUSIVE": 1, "AMG GLC 43 4MATIC": 1, "GLC 300 4MATIC AVANTGARDE": 1, "GLE 350 4MATIC": 1}};
+const DATA = {"date": "2026-04-10", "prevDate": "2026-04-09", "total": 3623, "totalPrev": 3526, "contractedToday": 119, "newInToday": 216, "net": 97, "models": {"E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": {"cat": "E클래스", "av": 256, "av_prev": 257, "contracted": 1, "new_in": 0, "net": -1}, "Maybach S 680 4MATIC": {"cat": "Maybach", "av": 9, "av_prev": 7, "contracted": 0, "new_in": 1, "net": 2}, "GLE 350 4MATIC": {"cat": "GLE", "av": 23, "av_prev": 26, "contracted": 4, "new_in": 1, "net": -3}, "GLC 220 d 4MATIC": {"cat": "GLC", "av": 103, "av_prev": 104, "contracted": 1, "new_in": 0, "net": -1}, "GLC 300 4MATIC Coupé AVANTGARDE": {"cat": "GLC", "av": 60, "av_prev": 62, "contracted": 2, "new_in": 0, "net": -2}, "S 450 4MATIC Sedan": {"cat": "S클래스", "av": 25, "av_prev": 27, "contracted": 6, "new_in": 4, "net": -2}, "Maybach S 680": {"cat": "Maybach", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "CLE 450 4MATIC Cabriolet AMG Line": {"cat": "CLE", "av": 21, "av_prev": 20, "contracted": 0, "new_in": 1, "net": 1}, "S 580 4MATIC Sedan long": {"cat": "S클래스", "av": 4, "av_prev": 4, "contracted": 1, "new_in": 1, "net": 0}, "EQE 350+": {"cat": "전동화 EQ", "av": 25, "av_prev": 25, "contracted": 0, "new_in": 0, "net": 0}, "EQB 300 4MATIC Progressive": {"cat": "전동화 EQ", "av": 187, "av_prev": 187, "contracted": 0, "new_in": 0, "net": 0}, "EQB 300 4MATIC AMG Line": {"cat": "전동화 EQ", "av": 73, "av_prev": 73, "contracted": 0, "new_in": 0, "net": 0}, "E 350 e 4M EX": {"cat": "E클래스", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "Mercedes-Maybach S 680 4MATIC": {"cat": "Maybach", "av": 0, "av_prev": 1, "contracted": 0, "new_in": 0, "net": -1}, "Mercedes-AMG GLE 53 4MATIC+": {"cat": "GLE", "av": 0, "av_prev": 2, "contracted": 1, "new_in": 0, "net": -2}, "CLE 200 Coupé AMG Line": {"cat": "CLE", "av": 81, "av_prev": 82, "contracted": 5, "new_in": 4, "net": -1}, "E 220 d 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 101, "av_prev": 103, "contracted": 2, "new_in": 0, "net": -2}, "E 200 AV": {"cat": "E클래스", "av": 15, "av_prev": 0, "contracted": 0, "new_in": 15, "net": 15}, "CLE 450 4M Coupe": {"cat": "CLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "C 200 AV": {"cat": "C클래스", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "AMG SL 43": {"cat": "AMG GT·SL", "av": 6, "av_prev": 8, "contracted": 3, "new_in": 1, "net": -2}, "CLA 250 4MATIC AMG Line Coupé": {"cat": "CLA", "av": 36, "av_prev": 36, "contracted": 0, "new_in": 0, "net": 0}, "GLB 250 4MATIC AMG Line": {"cat": "GLA·GLB", "av": 249, "av_prev": 249, "contracted": 0, "new_in": 0, "net": 0}, "Maybach SL 680 Monogram Series": {"cat": "Maybach", "av": 3, "av_prev": 3, "contracted": 0, "new_in": 0, "net": 0}, "E 300 4M EX": {"cat": "E클래스", "av": 21, "av_prev": 0, "contracted": 0, "new_in": 21, "net": 21}, "GLE 450 4M": {"cat": "GLE", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "GLE 450 4M AMG Line": {"cat": "GLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "AMG GT 63 S E PERFORMANCE": {"cat": "AMG GT·SL", "av": 0, "av_prev": 1, "contracted": 1, "new_in": 0, "net": -1}, "AMG GLC 43 4MATIC Coupé": {"cat": "GLC", "av": 15, "av_prev": 19, "contracted": 4, "new_in": 0, "net": -4}, "GLE 450 4MATIC": {"cat": "GLE", "av": 57, "av_prev": 63, "contracted": 8, "new_in": 2, "net": -6}, "A 220": {"cat": "A클래스", "av": 29, "av_prev": 28, "contracted": 1, "new_in": 2, "net": 1}, "GLE 300 d 4MATIC": {"cat": "GLE", "av": 20, "av_prev": 24, "contracted": 5, "new_in": 1, "net": -4}, "EQA 250 AMG Line": {"cat": "전동화 EQ", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "C 200 AVANTGARDE": {"cat": "C클래스", "av": 67, "av_prev": 72, "contracted": 5, "new_in": 0, "net": -5}, "AMG GLC 43 4M": {"cat": "GLC", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "AMG CLE 53 4M+ COUPE": {"cat": "CLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "CLE 200 Coupe": {"cat": "CLE", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "Maybach S 580": {"cat": "Maybach", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "S 450 4MATIC Sedan long": {"cat": "S클래스", "av": 0, "av_prev": 1, "contracted": 1, "new_in": 0, "net": -1}, "AMG GLB 35 4M": {"cat": "GLA·GLB", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "GLA 250 4M": {"cat": "GLA·GLB", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "EQE 500 4MATIC SUV": {"cat": "전동화 EQ", "av": 26, "av_prev": 26, "contracted": 0, "new_in": 0, "net": 0}, "AMG GLC 43 4MATIC": {"cat": "GLC", "av": 27, "av_prev": 27, "contracted": 1, "new_in": 1, "net": 0}, "AMG E 53 HYBRID 4M+": {"cat": "E클래스", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "GLC 300 4MATIC AMG Line": {"cat": "GLC", "av": 46, "av_prev": 56, "contracted": 10, "new_in": 0, "net": -10}, "AMG CLE 53 4MATIC+ Cabriolet": {"cat": "CLE", "av": 19, "av_prev": 20, "contracted": 4, "new_in": 3, "net": -1}, "E 300 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 228, "av_prev": 237, "contracted": 10, "new_in": 1, "net": -9}, "GLC 300 4MATIC AVANTGARDE": {"cat": "GLC", "av": 91, "av_prev": 94, "contracted": 4, "new_in": 1, "net": -3}, "EQA 250 Progressive": {"cat": "전동화 EQ", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "AMG CLE 53 4M+ Cabriolet": {"cat": "CLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "E 220 d 4M": {"cat": "E클래스", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "Maybach S 580 4MATIC": {"cat": "Maybach", "av": 21, "av_prev": 21, "contracted": 0, "new_in": 0, "net": 0}, "E 200 AVANTGARDE": {"cat": "E클래스", "av": 91, "av_prev": 95, "contracted": 7, "new_in": 3, "net": -4}, "AMG A 45 S 4MATIC+": {"cat": "A클래스", "av": 13, "av_prev": 13, "contracted": 0, "new_in": 0, "net": 0}, "GLC 300 4M AV": {"cat": "GLC", "av": 11, "av_prev": 0, "contracted": 0, "new_in": 11, "net": 11}, "AMG CLA 45 S 4MATIC+ Coupé": {"cat": "CLA", "av": 2, "av_prev": 4, "contracted": 2, "new_in": 0, "net": -2}, "AMG CLA 45 S 4M+ Final Edition": {"cat": "CLA", "av": 2, "av_prev": 0, "contracted": 0, "new_in": 2, "net": 2}, "S 350 d 4MATIC": {"cat": "S클래스", "av": 12, "av_prev": 17, "contracted": 5, "new_in": 0, "net": -5}, "S 500 4M": {"cat": "S클래스", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "AMG S 63 E Performance": {"cat": "S클래스", "av": 2, "av_prev": 1, "contracted": 0, "new_in": 1, "net": 1}, "CLE 450 4MATIC Coupé AMG Line": {"cat": "CLE", "av": 21, "av_prev": 22, "contracted": 1, "new_in": 0, "net": -1}, "AMG GT 43 4MATIC+": {"cat": "AMG GT·SL", "av": 28, "av_prev": 29, "contracted": 2, "new_in": 1, "net": -1}, "CLE 200 Cabriolet AMG Line": {"cat": "CLE", "av": 148, "av_prev": 144, "contracted": 1, "new_in": 5, "net": 4}, "E 300 4MATIC AMG Line": {"cat": "E클래스", "av": 112, "av_prev": 115, "contracted": 4, "new_in": 1, "net": -3}, "E 300 4M AMG Line": {"cat": "E클래스", "av": 19, "av_prev": 0, "contracted": 0, "new_in": 19, "net": 19}, "CLE 200 Cabriolet": {"cat": "CLE", "av": 9, "av_prev": 0, "contracted": 0, "new_in": 9, "net": 9}, "AMG GLE 53 4M+": {"cat": "GLE", "av": 1, "av_prev": 0, "contracted": 0, "new_in": 1, "net": 1}, "GLC 300 4M Coupe AV": {"cat": "GLC", "av": 7, "av_prev": 0, "contracted": 0, "new_in": 7, "net": 7}, "S 500 4MATIC Sedan long": {"cat": "S클래스", "av": 5, "av_prev": 6, "contracted": 1, "new_in": 0, "net": -1}, "EQB 300 4M Progressive": {"cat": "전동화 EQ", "av": 4, "av_prev": 0, "contracted": 0, "new_in": 4, "net": 4}, "GLC 220 d 4M": {"cat": "GLC", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "AMG CLE 53 4MATIC+ Coupe": {"cat": "CLE", "av": 1, "av_prev": 1, "contracted": 0, "new_in": 0, "net": 0}, "EQE 350+ SUV": {"cat": "전동화 EQ", "av": 77, "av_prev": 76, "contracted": 0, "new_in": 1, "net": 1}, "GLB 250 4M": {"cat": "GLA·GLB", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}, "GLE 450 4MATIC Coupé AMG Line": {"cat": "GLE", "av": 114, "av_prev": 114, "contracted": 0, "new_in": 0, "net": 0}, "E 450 4MATIC EXCLUSIVE": {"cat": "E클래스", "av": 174, "av_prev": 177, "contracted": 4, "new_in": 1, "net": -3}, "E 200 AMG Line": {"cat": "E클래스", "av": 595, "av_prev": 555, "contracted": 8, "new_in": 48, "net": 40}, "GLA 250 4MATIC AMG Line": {"cat": "GLA·GLB", "av": 40, "av_prev": 42, "contracted": 2, "new_in": 0, "net": -2}, "C 200 AMG Line": {"cat": "C클래스", "av": 64, "av_prev": 61, "contracted": 1, "new_in": 4, "net": 3}, "AMG GLB 35 4MATIC": {"cat": "GLA·GLB", "av": 55, "av_prev": 55, "contracted": 0, "new_in": 0, "net": 0}, "AMG GLE 53 4MATIC+": {"cat": "GLE", "av": 5, "av_prev": 5, "contracted": 1, "new_in": 0, "net": 0}, "EQS 450 4MATIC SUV": {"cat": "전동화 EQ", "av": 29, "av_prev": 29, "contracted": 0, "new_in": 0, "net": 0}, "S 450 4M": {"cat": "S클래스", "av": 3, "av_prev": 0, "contracted": 0, "new_in": 3, "net": 3}}, "categories": {"Maybach": {"av": 37, "av_prev": 32, "contracted": 0, "new_in": 5, "models": 5}, "전동화 EQ": {"av": 423, "av_prev": 416, "contracted": 0, "new_in": 7, "models": 9}, "GLE": {"av": 224, "av_prev": 234, "contracted": 19, "new_in": 9, "models": 8}, "GLC": {"av": 365, "av_prev": 362, "contracted": 22, "new_in": 25, "models": 10}, "GLA·GLB": {"av": 350, "av_prev": 346, "contracted": 2, "new_in": 6, "models": 6}, "AMG GT·SL": {"av": 34, "av_prev": 38, "contracted": 6, "new_in": 2, "models": 2}, "S클래스": {"av": 52, "av_prev": 56, "contracted": 14, "new_in": 10, "models": 7}, "CLE": {"av": 305, "av_prev": 289, "contracted": 11, "new_in": 27, "models": 11}, "E클래스": {"av": 1617, "av_prev": 1539, "contracted": 36, "new_in": 114, "models": 13}, "C클래스": {"av": 134, "av_prev": 133, "contracted": 6, "new_in": 7, "models": 3}, "CLA": {"av": 40, "av_prev": 40, "contracted": 2, "new_in": 2, "models": 3}, "A클래스": {"av": 42, "av_prev": 41, "contracted": 1, "new_in": 2, "models": 2}}, "class1Stats": {"Compact": {"av": 359, "av_prev": 355, "contracted": 3, "turnover": 0.8}, "Dream": {"av": 286, "av_prev": 271, "contracted": 7, "turnover": 2.6}, "SUV": {"av": 539, "av_prev": 543, "contracted": 34, "turnover": 6.3}, "EQ": {"av": 423, "av_prev": 416, "contracted": 0, "turnover": 0.0}, "C": {"av": 134, "av_prev": 133, "contracted": 6, "turnover": 4.5}, "E": {"av": 1616, "av_prev": 1539, "contracted": 36, "turnover": 2.3}, "S": {"av": 84, "av_prev": 84, "contracted": 14, "turnover": 16.7}, "AMG": {"av": 182, "av_prev": 185, "contracted": 19, "turnover": 10.3}}, "contractsByModel": {"E 300 4MATIC EXCLUSIVE": 10, "GLC 300 4MATIC AMG Line": 10, "GLE 450 4MATIC": 8, "E 200 AMG Line": 8, "E 200 AVANTGARDE": 7, "S 450 4MATIC Sedan": 6, "CLE 200 Coupé AMG Line": 5, "C 200 AVANTGARDE": 5, "GLE 300 d 4MATIC": 5, "S 350 d 4MATIC": 5, "E 450 4MATIC EXCLUSIVE": 4, "GLC 300 4MATIC AVANTGARDE": 4, "AMG CLE 53 4MATIC+ Cabriolet": 4, "E 300 4MATIC AMG Line": 4, "AMG GLC 43 4MATIC Coupé": 4, "GLE 350 4MATIC": 4, "AMG SL 43": 3, "AMG GT 43 4MATIC+": 2, "AMG CLA 45 S 4MATIC+ Coupé": 2, "GLA 250 4MATIC AMG Line": 2, "E 220 d 4MATIC EXCLUSIVE": 2, "GLC 300 4MATIC Coupé AVANTGARDE": 2, "CLE 450 4MATIC Coupé AMG Line": 1, "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 1, "A 220": 1, "S 450 4MATIC Sedan long": 1, "C 200 AMG Line": 1, "AMG GLC 43 4MATIC": 1, "AMG GLE 53 4MATIC+": 1, "S 580 4MATIC Sedan long": 1, "CLE 200 Cabriolet AMG Line": 1, "GLC 220 d 4MATIC": 1, "AMG GT 63 S E PERFORMANCE": 1, "S 500 4MATIC Sedan long": 1, "Mercedes-AMG GLE 53 4MATIC+": 1}, "newByModel": {"E 200 AMG Line": 48, "E 300 4M EX": 21, "E 300 4M AMG Line": 19, "E 200 AV": 15, "GLC 300 4M AV": 11, "CLE 200 Cabriolet": 9, "GLC 300 4M Coupe AV": 7, "CLE 200 Cabriolet AMG Line": 5, "CLE 200 Coupé AMG Line": 4, "S 450 4MATIC Sedan": 4, "C 200 AMG Line": 4, "EQB 300 4M Progressive": 4, "AMG CLE 53 4MATIC+ Cabriolet": 3, "E 200 AVANTGARDE": 3, "GLE 450 4M": 3, "C 200 AV": 3, "GLB 250 4M": 3, "GLC 220 d 4M": 3, "Maybach S 680": 3, "S 450 4M": 3, "A 220": 2, "GLE 450 4MATIC": 2, "AMG CLA 45 S 4M+ Final Edition": 2, "AMG GLC 43 4M": 2, "CLE 200 Coupe": 2, "E 220 d 4M": 2, "E 350 e 4M EX": 2, "GLA 250 4M": 2, "E 450 4MATIC EXCLUSIVE": 1, "Maybach S 680 4MATIC": 1, "AMG GT 43 4MATIC+": 1, "AMG S 63 E Performance": 1, "AMG SL 43": 1, "GLE 300 d 4MATIC": 1, "S 580 4MATIC Sedan long": 1, "CLE 450 4MATIC Cabriolet AMG Line": 1, "E 300 4MATIC AMG Line": 1, "E 300 4MATIC EXCLUSIVE": 1, "AMG GLC 43 4MATIC": 1, "GLC 300 4MATIC AVANTGARDE": 1, "GLE 350 4MATIC": 1, "AMG CLE 53 4M+ Cabriolet": 1, "AMG CLE 53 4M+ COUPE": 1, "AMG E 53 HYBRID 4M+": 1, "AMG GLB 35 4M": 1, "AMG GLE 53 4M+": 1, "EQA 250 AMG Line": 1, "EQE 350+ SUV": 1, "CLE 450 4M Coupe": 1, "EQA 250 Progressive": 1, "Maybach S 580": 1, "GLE 450 4M AMG Line": 1, "S 500 4M": 1}};
 
-const STORAGE_KEY = 'benzdream_inv_v6';
+const STORAGE_KEY = 'benzdream_inv_v7';
 function loadHist(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]}catch(e){return[]}}
 function saveHist(h){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(h))}catch(e){}}
 
 // Preload — 4/9, 4/10 두 날짜
 const PRELOAD = [
-  {date:"2026-04-09",available:DATA.totalPrev,contracted:0,newIn:0,turnover:0},
-  {date:"2026-04-10",available:DATA.total,contracted:DATA.contractedToday,newIn:DATA.newInToday,turnover:+(DATA.contractedToday/DATA.totalPrev*100).toFixed(1)},
+  {date:"2026-04-09",available:DATA.totalPrev,contracted:0,newIn:0,contractsByModel:{}},
+  {date:"2026-04-10",available:DATA.total,contracted:DATA.contractedToday,newIn:DATA.newInToday,contractsByModel:DATA.contractsByModel},
 ];
 
 let history = loadHist();
 PRELOAD.forEach(p=>{
   const ex = history.find(h=>h.date===p.date);
-  if(!ex) history.push(p);
+  if(!ex) history.push({...p});
   else Object.assign(ex, p);
 });
 history.sort((a,b)=>a.date.localeCompare(b.date));
@@ -404,8 +412,8 @@ function dCls(v,reverse=false){
 document.getElementById('k1').textContent = DATA.total.toLocaleString();
 document.getElementById('k2').textContent = DATA.contractedToday.toLocaleString();
 document.getElementById('k3').textContent = DATA.newInToday.toLocaleString();
-const turnover = (DATA.contractedToday / DATA.totalPrev * 100).toFixed(1);
-document.getElementById('k4').textContent = turnover + '%';
+const netChange = DATA.newInToday - DATA.contractedToday;
+document.getElementById('k4').textContent = (netChange>=0?'+':'')+netChange;
 document.getElementById('updated').textContent = '최종 업데이트 ' + DATA.date;
 
 if(yesterday){
@@ -416,7 +424,7 @@ if(yesterday){
 // 다른 KPI는 오늘만 있는 값이라 델타 없음
 document.getElementById('d2').textContent = '어제→오늘';
 document.getElementById('d3').textContent = '신규 VIN';
-document.getElementById('d4').textContent = '계약÷어제재고';
+document.getElementById('d4').textContent = '입항−계약';
 
 // Arrival
 document.getElementById('arrivalNum').innerHTML = DATA.newInToday + '<span>대</span>';
@@ -460,28 +468,27 @@ document.getElementById('stockList').innerHTML = stockTop.map((m,i)=>{
   </div>`;
 }).join('');
 
-// Class1 — 회전율 순
-const c1Sorted = Object.entries(DATA.class1Stats).sort((a,b)=>b[1].turnover - a[1].turnover);
+// Class1 — 오늘 계약 수 기준
+const c1Sorted = Object.entries(DATA.class1Stats).sort((a,b)=>b[1].contracted - a[1].contracted);
 document.getElementById('class1Grid').innerHTML = c1Sorted.map(([cn,cd])=>`
   <div class="c1-card">
-    <div class="n"><span>${cn}</span><span class="rate">${cd.turnover}%</span></div>
+    <div class="n"><span>${cn}</span><span class="rate">${cd.contracted}대</span></div>
     <div class="nums">
       <span>재고 <b>${cd.av}</b></span>
-      <span class="ct">계약 <b>${cd.contracted}</b></span>
+      <span class="ct">오늘 계약</span>
     </div>
   </div>
 `).join('');
 
 // Categories
 const cats = DATA.categories;
-document.getElementById('catGrid').innerHTML = Object.entries(cats).map(([cn,cd])=>{
-  const turn = cd.av_prev>0 ? (cd.contracted/cd.av_prev*100).toFixed(1) : 0;
-  return `<div class="cat-card">
+document.getElementById('catGrid').innerHTML = Object.entries(cats).map(([cn,cd])=>`
+  <div class="cat-card">
     <div class="cn">${cn}</div>
     <div class="cs"><span>${cd.models}모델</span><b>${cd.av}대</b></div>
-    <div class="cs ct"><span>오늘 계약</span><b>${cd.contracted}대 (${turn}%)</b></div>
-  </div>`;
-}).join('');
+    <div class="cs ct"><span>오늘 계약</span><b>${cd.contracted}대</b></div>
+  </div>
+`).join('');
 
 // Arrival
 const arrModels = Object.entries(DATA.newByModel || {}).sort((a,b)=>b[1]-a[1]);
@@ -551,9 +558,11 @@ function getHistSlice(){
   return history.slice(-n);
 }
 
+let top20Inst=null;
 function renderTrend(){
   const data = getHistSlice();
   document.getElementById('trendDays').textContent = history.length+'일치 / 표시 '+data.length+'일';
+  document.getElementById('top20Days').textContent = history.length+'일치';
   
   if(data.length>=2){
     const first = data[0], last = data[data.length-1];
@@ -567,6 +576,7 @@ function renderTrend(){
   
   if(trendInst){ trendInst.destroy(); trendInst=null; }
   if(flowInst){ flowInst.destroy(); flowInst=null; }
+  if(top20Inst){ top20Inst.destroy(); top20Inst=null; }
   
   const ctx = document.getElementById('trendChart').getContext('2d');
   trendInst = new Chart(ctx,{
@@ -615,6 +625,72 @@ function renderTrend(){
       }
     }
   });
+}
+
+  // Top 20 모델 일별 계약 차트
+  renderTop20Chart(data);
+}
+
+function renderTop20Chart(data){
+  // 누적 계약 수 집계
+  const modelTotals = {};
+  data.forEach(h => {
+    const cm = h.contractsByModel || {};
+    Object.entries(cm).forEach(([m,c]) => {
+      modelTotals[m] = (modelTotals[m]||0) + c;
+    });
+  });
+  
+  const top20Models = Object.entries(modelTotals)
+    .sort((a,b)=>b[1]-a[1])
+    .slice(0,20)
+    .map(([m,])=>m);
+  
+  if(top20Models.length === 0){
+    document.getElementById('top20Legend').innerHTML = '<div style="text-align:center;color:#555">계약 데이터 누적 중 · 2일 이상 필요</div>';
+    return;
+  }
+  
+  // 컬러 팔레트 20개
+  const palette = ['#c9a96e','#ef4444','#10b981','#3b82f6','#f59e0b','#8b5cf6','#ec4899','#06b6d4','#84cc16','#f97316','#a855f7','#14b8a6','#eab308','#6366f1','#d946ef','#22c55e','#0ea5e9','#dc2626','#65a30d','#7c3aed'];
+  
+  const datasets = top20Models.map((m,i) => ({
+    label: m.length>25 ? m.slice(0,23)+'…' : m,
+    data: data.map(h => (h.contractsByModel||{})[m] || 0),
+    borderColor: palette[i],
+    backgroundColor: palette[i]+'22',
+    borderWidth: 2,
+    pointRadius: 3,
+    tension: .2,
+  }));
+  
+  const ctx3 = document.getElementById('top20Chart').getContext('2d');
+  top20Inst = new Chart(ctx3,{
+    type:'line',
+    data:{
+      labels:data.map(h=>h.date.slice(5)),
+      datasets:datasets
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{intersect:false,mode:'index'},
+      plugins:{
+        legend:{display:false},
+        tooltip:{backgroundColor:'#0a0a0f',titleColor:'#c9a96e',bodyColor:'#fff',borderColor:'#2a3040',borderWidth:1,padding:10,itemSort:(a,b)=>b.parsed.y-a.parsed.y,filter:item=>item.parsed.y>0}
+      },
+      scales:{
+        x:{ticks:{color:'#aaa',font:{size:11}},grid:{color:'#1a1a2a'}},
+        y:{beginAtZero:true,ticks:{color:'#aaa',font:{size:11},stepSize:1},grid:{color:'#1a1a2a'}}
+      }
+    }
+  });
+  
+  // 범례 직접 표시 (누적 계약 수 기준)
+  const legendHtml = top20Models.map((m,i)=>{
+    const tot = modelTotals[m];
+    return `<span style="display:inline-block;margin-right:12px;white-space:nowrap"><span style="display:inline-block;width:10px;height:10px;background:${palette[i]};border-radius:2px;vertical-align:middle;margin-right:4px"></span>${m.length>22?m.slice(0,20)+'…':m} <b style="color:#c9a96e">${tot}</b></span>`;
+  }).join('');
+  document.getElementById('top20Legend').innerHTML = legendHtml;
 }
 
 function setPeriod(p, btn){
