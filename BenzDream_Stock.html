@@ -64,11 +64,13 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
 .combos{max-height:0;overflow:hidden;transition:max-height .35s ease}
 .model-card.open .combos{max-height:4000px}
 .combos-inner{padding:10px 14px 14px}
-.ext-group{margin-bottom:10px}
+.ext-group{margin-bottom:12px;padding:10px 12px;background:var(--border-soft);border-radius:10px}
 .ext-group:last-child{margin-bottom:0}
-.ext-label{font-weight:700;font-size:13px;color:var(--text);margin-bottom:6px;padding-left:2px}
-.int-tags{display:flex;flex-wrap:wrap;gap:6px}
-.int-tag{font-size:11px;color:var(--text-sub);background:var(--border-soft);padding:5px 12px;border-radius:20px;font-weight:500;line-height:1.3}
+.ext-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.ext-swatch{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);object-fit:cover;flex-shrink:0}
+.ext-label{font-weight:700;font-size:13px;color:var(--text)}
+.int-tags{display:flex;flex-wrap:wrap;gap:6px;padding-left:32px}
+.int-tag{font-size:11px;color:var(--text-sub);background:var(--card);padding:5px 12px;border-radius:20px;font-weight:500;line-height:1.3;border:1px solid var(--border)}
 
 .cta-section{background:linear-gradient(135deg,#F8FAFD,#EDF2F7);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-top:32px;text-align:center}
 .cta-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px}
@@ -2544,6 +2546,34 @@ function matches(m){
   return m.combos.some(c=>(c.en+' '+c.inn).toLowerCase().includes(s));
 }
 
+const EXT_IMG = {
+  "폴라 화이트":"https://media.oneweb.mercedes-benz.com/images/static/v1/19604/8/73/df39a1b007211fb89624f7493f0c2f3b0d2e0.jpg",
+  "옵시디안 블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/22258/e/5f/872517aacd0f44fec2f60a96c31d1912ac178.jpg",
+  "그라파이트 그레이":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/a/ea/c76a78e2bbc8ddc3b76f6bfaee7a371e1b56c.jpg",
+  "나이트 블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/0/90/696a154fe9ca55babbb9d7a98efe81cfade92.jpg",
+  "셀레나이트 그레이":"https://media.oneweb.mercedes-benz.com/images/static/v1/19446/4/94/f5fef52b4811d476557b02d75b38ded3cd362.jpg",
+  "하이 테크 실버":"https://media.oneweb.mercedes-benz.com/images/static/v1/19604/9/96/632fe018027480d14dd2e11caa04be5fff45a.jpg",
+  "하이테크 실버":"https://media.oneweb.mercedes-benz.com/images/static/v1/19604/9/96/632fe018027480d14dd2e11caa04be5fff45a.jpg",
+  "코스모스 블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19444/3/9f/2fddd73337e146ea4300d2fb77a246cee7f83.jpg",
+  "노틱 블루":"https://media.oneweb.mercedes-benz.com/images/static/v1/19604/e/20/628bb7af4b37584bc19267fcac5d371f03b8c.jpg",
+  "베르데 실버":"https://media.oneweb.mercedes-benz.com/images/static/v1/19604/b/bf/40c70cb852853d17c02709084ea7754ba3d85.jpg",
+  "마운틴 그레이":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/0/55/20bf0e6364e50f1f1cec1a76b1a67eb5d6506.jpg",
+  "마운틴 그레이 메탈릭":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/0/55/20bf0e6364e50f1f1cec1a76b1a67eb5d6506.jpg",
+  "스펙트럴 블루":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/6/78/f9c9a2c6c24f9f2a9e2ceb62126e5e9e1f12c.jpg",
+  "MANUFAKTUR 오팔라이트 화이트 브라이트":"https://media.oneweb.mercedes-benz.com/images/static/v1/22024/2/0d/9df2b5e0056edf96e432d4f65092824acb741.jpg",
+  "MANUFAKTUR 오팔라이트 화이트 마그노":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/e/11/bc89a6b966eec06b6ddc0b19b2e2f68e3fe3e.jpg",
+  "MANUFAKTUR 그라파이트 그레이 마그노":"https://media.oneweb.mercedes-benz.com/images/static/v1/22024/0/b5/e9f7a7e4bedd25ade2260e7d8a1e1f23b36a7.jpg",
+  "MANUFAKTUR 나이트 블랙 마그노":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/c/12/3631ba3ec3b44cd3333f2d1787ce65041bce9.jpg",
+  "MANUFAKTUR 마운틴 그레이 마그노":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/6/60/e9c9a2b6b24f9e2a8e2ceb52126e4e9e0f02b.jpg",
+  "MANUFAKTUR 알파인 그레이":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/a/4d/b52cd8e2dac8dfc3c76f6cfaee8a371e2c56d.jpg",
+  "MANUFAKTUR 알파인 그레이 솔리드":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/a/4d/b52cd8e2dac8dfc3c76f6cfaee8a371e2c56d.jpg",
+  "MANUFAKTUR 알파일 그레이 솔리드":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/a/4d/b52cd8e2dac8dfc3c76f6cfaee8a371e2c56d.jpg",
+  "MANUFAKTUR 오팔라이트 화이트":"https://media.oneweb.mercedes-benz.com/images/static/v1/22024/2/0d/9df2b5e0056edf96e432d4f65092824acb741.jpg",
+  "MANUFAKTUR 가넷 레드 메탈릭":"https://media.oneweb.mercedes-benz.com/images/static/v1/21979/0/c3/b32236cdd0a12028fc1959e69ee76885df710.jpg",
+  "벨벳 브라운":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/c/16/2631ba3ac2b44cd3233f2d1687ce65041abe9.jpg",
+  "에메랄드 그린":"https://media.oneweb.mercedes-benz.com/images/static/v1/21979/0/c3/b32236cdd0a12028fc1959e69ee76885df710.jpg"
+};
+
 function render(){
   let h = '';
   const cats = currentCat==='ALL' ? Object.keys(CATEGORIES) : [currentCat];
@@ -2556,16 +2586,16 @@ function render(){
     models.forEach(m=>{
       const mt = m.combos.reduce((s,c)=>s+c.total,0);
       h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta"><div class="model-badge">즉시출고가능</div><div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">`;
-      // 외장색 기준 그룹핑
       const extMap = {};
       m.combos.forEach(c=>{
         if(!extMap[c.en]) extMap[c.en]=[];
-        // 내장색에서 소재 prefix 간소화
-        let inn = c.inn.replace(/아티코 가죽, |아티코 인조 가죽, |나파 가죽, |가죽, |AMG 나파 가죽, |NEOTEX\/ARTICO /g,'').trim();
+        let inn = c.inn.replace(/아티코 가죽, |아티코 인조 가죽, |나파 가죽, |가죽, |AMG 나파 가죽, |NEOTEX\/ARTICO |MAYBACH 익스클루시브 나파 가죽, |마이바흐 익스클루시브 나파 가죽, |아티코 가죽\/다이나미카 |아티코 가죽 \/ 마이크로컷 마이크로파이버 |아티코 가죽\/마이크로컷 마이크로파이버 |아티코 인조 가죽\/다이나미카 AMG /g,'').trim();
         if(inn && !extMap[c.en].includes(inn)) extMap[c.en].push(inn);
       });
       Object.keys(extMap).forEach(ext=>{
-        h += `<div class="ext-group"><div class="ext-label">${ext}</div><div class="int-tags">`;
+        const img = EXT_IMG[ext];
+        const swatch = img ? `<img class="ext-swatch" src="${img}" alt="${ext}" loading="lazy">` : '';
+        h += `<div class="ext-group"><div class="ext-head">${swatch}<div class="ext-label">${ext}</div></div><div class="int-tags">`;
         extMap[ext].forEach(inn=>{
           h += `<span class="int-tag">${inn}</span>`;
         });
