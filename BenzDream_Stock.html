@@ -65,7 +65,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
 .combos{max-height:0;overflow:hidden;transition:max-height .35s ease}
 .model-card.open .combos{max-height:2400px}
 .combos-inner{padding:6px 14px 14px}
-.combo-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px 14px;background:var(--border-soft);border-radius:10px;margin-bottom:5px;align-items:center;transition:all .2s}
+.combo-row{display:block;padding:11px 14px;background:var(--border-soft);border-radius:10px;margin-bottom:5px;align-items:center;transition:all .2s}
 .combo-row:hover{background:#E8EEF5}
 .combo-colors{min-width:0}
 .combo-ext{color:var(--text);font-weight:600;font-size:13px}
@@ -105,8 +105,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
   <div class="updated" id="updatedBadge">최종 업데이트 2026-04-10</div>
 </div>
 
-<div class="summary">
-  <div class="stat"><div class="stat-num" id="totalCnt">0</div><div class="stat-lbl">전체 재고</div></div>
+
   <div class="stat"><div class="stat-num" id="modelCnt">0</div><div class="stat-lbl">판매 모델</div></div>
   <div class="stat"><div class="stat-num" id="catCnt">0</div><div class="stat-lbl">카테고리</div></div>
 </div>
@@ -3372,17 +3371,14 @@ let currentCat = 'ALL', searchTerm = '';
 function getTotal(){return DATA.reduce((s,m)=>s+m.combos.reduce((x,c)=>x+c.total,0),0)}
 function catTotal(cat){return (CATEGORIES[cat]||[]).reduce((s,mn)=>{const m=DATA.find(x=>x.model===mn);return s+(m?m.combos.reduce((x,c)=>x+c.total,0):0)},0)}
 
-document.getElementById('totalCnt').textContent = getTotal().toLocaleString();
-document.getElementById('modelCnt').textContent = DATA.length;
-document.getElementById('catCnt').textContent = Object.keys(CATEGORIES).length;
 document.getElementById('updatedBadge').textContent = '최종 업데이트 ' + UPDATED;
 
 function renderCats(){
   const t = getTotal();
-  let h = `<button class="cat-chip ${currentCat==='ALL'?'active':''}" data-cat="ALL">전체<span class="cnt">${t}</span></button>`;
+  let h = `<button class="cat-chip ${currentCat==='ALL'?'active':''}" data-cat="ALL">전체</button>`;
   Object.keys(CATEGORIES).forEach(c=>{
     const n = catTotal(c);
-    if(n>0) h += `<button class="cat-chip ${currentCat===c?'active':''}" data-cat="${c}">${c}<span class="cnt">${n}</span></button>`;
+    if(n>0) h += `<button class="cat-chip ${currentCat===c?'active':''}" data-cat="${c}">${c}</button>`;
   });
   document.getElementById('cats').innerHTML = h;
   document.querySelectorAll('.cat-chip').forEach(b=>{
@@ -3402,15 +3398,15 @@ function render(){
   const cats = currentCat==='ALL' ? Object.keys(CATEGORIES) : [currentCat];
   cats.forEach(cat=>{
     if(!CATEGORIES[cat]) return;
-    const models = CATEGORIES[cat].map(mn=>DATA.find(d=>d.model===mn)).filter(m=>m && matches(m));
+    const models = CATEGORIES[cat].map(mn=>DATA.find(d=>d.model===mn)).filter(m=>m && matches(m)).sort((a,b)=>a.model.localeCompare(b.model));
     if(!models.length) return;
     const total = models.reduce((s,m)=>s+m.combos.reduce((x,c)=>x+c.total,0),0);
-    h += `<div class="cat-section"><div class="cat-header"><div class="cat-name">${cat}</div><div class="cat-cnt">${total}대 · ${models.length}모델</div></div>`;
+    h += `<div class="cat-section"><div class="cat-header"><div class="cat-name">${cat}</div><div class="cat-cnt">${models.length}개 모델</div></div>`;
     models.forEach(m=>{
       const mt = m.combos.reduce((s,c)=>s+c.total,0);
-      h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta"><div class="model-total">${mt}<span class="unit">대</span></div><div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">`;
+      h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta"><div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">`;
       m.combos.forEach(c=>{
-        h += `<div class="combo-row"><div class="combo-colors"><div class="combo-ext">${c.en}</div><div class="combo-int">${c.inn}</div></div><div class="combo-cnt">${c.total}대</div></div>`;
+        h += `<div class="combo-row"><div class="combo-colors"><div class="combo-ext">${c.en}</div><div class="combo-int">${c.inn}</div></div></div>`;
       });
       h += `</div></div></div>`;
     });
