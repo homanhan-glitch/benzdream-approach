@@ -1,361 +1,234 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
-  <script>
-    // IP 필터 — 내부 트래픽 제외
-    const BLOCKED_IPS = ["59.7.219.188"];
-    fetch("https://api.ipify.org?format=json")
-      .then(r=>r.json())
-      .then(d=>{
-        if(BLOCKED_IPS.includes(d.ip)) return; // 차단 IP → GA 미실행
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag("js", new Date());
-        gtag("config", "G-7T2ECBWN0K");
-      }).catch(()=>{
-        // fetch 실패시 GA 정상 실행
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag("js", new Date());
-        gtag("config", "G-7T2ECBWN0K");
-      });
-  </script>
+<html lang="ko"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BenzDream 재고현황</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-<!--
-====================================================
-  BenzDream 재고현황 v3
-  업데이트: UPDATED 날짜 + DATA 배열 교체
-====================================================
--->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BenzDream 실시간 재고 | 벤츠 모터원 고양전시장</title>
+<meta name="description" content="메르세데스-벤츠 전국 재고 실시간 조회. 모터원 고양전시장 BenzDream 한호만 팀장">
+<meta property="og:title" content="BenzDream 실시간 재고">
+<meta property="og:description" content="벤츠 전국 재고 실시간 조회 · BenzDream 한호만 팀장">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
-  --bg:#0d0f14; --bg2:#111420; --card:#181c28;
-  --brd:rgba(201,169,110,.13); --brd2:rgba(255,255,255,.05);
-  --gold:#c9a96e; --gold2:#ddc08a; --dim:#6e6650; --sv:#8a8d9a;
-  --txt:#d4d7e2; --wh:#f0f1f5;
-  --ok:#4dba8a; --wt:#d4924a;
-  --ok-bg:rgba(77,186,138,.09); --wt-bg:rgba(212,146,74,.08);
-  --ok-brd:rgba(77,186,138,.22); --wt-brd:rgba(212,146,74,.2);
+  --bg:#F7F8FA; --card:#FFFFFF; --border:#E5E9F0; --border-soft:#EFF2F7;
+  --text:#0F172A; --text-sub:#64748B; --text-mute:#94A3B8;
+  --accent:#0066B2; --accent-light:#E6F0FA; --accent-dark:#004A80;
+  --silver:#8B95A1; --gold:#C9A96E;
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--txt);font-family:"Noto Sans KR",sans-serif;font-size:14px;line-height:1.6;min-height:100vh;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-apple-system,sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
+.wrap{max-width:860px;margin:0 auto;padding:20px 16px 60px}
 
-/* ── 헤더 ── */
-header{
-  position:sticky;top:0;z-index:100;
-  background:rgba(13,15,20,.96);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--brd);
-  padding:0 20px;height:54px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-}
-.hd-logo{font-family:"Outfit",sans-serif;font-size:1.08rem;font-weight:700;color:var(--gold);letter-spacing:.04em;white-space:nowrap;}
-.hd-logo span{color:var(--sv);font-weight:300;font-size:.76rem;margin-left:8px;}
-.hd-date{font-family:"Outfit",sans-serif;font-size:.74rem;color:var(--sv);white-space:nowrap;}
-.hd-date strong{color:var(--gold2);}
+.hero{text-align:center;margin-bottom:24px;padding:16px 0 20px}
+.hero-brand{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:4px;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:10px}
+.hero-divider{width:40px;height:2px;background:var(--accent);margin:0 auto 16px}
+.hero-title{font-size:26px;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1.2}
+.hero-sub{font-size:12px;color:var(--text-sub);margin-top:6px;font-weight:500}
+.updated{display:inline-block;margin-top:14px;padding:6px 14px;background:var(--accent-light);color:var(--accent);border-radius:20px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600}
 
-/* ── 범례 ── */
-.legend{
-  background:var(--bg2);border-bottom:1px solid var(--brd);
-  padding:8px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
-}
-.leg{display:flex;align-items:center;gap:6px;font-size:.73rem;color:var(--sv);}
-.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.dot.ok{background:var(--ok);}
-.dot.wt{background:var(--wt);}
-.leg-note{margin-left:auto;font-size:.69rem;color:var(--dim);}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;transition:all .2s}
+.stat:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,102,178,.08)}
+.stat-num{font-family:'Inter',sans-serif;font-size:28px;font-weight:800;color:var(--accent);line-height:1}
+.stat-lbl{font-size:11px;color:var(--text-sub);margin-top:5px;font-weight:500}
 
-/* ── 필터 탭 ── */
-.fbar{
-  padding:9px 20px;display:flex;gap:5px;flex-wrap:wrap;
-  border-bottom:1px solid var(--brd);background:var(--bg);
-  position:sticky;top:54px;z-index:90;
-}
-.tab{
-  font-family:"Outfit",sans-serif;font-size:.71rem;font-weight:500;
-  padding:4px 11px;border-radius:14px;border:1px solid var(--brd);
-  background:transparent;color:var(--sv);cursor:pointer;transition:all .15s;white-space:nowrap;
-}
-.tab:hover{border-color:var(--dim);color:var(--gold);}
-.tab.on{background:var(--gold);color:#0d0f14;border-color:var(--gold);font-weight:600;}
+.search-box{position:relative;margin-bottom:14px}
+.search-box input{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:14px 46px;color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:all .2s}
+.search-box input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,102,178,.1)}
+.search-box input::placeholder{color:var(--text-mute)}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--text-mute)}
 
-/* ── 메인 ── */
-main{padding:16px 20px;}
-.cat-sec{margin-bottom:26px;}
-.cat-sec.hidden{display:none;}
-.cat-title{
-  font-family:"Outfit",sans-serif;font-size:.63rem;font-weight:600;
-  color:var(--dim);letter-spacing:.16em;text-transform:uppercase;
-  padding-bottom:6px;border-bottom:1px solid var(--brd);margin-bottom:9px;
-}
+.cats{display:flex;gap:6px;overflow-x:auto;margin:0 -16px 16px;padding:0 16px 8px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cat-chip{flex-shrink:0;background:var(--card);border:1.5px solid var(--border);border-radius:24px;padding:9px 16px;color:var(--text-sub);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:inherit}
+.cat-chip:hover{border-color:var(--silver)}
+.cat-chip .cnt{display:inline-block;background:var(--border-soft);color:var(--text-sub);padding:2px 8px;border-radius:12px;margin-left:6px;font-family:'Inter',sans-serif;font-size:10px;font-weight:700}
+.cat-chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.cat-chip.active .cnt{background:rgba(255,255,255,.2);color:#fff}
 
-/* 모델 그리드 */
-.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:8px;}
+.cat-section{margin-bottom:28px}
+.cat-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;padding:0 4px;border-bottom:1px solid var(--border-soft);padding-bottom:10px}
+.cat-name{font-size:17px;font-weight:800;color:var(--text);letter-spacing:-.01em}
+.cat-cnt{font-family:'Inter',sans-serif;font-size:12px;color:var(--accent);font-weight:700}
 
-/* 모델 카드 */
-.mc{background:var(--card);border:1px solid var(--brd);border-radius:10px;overflow:hidden;transition:border-color .18s;}
-.mc:hover{border-color:rgba(201,169,110,.26);}
-.mc-head{padding:9px 13px 7px;border-bottom:1px solid var(--brd2);}
-.mc-name{font-family:"Outfit",sans-serif;font-size:.84rem;font-weight:600;color:var(--wh);line-height:1.3;}
-.mc-name.amg{color:#e06060;}
-.mc-name.maybach{color:var(--gold);}
+.model-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .2s;margin-bottom:8px}
+.model-card.open{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,102,178,.08)}
+.model-head{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:12px}
+.model-head:hover{background:var(--border-soft)}
+.model-card.open .model-head{background:var(--accent-light)}
+.model-name{font-weight:700;color:var(--text);font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.model-meta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.model-total{font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:var(--accent)}
+.model-total .unit{font-size:11px;color:var(--text-mute);margin-left:2px;font-weight:500}
+.arrow{width:8px;height:8px;border-right:2px solid var(--text-mute);border-bottom:2px solid var(--text-mute);transform:rotate(45deg);transition:transform .25s}
+.model-card.open .arrow{transform:rotate(-135deg);border-color:var(--accent)}
 
-/* 조합 행 */
-.crow{
-  display:flex;align-items:flex-start;
-  padding:8px 13px;gap:10px;
-  border-bottom:1px solid var(--brd2);
-  transition:background .12s;
-}
-.crow:last-child{border-bottom:none;}
-.crow:hover{background:rgba(255,255,255,.023);}
+.combos{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.model-card.open .combos{max-height:2400px}
+.combos-inner{padding:6px 14px 14px}
+.combo-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px 14px;background:var(--border-soft);border-radius:10px;margin-bottom:5px;align-items:center;transition:all .2s}
+.combo-row:hover{background:#E8EEF5}
+.combo-colors{min-width:0}
+.combo-ext{color:var(--text);font-weight:600;font-size:13px}
+.combo-int{color:var(--text-sub);font-size:11px;margin-top:2px}
+.combo-cnt{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:var(--accent);background:var(--card);padding:4px 10px;border-radius:8px;border:1px solid var(--border);white-space:nowrap}
 
-/* 색상 정보 영역 */
-.cinfo{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0;}
+.cta-section{background:linear-gradient(135deg,#F8FAFD,#EDF2F7);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-top:32px;text-align:center}
+.cta-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px}
+.cta-sub{font-size:12px;color:var(--text-sub);margin-bottom:18px;line-height:1.7}
+.cta-btns{display:flex;flex-direction:column;gap:10px;max-width:320px;margin:0 auto}
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:700;transition:all .2s}
+.cta-kakao{background:#FEE500;color:#000}
+.cta-form{background:var(--accent);color:#fff}
+.cta-yt{background:var(--text);color:#fff}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
 
-/* 외장 행 */
-.ext-row{display:flex;align-items:baseline;gap:5px;}
-/* 내장 행 */
-.int-row{display:flex;align-items:baseline;gap:5px;padding-left:2px;}
+.empty{text-align:center;padding:60px 20px;color:var(--text-mute);font-size:13px}
+.footer{text-align:center;font-size:11px;color:var(--text-mute);margin-top:28px;line-height:1.8}
+.footer .co{color:var(--text-sub);margin-top:4px;font-weight:500}
 
-/* 구분선 */
-.int-row::before{
-  content:'└';font-size:.6rem;color:var(--dim);
-  flex-shrink:0;line-height:1;margin-top:2px;
-}
+.totop{position:fixed;bottom:24px;right:20px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:50%;font-size:20px;cursor:pointer;box-shadow:0 6px 20px rgba(0,102,178,.35);opacity:0;pointer-events:none;transition:all .3s;z-index:100;font-weight:700}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{transform:translateY(-3px)}
 
-/* 칩 */
-.chip{
-  font-family:"Outfit",sans-serif;font-size:.62rem;font-weight:600;
-  color:var(--dim);background:rgba(255,255,255,.05);
-  border-radius:3px;padding:1px 5px;
-  min-width:30px;text-align:center;letter-spacing:.03em;
-  flex-shrink:0;line-height:1.5;
-}
-.chip.ic{background:rgba(201,169,110,.06);color:rgba(201,169,110,.45);}
-
-/* 색상명 — 줄바꿈 허용, 말줄임 없음 */
-.cn{font-size:.76rem;color:var(--sv);line-height:1.4;word-break:keep-all;}
-.cn.inn{font-size:.71rem;color:rgba(201,169,110,.5);line-height:1.4;word-break:keep-all;}
-
-/* 뱃지 */
-.badge{
-  font-family:"Outfit",sans-serif;font-size:.62rem;font-weight:700;
-  padding:3px 8px;border-radius:10px;white-space:nowrap;flex-shrink:0;letter-spacing:.02em;
-  margin-top:1px;
-}
-.badge.ok{background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok-brd);}
-.badge.wt{background:var(--wt-bg);color:var(--wt);border:1px solid var(--wt-brd);}
-
-/* 빈 상태 */
-#empty{display:none;text-align:center;padding:60px;color:var(--sv);font-size:.9rem;}
-
-/* 푸터 */
-.footer{text-align:center;padding:26px 20px 40px;border-top:1px solid var(--brd);}
-.back-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  color:var(--gold);border:1px solid var(--dim);padding:9px 22px;border-radius:30px;
-  font-family:"Outfit",sans-serif;font-size:.82rem;text-decoration:none;
-  letter-spacing:.04em;transition:background .18s;
-}
-.back-btn:hover{background:rgba(201,169,110,.07);}
-
-@media(max-width:520px){
-  header{height:50px;padding:0 14px;}
-  .fbar{top:50px;padding:8px 14px;}
-  main{padding:12px 14px;}
-  .mgrid{grid-template-columns:1fr;}
-  .leg-note{display:none;}
-}
+@media (min-width:640px){.hero-title{font-size:32px}.stat-num{font-size:34px}.summary{grid-template-columns:repeat(3,1fr);gap:14px}}
+@media (max-width:480px){.summary{grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:14px 8px}.stat-num{font-size:24px}.stat-lbl{font-size:10px}}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-  <div class="hd-logo">BenzDream <span>실시간 재고현황</span></div>
-  <div class="hd-date">기준일 <strong id="upd"></strong></div>
-</header>
-
-<div class="legend">
-  <div class="leg"><div class="dot ok"></div>즉시출고 가능</div>
-  <div class="leg"><div class="dot wt"></div>대기 필요</div>
-  <div class="leg-note">※ 실시간 계약 상황에 따라 재고 변동될 수 있으니 상담 문의 바랍니다</div>
+<div class="hero">
+  <div class="hero-brand">Mercedes-Benz · Real-Time Inventory</div>
+  <div class="hero-divider"></div>
+  <h1 class="hero-title">BenzDream 실시간 재고</h1>
+  <div class="hero-sub">벤츠 전국 재고 · 모터원 고양전시장</div>
+  <div class="updated" id="updatedBadge">최종 업데이트 2026-04-10</div>
 </div>
 
-<div class="fbar" id="fbar"></div>
-<main id="main"></main>
-<div id="empty">해당 조건의 재고가 없습니다.</div>
+<div class="summary">
+  <div class="stat"><div class="stat-num" id="totalCnt">0</div><div class="stat-lbl">전체 재고</div></div>
+  <div class="stat"><div class="stat-num" id="modelCnt">0</div><div class="stat-lbl">판매 모델</div></div>
+  <div class="stat"><div class="stat-num" id="catCnt">0</div><div class="stat-lbl">카테고리</div></div>
+</div>
+
+<div class="search-box">
+  <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <input type="text" id="searchInput" placeholder="모델명 또는 색상 검색 (예: E 300, 블랙)">
+</div>
+
+<div class="cats" id="cats"></div>
+
+<div id="listing"></div>
+
+<div class="cta-section">
+  <div class="cta-title">원하시는 차량이 있나요?</div>
+  <div class="cta-sub">구매 조건·실구매가·프로모션 안내까지<br>BenzDream 한호만 팀장이 직접 상담해드립니다</div>
+  <div class="cta-btns">
+    <a href="http://pf.kakao.com/_UqxiIX/chat" class="cta-btn cta-kakao">💬 카카오톡 실시간 상담</a>
+    <a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" class="cta-btn cta-form">📋 구매 상담 신청서</a>
+    <a href="https://youtube.com/@benzdream" class="cta-btn cta-yt">📺 BenzDream 유튜브</a>
+  </div>
+</div>
 
 <div class="footer">
-  <a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_Landing.html" class="back-btn">← 전체 어프로치북 목록</a>
+  <div>벤츠 고양 전시장 BenzDream 한호만 팀장</div>
+  <div class="co">경기도 고양시 덕양구 의장로 110 모터원고양</div>
 </div>
 
-<script>
-// ============================================================
-// 📌 업데이트: UPDATED 날짜 + DATA 배열만 교체
-// ============================================================
-const UPDATED = "2026-04-10";
+</div>
+<button class="totop" id="totop">↑</button>
 
+<script>
 const DATA = [
   {
-    "model": "A 220",
+    "model": "E 200 AMG Line",
     "combos": [
       {
         "ec": "",
-        "en": "나이트 블랙",
+        "en": "폴라 화이트",
         "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지 /블랙",
-        "avail": 5,
-        "total": 5,
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 312,
+        "total": 312,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "나이트 블랙",
+        "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 8,
-        "total": 8,
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 79,
+        "total": 79,
         "s": "available"
       },
       {
         "ec": "",
         "en": "폴라 화이트",
         "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지 /블랙",
-        "avail": 13,
-        "total": 13,
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 70,
+        "total": 70,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 38,
+        "total": 38,
         "s": "available"
       },
       {
         "ec": "",
         "en": "폴라 화이트",
         "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG A 45 S 4MATIC+",
-    "combos": [
-      {
-        "ec": "",
-        "en": "코스모스 블랙",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 1,
-        "total": 1,
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 37,
+        "total": 37,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "코스모스 블랙",
+        "en": "그라파이트 그레이",
         "ic": "",
-        "inn": "아티코 인조 가죽/다이나미카 블랙",
-        "avail": 5,
-        "total": 5,
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 23,
+        "total": 23,
         "s": "available"
       },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽/다이나미카 블랙",
-        "avail": 5,
-        "total": 5,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG CLA 45 S 4M+ Final Edition",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 마운틴 그레이 마그노",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버 블랙 (AMG)",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG CLA 45 S 4MATIC+ Coupé",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 마운틴 그레이 마그노",
-        "ic": "",
-        "inn": "아티코 인조 가죽/다이나미카 AMG 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG CLE 53 4M+ COUPE",
-    "combos": [
       {
         "ec": "",
         "en": "MANUFAKTUR 알파인 그레이",
         "ic": "",
-        "inn": "AMG 나파 가죽, 블랙/클래식 레드",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG CLE 53 4M+ Cabriolet",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
-        "ic": "",
-        "inn": "AMG 나파 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG CLE 53 4MATIC+ Cabriolet",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트",
-        "ic": "",
-        "inn": "AMG 나파 가죽, 블랙",
-        "avail": 3,
-        "total": 3,
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 11,
+        "total": 11,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트",
+        "en": "그라파이트 그레이",
         "ic": "",
-        "inn": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 11,
+        "total": 11,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "노틱 블루",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "노틱 블루",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
         "avail": 4,
         "total": 4,
         "s": "available"
@@ -364,7 +237,460 @@ const DATA = [
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "AMG 나파 가죽, 블랙",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      }
+    ],
+    "total": 595
+  },
+  {
+    "model": "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 152,
+        "total": 152,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지",
+        "avail": 33,
+        "total": 33,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 32,
+        "total": 32,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지",
+        "avail": 17,
+        "total": 17,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 블랙",
+        "avail": 9,
+        "total": 9,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 블랙",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이 솔리드",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "그라파이트 그레이",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "그라파이트 그레이",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "하이 테크 실버",
+        "ic": "",
+        "inn": "가죽, 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "노틱 블루",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 258
+  },
+  {
+    "model": "GLB 250 4MATIC AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 76,
+        "total": 76,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽/다이나미카 블랙",
+        "avail": 55,
+        "total": 55,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽/다이나미카 블랙",
+        "avail": 48,
+        "total": 48,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 40,
+        "total": 40,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이 메탈릭",
+        "ic": "",
+        "inn": "아티코 가죽/다이나미카 블랙",
+        "avail": 11,
+        "total": 11,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이 메탈릭",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이 메탈릭",
+        "ic": "",
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로파이버 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로파이버 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 252
+  },
+  {
+    "model": "E 300 4MATIC EXCLUSIVE",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 94,
+        "total": 94,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 53,
+        "total": 53,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지",
+        "avail": 40,
+        "total": 40,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 블랙",
+        "avail": 36,
+        "total": 36,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지",
+        "avail": 16,
+        "total": 16,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      }
+    ],
+    "total": 249
+  },
+  {
+    "model": "EQB 300 4MATIC Progressive",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 43,
+        "total": 43,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 38,
+        "total": 38,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "코스모스 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 29,
+        "total": 29,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 24,
+        "total": 24,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "코스모스 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 16,
+        "total": 16,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 15,
+        "total": 15,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 13,
+        "total": 13,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "하이테크 실버",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이",
+        "ic": "",
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "하이테크 실버",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 191
+  },
+  {
+    "model": "E 450 4MATIC EXCLUSIVE",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "나파 가죽, 통카 브라운/블랙",
+        "avail": 114,
+        "total": 114,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "나파 가죽, 네바 그레이/블랙",
+        "avail": 18,
+        "total": 18,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "나파 가죽, 블랙",
+        "avail": 14,
+        "total": 14,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "나파 가죽, 통카 브라운/블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "그라파이트 그레이",
+        "ic": "",
+        "inn": "나파 가죽, 통카 브라운/블랙",
         "avail": 7,
         "total": 7,
         "s": "available"
@@ -373,90 +699,805 @@ const DATA = [
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+        "inn": "나파 가죽, 네바 그레이/블랙",
         "avail": 5,
         "total": 5,
         "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG CLE 53 4MATIC+ Coupe",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트",
-        "ic": "",
-        "inn": "AMG 나파 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG E 53 HYBRID 4M+",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "AMG 나파 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG GLB 35 4M",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG GLB 35 4MATIC",
-    "combos": [
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
       },
       {
         "ec": "",
-        "en": "마운틴 그레이 메탈릭",
+        "en": "MANUFAKTUR 알파인 그레이 솔리드",
         "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이 메탈릭",
-        "ic": "",
-        "inn": "아티코 가죽/다이나미카 블랙",
+        "inn": "나파 가죽, 네바 그레이/블랙",
         "avail": 3,
         "total": 3,
         "s": "available"
       },
       {
         "ec": "",
+        "en": "노틱 블루",
+        "ic": "",
+        "inn": "나파 가죽, 네바 그레이/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "노틱 블루",
+        "ic": "",
+        "inn": "나파 가죽, 통카 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "베르데 실버",
+        "ic": "",
+        "inn": "나파 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 174
+  },
+  {
+    "model": "CLE 200 Cabriolet AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 48,
+        "total": 48,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 26,
+        "total": 26,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 21,
+        "total": 21,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 21,
+        "total": 21,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 18,
+        "total": 18,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 8,
+        "total": 8,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 157
+  },
+  {
+    "model": "E 300 4MATIC AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 52,
+        "total": 52,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 블랙",
+        "avail": 42,
+        "total": 42,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지/블랙",
+        "avail": 34,
+        "total": 34,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 통카 브라운",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      }
+    ],
+    "total": 131
+  },
+  {
+    "model": "GLE 450 4MATIC Coupé AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "나파 가죽, 블랙",
+        "avail": 114,
+        "total": 114,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "셀레나이트 그레이",
+        "ic": "",
+        "inn": "기타",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 115
+  },
+  {
+    "model": "E 200 AVANTGARDE",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 32,
+        "total": 32,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 26,
+        "total": 26,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 15,
+        "total": 15,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 13,
+        "total": 13,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "그라파이트 그레이",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 6,
+        "total": 6,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "그라파이트 그레이",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      }
+    ],
+    "total": 106
+  },
+  {
+    "model": "GLC 220 d 4MATIC",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 42,
+        "total": 42,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 21,
+        "total": 21,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 18,
+        "total": 18,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 9,
+        "total": 9,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 106
+  },
+  {
+    "model": "E 220 d 4MATIC EXCLUSIVE",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운",
+        "avail": 61,
+        "total": 61,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지",
+        "avail": 13,
+        "total": 13,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      }
+    ],
+    "total": 103
+  },
+  {
+    "model": "GLC 300 4MATIC AVANTGARDE",
+    "combos": [
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 32,
+        "total": 32,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 16,
+        "total": 16,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 15,
+        "total": 15,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 13,
+        "total": 13,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 12,
+        "total": 12,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 8,
+        "total": 8,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 102
+  },
+  {
+    "model": "CLE 200 Coupé AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 21,
+        "total": 21,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 17,
+        "total": 17,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 16,
+        "total": 16,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 8,
+        "total": 8,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이",
+        "ic": "",
+        "inn": "아티코 가죽, 통카 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 83
+  },
+  {
+    "model": "EQE 350+ SUV",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 네바 그레이/발바오 브라운",
+        "avail": 17,
+        "total": 17,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 블랙/스페이스 그레이",
+        "avail": 16,
+        "total": 16,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 블랙/스페이스 그레이",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 네바 그레이/발바오 브라운",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 블랙/발바오 브라운",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 네바 그레이/비스케이 블루",
+        "avail": 6,
+        "total": 6,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 네바 그레이/비스케이 블루",
+        "avail": 6,
+        "total": 6,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 블랙/발바오 브라운",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이 솔리드",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 네바 그레이/비스케이 블루",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "셀레나이트 그레이",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 블랙/스페이스 그레이",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "에메랄드 그린",
+        "ic": "",
+        "inn": "NEOTEX/ARTICO 네바 그레이/비스케이 블루",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 77
+  },
+  {
+    "model": "EQB 300 4MATIC AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
+        "avail": 43,
+        "total": 43,
+        "s": "available"
+      },
+      {
+        "ec": "",
         "en": "코스모스 블랙",
         "ic": "",
-        "inn": "가죽, 투톤 레드 페퍼 / 블랙",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이",
+        "ic": "",
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
         "avail": 1,
         "total": 1,
         "s": "available"
@@ -465,11 +1506,356 @@ const DATA = [
         "ec": "",
         "en": "코스모스 블랙",
         "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 12,
-        "total": 12,
+        "inn": "아티코 가죽 세이지 그레이 / 블랙",
+        "avail": 1,
+        "total": 1,
         "s": "available"
       },
+      {
+        "ec": "",
+        "en": "하이테크 실버",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 73
+  },
+  {
+    "model": "C 200 AVANTGARDE",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 26,
+        "total": 26,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 17,
+        "total": 17,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "셀레나이트 그레이",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "셀레나이트 그레이",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 70
+  },
+  {
+    "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+    "combos": [
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 26,
+        "total": 26,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 14,
+        "total": 14,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 8,
+        "total": 8,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      }
+    ],
+    "total": 67
+  },
+  {
+    "model": "C 200 AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 29,
+        "total": 29,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 네바 그레이/블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 9,
+        "total": 9,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
+        "avail": 8,
+        "total": 8,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 네바 그레이/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 64
+  },
+  {
+    "model": "GLE 450 4MATIC",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 10,
+        "total": 10,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
+        "avail": 9,
+        "total": 9,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "나파 가죽, 블랙",
+        "avail": 9,
+        "total": 9,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 8,
+        "total": 8,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "기타",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      }
+    ],
+    "total": 60
+  },
+  {
+    "model": "AMG GLB 35 4MATIC",
+    "combos": [
       {
         "ec": "",
         "en": "코스모스 블랙",
@@ -483,18 +1869,18 @@ const DATA = [
         "ec": "",
         "en": "폴라 화이트",
         "ic": "",
-        "inn": "가죽, 투톤 레드 페퍼 / 블랙",
-        "avail": 1,
-        "total": 1,
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 14,
+        "total": 14,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "폴라 화이트",
+        "en": "코스모스 블랙",
         "ic": "",
         "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 14,
-        "total": 14,
+        "avail": 12,
+        "total": 12,
         "s": "available"
       },
       {
@@ -505,17 +1891,39 @@ const DATA = [
         "avail": 4,
         "total": 4,
         "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG GLC 43 4M",
-    "combos": [
+      },
       {
         "ec": "",
-        "en": "옵시디안 블랙",
+        "en": "마운틴 그레이 메탈릭",
         "ic": "",
-        "inn": "AMG 가죽, 블랙",
+        "inn": "아티코 가죽/다이나미카 블랙",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이 메탈릭",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "코스모스 블랙",
+        "ic": "",
+        "inn": "가죽, 투톤 레드 페퍼 / 블랙",
         "avail": 1,
         "total": 1,
         "s": "available"
@@ -524,25 +1932,194 @@ const DATA = [
         "ec": "",
         "en": "폴라 화이트",
         "ic": "",
-        "inn": "AMG 가죽, 블랙",
+        "inn": "가죽, 투톤 레드 페퍼 / 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버 블랙",
         "avail": 1,
         "total": 1,
         "s": "available"
       }
-    ]
+    ],
+    "total": 56
   },
   {
-    "model": "AMG GLC 43 4MATIC",
+    "model": "GLC 300 4MATIC AMG Line",
     "combos": [
       {
         "ec": "",
         "en": "MANUFAKTUR 알파인 그레이 솔리드",
         "ic": "",
-        "inn": "블랙, AMG 가죽",
+        "inn": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+        "avail": 46,
+        "total": 46,
+        "s": "available"
+      }
+    ],
+    "total": 46
+  },
+  {
+    "model": "GLA 250 4MATIC AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 20,
+        "total": 20,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 12,
+        "total": 12,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽/다이나미카 블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽/다이나미카 블랙",
         "avail": 1,
         "total": 1,
         "s": "available"
       },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로파이버 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로파이버 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 42
+  },
+  {
+    "model": "CLA 250 4MATIC AMG Line Coupé",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 17,
+        "total": 17,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 11,
+        "total": 11,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "마운틴 그레이 메탈릭",
+        "ic": "",
+        "inn": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 36
+  },
+  {
+    "model": "A 220",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지 /블랙",
+        "avail": 13,
+        "total": 13,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 8,
+        "total": 8,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "나이트 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지 /블랙",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 블랙/블랙",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      }
+    ],
+    "total": 29
+  },
+  {
+    "model": "AMG GLC 43 4MATIC",
+    "combos": [
       {
         "ec": "",
         "en": "옵시디안 블랙",
@@ -560,81 +2137,154 @@ const DATA = [
         "avail": 9,
         "total": 9,
         "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이 솔리드",
+        "ic": "",
+        "inn": "블랙, AMG 가죽",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "AMG 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "AMG 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
       }
-    ]
+    ],
+    "total": 29
   },
   {
-    "model": "AMG GLC 43 4MATIC Coupé",
+    "model": "EQS 450 4MATIC SUV",
     "combos": [
       {
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "블랙, AMG 가죽",
+        "inn": "가죽, 네바 그레이/발라오 브라운",
+        "avail": 9,
+        "total": 9,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 블랙/스페이스 그레이",
+        "avail": 6,
+        "total": 6,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지/스페이스 그레이",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 네바 그레이/발라오 브라운",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 블랙/스페이스 그레이",
         "avail": 3,
         "total": 3,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "폴라 화이트",
+        "en": "MANUFAKTUR 알파일 그레이 솔리드",
         "ic": "",
-        "inn": "블랙, AMG 가죽",
-        "avail": 12,
-        "total": 12,
+        "inn": "가죽, 마키아토 베이지/스페이스 그레이",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "셀레나이트 그레이",
+        "ic": "",
+        "inn": "가죽, 블랙/스페이스 그레이",
+        "avail": 1,
+        "total": 1,
         "s": "available"
       }
-    ]
+    ],
+    "total": 29
   },
   {
-    "model": "AMG GLE 53 4M+",
+    "model": "AMG GT 43 4MATIC+",
     "combos": [
       {
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "기타",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG GLE 53 4MATIC+",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "AMG 나파 가죽, 내추럴 베이지",
-        "avail": 1,
-        "total": 1,
+        "inn": "나파 가죽, 블랙",
+        "avail": 9,
+        "total": 9,
         "s": "available"
       },
       {
         "ec": "",
         "en": "폴라 화이트",
         "ic": "",
-        "inn": "AMG 나파 가죽, 마키아토 베이지/블랙",
-        "avail": 2,
-        "total": 2,
+        "inn": "나파 가죽, 블랙",
+        "avail": 5,
+        "total": 5,
         "s": "available"
       },
       {
         "ec": "",
         "en": "폴라 화이트",
         "ic": "",
-        "inn": "AMG 나파 가죽, 블랙",
+        "inn": "익스클루시브 나파 가죽, 레드 페퍼/블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "MANUFAKTUR 익스클루시브 나파 가죽, 마키아토 베이지/마그마 그레이",
         "avail": 2,
         "total": 2,
         "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG GT 43 4MATIC+",
-    "combos": [
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "MANUFAKTUR 익스클루시브 나파 가죽. 클래식 레드/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
       {
         "ec": "",
         "en": "MANUFAKTUR 그라파이트 그레이 마그노",
@@ -673,33 +2323,6 @@ const DATA = [
       },
       {
         "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "MANUFAKTUR 익스클루시브 나파 가죽, 마키아토 베이지/마그마 그레이",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "MANUFAKTUR 익스클루시브 나파 가죽. 클래식 레드/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "나파 가죽, 블랙",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
-      },
-      {
-        "ec": "",
         "en": "폴라 화이트",
         "ic": "",
         "inn": "MANUFAKTUR 익스클루시브 나파 가죽, 새들 브라운/블랙",
@@ -709,24 +2332,6 @@ const DATA = [
       },
       {
         "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "나파 가죽, 블랙",
-        "avail": 5,
-        "total": 5,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "익스클루시브 나파 가죽, 레드 페퍼/블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
         "en": "하이 테크 실버",
         "ic": "",
         "inn": "익스클루시브 나파 가죽, 레드 페퍼/블랙",
@@ -734,1299 +2339,37 @@ const DATA = [
         "total": 1,
         "s": "available"
       }
-    ]
+    ],
+    "total": 28
   },
   {
-    "model": "AMG S 63 E Performance",
+    "model": "S 450 4MATIC Sedan",
     "combos": [
       {
         "ec": "",
-        "en": "MANUFAKTUR 나이트 블랙 마그노",
+        "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
+        "inn": "나파 가죽, 블랙",
+        "avail": 13,
+        "total": 13,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트 마그노",
-        "ic": "",
-        "inn": "시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "AMG SL 43",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
-        "ic": "",
-        "inn": "나파 가죽, 레드 페퍼/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+        "en": "옵시디안 블랙",
         "ic": "",
         "inn": "나파 가죽, 시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "나파 가죽, 레드 페퍼/블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "C 200 AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 네바 그레이/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 8,
-        "total": 8,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 네바 그레이/블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 29,
-        "total": 29,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "C 200 AV",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "C 200 AVANTGARDE",
-    "combos": [
-      {
-        "ec": "",
-        "en": "셀레나이트 그레이",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "셀레나이트 그레이",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 17,
-        "total": 17,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 26,
-        "total": 26,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "CLA 250 4MATIC AMG Line Coupé",
-    "combos": [
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 11,
-        "total": 11,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이 메탈릭",
-        "ic": "",
-        "inn": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 17,
-        "total": 17,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽/ 마이크로컷 마이크로파이버 블랙",
-        "avail": 5,
-        "total": 5,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "CLE 200 Cabriolet",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 8,
-        "total": 8,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "CLE 200 Cabriolet AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 21,
-        "total": 21,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 26,
-        "total": 26,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 18,
-        "total": 18,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 47,
-        "total": 47,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 21,
-        "total": 21,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "CLE 200 Coupe",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "CLE 200 Coupé AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 8,
-        "total": 8,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 16,
-        "total": 16,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 21,
-        "total": 21,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 16,
-        "total": 16,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "CLE 450 4M Coupe",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 통카 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "CLE 450 4MATIC Cabriolet AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 11,
-        "total": 11,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "CLE 450 4MATIC Coupé AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 통카 브라운/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 통카 브라운/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 파워 레드/블랙",
         "avail": 12,
         "total": 12,
         "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 200 AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 11,
-        "total": 11,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "그라파이트 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 11,
-        "total": 11,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "그라파이트 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 23,
-        "total": 23,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "노틱 블루",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "노틱 블루",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
       },
       {
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 38,
-        "total": 38,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 79,
-        "total": 79,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 70,
-        "total": 70,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 37,
-        "total": 37,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 312,
-        "total": 312,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 200 AV",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
+        "inn": "나파 가죽, 베이지/그레이",
         "avail": 2,
         "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 13,
-        "total": 13,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 200 AVANTGARDE",
-    "combos": [
-      {
-        "ec": "",
-        "en": "그라파이트 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "그라파이트 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 6,
-        "total": 6,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 26,
-        "total": 26,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 15,
-        "total": 15,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운/블랙",
-        "avail": 32,
-        "total": 32,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 220 d 4M",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 220 d 4MATIC EXCLUSIVE",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지",
-        "avail": 13,
-        "total": 13,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 통카 브라운",
-        "avail": 60,
-        "total": 60,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 300 4M AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 13,
-        "total": 13,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 300 4M EX",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지",
-        "avail": 6,
-        "total": 6,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 300 4MATIC AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지/블랙",
-        "avail": 32,
-        "total": 32,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 41,
-        "total": 41,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 39,
-        "total": 39,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 300 4MATIC EXCLUSIVE",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지",
-        "avail": 15,
-        "total": 15,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 49,
-        "total": 49,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지",
-        "avail": 34,
-        "total": 34,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 35,
-        "total": 35,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 85,
-        "total": 85,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 350 e 4M EX",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이 솔리드",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "그라파이트 그레이",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "그라파이트 그레이",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "노틱 블루",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지",
-        "avail": 17,
-        "total": 17,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 5,
-        "total": 5,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 32,
-        "total": 32,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지",
-        "avail": 33,
-        "total": 33,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 통카 브라운",
-        "avail": 152,
-        "total": 152,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "하이 테크 실버",
-        "ic": "",
-        "inn": "가죽, 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "E 450 4MATIC EXCLUSIVE",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이 솔리드",
-        "ic": "",
-        "inn": "나파 가죽, 네바 그레이/블랙",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "그라파이트 그레이",
-        "ic": "",
-        "inn": "나파 가죽, 통카 브라운/블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "노틱 블루",
-        "ic": "",
-        "inn": "나파 가죽, 네바 그레이/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "노틱 블루",
-        "ic": "",
-        "inn": "나파 가죽, 통카 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "베르데 실버",
-        "ic": "",
-        "inn": "나파 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "나파 가죽, 네바 그레이/블랙",
-        "avail": 5,
-        "total": 5,
         "s": "available"
       },
       {
@@ -2034,317 +2377,32 @@ const DATA = [
         "en": "옵시디안 블랙",
         "ic": "",
         "inn": "나파 가죽, 통카 브라운/블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "나파 가죽, 네바 그레이/블랙",
-        "avail": 18,
-        "total": 18,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "나파 가죽, 블랙",
-        "avail": 14,
-        "total": 14,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "나파 가죽, 통카 브라운/블랙",
-        "avail": 114,
-        "total": 114,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "EQA 250 AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버 블랙",
         "avail": 1,
         "total": 1,
         "s": "available"
       }
-    ]
+    ],
+    "total": 28
   },
   {
-    "model": "EQA 250 Progressive",
+    "model": "EQE 500 4MATIC SUV",
     "combos": [
       {
         "ec": "",
         "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "EQB 300 4M Progressive",
-    "combos": [
-      {
-        "ec": "",
-        "en": "코스모스 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "EQB 300 4MATIC AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
-        "avail": 5,
-        "total": 5,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "코스모스 블랙",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "코스모스 블랙",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
-        "avail": 43,
-        "total": 43,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "하이테크 실버",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버  블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "EQB 300 4MATIC Progressive",
-    "combos": [
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 15,
-        "total": 15,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 13,
-        "total": 13,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 24,
-        "total": 24,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "코스모스 블랙",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 15,
-        "total": 15,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "코스모스 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 29,
-        "total": 29,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 36,
-        "total": 36,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 43,
-        "total": 43,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "하이테크 실버",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "하이테크 실버",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙/블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "EQE 350+",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
         "ic": "",
         "inn": "가죽, 네바 그레이/발라오 브라운",
-        "avail": 3,
-        "total": 3,
+        "avail": 6,
+        "total": 6,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "옵시디안 블랙",
+        "en": "폴라 화이트",
         "ic": "",
         "inn": "가죽, 네바 그레이/비스케이 블루",
-        "avail": 6,
-        "total": 6,
+        "avail": 4,
+        "total": 4,
         "s": "available"
       },
       {
@@ -2352,13 +2410,22 @@ const DATA = [
         "en": "옵시디안 블랙",
         "ic": "",
         "inn": "가죽, 블랙/발라오 브라운",
-        "avail": 4,
-        "total": 4,
+        "avail": 3,
+        "total": 3,
         "s": "available"
       },
       {
         "ec": "",
         "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 블랙/발라오 브라운",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
         "ic": "",
         "inn": "가죽, 네바 그레이/발라오 브라운",
         "avail": 2,
@@ -2367,20 +2434,20 @@ const DATA = [
       },
       {
         "ec": "",
-        "en": "폴라 화이트",
+        "en": "옵시디안 블랙",
         "ic": "",
         "inn": "가죽, 네바 그레이/비스케이 블루",
-        "avail": 5,
-        "total": 5,
+        "avail": 2,
+        "total": 2,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "폴라 화이트",
+        "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "가죽, 블랙/발라오 브라운",
-        "avail": 4,
-        "total": 4,
+        "inn": "가죽, 블랙/스페이스 그레이",
+        "avail": 2,
+        "total": 2,
         "s": "available"
       },
       {
@@ -2388,119 +2455,10 @@ const DATA = [
         "en": "폴라 화이트",
         "ic": "",
         "inn": "가죽, 블랙/스페이스 그레이",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "EQE 350+ SUV",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이 솔리드",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 네바 그레이/비스케이 블루",
         "avail": 2,
         "total": 2,
         "s": "available"
       },
-      {
-        "ec": "",
-        "en": "셀레나이트 그레이",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 블랙/스페이스 그레이",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "에메랄드 그린",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 네바 그레이/비스케이 블루",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 네바 그레이/발바오 브라운",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 네바 그레이/비스케이 블루",
-        "avail": 6,
-        "total": 6,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 블랙/발바오 브라운",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 블랙/스페이스 그레이",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 네바 그레이/발바오 브라운",
-        "avail": 17,
-        "total": 17,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 네바 그레이/비스케이 블루",
-        "avail": 6,
-        "total": 6,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 블랙/발바오 브라운",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "NEOTEX/ARTICO 블랙/스페이스 그레이",
-        "avail": 16,
-        "total": 16,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "EQE 500 4MATIC SUV",
-    "combos": [
       {
         "ec": "",
         "en": "MANUFAKTUR 알파인 그레이 솔리드",
@@ -2518,48 +2476,18 @@ const DATA = [
         "avail": 1,
         "total": 1,
         "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 네바 그레이/발라오 브라운",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
+      }
+    ],
+    "total": 26
+  },
+  {
+    "model": "EQE 350+",
+    "combos": [
       {
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
         "inn": "가죽, 네바 그레이/비스케이 블루",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 블랙/발라오 브라운",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 블랙/스페이스 그레이",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 네바 그레이/발라오 브라운",
         "avail": 6,
         "total": 6,
         "s": "available"
@@ -2569,6 +2497,15 @@ const DATA = [
         "en": "폴라 화이트",
         "ic": "",
         "inn": "가죽, 네바 그레이/비스케이 블루",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 블랙/발라오 브라운",
         "avail": 4,
         "total": 4,
         "s": "available"
@@ -2578,559 +2515,45 @@ const DATA = [
         "en": "폴라 화이트",
         "ic": "",
         "inn": "가죽, 블랙/발라오 브라운",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 블랙/스페이스 그레이",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "EQS 450 4MATIC SUV",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파일 그레이 솔리드",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지/스페이스 그레이",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "셀레나이트 그레이",
-        "ic": "",
-        "inn": "가죽, 블랙/스페이스 그레이",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 네바 그레이/발라오 브라운",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 마키아토 베이지/스페이스 그레이",
-        "avail": 5,
-        "total": 5,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 블랙/스페이스 그레이",
-        "avail": 6,
-        "total": 6,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "가죽, 네바 그레이/발라오 브라운",
         "avail": 4,
         "total": 4,
         "s": "available"
       },
       {
         "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 네바 그레이/발라오 브라운",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 네바 그레이/발라오 브라운",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
         "en": "폴라 화이트",
         "ic": "",
         "inn": "가죽, 블랙/스페이스 그레이",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLA 250 4M",
-    "combos": [
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로파이버 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로파이버 브라운/블랙",
         "avail": 1,
         "total": 1,
         "s": "available"
       }
-    ]
-  },
-  {
-    "model": "GLA 250 4MATIC AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 12,
-        "total": 12,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽/다이나미카 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 20,
-        "total": 20,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽/다이나미카 블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLB 250 4M",
-    "combos": [
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로컷 마이크로파이버 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로파이버 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽/마이크로파이버 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLB 250 4MATIC AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 40,
-        "total": 40,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "나이트 블랙",
-        "ic": "",
-        "inn": "아티코 가죽/다이나미카 블랙",
-        "avail": 48,
-        "total": 48,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이 메탈릭",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이 메탈릭",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "마운틴 그레이 메탈릭",
-        "ic": "",
-        "inn": "아티코 가죽/다이나미카 블랙",
-        "avail": 11,
-        "total": 11,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
-        "avail": 76,
-        "total": 76,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽 세이지 그레이 / 블랙",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽/다이나미카 블랙",
-        "avail": 55,
-        "total": 55,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLC 220 d 4M",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLC 220 d 4MATIC",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 18,
-        "total": 18,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 21,
-        "total": 21,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 42,
-        "total": 42,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLC 300 4M AV",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 마키아토 베이지/블랙",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 8,
-        "total": 8,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLC 300 4M Coupe AV",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 가죽, 시에나 브라운/블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLC 300 4MATIC AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 알파인 그레이 솔리드",
-        "ic": "",
-        "inn": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
-        "avail": 46,
-        "total": 46,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLC 300 4MATIC AVANTGARDE",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 12,
-        "total": 12,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 3,
-        "total": 3,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 32,
-        "total": 32,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 16,
-        "total": 16,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 13,
-        "total": 13,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 15,
-        "total": 15,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLC 300 4MATIC Coupé AVANTGARDE",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 8,
-        "total": 8,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 5,
-        "total": 5,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 시에나 브라운/블랙",
-        "avail": 26,
-        "total": 26,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 14,
-        "total": 14,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLE 300 d 4MATIC",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
-        "avail": 19,
-        "total": 19,
-        "s": "available"
-      }
-    ]
+    ],
+    "total": 25
   },
   {
     "model": "GLE 350 4MATIC",
     "combos": [
       {
         "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
         "en": "폴라 화이트",
         "ic": "",
         "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
@@ -3146,154 +2569,82 @@ const DATA = [
         "avail": 4,
         "total": 4,
         "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
       }
-    ]
+    ],
+    "total": 23
   },
   {
-    "model": "GLE 450 4M",
+    "model": "CLE 450 4MATIC Coupé AMG Line",
     "combos": [
       {
         "ec": "",
         "en": "폴라 화이트",
         "ic": "",
-        "inn": "기타",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 12,
+        "total": 12,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 통카 브라운/블랙",
         "avail": 3,
         "total": 3,
         "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLE 450 4M AMG Line",
-    "combos": [
+      },
       {
         "ec": "",
-        "en": "셀레나이트 그레이",
+        "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "기타",
+        "inn": "가죽, 통카 브라운/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지/블랙",
         "avail": 1,
         "total": 1,
         "s": "available"
       }
-    ]
-  },
-  {
-    "model": "GLE 450 4MATIC",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 8,
-        "total": 8,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 4,
-        "total": 4,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "나파 가죽, 블랙",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "아티코 인조 가죽, 블랙",
-        "avail": 10,
-        "total": 10,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "GLE 450 4MATIC Coupé AMG Line",
-    "combos": [
-      {
-        "ec": "",
-        "en": "폴라 화이트",
-        "ic": "",
-        "inn": "나파 가죽, 블랙",
-        "avail": 114,
-        "total": 114,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "Maybach S 580",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "기타",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      }
-    ]
+    ],
+    "total": 22
   },
   {
     "model": "Maybach S 580 4MATIC",
     "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
-        "ic": "",
-        "inn": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
-        "ic": "",
-        "inn": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
       {
         "ec": "",
         "en": "옵시디안 블랙",
@@ -3301,15 +2652,6 @@ const DATA = [
         "inn": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄",
         "avail": 13,
         "total": 13,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙",
-        "avail": 1,
-        "total": 1,
         "s": "available"
       },
       {
@@ -3320,12 +2662,259 @@ const DATA = [
         "avail": 5,
         "total": 5,
         "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+        "ic": "",
+        "inn": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+        "ic": "",
+        "inn": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "기타",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
       }
-    ]
+    ],
+    "total": 22
   },
   {
-    "model": "Maybach S 680",
+    "model": "CLE 450 4MATIC Cabriolet AMG Line",
     "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 11,
+        "total": 11,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "가죽, 마키아토 베이지/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이",
+        "ic": "",
+        "inn": "가죽, 파워 레드/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 21
+  },
+  {
+    "model": "AMG CLE 53 4MATIC+ Cabriolet",
+    "combos": [
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "AMG 나파 가죽, 블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트",
+        "ic": "",
+        "inn": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트",
+        "ic": "",
+        "inn": "AMG 나파 가죽, 블랙",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+        "ic": "",
+        "inn": "AMG 나파 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 20
+  },
+  {
+    "model": "GLE 300 d 4MATIC",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 바히아 브라운/블랙",
+        "avail": 19,
+        "total": 19,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽, 마키아토 베이지/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 20
+  },
+  {
+    "model": "AMG GLC 43 4MATIC Coupé",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "블랙, AMG 가죽",
+        "avail": 12,
+        "total": 12,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "블랙, AMG 가죽",
+        "avail": 3,
+        "total": 3,
+        "s": "available"
+      }
+    ],
+    "total": 15
+  },
+  {
+    "model": "AMG A 45 S 4MATIC+",
+    "combos": [
+      {
+        "ec": "",
+        "en": "코스모스 블랙",
+        "ic": "",
+        "inn": "아티코 인조 가죽/다이나미카 블랙",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 인조 가죽/다이나미카 블랙",
+        "avail": 5,
+        "total": 5,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "코스모스 블랙",
+        "ic": "",
+        "inn": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 13
+  },
+  {
+    "model": "Maybach S 680 4MATIC",
+    "combos": [
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙",
+        "avail": 7,
+        "total": 7,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+        "ic": "",
+        "inn": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
       {
         "ec": "",
         "en": "옵시디안 블랙",
@@ -3353,66 +2942,21 @@ const DATA = [
         "total": 1,
         "s": "available"
       }
-    ]
-  },
-  {
-    "model": "Maybach S 680 4MATIC",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
-        "ic": "",
-        "inn": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "MAYBACH 익스클루시브 나파 가죽, 마키아토 베이지/브론즈 브라운 펄",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "MAYBACH 익스클루시브 나파 가죽, 시에나 브라운/블랙",
-        "avail": 7,
-        "total": 7,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "Maybach SL 680 Monogram Series",
-    "combos": [
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 가넷 레드 메탈릭",
-        "ic": "",
-        "inn": "MANUFAKTUR 익스클루시브 나파 가죽, 크리스탈 화이트",
-        "avail": 1,
-        "total": 1,
-        "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "MANUFAKTUR 오팔라이트 화이트 마그노",
-        "ic": "",
-        "inn": "MANUFAKTUR 익스클루시브 나파 가죽, 크리스탈 화이트",
-        "avail": 2,
-        "total": 2,
-        "s": "available"
-      }
-    ]
+    ],
+    "total": 12
   },
   {
     "model": "S 350 d 4MATIC",
     "combos": [
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "가죽, 시에나 브라운/블랙",
+        "avail": 9,
+        "total": 9,
+        "s": "available"
+      },
       {
         "ec": "",
         "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
@@ -3439,26 +2983,27 @@ const DATA = [
         "avail": 1,
         "total": 1,
         "s": "available"
-      },
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "가죽, 시에나 브라운/블랙",
-        "avail": 9,
-        "total": 9,
-        "s": "available"
       }
-    ]
+    ],
+    "total": 12
   },
   {
-    "model": "S 450 4M",
+    "model": "AMG GLE 53 4MATIC+",
     "combos": [
       {
         "ec": "",
-        "en": "옵시디안 블랙",
+        "en": "폴라 화이트",
         "ic": "",
-        "inn": "나파 가죽, 베이지/그레이",
+        "inn": "AMG 나파 가죽, 마키아토 베이지/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "AMG 나파 가죽, 블랙",
         "avail": 2,
         "total": 2,
         "s": "available"
@@ -3467,49 +3012,55 @@ const DATA = [
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "나파 가죽, 통카 브라운/블랙",
+        "inn": "기타",
         "avail": 1,
         "total": 1,
-        "s": "available"
-      }
-    ]
-  },
-  {
-    "model": "S 450 4MATIC Sedan",
-    "combos": [
-      {
-        "ec": "",
-        "en": "옵시디안 블랙",
-        "ic": "",
-        "inn": "나파 가죽, 블랙",
-        "avail": 13,
-        "total": 13,
         "s": "available"
       },
       {
         "ec": "",
-        "en": "옵시디안 블랙",
+        "en": "폴라 화이트",
         "ic": "",
-        "inn": "나파 가죽, 시에나 브라운/블랙",
-        "avail": 12,
-        "total": 12,
+        "inn": "AMG 나파 가죽, 내추럴 베이지",
+        "avail": 1,
+        "total": 1,
         "s": "available"
       }
-    ]
+    ],
+    "total": 6
   },
   {
-    "model": "S 500 4M",
+    "model": "AMG SL 43",
     "combos": [
       {
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "나파 가죽, 통카 브라운/블랙",
+        "inn": "나파 가죽, 레드 페퍼/블랙",
+        "avail": 4,
+        "total": 4,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+        "ic": "",
+        "inn": "나파 가죽, 레드 페퍼/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+        "ic": "",
+        "inn": "나파 가죽, 시에나 브라운/블랙",
         "avail": 1,
         "total": 1,
         "s": "available"
       }
-    ]
+    ],
+    "total": 6
   },
   {
     "model": "S 500 4MATIC Sedan long",
@@ -3549,12 +3100,55 @@ const DATA = [
         "avail": 1,
         "total": 1,
         "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "나파 가죽, 통카 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
       }
-    ]
+    ],
+    "total": 6
+  },
+  {
+    "model": "AMG CLA 45 S 4MATIC+ Coupé",
+    "combos": [
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 마운틴 그레이 마그노",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버 블랙 (AMG)",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 마운틴 그레이 마그노",
+        "ic": "",
+        "inn": "아티코 인조 가죽/다이나미카 AMG 블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      }
+    ],
+    "total": 4
   },
   {
     "model": "S 580 4MATIC Sedan long",
     "combos": [
+      {
+        "ec": "",
+        "en": "옵시디안 블랙",
+        "ic": "",
+        "inn": "익스클루시브 나파 가죽, 시에나 브라운/블랙",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
+      },
       {
         "ec": "",
         "en": "MANUFAKTUR 오팔라이트 화이트 브라이트",
@@ -3572,202 +3166,268 @@ const DATA = [
         "avail": 1,
         "total": 1,
         "s": "available"
+      }
+    ],
+    "total": 4
+  },
+  {
+    "model": "Maybach SL 680 Monogram Series",
+    "combos": [
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트 마그노",
+        "ic": "",
+        "inn": "MANUFAKTUR 익스클루시브 나파 가죽, 크리스탈 화이트",
+        "avail": 2,
+        "total": 2,
+        "s": "available"
       },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 가넷 레드 메탈릭",
+        "ic": "",
+        "inn": "MANUFAKTUR 익스클루시브 나파 가죽, 크리스탈 화이트",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 3
+  },
+  {
+    "model": "AMG CLE 53 4MATIC+ Coupe",
+    "combos": [
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 알파인 그레이",
+        "ic": "",
+        "inn": "AMG 나파 가죽, 블랙/클래식 레드",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트",
+        "ic": "",
+        "inn": "AMG 나파 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "model": "AMG S 63 E Performance",
+    "combos": [
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 나이트 블랙 마그노",
+        "ic": "",
+        "inn": "시에나 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      },
+      {
+        "ec": "",
+        "en": "MANUFAKTUR 오팔라이트 화이트 마그노",
+        "ic": "",
+        "inn": "시에나 브라운/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 2
+  },
+  {
+    "model": "AMG E 53 HYBRID 4MATIC+",
+    "combos": [
       {
         "ec": "",
         "en": "옵시디안 블랙",
         "ic": "",
-        "inn": "익스클루시브 나파 가죽, 시에나 브라운/블랙",
-        "avail": 2,
-        "total": 2,
+        "inn": "AMG 나파 가죽, 블랙",
+        "avail": 1,
+        "total": 1,
         "s": "available"
       }
-    ]
+    ],
+    "total": 1
+  },
+  {
+    "model": "EQA 250 AMG Line",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽/마이크로컷 마이크로파이버 블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 1
+  },
+  {
+    "model": "EQA 250 Progressive",
+    "combos": [
+      {
+        "ec": "",
+        "en": "폴라 화이트",
+        "ic": "",
+        "inn": "아티코 가죽, 마키아토 베이지/블랙",
+        "avail": 1,
+        "total": 1,
+        "s": "available"
+      }
+    ],
+    "total": 1
   }
 ];
-
 const CATEGORIES = {
   "Maybach": [
-    "Maybach S 580",
     "Maybach S 580 4MATIC",
-    "Maybach S 680",
     "Maybach S 680 4MATIC",
     "Maybach SL 680 Monogram Series"
   ],
   "전동화 EQ": [
-    "EQA 250 AMG Line",
-    "EQA 250 Progressive",
-    "EQB 300 4M Progressive",
-    "EQB 300 4MATIC AMG Line",
     "EQB 300 4MATIC Progressive",
-    "EQE 350+",
     "EQE 350+ SUV",
+    "EQB 300 4MATIC AMG Line",
+    "EQS 450 4MATIC SUV",
     "EQE 500 4MATIC SUV",
-    "EQS 450 4MATIC SUV"
+    "EQE 350+",
+    "EQA 250 AMG Line",
+    "EQA 250 Progressive"
   ],
   "GLE": [
-    "AMG GLE 53 4M+",
-    "AMG GLE 53 4MATIC+",
-    "GLE 300 d 4MATIC",
-    "GLE 350 4MATIC",
-    "GLE 450 4M",
-    "GLE 450 4M AMG Line",
+    "GLE 450 4MATIC Coupé AMG Line",
     "GLE 450 4MATIC",
-    "GLE 450 4MATIC Coupé AMG Line"
+    "GLE 350 4MATIC",
+    "GLE 300 d 4MATIC",
+    "AMG GLE 53 4MATIC+"
   ],
   "GLC": [
-    "AMG GLC 43 4M",
-    "AMG GLC 43 4MATIC",
-    "AMG GLC 43 4MATIC Coupé",
-    "GLC 220 d 4M",
     "GLC 220 d 4MATIC",
-    "GLC 300 4M AV",
-    "GLC 300 4M Coupe AV",
-    "GLC 300 4MATIC AMG Line",
     "GLC 300 4MATIC AVANTGARDE",
-    "GLC 300 4MATIC Coupé AVANTGARDE"
+    "GLC 300 4MATIC Coupé AVANTGARDE",
+    "GLC 300 4MATIC AMG Line",
+    "AMG GLC 43 4MATIC",
+    "AMG GLC 43 4MATIC Coupé"
   ],
   "GLA·GLB": [
-    "AMG GLB 35 4M",
+    "GLB 250 4MATIC AMG Line",
     "AMG GLB 35 4MATIC",
-    "GLA 250 4M",
-    "GLA 250 4MATIC AMG Line",
-    "GLB 250 4M",
-    "GLB 250 4MATIC AMG Line"
+    "GLA 250 4MATIC AMG Line"
   ],
   "AMG GT·SL": [
     "AMG GT 43 4MATIC+",
     "AMG SL 43"
   ],
   "S클래스": [
-    "AMG S 63 E Performance",
-    "S 350 d 4MATIC",
-    "S 450 4M",
     "S 450 4MATIC Sedan",
-    "S 500 4M",
+    "S 350 d 4MATIC",
     "S 500 4MATIC Sedan long",
-    "S 580 4MATIC Sedan long"
+    "S 580 4MATIC Sedan long",
+    "AMG S 63 E Performance"
   ],
   "CLE": [
-    "AMG CLE 53 4M+ COUPE",
-    "AMG CLE 53 4M+ Cabriolet",
-    "AMG CLE 53 4MATIC+ Cabriolet",
-    "AMG CLE 53 4MATIC+ Coupe",
-    "CLE 200 Cabriolet",
     "CLE 200 Cabriolet AMG Line",
-    "CLE 200 Coupe",
     "CLE 200 Coupé AMG Line",
-    "CLE 450 4M Coupe",
+    "CLE 450 4MATIC Coupé AMG Line",
     "CLE 450 4MATIC Cabriolet AMG Line",
-    "CLE 450 4MATIC Coupé AMG Line"
+    "AMG CLE 53 4MATIC+ Cabriolet",
+    "AMG CLE 53 4MATIC+ Coupe"
   ],
   "E클래스": [
-    "AMG E 53 HYBRID 4M+",
     "E 200 AMG Line",
-    "E 200 AV",
-    "E 200 AVANTGARDE",
-    "E 220 d 4M",
-    "E 220 d 4MATIC EXCLUSIVE",
-    "E 300 4M AMG Line",
-    "E 300 4M EX",
-    "E 300 4MATIC AMG Line",
-    "E 300 4MATIC EXCLUSIVE",
-    "E 350 e 4M EX",
     "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology",
-    "E 450 4MATIC EXCLUSIVE"
+    "E 300 4MATIC EXCLUSIVE",
+    "E 450 4MATIC EXCLUSIVE",
+    "E 300 4MATIC AMG Line",
+    "E 200 AVANTGARDE",
+    "E 220 d 4MATIC EXCLUSIVE",
+    "AMG E 53 HYBRID 4MATIC+"
   ],
   "C클래스": [
-    "C 200 AMG Line",
-    "C 200 AV",
-    "C 200 AVANTGARDE"
+    "C 200 AVANTGARDE",
+    "C 200 AMG Line"
   ],
   "CLA": [
-    "AMG CLA 45 S 4M+ Final Edition",
-    "AMG CLA 45 S 4MATIC+ Coupé",
-    "CLA 250 4MATIC AMG Line Coupé"
+    "CLA 250 4MATIC AMG Line Coupé",
+    "AMG CLA 45 S 4MATIC+ Coupé"
   ],
   "A클래스": [
     "A 220",
     "AMG A 45 S 4MATIC+"
   ]
 };
+const UPDATED = "2026-04-10";
+let currentCat = 'ALL', searchTerm = '';
 
-// ── 렌더 ────────────────────────────────────────────────────
-document.getElementById("upd").textContent = UPDATED;
+function getTotal(){return DATA.reduce((s,m)=>s+m.combos.reduce((x,c)=>x+c.total,0),0)}
+function catTotal(cat){return (CATEGORIES[cat]||[]).reduce((s,mn)=>{const m=DATA.find(x=>x.model===mn);return s+(m?m.combos.reduce((x,c)=>x+c.total,0):0)},0)}
 
-const CAT_ORDER = ["A클래스","CLA","C클래스","CLE","E클래스","S클래스","AMG GT·SL","G클래스","GLA·GLB","GLC","GLE","전동화 EQ","Maybach"];
-const modelToCat = {};
-for(const [cat,models] of Object.entries(CATEGORIES)) models.forEach(m=>modelToCat[m]=cat);
+document.getElementById('totalCnt').textContent = getTotal().toLocaleString();
+document.getElementById('modelCnt').textContent = DATA.length;
+document.getElementById('catCnt').textContent = Object.keys(CATEGORIES).length;
+document.getElementById('updatedBadge').textContent = '최종 업데이트 ' + UPDATED;
 
-// 필터 탭
-const fb = document.getElementById("fbar");
-["전체",...CAT_ORDER].forEach(t=>{
-  const b=document.createElement("button");
-  b.className="tab"+(t==="전체"?" on":"");
-  b.textContent=t; b.onclick=()=>filter(t); fb.appendChild(b);
-});
-
-// 카테고리별 그룹
-const catMap={};
-CAT_ORDER.forEach(c=>catMap[c]=[]);
-DATA.forEach(g=>{
-  const cat=modelToCat[g.model]||"기타";
-  if(!catMap[cat]) catMap[cat]=[];
-  catMap[cat].push(g);
-});
-
-const mainEl=document.getElementById("main");
-
-CAT_ORDER.forEach(cat=>{
-  if(!catMap[cat]||catMap[cat].length===0) return;
-  const sec=document.createElement("div");
-  sec.className="cat-sec"; sec.dataset.cat=cat;
-  sec.innerHTML=`<div class="cat-title">${cat}</div>`;
-
-  const grid=document.createElement("div");
-  grid.className="mgrid";
-
-  catMap[cat].forEach(g=>{
-    const isAMG=g.model.startsWith("AMG");
-    const isMay=g.model.startsWith("Maybach");
-    const nc=isAMG?"mc-name amg":isMay?"mc-name maybach":"mc-name";
-
-    const rows=g.combos.map(c=>{
-      const bc=c.s==="available"?"ok":"wt";
-      const bt=c.s==="available"?"즉시출고 가능":"대기 필요";
-      return `<div class="crow">
-        <div class="cinfo">
-          <div class="ext-row">
-            <span class="chip">${c.ec}</span>
-            <span class="cn">${c.en}</span>
-          </div>
-          <div class="int-row">
-            <span class="chip ic">${c.ic}</span>
-            <span class="cn inn">${c.inn}</span>
-          </div>
-        </div>
-        <span class="badge ${bc}">${bt}</span>
-      </div>`;
-    }).join("");
-
-    const card=document.createElement("div");
-    card.className="mc"; card.dataset.cat=cat;
-    card.innerHTML=`<div class="mc-head"><div class="${nc}">${g.model}</div></div>${rows}`;
-    grid.appendChild(card);
+function renderCats(){
+  const t = getTotal();
+  let h = `<button class="cat-chip ${currentCat==='ALL'?'active':''}" data-cat="ALL">전체<span class="cnt">${t}</span></button>`;
+  Object.keys(CATEGORIES).forEach(c=>{
+    const n = catTotal(c);
+    if(n>0) h += `<button class="cat-chip ${currentCat===c?'active':''}" data-cat="${c}">${c}<span class="cnt">${n}</span></button>`;
   });
-
-  sec.appendChild(grid);
-  mainEl.appendChild(sec);
-});
-
-// 필터
-function filter(cat){
-  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.textContent===cat));
-  document.querySelectorAll(".cat-sec").forEach(s=>s.classList.toggle("hidden",cat!=="전체"&&s.dataset.cat!==cat));
-  const vis=document.querySelectorAll(".cat-sec:not(.hidden)");
-  document.getElementById("empty").style.display=vis.length===0?"block":"none";
-  window.scrollTo({top:54,behavior:"smooth"});
+  document.getElementById('cats').innerHTML = h;
+  document.querySelectorAll('.cat-chip').forEach(b=>{
+    b.onclick = ()=>{currentCat=b.dataset.cat;renderCats();render();window.scrollTo({top:document.getElementById('listing').offsetTop-80,behavior:'smooth'})};
+  });
 }
+
+function matches(m){
+  if(!searchTerm) return true;
+  const s = searchTerm.toLowerCase();
+  if(m.model.toLowerCase().includes(s)) return true;
+  return m.combos.some(c=>(c.en+' '+c.inn).toLowerCase().includes(s));
+}
+
+function render(){
+  let h = '';
+  const cats = currentCat==='ALL' ? Object.keys(CATEGORIES) : [currentCat];
+  cats.forEach(cat=>{
+    if(!CATEGORIES[cat]) return;
+    const models = CATEGORIES[cat].map(mn=>DATA.find(d=>d.model===mn)).filter(m=>m && matches(m));
+    if(!models.length) return;
+    const total = models.reduce((s,m)=>s+m.combos.reduce((x,c)=>x+c.total,0),0);
+    h += `<div class="cat-section"><div class="cat-header"><div class="cat-name">${cat}</div><div class="cat-cnt">${total}대 · ${models.length}모델</div></div>`;
+    models.forEach(m=>{
+      const mt = m.combos.reduce((s,c)=>s+c.total,0);
+      h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta"><div class="model-total">${mt}<span class="unit">대</span></div><div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">`;
+      m.combos.forEach(c=>{
+        h += `<div class="combo-row"><div class="combo-colors"><div class="combo-ext">${c.en}</div><div class="combo-int">${c.inn}</div></div><div class="combo-cnt">${c.total}대</div></div>`;
+      });
+      h += `</div></div></div>`;
+    });
+    h += `</div>`;
+  });
+  if(!h) h = '<div class="empty">검색 결과가 없습니다<br>다른 키워드로 시도해보세요</div>';
+  document.getElementById('listing').innerHTML = h;
+  document.querySelectorAll('.model-head').forEach(he=>{he.onclick=()=>he.closest('.model-card').classList.toggle('open')});
+}
+
+document.getElementById('searchInput').addEventListener('input',e=>{searchTerm=e.target.value.trim();render()});
+
+const totop = document.getElementById('totop');
+window.addEventListener('scroll',()=>totop.classList.toggle('show',window.scrollY>400));
+totop.onclick = ()=>window.scrollTo({top:0,behavior:'smooth'});
+
+renderCats();
+render();
 </script>
-</body>
-</html>
+</body></html>
