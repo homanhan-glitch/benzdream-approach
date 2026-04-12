@@ -2637,7 +2637,33 @@ function render(){
           .trim();
         if(inn && !extMap[c.en].includes(inn)) extMap[c.en].push(inn);
       });
-      Object.keys(extMap).forEach(ext=>{
+      /* 내장색 정렬: 블랙→그레이→브라운→베이지→화이트→레드→기타 */
+      const intOrder = s => {
+        const l = s.replace(/\s/g,'');
+        if(l==='블랙'||l==='블랙/블랙') return 0;
+        if(l.startsWith('블랙/')) return 1;
+        if(/그레이|그레이\//.test(l)) return 2;
+        if(/브라운|통카/.test(l)) return 3;
+        if(/베이지|내추럴/.test(l)) return 4;
+        if(/화이트/.test(l)) return 5;
+        if(/레드|파워/.test(l)) return 6;
+        return 7;
+      };
+      Object.keys(extMap).forEach(k => extMap[k].sort((a,b) => intOrder(a)-intOrder(b)));
+      /* 외장색 정렬: 화이트→실버→그레이→블랙→블루→브라운→그린→레드→기타 */
+      const extOrder = s => {
+        if(/화이트/.test(s)) return 0;
+        if(/실버/.test(s)) return 1;
+        if(/그레이|그레이/.test(s)) return 2;
+        if(/블랙/.test(s)) return 3;
+        if(/블루/.test(s)) return 4;
+        if(/브라운/.test(s)) return 5;
+        if(/그린/.test(s)) return 6;
+        if(/레드/.test(s)) return 7;
+        return 8;
+      };
+      const extKeys = Object.keys(extMap).sort((a,b) => extOrder(a)-extOrder(b));
+      extKeys.forEach(ext=>{
         const ec = EXT_CLR[ext] || '#ccc';
         const swatch = `<span class="ext-swatch" style="background:${ec}"></span>`;
         h += `<div class="ext-group"><div class="ext-head">${swatch}<div class="ext-label">${ext}</div></div><div class="int-tags">`;
