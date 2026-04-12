@@ -62,14 +62,13 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
 .model-card.open .arrow{transform:rotate(-135deg);border-color:var(--accent)}
 
 .combos{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.model-card.open .combos{max-height:2400px}
-.combos-inner{padding:6px 14px 14px}
-.combo-row{display:block;padding:11px 14px;background:var(--border-soft);border-radius:10px;margin-bottom:5px;align-items:center;transition:all .2s}
-.combo-row:hover{background:#E8EEF5}
-.combo-colors{min-width:0}
-.combo-ext{color:var(--text);font-weight:600;font-size:13px}
-.combo-int{color:var(--text-sub);font-size:11px;margin-top:2px}
-.combo-cnt{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:var(--accent);background:var(--card);padding:4px 10px;border-radius:8px;border:1px solid var(--border);white-space:nowrap}
+.model-card.open .combos{max-height:4000px}
+.combos-inner{padding:10px 14px 14px}
+.ext-group{margin-bottom:10px}
+.ext-group:last-child{margin-bottom:0}
+.ext-label{font-weight:700;font-size:13px;color:var(--text);margin-bottom:6px;padding-left:2px}
+.int-tags{display:flex;flex-wrap:wrap;gap:6px}
+.int-tag{font-size:11px;color:var(--text-sub);background:var(--border-soft);padding:5px 12px;border-radius:20px;font-weight:500;line-height:1.3}
 
 .cta-section{background:linear-gradient(135deg,#F8FAFD,#EDF2F7);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-top:32px;text-align:center}
 .cta-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px}
@@ -2557,8 +2556,20 @@ function render(){
     models.forEach(m=>{
       const mt = m.combos.reduce((s,c)=>s+c.total,0);
       h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta"><div class="model-badge">즉시출고가능</div><div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">`;
+      // 외장색 기준 그룹핑
+      const extMap = {};
       m.combos.forEach(c=>{
-        h += `<div class="combo-row"><div class="combo-colors"><div class="combo-ext">${c.en}</div><div class="combo-int">${c.inn}</div></div></div>`;
+        if(!extMap[c.en]) extMap[c.en]=[];
+        // 내장색에서 소재 prefix 간소화
+        let inn = c.inn.replace(/아티코 가죽, |아티코 인조 가죽, |나파 가죽, |가죽, |AMG 나파 가죽, |NEOTEX\/ARTICO /g,'').trim();
+        if(inn && !extMap[c.en].includes(inn)) extMap[c.en].push(inn);
+      });
+      Object.keys(extMap).forEach(ext=>{
+        h += `<div class="ext-group"><div class="ext-label">${ext}</div><div class="int-tags">`;
+        extMap[ext].forEach(inn=>{
+          h += `<span class="int-tag">${inn}</span>`;
+        });
+        h += `</div></div>`;
       });
       h += `</div></div></div>`;
     });
