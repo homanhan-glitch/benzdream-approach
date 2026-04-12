@@ -57,8 +57,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
 .model-card.open .model-head{background:var(--accent-light)}
 .model-name{font-weight:700;color:var(--text);font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .model-meta{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.model-total{font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:var(--accent)}
-.model-total .unit{font-size:11px;color:var(--text-mute);margin-left:2px;font-weight:500}
+.model-badge{font-size:11px;font-weight:700;color:#0A7D3E;background:#E6F7ED;padding:3px 10px;border-radius:20px;white-space:nowrap;letter-spacing:-.01em}
 .arrow{width:8px;height:8px;border-right:2px solid var(--text-mute);border-bottom:2px solid var(--text-mute);transform:rotate(45deg);transition:transform .25s}
 .model-card.open .arrow{transform:rotate(-135deg);border-color:var(--accent)}
 
@@ -3404,7 +3403,7 @@ function render(){
     h += `<div class="cat-section"><div class="cat-header"><div class="cat-name">${cat}</div><div class="cat-cnt">${models.length}개 모델</div></div>`;
     models.forEach(m=>{
       const mt = m.combos.reduce((s,c)=>s+c.total,0);
-      h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta"><div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">`;
+      h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta"><div class="model-badge">즉시출고가능</div><div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">`;
       m.combos.forEach(c=>{
         h += `<div class="combo-row"><div class="combo-colors"><div class="combo-ext">${c.en}</div><div class="combo-int">${c.inn}</div></div></div>`;
       });
