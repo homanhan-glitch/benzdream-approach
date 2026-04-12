@@ -72,7 +72,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
 .ext-label{font-weight:700;font-size:13px;color:var(--text)}
 .int-tags{display:flex;flex-wrap:wrap;gap:6px;padding-left:32px}
 .int-tag{font-size:11px;color:var(--text-sub);background:var(--card);padding:4px 10px 4px 4px;border-radius:20px;font-weight:500;line-height:1.3;border:1px solid var(--border);display:inline-flex;align-items:center;gap:5px}
-.int-swatch{width:18px;height:18px;border-radius:50%;border:1px solid var(--border);object-fit:cover;flex-shrink:0}
+.int-swatch{width:18px;height:18px;border-radius:50%;border:1px solid var(--border);flex-shrink:0}
 
 .cta-section{background:linear-gradient(135deg,#F8FAFD,#EDF2F7);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-top:32px;text-align:center}
 .cta-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px}
@@ -2576,36 +2576,37 @@ const EXT_IMG = {
   "에메랄드 그린":"https://media.oneweb.mercedes-benz.com/images/static/v1/21979/0/c3/b32236cdd0a12028fc1959e69ee76885df710.jpg"
 };
 
-const INT_IMG = {
-  "내추럴 베이지":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/4/48/4932bb3cc4b55de4344f3e2798df76152bcfa.jpg",
-  "마키아토 베이지/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/4/48/4932bb3cc4b55de4344f3e2798df76152bcfa.jpg",
-  "블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19444/6/03/7e9faf2758c6c060604841008ebcfdb303091.jpg",
-  "투톤 파워 레드/ 블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/0/04/0abf0e6164e20f1f0cec0a76a1a47eb5b6306.jpg",
-  "마키아토 베이지/마그마 그레이":"https://media.oneweb.mercedes-benz.com/images/static/v1/22172/0/26/3464570424de310b0307062d57606331a000e.jpg",
-  "새들 브라운/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19604/4/de/d8a9dfe2e4d61bc6b3510be344200b7a50b3c.jpg",
-  "크리스탈 화이트":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/c/ea/2631ba3ac2b44cd3233f2d1687ce65041abe9.jpg",
-  "클래식 레드/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/e/bc/0da3cdfbf4ce7ee3b4fabf4e063112ade2c43.jpg",
-  "마키아토 베이지/브론즈 브라운 펄":"https://media.oneweb.mercedes-benz.com/images/static/v1/22172/6/8c/9a7781175711642e3628295060919664d333b.jpg",
-  "시에나 브라운/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/22130/a/d6/56fed97b461839001f1b4da6159dae602f467.jpg",
-  "네바 그레이/발바오 브라운":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/8/ef/9e013307879bf28b534e7cf75fca3b7bdc92f.jpg",
-  "네바 그레이/비스케이 블루":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/6/5e/c4b8c5a6895e8d4f574ef51aef0f6097c9034.jpg",
-  "블랙/발바오 브라운":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/a/42/a832abcbe5a35487e73bcfd6c52fdf5c8c4df.jpg",
-  "블랙/스페이스 그레이":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/a/42/a832abcbe5a35487e73bcfd6c52fdf5c8c4df.jpg",
-  "네바 그레이/발라오 브라운":"https://media.oneweb.mercedes-benz.com/images/static/v1/22130/0/a1/24cbb648139005d7d7d753a3e29f6d3908134.jpg",
-  "마키아토 베이지":"https://media.oneweb.mercedes-benz.com/images/static/v1/19474/a/b7/7d9ec0c8d8cb7e08957624307777668dbc490.jpg",
-  "마키아토 베이지/스페이스 그레이":"https://media.oneweb.mercedes-benz.com/images/static/v1/22130/0/a1/24cbb648139005d7d7d753a3e29f6d3908134.jpg",
-  "블랙/발라오 브라운":"https://media.oneweb.mercedes-benz.com/images/static/v1/19604/0/14/3465a5d2e3a619c6b25103c34a1c5b7b51c4d.jpg",
-  "통카 브라운":"https://media.oneweb.mercedes-benz.com/images/static/v1/19474/c/f9/8eafd1d9e9dc8f09a6723540788f77eced5a0.jpg",
-  "통카 브라운/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/c/9b/fcb24eb8c2bd6dd2a3e9ac3cf94f1f2dc1b32.jpg",
-  "투톤 레드 페퍼 / 블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/2/78/d6913c96a09b4bb0818783a1d72d0d0b9f910.jpg",
-  "파워 레드/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/2/78/d6913c96a09b4bb0818783a1d72d0d0b9f910.jpg",
-  "네바 그레이/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/e/f9/1bac6f8e58c7d5ecb8a4e8e3cee3e8f4d07e6.jpg",
-  "레드 페퍼/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19452/2/78/d6913c96a09b4bb0818783a1d72d0d0b9f910.jpg",
-  "바이아 브라운 / 블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/22172/2/48/5675680535ef420c1408073e68707442b111f.jpg",
-  "세이지 그레이 / 블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/22130/4/e5/b4e68af26f0d59f6df92ba7edc6a8b6e4e902.jpg",
-  "마키아토 베이지 /블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/21252/2/41/42daaddab2976a2533d4fc3a932f36326be02.jpg",
-  "바히아 브라운/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/22367/c/16/2631ba3ac2b44cd3233f2d1687ce65041abe9.jpg",
-  "블랙/블랙":"https://media.oneweb.mercedes-benz.com/images/static/v1/19444/0/c1/5f8d8e1647b5af5e5df730ff44b9eca2f2f8e.jpg"
+/* 내장색 CSS 컬러 매핑 — 투톤은 반반 그라디언트 */
+const INT_CLR = {
+  "블랙":"#1C1C1C","블랙/블랙":"#1C1C1C",
+  "마키아토 베이지":"#D4C4A8","내추럴 베이지":"#CCBB99",
+  "마키아토 베이지/블랙":"linear-gradient(135deg,#D4C4A8 50%,#1C1C1C 50%)",
+  "마키아토 베이지 /블랙":"linear-gradient(135deg,#D4C4A8 50%,#1C1C1C 50%)",
+  "마키아토 베이지/마그마 그레이":"linear-gradient(135deg,#D4C4A8 50%,#5A5A5A 50%)",
+  "마키아토 베이지/스페이스 그레이":"linear-gradient(135deg,#D4C4A8 50%,#6B6B6B 50%)",
+  "마키아토 베이지/브론즈 브라운 펄":"linear-gradient(135deg,#D4C4A8 50%,#7B5B3A 50%)",
+  "통카 브라운":"#6B4226","통카 브라운/블랙":"linear-gradient(135deg,#6B4226 50%,#1C1C1C 50%)",
+  "시에나 브라운/블랙":"linear-gradient(135deg,#8B5E3C 50%,#1C1C1C 50%)",
+  "새들 브라운/블랙":"linear-gradient(135deg,#5C3317 50%,#1C1C1C 50%)",
+  "바히아 브라운/블랙":"linear-gradient(135deg,#7C5C3E 50%,#1C1C1C 50%)",
+  "바이아 브라운 / 블랙":"linear-gradient(135deg,#7C5C3E 50%,#1C1C1C 50%)",
+  "바이아 브라운/블랙":"linear-gradient(135deg,#7C5C3E 50%,#1C1C1C 50%)",
+  "크리스탈 화이트":"#F0EDE8",
+  "클래식 레드/블랙":"linear-gradient(135deg,#8B1A1A 50%,#1C1C1C 50%)",
+  "파워 레드/블랙":"linear-gradient(135deg,#9B1B30 50%,#1C1C1C 50%)",
+  "레드 페퍼/블랙":"linear-gradient(135deg,#9B1B30 50%,#1C1C1C 50%)",
+  "투톤 파워 레드/ 블랙":"linear-gradient(135deg,#9B1B30 50%,#1C1C1C 50%)",
+  "투톤 레드 페퍼 / 블랙":"linear-gradient(135deg,#9B1B30 50%,#1C1C1C 50%)",
+  "네바 그레이/블랙":"linear-gradient(135deg,#8A8D8F 50%,#1C1C1C 50%)",
+  "네바 그레이/발바오 브라운":"linear-gradient(135deg,#8A8D8F 50%,#6B4A3A 50%)",
+  "네바 그레이/발라오 브라운":"linear-gradient(135deg,#8A8D8F 50%,#6B4A3A 50%)",
+  "네바 그레이/비스케이 블루":"linear-gradient(135deg,#8A8D8F 50%,#3B5998 50%)",
+  "블랙/발바오 브라운":"linear-gradient(135deg,#1C1C1C 50%,#6B4A3A 50%)",
+  "블랙/발라오 브라운":"linear-gradient(135deg,#1C1C1C 50%,#6B4A3A 50%)",
+  "블랙/스페이스 그레이":"linear-gradient(135deg,#1C1C1C 50%,#6B6B6B 50%)",
+  "블랙/클래식 레드":"linear-gradient(135deg,#1C1C1C 50%,#8B1A1A 50%)",
+  "세이지 그레이 / 블랙":"linear-gradient(135deg,#9CAF88 50%,#1C1C1C 50%)",
+  "발라오 브라운 펄/에스프레소 브라운":"linear-gradient(135deg,#6B4A3A 50%,#3C2415 50%)"
 };
 
 function render(){
@@ -2640,8 +2641,9 @@ function render(){
         const swatch = img ? `<img class="ext-swatch" src="${img}" alt="${ext}" loading="lazy">` : '';
         h += `<div class="ext-group"><div class="ext-head">${swatch}<div class="ext-label">${ext}</div></div><div class="int-tags">`;
         extMap[ext].forEach(inn=>{
-          const intImg = INT_IMG[inn];
-          const intSw = intImg ? `<img class="int-swatch" src="${intImg}" alt="${inn}" loading="lazy">` : '';
+          const clr = INT_CLR[inn];
+          const bg = clr ? (clr.startsWith('linear') ? clr : clr) : '#ccc';
+          const intSw = `<span class="int-swatch" style="background:${bg}"></span>`;
           h += `<span class="int-tag">${intSw}${inn}</span>`;
         });
         h += `</div></div>`;
