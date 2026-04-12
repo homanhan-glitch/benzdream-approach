@@ -18,12 +18,13 @@
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-apple-system,sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
 .wrap{max-width:860px;margin:0 auto;padding:20px 16px 60px}
 
-.hero{text-align:center;margin-bottom:24px;padding:16px 0 20px}
-.hero-brand{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:4px;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:10px}
-.hero-divider{width:40px;height:2px;background:var(--accent);margin:0 auto 16px}
-.hero-title{font-size:26px;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1.2}
-.hero-sub{font-size:12px;color:var(--text-sub);margin-top:6px;font-weight:500}
-.updated{display:inline-block;margin-top:14px;padding:6px 14px;background:var(--accent-light);color:var(--accent);border-radius:20px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600}
+.hero{text-align:center;margin-bottom:24px;padding:0}
+.hero-banner{width:100%;border-radius:16px;overflow:hidden;margin-bottom:16px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.hero-banner img{width:100%;display:block;object-fit:cover}
+.hero-brand{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:4px;color:var(--accent);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.hero-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1.2}
+.hero-sub{font-size:12px;color:var(--text-sub);margin-top:4px;font-weight:500}
+.updated{display:inline-block;margin-top:10px;padding:6px 14px;background:var(--accent-light);color:var(--accent);border-radius:20px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600}
 
 .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;transition:all .2s}
@@ -99,10 +100,10 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
 <div class="wrap">
 
 <div class="hero">
+  <div class="hero-banner"><img src="images/banner.jpg" alt="BenzDream 한호만"></div>
   <div class="hero-brand">Mercedes-Benz · Real-Time Inventory</div>
-  <div class="hero-divider"></div>
-  <h1 class="hero-title">BenzDream 실시간 재고</h1>
-  <div class="hero-sub">벤츠 전국 재고 · 모터원 고양전시장</div>
+  <h1 class="hero-title">벤츠 전국 실시간 재고</h1>
+  <div class="hero-sub">즉시출고 가능 차량 한눈에 확인</div>
   <div class="updated" id="updatedBadge">최종 업데이트 2026-04-10</div>
 </div>
 
@@ -2622,7 +2623,16 @@ function render(){
       const extMap = {};
       m.combos.forEach(c=>{
         if(!extMap[c.en]) extMap[c.en]=[];
-        let inn = c.inn.replace(/아티코 가죽, |아티코 인조 가죽, |나파 가죽, |가죽, |AMG 나파 가죽, |NEOTEX\/ARTICO |MAYBACH 익스클루시브 나파 가죽, |마이바흐 익스클루시브 나파 가죽, |아티코 가죽\/다이나미카 |아티코 가죽 \/ 마이크로컷 마이크로파이버 |아티코 가죽\/마이크로컷 마이크로파이버 |아티코 인조 가죽\/다이나미카 AMG /g,'').trim();
+        let inn = c.inn
+          .replace(/^(?:MANUFAKTUR|MAYBACH|AMG|마이바흐)\s+(?:익스클루시브\s+)?(?:나파\s+)?가죽[,.\s]\s*/,'')
+          .replace(/^익스클루시브\s+나파\s+가죽[,.\s]\s*/,'')
+          .replace(/^나파\s+가죽[,.\s]\s*/,'')
+          .replace(/^아티코\s+(?:투톤\s+)?(?:인조\s+)?가죽\s*[/,]\s*(?:다이나미카\s*(?:AMG\s*)?|마이크로컷\s+마이크로파이버\s*)/,'')
+          .replace(/^아티코\s+(?:투톤\s+)?(?:인조\s+)?가죽[,.\s]\s*/,'')
+          .replace(/^NEOTEX\/ARTICO\s+/,'')
+          .replace(/^가죽[,.\s]\s*/,'')
+          .replace(/,\s*AMG\s+가죽$/,'')
+          .trim();
         if(inn && !extMap[c.en].includes(inn)) extMap[c.en].push(inn);
       });
       Object.keys(extMap).forEach(ext=>{
