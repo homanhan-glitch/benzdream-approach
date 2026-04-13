@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercedes-Benz 신한카드 혜택 비교</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mb-black: #0a0a0a;
+    --mb-ink: #1a1a1a;
+    --mb-silver: #c7c7c9;
+    --mb-chrome: #8a8a8c;
+    --mb-platinum: #e8e8ea;
+    --mb-gold: #b8945c;
+    --mb-gold-light: #d4b27a;
+    --mb-line: rgba(255,255,255,0.08);
+    --mb-line-strong: rgba(255,255,255,0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-font-smoothing: antialiased; }
+
+  body {
+    background: var(--mb-black);
+    color: #f5f5f5;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    padding: 60px 24px;
+    background-image:
+      radial-gradient(ellipse at top, rgba(184,148,92,0.06), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(255,255,255,0.03), transparent 50%);
+    min-height: 100vh;
+  }
+
+  .container { max-width: 1280px; margin: 0 auto; }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    text-align: center;
+    margin-bottom: 72px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--mb-line);
+    position: relative;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 50%;
+    transform: translateX(-50%);
+    width: 60px; height: 1px;
+    background: var(--mb-gold);
+  }
+
+  .star {
+    display: inline-block;
+    width: 42px; height: 42px;
+    border: 1px solid var(--mb-gold);
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .star::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(var(--mb-gold), var(--mb-gold)) center/1px 55% no-repeat,
+      linear-gradient(60deg, transparent calc(50% - 0.5px), var(--mb-gold) calc(50% - 0.5px), var(--mb-gold) calc(50% + 0.5px), transparent calc(50% + 0.5px)) center/55% 100% no-repeat,
+      linear-gradient(-60deg, transparent calc(50% - 0.5px), var(--mb-gold) calc(50% - 0.5px), var(--mb-gold) calc(50% + 0.5px), transparent calc(50% + 0.5px)) center/55% 100% no-repeat;
+  }
+
+  .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--mb-gold);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4.5vw, 52px);
+    letter-spacing: -0.01em;
+    color: #fafafa;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  h1 strong {
+    font-weight: 600;
+    color: var(--mb-gold-light);
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--mb-chrome);
+    letter-spacing: 0.08em;
+    font-weight: 300;
+  }
+
+  /* ---------- CARD GRID ---------- */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+
+  .card {
+    background: linear-gradient(180deg, #141414 0%, #0d0d0d 100%);
+    border: 1px solid var(--mb-line);
+    padding: 40px 32px;
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--mb-line-strong), transparent);
+  }
+
+  .card.tier-top {
+    background: linear-gradient(180deg, #1a1612 0%, #0e0c09 100%);
+    border-color: rgba(184,148,92,0.3);
+  }
+  .card.tier-top::before {
+    background: linear-gradient(90deg, transparent, var(--mb-gold), transparent);
+    height: 2px;
+  }
+
+  .card-image-wrap {
+    margin: -16px -16px 28px;
+    padding: 24px 16px 28px;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.04), transparent 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+    position: relative;
+  }
+  .card-image-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 20%; right: 20%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--mb-line-strong), transparent);
+  }
+  .card-image-wrap img {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6)) drop-shadow(0 0 1px rgba(255,255,255,0.1));
+    transition: transform 0.4s ease;
+  }
+  .tier-top .card-image-wrap img {
+    filter: drop-shadow(0 20px 35px rgba(0,0,0,0.7)) drop-shadow(0 0 8px rgba(184,148,92,0.15));
+  }
+  .card:hover .card-image-wrap img {
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  .tier-badge {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--mb-chrome);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .tier-top .tier-badge { color: var(--mb-gold); }
+
+  .card-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .card-subname {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--mb-chrome);
+    font-style: italic;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--mb-line);
+  }
+
+  .headline-stat {
+    margin-bottom: 28px;
+  }
+  .headline-label {
+    font-size: 11px;
+    color: var(--mb-chrome);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .headline-value {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #fafafa;
+    letter-spacing: -0.02em;
+  }
+  .tier-top .headline-value { color: var(--mb-gold-light); }
+  .headline-unit { font-size: 16px; color: var(--mb-chrome); margin-left: 4px; }
+
+  .card-feature {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--mb-line);
+    font-size: 13px;
+  }
+  .card-feature:last-child { border-bottom: none; }
+  .feature-label { color: var(--mb-chrome); font-weight: 300; }
+  .feature-value { color: #fafafa; font-weight: 500; }
+  .tier-top .feature-value { color: var(--mb-gold-light); }
+
+  /* ---------- TABLE SECTION ---------- */
+  .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .section-title .eyebrow { margin-bottom: 12px; }
+  .section-title h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    font-size: 32px;
+    color: #fafafa;
+    letter-spacing: -0.01em;
+  }
+
+  .table-wrap {
+    background: linear-gradient(180deg, #141414 0%, #0d0d0d 100%);
+    border: 1px solid var(--mb-line);
+    padding: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    padding: 24px 16px 20px;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #fafafa;
+    text-align: center;
+    border-bottom: 1px solid var(--mb-line-strong);
+    background: rgba(255,255,255,0.015);
+  }
+  thead th:first-child { text-align: left; color: var(--mb-chrome); font-weight: 300; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
+  thead th.tier-top-col { color: var(--mb-gold); }
+
+  tbody td {
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--mb-line);
+    text-align: center;
+    color: #e5e5e5;
+    font-weight: 400;
+  }
+  tbody td:first-child {
+    text-align: left;
+    color: var(--mb-chrome);
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+  tbody td.tier-top-col {
+    color: var(--mb-gold-light);
+    font-weight: 500;
+    background: rgba(184,148,92,0.03);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .category-row td {
+    padding: 22px 16px 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--mb-gold) !important;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: left !important;
+    border-bottom: 1px solid var(--mb-line-strong);
+    font-weight: 400 !important;
+    background: transparent !important;
+  }
+
+  .check { color: var(--mb-gold-light); font-size: 14px; }
+  .dash { color: #444; }
+
+  /* ---------- RECOMMENDATION ---------- */
+  .recommendation {
+    margin-top: 72px;
+    padding: 48px;
+    border: 1px solid var(--mb-line);
+    background: linear-gradient(135deg, #141414 0%, #0d0d0d 100%);
+    position: relative;
+  }
+  .recommendation::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 0;
+    width: 80px; height: 1px;
+    background: var(--mb-gold);
+  }
+
+  .reco-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 32px;
+  }
+  .reco-item { border-left: 1px solid var(--mb-line); padding-left: 24px; }
+  .reco-item:first-child { border-left: none; padding-left: 0; }
+  .reco-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--mb-gold);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .reco-card {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    color: #fafafa;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .reco-reason { font-size: 12px; color: var(--mb-chrome); line-height: 1.7; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    margin-top: 72px;
+    padding-top: 32px;
+    border-top: 1px solid var(--mb-line);
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+  footer .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--mb-gold);
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    body { padding: 40px 16px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .reco-grid { grid-template-columns: 1fr; gap: 24px; }
+    .reco-item { border-left: none; padding-left: 0; border-top: 1px solid var(--mb-line); padding-top: 20px; }
+    .reco-item:first-child { border-top: none; padding-top: 0; }
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 640px; }
+    .recommendation { padding: 32px 24px; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; padding: 20px; }
+    .card, .table-wrap, .recommendation { background: #fff !important; border-color: #ccc; }
+    h1, .card-name, .headline-value, thead th, tbody td, .reco-card { color: #000 !important; }
+    .feature-value, tbody td.tier-top-col { color: #b8945c !important; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="star"></div>
+    <div class="eyebrow">Mercedes-Benz × Shinhan Card</div>
+    <h1>The Best or <strong>Nothing</strong></h1>
+    <div class="subtitle">메르세데스-벤츠 신한카드 3종 혜택 비교 · 2026년 3월 25일 출시</div>
+  </div>
+
+  <!-- CARD HEADLINE GRID -->
+  <div class="cards-grid">
+
+    <!-- AVANTGARDE -->
+    <div class="card">
+      <div class="card-image-wrap">
+        <img src="https://www.shinhancard.com/pconts/images/contents/card/plate/cdCreditAL5DY5s.png" alt="Mercedes-Benz Avantgarde 신한카드">
+      </div>
+      <div class="tier-badge">Entry</div>
+      <div class="card-name">Avantgarde</div>
+      <div class="card-subname">아방가르드</div>
+
+      <div class="headline-stat">
+        <div class="headline-label">Annual Gift</div>
+        <div class="headline-value">5<span class="headline-unit">만 포인트</span></div>
+      </div>
+
+      <div class="card-feature"><span class="feature-label">국내 최대 할인</span><span class="feature-value">1.2%</span></div>
+      <div class="card-feature"><span class="feature-label">벤츠 스토어</span><span class="feature-value">최대 10%</span></div>
+      <div class="card-feature"><span class="feature-label">전기차 충전</span><span class="feature-value">최대 20%</span></div>
+      <div class="card-feature"><span class="feature-label">월 라이프스타일 한도</span><span class="feature-value">3만원</span></div>
+      <div class="card-feature"><span class="feature-label">공항 라운지</span><span class="feature-value">월 최대 3회</span></div>
+    </div>
+
+    <!-- EXCLUSIVE -->
+    <div class="card">
+      <div class="card-image-wrap">
+        <img src="https://www.shinhancard.com/pconts/images/contents/card/plate/cdCreditAL5DY6.png" alt="Mercedes-Benz Exclusive 신한카드">
+      </div>
+      <div class="tier-badge">Premium</div>
+      <div class="card-name">Exclusive</div>
+      <div class="card-subname">익스클루시브</div>
+
+      <div class="headline-stat">
+        <div class="headline-label">Annual Gift (택1)</div>
+        <div class="headline-value">12<span class="headline-unit">만 상당</span></div>
+      </div>
+
+      <div class="card-feature"><span class="feature-label">국내 최대 할인</span><span class="feature-value">1.2%</span></div>
+      <div class="card-feature"><span class="feature-label">벤츠 스토어</span><span class="feature-value">최대 20%</span></div>
+      <div class="card-feature"><span class="feature-label">전기차 충전</span><span class="feature-value">최대 30%</span></div>
+      <div class="card-feature"><span class="feature-label">월 라이프스타일 한도</span><span class="feature-value">5만원</span></div>
+      <div class="card-feature"><span class="feature-label">공항 라운지</span><span class="feature-value">월 최대 3회</span></div>
+    </div>
+
+    <!-- MANUFAKTUR -->
+    <div class="card tier-top">
+      <div class="card-image-wrap">
+        <img src="https://www.shinhancard.com/pconts/images/contents/card/plate/cdCreditAL5DY8.png" alt="Mercedes-Benz MANUFAKTUR 신한카드">
+      </div>
+      <div class="tier-badge">Signature</div>
+      <div class="card-name">MANUFAKTUR</div>
+      <div class="card-subname">마누팍투어</div>
+
+      <div class="headline-stat">
+        <div class="headline-label">Annual Gift (택1)</div>
+        <div class="headline-value">65<span class="headline-unit">만 상당</span></div>
+      </div>
+
+      <div class="card-feature"><span class="feature-label">국내 최대 할인</span><span class="feature-value">1.5%</span></div>
+      <div class="card-feature"><span class="feature-label">벤츠 스토어</span><span class="feature-value">최대 50%</span></div>
+      <div class="card-feature"><span class="feature-label">전기차 충전</span><span class="feature-value">최대 40%</span></div>
+      <div class="card-feature"><span class="feature-label">월 라이프스타일 한도</span><span class="feature-value">7만원</span></div>
+      <div class="card-feature"><span class="feature-label">공항 라운지</span><span class="feature-value">월 최대 5회</span></div>
+    </div>
+  </div>
+
+  <!-- DETAILED TABLE -->
+  <div class="section-title">
+    <div class="eyebrow">Detailed Comparison</div>
+    <h2>혜택 상세 비교</h2>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>혜택 구분</th>
+          <th>Avantgarde</th>
+          <th>Exclusive</th>
+          <th class="tier-top-col">MANUFAKTUR</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="category-row"><td colspan="4">Annual Gift · 연간 기프트</td></tr>
+        <tr>
+          <td>마이신한포인트</td>
+          <td>5만 P</td>
+          <td>12만 P</td>
+          <td class="tier-top-col">55만 P</td>
+        </tr>
+        <tr>
+          <td>대한항공 마일리지</td>
+          <td><span class="dash">—</span></td>
+          <td>6,000 마일</td>
+          <td class="tier-top-col">30,000 마일</td>
+        </tr>
+        <tr>
+          <td>신세계 상품권</td>
+          <td><span class="dash">—</span></td>
+          <td>12만원</td>
+          <td class="tier-top-col">55만원</td>
+        </tr>
+        <tr>
+          <td>다이닝 바우처</td>
+          <td><span class="dash">—</span></td>
+          <td>15만원</td>
+          <td class="tier-top-col">65만원</td>
+        </tr>
+        <tr>
+          <td>호텔 통합 상품권</td>
+          <td><span class="dash">—</span></td>
+          <td><span class="dash">—</span></td>
+          <td class="tier-top-col">60만원</td>
+        </tr>
+        <tr>
+          <td>제공 조건 (2차 주기부터)</td>
+          <td>100만원 이상</td>
+          <td>300만원 이상</td>
+          <td class="tier-top-col">700만원 이상</td>
+        </tr>
+
+        <tr class="category-row"><td colspan="4">기본 서비스 · Payment Discount</td></tr>
+        <tr>
+          <td>국내 일시불·할부 할인</td>
+          <td>최대 1.2%</td>
+          <td>최대 1.2%</td>
+          <td class="tier-top-col">최대 1.5%</td>
+        </tr>
+        <tr>
+          <td>해외 일시불 할인</td>
+          <td>최대 2%</td>
+          <td>최대 3%</td>
+          <td class="tier-top-col">최대 3%</td>
+        </tr>
+        <tr>
+          <td>스카이패스형 마일리지</td>
+          <td><span class="dash">—</span></td>
+          <td>1,500원당 1마일</td>
+          <td class="tier-top-col">1,500원당 1마일</td>
+        </tr>
+
+        <tr class="category-row"><td colspan="4">Energy · 주유 & 전기차 충전</td></tr>
+        <tr>
+          <td>주유 할인 (리터당)</td>
+          <td>최대 150원</td>
+          <td>최대 150원</td>
+          <td class="tier-top-col">최대 200원</td>
+        </tr>
+        <tr>
+          <td>전기차 충전 할인</td>
+          <td>최대 20%</td>
+          <td>최대 30%</td>
+          <td class="tier-top-col">최대 40%</td>
+        </tr>
+        <tr>
+          <td>Energy 월 할인 한도</td>
+          <td>2만원</td>
+          <td>3만원</td>
+          <td class="tier-top-col">5만원</td>
+        </tr>
+
+        <tr class="category-row"><td colspan="4">Lifestyle · 생활 혜택</td></tr>
+        <tr>
+          <td>벤츠 스토어 (디지털 서비스)</td>
+          <td>최대 10%</td>
+          <td>최대 20%</td>
+          <td class="tier-top-col">최대 50%</td>
+        </tr>
+        <tr>
+          <td>쿠팡 할인</td>
+          <td>2%</td>
+          <td>최대 3%</td>
+          <td class="tier-top-col">최대 3%</td>
+        </tr>
+        <tr>
+          <td>배달 앱 할인</td>
+          <td>2%</td>
+          <td>최대 5%</td>
+          <td class="tier-top-col">최대 5%</td>
+        </tr>
+        <tr>
+          <td>카카오 T (건당 3천원)</td>
+          <td>월 최대 3회</td>
+          <td>월 최대 3회</td>
+          <td class="tier-top-col">월 최대 5회</td>
+        </tr>
+        <tr>
+          <td>Lifestyle 월 할인 한도</td>
+          <td>3만원</td>
+          <td>5만원</td>
+          <td class="tier-top-col">7만원</td>
+        </tr>
+
+        <tr class="category-row"><td colspan="4">Premium · 프리미엄 서비스</td></tr>
+        <tr>
+          <td>THE LOUNGE 공항라운지</td>
+          <td>월 최대 3회</td>
+          <td>월 최대 3회</td>
+          <td class="tier-top-col">월 최대 5회</td>
+        </tr>
+        <tr>
+          <td>메탈 플레이트 발급</td>
+          <td><span class="dash">—</span></td>
+          <td><span class="check">✓</span> (수수료 8만원)</td>
+          <td class="tier-top-col"><span class="check">✓</span> 기본 제공</td>
+        </tr>
+        <tr>
+          <td>국제 브랜드 서비스</td>
+          <td>Mastercard Platinum</td>
+          <td>Mastercard World</td>
+          <td class="tier-top-col">Mastercard World</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RECOMMENDATION -->
+  <div class="recommendation">
+    <div class="eyebrow">Recommendation Guide</div>
+    <h2 style="font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 28px; color: #fafafa; margin-top: 8px;">연간 카드 사용액 기준 추천</h2>
+
+    <div class="reco-grid">
+      <div class="reco-item">
+        <div class="reco-amount">~ 연 1,200만원</div>
+        <div class="reco-card">Avantgarde</div>
+        <div class="reco-reason">월 100만원 수준의 합리적 소비 고객에게 최적화된 엔트리 카드. 핵심 벤츠 혜택을 부담 없이 경험하실 수 있습니다.</div>
+      </div>
+      <div class="reco-item">
+        <div class="reco-amount">연 1,200 ~ 3,600만원</div>
+        <div class="reco-card">Exclusive</div>
+        <div class="reco-reason">월 100~300만원의 활발한 소비와 해외 출장·여행이 잦은 고객을 위한 프리미엄 선택. 할인형·스카이패스형 중 선택 가능합니다.</div>
+      </div>
+      <div class="reco-item">
+        <div class="reco-amount">연 3,600만원 이상</div>
+        <div class="reco-card">MANUFAKTUR</div>
+        <div class="reco-reason">월 300만원 이상의 고소비 VIP 고객을 위한 시그니처. 연간 65만원 상당의 기프트와 압도적 벤츠 스토어 50% 할인이 핵심입니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="brand">BenzDream × Motor One Goyang</div>
+    <div>상담 문의 · 벤츠 고양 전시장 BenzDream 한호만 팀장</div>
+    <div style="margin-top: 12px; color: #444;">본 자료는 2026.03.25 신한카드 공식 출시 정보 기준이며, 전월 이용실적에 따라 혜택이 차등 제공됩니다.</div>
+  </footer>
+
+  <div style="text-align:center; margin-top:48px; padding-bottom:24px;">
+    <a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_Landing.html"
+       style="display:inline-flex; align-items:center; gap:8px;
+              color:#c9a96e; border:1px solid #8a7a50;
+              padding:12px 28px; border-radius:40px;
+              font-family:'Outfit',sans-serif; font-size:.9rem;
+              text-decoration:none; letter-spacing:.05em;">
+      ← BenzDream 메인으로 돌아가기
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
