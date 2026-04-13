@@ -91,6 +91,56 @@
     font-weight: 400;
   }
 
+  /* ---------- APPLY BUTTON ---------- */
+  .apply-btn {
+    display: block;
+    margin-top: 24px;
+    padding: 16px 24px;
+    background: transparent;
+    border: 1px solid var(--mb-line-strong);
+    color: #fafafa;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .apply-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(184,148,92,0.15), transparent);
+    transition: left 0.6s ease;
+  }
+  .apply-btn:hover {
+    border-color: var(--mb-gold);
+    color: var(--mb-gold-light);
+    background: rgba(184,148,92,0.04);
+  }
+  .apply-btn:hover::before { left: 100%; }
+  .apply-btn .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.35s ease;
+  }
+  .apply-btn:hover .arrow { transform: translateX(4px); }
+
+  .tier-top .apply-btn {
+    background: linear-gradient(180deg, rgba(184,148,92,0.08), rgba(184,148,92,0.02));
+    border-color: var(--mb-gold);
+    color: var(--mb-gold-light);
+  }
+  .tier-top .apply-btn:hover {
+    background: linear-gradient(180deg, rgba(184,148,92,0.15), rgba(184,148,92,0.05));
+    color: #fff;
+  }
+
   /* ---------- HEADER ---------- */
   .header {
     text-align: center;
@@ -489,6 +539,10 @@
         <span class="fee-label">Annual Fee</span>
         <span class="fee-value">7만 7천원<span style="font-size:11px;color:var(--mb-chrome);font-weight:300;margin-left:6px;">/ 해외 8만원</span></span>
       </div>
+
+      <a href="https://www.shinhancard.com/pconts/html/card/apply/family/1238016_2215.html" target="_blank" rel="noopener" class="apply-btn">
+        카드 신청하기 <span class="arrow">→</span>
+      </a>
     </div>
 
     <!-- EXCLUSIVE -->
@@ -515,6 +569,10 @@
         <span class="fee-label">Annual Fee</span>
         <span class="fee-value">19만 7천원<span style="font-size:11px;color:var(--mb-chrome);font-weight:300;margin-left:6px;">/ World 20만원</span></span>
       </div>
+
+      <a href="https://www.shinhancard.com/pconts/html/card/apply/family/1238021_2215.html" target="_blank" rel="noopener" class="apply-btn">
+        카드 신청하기 <span class="arrow">→</span>
+      </a>
     </div>
 
     <!-- MANUFAKTUR -->
@@ -541,6 +599,10 @@
         <span class="fee-label">Annual Fee</span>
         <span class="fee-value">69만 7천원<span style="font-size:11px;color:var(--mb-chrome);font-weight:300;margin-left:6px;">/ World 70만원</span></span>
       </div>
+
+      <a href="https://www.shinhancard.com/pconts/html/card/apply/family/1238025_2215.html" target="_blank" rel="noopener" class="apply-btn">
+        카드 신청하기 <span class="arrow">→</span>
+      </a>
     </div>
   </div>
 
