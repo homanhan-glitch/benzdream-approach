@@ -1,0 +1,2322 @@
+{
+  "generated_at": "2026-04-14T22:19:07",
+  "dates": [
+    "2026-04-10",
+    "2026-04-14"
+  ],
+  "snapshots": [
+    {
+      "date": "2026-04-10",
+      "sellable_total": 3623,
+      "assigned_total": 192,
+      "national_contract": null,
+      "national_cancel": null,
+      "motorone_contract": null,
+      "motorone_cancel": null,
+      "motorone_delivered": null,
+      "new_in": null,
+      "model_contracts": {},
+      "model_motorone": {},
+      "models": {
+        "A 220": {
+          "cat": "A클래스",
+          "sellable": 29,
+          "assigned": 2
+        },
+        "EQE 500 4MATIC SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 26,
+          "assigned": 1
+        },
+        "AMG GT 43 4MATIC+": {
+          "cat": "AMG GT·SL",
+          "sellable": 28,
+          "assigned": 2
+        },
+        "AMG GT 63 S E PERFORMANCE": {
+          "cat": "AMG GT·SL",
+          "sellable": 0,
+          "assigned": 1
+        },
+        "EQE 350+": {
+          "cat": "전동화 EQ",
+          "sellable": 25,
+          "assigned": 0
+        },
+        "E 450 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 174,
+          "assigned": 1
+        },
+        "Maybach S 680 4MATIC": {
+          "cat": "Maybach",
+          "sellable": 12,
+          "assigned": 0
+        },
+        "EQE 350+ SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 77,
+          "assigned": 0
+        },
+        "GLE 450 4MATIC": {
+          "cat": "GLE",
+          "sellable": 60,
+          "assigned": 8
+        },
+        "GLE 450 4MATIC Coupé AMG Line": {
+          "cat": "GLE",
+          "sellable": 114,
+          "assigned": 0
+        },
+        "CLE 450 4MATIC Coupé": {
+          "cat": "CLE",
+          "sellable": 22,
+          "assigned": 0
+        },
+        "S 500 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 6,
+          "assigned": 0
+        },
+        "Maybach GLS 600": {
+          "cat": "Maybach",
+          "sellable": 0,
+          "assigned": 1
+        },
+        "CLA 250 4MATIC AMG Line Coupé": {
+          "cat": "CLA",
+          "sellable": 36,
+          "assigned": 0
+        },
+        "GLB 250 4MATIC": {
+          "cat": "GLA·GLB",
+          "sellable": 252,
+          "assigned": 1
+        },
+        "EQS 450 4MATIC SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 29,
+          "assigned": 0
+        },
+        "Maybach S 580 4MATIC": {
+          "cat": "Maybach",
+          "sellable": 22,
+          "assigned": 0
+        },
+        "AMG A 45 S 4MATIC+": {
+          "cat": "A클래스",
+          "sellable": 13,
+          "assigned": 0
+        },
+        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": {
+          "cat": "E클래스",
+          "sellable": 258,
+          "assigned": 2
+        },
+        "E 200 AVANTGARDE": {
+          "cat": "E클래스",
+          "sellable": 106,
+          "assigned": 4
+        },
+        "E 300 4MATIC AMG Line": {
+          "cat": "E클래스",
+          "sellable": 131,
+          "assigned": 37
+        },
+        "S 580 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 4,
+          "assigned": 0
+        },
+        "S 450 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 0,
+          "assigned": 1
+        },
+        "GLA 250 4MATIC AMG Line": {
+          "cat": "GLA·GLB",
+          "sellable": 42,
+          "assigned": 5
+        },
+        "EQB 300 4MATIC AMG Line": {
+          "cat": "전동화 EQ",
+          "sellable": 73,
+          "assigned": 0
+        },
+        "EQB 300 4MATIC Progressive": {
+          "cat": "전동화 EQ",
+          "sellable": 191,
+          "assigned": 0
+        },
+        "GLE 350 4MATIC": {
+          "cat": "GLE",
+          "sellable": 23,
+          "assigned": 3
+        },
+        "C 200 AVANTGARDE": {
+          "cat": "C클래스",
+          "sellable": 70,
+          "assigned": 4
+        },
+        "AMG CLA 45 S 4MATIC+ Final Edition Coupé": {
+          "cat": "CLA",
+          "sellable": 4,
+          "assigned": 2
+        },
+        "CLE 200 Coupé": {
+          "cat": "CLE",
+          "sellable": 83,
+          "assigned": 1
+        },
+        "AMG S 63 E Performance": {
+          "cat": "S클래스",
+          "sellable": 2,
+          "assigned": 0
+        },
+        "AMG SL 43": {
+          "cat": "S클래스",
+          "sellable": 6,
+          "assigned": 0
+        },
+        "Maybach SL 680 Monogram Series": {
+          "cat": "Maybach",
+          "sellable": 3,
+          "assigned": 0
+        },
+        "AMG GLB 35 4MATIC": {
+          "cat": "GLA·GLB",
+          "sellable": 56,
+          "assigned": 0
+        },
+        "C 200 AMG Line": {
+          "cat": "C클래스",
+          "sellable": 64,
+          "assigned": 0
+        },
+        "AMG GLC 43 4MATIC": {
+          "cat": "GLC",
+          "sellable": 29,
+          "assigned": 1
+        },
+        "CLE 200 Cabriolet": {
+          "cat": "CLE",
+          "sellable": 157,
+          "assigned": 3
+        },
+        "E 220 d 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 103,
+          "assigned": 2
+        },
+        "E 200 AMG Line": {
+          "cat": "E클래스",
+          "sellable": 595,
+          "assigned": 5
+        },
+        "GLC 220 d 4MATIC": {
+          "cat": "GLC",
+          "sellable": 106,
+          "assigned": 1
+        },
+        "GLC 300 4MATIC Coupé AVANTGARDE": {
+          "cat": "GLC",
+          "sellable": 67,
+          "assigned": 9
+        },
+        "GLC 300 4MATIC AVANTGARDE": {
+          "cat": "GLC",
+          "sellable": 102,
+          "assigned": 5
+        },
+        "CLE 450 4MATIC Cabriolet": {
+          "cat": "CLE",
+          "sellable": 21,
+          "assigned": 1
+        },
+        "AMG CLE 53 4MATIC+ Cabriolet": {
+          "cat": "C클래스",
+          "sellable": 20,
+          "assigned": 4
+        },
+        "GLE 300 d 4MATIC": {
+          "cat": "GLE",
+          "sellable": 20,
+          "assigned": 7
+        },
+        "AMG GLE 53 4MATIC+": {
+          "cat": "GLE",
+          "sellable": 6,
+          "assigned": 3
+        },
+        "S 350 d 4MATIC": {
+          "cat": "S클래스",
+          "sellable": 12,
+          "assigned": 3
+        },
+        "S 450 4MATIC Sedan": {
+          "cat": "S클래스",
+          "sellable": 28,
+          "assigned": 10
+        },
+        "AMG CLE 53 4MATIC+ Coupé": {
+          "cat": "C클래스",
+          "sellable": 2,
+          "assigned": 2
+        },
+        "E 300 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 249,
+          "assigned": 4
+        },
+        "GLC 300 4MATIC AMG Line": {
+          "cat": "GLC",
+          "sellable": 46,
+          "assigned": 18
+        },
+        "AMG GLC 43 4MATIC Coupé": {
+          "cat": "GLC",
+          "sellable": 15,
+          "assigned": 1
+        },
+        "GLC 300 4MATIC Coupé AMG Line": {
+          "cat": "GLC",
+          "sellable": 0,
+          "assigned": 27
+        },
+        "GLS 450 d 4MATIC AMG Line": {
+          "cat": "GLS",
+          "sellable": 0,
+          "assigned": 4
+        },
+        "GLS 450 4MATIC AMG Line": {
+          "cat": "GLS",
+          "sellable": 0,
+          "assigned": 6
+        },
+        "AMG E 53 Hybrid 4MATIC+": {
+          "cat": "E클래스",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "EQA 250 AMG Line": {
+          "cat": "전동화 EQ",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "EQA 250 Progressive": {
+          "cat": "전동화 EQ",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "GLE 450 4MATIC AMG Line": {
+          "cat": "GLE",
+          "sellable": 1,
+          "assigned": 0
+        }
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "sellable_total": 3615,
+      "assigned_total": 179,
+      "national_contract": 269,
+      "national_cancel": 0,
+      "motorone_contract": 33,
+      "motorone_cancel": 37,
+      "motorone_delivered": 19,
+      "new_in": 224,
+      "model_contracts": {
+        "E 200 AVANTGARDE": 27,
+        "GLC 300 4MATIC AVANTGARDE": 24,
+        "S 350 d 4MATIC": 5,
+        "CLE 200 Coupé": 6,
+        "GLE 450 4MATIC": 23,
+        "E 300 4MATIC AMG Line": 13,
+        "CLE 200 Cabriolet": 16,
+        "EQA 250 Progressive": 1,
+        "GLC 300 4MATIC Coupé AVANTGARDE": 12,
+        "GLC 300 4MATIC AMG Line": 13,
+        "CLE 450 4MATIC Cabriolet": 2,
+        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 11,
+        "S 450 4MATIC Sedan": 10,
+        "C 200 AVANTGARDE": 5,
+        "Maybach S 580 4MATIC": 1,
+        "E 200 AMG Line": 15,
+        "AMG GLC 43 4MATIC": 1,
+        "A 220": 3,
+        "E 300 4MATIC EXCLUSIVE": 16,
+        "GLE 450 4MATIC Coupé AMG Line": 3,
+        "AMG CLE 53 4MATIC+ Cabriolet": 7,
+        "EQB 300 4MATIC Progressive": 2,
+        "GLA 250 4MATIC AMG Line": 2,
+        "AMG SL 43": 3,
+        "AMG A 45 S 4MATIC+": 1,
+        "E 450 4MATIC EXCLUSIVE": 6,
+        "AMG GLC 43 4MATIC Coupé": 2,
+        "C 200 AMG Line": 5,
+        "E 220 d 4MATIC EXCLUSIVE": 3,
+        "GLB 250 4MATIC": 2,
+        "AMG GLB 35 4MATIC": 2,
+        "GLC 220 d 4MATIC": 8,
+        "S 500 4MATIC Sedan long": 3,
+        "CLE 450 4MATIC Coupé": 1,
+        "CLA 250 4MATIC AMG Line Coupé": 2,
+        "Maybach S 680 4MATIC": 1,
+        "S 580 4MATIC Sedan long": 2,
+        "EQE 500 4MATIC SUV": 1,
+        "GLE 350 4MATIC": 1,
+        "GLE 300 d 4MATIC": 2,
+        "EQE 350+ SUV": 2,
+        "AMG GLE 53 4MATIC+": 1,
+        "EQB 300 4MATIC AMG Line": 1,
+        "AMG GT 43 4MATIC+": 2
+      },
+      "model_motorone": {
+        "E 200 AVANTGARDE": 2,
+        "GLE 450 4MATIC": 2,
+        "E 300 4MATIC EXCLUSIVE": 1,
+        "S 350 d 4MATIC": 1,
+        "EQA 250 Progressive": 1,
+        "GLE 300 d 4MATIC": 1,
+        "GLC 300 4MATIC Coupé AVANTGARDE": 3,
+        "EQE 350+ SUV": 1,
+        "CLE 200 Coupé": 1,
+        "AMG GT 43 4MATIC+": 1,
+        "E 200 AMG Line": 4,
+        "C 200 AVANTGARDE": 1,
+        "GLC 300 4MATIC AMG Line": 2,
+        "GLC 220 d 4MATIC": 1,
+        "A 220": 1,
+        "E 300 4MATIC AMG Line": 2,
+        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 1,
+        "AMG GLE 53 4MATIC+": 1,
+        "GLC 300 4MATIC AVANTGARDE": 1,
+        "GLE 450 4MATIC Coupé AMG Line": 1,
+        "EQB 300 4MATIC Progressive": 1,
+        "GLA 250 4MATIC AMG Line": 1,
+        "CLE 200 Cabriolet": 1,
+        "E 450 4MATIC EXCLUSIVE": 1
+      },
+      "models": {
+        "EQA 250 Progressive": {
+          "cat": "전동화 EQ",
+          "sellable": 2,
+          "assigned": 1
+        },
+        "E 300 4MATIC AMG Line": {
+          "cat": "E클래스",
+          "sellable": 146,
+          "assigned": 21
+        },
+        "C 200 AVANTGARDE": {
+          "cat": "C클래스",
+          "sellable": 69,
+          "assigned": 4
+        },
+        "AMG GLC 43 4MATIC Coupé": {
+          "cat": "GLC",
+          "sellable": 20,
+          "assigned": 2
+        },
+        "AMG CLE 53 4MATIC+ Cabriolet": {
+          "cat": "C클래스",
+          "sellable": 14,
+          "assigned": 4
+        },
+        "AMG G 63": {
+          "cat": "G클래스",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "A 220": {
+          "cat": "A클래스",
+          "sellable": 27,
+          "assigned": 2
+        },
+        "GLE 450 4MATIC Coupé": {
+          "cat": "GLE",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "EQE 500 4MATIC SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 25,
+          "assigned": 1
+        },
+        "AMG GT 43 4MATIC+": {
+          "cat": "AMG GT·SL",
+          "sellable": 27,
+          "assigned": 2
+        },
+        "EQE 350+": {
+          "cat": "전동화 EQ",
+          "sellable": 25,
+          "assigned": 0
+        },
+        "E 450 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 169,
+          "assigned": 2
+        },
+        "Maybach S 680 4MATIC": {
+          "cat": "Maybach",
+          "sellable": 11,
+          "assigned": 0
+        },
+        "EQE 350+ SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 75,
+          "assigned": 1
+        },
+        "GLE 450 4MATIC": {
+          "cat": "GLE",
+          "sellable": 37,
+          "assigned": 2
+        },
+        "GLE 450 4MATIC Coupé AMG Line": {
+          "cat": "GLE",
+          "sellable": 111,
+          "assigned": 3
+        },
+        "CLE 450 4MATIC Coupé": {
+          "cat": "CLE",
+          "sellable": 22,
+          "assigned": 0
+        },
+        "S 500 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 3,
+          "assigned": 0
+        },
+        "CLA 250 4MATIC AMG Line Coupé": {
+          "cat": "CLA",
+          "sellable": 36,
+          "assigned": 0
+        },
+        "AMG CLE 53 4MATIC+ Coupé": {
+          "cat": "C클래스",
+          "sellable": 2,
+          "assigned": 1
+        },
+        "Maybach GLS 600": {
+          "cat": "Maybach",
+          "sellable": 0,
+          "assigned": 1
+        },
+        "GLB 250 4MATIC": {
+          "cat": "GLA·GLB",
+          "sellable": 250,
+          "assigned": 1
+        },
+        "EQS 450 4MATIC SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 29,
+          "assigned": 0
+        },
+        "GLE 450 d 4MATIC Coupé AMG Line": {
+          "cat": "GLE",
+          "sellable": 2,
+          "assigned": 0
+        },
+        "AMG E 53 Hybrid 4MATIC+": {
+          "cat": "E클래스",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "Maybach S 580 4MATIC": {
+          "cat": "Maybach",
+          "sellable": 21,
+          "assigned": 0
+        },
+        "AMG A 45 S 4MATIC+": {
+          "cat": "A클래스",
+          "sellable": 12,
+          "assigned": 0
+        },
+        "S 450 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 3,
+          "assigned": 1
+        },
+        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": {
+          "cat": "E클래스",
+          "sellable": 248,
+          "assigned": 3
+        },
+        "E 200 AVANTGARDE": {
+          "cat": "E클래스",
+          "sellable": 86,
+          "assigned": 6
+        },
+        "S 580 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 2,
+          "assigned": 0
+        },
+        "GLA 250 4MATIC AMG Line": {
+          "cat": "GLA·GLB",
+          "sellable": 40,
+          "assigned": 6
+        },
+        "EQB 300 4MATIC AMG Line": {
+          "cat": "전동화 EQ",
+          "sellable": 72,
+          "assigned": 0
+        },
+        "EQB 300 4MATIC Progressive": {
+          "cat": "전동화 EQ",
+          "sellable": 189,
+          "assigned": 1
+        },
+        "GLE 450 4MATIC AMG Line": {
+          "cat": "GLE",
+          "sellable": 1,
+          "assigned": 8
+        },
+        "GLE 350 4MATIC": {
+          "cat": "GLE",
+          "sellable": 23,
+          "assigned": 3
+        },
+        "AMG CLA 45 S 4MATIC+ Final Edition Coupé": {
+          "cat": "CLA",
+          "sellable": 7,
+          "assigned": 0
+        },
+        "CLE 200 Cabriolet": {
+          "cat": "CLE",
+          "sellable": 199,
+          "assigned": 3
+        },
+        "AMG S 63 E Performance": {
+          "cat": "S클래스",
+          "sellable": 2,
+          "assigned": 0
+        },
+        "EQA 250 AMG Line": {
+          "cat": "전동화 EQ",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "Maybach SL 680 Monogram Series": {
+          "cat": "Maybach",
+          "sellable": 3,
+          "assigned": 0
+        },
+        "AMG GLB 35 4MATIC": {
+          "cat": "GLA·GLB",
+          "sellable": 54,
+          "assigned": 0
+        },
+        "C 200 AMG Line": {
+          "cat": "C클래스",
+          "sellable": 60,
+          "assigned": 0
+        },
+        "AMG GLC 43 4MATIC": {
+          "cat": "GLC",
+          "sellable": 28,
+          "assigned": 1
+        },
+        "CLE 200 Coupé": {
+          "cat": "CLE",
+          "sellable": 141,
+          "assigned": 2
+        },
+        "E 220 d 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 101,
+          "assigned": 1
+        },
+        "E 300 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 233,
+          "assigned": 4
+        },
+        "E 200 AMG Line": {
+          "cat": "E클래스",
+          "sellable": 588,
+          "assigned": 6
+        },
+        "GLC 220 d 4MATIC": {
+          "cat": "GLC",
+          "sellable": 99,
+          "assigned": 1
+        },
+        "GLC 300 4MATIC AVANTGARDE": {
+          "cat": "GLC",
+          "sellable": 80,
+          "assigned": 7
+        },
+        "CLE 450 4MATIC Cabriolet": {
+          "cat": "CLE",
+          "sellable": 20,
+          "assigned": 0
+        },
+        "AMG SL 43": {
+          "cat": "S클래스",
+          "sellable": 3,
+          "assigned": 0
+        },
+        "GLE 300 d 4MATIC": {
+          "cat": "GLE",
+          "sellable": 19,
+          "assigned": 6
+        },
+        "AMG GLE 53 4MATIC+": {
+          "cat": "GLE",
+          "sellable": 5,
+          "assigned": 4
+        },
+        "S 350 d 4MATIC": {
+          "cat": "S클래스",
+          "sellable": 8,
+          "assigned": 4
+        },
+        "S 450 4MATIC Sedan": {
+          "cat": "S클래스",
+          "sellable": 21,
+          "assigned": 10
+        },
+        "GLC 300 4MATIC AMG Line": {
+          "cat": "GLC",
+          "sellable": 83,
+          "assigned": 11
+        },
+        "GLC 300 4MATIC Coupé AVANTGARDE": {
+          "cat": "GLC",
+          "sellable": 56,
+          "assigned": 11
+        },
+        "GLC 300 4MATIC Coupé AMG Line": {
+          "cat": "GLC",
+          "sellable": 2,
+          "assigned": 22
+        },
+        "GLS 450 d 4MATIC AMG Line": {
+          "cat": "GLS",
+          "sellable": 0,
+          "assigned": 4
+        },
+        "GLS 450 4MATIC AMG Line": {
+          "cat": "GLS",
+          "sellable": 0,
+          "assigned": 6
+        }
+      }
+    }
+  ],
+  "latest_assigned": {
+    "W1NKJ8HBXSF404247": {
+      "model": "AMG GLC 43 4MATIC Coupé",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "장영욱",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "블랙, AMG 가죽",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF6BB1TA230048": {
+      "model": "E 450 4MATIC EXCLUSIVE",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "이진형 B",
+      "ext": "그라파이트 그레이",
+      "int": "나파 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF6BB3TA228298": {
+      "model": "E 450 4MATIC EXCLUSIVE",
+      "branch": "일산 SR",
+      "team": "7팀",
+      "salesman": "이상훈 C",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NGM2BB9TA069709": {
+      "model": "EQE 350+ SUV",
+      "branch": "파주 SR",
+      "team": "1팀",
+      "salesman": "문소연",
+      "ext": "옵시디안 블랙",
+      "int": "NEOTEX/ARTICO 네바 그레이/발바오 브라운",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF8HB4TB549294": {
+      "model": "Maybach GLS 600",
+      "branch": "의정부 SR",
+      "team": "4팀",
+      "salesman": "김영호",
+      "ext": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+      "int": "익스클루시브 나파 가죽, 자바",
+      "pdd": "2026-04-13"
+    },
+    "W1K7X5KB5TV006296": {
+      "model": "AMG GT 43 4MATIC+",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "노동운",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5GB1TA224835": {
+      "model": "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "최홍구",
+      "ext": "폴라 화이트",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5AB9TA241617": {
+      "model": "E 200 AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "3팀",
+      "salesman": "강재민",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFD5KB3TB546464": {
+      "model": "GLE 450 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "이진형 A",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFD5KB6TB543963": {
+      "model": "GLE 450 4MATIC Coupé AMG Line",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "손민균",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1K3F4EB7TJ549731": {
+      "model": "A 220",
+      "branch": "고양 SR",
+      "team": "1팀",
+      "salesman": "민병화",
+      "ext": "마운틴 그레이 메탈릭",
+      "int": "아티코 인조 가죽, 마키아토 베이지 /블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1K6G6BB4TA360299": {
+      "model": "S 450 4MATIC Sedan long",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "양국승",
+      "ext": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+      "int": "나파 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1N4N4HB4TJ816460": {
+      "model": "GLA 250 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "홍진우",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽/다이나미카 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1N9M0JB7TN168634": {
+      "model": "EQB 300 4MATIC Progressive",
+      "branch": "의정부 SR",
+      "team": "2팀",
+      "salesman": "구명우",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 블랙/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1K7X5KB0TV008439": {
+      "model": "AMG GT 43 4MATIC+",
+      "branch": "의정부 SR",
+      "team": "1팀",
+      "salesman": "신원섭",
+      "ext": "폴라 화이트",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB0TB574745": {
+      "model": "GLE 450 4MATIC",
+      "branch": "일산 SR",
+      "team": "5팀",
+      "salesman": "김두형",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 바히아 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB2TB584550": {
+      "model": "GLE 450 4MATIC AMG Line",
+      "branch": "의정부 SR",
+      "team": "2팀",
+      "salesman": "서우준",
+      "ext": "폴라 화이트",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB7TB584513": {
+      "model": "GLE 450 4MATIC AMG Line",
+      "branch": "의정부 SR",
+      "team": "1팀",
+      "salesman": "신원섭",
+      "ext": "폴라 화이트",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB2TB584418": {
+      "model": "GLE 450 4MATIC",
+      "branch": "고양 SR",
+      "team": "2팀",
+      "salesman": "유재준",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 바히아 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFD5KB7TB555992": {
+      "model": "GLE 450 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "이진형 A",
+      "ext": "폴라 화이트",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1K3F4EB4TJ559150": {
+      "model": "A 220",
+      "branch": "고양 SR",
+      "team": "6팀",
+      "salesman": "김찬우",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 블랙/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NGM2CB7TA072008": {
+      "model": "EQE 500 4MATIC SUV",
+      "branch": "의정부 SR",
+      "team": "4팀",
+      "salesman": "남광우",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 네바 그레이/비스케이 블루",
+      "pdd": "2026-04-13"
+    },
+    "W1N4M4HB0TW478853": {
+      "model": "GLB 250 4MATIC",
+      "branch": "일산 SR",
+      "team": "3팀",
+      "salesman": "최봉호",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽/다이나미카 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1N4N4HB9TJ842228": {
+      "model": "GLA 250 4MATIC AMG Line",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "정재하",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽/다이나미카 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1N4N4HB6TJ842865": {
+      "model": "GLA 250 4MATIC AMG Line",
+      "branch": "의정부 SR",
+      "team": "2팀",
+      "salesman": "서우준",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽/다이나미카 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1N4N4HB2TJ837324": {
+      "model": "GLA 250 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "김민지",
+      "ext": "나이트 블랙",
+      "int": "아티코 가죽 / 마이크로컷 마이크로파이버 바이아 브라운 / 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NKM8HB1TF539092": {
+      "model": "AMG GLC 43 4MATIC",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "최동혁",
+      "ext": "MANUFAKTUR 그라파이트 그레이 마그노",
+      "int": "블랙, AMG 가죽",
+      "pdd": "2026-04-13"
+    },
+    "W1KMJ5AB6TF108545": {
+      "model": "CLE 200 Coupé",
+      "branch": "고양 SR",
+      "team": "7팀",
+      "salesman": "김현겸",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KMK5ABXTF108724": {
+      "model": "CLE 200 Cabriolet",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "장영욱",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 파워 레드/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5GB3TA248490": {
+      "model": "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "이동민",
+      "ext": "그라파이트 그레이",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF4HBXTA251735": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "파주 SR",
+      "team": "1팀",
+      "salesman": "최찬진",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-13"
+    },
+    "W1N9N0BB2TJ198305": {
+      "model": "EQA 250 Progressive",
+      "branch": "의정부 SR",
+      "team": "3팀",
+      "salesman": "노진규",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5AB6TA248573": {
+      "model": "E 200 AMG Line",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "정재하",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KAF5AB0TF225526": {
+      "model": "C 200 AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "이동민",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KAF5AB9TF225797": {
+      "model": "C 200 AVANTGARDE",
+      "branch": "일산 SR",
+      "team": "7팀",
+      "salesman": "이상훈 C",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KAF5AB7TF225295": {
+      "model": "C 200 AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "이동민",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NKM4HB9TF554268": {
+      "model": "GLC 300 4MATIC AVANTGARDE",
+      "branch": "일산 SR",
+      "team": "3팀",
+      "salesman": "김태형 B",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KMJ5AB3TF110768": {
+      "model": "CLE 200 Coupé",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "백상현",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KMK6CB3TF109653": {
+      "model": "AMG CLE 53 4MATIC+ Cabriolet",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "한호만",
+      "ext": "MANUFAKTUR 오팔라이트 화이트",
+      "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KMK5AB9TF109380": {
+      "model": "CLE 200 Cabriolet",
+      "branch": "의정부 SR",
+      "team": "3팀",
+      "salesman": "정혜선",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KMK6CB5TF109587": {
+      "model": "AMG CLE 53 4MATIC+ Cabriolet",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "양국승",
+      "ext": "옵시디안 블랙",
+      "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KAF5AB8TF226651": {
+      "model": "C 200 AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "한호만",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF0FB3TA257016": {
+      "model": "E 220 d 4MATIC EXCLUSIVE",
+      "branch": "의정부 SR",
+      "team": "1팀",
+      "salesman": "황승주",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 통카 브라운",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5AB6TA256205": {
+      "model": "E 200 AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "한호만",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5AB5TA255529": {
+      "model": "E 200 AMG Line",
+      "branch": "의정부 SR",
+      "team": "2팀",
+      "salesman": "서우준",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF5AB8TA256996": {
+      "model": "E 200 AMG Line",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "최홍구",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5GBXTA257140": {
+      "model": "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology",
+      "branch": "고양 SR",
+      "team": "7팀",
+      "salesman": "이경환",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB0KB4TB609550": {
+      "model": "GLE 300 d 4MATIC",
+      "branch": "일산 SR",
+      "team": "3팀",
+      "salesman": "이호찬",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB0KB2TB609501": {
+      "model": "GLE 300 d 4MATIC",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김대일",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB0KB0TB609660": {
+      "model": "GLE 300 d 4MATIC",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "장호용",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 인조 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB0KB3TB613301": {
+      "model": "GLE 300 d 4MATIC",
+      "branch": "고양 SR",
+      "team": "6팀",
+      "salesman": "김찬우",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 바히아 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB0KBXTB609763": {
+      "model": "GLE 300 d 4MATIC",
+      "branch": "일산 SR",
+      "team": "3팀",
+      "salesman": "이호찬",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB6BB6TB603204": {
+      "model": "AMG GLE 53 4MATIC+",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "한상구",
+      "ext": "폴라 화이트",
+      "int": "AMG 나파 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB6BB7TB609884": {
+      "model": "AMG GLE 53 4MATIC+",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김대일",
+      "ext": "옵시디안 블랙",
+      "int": "AMG 나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB6BB2TB603376": {
+      "model": "AMG GLE 53 4MATIC+",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김대일",
+      "ext": "옵시디안 블랙",
+      "int": "AMG 나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB6BB6TB603493": {
+      "model": "AMG GLE 53 4MATIC+",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김대일",
+      "ext": "옵시디안 블랙",
+      "int": "AMG 나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB2TB602223": {
+      "model": "GLE 450 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "한호만",
+      "ext": "폴라 화이트",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB2TB603873": {
+      "model": "GLE 450 4MATIC AMG Line",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "손민균",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB2TB603906": {
+      "model": "GLE 450 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김대일",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB7TB608891": {
+      "model": "GLE 450 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김대일",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB1TB608899": {
+      "model": "GLE 450 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "한호만",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB5KB1TB602245": {
+      "model": "GLE 450 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "1팀",
+      "salesman": "곽동용",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5AB3TA258591": {
+      "model": "E 200 AMG Line",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "최홍구",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1K6F2BB2TA370227": {
+      "model": "S 350 d 4MATIC",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "한상구",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1K6F2BB6TA370151": {
+      "model": "S 350 d 4MATIC",
+      "branch": "파주 SR",
+      "team": "4팀",
+      "salesman": "한재민",
+      "ext": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+      "int": "가죽, 마키아토 베이지/마그마 그레이",
+      "pdd": "2026-04-13"
+    },
+    "W1K6F2BB1TA372518": {
+      "model": "S 350 d 4MATIC",
+      "branch": "고양 SR",
+      "team": "3팀",
+      "salesman": "박상우",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1K6F2BB8TA373262": {
+      "model": "S 350 d 4MATIC",
+      "branch": "고양 SR",
+      "team": "7팀",
+      "salesman": "이경환",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1K6F6BB2TA372485": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "의정부 SR",
+      "team": "5팀",
+      "salesman": "엄태인",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1K6F6BB9TA372130": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "일산 SR",
+      "team": "3팀",
+      "salesman": "이호찬",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 마키아토 베이지/마그마 그레이",
+      "pdd": "2026-04-16"
+    },
+    "W1K6F6BB9TA371382": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "박완수",
+      "ext": "그라파이트 그레이",
+      "int": "나파 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1K6F6BB9TA373357": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "일산 SR",
+      "team": "1팀",
+      "salesman": "채나은",
+      "ext": "MANUFAKTUR 오팔라이트 화이트 브라이트",
+      "int": "나파 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-29"
+    },
+    "W1K6F6BBXTA372931": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "한상대",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1K6F6BB8TA372491": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "고양 SR",
+      "team": "3팀",
+      "salesman": "김정훈 A",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1K6F6BB8TA371583": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "파주 SR",
+      "team": "2팀",
+      "salesman": "최윤서",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 마키아토 베이지/마그마 그레이",
+      "pdd": "2026-04-13"
+    },
+    "W1K6F6BB7TA373289": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "파주 SR",
+      "team": "2팀",
+      "salesman": "최윤서",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 마키아토 베이지/마그마 그레이",
+      "pdd": "2026-04-29"
+    },
+    "W1N4N4HB8TJ857626": {
+      "model": "GLA 250 4MATIC AMG Line",
+      "branch": "파주 SR",
+      "team": "4팀",
+      "salesman": "한재민",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽/다이나미카 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1N4N4HB7TJ858055": {
+      "model": "GLA 250 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "한호만",
+      "ext": "나이트 블랙",
+      "int": "아티코 가죽/다이나미카 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KMJ6CB3TF114211": {
+      "model": "AMG CLE 53 4MATIC+ Coupé",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "한호만",
+      "ext": "MANUFAKTUR 오팔라이트 화이트",
+      "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KMK5AB4TF112929": {
+      "model": "CLE 200 Cabriolet",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "홍진우",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF5AB5TA262898": {
+      "model": "E 200 AVANTGARDE",
+      "branch": "일산 SR",
+      "team": "1팀",
+      "salesman": "채나은",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF5AB2TA266522": {
+      "model": "E 200 AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "정재하",
+      "ext": "폴라 화이트",
+      "int": "아티코 가죽, 블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF5AB5TA266692": {
+      "model": "E 200 AMG Line",
+      "branch": "일산 SR",
+      "team": "3팀",
+      "salesman": "최봉호",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF5AB6TA267107": {
+      "model": "E 200 AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "7팀",
+      "salesman": "이경환",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF5AB6TA264899": {
+      "model": "E 200 AMG Line",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "김대진",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF4HBXTA261276": {
+      "model": "E 300 4MATIC EXCLUSIVE",
+      "branch": "의정부 SR",
+      "team": "2팀",
+      "salesman": "고영만",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF4HB1TA259271": {
+      "model": "E 300 4MATIC EXCLUSIVE",
+      "branch": "의정부 SR",
+      "team": "2팀",
+      "salesman": "강훈",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-16"
+    },
+    "W1NKM0FB1TF561212": {
+      "model": "GLC 220 d 4MATIC",
+      "branch": "고양 SR",
+      "team": "1팀",
+      "salesman": "민병화",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HB2TF566570": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "장영욱",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HB9TF565626": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "6팀",
+      "salesman": "이정수",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HB1TF565698": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "6팀",
+      "salesman": "이정수",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HB3TF565475": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "6팀",
+      "salesman": "주건영",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HB1TF570626": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "장영욱",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-23"
+    },
+    "W1NKM4HB2TF558730": {
+      "model": "GLC 300 4MATIC AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "3팀",
+      "salesman": "노진규",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HB7TF564619": {
+      "model": "GLC 300 4MATIC AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "3팀",
+      "salesman": "이기복",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HB0TF566888": {
+      "model": "GLC 300 4MATIC AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "3팀",
+      "salesman": "이기복",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HBXTF567286": {
+      "model": "GLC 300 4MATIC AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "3팀",
+      "salesman": "이기복",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-23"
+    },
+    "W1NKM4HB5TF563808": {
+      "model": "GLC 300 4MATIC AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "3팀",
+      "salesman": "노진규",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HBXTF568499": {
+      "model": "GLC 300 4MATIC AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "박인수",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-23"
+    },
+    "W1NKJ4HB6TF565446": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "5팀",
+      "salesman": "손윤학",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HBXTF566471": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "파주 SR",
+      "team": "3팀",
+      "salesman": "원완희",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB4TF569365": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "1팀",
+      "salesman": "이충기",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-23"
+    },
+    "W1NKJ4HB9TF564405": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "6팀",
+      "salesman": "손민균",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB7TF564239": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "일산 SR",
+      "team": "1팀",
+      "salesman": "채나은",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HBXTF563473": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "최홍구",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ8HB6TF566068": {
+      "model": "AMG GLC 43 4MATIC Coupé",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "홍진우",
+      "ext": "옵시디안 블랙",
+      "int": "블랙, AMG 가죽",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB0TF558542": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "노동운",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB8TF558160": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "노동운",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB1TF558811": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "한상대",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB6TF562885": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "장호용",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB1TF560820": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "1팀",
+      "salesman": "김기백",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB8TF558336": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김대일",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HBXTF562825": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "3팀",
+      "salesman": "정혜선",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB3TF555456": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "이진형 B",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-28"
+    },
+    "W1NKJ4HB8TF558966": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "손신익",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB3TF564450": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "5팀",
+      "salesman": "윤세훈",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB8TF557378": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "5팀",
+      "salesman": "신지환",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB1TF556816": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "김나영",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB7TF559087": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김대일",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB5TF556463": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "우성균",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB1TF557173": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "노동운",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB1TF560672": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "손신익",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB9TF559253": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "노동운",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB6TF560070": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "1팀",
+      "salesman": "김기백",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HBXTF561609": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "김민지",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB7TF556898": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "김나영",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HBXTF563537": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "일산 SR",
+      "team": "7팀",
+      "salesman": "이상훈 C",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB8TF564315": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "7팀",
+      "salesman": "문수현",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB1TF562714": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "김태형 A",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB3TF563928": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "파주 SR",
+      "team": "1팀",
+      "salesman": "임순근",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HBXTF563957": {
+      "model": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "branch": "의정부 SR",
+      "team": "5팀",
+      "salesman": "엄태인",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKJ4HB0TF561506": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "한상대",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1K6F6BBXTA372119": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "고양 SR",
+      "team": "4팀",
+      "salesman": "한호만",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1NKM4HB4TF564738": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "1팀",
+      "salesman": "한인용",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HB3TF573057": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "권용주",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-23"
+    },
+    "W1NKM4HB3TF566044": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "6팀",
+      "salesman": "주건영",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-22"
+    },
+    "W1NKM4HBXTF566140": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "6팀",
+      "salesman": "주건영",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-28"
+    },
+    "W1NKM4HB6TF568533": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "파주 SR",
+      "team": "2팀",
+      "salesman": "최윤서",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-23"
+    },
+    "W1NKM4HB8TF568467": {
+      "model": "GLC 300 4MATIC AMG Line",
+      "branch": "파주 SR",
+      "team": "2팀",
+      "salesman": "최윤서",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-04-23"
+    },
+    "W1NKJ4HB7TF589870": {
+      "model": "GLC 300 4MATIC Coupé AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "노동운",
+      "ext": "MANUFAKTUR 알파인 그레이 솔리드",
+      "int": "아티코 투톤 인조 가죽, 시에나 브라운/블랙",
+      "pdd": "2026-06-05"
+    },
+    "W1KLF5AB8TA267433": {
+      "model": "E 200 AVANTGARDE",
+      "branch": "고양 SR",
+      "team": "7팀",
+      "salesman": "이경환",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 가죽, 통카 브라운/블랙",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF4HB7TA268377": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "유호영",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB8TA268520": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김지훈 A",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB4TA265419": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김지훈 A",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB7TA269089": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김지훈 A",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HBXTA269362": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "6팀",
+      "salesman": "김찬우",
+      "ext": "폴라 화이트",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB4TA266778": {
+      "model": "E 300 4MATIC EXCLUSIVE",
+      "branch": "파주 SR",
+      "team": "2팀",
+      "salesman": "이정재",
+      "ext": "폴라 화이트",
+      "int": "가죽, 마키아토 베이지",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF4HB8TA269005": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "노동운",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB3TA265685": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "최다승",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB2TA268335": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "백상현",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HBXTA268101": {
+      "model": "E 300 4MATIC EXCLUSIVE",
+      "branch": "고양 SR",
+      "team": "7팀",
+      "salesman": "김용주",
+      "ext": "폴라 화이트",
+      "int": "가죽, 마키아토 베이지",
+      "pdd": "2026-04-16"
+    },
+    "W1KLF4HB6TA268421": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "손신익",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB2TA269307": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "의정부 SR",
+      "team": "4팀",
+      "salesman": "이지훈",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB8TA268226": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "권용주",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB8TA268503": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "권용주",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB5TA268863": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "우성균",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB0TA268477": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "5팀",
+      "salesman": "윤세훈",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB4TA270085": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "이진형 B",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB0TA269757": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김지훈 A",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB1TA269816": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "고양 SR",
+      "team": "5팀",
+      "salesman": "김지훈 A",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB3TA268229": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "의정부 SR",
+      "team": "4팀",
+      "salesman": "이지훈",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-29"
+    },
+    "W1KLF4HB2TA268433": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "5팀",
+      "salesman": "윤세훈",
+      "ext": "MANUFAKTUR 알파인 그레이",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1NFB0KB9TB613058": {
+      "model": "GLE 300 d 4MATIC",
+      "branch": "고양 SR",
+      "team": "2팀",
+      "salesman": "조성빈",
+      "ext": "폴라 화이트",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB4FB9TB620691": {
+      "model": "GLE 350 4MATIC",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "양승만",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 인조 가죽, 마키아토 베이지/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB4FB5TB620705": {
+      "model": "GLE 350 4MATIC",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "백상현",
+      "ext": "셀레나이트 그레이",
+      "int": "아티코 인조 가죽, 바히아 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFB4FB4TB620775": {
+      "model": "GLE 350 4MATIC",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "김영성",
+      "ext": "옵시디안 블랙",
+      "int": "아티코 인조 가죽, 바히아 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1KLF4HB4TA269812": {
+      "model": "E 300 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "권용주",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 통카 브라운",
+      "pdd": "2026-04-29"
+    },
+    "W1NFF3DE6TB613063": {
+      "model": "GLS 450 d 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "양승만",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF3DE0TB619988": {
+      "model": "GLS 450 d 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "8팀",
+      "salesman": "김나영",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 바히아 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF3DE9TB619990": {
+      "model": "GLS 450 d 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "백상현",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 바히아 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF3DE4TB613126": {
+      "model": "GLS 450 d 4MATIC AMG Line",
+      "branch": "의정부 SR",
+      "team": "3팀",
+      "salesman": "박지은",
+      "ext": "폴라 화이트",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF5KE9TB613170": {
+      "model": "GLS 450 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "이진형 B",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF5KE0TB620038": {
+      "model": "GLS 450 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "5팀",
+      "salesman": "윤세훈",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF5KE8TB620045": {
+      "model": "GLS 450 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "4팀",
+      "salesman": "박진우",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF5KE8TB620093": {
+      "model": "GLS 450 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "유대현",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF5KE8TB620109": {
+      "model": "GLS 450 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "3팀",
+      "salesman": "김태형 B",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1NFF5KE6TB620125": {
+      "model": "GLS 450 4MATIC AMG Line",
+      "branch": "일산 SR",
+      "team": "2팀",
+      "salesman": "이진형 B",
+      "ext": "옵시디안 블랙",
+      "int": "가죽, 바히아 브라운/블랙",
+      "pdd": "2026-04-13"
+    },
+    "W1K6F6BB6TA373848": {
+      "model": "S 450 4MATIC Sedan",
+      "branch": "의정부 SR",
+      "team": "5팀",
+      "salesman": "이상훈 A",
+      "ext": "옵시디안 블랙",
+      "int": "나파 가죽, 블랙",
+      "pdd": "2026-04-29"
+    },
+    "W1KMK6CB9TF113898": {
+      "model": "AMG CLE 53 4MATIC+ Cabriolet",
+      "branch": "의정부 SR",
+      "team": "1팀",
+      "salesman": "이성용",
+      "ext": "옵시디안 블랙",
+      "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+      "pdd": "2026-04-14"
+    },
+    "W1KMK6CB2TF114357": {
+      "model": "AMG CLE 53 4MATIC+ Cabriolet",
+      "branch": "일산 SR",
+      "team": "6팀",
+      "salesman": "김영성",
+      "ext": "MANUFAKTUR 오팔라이트 화이트",
+      "int": "AMG 나파 가죽, 투톤 파워 레드/ 블랙",
+      "pdd": "2026-04-13"
+    }
+  }
+}
