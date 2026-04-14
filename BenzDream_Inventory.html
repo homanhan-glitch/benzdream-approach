@@ -61,11 +61,33 @@ tr:last-child td{border-bottom:none}
 .pill.orange{background:rgba(245,158,11,.15);color:#FBBF24}
 .pill.gray{background:rgba(100,116,139,.15);color:#94A3B8}
 
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.cat-card{background:#141C2E;border:1px solid #1E293B;border-radius:12px;padding:14px}
-.cat-card h4{font-size:13px;color:#CBD5E1;margin-bottom:8px;font-weight:700}
-.cat-card .row{display:flex;justify-content:space-between;font-size:11px;color:#64748B;padding:3px 0}
-.cat-card .row b{font-family:'Outfit',sans-serif;color:#CBD5E1}
+.cat-list{background:#141C2E;border:1px solid #1E293B;border-radius:14px;overflow:hidden}
+.cat-row{border-bottom:1px solid #1E293B}
+.cat-row:last-child{border-bottom:none}
+.cat-row-head{display:grid;grid-template-columns:24px 1.4fr .9fr .9fr .9fr .7fr;gap:8px;align-items:center;padding:14px 18px;cursor:pointer;user-select:none;transition:background .15s}
+.cat-row-head:hover{background:#1A2337}
+.cat-row.open .cat-row-head{background:#1A2337}
+.cat-row-head .arr{color:#64748B;font-size:12px;transition:transform .2s}
+.cat-row.open .arr{transform:rotate(90deg);color:#60A5FA}
+.cat-row-head .nm{font-size:14px;font-weight:700;color:#F8FAFC}
+.cat-row-head .v{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;text-align:right}
+.cat-row-head .v.blue{color:#60A5FA}
+.cat-row-head .v.purple{color:#A78BFA}
+.cat-row-head .v.orange{color:#FBBF24}
+.cat-row-head .v.gray{color:#CBD5E1}
+.cat-row-head .lbl{display:block;font-size:10px;color:#64748B;font-weight:500;font-family:'Pretendard';text-transform:uppercase;margin-bottom:2px}
+.cat-row-body{display:none;padding:4px 18px 16px;background:#0F1729;border-top:1px solid #1E293B}
+.cat-row.open .cat-row-body{display:block}
+.cat-row-body table{font-size:12px}
+.cat-row-body th{text-transform:none;font-size:10px;padding:8px 6px}
+.cat-row-body td{padding:8px 6px;font-size:12px}
+.cat-row-body td.mdl{color:#E2E8F0;font-weight:500}
+.date-tabs{display:flex;gap:6px;overflow-x:auto;margin:10px 0 4px;scrollbar-width:none}
+.date-tabs::-webkit-scrollbar{display:none}
+.date-tab{flex-shrink:0;padding:8px 14px;background:#141C2E;border:1px solid #1E293B;border-radius:10px;color:#94A3B8;font-size:12px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;white-space:nowrap;transition:all .15s}
+.date-tab:hover{border-color:#334155;color:#CBD5E1}
+.date-tab.active{background:#0066B2;border-color:#0066B2;color:#fff}
+.date-tab .d{font-size:10px;opacity:.7;margin-left:6px}
 
 .chart-card{background:#141C2E;border:1px solid #1E293B;border-radius:14px;padding:18px;margin-bottom:14px}
 .chart-card h3{font-size:13px;color:#94A3B8;font-weight:600;margin-bottom:12px}
@@ -83,6 +105,7 @@ input.filter:focus{border-color:#0066B2}
   <header>
     <h1>영업 분석 대시보드<span class="sub">BenzDream Internal</span></h1>
     <div class="meta">기준일 <b id="metaCurr">—</b> · 전일 <b id="metaPrev">—</b> · <span id="metaGen"></span></div>
+    <div class="date-tabs" id="dateTabs"></div>
   </header>
 
   <div id="loading" class="loading">데이터 로드 중...</div>
@@ -145,8 +168,8 @@ input.filter:focus{border-color:#0066B2}
         이 페이지는 전국 시장 트렌드(타사+모터원 합산)와 모터원 개별 영업 활동을 <b>분리</b>해서 보여줍니다.
         두 지표는 다른 의미이므로 섞어서 해석하면 안 됩니다.
       </div>
-      <div class="section-title">카테고리별 오늘 계약 현황 (전국 기준)</div>
-      <div class="cat-grid" id="catGrid"></div>
+      <div class="section-title">카테고리별 오늘 계약 현황 (전국 기준) — 클릭하면 트림별 펼쳐짐</div>
+      <div class="cat-list" id="catList"></div>
     </div>
 
     <!-- National Trend -->
@@ -244,22 +267,48 @@ input.filter:focus{border-color:#0066B2}
 
 <script>
 const CAT_ORDER = ['Maybach','S클래스','G클래스','E클래스','CLE','C클래스','CLA','A클래스','GLS','GLE','GLC','GLA·GLB','전동화 EQ','AMG GT·SL','기타'];
-let HIST=null, CURR=null, PREV=null;
+let HIST=null, CURR=null, PREV=null, currIdx=-1;
 
 async function boot(){
   try{
     const r = await fetch('inventory_history.json?v='+Date.now());
     HIST = await r.json();
     if(!HIST.snapshots || !HIST.snapshots.length) throw new Error('empty');
-    CURR = HIST.snapshots[HIST.snapshots.length-1];
-    PREV = HIST.snapshots.length>1 ? HIST.snapshots[HIST.snapshots.length-2] : null;
+    currIdx = HIST.snapshots.length-1;
+    setDate(currIdx);
     document.getElementById('loading').style.display='none';
     document.getElementById('main').style.display='block';
+    renderDateTabs();
     render();
   }catch(e){
     document.getElementById('loading').textContent='데이터를 불러오지 못했습니다: '+e.message;
     console.error(e);
   }
+}
+
+function setDate(idx){
+  currIdx = idx;
+  CURR = HIST.snapshots[idx];
+  PREV = idx>0 ? HIST.snapshots[idx-1] : null;
+  chartsInit = false;
+}
+
+function renderDateTabs(){
+  const el = document.getElementById('dateTabs');
+  el.innerHTML = HIST.snapshots.map((s,i)=>{
+    const [y,m,d] = s.date.split('-');
+    const active = i===currIdx?' active':'';
+    const label = i===0?'기준':(s.national_contract!==null?`계약 ${s.national_contract}`:'—');
+    return `<button class="date-tab${active}" data-idx="${i}">${m}/${d}<span class="d">${label}</span></button>`;
+  }).join('');
+  el.querySelectorAll('.date-tab').forEach(b=>{
+    b.onclick = ()=>{
+      setDate(parseInt(b.dataset.idx));
+      renderDateTabs();
+      render();
+      if(document.querySelector('.tab.active').dataset.pane==='trend') setTimeout(buildCharts,50);
+    };
+  });
 }
 
 function fmt(n){return (n===null||n===undefined||n!==n)?'—':n.toLocaleString()}
@@ -302,36 +351,79 @@ function render(){
 
 // ---------- Summary ----------
 function renderSummary(){
+  const contracts = CURR.model_contracts || {};
+  const motorone = CURR.model_motorone || {};
   const byCat = {};
   Object.entries(CURR.models).forEach(([mn,d])=>{
-    if(!byCat[d.cat]) byCat[d.cat]={sellable:0,assigned:0,contract:0,motorone:0};
+    if(!byCat[d.cat]) byCat[d.cat]={sellable:0,assigned:0,contract:0,motorone:0,trims:[]};
     byCat[d.cat].sellable += d.sellable;
     byCat[d.cat].assigned += d.assigned;
+    byCat[d.cat].trims.push({mn, sellable:d.sellable, assigned:d.assigned, contract:contracts[mn]||0, motorone:motorone[mn]||0});
   });
-  Object.entries(CURR.model_contracts||{}).forEach(([mn,v])=>{
-    const cat = (CURR.models[mn]||{cat:'기타'}).cat;
-    if(!byCat[cat]) byCat[cat]={sellable:0,assigned:0,contract:0,motorone:0};
-    byCat[cat].contract += v;
+  // Contracted models not in current sellable (already sold out) — add as ghost trims
+  Object.entries(contracts).forEach(([mn,v])=>{
+    if(!CURR.models[mn]){
+      const cat = '기타';
+      if(!byCat[cat]) byCat[cat]={sellable:0,assigned:0,contract:0,motorone:0,trims:[]};
+      byCat[cat].trims.push({mn, sellable:0, assigned:0, contract:v, motorone:motorone[mn]||0});
+    }
   });
-  Object.entries(CURR.model_motorone||{}).forEach(([mn,v])=>{
+  Object.entries(contracts).forEach(([mn,v])=>{
     const cat = (CURR.models[mn]||{cat:'기타'}).cat;
-    if(!byCat[cat]) byCat[cat]={sellable:0,assigned:0,contract:0,motorone:0};
-    byCat[cat].motorone += v;
+    if(byCat[cat]) byCat[cat].contract += v;
+  });
+  Object.entries(motorone).forEach(([mn,v])=>{
+    const cat = (CURR.models[mn]||{cat:'기타'}).cat;
+    if(byCat[cat]) byCat[cat].motorone += v;
   });
   const cats = CAT_ORDER.filter(c=>byCat[c]);
   Object.keys(byCat).forEach(c=>{if(!cats.includes(c))cats.push(c)});
-  const grid = document.getElementById('catGrid');
-  grid.innerHTML = cats.map(c=>{
+  const list = document.getElementById('catList');
+  list.innerHTML = `<div class="cat-row-head" style="cursor:default;color:#64748B;font-size:10px;text-transform:uppercase;font-family:'Outfit'">
+    <span></span><span>카테고리</span>
+    <span style="text-align:right">판매가능</span>
+    <span style="text-align:right">전국 계약</span>
+    <span style="text-align:right">모터원 계약</span>
+    <span style="text-align:right">계약률</span>
+  </div>` + cats.map(c=>{
     const d = byCat[c];
-    const rate = d.sellable>0 ? (d.contract/d.sellable*100).toFixed(1) : '—';
-    return `<div class="cat-card">
-      <h4>${c}</h4>
-      <div class="row"><span>판매가능</span><b>${d.sellable}</b></div>
-      <div class="row"><span>전국 계약</span><b>${d.contract}</b></div>
-      <div class="row"><span>모터원 계약</span><b>${d.motorone}</b></div>
-      <div class="row"><span>계약률</span><b>${rate}%</b></div>
+    const rate = d.sellable>0 ? (d.contract/d.sellable*100).toFixed(1)+'%' : '—';
+    const trims = d.trims.slice().sort((a,b)=>{
+      if(b.contract !== a.contract) return b.contract-a.contract;
+      return b.sellable-a.sellable;
+    });
+    const trimRows = trims.map(t=>{
+      const r = t.sellable>0 ? (t.contract/t.sellable*100).toFixed(1)+'%' : (t.contract>0?'SOLD':'—');
+      return `<tr>
+        <td class="mdl">${t.mn}</td>
+        <td class="num-cell">${t.sellable}</td>
+        <td class="num-cell ${t.contract>=3?'hot':t.contract>0?'hot2':''}">${t.contract}</td>
+        <td class="num-cell">${t.motorone}</td>
+        <td class="num-cell">${t.assigned}</td>
+        <td class="num-cell">${r}</td></tr>`;
+    }).join('');
+    return `<div class="cat-row" data-cat="${c}">
+      <div class="cat-row-head">
+        <span class="arr">▶</span>
+        <span class="nm">${c} <span class="pill gray" style="margin-left:6px">${trims.length}</span></span>
+        <span class="v blue">${d.sellable}</span>
+        <span class="v purple">${d.contract}</span>
+        <span class="v orange">${d.motorone}</span>
+        <span class="v gray">${rate}</span>
+      </div>
+      <div class="cat-row-body">
+        <table>
+          <thead><tr><th>모델</th><th style="text-align:right">판매가능</th><th style="text-align:right">전국 계약</th><th style="text-align:right">모터원</th><th style="text-align:right">배정재고</th><th style="text-align:right">계약률</th></tr></thead>
+          <tbody>${trimRows}</tbody>
+        </table>
+      </div>
     </div>`;
   }).join('');
+  list.querySelectorAll('.cat-row-head').forEach(h=>{
+    if(h.parentElement && h.parentElement.classList.contains('cat-row')){
+      h.onclick = ()=> h.parentElement.classList.toggle('open');
+    }
+  });
 }
 
 // ---------- National ----------
