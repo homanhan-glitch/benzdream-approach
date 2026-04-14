@@ -84,6 +84,68 @@ def normalize_model(raw):
     return s_collapsed
 
 # -----------------------
+# MB DataCard color code → Korean name
+# 위탁재고/전시차재고 시트는 공장 DataCard 코드를 그대로 내려주므로 매핑 필요
+# -----------------------
+EXT_CODE_MAP = {
+    "040": "나이트 블랙",
+    "149": "폴라 화이트",
+    "183": "마그네타이트 블랙",
+    "191": "나이트 블랙",
+    "197": "옵시디안 블랙",
+    "297": "MANUFAKTUR 가넷 레드 메탈릭",
+    "662": "MANUFAKTUR 그라파이트 그레이 마그노",
+    "696": "마운틴 그레이",
+    "787": "마운틴 그레이 메탈릭",
+    "799": "다이아몬드 화이트",
+    "817": "하이테크 실버",
+    "885": "MANUFAKTUR 하이퍼 블루 마그노",
+    "890": "카바나이트 블루",
+    "922": "MANUFAKTUR 오팔라이트 화이트 마그노",
+    "956": "MANUFAKTUR 알파인 그레이 솔리드",
+    "970": "스펙트럴 블루",
+    "992": "셀레나이트 그레이",
+}
+INT_CODE_MAP = {
+    "101": "블랙",
+    "104": "마키아토 베이지/블랙",
+    "105": "블랙/블랙",
+    "114": "블랙",
+    "118": "시에나 브라운/블랙",
+    "121": "블랙",
+    "124": "트러플 브라운/블랙",
+    "135": "마키아토 베이지/블랙",
+    "194": "네바 그레이/블랙",
+    "201": "블랙",
+    "204": "파워 레드/블랙",
+    "205": "마키아토 베이지/블랙",
+    "207": "시에나 브라운/블랙",
+    "214": "네바 그레이/블랙",
+    "215": "네바 그레이/발바오 브라운",
+    "221": "마키아토 베이지/마그마 그레이",
+    "251": "블랙",
+    "511": "마이바흐 익스클루시브 나파 가죽, 블랙",
+    "514": "마이바흐 익스클루시브 나파 가죽, 시에나 브라운/블랙",
+    "515": "마이바흐 익스클루시브 나파 가죽, 마키아토 베이지/마그마 그레이",
+    "651": "아티코 인조 가죽/다이나미카 블랙",
+    "654": "아티코 인조 가죽/다이나미카 블랙",
+    "671": "AMG 블랙/레드",
+    "804": "나파 가죽, 블랙",
+    "805": "나파 가죽, 시에나 브라운/블랙",
+    "851": "AMG 나파 가죽, 블랙",
+    "855": "AMG 나파 가죽, 시에나 브라운/블랙",
+    "887": "AMG 나파 가죽, 레드 페퍼/블랙",
+    "951": "크리스탈 화이트",
+}
+def resolve_color(raw, code_map):
+    if raw is None: return None
+    s = str(raw).strip()
+    if not s: return None
+    if s.isdigit():
+        return code_map.get(s, f"코드 {s}")
+    return s
+
+# -----------------------
 # Category mapping from 4/14 클래스구분 sheet if possible, else fallback
 # -----------------------
 CAT_OVERRIDES = {
@@ -166,8 +228,8 @@ def build_snapshot(xlsx_path, date_str):
         if not canon:
             continue
         vin = r[c_vin] if c_vin is not None else None
-        ext = r[c_ext] if c_ext is not None else None
-        intc = r[c_int] if c_int is not None else None
+        ext = resolve_color(r[c_ext] if c_ext is not None else None, EXT_CODE_MAP)
+        intc = resolve_color(r[c_int] if c_int is not None else None, INT_CODE_MAP)
 
         m = ensure_model(canon)
 
@@ -221,7 +283,9 @@ def build_snapshot(xlsx_path, date_str):
             if vin:
                 sellable_vins.add(vin)
                 vin_model[vin] = canon
-            key = f"{r[cc] if cc is not None else '-'}|{r[cu] if cu is not None else '-'}"
+            ext2 = resolve_color(r[cc] if cc is not None else None, EXT_CODE_MAP) or '-'
+            int2 = resolve_color(r[cu] if cu is not None else None, INT_CODE_MAP) or '-'
+            key = f"{ext2}|{int2}"
             m["colors"][key] += 1
 
     # Finalize
