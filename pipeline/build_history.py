@@ -94,12 +94,14 @@ def build():
             # Motorone delivered = prev assigned, gone entirely
             entry['motorone_delivered'] = len(prev_assigned - all_today)
 
-            # New sellable = in current sellable, not in prev's combined set (truly new VIN)
+            # fresh_vins = VINs in curr.sellable that weren't in prev snapshot at all
+            # (excludes motorone_cancel since those were in prev.assigned).
+            # Split into: returned (seen before, had disappeared) vs new_in (never seen).
             fresh_vins = sellable - prev_all
-            # National cancel = in current sellable, was previously disappeared (but not new)
-            returned = (sellable - prev_sellable) & cumulative_disappeared - fresh_vins
+            returned = fresh_vins & cumulative_disappeared
+            new_in = fresh_vins - cumulative_seen
             entry['national_cancel'] = len(returned)
-            entry['new_in'] = len(fresh_vins - cumulative_seen)  # truly never seen
+            entry['new_in'] = len(new_in)
 
             # Per-model contracts (national + motorone breakdown)
             prev_vin_to_model = prev.get('vin_model', {})

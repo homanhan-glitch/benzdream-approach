@@ -1,7 +1,8 @@
 {
-  "generated_at": "2026-04-14T22:19:07",
+  "generated_at": "2026-04-14T22:30:27",
   "dates": [
     "2026-04-10",
+    "2026-04-13",
     "2026-04-14"
   ],
   "snapshots": [
@@ -316,86 +317,449 @@
       }
     },
     {
+      "date": "2026-04-13",
+      "sellable_total": 3581,
+      "assigned_total": 198,
+      "national_contract": 230,
+      "national_cancel": 0,
+      "motorone_contract": 17,
+      "motorone_cancel": 7,
+      "motorone_delivered": 9,
+      "new_in": 181,
+      "model_contracts": {
+        "EQB 300 4MATIC Progressive": 2,
+        "E 300 4MATIC AMG Line": 7,
+        "S 450 4MATIC Sedan": 10,
+        "E 200 AVANTGARDE": 26,
+        "EQB 300 4MATIC AMG Line": 1,
+        "GLC 300 4MATIC AMG Line": 20,
+        "GLE 450 4MATIC": 20,
+        "AMG GLB 35 4MATIC": 2,
+        "C 200 AMG Line": 2,
+        "E 200 AMG Line": 15,
+        "E 300 4MATIC EXCLUSIVE": 16,
+        "C 200 AVANTGARDE": 7,
+        "EQE 500 4MATIC SUV": 1,
+        "GLC 220 d 4MATIC": 6,
+        "A 220": 3,
+        "GLB 250 4MATIC": 3,
+        "GLC 300 4MATIC AVANTGARDE": 19,
+        "GLC 300 4MATIC Coupé AVANTGARDE": 9,
+        "S 350 d 4MATIC": 6,
+        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 6,
+        "CLE 200 Coupé": 6,
+        "CLE 200 Cabriolet": 12,
+        "GLE 350 4MATIC": 1,
+        "E 450 4MATIC EXCLUSIVE": 4,
+        "CLA 250 4MATIC AMG Line Coupé": 2,
+        "EQE 350+ SUV": 1,
+        "S 580 4MATIC Sedan long": 2,
+        "E 220 d 4MATIC EXCLUSIVE": 2,
+        "AMG CLE 53 4MATIC+ Cabriolet": 6,
+        "S 500 4MATIC Sedan long": 3,
+        "AMG SL 43": 2,
+        "GLE 450 4MATIC Coupé AMG Line": 1,
+        "GLE 300 d 4MATIC": 1,
+        "CLE 450 4MATIC Cabriolet": 1,
+        "AMG GLC 43 4MATIC": 1,
+        "GLA 250 4MATIC AMG Line": 1,
+        "AMG GLC 43 4MATIC Coupé": 1,
+        "Maybach S 580 4MATIC": 1,
+        "Maybach S 680 4MATIC": 1
+      },
+      "model_motorone": {
+        "E 200 AMG Line": 3,
+        "GLC 300 4MATIC AMG Line": 2,
+        "GLE 450 4MATIC": 1,
+        "C 200 AVANTGARDE": 2,
+        "CLE 200 Cabriolet": 1,
+        "EQE 350+ SUV": 1,
+        "E 300 4MATIC AMG Line": 1,
+        "S 500 4MATIC Sedan long": 1,
+        "GLC 300 4MATIC Coupé AVANTGARDE": 1,
+        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 1,
+        "GLC 300 4MATIC AVANTGARDE": 1,
+        "S 350 d 4MATIC": 1,
+        "E 300 4MATIC EXCLUSIVE": 1
+      },
+      "models": {
+        "A 220": {
+          "cat": "A클래스",
+          "sellable": 27,
+          "assigned": 1
+        },
+        "GLE 450 4MATIC Coupé": {
+          "cat": "GLE",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "EQE 500 4MATIC SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 25,
+          "assigned": 1
+        },
+        "AMG GT 43 4MATIC+": {
+          "cat": "AMG GT·SL",
+          "sellable": 28,
+          "assigned": 2
+        },
+        "AMG GT 63 S E PERFORMANCE": {
+          "cat": "AMG GT·SL",
+          "sellable": 0,
+          "assigned": 1
+        },
+        "EQE 350+": {
+          "cat": "전동화 EQ",
+          "sellable": 25,
+          "assigned": 0
+        },
+        "E 450 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 171,
+          "assigned": 1
+        },
+        "Maybach S 680 4MATIC": {
+          "cat": "Maybach",
+          "sellable": 11,
+          "assigned": 0
+        },
+        "EQE 350+ SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 76,
+          "assigned": 1
+        },
+        "GLE 450 4MATIC": {
+          "cat": "GLE",
+          "sellable": 40,
+          "assigned": 1
+        },
+        "GLE 450 4MATIC Coupé AMG Line": {
+          "cat": "GLE",
+          "sellable": 113,
+          "assigned": 0
+        },
+        "CLE 450 4MATIC Coupé": {
+          "cat": "CLE",
+          "sellable": 23,
+          "assigned": 0
+        },
+        "S 500 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 3,
+          "assigned": 1
+        },
+        "AMG CLE 53 4MATIC+ Cabriolet": {
+          "cat": "C클래스",
+          "sellable": 14,
+          "assigned": 4
+        },
+        "AMG CLE 53 4MATIC+ Coupé": {
+          "cat": "C클래스",
+          "sellable": 2,
+          "assigned": 2
+        },
+        "Maybach GLS 600": {
+          "cat": "Maybach",
+          "sellable": 0,
+          "assigned": 1
+        },
+        "CLA 250 4MATIC AMG Line Coupé": {
+          "cat": "CLA",
+          "sellable": 35,
+          "assigned": 0
+        },
+        "GLB 250 4MATIC": {
+          "cat": "GLA·GLB",
+          "sellable": 249,
+          "assigned": 1
+        },
+        "EQS 450 4MATIC SUV": {
+          "cat": "전동화 EQ",
+          "sellable": 29,
+          "assigned": 0
+        },
+        "GLE 450 d 4MATIC Coupé AMG Line": {
+          "cat": "GLE",
+          "sellable": 2,
+          "assigned": 0
+        },
+        "AMG E 53 Hybrid 4MATIC+": {
+          "cat": "E클래스",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "Maybach S 580 4MATIC": {
+          "cat": "Maybach",
+          "sellable": 21,
+          "assigned": 0
+        },
+        "AMG A 45 S 4MATIC+": {
+          "cat": "A클래스",
+          "sellable": 13,
+          "assigned": 0
+        },
+        "S 450 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 3,
+          "assigned": 1
+        },
+        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": {
+          "cat": "E클래스",
+          "sellable": 252,
+          "assigned": 3
+        },
+        "E 200 AVANTGARDE": {
+          "cat": "E클래스",
+          "sellable": 87,
+          "assigned": 4
+        },
+        "S 580 4MATIC Sedan long": {
+          "cat": "S클래스",
+          "sellable": 2,
+          "assigned": 0
+        },
+        "GLA 250 4MATIC AMG Line": {
+          "cat": "GLA·GLB",
+          "sellable": 41,
+          "assigned": 5
+        },
+        "EQB 300 4MATIC AMG Line": {
+          "cat": "전동화 EQ",
+          "sellable": 72,
+          "assigned": 0
+        },
+        "EQB 300 4MATIC Progressive": {
+          "cat": "전동화 EQ",
+          "sellable": 189,
+          "assigned": 0
+        },
+        "GLE 450 4MATIC AMG Line": {
+          "cat": "GLE",
+          "sellable": 1,
+          "assigned": 8
+        },
+        "GLE 350 4MATIC": {
+          "cat": "GLE",
+          "sellable": 22,
+          "assigned": 3
+        },
+        "C 200 AVANTGARDE": {
+          "cat": "C클래스",
+          "sellable": 64,
+          "assigned": 5
+        },
+        "AMG CLA 45 S 4MATIC+ Final Edition Coupé": {
+          "cat": "CLA",
+          "sellable": 5,
+          "assigned": 2
+        },
+        "AMG S 63 E Performance": {
+          "cat": "S클래스",
+          "sellable": 2,
+          "assigned": 0
+        },
+        "EQA 250 AMG Line": {
+          "cat": "전동화 EQ",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "Maybach SL 680 Monogram Series": {
+          "cat": "Maybach",
+          "sellable": 3,
+          "assigned": 0
+        },
+        "AMG GLB 35 4MATIC": {
+          "cat": "GLA·GLB",
+          "sellable": 54,
+          "assigned": 0
+        },
+        "C 200 AMG Line": {
+          "cat": "C클래스",
+          "sellable": 63,
+          "assigned": 0
+        },
+        "AMG GLC 43 4MATIC": {
+          "cat": "GLC",
+          "sellable": 28,
+          "assigned": 1
+        },
+        "CLE 200 Coupé": {
+          "cat": "CLE",
+          "sellable": 136,
+          "assigned": 1
+        },
+        "CLE 200 Cabriolet": {
+          "cat": "CLE",
+          "sellable": 198,
+          "assigned": 5
+        },
+        "E 220 d 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 102,
+          "assigned": 1
+        },
+        "E 300 4MATIC EXCLUSIVE": {
+          "cat": "E클래스",
+          "sellable": 235,
+          "assigned": 4
+        },
+        "E 300 4MATIC AMG Line": {
+          "cat": "E클래스",
+          "sellable": 124,
+          "assigned": 35
+        },
+        "E 200 AMG Line": {
+          "cat": "E클래스",
+          "sellable": 585,
+          "assigned": 7
+        },
+        "EQA 250 Progressive": {
+          "cat": "전동화 EQ",
+          "sellable": 1,
+          "assigned": 0
+        },
+        "GLC 220 d 4MATIC": {
+          "cat": "GLC",
+          "sellable": 102,
+          "assigned": 0
+        },
+        "GLC 300 4MATIC AVANTGARDE": {
+          "cat": "GLC",
+          "sellable": 83,
+          "assigned": 7
+        },
+        "CLE 450 4MATIC Cabriolet": {
+          "cat": "CLE",
+          "sellable": 20,
+          "assigned": 1
+        },
+        "AMG SL 43": {
+          "cat": "S클래스",
+          "sellable": 4,
+          "assigned": 0
+        },
+        "GLE 300 d 4MATIC": {
+          "cat": "GLE",
+          "sellable": 21,
+          "assigned": 6
+        },
+        "AMG GLE 53 4MATIC+": {
+          "cat": "GLE",
+          "sellable": 6,
+          "assigned": 3
+        },
+        "S 350 d 4MATIC": {
+          "cat": "S클래스",
+          "sellable": 7,
+          "assigned": 4
+        },
+        "S 450 4MATIC Sedan": {
+          "cat": "S클래스",
+          "sellable": 19,
+          "assigned": 10
+        },
+        "GLC 300 4MATIC AMG Line": {
+          "cat": "GLC",
+          "sellable": 62,
+          "assigned": 17
+        },
+        "GLC 300 4MATIC Coupé AVANTGARDE": {
+          "cat": "GLC",
+          "sellable": 59,
+          "assigned": 9
+        },
+        "AMG GLC 43 4MATIC Coupé": {
+          "cat": "GLC",
+          "sellable": 18,
+          "assigned": 1
+        },
+        "GLC 300 4MATIC Coupé AMG Line": {
+          "cat": "GLC",
+          "sellable": 0,
+          "assigned": 28
+        },
+        "GLS 450 d 4MATIC AMG Line": {
+          "cat": "GLS",
+          "sellable": 0,
+          "assigned": 4
+        },
+        "GLS 450 4MATIC AMG Line": {
+          "cat": "GLS",
+          "sellable": 0,
+          "assigned": 6
+        },
+        "G 450 d": {
+          "cat": "G클래스",
+          "sellable": 1,
+          "assigned": 0
+        }
+      }
+    },
+    {
       "date": "2026-04-14",
       "sellable_total": 3615,
       "assigned_total": 179,
-      "national_contract": 269,
-      "national_cancel": 0,
-      "motorone_contract": 33,
-      "motorone_cancel": 37,
-      "motorone_delivered": 19,
-      "new_in": 224,
+      "national_contract": 107,
+      "national_cancel": 44,
+      "motorone_contract": 21,
+      "motorone_cancel": 38,
+      "motorone_delivered": 11,
+      "new_in": 59,
       "model_contracts": {
-        "E 200 AVANTGARDE": 27,
-        "GLC 300 4MATIC AVANTGARDE": 24,
-        "S 350 d 4MATIC": 5,
-        "CLE 200 Coupé": 6,
-        "GLE 450 4MATIC": 23,
-        "E 300 4MATIC AMG Line": 13,
-        "CLE 200 Cabriolet": 16,
-        "EQA 250 Progressive": 1,
-        "GLC 300 4MATIC Coupé AVANTGARDE": 12,
-        "GLC 300 4MATIC AMG Line": 13,
-        "CLE 450 4MATIC Cabriolet": 2,
-        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 11,
-        "S 450 4MATIC Sedan": 10,
-        "C 200 AVANTGARDE": 5,
-        "Maybach S 580 4MATIC": 1,
-        "E 200 AMG Line": 15,
-        "AMG GLC 43 4MATIC": 1,
-        "A 220": 3,
-        "E 300 4MATIC EXCLUSIVE": 16,
-        "GLE 450 4MATIC Coupé AMG Line": 3,
-        "AMG CLE 53 4MATIC+ Cabriolet": 7,
-        "EQB 300 4MATIC Progressive": 2,
-        "GLA 250 4MATIC AMG Line": 2,
-        "AMG SL 43": 3,
-        "AMG A 45 S 4MATIC+": 1,
-        "E 450 4MATIC EXCLUSIVE": 6,
-        "AMG GLC 43 4MATIC Coupé": 2,
-        "C 200 AMG Line": 5,
-        "E 220 d 4MATIC EXCLUSIVE": 3,
-        "GLB 250 4MATIC": 2,
-        "AMG GLB 35 4MATIC": 2,
-        "GLC 220 d 4MATIC": 8,
-        "S 500 4MATIC Sedan long": 3,
-        "CLE 450 4MATIC Coupé": 1,
-        "CLA 250 4MATIC AMG Line Coupé": 2,
-        "Maybach S 680 4MATIC": 1,
-        "S 580 4MATIC Sedan long": 2,
-        "EQE 500 4MATIC SUV": 1,
-        "GLE 350 4MATIC": 1,
+        "GLC 300 4MATIC AVANTGARDE": 7,
+        "E 300 4MATIC AMG Line": 7,
+        "GLC 220 d 4MATIC": 3,
+        "E 200 AVANTGARDE": 8,
+        "GLE 450 4MATIC": 6,
+        "C 200 AMG Line": 3,
+        "CLE 200 Cabriolet": 8,
+        "GLC 300 4MATIC AMG Line": 8,
         "GLE 300 d 4MATIC": 2,
-        "EQE 350+ SUV": 2,
+        "AMG CLE 53 4MATIC+ Cabriolet": 2,
+        "CLE 200 Coupé": 3,
+        "E 200 AMG Line": 6,
+        "A 220": 2,
+        "E 450 4MATIC EXCLUSIVE": 2,
+        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 5,
+        "GLC 300 4MATIC Coupé AVANTGARDE": 5,
+        "GLA 250 4MATIC AMG Line": 1,
+        "C 200 AVANTGARDE": 1,
+        "AMG GT 43 4MATIC+": 2,
+        "S 350 d 4MATIC": 1,
+        "CLE 450 4MATIC Cabriolet": 1,
+        "AMG A 45 S 4MATIC+": 1,
+        "GLE 450 4MATIC Coupé AMG Line": 2,
+        "S 450 4MATIC Sedan": 2,
+        "E 300 4MATIC EXCLUSIVE": 7,
+        "AMG GLC 43 4MATIC Coupé": 2,
+        "G 450 d": 1,
+        "EQE 350+ SUV": 1,
         "AMG GLE 53 4MATIC+": 1,
-        "EQB 300 4MATIC AMG Line": 1,
-        "AMG GT 43 4MATIC+": 2
+        "CLE 450 4MATIC Coupé": 1,
+        "EQA 250 Progressive": 1,
+        "S 500 4MATIC Sedan long": 1,
+        "E 220 d 4MATIC EXCLUSIVE": 1,
+        "EQB 300 4MATIC Progressive": 2,
+        "AMG SL 43": 1
       },
       "model_motorone": {
-        "E 200 AVANTGARDE": 2,
-        "GLE 450 4MATIC": 2,
-        "E 300 4MATIC EXCLUSIVE": 1,
-        "S 350 d 4MATIC": 1,
-        "EQA 250 Progressive": 1,
-        "GLE 300 d 4MATIC": 1,
-        "GLC 300 4MATIC Coupé AVANTGARDE": 3,
-        "EQE 350+ SUV": 1,
-        "CLE 200 Coupé": 1,
-        "AMG GT 43 4MATIC+": 1,
-        "E 200 AMG Line": 4,
-        "C 200 AVANTGARDE": 1,
-        "GLC 300 4MATIC AMG Line": 2,
-        "GLC 220 d 4MATIC": 1,
-        "A 220": 1,
-        "E 300 4MATIC AMG Line": 2,
-        "E 350 e 4MATIC EXCLUSIVE with EQ Hybrid Technology": 1,
         "AMG GLE 53 4MATIC+": 1,
-        "GLC 300 4MATIC AVANTGARDE": 1,
+        "GLA 250 4MATIC AMG Line": 1,
+        "GLC 220 d 4MATIC": 1,
+        "EQA 250 Progressive": 1,
+        "E 300 4MATIC EXCLUSIVE": 1,
+        "E 200 AVANTGARDE": 2,
+        "GLC 300 4MATIC AMG Line": 2,
+        "E 200 AMG Line": 1,
+        "GLE 300 d 4MATIC": 1,
+        "E 300 4MATIC AMG Line": 2,
+        "E 450 4MATIC EXCLUSIVE": 1,
+        "AMG GT 43 4MATIC+": 1,
+        "GLC 300 4MATIC Coupé AVANTGARDE": 2,
         "GLE 450 4MATIC Coupé AMG Line": 1,
         "EQB 300 4MATIC Progressive": 1,
-        "GLA 250 4MATIC AMG Line": 1,
-        "CLE 200 Cabriolet": 1,
-        "E 450 4MATIC EXCLUSIVE": 1
+        "A 220": 1,
+        "GLE 450 4MATIC": 1
       },
       "models": {
         "EQA 250 Progressive": {
