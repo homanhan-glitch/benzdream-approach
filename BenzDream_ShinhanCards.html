@@ -21,8 +21,25 @@
 <meta name="twitter:title" content="Mercedes-Benz 신한카드 3종 혜택 비교">
 <meta name="twitter:description" content="연회비 · Annual Gift · 벤츠 스토어 할인 | BenzDream 한호만 팀장">
 <meta name="twitter:image" content="https://www.shinhancard.com/pconts/images/contents/card/plate/cdCreditAL5DY9.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'MBK CorpoA';
+    src: url('fonts/MBKCorpoA.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'MBK CorpoA Cond';
+    src: url('fonts/MBKCorporateACon.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'MBK CorpoS Light';
+    src: url('fonts/MBKCorporateSLight.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+  }
   :root {
     --mb-black: #0a0a0a;
     --mb-ink: #1a1a1a;
@@ -42,7 +59,7 @@
   body {
     background: var(--mb-black);
     color: #f5f5f5;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'MBK CorpoS Light', 'Noto Sans KR', sans-serif;
     font-weight: 300;
     line-height: 1.6;
     padding: 60px 24px;
@@ -85,7 +102,7 @@
     align-items: baseline;
   }
   .annual-fee .fee-label {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 12px;
     color: var(--mb-chrome);
@@ -93,7 +110,7 @@
     text-transform: uppercase;
   }
   .annual-fee .fee-value {
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif;
     font-size: 18px;
     font-weight: 500;
     color: #fafafa;
@@ -101,7 +118,7 @@
   }
   .tier-top .annual-fee .fee-value { color: var(--mb-gold-light); }
   .fee-tbd {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 13px;
     color: var(--mb-chrome);
@@ -118,7 +135,7 @@
     color: #fafafa;
     text-align: center;
     text-decoration: none;
-    font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+    font-family: 'Outfit', 'MBK CorpoS Light', 'Noto Sans KR', sans-serif;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.12em;
@@ -195,7 +212,7 @@
   }
 
   .eyebrow {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 15px;
     color: var(--mb-gold);
@@ -205,7 +222,7 @@
   }
 
   h1 {
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif;
     font-weight: 300;
     font-size: clamp(32px, 4.5vw, 52px);
     letter-spacing: -0.01em;
@@ -293,7 +310,7 @@
 
   .tier-badge {
     display: inline-block;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 13px;
     color: var(--mb-chrome);
@@ -304,7 +321,7 @@
   .tier-top .tier-badge { color: var(--mb-gold); }
 
   .card-name {
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif;
     font-size: 24px;
     font-weight: 500;
     color: #fff;
@@ -312,7 +329,7 @@
     letter-spacing: -0.01em;
   }
   .card-subname {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
     font-size: 14px;
     color: var(--mb-chrome);
     font-style: italic;
@@ -332,7 +349,7 @@
     margin-bottom: 6px;
   }
   .headline-value {
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif;
     font-size: 32px;
     font-weight: 400;
     color: #fafafa;
@@ -361,7 +378,7 @@
   }
   .section-title .eyebrow { margin-bottom: 12px; }
   .section-title h2 {
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif;
     font-weight: 300;
     font-size: 32px;
     color: #fafafa;
@@ -382,7 +399,7 @@
 
   thead th {
     padding: 24px 16px 20px;
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif;
     font-weight: 500;
     font-size: 15px;
     color: #fafafa;
@@ -416,7 +433,7 @@
 
   .category-row td {
     padding: 22px 16px 10px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 13px;
     color: var(--mb-gold) !important;
@@ -456,7 +473,7 @@
   .reco-item { border-left: 1px solid var(--mb-line); padding-left: 24px; }
   .reco-item:first-child { border-left: none; padding-left: 0; }
   .reco-amount {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--mb-gold);
     font-size: 14px;
@@ -464,13 +481,61 @@
     margin-bottom: 8px;
   }
   .reco-card {
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif;
     font-size: 20px;
     color: #fafafa;
     font-weight: 500;
     margin-bottom: 8px;
   }
   .reco-reason { font-size: 12px; color: var(--mb-chrome); line-height: 1.7; }
+
+  /* ---------- INSTALLMENT ---------- */
+  .installment-section {
+    margin-bottom: 72px;
+    padding: 48px;
+    border: 1px solid var(--mb-line);
+    background: linear-gradient(135deg, #141414 0%, #0d0d0d 100%);
+    position: relative;
+  }
+  .installment-section::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    width: 60px; height: 1px;
+    background: var(--mb-gold);
+  }
+  .installment-section .eyebrow {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .rate-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--mb-line-strong);
+  }
+  .rate-item {
+    text-align: center;
+    padding: 24px 16px;
+    border-right: 1px solid var(--mb-line);
+  }
+  .rate-item:last-child { border-right: none; }
+  .rate-months {
+    font-family: 'MBK CorpoA', 'Outfit', sans-serif;
+    font-size: 20px;
+    color: #fafafa;
+    font-weight: 500;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--mb-line);
+  }
+  .rate-value {
+    font-family: 'MBK CorpoA', 'Outfit', sans-serif;
+    font-size: 16px;
+    color: var(--mb-gold-light);
+    font-weight: 500;
+  }
 
   /* ---------- FOOTER ---------- */
   footer {
@@ -484,7 +549,7 @@
     line-height: 1.8;
   }
   footer .brand {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'MBK CorpoA', 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--mb-gold);
     font-size: 14px;
@@ -503,6 +568,9 @@
     .table-wrap { overflow-x: auto; }
     table { min-width: 640px; }
     .recommendation { padding: 32px 24px; }
+    .installment-section { padding: 32px 16px; }
+    .rate-months { font-size: 16px; }
+    .rate-value { font-size: 14px; }
   }
 
   @media print {
@@ -527,6 +595,36 @@
     <div class="eyebrow">Mercedes-Benz × Shinhan Card</div>
     <h1>The Best or <strong>Nothing</strong></h1>
     <div class="subtitle">메르세데스-벤츠 신한카드 3종 혜택 비교 · 2026년 3월 25일 출시</div>
+  </div>
+
+  <!-- INSTALLMENT RATE -->
+  <div class="installment-section">
+    <div class="eyebrow">Installment Plan</div>
+    <h2 style="font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif; font-weight: 300; font-size: 28px; color: #fafafa; margin-top: 8px; text-align:center; margin-bottom: 12px;">할부 금리 안내</h2>
+    <p style="text-align:center; color:var(--mb-chrome); font-size:13px; line-height:1.7; margin-bottom: 32px;">기존 고이자율의 대출상품이 부담된다면 신차 차량 전체 금액을<br>신용카드 승인 후 대출 없이 할부로 구매할 수 있습니다.</p>
+    <div class="rate-grid">
+      <div class="rate-item">
+        <div class="rate-months">12</div>
+        <div class="rate-value">3.7%</div>
+      </div>
+      <div class="rate-item">
+        <div class="rate-months">24</div>
+        <div class="rate-value">3.8%</div>
+      </div>
+      <div class="rate-item">
+        <div class="rate-months">36</div>
+        <div class="rate-value">3.9%</div>
+      </div>
+      <div class="rate-item">
+        <div class="rate-months">48</div>
+        <div class="rate-value">4.0%</div>
+      </div>
+      <div class="rate-item">
+        <div class="rate-months">60</div>
+        <div class="rate-value">4.1%</div>
+      </div>
+    </div>
+    <div style="text-align:right; font-size:10px; color:#555; margin-top:12px; letter-spacing:0.05em;">[할부개월, 연 할부금리]</div>
   </div>
 
   <!-- CARD HEADLINE GRID -->
@@ -791,7 +889,7 @@
   <!-- RECOMMENDATION -->
   <div class="recommendation">
     <div class="eyebrow">Recommendation Guide</div>
-    <h2 style="font-family: 'Noto Serif KR', serif; font-weight: 300; font-size: 28px; color: #fafafa; margin-top: 8px;">연간 카드 사용액 기준 추천</h2>
+    <h2 style="font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif; font-weight: 300; font-size: 28px; color: #fafafa; margin-top: 8px;">연간 카드 사용액 기준 추천</h2>
 
     <div class="reco-grid">
       <div class="reco-item">
