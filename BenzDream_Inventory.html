@@ -114,11 +114,14 @@ input.filter:focus{border-color:#0066B2}
 
     <!-- KPI -->
     <div class="info-box">
-      <b>📖 용어 정의</b>
-      <div>판매 가능 = 전국재고 + 전시차/위탁재고 (Virtual VIN 제외)</div>
-      <div>전국 계약 = 어제 판매가능 → 오늘 사라진 VIN (타사 + 모터원 모두)</div>
-      <div>모터원 계약 = 전국재고 → 모터원 배정재고 전환 (전국 계약의 부분집합)</div>
-      <div class="legend">※ 전국 해약 / 모터원 해약은 과거에 사라졌던 VIN이 다시 돌아온 경우를 추적합니다</div>
+      <b>📖 용어 정의</b> (전일 → 오늘 변화 기준)
+      <div>판매 가능 = 입고물량 중 미배정 VIN (버츄얼빈/예정물량 제외)</div>
+      <div>전국 계약 = 전일 미배정 VIN 중 오늘 변화한 수 (타딜러 + 모터원)</div>
+      <div>├ 타딜러 계약 = 전일 미배정 VIN이 오늘 사라진 수</div>
+      <div>└ 모터원 계약 = 전일 미배정 → 오늘 우리 4딜러 배정</div>
+      <div>가계약 진전 = 전일 우리 가계약 → 오늘 계약확정 이상으로 이동</div>
+      <div>출고 완료 = 전일 우리 배정 상태였던 VIN이 오늘 사라진 수</div>
+      <div class="legend">※ 가계약(현) = 현재 스냅샷의 "가계약 체결" 상태 총수 (누적 잔존량)</div>
     </div>
     <div class="kpi-grid">
       <div class="kpi primary">
@@ -126,30 +129,45 @@ input.filter:focus{border-color:#0066B2}
         <div class="num" id="kSell">—<span>대</span></div>
         <div class="delta" id="dSell">—</div>
       </div>
-      <div class="kpi national">
-        <div class="lbl">전국 계약</div>
-        <div class="num" id="kNat">—<span>대</span></div>
-        <div class="delta flat">타사+모터원</div>
-      </div>
-      <div class="kpi national">
-        <div class="lbl">전국 해약</div>
-        <div class="num" id="kNatC">—<span>대</span></div>
-        <div class="delta flat">과거 소멸 VIN 복귀</div>
-      </div>
-      <div class="kpi motorone">
-        <div class="lbl">모터원 계약</div>
-        <div class="num" id="kMt">—<span>대</span></div>
-        <div class="delta flat">전국→배정 전환</div>
-      </div>
-      <div class="kpi motorone">
-        <div class="lbl">모터원 해약</div>
-        <div class="num" id="kMtC">—<span>대</span></div>
-        <div class="delta flat">배정→전국 복귀</div>
-      </div>
       <div class="kpi">
         <div class="lbl">신규 입고</div>
         <div class="num" id="kNew">—<span>대</span></div>
         <div class="delta flat">MBK 신규 배정</div>
+      </div>
+      <div class="kpi national">
+        <div class="lbl">전국 계약</div>
+        <div class="num" id="kNat">—<span>대</span></div>
+        <div class="delta flat">타딜러+모터원</div>
+      </div>
+      <div class="kpi" style="border-color:#F43F5E">
+        <div class="lbl">타딜러 계약</div>
+        <div class="num" id="kExt" style="color:#F87171">—<span>대</span></div>
+        <div class="delta flat">전일 미배정 → VIN 소실</div>
+      </div>
+      <div class="kpi motorone">
+        <div class="lbl">모터원 계약</div>
+        <div class="num" id="kMt">—<span>대</span></div>
+        <div class="delta flat">전국→우리 배정 전환</div>
+      </div>
+      <div class="kpi" style="border-color:#10B981">
+        <div class="lbl">모터원 점유율</div>
+        <div class="num" id="kMtRate" style="color:#34D399">—<span>%</span></div>
+        <div class="delta flat">모터원 / 전국</div>
+      </div>
+      <div class="kpi" style="border-color:#8B5CF6">
+        <div class="lbl">가계약 진전</div>
+        <div class="num" id="kProg" style="color:#A78BFA">—<span>대</span></div>
+        <div class="delta flat">우리 가계약 → 계약확정</div>
+      </div>
+      <div class="kpi" style="border-color:#06B6D4">
+        <div class="lbl">출고 완료</div>
+        <div class="num" id="kDlv" style="color:#22D3EE">—<span>대</span></div>
+        <div class="delta flat">우리 배정 → VIN 소실</div>
+      </div>
+      <div class="kpi" style="border-color:#64748B">
+        <div class="lbl">가계약(현)</div>
+        <div class="num" id="kGy" style="color:#CBD5E1">—<span>대</span></div>
+        <div class="delta flat" id="kGyKyng">고양 —대</div>
       </div>
     </div>
 
@@ -326,11 +344,17 @@ function render(){
 
   // KPI
   document.getElementById('kSell').innerHTML = fmt(CURR.sellable_total)+'<span>대</span>';
-  document.getElementById('kNat').innerHTML = fmt(CURR.national_contract)+'<span>대</span>';
-  document.getElementById('kNatC').innerHTML = fmt(CURR.national_cancel)+'<span>대</span>';
-  document.getElementById('kMt').innerHTML = fmt(CURR.motorone_contract)+'<span>대</span>';
-  document.getElementById('kMtC').innerHTML = fmt(CURR.motorone_cancel)+'<span>대</span>';
   document.getElementById('kNew').innerHTML = fmt(CURR.new_in)+'<span>대</span>';
+  document.getElementById('kNat').innerHTML = fmt(CURR.national_contract)+'<span>대</span>';
+  document.getElementById('kExt').innerHTML = fmt(CURR.external_dealer_contract)+'<span>대</span>';
+  document.getElementById('kMt').innerHTML = fmt(CURR.motorone_contract)+'<span>대</span>';
+  const mtRate = (CURR.national_contract && CURR.motorone_contract !== null)
+    ? (CURR.motorone_contract / CURR.national_contract * 100).toFixed(1) : null;
+  document.getElementById('kMtRate').innerHTML = (mtRate===null?'—':mtRate)+'<span>%</span>';
+  document.getElementById('kProg').innerHTML = fmt(CURR.motorone_progressed)+'<span>대</span>';
+  document.getElementById('kDlv').innerHTML = fmt(CURR.delivered_ours)+'<span>대</span>';
+  document.getElementById('kGy').innerHTML = fmt(CURR.gy_snapshot_total)+'<span>대</span>';
+  document.getElementById('kGyKyng').textContent = '고양 '+fmt(CURR.gy_snapshot_kyng)+'대';
 
   if(PREV){
     const d = CURR.sellable_total - PREV.sellable_total;
