@@ -269,8 +269,16 @@ input.filter:focus{border-color:#0066B2}
         <div class="chart-box"><canvas id="chartFlow"></canvas></div>
       </div>
       <div class="chart-card">
-        <h3>🏢 일별 모터원 계약 vs 해약</h3>
+        <h3>🏢 타딜러 vs 모터원 계약 (전국 계약 분해)</h3>
         <div class="chart-box"><canvas id="chartMotorone"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>📌 모터원 점유율 추이 (모터원 / 전국 %)</h3>
+        <div class="chart-box"><canvas id="chartShare"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>⚙️ 우리 활동 - 가계약 진전 & 출고 완료</h3>
+        <div class="chart-box"><canvas id="chartOurs"></canvas></div>
       </div>
     </div>
 
@@ -567,14 +575,24 @@ function buildCharts(){
   const nc = HIST.snapshots.map(s=>s.national_contract||0);
   const ni = HIST.snapshots.map(s=>s.new_in||0);
   const mc = HIST.snapshots.map(s=>s.motorone_contract||0);
-  const mx = HIST.snapshots.map(s=>s.motorone_cancel||0);
+  const ext = HIST.snapshots.map(s=>s.external_dealer_contract||0);
+  const prog = HIST.snapshots.map(s=>s.motorone_progressed||0);
+  const dlv = HIST.snapshots.map(s=>s.delivered_ours||0);
+  const share = HIST.snapshots.map(s=>{
+    const n = s.national_contract||0;
+    return n>0 ? +(100*(s.motorone_contract||0)/n).toFixed(1) : 0;
+  });
   const opts={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94A3B8',font:{family:'Outfit'}}}},scales:{x:{ticks:{color:'#64748B'},grid:{color:'#1E293B'}},y:{ticks:{color:'#64748B'},grid:{color:'#1E293B'}}}};
 
   new Chart(document.getElementById('chartStock'),{type:'line',data:{labels:dates,datasets:[{label:'판매 가능',data:stock,borderColor:'#60A5FA',backgroundColor:'rgba(96,165,250,.1)',borderWidth:2,tension:.3,fill:true,pointRadius:4}]},options:opts});
 
   new Chart(document.getElementById('chartFlow'),{type:'bar',data:{labels:dates,datasets:[{label:'전국 계약',data:nc,backgroundColor:'#F43F5E'},{label:'신규 입고',data:ni,backgroundColor:'#10B981'}]},options:opts});
 
-  new Chart(document.getElementById('chartMotorone'),{type:'bar',data:{labels:dates,datasets:[{label:'모터원 계약',data:mc,backgroundColor:'#F59E0B'},{label:'모터원 해약',data:mx,backgroundColor:'#64748B'}]},options:opts});
+  new Chart(document.getElementById('chartMotorone'),{type:'bar',data:{labels:dates,datasets:[{label:'타딜러 계약',data:ext,backgroundColor:'#F87171',stack:'s1'},{label:'모터원 계약',data:mc,backgroundColor:'#F59E0B',stack:'s1'}]},options:{...opts,scales:{...opts.scales,x:{...opts.scales.x,stacked:true},y:{...opts.scales.y,stacked:true}}}});
+
+  new Chart(document.getElementById('chartShare'),{type:'line',data:{labels:dates,datasets:[{label:'모터원 점유율 (%)',data:share,borderColor:'#34D399',backgroundColor:'rgba(52,211,153,.1)',borderWidth:2,tension:.3,fill:true,pointRadius:4}]},options:opts});
+
+  new Chart(document.getElementById('chartOurs'),{type:'bar',data:{labels:dates,datasets:[{label:'가계약 진전',data:prog,backgroundColor:'#A78BFA'},{label:'출고 완료',data:dlv,backgroundColor:'#22D3EE'}]},options:opts});
 }
 
 // Tabs
