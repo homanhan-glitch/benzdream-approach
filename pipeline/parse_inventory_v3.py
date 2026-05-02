@@ -53,9 +53,13 @@ def is_g_class(model_name):
 
 
 def clean_model(name):
-    """모델명 정규화 — 이중 공백 제거, 앞뒤 공백 제거."""
+    """모델명 정규화 — 이중 공백 제거, 'Mercedes-AMG' → 'AMG' 통일."""
     if not name: return ''
-    return re.sub(r'\s+', ' ', str(name)).strip()
+    s = re.sub(r'\s+', ' ', str(name)).strip()
+    # Mercedes-AMG는 AMG로 통일 (G 63 등 카테고리 매칭용)
+    s = re.sub(r'^Mercedes-AMG\s+', 'AMG ', s)
+    s = re.sub(r'\bMercedes-AMG\b', 'AMG', s)
+    return s
 
 
 def is_virtual_vin(vin, vehicle_purpose, process_type):
@@ -353,6 +357,4 @@ if __name__ == '__main__':
             json.dump(snap, f, ensure_ascii=False, indent=2, default=str)
         print(f'저장 완료: {out}')
     else:
-        print(json.dumps({k: v for k, v in snap.items() if k != 'vins_meta'},
-                        ensure_ascii=False, indent=2, default=str)[:3000])
-        print(f'\nVIN 메타 {len(snap["vins_meta"])}건')
+        print(json.dumps({k:

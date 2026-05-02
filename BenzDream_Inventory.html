@@ -168,8 +168,9 @@ input.filter:focus{border-color:#2563EB}
       <span id="metaGen"></span>
     </div>
     <div class="scope">
-      <b>📌 조회 범위</b> · 모터원 발행 데이터 기준 · 전국재고(open) + 모터원 배정/위탁/전시차 통합 · <b>G클래스 별도 분리</b><br>
-      <b>주의</b> · 타파트너사 계약 후 출고 차량은 데이터 미노출 / 동일 시점 신규풀 후 즉시 계약 차량도 미노출
+      <b>📌 전국 계약 정의</b> · 전일 대비 사라진 VIN 전체 (모터원 visible 계약 + 타딜러 계약 합산) · <b>G클래스 별도 분리</b><br>
+      <b>모터원</b> = 미배정→배정 변화로 직접 확인 (정확) · <b>타딜러 추정</b> = 사라진 VIN - 모터원 (모터원이 못 본 부분)<br>
+      <b>주의</b> · 신규 풀 직후 즉시 계약 차량은 데이터 미노출 / 위탁/전시차는 일반 재고와 합산
     </div>
     <div class="period-bar">
       <button class="period-btn active" data-period="weekly">📅 주간</button>
@@ -703,12 +704,4 @@ function guessCat(m){
   if(m.startsWith('S ') || m.includes('AMG S ')) return 'S클래스';
   if(m.startsWith('E ') || m.includes('AMG E ')) return 'E클래스';
   if(m.startsWith('C ') && !m.includes('CL')) return 'C클래스';
-  if(m.includes('CLA')) return 'CLA';
-  if(m.startsWith('A ') || m.includes('AMG A ')) return 'A클래스';
-  return '기타';
-}
-
-boot();
-</script>
-</body>
-</html>
+  if(m.includes('CLA')
