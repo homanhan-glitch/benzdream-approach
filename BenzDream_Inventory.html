@@ -313,19 +313,29 @@ let currentPeriod = 'weekly';
 let chartsBuilt = false;
 
 async function boot(){
+  const loadingEl = document.getElementById('loading');
+  loadingEl.textContent = 'JSON 다운로드 중...';
   try{
-    const r = await fetch('inventory_history_v3.json?v='+Date.now());
+    const r = await fetch('inventory_history_v3.json?nocache='+Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    loadingEl.textContent = 'JSON 파싱 중...';
     HIST = await r.json();
-    if(!HIST.snapshots || !HIST.snapshots.length) throw new Error('empty');
+    if(!HIST.snapshots || !HIST.snapshots.length) throw new Error('empty snapshots');
     CURR = HIST.snapshots[HIST.snapshots.length-1];
     PREV = HIST.snapshots.length > 1 ? HIST.snapshots[HIST.snapshots.length-2] : null;
+    loadingEl.textContent = '렌더링 중...';
     document.getElementById('loading').style.display='none';
     document.getElementById('main').style.display='block';
     setupPeriodButtons();
     setupTabs();
-    render();
+    try{ render(); }
+    catch(re){
+      console.error('render error:', re);
+      loadingEl.style.display='block';
+      loadingEl.textContent = '렌더링 오류: ' + re.message + ' (line: ' + (re.lineNumber||'?') + ')';
+    }
   }catch(e){
-    document.getElementById('loading').textContent='데이터를 불러오지 못했습니다: '+e.message;
+    loadingEl.textContent='데이터 로드 실패: '+e.message;
     console.error(e);
   }
 }
@@ -696,12 +706,4 @@ function guessCat(m){
   if(m.startsWith('EQ')) return '전동화 EQ';
   if(m.includes('GLE')) return 'GLE';
   if(m.includes('GLS')) return 'GLS';
-  if(m.includes('GLC')) return 'GLC';
-  if(m.includes('GLA') || m.includes('GLB')) return 'GLA·GLB';
-  if(m.includes('GT ') && m.includes('AMG')) return 'AMG GT·SL';
-  if(m.startsWith('AMG SL')) return 'AMG GT·SL';
-  if(m.includes('CLE')) return 'CLE';
-  if(m.startsWith('S ') || m.includes('AMG S ')) return 'S클래스';
-  if(m.startsWith('E ') || m.includes('AMG E ')) return 'E클래스';
-  if(m.startsWith('C ') && !m.includes('CL')) return 'C클래스';
-  if(m.includes('CLA')
+  if(m.includes('GL
