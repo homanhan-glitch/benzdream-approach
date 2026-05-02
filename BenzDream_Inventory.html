@@ -5,16 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BenzDream 인벤토리 트렌드</title>
 <meta name="robots" content="noindex,nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Pretendard',sans-serif;background:#0A0E1A;color:#E2E8F0;min-height:100vh;padding-bottom:80px}
 .wrap{max-width:1280px;margin:0 auto;padding:24px 16px}
-
-/* ===== Header ===== */
 header{padding:18px 4px 22px;border-bottom:1px solid #1E293B;margin-bottom:24px}
 h1{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#F8FAFC;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 h1 .ver{font-size:11px;color:#64748B;font-weight:600;background:#141C2E;padding:3px 8px;border-radius:6px;border:1px solid #1E293B}
@@ -23,14 +19,10 @@ h1 .ver{font-size:11px;color:#64748B;font-weight:600;background:#141C2E;padding:
 .meta .dot{color:#334155}
 .scope{margin-top:10px;background:#0F172A;border:1px solid #1E293B;border-radius:8px;padding:8px 12px;font-size:11px;color:#94A3B8;line-height:1.6}
 .scope b{color:#60A5FA}
-
-/* ===== Period selector ===== */
 .period-bar{display:flex;gap:6px;margin-top:12px;background:#0F172A;padding:5px;border-radius:10px;border:1px solid #1E293B;width:fit-content}
 .period-btn{padding:8px 18px;background:transparent;border:none;color:#64748B;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;border-radius:7px;transition:all .15s}
 .period-btn:hover{color:#CBD5E1}
 .period-btn.active{background:#2563EB;color:#fff}
-
-/* ===== KPI ===== */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:28px}
 .kpi{background:linear-gradient(135deg,#141C2E,#0F172A);border:1px solid #1E293B;border-radius:14px;padding:18px 16px;position:relative;overflow:hidden;transition:all .2s}
 .kpi:hover{border-color:#334155;transform:translateY(-2px)}
@@ -40,31 +32,20 @@ h1 .ver{font-size:11px;color:#64748B;font-weight:600;background:#141C2E;padding:
 .kpi .sub{margin-top:8px;font-size:11px;color:#94A3B8;font-family:'Outfit',sans-serif}
 .kpi .sub.up{color:#10B981}
 .kpi .sub.down{color:#F43F5E}
-.kpi.primary{border-color:#2563EB}
-.kpi.primary .num{color:#60A5FA}
-.kpi.contract{border-color:#A855F7}
-.kpi.contract .num{color:#C084FC}
-.kpi.motorone{border-color:#F59E0B}
-.kpi.motorone .num{color:#FBBF24}
-.kpi.virtual{border-color:#06B6D4}
-.kpi.virtual .num{color:#22D3EE}
-
-/* ===== Tabs ===== */
-.tabs{display:flex;gap:4px;background:#0F172A;border:1px solid #1E293B;border-radius:12px;padding:4px;margin-bottom:20px;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
+.kpi.primary{border-color:#2563EB} .kpi.primary .num{color:#60A5FA}
+.kpi.contract{border-color:#A855F7} .kpi.contract .num{color:#C084FC}
+.kpi.motorone{border-color:#F59E0B} .kpi.motorone .num{color:#FBBF24}
+.kpi.virtual{border-color:#06B6D4} .kpi.virtual .num{color:#22D3EE}
+.tabs{display:flex;gap:4px;background:#0F172A;border:1px solid #1E293B;border-radius:12px;padding:4px;margin-bottom:20px;overflow-x:auto}
 .tab{flex:1;min-width:120px;padding:11px 14px;background:transparent;border:none;color:#64748B;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;border-radius:8px;white-space:nowrap;transition:all .15s}
 .tab:hover{color:#CBD5E1}
 .tab.active{background:#2563EB;color:#fff}
 .pane{display:none}
 .pane.active{display:block}
-
-/* ===== Section ===== */
 .section-title{font-size:15px;font-weight:700;color:#F8FAFC;margin:24px 0 12px;padding-left:12px;border-left:3px solid #60A5FA;display:flex;align-items:center;gap:10px}
 .section-title .badge{font-family:'Outfit',sans-serif;font-size:11px;color:#94A3B8;background:#1E293B;padding:2px 8px;border-radius:10px;font-weight:600}
 .section-desc{font-size:12px;color:#64748B;margin:-6px 0 12px 12px;line-height:1.65}
 .card{background:#0F172A;border:1px solid #1E293B;border-radius:14px;padding:20px;margin-bottom:14px}
-
-/* ===== Tables ===== */
 table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;padding:10px 8px;font-size:11px;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #1E293B;font-family:'Outfit',sans-serif}
 td{padding:11px 8px;border-bottom:1px solid #1E293B;color:#CBD5E1}
@@ -85,8 +66,6 @@ tr:hover td{background:#0B1221}
 .pill.gray{background:rgba(100,116,139,.15);color:#94A3B8}
 .pill.red{background:rgba(244,63,94,.15);color:#F87171}
 .pill.green{background:rgba(16,185,129,.15);color:#34D399}
-
-/* ===== Cat list (categorical model breakdown) ===== */
 .cat-list{background:#0F172A;border:1px solid #1E293B;border-radius:14px;overflow:hidden}
 .cat-row{border-bottom:1px solid #1E293B}
 .cat-row:last-child{border-bottom:none}
@@ -102,17 +81,14 @@ tr:hover td{background:#0B1221}
 .cat-row-head .v.orange{color:#FBBF24}
 .cat-row-head .v.cyan{color:#22D3EE}
 .cat-row-head .v.gray{color:#CBD5E1}
-.cat-row-head .lbl{display:block;font-size:10px;color:#64748B;font-weight:500;font-family:'Pretendard';text-transform:uppercase;margin-bottom:2px}
 .cat-row-body{display:none;padding:4px 18px 18px;background:#080C18;border-top:1px solid #1E293B}
 .cat-row.open .cat-row-body{display:block}
 .cat-row-body table{font-size:12px}
 .cat-row-body th{text-transform:none;font-size:10px;padding:8px 6px}
 .cat-row-body td{padding:10px 6px;font-size:12px}
 .cat-row-body td.mdl{color:#E2E8F0;font-weight:500}
-
-/* ===== G class section ===== */
 .g-section{background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(168,85,247,.05));border:1px solid #2A1F0F;border-radius:14px;padding:20px;margin:24px 0}
-.g-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.g-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px}
 .g-header h3{font-size:15px;color:#FBBF24;font-weight:700}
 .g-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .g-item{background:#0B0E18;border:1px solid #2A1F0F;border-radius:10px;padding:14px}
@@ -120,46 +96,24 @@ tr:hover td{background:#0B1221}
 .g-item .gv{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:#FBBF24}
 .g-item .gv span{font-size:11px;color:#94A3B8;font-weight:500;margin-left:3px}
 .g-item .gd{font-size:11px;color:#64748B;margin-top:4px;font-family:'Outfit',sans-serif}
-
-/* ===== Charts ===== */
 .chart-card{background:#0F172A;border:1px solid #1E293B;border-radius:14px;padding:18px;margin-bottom:14px}
 .chart-card h3{font-size:13px;color:#94A3B8;font-weight:600;margin-bottom:12px}
 .chart-box{height:300px;position:relative}
-
-/* ===== Filter ===== */
 input.filter{width:100%;padding:11px 14px;background:#0B1221;border:1px solid #1E293B;border-radius:10px;color:#E2E8F0;font-family:inherit;font-size:13px;outline:none;margin-bottom:12px;transition:border-color .15s}
 input.filter:focus{border-color:#2563EB}
-
 .empty{text-align:center;padding:40px 20px;color:#64748B;font-size:13px}
 .loading{text-align:center;padding:80px 20px;color:#64748B}
 .warn{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:10px;padding:10px 14px;font-size:12px;color:#FBBF24;margin-bottom:14px}
-
-/* ===== Date tabs ===== */
-.date-tabs{display:flex;gap:6px;overflow-x:auto;margin:10px 0 4px;scrollbar-width:none;padding-bottom:6px}
-.date-tabs::-webkit-scrollbar{display:none}
-.date-tab{flex-shrink:0;padding:7px 12px;background:#0F172A;border:1px solid #1E293B;border-radius:8px;color:#94A3B8;font-size:11px;font-weight:600;font-family:'Outfit',sans-serif;cursor:pointer;white-space:nowrap;transition:all .15s}
-.date-tab:hover{border-color:#334155;color:#CBD5E1}
-.date-tab.active{background:#2563EB;border-color:#2563EB;color:#fff}
-.date-tab .d{font-size:9px;opacity:.7;margin-top:2px;display:block}
-
-/* ===== Trend bar (visual within row) ===== */
 .bar-cell{position:relative;font-family:'Outfit';font-weight:700}
 .bar-bg{position:absolute;left:0;top:0;bottom:0;background:rgba(96,165,250,.1);border-radius:3px;z-index:0}
 .bar-cell .v{position:relative;z-index:1;padding:0 6px;display:inline-block;min-width:30px;text-align:right}
-
-@media (max-width:720px){
-  .kpi-grid{grid-template-columns:repeat(2,1fr)}
-  .cat-row-head{grid-template-columns:20px 1fr .7fr .7fr .7fr}
-  .cat-row-head .col-motorone{display:none}
-  h1{font-size:20px}
-  .kpi .num{font-size:24px}
-}
+@media (max-width:720px){.kpi-grid{grid-template-columns:repeat(2,1fr)} h1{font-size:20px} .kpi .num{font-size:24px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>BenzDream 인벤토리 트렌드 <span class="ver">v3 · 직판제 이후</span></h1>
+    <h1>BenzDream 인벤토리 트렌드 <span class="ver">v3.2 · 직판제 이후</span></h1>
     <div class="meta">
       <span>기준일 <b id="metaCurr">—</b></span>
       <span class="dot">·</span>
@@ -169,7 +123,7 @@ input.filter:focus{border-color:#2563EB}
     </div>
     <div class="scope">
       <b>📌 전국 계약 정의</b> · 전일 대비 사라진 VIN 전체 (모터원 visible 계약 + 타딜러 계약 합산) · <b>G클래스 별도 분리</b><br>
-      <b>모터원</b> = 미배정→배정 변화로 직접 확인 (정확) · <b>타딜러 추정</b> = 사라진 VIN - 모터원 (모터원이 못 본 부분)<br>
+      <b>모터원</b> = 미배정→배정 변화로 직접 확인 (정확) · <b>타딜러 추정</b> = 사라진 VIN - 모터원<br>
       <b>주의</b> · 신규 풀 직후 즉시 계약 차량은 데이터 미노출 / 위탁/전시차는 일반 재고와 합산
     </div>
     <div class="period-bar">
@@ -178,134 +132,51 @@ input.filter:focus{border-color:#2563EB}
       <button class="period-btn" data-period="daily">📊 일별</button>
     </div>
   </header>
-
   <div id="loading" class="loading">데이터 로드 중...</div>
-
   <div id="main" style="display:none">
-
-    <!-- ===== KPI ===== -->
     <div class="kpi-grid">
-      <div class="kpi primary">
-        <div class="lbl" id="kpi-period-lbl">이번주 전국 계약</div>
-        <div class="num" id="kSell">—<span>대</span></div>
-        <div class="sub" id="kSellSub">—</div>
-      </div>
-      <div class="kpi contract">
-        <div class="lbl">현재 판매가능 (G제외)</div>
-        <div class="num" id="kStock">—<span>대</span></div>
-        <div class="sub" id="kStockSub">—</div>
-      </div>
-      <div class="kpi motorone">
-        <div class="lbl">모터원 계약 (해당 기간)</div>
-        <div class="num" id="kMtr">—<span>대</span></div>
-        <div class="sub" id="kMtrSub">—</div>
-      </div>
-      <div class="kpi virtual">
-        <div class="lbl">대기수요 (Virtual+예정)</div>
-        <div class="num" id="kVrt">—<span>대</span></div>
-        <div class="sub" id="kVrtSub">G제외 차종</div>
-      </div>
-      <div class="kpi" style="border-color:#10B981">
-        <div class="lbl">월 누적 전국 계약</div>
-        <div class="num" id="kMon" style="color:#34D399">—<span>대</span></div>
-        <div class="sub" id="kMonSub">—</div>
-      </div>
+      <div class="kpi primary"><div class="lbl" id="kpi-period-lbl">이번주 전국 계약</div><div class="num" id="kSell">—<span>대</span></div><div class="sub" id="kSellSub">—</div></div>
+      <div class="kpi contract"><div class="lbl">현재 판매가능 (G제외)</div><div class="num" id="kStock">—<span>대</span></div><div class="sub" id="kStockSub">—</div></div>
+      <div class="kpi motorone"><div class="lbl">모터원 visible 계약</div><div class="num" id="kMtr">—<span>대</span></div><div class="sub" id="kMtrSub">—</div></div>
+      <div class="kpi virtual"><div class="lbl">대기수요 (Virtual G외)</div><div class="num" id="kVrt">—<span>대</span></div><div class="sub" id="kVrtSub">—</div></div>
+      <div class="kpi" style="border-color:#10B981"><div class="lbl">월 누적 전국 계약</div><div class="num" id="kMon" style="color:#34D399">—<span>대</span></div><div class="sub" id="kMonSub">—</div></div>
     </div>
-
-    <!-- ===== Tabs ===== -->
     <div class="tabs">
       <button class="tab active" data-pane="trend">🔥 트렌드 분석</button>
       <button class="tab" data-pane="models">📋 차종별 재고</button>
       <button class="tab" data-pane="charts">📈 추이 차트</button>
       <button class="tab" data-pane="g">🔶 G클래스</button>
     </div>
-
-    <!-- ===== TREND PANE ===== -->
     <div class="pane active" id="pane-trend">
       <div class="section-title">🏆 <span id="trendTitle">이번주 차종별 계약 Top 20</span> <span class="badge" id="trendBadge">G제외</span></div>
-      <div class="section-desc" id="trendDesc">10대 이상 계약된 차종은 강조 표시. 계약 데이터는 전일 미배정 → 당일 배정 변화 기준.</div>
-      <div class="card">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:40px">#</th>
-              <th>모델</th>
-              <th>카테고리</th>
-              <th style="text-align:right">계약</th>
-              <th style="text-align:right">현재 재고</th>
-              <th style="text-align:right">소진율</th>
-            </tr>
-          </thead>
-          <tbody id="topContractsBody"></tbody>
-        </table>
-      </div>
-
-      <div class="section-title">📂 카테고리별 계약 분포</div>
-      <div class="section-desc">기간 내 계약 발생을 카테고리로 묶어 시장 전체 흐름 파악</div>
+      <div class="section-desc">10대 이상 계약된 차종은 강조. 사라진 VIN(모터원+타딜러) 합산.</div>
+      <div class="card"><table><thead><tr><th style="width:40px">#</th><th>모델</th><th>카테고리</th><th style="text-align:right">계약</th><th style="text-align:right">현재 재고</th><th style="text-align:right">소진율</th></tr></thead><tbody id="topContractsBody"></tbody></table></div>
+      <div class="section-title">📂 카테고리별 분포</div>
       <div class="cat-list" id="catBreakdown"></div>
     </div>
-
-    <!-- ===== MODELS PANE ===== -->
     <div class="pane" id="pane-models">
       <div class="section-title">📋 전체 차종 현황 <span class="badge">G제외 · 위탁/전시 합산</span></div>
-      <div class="section-desc">총 재고 = Actual VIN(생산완료) + Virtual VIN(생산예정). Virtual 비율이 높은 차종 = 인기/대기수요 시그널</div>
-      <input class="filter" id="modelFilter" type="text" placeholder="모델명 검색 (예: E 300, GLC 300)">
+      <div class="section-desc">총 재고 = Actual(생산완료) + Virtual(생산예정).</div>
+      <input class="filter" id="modelFilter" type="text" placeholder="모델명 검색">
       <div id="allModels"></div>
     </div>
-
-    <!-- ===== CHARTS PANE ===== -->
     <div class="pane" id="pane-charts">
-      <div class="warn">차트는 일별 비교 데이터가 누적될수록 정확해집니다. 4/16, 4/22 축소 데이터는 제외 처리됨.</div>
-      <div class="chart-card">
-        <h3>📈 일별 전국 계약 추이 (G제외)</h3>
-        <div class="chart-box"><canvas id="chartContract"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <h3>📊 일별 판매가능 재고 추이 (G제외)</h3>
-        <div class="chart-box"><canvas id="chartStock"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <h3>🏢 모터원 계약 vs 타딜러 계약</h3>
-        <div class="chart-box"><canvas id="chartShare"></canvas></div>
-      </div>
-      <div class="chart-card">
-        <h3>📅 주간별 누적 계약</h3>
-        <div class="chart-box"><canvas id="chartWeekly"></canvas></div>
-      </div>
+      <div class="warn">차트는 일별 비교 데이터가 누적될수록 정확해집니다.</div>
+      <div class="chart-card"><h3>📈 일별 전국 계약 추이 (G제외)</h3><div class="chart-box"><canvas id="chartContract"></canvas></div></div>
+      <div class="chart-card"><h3>📊 일별 판매가능 재고 추이 (G제외)</h3><div class="chart-box"><canvas id="chartStock"></canvas></div></div>
+      <div class="chart-card"><h3>🏢 모터원 vs 타딜러 계약</h3><div class="chart-box"><canvas id="chartShare"></canvas></div></div>
+      <div class="chart-card"><h3>📅 주간별 누적 계약</h3><div class="chart-box"><canvas id="chartWeekly"></canvas></div></div>
     </div>
-
-    <!-- ===== G CLASS PANE ===== -->
     <div class="pane" id="pane-g">
       <div class="g-section">
-        <div class="g-header">
-          <h3>🔶 G클래스 별도 추적</h3>
-          <span class="pill orange">대량 Virtual 풀 — 트렌드 왜곡 방지를 위해 메인 분리</span>
-        </div>
-        <div class="section-desc" style="margin-left:0;color:#94A3B8">G클래스는 Virtual VIN 비중이 압도적으로 커서 일반 트렌드를 왜곡합니다. 별도 추적합니다.</div>
+        <div class="g-header"><h3>🔶 G클래스 별도 추적</h3><span class="pill orange">대량 Virtual 풀 — 트렌드 왜곡 방지</span></div>
         <div class="g-grid" id="gGrid"></div>
       </div>
-
       <div class="section-title">🔶 G클래스 차종별 상세</div>
-      <div class="card">
-        <table>
-          <thead>
-            <tr>
-              <th>모델</th>
-              <th style="text-align:right">총 재고</th>
-              <th style="text-align:right">Actual</th>
-              <th style="text-align:right">Virtual</th>
-              <th style="text-align:right">판매가능</th>
-              <th style="text-align:right">모터원</th>
-            </tr>
-          </thead>
-          <tbody id="gModelsBody"></tbody>
-        </table>
-      </div>
+      <div class="card"><table><thead><tr><th>모델</th><th style="text-align:right">총재고</th><th style="text-align:right">Actual</th><th style="text-align:right">Virtual</th><th style="text-align:right">판매가능</th><th style="text-align:right">모터원</th></tr></thead><tbody id="gModelsBody"></tbody></table></div>
     </div>
-
   </div>
 </div>
-
 <script>
 const CAT_ORDER = ['Maybach','S클래스','E클래스','CLE','C클래스','CLA','A클래스','GLS','GLE','GLC','GLA·GLB','전동화 EQ','AMG GT·SL','기타'];
 let HIST=null, CURR=null, PREV=null;
@@ -323,7 +194,6 @@ async function boot(){
     if(!HIST.snapshots || !HIST.snapshots.length) throw new Error('empty snapshots');
     CURR = HIST.snapshots[HIST.snapshots.length-1];
     PREV = HIST.snapshots.length > 1 ? HIST.snapshots[HIST.snapshots.length-2] : null;
-    loadingEl.textContent = '렌더링 중...';
     document.getElementById('loading').style.display='none';
     document.getElementById('main').style.display='block';
     setupPeriodButtons();
@@ -332,7 +202,7 @@ async function boot(){
     catch(re){
       console.error('render error:', re);
       loadingEl.style.display='block';
-      loadingEl.textContent = '렌더링 오류: ' + re.message + ' (line: ' + (re.lineNumber||'?') + ')';
+      loadingEl.textContent = '렌더링 오류: ' + re.message;
     }
   }catch(e){
     loadingEl.textContent='데이터 로드 실패: '+e.message;
@@ -365,39 +235,33 @@ function setupTabs(){
 
 function fmt(n){return (n===null||n===undefined||n!==n)?'—':n.toLocaleString()}
 
-// ===== Get period data =====
 function getPeriodData(){
-  // currentPeriod: weekly | monthly | daily
   if(currentPeriod==='daily'){
     if(!CURR.compare) return null;
     return {
-      label: CURR.date + ' (vs ' + (PREV?PREV.date:'—') + ')',
+      label: CURR.date,
       contract: CURR.compare.national_contract,
       external: CURR.compare.external_contract,
       motorone: CURR.compare.motorone_contract,
       cancelled: CURR.compare.cancelled,
-      delivered: CURR.compare.delivered,
       model_contracts: CURR.compare.model_contracts,
       days: 1,
     };
   }
-  // weekly or monthly — get the latest period
   const list = currentPeriod==='weekly' ? (HIST.weekly||[]) : (HIST.monthly||[]);
   if(!list.length) return null;
   const last = list[list.length-1];
   return {
-    label: last.period_start + ' ~ (' + last.days.length + '일)',
+    label: last.period_start,
     contract: last.total_contract,
     external: last.total_external,
     motorone: last.total_motorone,
     cancelled: last.total_cancelled,
-    delivered: last.total_delivered,
     model_contracts: last.model_contracts,
     days: last.days.length,
   };
 }
 
-// ===== Render =====
 function render(){
   document.getElementById('metaCurr').textContent = CURR.date;
   document.getElementById('metaPrev').textContent = PREV ? PREV.date : '—';
@@ -406,10 +270,9 @@ function render(){
   const p = getPeriodData();
   const periodLbl = currentPeriod==='weekly' ? '이번주' : currentPeriod==='monthly' ? '이번달' : '오늘';
 
-  // KPI
   document.getElementById('kpi-period-lbl').textContent = periodLbl + ' 전국 계약 (G제외)';
   document.getElementById('kSell').innerHTML = (p ? fmt(p.contract) : '—') + '<span>대</span>';
-  document.getElementById('kSellSub').textContent = p ? `${p.days}일 누적 / 일평균 ${(p.contract/p.days).toFixed(1)}대` : '';
+  document.getElementById('kSellSub').textContent = p ? p.days+'일 누적 / 일평균 '+(p.contract/p.days).toFixed(1)+'대' : '';
 
   document.getElementById('kStock').innerHTML = fmt(CURR.sellable_total) + '<span>대</span>';
   const stockDiff = PREV ? CURR.sellable_total - PREV.sellable_total : null;
@@ -417,86 +280,59 @@ function render(){
   document.getElementById('kStockSub').className = 'sub ' + (stockDiff>0?'up':stockDiff<0?'down':'');
 
   document.getElementById('kMtr').innerHTML = (p ? fmt(p.motorone) : '—') + '<span>대</span>';
-  document.getElementById('kMtrSub').textContent = p && p.contract ? `점유율 ${(p.motorone/p.contract*100).toFixed(1)}%` : '';
+  document.getElementById('kMtrSub').textContent = p && p.contract ? '점유율 ' + (p.motorone/p.contract*100).toFixed(1) + '%' : '';
 
   document.getElementById('kVrt').innerHTML = fmt(CURR.virtual_total) + '<span>대</span>';
-  document.getElementById('kVrtSub').textContent = `Actual ${fmt(CURR.actual_total)}대 + Virtual ${fmt(CURR.virtual_total)}대`;
+  document.getElementById('kVrtSub').textContent = 'Actual ' + fmt(CURR.actual_total) + '대';
 
-  // Monthly cumulative
   const monthly = HIST.monthly || [];
   const lastMonth = monthly.length ? monthly[monthly.length-1] : null;
   document.getElementById('kMon').innerHTML = (lastMonth ? fmt(lastMonth.total_contract) : '—') + '<span>대</span>';
-  document.getElementById('kMonSub').textContent = lastMonth ? `${lastMonth.days.length}일 / 모터원 ${lastMonth.total_motorone}대` : '';
+  document.getElementById('kMonSub').textContent = lastMonth ? lastMonth.days.length+'일 / 모터원 '+lastMonth.total_motorone+'대' : '';
 
-  // Trend pane
-  document.getElementById('trendTitle').textContent = `${periodLbl} 차종별 계약 Top 20`;
-  document.getElementById('trendBadge').textContent = `${periodLbl} · G제외 · ${p?p.days+'일':''}`;
+  document.getElementById('trendTitle').textContent = periodLbl + ' 차종별 계약 Top 20';
+  document.getElementById('trendBadge').textContent = periodLbl + ' · G제외';
+
   renderTopContracts(p);
   renderCatBreakdown(p);
-
-  // Models pane
   renderAllModels();
-
-  // G class
   renderGClass();
-
   chartsBuilt = false;
 }
 
-// ===== Top contracts =====
 function renderTopContracts(p){
   const tbody = document.getElementById('topContractsBody');
-  if(!p || !p.model_contracts){
-    tbody.innerHTML = '<tr><td colspan="6" class="empty">데이터 없음</td></tr>';
-    return;
-  }
-  // model_contracts can be object or array of [k,v]
+  if(!p || !p.model_contracts){ tbody.innerHTML = '<tr><td colspan="6" class="empty">데이터 없음</td></tr>'; return; }
   let mc = p.model_contracts;
   let entries = Array.isArray(mc) ? mc : Object.entries(mc);
-  entries = entries.map(e => Array.isArray(e) ? e : [e[0], e[1]])
-    .sort((a,b)=>b[1]-a[1])
-    .slice(0,20);
-
-  if(!entries.length){
-    tbody.innerHTML = '<tr><td colspan="6" class="empty">해당 기간 계약 없음</td></tr>';
-    return;
-  }
-
+  entries = entries.map(e => Array.isArray(e) ? e : [e[0], e[1]]).sort((a,b)=>b[1]-a[1]).slice(0,20);
+  if(!entries.length){ tbody.innerHTML = '<tr><td colspan="6" class="empty">해당 기간 계약 없음</td></tr>'; return; }
   const maxC = entries[0][1];
   const models = CURR.models || {};
   const modelMap = Array.isArray(models) ? Object.fromEntries(models) : models;
-
-  tbody.innerHTML = entries.map(([mn, c], i)=>{
+  tbody.innerHTML = entries.map((arr, i)=>{
+    const mn = arr[0], c = arr[1];
     const md = modelMap[mn] || {};
     const sellable = md.sellable || 0;
-    const total = md.total || 0;
     const cat = md.cat || '기타';
     const rate = sellable>0 ? (c/sellable*100).toFixed(1) : '—';
     const isHot = c >= 10;
     const rankCls = i<3 ? 'top' : (isHot?'hot':'');
     const cellCls = c>=15 ? 'hi' : c>=10 ? 'mid' : c>=5 ? '' : 'lo';
     const barW = (c/maxC)*100;
-    return `<tr>
-      <td class="rank ${rankCls}">${i+1}</td>
-      <td><b style="color:#F8FAFC">${mn}</b>${isHot?' <span class="pill red">🔥 핫</span>':''}</td>
-      <td><span class="pill gray">${cat}</span></td>
-      <td class="bar-cell num-cell ${cellCls}"><span class="bar-bg" style="width:${barW}%"></span><span class="v">${c}</span></td>
-      <td class="num-cell">${sellable}</td>
-      <td class="num-cell">${rate==='—'?'—':rate+'%'}</td>
-    </tr>`;
+    return '<tr><td class="rank '+rankCls+'">'+(i+1)+'</td><td><b style="color:#F8FAFC">'+mn+'</b>'+(isHot?' <span class="pill red">🔥 핫</span>':'')+'</td><td><span class="pill gray">'+cat+'</span></td><td class="bar-cell num-cell '+cellCls+'"><span class="bar-bg" style="width:'+barW+'%"></span><span class="v">'+c+'</span></td><td class="num-cell">'+sellable+'</td><td class="num-cell">'+(rate==='—'?'—':rate+'%')+'</td></tr>';
   }).join('');
 }
 
-// ===== Category breakdown =====
 function renderCatBreakdown(p){
   const list = document.getElementById('catBreakdown');
   const models = CURR.models || {};
   const modelMap = Array.isArray(models) ? Object.fromEntries(models) : models;
   let mc = p && p.model_contracts ? p.model_contracts : {};
   if(Array.isArray(mc)) mc = Object.fromEntries(mc);
-
   const byCat = {};
-  Object.entries(modelMap).forEach(([mn, md])=>{
+  Object.entries(modelMap).forEach(arr=>{
+    const mn = arr[0], md = arr[1];
     const cat = md.cat || '기타';
     if(!byCat[cat]) byCat[cat] = {sellable:0, total:0, virtual:0, motorone:0, contract:0, models:[]};
     byCat[cat].sellable += md.sellable;
@@ -505,146 +341,79 @@ function renderCatBreakdown(p){
     byCat[cat].motorone += md.motorone;
     const c = mc[mn] || 0;
     byCat[cat].contract += c;
-    byCat[cat].models.push({mn, ...md, contract: c});
+    byCat[cat].models.push({mn:mn, sellable:md.sellable, total:md.total, virtual:md.virtual, motorone:md.motorone, contract:c});
   });
-  // Add contracts for models no longer in stock
-  Object.entries(mc).forEach(([mn,c])=>{
+  Object.entries(mc).forEach(arr=>{
+    const mn = arr[0], c = arr[1];
     if(!modelMap[mn]){
-      // Probably sold out — find category by name
-      const cat = guessCat(mn);
+      const cat = '기타';
       if(!byCat[cat]) byCat[cat] = {sellable:0, total:0, virtual:0, motorone:0, contract:0, models:[]};
       byCat[cat].contract += c;
-      byCat[cat].models.push({mn, sellable:0, total:0, virtual:0, motorone:0, contract:c, soldOut:true});
+      byCat[cat].models.push({mn:mn, sellable:0, total:0, virtual:0, motorone:0, contract:c, soldOut:true});
     }
   });
-
   const cats = CAT_ORDER.filter(c=>byCat[c]);
   Object.keys(byCat).forEach(c=>{ if(!cats.includes(c)) cats.push(c); });
-
-  const headEl = `<div class="cat-row-head" style="cursor:default;color:#64748B;font-size:10px;text-transform:uppercase;font-family:'Outfit'">
-    <span></span><span>카테고리</span>
-    <span style="text-align:right">계약</span>
-    <span style="text-align:right">판매가능</span>
-    <span style="text-align:right" class="col-motorone">모터원</span>
-    <span style="text-align:right">소진율</span>
-  </div>`;
-  list.innerHTML = headEl + cats.map(c=>{
+  let html = '<div class="cat-row-head" style="cursor:default;color:#64748B;font-size:10px;text-transform:uppercase;font-family:Outfit"><span></span><span>카테고리</span><span style="text-align:right">계약</span><span style="text-align:right">판매가능</span><span style="text-align:right">모터원</span><span style="text-align:right">소진율</span></div>';
+  cats.forEach(c=>{
     const d = byCat[c];
     const rate = d.sellable>0 ? (d.contract/d.sellable*100).toFixed(1)+'%' : '—';
-    const trims = d.models.slice().sort((a,b)=>{
-      if(b.contract !== a.contract) return b.contract - a.contract;
-      return b.sellable - a.sellable;
-    });
+    const trims = d.models.slice().sort((a,b)=>{ if(b.contract !== a.contract) return b.contract - a.contract; return b.sellable - a.sellable; });
     const trimRows = trims.map(t=>{
       const r = t.sellable>0 ? (t.contract/t.sellable*100).toFixed(1)+'%' : (t.contract>0?'<span class="pill red">SOLD</span>':'—');
       const vRate = t.total>0 ? (t.virtual/t.total*100).toFixed(0) : 0;
-      const isPopular = vRate >= 30;
-      return `<tr>
-        <td class="mdl">${t.mn}${t.soldOut?'':''}${isPopular?' <span class="pill cyan">🔥대기수요</span>':''}</td>
-        <td class="num-cell">${t.contract}</td>
-        <td class="num-cell">${t.sellable}</td>
-        <td class="num-cell">${t.motorone}</td>
-        <td class="num-cell">${t.virtual}${t.virtual>0?' <span style="color:#64748B;font-size:10px">('+vRate+'%)</span>':''}</td>
-        <td class="num-cell">${r}</td></tr>`;
+      return '<tr><td class="mdl">'+t.mn+'</td><td class="num-cell">'+t.contract+'</td><td class="num-cell">'+t.sellable+'</td><td class="num-cell">'+t.motorone+'</td><td class="num-cell">'+t.virtual+'</td><td class="num-cell">'+r+'</td></tr>';
     }).join('');
-    return `<div class="cat-row" data-cat="${c}">
-      <div class="cat-row-head">
-        <span class="arr">▶</span>
-        <span class="nm">${c} <span class="pill gray" style="margin-left:6px">${trims.length}</span></span>
-        <span class="v purple">${d.contract}</span>
-        <span class="v blue">${d.sellable}</span>
-        <span class="v orange col-motorone">${d.motorone}</span>
-        <span class="v gray">${rate}</span>
-      </div>
-      <div class="cat-row-body">
-        <table>
-          <thead><tr><th>모델</th><th style="text-align:right">계약</th><th style="text-align:right">판매가능</th><th style="text-align:right">모터원</th><th style="text-align:right">Virtual</th><th style="text-align:right">소진율</th></tr></thead>
-          <tbody>${trimRows}</tbody>
-        </table>
-      </div>
-    </div>`;
-  }).join('');
-
+    html += '<div class="cat-row" data-cat="'+c+'"><div class="cat-row-head"><span class="arr">▶</span><span class="nm">'+c+' <span class="pill gray" style="margin-left:6px">'+trims.length+'</span></span><span class="v purple">'+d.contract+'</span><span class="v blue">'+d.sellable+'</span><span class="v orange">'+d.motorone+'</span><span class="v gray">'+rate+'</span></div><div class="cat-row-body"><table><thead><tr><th>모델</th><th style="text-align:right">계약</th><th style="text-align:right">판매가능</th><th style="text-align:right">모터원</th><th style="text-align:right">Virtual</th><th style="text-align:right">소진율</th></tr></thead><tbody>'+trimRows+'</tbody></table></div></div>';
+  });
+  list.innerHTML = html;
   list.querySelectorAll('.cat-row-head').forEach(h=>{
     if(h.parentElement && h.parentElement.classList.contains('cat-row')){
-      h.onclick = ()=> h.parentElement.classList.toggle('open');
+      h.onclick = function(){ h.parentElement.classList.toggle('open'); };
     }
   });
 }
 
-// ===== All models pane =====
 function renderAllModels(){
   const models = CURR.models || {};
   const modelMap = Array.isArray(models) ? Object.fromEntries(models) : models;
   const byCat = {};
-  Object.entries(modelMap).forEach(([mn, md])=>{
+  Object.entries(modelMap).forEach(arr=>{
+    const mn = arr[0], md = arr[1];
     const cat = md.cat || '기타';
     if(!byCat[cat]) byCat[cat] = [];
-    byCat[cat].push({mn, ...md});
+    byCat[cat].push({mn:mn, sellable:md.sellable, total:md.total, virtual:md.virtual, actual:md.actual, motorone:md.motorone});
   });
-
   const cats = CAT_ORDER.filter(c=>byCat[c]);
   Object.keys(byCat).forEach(c=>{ if(!cats.includes(c)) cats.push(c); });
-
   const q = (document.getElementById('modelFilter').value||'').trim().toLowerCase();
   let html = '';
   cats.forEach(cat=>{
     let list = byCat[cat].slice().sort((a,b)=>b.total-a.total);
     if(q) list = list.filter(m=>m.mn.toLowerCase().includes(q));
     if(!list.length) return;
-    html += `<div class="card"><h4 style="font-size:14px;color:#CBD5E1;margin-bottom:10px;display:flex;align-items:center;gap:8px">${cat} <span class="pill gray">${list.length}모델</span></h4>
-      <table><thead><tr>
-        <th>모델</th>
-        <th style="text-align:right">총재고</th>
-        <th style="text-align:right">Actual</th>
-        <th style="text-align:right">Virtual</th>
-        <th style="text-align:right">판매가능</th>
-        <th style="text-align:right">모터원</th>
-      </tr></thead><tbody>
-      ${list.map(m=>{
-        const vRate = m.total>0 ? (m.virtual/m.total*100).toFixed(0) : 0;
-        const isPop = vRate >= 30;
-        return `<tr>
-          <td class="mdl"><b style="color:#E2E8F0">${m.mn}</b>${isPop?' <span class="pill cyan">🔥</span>':''}</td>
-          <td class="num-cell">${m.total}</td>
-          <td class="num-cell" style="color:#94A3B8">${m.actual}</td>
-          <td class="num-cell">${m.virtual}${m.virtual>0?' <span style="color:#64748B;font-size:10px">('+vRate+'%)</span>':''}</td>
-          <td class="num-cell" style="color:#60A5FA">${m.sellable}</td>
-          <td class="num-cell" style="color:#FBBF24">${m.motorone}</td>
-        </tr>`;
-      }).join('')}
-      </tbody></table></div>`;
+    html += '<div class="card"><h4 style="font-size:14px;color:#CBD5E1;margin-bottom:10px;display:flex;align-items:center;gap:8px">'+cat+' <span class="pill gray">'+list.length+'모델</span></h4><table><thead><tr><th>모델</th><th style="text-align:right">총재고</th><th style="text-align:right">Actual</th><th style="text-align:right">Virtual</th><th style="text-align:right">판매가능</th><th style="text-align:right">모터원</th></tr></thead><tbody>';
+    list.forEach(m=>{
+      html += '<tr><td class="mdl"><b style="color:#E2E8F0">'+m.mn+'</b></td><td class="num-cell">'+m.total+'</td><td class="num-cell" style="color:#94A3B8">'+m.actual+'</td><td class="num-cell">'+m.virtual+'</td><td class="num-cell" style="color:#60A5FA">'+m.sellable+'</td><td class="num-cell" style="color:#FBBF24">'+m.motorone+'</td></tr>';
+    });
+    html += '</tbody></table></div>';
   });
   document.getElementById('allModels').innerHTML = html || '<div class="empty">결과 없음</div>';
 }
-document.getElementById('modelFilter').addEventListener('input', renderAllModels);
 
-// ===== G Class =====
 function renderGClass(){
   const g = CURR.g_class || {};
-  const grid = document.getElementById('gGrid');
-  grid.innerHTML = `
-    <div class="g-item"><div class="gn">G 총 재고</div><div class="gv">${fmt(g.total||0)}<span>대</span></div><div class="gd">Actual ${g.actual||0} + Virtual ${g.virtual||0}</div></div>
-    <div class="g-item"><div class="gn">판매 가능</div><div class="gv">${fmt(g.sellable||0)}<span>대</span></div><div class="gd">즉시 출고 또는 예약 가능</div></div>
-    <div class="g-item"><div class="gn">Virtual 대기 풀</div><div class="gv">${fmt(g.virtual||0)}<span>대</span></div><div class="gd">생산 예정 물량</div></div>
-    <div class="g-item"><div class="gn">Actual VIN</div><div class="gv">${fmt(g.actual||0)}<span>대</span></div><div class="gd">생산 완료 (즉시 입고 가능)</div></div>
-  `;
-
-  const gModels = g.models || {};
-  const gMap = Array.isArray(gModels) ? Object.fromEntries(gModels) : gModels;
+  document.getElementById('gGrid').innerHTML = '<div class="g-item"><div class="gn">G 총 재고</div><div class="gv">'+fmt(g.total||0)+'<span>대</span></div><div class="gd">A '+(g.actual||0)+' + V '+(g.virtual||0)+'</div></div><div class="g-item"><div class="gn">판매 가능</div><div class="gv">'+fmt(g.sellable||0)+'<span>대</span></div><div class="gd">즉시 출고/예약 가능</div></div><div class="g-item"><div class="gn">Virtual 풀</div><div class="gv">'+fmt(g.virtual||0)+'<span>대</span></div><div class="gd">생산 예정 물량</div></div><div class="g-item"><div class="gn">Actual VIN</div><div class="gv">'+fmt(g.actual||0)+'<span>대</span></div><div class="gd">생산 완료</div></div>';
+  const gMap = Array.isArray(g.models) ? Object.fromEntries(g.models) : (g.models || {});
   const gList = Object.entries(gMap).sort((a,b)=>b[1].total-a[1].total);
-  document.getElementById('gModelsBody').innerHTML = gList.length ?
-    gList.map(([mn, m])=>`<tr>
-      <td class="mdl"><b>${mn}</b></td>
-      <td class="num-cell">${m.total}</td>
-      <td class="num-cell" style="color:#94A3B8">${m.actual}</td>
-      <td class="num-cell" style="color:#22D3EE">${m.virtual}</td>
-      <td class="num-cell" style="color:#60A5FA">${m.sellable}</td>
-      <td class="num-cell" style="color:#FBBF24">${m.motorone||0}</td>
-    </tr>`).join('') : '<tr><td colspan="6" class="empty">G클래스 데이터 없음</td></tr>';
+  document.getElementById('gModelsBody').innerHTML = gList.length ? gList.map(arr=>{
+    const mn = arr[0], m = arr[1];
+    return '<tr><td class="mdl"><b>'+mn+'</b></td><td class="num-cell">'+m.total+'</td><td class="num-cell" style="color:#94A3B8">'+m.actual+'</td><td class="num-cell" style="color:#22D3EE">'+m.virtual+'</td><td class="num-cell" style="color:#60A5FA">'+m.sellable+'</td><td class="num-cell" style="color:#FBBF24">'+(m.motorone||0)+'</td></tr>';
+  }).join('') : '<tr><td colspan="6" class="empty">G클래스 데이터 없음</td></tr>';
 }
 
-// ===== Charts =====
+document.getElementById('modelFilter').addEventListener('input', renderAllModels);
+
 function buildCharts(){
   if(chartsBuilt) return;
   chartsBuilt = true;
@@ -654,56 +423,16 @@ function buildCharts(){
   const contract = snaps.map(s=>s.compare ? s.compare.national_contract : 0);
   const motorone = snaps.map(s=>s.compare ? s.compare.motorone_contract : 0);
   const external = snaps.map(s=>s.compare ? s.compare.external_contract : 0);
-
-  const opts = {
-    responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{labels:{color:'#94A3B8',font:{family:'Outfit'}}}},
-    scales:{x:{ticks:{color:'#64748B'},grid:{color:'#1E293B'}},y:{ticks:{color:'#64748B'},grid:{color:'#1E293B'}}}
-  };
-
-  // Destroy previous
-  ['chartContract','chartStock','chartShare','chartWeekly'].forEach(id=>{
-    const ex = Chart.getChart(id);
-    if(ex) ex.destroy();
-  });
-
-  new Chart(document.getElementById('chartContract'), {
-    type:'bar',
-    data:{labels:dates, datasets:[
-      {label:'전국 계약 (G제외)', data:contract, backgroundColor:'#A855F7'},
-    ]}, options:opts
-  });
-
-  new Chart(document.getElementById('chartStock'), {
-    type:'line',
-    data:{labels:dates, datasets:[
-      {label:'판매가능 재고 (G제외)', data:stock, borderColor:'#60A5FA', backgroundColor:'rgba(96,165,250,.1)', borderWidth:2, tension:.3, fill:true, pointRadius:4},
-    ]}, options:opts
-  });
-
-  new Chart(document.getElementById('chartShare'), {
-    type:'bar',
-    data:{labels:dates, datasets:[
-      {label:'타딜러 계약 추정', data:external, backgroundColor:'#F87171', stack:'s1'},
-      {label:'모터원 계약', data:motorone, backgroundColor:'#FBBF24', stack:'s1'},
-    ]}, options:{...opts, scales:{...opts.scales, x:{...opts.scales.x, stacked:true}, y:{...opts.scales.y, stacked:true}}}
-  });
-
-  // Weekly accumulation
+  const opts = { responsive:true, maintainAspectRatio:false, plugins:{legend:{labels:{color:'#94A3B8',font:{family:'Outfit'}}}}, scales:{x:{ticks:{color:'#64748B'},grid:{color:'#1E293B'}},y:{ticks:{color:'#64748B'},grid:{color:'#1E293B'}}} };
+  ['chartContract','chartStock','chartShare','chartWeekly'].forEach(id=>{ const ex = Chart.getChart(id); if(ex) ex.destroy(); });
+  new Chart(document.getElementById('chartContract'), {type:'bar', data:{labels:dates, datasets:[{label:'전국 계약 (G제외)', data:contract, backgroundColor:'#A855F7'}]}, options:opts});
+  new Chart(document.getElementById('chartStock'), {type:'line', data:{labels:dates, datasets:[{label:'판매가능 재고 (G제외)', data:stock, borderColor:'#60A5FA', backgroundColor:'rgba(96,165,250,.1)', borderWidth:2, tension:.3, fill:true, pointRadius:4}]}, options:opts});
+  new Chart(document.getElementById('chartShare'), {type:'bar', data:{labels:dates, datasets:[{label:'타딜러 추정', data:external, backgroundColor:'#F87171', stack:'s1'},{label:'모터원 visible', data:motorone, backgroundColor:'#FBBF24', stack:'s1'}]}, options:{...opts, scales:{...opts.scales, x:{...opts.scales.x, stacked:true}, y:{...opts.scales.y, stacked:true}}}});
   const weekly = HIST.weekly || [];
-  new Chart(document.getElementById('chartWeekly'), {
-    type:'bar',
-    data:{labels:weekly.map(w=>w.period_start.slice(5)), datasets:[
-      {label:'전국 계약', data:weekly.map(w=>w.total_contract), backgroundColor:'#A855F7'},
-      {label:'모터원 계약', data:weekly.map(w=>w.total_motorone), backgroundColor:'#FBBF24'},
-    ]}, options:opts
-  });
+  new Chart(document.getElementById('chartWeekly'), {type:'bar', data:{labels:weekly.map(w=>w.period_start.slice(5)), datasets:[{label:'전국 계약', data:weekly.map(w=>w.total_contract), backgroundColor:'#A855F7'},{label:'모터원 visible', data:weekly.map(w=>w.total_motorone), backgroundColor:'#FBBF24'}]}, options:opts});
 }
 
-// ===== Helpers =====
-function guessCat(m){
-  if(m.includes('Maybach')) return 'Maybach';
-  if(m.startsWith('EQ')) return '전동화 EQ';
-  if(m.includes('GLE')) return 'GLE';
-  if(m.includes('GLS')) return 'GLS';
-  if(m.includes('GL
+boot();
+</script>
+</body>
+</html>
