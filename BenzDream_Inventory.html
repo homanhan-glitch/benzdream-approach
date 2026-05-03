@@ -105,6 +105,22 @@ input.filter:focus{border-color:#2563EB}
 .loading{text-align:center;padding:80px 20px;color:#64748B}
 .warn{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:10px;padding:10px 14px;font-size:12px;color:#FBBF24;margin-bottom:14px}
 .bar-cell{position:relative;font-family:'Outfit';font-weight:700}
+.pdd-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(60px,1fr));gap:6px;margin-top:6px}
+.pdd-cell{background:#0B1221;border:1px solid #1E293B;border-radius:6px;padding:6px 4px;text-align:center;font-family:'Outfit',sans-serif}
+.pdd-cell.imm{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3)}
+.pdd-cell.imm .pdd-v{color:#34D399}
+.pdd-cell.next{background:rgba(96,165,250,.06);border-color:rgba(96,165,250,.25)}
+.pdd-cell.next .pdd-v{color:#60A5FA}
+.pdd-cell.later{background:rgba(168,85,247,.05);border-color:rgba(168,85,247,.2)}
+.pdd-cell.later .pdd-v{color:#C084FC}
+.pdd-cell .pdd-l{font-size:10px;color:#64748B;font-weight:600;text-transform:uppercase}
+.pdd-cell .pdd-v{font-size:14px;font-weight:700;margin-top:2px}
+.pdd-inline{display:inline-flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.pdd-pill{font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;border:1px solid}
+.pdd-pill.imm{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.35);color:#34D399}
+.pdd-pill.next{background:rgba(96,165,250,.08);border-color:rgba(96,165,250,.3);color:#60A5FA}
+.pdd-pill.later{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.25);color:#C084FC}
+
 .bar-bg{position:absolute;left:0;top:0;bottom:0;background:rgba(96,165,250,.1);border-radius:3px;z-index:0}
 .bar-cell .v{position:relative;z-index:1;padding:0 6px;display:inline-block;min-width:30px;text-align:right}
 @media (max-width:720px){.kpi-grid{grid-template-columns:repeat(2,1fr)} h1{font-size:20px} .kpi .num{font-size:24px}}
@@ -156,7 +172,7 @@ input.filter:focus{border-color:#2563EB}
     </div>
     <div class="pane" id="pane-models">
       <div class="section-title">📋 전체 차종 현황 <span class="badge">G제외 · 위탁/전시 합산</span></div>
-      <div class="section-desc">총 재고 = Actual(생산완료) + Virtual(생산예정).</div>
+      <div class="section-desc">총 재고 = Actual + Virtual · <span style="color:#34D399">●</span> 즉시출고가능 (당월 이전 PDD) · <span style="color:#60A5FA">●</span> 다음달 · <span style="color:#C084FC">●</span> 그 이후</div>
       <input class="filter" id="modelFilter" type="text" placeholder="모델명 검색">
       <div id="allModels"></div>
     </div>
@@ -173,12 +189,52 @@ input.filter:focus{border-color:#2563EB}
         <div class="g-grid" id="gGrid"></div>
       </div>
       <div class="section-title">🔶 G클래스 차종별 상세</div>
-      <div class="card"><table><thead><tr><th>모델</th><th style="text-align:right">총재고</th><th style="text-align:right">Actual</th><th style="text-align:right">Virtual</th><th style="text-align:right">판매가능</th><th style="text-align:right">모터원</th></tr></thead><tbody id="gModelsBody"></tbody></table></div>
+      <div class="card"><table><thead><tr><th>모델</th><th style="text-align:right">총재고</th><th style="text-align:right">판매가능</th><th style="text-align:right" style="color:#34D399">즉시</th><th style="text-align:right">출고예정</th><th style="text-align:right">모터원</th></tr></thead><tbody id="gModelsBody"></tbody></table></div>
     </div>
   </div>
 </div>
 <script>
 const CAT_ORDER = ['Maybach','S클래스','E클래스','CLE','C클래스','CLA','A클래스','GLS','GLE','GLC','GLA·GLB','전동화 EQ','AMG GT·SL','기타'];
+
+/* === PDD 버킷 헬퍼 === */
+function getCurrentMonthFromDate(dateStr){
+  // dateStr "YYYY-MM-DD" 또는 today 기준 (snapshot 날짜 다음달이 "이번달")
+  const d = dateStr ? new Date(dateStr) : new Date();
+  // 사용자 요청: snapshot이 4/30이면 "이번달=5월". 즉 snapshot 다음 month 또는 today의 month.
+  const today = new Date();
+  return {y: today.getFullYear(), m: today.getMonth()+1};  // 1-12
+}
+function bucketPDD(pddBuckets, refY, refM){
+  // pddBuckets: {'YYYY-MM': N, 'unknown': N}
+  // 반환: {imm, byMonth: {'YYYY-MM': N for future}, total}
+  let imm = 0, total = 0;
+  const byMonth = {};
+  Object.entries(pddBuckets || {}).forEach(([k, n])=>{
+    total += n;
+    if(k === 'unknown'){ imm += n; return; }
+    const mch = k.match(/^(\d{4})-(\d{2})$/);
+    if(!mch){ imm += n; return; }
+    const y = parseInt(mch[1]), m = parseInt(mch[2]);
+    if(y < refY || (y === refY && m <= refM)) imm += n;
+    else byMonth[k] = (byMonth[k] || 0) + n;
+  });
+  return {imm, byMonth, total};
+}
+function pddBadges(pddBuckets, refY, refM, opts){
+  const o = opts || {};
+  const b = bucketPDD(pddBuckets, refY, refM);
+  if(b.total === 0) return '';
+  const months = Object.keys(b.byMonth).sort();
+  const badges = [];
+  if(b.imm > 0 || o.alwaysImm) badges.push(`<span class="pdd-pill imm">즉시 ${b.imm}</span>`);
+  months.forEach((k, i)=>{
+    const monthNum = parseInt(k.split('-')[1]);
+    const cls = i === 0 ? 'next' : 'later';
+    badges.push(`<span class="pdd-pill ${cls}">${monthNum}월 ${b.byMonth[k]}</span>`);
+  });
+  return badges.length ? `<div class="pdd-inline">${badges.join('')}</div>` : '';
+}
+
 let HIST=null, CURR=null, PREV=null;
 let currentPeriod = 'weekly';
 let chartsBuilt = false;
@@ -382,19 +438,26 @@ function renderAllModels(){
     const mn = arr[0], md = arr[1];
     const cat = md.cat || '기타';
     if(!byCat[cat]) byCat[cat] = [];
-    byCat[cat].push({mn:mn, sellable:md.sellable, total:md.total, virtual:md.virtual, actual:md.actual, motorone:md.motorone});
+    byCat[cat].push({mn:mn, sellable:md.sellable, total:md.total, virtual:md.virtual, actual:md.actual, motorone:md.motorone, sellable_pdd: md.sellable_pdd || {}, pdd_buckets: md.pdd_buckets || {}});
   });
   const cats = CAT_ORDER.filter(c=>byCat[c]);
   Object.keys(byCat).forEach(c=>{ if(!cats.includes(c)) cats.push(c); });
   const q = (document.getElementById('modelFilter').value||'').trim().toLowerCase();
+  const ref = getCurrentMonthFromDate(CURR.date);
   let html = '';
   cats.forEach(cat=>{
     let list = byCat[cat].slice().sort((a,b)=>b.total-a.total);
     if(q) list = list.filter(m=>m.mn.toLowerCase().includes(q));
     if(!list.length) return;
-    html += '<div class="card"><h4 style="font-size:14px;color:#CBD5E1;margin-bottom:10px;display:flex;align-items:center;gap:8px">'+cat+' <span class="pill gray">'+list.length+'모델</span></h4><table><thead><tr><th>모델</th><th style="text-align:right">총재고</th><th style="text-align:right">Actual</th><th style="text-align:right">Virtual</th><th style="text-align:right">판매가능</th><th style="text-align:right">모터원</th></tr></thead><tbody>';
+    html += '<div class="card"><h4 style="font-size:14px;color:#CBD5E1;margin-bottom:10px;display:flex;align-items:center;gap:8px">'+cat+' <span class="pill gray">'+list.length+'모델</span></h4><table><thead><tr><th>모델</th><th style="text-align:right">총재고</th><th style="text-align:right">판매가능</th><th style="text-align:right" style="color:#34D399">즉시</th><th style="text-align:right" style="color:#60A5FA">'+(ref.m+1>12?1:ref.m+1)+'월</th><th style="text-align:right" style="color:#C084FC">그 이후</th><th style="text-align:right">모터원</th></tr></thead><tbody>';
     list.forEach(m=>{
-      html += '<tr><td class="mdl"><b style="color:#E2E8F0">'+m.mn+'</b></td><td class="num-cell">'+m.total+'</td><td class="num-cell" style="color:#94A3B8">'+m.actual+'</td><td class="num-cell">'+m.virtual+'</td><td class="num-cell" style="color:#60A5FA">'+m.sellable+'</td><td class="num-cell" style="color:#FBBF24">'+m.motorone+'</td></tr>';
+      const b = bucketPDD(m.sellable_pdd, ref.y, ref.m);
+      const months = Object.keys(b.byMonth).sort();
+      const nextKey = months[0];
+      const nextN = nextKey ? b.byMonth[nextKey] : 0;
+      const laterN = months.slice(1).reduce((s,k)=>s+b.byMonth[k],0);
+      const laterDetail = months.slice(1).map(k=>parseInt(k.split('-')[1])+'월'+b.byMonth[k]).join(' / ');
+      html += '<tr><td class="mdl"><b style="color:#E2E8F0">'+m.mn+'</b>'+(laterDetail?'<div style="font-size:10px;color:#64748B;margin-top:2px">'+laterDetail+'</div>':'')+'</td><td class="num-cell">'+m.total+'</td><td class="num-cell" style="color:#60A5FA">'+m.sellable+'</td><td class="num-cell" style="color:#34D399">'+b.imm+'</td><td class="num-cell" style="color:#60A5FA">'+nextN+'</td><td class="num-cell" style="color:#C084FC">'+laterN+'</td><td class="num-cell" style="color:#FBBF24">'+m.motorone+'</td></tr>';
     });
     html += '</tbody></table></div>';
   });
@@ -406,9 +469,13 @@ function renderGClass(){
   document.getElementById('gGrid').innerHTML = '<div class="g-item"><div class="gn">G 총 재고</div><div class="gv">'+fmt(g.total||0)+'<span>대</span></div><div class="gd">A '+(g.actual||0)+' + V '+(g.virtual||0)+'</div></div><div class="g-item"><div class="gn">판매 가능</div><div class="gv">'+fmt(g.sellable||0)+'<span>대</span></div><div class="gd">즉시 출고/예약 가능</div></div><div class="g-item"><div class="gn">Virtual 풀</div><div class="gv">'+fmt(g.virtual||0)+'<span>대</span></div><div class="gd">생산 예정 물량</div></div><div class="g-item"><div class="gn">Actual VIN</div><div class="gv">'+fmt(g.actual||0)+'<span>대</span></div><div class="gd">생산 완료</div></div>';
   const gMap = Array.isArray(g.models) ? Object.fromEntries(g.models) : (g.models || {});
   const gList = Object.entries(gMap).sort((a,b)=>b[1].total-a[1].total);
+  const refG = getCurrentMonthFromDate(CURR.date);
   document.getElementById('gModelsBody').innerHTML = gList.length ? gList.map(arr=>{
     const mn = arr[0], m = arr[1];
-    return '<tr><td class="mdl"><b>'+mn+'</b></td><td class="num-cell">'+m.total+'</td><td class="num-cell" style="color:#94A3B8">'+m.actual+'</td><td class="num-cell" style="color:#22D3EE">'+m.virtual+'</td><td class="num-cell" style="color:#60A5FA">'+m.sellable+'</td><td class="num-cell" style="color:#FBBF24">'+(m.motorone||0)+'</td></tr>';
+    const b = bucketPDD(m.sellable_pdd || m.pdd_buckets || {}, refG.y, refG.m);
+    const months = Object.keys(b.byMonth).sort();
+    const future = months.map(k=>parseInt(k.split('-')[1])+'월 '+b.byMonth[k]).join(' / ') || '—';
+    return '<tr><td class="mdl"><b>'+mn+'</b></td><td class="num-cell">'+m.total+'</td><td class="num-cell" style="color:#60A5FA">'+m.sellable+'</td><td class="num-cell" style="color:#34D399">'+b.imm+'</td><td class="num-cell" style="color:#C084FC;font-size:11px">'+future+'</td><td class="num-cell" style="color:#FBBF24">'+(m.motorone||0)+'</td></tr>';
   }).join('') : '<tr><td colspan="6" class="empty">G클래스 데이터 없음</td></tr>';
 }
 

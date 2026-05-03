@@ -62,6 +62,17 @@ def clean_model(name):
     return s
 
 
+
+
+def pdd_to_month(pdd):
+    """PDD 문자열에서 'YYYY-MM' 추출. 없으면 None."""
+    if not pdd: return None
+    s = str(pdd)
+    if s.lower() in ('none','null',''): return None
+    m = re.search(r'(\d{4})-(\d{2})', s)
+    if m: return f"{m.group(1)}-{m.group(2)}"
+    return None
+
 def is_virtual_vin(vin, vehicle_purpose, process_type):
     """Virtual VIN 판별. 'DK'로 시작 OR purpose='Virtual VIN' OR process='Dummy'"""
     if vin and str(vin).startswith('DK'): return True
@@ -288,6 +299,9 @@ def build_snapshot(parsed):
                 'assigned': 0,
                 'motorone': 0,  # 모터원 배정재고
                 'consign': 0,   # 위탁/전시차
+                'pdd_buckets': {},   # 전체 재고 기준 PDD 월 분포 (YYYY-MM → count, 'unknown' = PDD없음)
+                'sellable_pdd': {},  # 판매가능 기준 PDD 월 분포
+                'colors': {},        # 판매가능 색상조합 → {total, pdd: {YYYY-MM → N}}
             }
         m = target[r['model']]
         m['total'] += 1
@@ -303,6 +317,21 @@ def build_snapshot(parsed):
             m['motorone'] += 1
         if r['inv_class'] in ('위탁재고', '전시차재고') or r['source'] != 'allocation':
             m['consign'] += 1
+
+        # PDD 월 버킷 (전체 재고)
+        pdd_m = pdd_to_month(r['pdd']) or 'unknown'
+        m['pdd_buckets'][pdd_m] = m['pdd_buckets'].get(pdd_m, 0) + 1
+
+        # 판매가능 차량만: 색상 조합 + PDD 분포
+        if r['car_status'] == '판매 가능':
+            m['sellable_pdd'][pdd_m] = m['sellable_pdd'].get(pdd_m, 0) + 1
+            ext = r['ext_color'] or ''
+            inn = r['int_color'] or ''
+            combo = (ext + '|' + inn) if (ext or inn) else 'unknown'
+            if combo not in m['colors']:
+                m['colors'][combo] = {'total': 0, 'pdd': {}}
+            m['colors'][combo]['total'] += 1
+            m['colors'][combo]['pdd'][pdd_m] = m['colors'][combo]['pdd'].get(pdd_m, 0) + 1
 
         vins_meta[v] = {
             'model': r['model'],
@@ -357,4 +386,4 @@ if __name__ == '__main__':
             json.dump(snap, f, ensure_ascii=False, indent=2, default=str)
         print(f'저장 완료: {out}')
     else:
-        print(json.dumps({k:
+        print(json.dumps({k: v for k, v in snap.items() if k != 'vins_meta'}, ensure_ascii=False, indent=2, default=str))

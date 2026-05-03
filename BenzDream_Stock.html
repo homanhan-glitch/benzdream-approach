@@ -59,6 +59,13 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
 .model-name{font-weight:700;color:var(--text);font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .model-meta{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .model-badge{font-size:11px;font-weight:700;color:#0A7D3E;background:#E6F7ED;padding:3px 10px;border-radius:20px;white-space:nowrap;letter-spacing:-.01em}
+.model-badges{display:flex;gap:5px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+.pdd-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:18px;white-space:nowrap;letter-spacing:-.01em;font-family:'Inter',sans-serif}
+.pdd-badge.imm{color:#0A7D3E;background:#E6F7ED}
+.pdd-badge.next{color:#0050A5;background:#E6F0FA}
+.pdd-badge.later{color:#7B3F9D;background:#F4E8FA}
+.pdd-info{font-size:11px;color:var(--text-sub);margin-top:6px;padding-left:32px}
+.pdd-info b{color:var(--text);font-weight:700}
 .arrow{width:8px;height:8px;border-right:2px solid var(--text-mute);border-bottom:2px solid var(--text-mute);transform:rotate(45deg);transition:transform .25s}
 .model-card.open .arrow{transform:rotate(-135deg);border-color:var(--accent)}
 
@@ -103,7 +110,7 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
   <div class="hero-banner"><img src="images/banner.jpg" alt="BenzDream 한호만"></div>
   <div class="hero-brand">Mercedes-Benz · Real-Time Inventory</div>
   <h1 class="hero-title">벤츠 전국 실시간 재고</h1>
-  <div class="hero-sub">즉시출고 가능 차량 한눈에 확인</div>
+  <div class="hero-sub">즉시출고가능 + 월별 출고예정 차량 한눈에 확인</div>
   <div class="updated" id="updatedBadge">최종 업데이트 2026-04-29</div>
 </div>
 
@@ -151,10 +158,19 @@ async function loadStock(){
     Object.entries(j.models).forEach(([name, d])=>{
       const combos = Object.entries(d.colors || {}).map(([k,v])=>{
         const [en,inn] = k.split('|');
-        return {en: en||'-', inn: inn||'-', avail: v, total: v, s: 'available'};
+        // v can be number (legacy) or {total, pdd:{}} (new)
+        if(typeof v === 'number'){
+          return {en: en||'-', inn: inn||'-', total: v, pdd: null};
+        }
+        return {en: en||'-', inn: inn||'-', total: v.total || 0, pdd: v.pdd || null};
       });
       if(!combos.length) return;
-      DATA.push({model:name, combos});
+      DATA.push({
+        model: name,
+        combos,
+        pdd_buckets: d.pdd_buckets || {},
+        pdd_total: d.pdd_total || 0
+      });
       if(!byCat[d.cat]) byCat[d.cat] = [];
       byCat[d.cat].push(name);
     });
@@ -168,6 +184,57 @@ async function loadStock(){
     document.getElementById('listing').innerHTML='<div class="empty">재고 데이터를 불러오지 못했습니다.</div>';
   }
 }
+
+/* === PDD 월별 그룹화 === */
+function getStockRef(){
+  // 사용자: "이번달은 5월" — 오늘 기준 현재 월
+  const today = new Date();
+  return {y: today.getFullYear(), m: today.getMonth()+1};
+}
+function bucketStockPDD(pddBuckets, refY, refM){
+  let imm = 0, total = 0;
+  const byMonth = {};
+  Object.entries(pddBuckets || {}).forEach(([k, n])=>{
+    total += n;
+    if(k === 'unknown'){ imm += n; return; }
+    const mch = k.match(/^(\d{4})-(\d{2})$/);
+    if(!mch){ imm += n; return; }
+    const y = parseInt(mch[1]), m = parseInt(mch[2]);
+    if(y < refY || (y === refY && m <= refM)) imm += n;
+    else byMonth[k] = (byMonth[k] || 0) + n;
+  });
+  return {imm, byMonth, total};
+}
+function buildPddBadges(pddBuckets){
+  const ref = getStockRef();
+  const b = bucketStockPDD(pddBuckets, ref.y, ref.m);
+  if(b.total === 0) return '<div class="model-badges"><div class="pdd-badge imm">즉시출고가능</div></div>';
+  const months = Object.keys(b.byMonth).sort();
+  const out = [];
+  if(b.imm > 0){
+    out.push(`<div class="pdd-badge imm">즉시 ${b.imm}대</div>`);
+  }
+  months.forEach((k, i)=>{
+    const mNum = parseInt(k.split('-')[1]);
+    const cls = i === 0 ? 'next' : 'later';
+    out.push(`<div class="pdd-badge ${cls}">${mNum}월 ${b.byMonth[k]}대</div>`);
+  });
+  return '<div class="model-badges">' + out.join('') + '</div>';
+}
+function buildPddSummary(pddBuckets){
+  const ref = getStockRef();
+  const b = bucketStockPDD(pddBuckets, ref.y, ref.m);
+  if(b.total === 0) return '';
+  const months = Object.keys(b.byMonth).sort();
+  const parts = [];
+  if(b.imm > 0) parts.push(`<b style="color:#0A7D3E">즉시출고 ${b.imm}대</b>`);
+  months.forEach(k=>{
+    const mNum = parseInt(k.split('-')[1]);
+    parts.push(`${mNum}월 출고 ${b.byMonth[k]}대`);
+  });
+  return '<div class="pdd-info">📅 ' + parts.join(' · ') + '</div>';
+}
+
 let currentCat = 'ALL', searchTerm = '';
 
 function getTotal(){return DATA.reduce((s,m)=>s+m.combos.reduce((x,c)=>x+c.total,0),0)}
@@ -359,7 +426,7 @@ function render(){
     h += `<div class="cat-section"><div class="cat-header"><div class="cat-name">${cat}</div><div class="cat-cnt">${models.length}개 모델</div></div>`;
     models.forEach(m=>{
       const mt = m.combos.reduce((s,c)=>s+c.total,0);
-      h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta"><div class="model-badge">즉시출고가능</div><div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">`;
+      h += `<div class="model-card"><div class="model-head"><div class="model-name">${m.model}</div><div class="model-meta">${buildPddBadges(m.pdd_buckets)}<div class="arrow"></div></div></div><div class="combos"><div class="combos-inner">${buildPddSummary(m.pdd_buckets)}`;
       const extMap = {};
       m.combos.forEach(c=>{
         if(!extMap[c.en]) extMap[c.en]=[];
