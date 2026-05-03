@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가격 및 프로모션 시안 — 페이퍼톤 PREVIEW | BenzDream</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+@font-face{font-family:'MBK CorpoA';src:url('https://homanhan-glitch.github.io/benzdream-quote/fonts/MBKCorpoA.woff') format('woff');font-display:swap}
+@font-face{font-family:'MBK CorpoS';src:url('https://homanhan-glitch.github.io/benzdream-quote/fonts/MBKCorpoS.woff') format('woff');font-display:swap}
+@font-face{font-family:'MBK CorpoS Light';src:url('https://homanhan-glitch.github.io/benzdream-quote/fonts/MBKCorpoS.woff') format('woff');font-display:swap;font-weight:300}
+@font-face{font-family:'MBK CorpoA Cond';src:url('https://homanhan-glitch.github.io/benzdream-quote/fonts/MBKCorpoA.woff') format('woff');font-display:swap;font-weight:700}
+
+:root{
+  --ink:#0b0f1a;
+  --ink-soft:#2a2f3d;
+  --paper:#fbfaf7;
+  --paper-2:#f5f3ee;
+  --line:#d8dce4;
+  --line-soft:#eef0f4;
+  --muted:#5b6272;
+  --muted-2:#8a8f9e;
+  --gold:#a8854a;
+  --gold-dark:#7a5e2e;
+  --gold-light:#c8a978;
+  --accent:#0f2744;
+  --red:#a32a2a;
+  --green:#1f6b3a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:980px;margin:0 auto;padding:48px 28px 80px}
+
+/* === Preview Banner === */
+.preview-banner{
+  background:#fff8e1;
+  border:1px solid var(--gold);
+  border-radius:0;
+  padding:14px 20px;
+  margin-bottom:40px;
+  font-size:.78rem;
+  color:var(--gold-dark);
+  text-align:center;
+  font-family:'MBK CorpoA','Noto Sans KR',sans-serif;
+  letter-spacing:.05em;
+}
+.preview-banner b{color:var(--ink);font-weight:700}
+
+/* === Header === */
+.hero{text-align:center;padding:24px 0 56px;border-bottom:1px solid var(--line)}
+.hero-cap{font-family:'MBK CorpoA',sans-serif;font-size:.7rem;color:var(--gold);letter-spacing:.3em;font-weight:500;margin-bottom:14px}
+.hero-title{font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;font-size:2.4rem;color:var(--ink);font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+.hero-sub{font-family:'MBK CorpoS Light',sans-serif;font-size:.88rem;color:var(--muted);margin-bottom:18px}
+.hero-meta{display:inline-flex;align-items:center;gap:10px;font-family:'MBK CorpoA',sans-serif;font-size:.7rem;color:var(--muted);letter-spacing:.15em}
+.hero-meta .dash{color:var(--line)}
+
+/* === Section === */
+.section{padding:52px 0;border-bottom:1px solid var(--line-soft)}
+.sec-num{font-family:'MBK CorpoA',sans-serif;font-size:.7rem;color:var(--gold);letter-spacing:.2em;font-weight:500;margin-bottom:8px}
+.sec-title{font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;font-weight:700;font-size:1.5rem;color:var(--ink);letter-spacing:-.005em;margin-bottom:6px;line-height:1.3}
+.sec-lead{font-family:'MBK CorpoS Light',sans-serif;font-size:.88rem;color:var(--muted);margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
+
+/* === Pick Card (호만팀장 추천) === */
+.pick{
+  border:1px solid var(--line);
+  background:var(--paper-2);
+  margin:0 0 16px;
+  padding:28px 30px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:28px;
+  align-items:start;
+  transition:border-color .2s;
+}
+.pick:hover{border-color:var(--gold)}
+.pick-rank{
+  font-family:'MBK CorpoA',sans-serif;
+  font-size:.65rem;
+  letter-spacing:.18em;
+  color:var(--gold-dark);
+  font-weight:500;
+  padding-top:6px;
+  min-width:60px;
+}
+.pick-rank .num{display:block;font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;font-size:1.6rem;color:var(--gold);font-weight:700;letter-spacing:0;line-height:1;margin-bottom:8px}
+.pick-body h4{font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;font-weight:700;font-size:1.2rem;color:var(--ink);margin-bottom:6px;letter-spacing:-.005em}
+.pick-tag{font-family:'MBK CorpoA',sans-serif;font-size:.7rem;color:var(--muted);letter-spacing:.05em;margin-bottom:14px}
+.pick-headline{
+  font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;
+  font-size:1.35rem;
+  color:var(--gold-dark);
+  font-weight:700;
+  letter-spacing:-.005em;
+  padding:14px 0;
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+  margin:6px 0 12px;
+}
+.pick-desc{font-size:.85rem;color:var(--ink-soft);line-height:1.7;font-family:'MBK CorpoS Light',sans-serif}
+
+/* === Common Discount Box === */
+.discount-grid{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line);background:var(--paper-2)}
+.discount-row{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:18px 24px;border-bottom:1px solid var(--line-soft);align-items:start}
+.discount-row:last-child{border-bottom:none}
+.discount-label{font-family:'MBK CorpoA',sans-serif;font-size:.72rem;color:var(--gold-dark);letter-spacing:.1em;font-weight:600;text-transform:uppercase}
+.discount-label .new{font-family:'MBK CorpoA',sans-serif;font-size:.6rem;color:var(--red);letter-spacing:.1em;margin-left:6px;font-weight:700}
+.discount-desc{font-family:'MBK CorpoS Light',sans-serif;font-size:.85rem;color:var(--ink-soft);line-height:1.7}
+.discount-desc strong{color:var(--gold-dark);font-weight:700;font-family:'MBK CorpoA',sans-serif}
+
+/* === Finance Cards === */
+.fin-block{margin-bottom:28px;padding:28px 30px;border:1px solid var(--line);background:var(--paper-2)}
+.fin-cap{font-family:'MBK CorpoA',sans-serif;font-size:.65rem;color:var(--gold-dark);letter-spacing:.2em;font-weight:600;margin-bottom:10px;text-transform:uppercase}
+.fin-title{font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;font-size:1.05rem;color:var(--ink);font-weight:700;margin-bottom:6px}
+.fin-target{font-family:'MBK CorpoS Light',sans-serif;font-size:.78rem;color:var(--muted);margin-bottom:18px}
+
+.fin-2col{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line-soft)}
+.fin-cell{padding:20px 0;border-right:1px solid var(--line-soft)}
+.fin-cell:last-child{border-right:none;padding-left:24px}
+.fin-cell:first-child{padding-right:24px}
+.fin-cell-label{font-size:.7rem;color:var(--muted);font-family:'MBK CorpoA',sans-serif;letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
+.fin-cell-rate{font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;font-size:2rem;color:var(--gold-dark);font-weight:700;line-height:1.1}
+.fin-cell-note{font-size:.75rem;color:var(--ink-soft);margin-top:6px;font-family:'MBK CorpoS Light',sans-serif;line-height:1.6}
+
+.fin-tier{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line-soft);margin-top:16px}
+.fin-tier-cell{padding:18px 16px;text-align:center;border-right:1px solid var(--line-soft)}
+.fin-tier-cell:last-child{border-right:none}
+.fin-tier-cell .term{font-family:'MBK CorpoA',sans-serif;font-size:.7rem;color:var(--muted);letter-spacing:.1em;margin-bottom:6px}
+.fin-tier-cell .rate{font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;font-size:1.5rem;color:var(--gold-dark);font-weight:700;line-height:1.1}
+.fin-tier-cell .note{font-size:.66rem;color:var(--muted-2);margin-top:4px;font-family:'MBK CorpoS Light',sans-serif}
+
+/* === Compare === */
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin-top:18px}
+.compare-cell{text-align:center;padding:20px}
+.compare-cell.left{background:var(--paper)}
+.compare-cell.right{background:#fff;border:1px solid var(--gold)}
+.compare-cell .label{font-family:'MBK CorpoA',sans-serif;font-size:.65rem;color:var(--muted);letter-spacing:.15em;margin-bottom:8px;text-transform:uppercase}
+.compare-cell.right .label{color:var(--gold-dark)}
+.compare-cell .rate{font-family:'MBK CorpoA Cond','MBK CorpoA',sans-serif;font-size:1.4rem;font-weight:700;color:var(--ink-soft)}
+.compare-cell.right .rate{color:var(--gold-dark)}
+.compare-cell .delta{font-size:.7rem;color:var(--green);margin-top:4px;font-family:'MBK CorpoS Light',sans-serif;font-weight:600}
+.vs{font-family:'MBK CorpoA',sans-serif;font-size:.75rem;color:var(--muted-2);letter-spacing:.2em}
+
+.callout{
+  background:var(--paper);
+  border-left:3px solid var(--gold);
+  padding:18px 22px;
+  margin-top:18px;
+  font-family:'MBK CorpoS Light',sans-serif;
+  font-size:.82rem;
+  color:var(--ink-soft);
+  line-height:1.7;
+}
+.callout strong{color:var(--gold-dark);font-family:'MBK CorpoA',sans-serif;font-weight:700}
+
+.fine-print{font-size:.7rem;color:var(--muted-2);line-height:1.65;margin-top:16px;font-family:'MBK CorpoS Light',sans-serif;text-align:center}
+.foot-note{padding:24px 0;text-align:center;font-family:'MBK CorpoA',sans-serif;font-size:.7rem;color:var(--muted-2);letter-spacing:.15em;margin-top:40px;border-top:1px solid var(--line)}
+
+@media(max-width:680px){
+  .wrap{padding:32px 18px 60px}
+  .hero-title{font-size:1.8rem}
+  .pick{grid-template-columns:1fr;padding:22px 20px;gap:14px}
+  .pick-rank{padding-top:0;display:flex;align-items:baseline;gap:10px}
+  .pick-rank .num{display:inline;font-size:1.2rem;margin-bottom:0}
+  .fin-2col{grid-template-columns:1fr}
+  .fin-cell{border-right:none;border-bottom:1px solid var(--line-soft);padding:16px 0}
+  .fin-cell:first-child{padding-right:0}
+  .fin-cell:last-child{padding-left:0;border-bottom:none}
+  .fin-tier{grid-template-columns:1fr}
+  .fin-tier-cell{border-right:none;border-bottom:1px solid var(--line-soft)}
+  .compare{grid-template-columns:1fr;gap:10px}
+  .vs{padding:6px 0}
+  .discount-row{grid-template-columns:1fr;gap:6px;padding:16px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  ✦ <b>SHEET 시안</b> · 가격 및 프로모션 페이지 페이퍼톤 변환 PREVIEW (월간리포트 디자인 톤 적용) · 컨펌 후 본 페이지 전면 적용
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-cap">2026 · MAY · BENZDREAM</p>
+    <h1 class="hero-title">가격 및 프로모션</h1>
+    <p class="hero-sub">한호만 팀장 — 모터원 고양 · 메르세데스-벤츠 공식 딜러</p>
+    <div class="hero-meta">
+      <span>2026.05 기준</span>
+      <span class="dash">—</span>
+      <span>VAT 포함</span>
+      <span class="dash">—</span>
+      <span>단위 : 원</span>
+    </div>
+  </div>
+
+  <!-- 공통 추가 할인 -->
+  <div class="section">
+    <p class="sec-num">CHAPTER 01</p>
+    <h2 class="sec-title">공통 추가 할인 적용 안내</h2>
+    <p class="sec-lead">아래 할인은 모델별 기본 프로모션과 중복 적용 가능합니다 · 조건 충족 여부에 따라 누적</p>
+
+    <div class="discount-grid">
+      <div class="discount-row">
+        <span class="discount-label">재구매 고객</span>
+        <span class="discount-desc">벤츠 재구매 — AMG · Maybach · S-Class · G-Class <strong>+2%</strong> · 그 외 모든 차량 <strong>+1%</strong></span>
+      </div>
+      <div class="discount-row">
+        <span class="discount-label">타 브랜드 보유</span>
+        <span class="discount-desc">GLC · GLE 구매 시 BMW · Audi · Genesis · Volvo · Porsche · Land Rover 등 보유 고객 <strong>+1%</strong></span>
+      </div>
+      <div class="discount-row">
+        <span class="discount-label">트레이드인<span class="new">5월 재시행</span></span>
+        <span class="discount-desc">전 차종 트레이드인(중고차 매각 동시 진행) 시 모든 차량 <strong>+1%</strong> · 타 프로모션과 중복 가능</span>
+      </div>
+      <div class="discount-row">
+        <span class="discount-label">전시차량<span class="new">NEW</span></span>
+        <span class="discount-desc">전시차 즉시 출고 가능 시 <strong>+1%</strong> 추가 할인</span>
+      </div>
+      <div class="discount-row">
+        <span class="discount-label">하자수리 / 하이마일리지</span>
+        <span class="discount-desc">하자수리 보증 연장 · 하이마일리지(1백만원 상당) 해당 시 각 <strong>+1%</strong> 추가</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 호만팀장 추천 5월 베스트 5 -->
+  <div class="section">
+    <p class="sec-num">CHAPTER 02 · BENZDREAM PICKS</p>
+    <h2 class="sec-title">호만팀장이 추천하는 5월 베스트 5</h2>
+    <p class="sec-lead">5월 시장 흐름 · 26년식 마지막 배치 일정 · 6·7월 입항 물량을 함께 고려한 라인업입니다</p>
+
+    <div class="pick">
+      <div class="pick-rank"><span class="num">01</span>LAST CHANCE</div>
+      <div class="pick-body">
+        <p class="pick-tag">E-CLASS 엔트리 마지막 기회</p>
+        <h4>E 200 AVANTGARDE</h4>
+        <p class="pick-headline">실구매 6,000만원대 중반</p>
+        <p class="pick-desc">26년식 잔여 재고 소진 임박 · 27년식부터 동일 가격대 진입 불가 · 즉시 결정 권장</p>
+      </div>
+    </div>
+
+    <div class="pick">
+      <div class="pick-rank"><span class="num">02</span>BEST TIMING</div>
+      <div class="pick-body">
+        <p class="pick-tag">프리미엄 SUV · 5월 최고 타이밍</p>
+        <h4>GLE 450 4MATIC AMG Line</h4>
+        <p class="pick-headline">6 · 7월 입항 물량 오픈</p>
+        <p class="pick-desc">계약 시점 조건이 출고까지 그대로 유지 · 26년식 마지막 배치 · 색상·옵션 우선 매칭 가능</p>
+      </div>
+    </div>
+
+    <div class="pick">
+      <div class="pick-rank"><span class="num">03</span>FINANCE</div>
+      <div class="pick-body">
+        <p class="pick-tag">초저금리 · E-Class 상품성 1위</p>
+        <h4>E 200 AMG Line</h4>
+        <p class="pick-headline">최저 금리 1%대~</p>
+        <p class="pick-desc">선수금·개월수에 따라 1%대 진입 · 색상별 재고 임박 · E-Class 라인업 중 최고의 상품성</p>
+      </div>
+    </div>
+
+    <div class="pick">
+      <div class="pick-rank"><span class="num">04</span>SUV BESTSELLER</div>
+      <div class="pick-body">
+        <p class="pick-tag">국내 SUV 베스트셀러 · 즉시 출고</p>
+        <h4>GLC 300 4MATIC AMG Line</h4>
+        <p class="pick-headline">최대 14% 할인</p>
+        <p class="pick-desc">기본 12% + 타 브랜드 보유 1% + 트레이드인 1% 중복 가능 · 쿠페형은 6~7월 물량까지 마감 임박</p>
+      </div>
+    </div>
+
+    <div class="pick">
+      <div class="pick-rank"><span class="num">05</span>LAST CHANCE</div>
+      <div class="pick-body">
+        <p class="pick-tag">5,000~6,000만원대 강력 추천</p>
+        <h4>C 200 AVANTGARDE</h4>
+        <p class="pick-headline">금리 1%대 + 11% 할인</p>
+        <p class="pick-desc">엔트리 세단 가장 매력적 조건 · 27년식 가격 인상 가능성으로 즉시 구매 권장</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5월 금융 프로그램 -->
+  <div class="section">
+    <p class="sec-num">CHAPTER 03 · FINANCE PROGRAM</p>
+    <h2 class="sec-title">5월 금융 프로그램</h2>
+    <p class="sec-lead">할인은 그대로, 금융이 강해진 달입니다 · 신차교환보상 3년 기본 포함</p>
+
+    <!-- EV 파격 금융 -->
+    <div class="fin-block">
+      <p class="fin-cap">EV · 파격 금융</p>
+      <h3 class="fin-title">전기차 무이자 · 초저금리</h3>
+      <div class="fin-2col">
+        <div class="fin-cell">
+          <p class="fin-cell-label">EQA · EQB</p>
+          <div class="fin-cell-rate">0%</div>
+          <p class="fin-cell-note">전 기간 무이자 · EQB는 SK ON 배터리 적용</p>
+        </div>
+        <div class="fin-cell">
+          <p class="fin-cell-label">EQE · EQS</p>
+          <div class="fin-cell-rate">0.74%</div>
+          <p class="fin-cell-note">최저 초저금리 · EQE 350+ SUV 시승 가능</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 포커스 모델 특별 금리 -->
+    <div class="fin-block">
+      <p class="fin-cap">FOCUS · 특별 금리</p>
+      <h3 class="fin-title">포커스 모델 할부 금리</h3>
+      <p class="fin-target">대상 — C 200 · E 200 AMG Line · E 350 e · E 450</p>
+      <div class="fin-tier">
+        <div class="fin-tier-cell">
+          <p class="term">24개월</p>
+          <div class="rate">0%</div>
+          <p class="note">완전 무이자</p>
+        </div>
+        <div class="fin-tier-cell">
+          <p class="term">36개월</p>
+          <div class="rate">1.7%대</div>
+          <p class="note">최저 금리</p>
+        </div>
+        <div class="fin-tier-cell">
+          <p class="term">60개월</p>
+          <div class="rate">4.56%</div>
+          <p class="note">선수금 50% 기준</p>
+        </div>
+      </div>
+      <div class="callout">
+        E 200 EX/AV · E 300 — 36개월 <strong>5.16~5.20%</strong> · 60개월 <strong>5.38~5.41%</strong> (선수금 50% 기준)
+      </div>
+    </div>
+
+    <!-- 잔존가치 보장형 -->
+    <div class="fin-block">
+      <p class="fin-cap">PREMIUM · 잔존가치 보장형 할부</p>
+      <h3 class="fin-title">프리미엄 라인업 안심 금융</h3>
+      <p class="fin-target">대상 — GLE SUV/Coupé · GT 43 · S 450 SWB · GLC 300 · 타이어 교환 3년 무상 추가</p>
+      <div class="compare">
+        <div class="compare-cell left">
+          <p class="label">일반 할부</p>
+          <p class="rate">6.35~6.70%</p>
+        </div>
+        <div class="vs">VS</div>
+        <div class="compare-cell right">
+          <p class="label">잔존가치 보장형</p>
+          <p class="rate">3.77~4.83%</p>
+          <p class="delta">최대 2.93%p 인하</p>
+        </div>
+      </div>
+      <div class="callout">
+        S 450 4MATIC SWB 전용 — 잔존가치 보장형 적용 시 <strong>3%대 금리</strong>까지 가능
+      </div>
+    </div>
+
+    <!-- 카드사 채널 -->
+    <div class="fin-block">
+      <p class="fin-cap">CARD · 카드사 채널 (참고)</p>
+      <div class="fin-2col">
+        <div class="fin-cell">
+          <p class="fin-cell-label">신한카드 자체 금리</p>
+          <div class="fin-cell-rate">3.7~4.1%</div>
+          <p class="fin-cell-note">개월수에 따라 변동</p>
+        </div>
+        <div class="fin-cell">
+          <p class="fin-cell-label">기본 포함 혜택</p>
+          <p class="fin-cell-note" style="font-size:.85rem;color:var(--ink);margin-top:8px">신차교환보상 3년<br>잔존가치 보장형 — 타이어 교환 3년 추가</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="fine-print">※ 모든 금리는 신용등급·심사 결과에 따라 변동 · 정확한 금융 시뮬레이션은 상담 시 안내</p>
+  </div>
+
+  <p class="foot-note">SHEET PREVIEW · BENZDREAM 2026 MAY · 한호만 팀장</p>
+</div>
+
+</body>
+</html>
