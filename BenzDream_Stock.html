@@ -212,27 +212,18 @@ function buildPddBadges(pddBuckets){
   const months = Object.keys(b.byMonth).sort();
   const out = [];
   if(b.imm > 0){
-    out.push(`<div class="pdd-badge imm">즉시 ${b.imm}대</div>`);
+    out.push('<div class="pdd-badge imm">즉시출고가능</div>');
   }
   months.forEach((k, i)=>{
     const mNum = parseInt(k.split('-')[1]);
     const cls = i === 0 ? 'next' : 'later';
-    out.push(`<div class="pdd-badge ${cls}">${mNum}월 ${b.byMonth[k]}대</div>`);
+    out.push(`<div class="pdd-badge ${cls}">${mNum}월 출고예정</div>`);
   });
   return '<div class="model-badges">' + out.join('') + '</div>';
 }
 function buildPddSummary(pddBuckets){
-  const ref = getStockRef();
-  const b = bucketStockPDD(pddBuckets, ref.y, ref.m);
-  if(b.total === 0) return '';
-  const months = Object.keys(b.byMonth).sort();
-  const parts = [];
-  if(b.imm > 0) parts.push(`<b style="color:#0A7D3E">즉시출고 ${b.imm}대</b>`);
-  months.forEach(k=>{
-    const mNum = parseInt(k.split('-')[1]);
-    parts.push(`${mNum}월 출고 ${b.byMonth[k]}대`);
-  });
-  return '<div class="pdd-info">📅 ' + parts.join(' · ') + '</div>';
+  // 고객용 페이지는 대수 노출하지 않음 → 카드 내부 요약줄 비활성화 (배지로만 표시)
+  return '';
 }
 
 let currentCat = 'ALL', searchTerm = '';
