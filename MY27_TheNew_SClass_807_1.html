@@ -933,402 +933,68 @@ img { cursor: zoom-in; -webkit-tap-highlight-color: rgba(201,169,110,0.2); }
   .bd-banner-caption strong { font-size: 1.1rem; }
 }
 </style>
+
+
 <style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --gold-dim: #7a6330;
-    --gold-faint: rgba(201,168,76,0.08);
-    --black: #0a0a0a;
-    --dark: #111111;
-    --card: #161616;
-    --card2: #1a1a1a;
-    --border: #2a2a2a;
-    --border-light: #222;
-    --text: #e2e2e2;
-    --muted: #888;
-    --muted2: #666;
-    --white: #f5f5f5;
-  }
+/* ── 라인업 옵션 가이드 섹션 ── */
+.opt-guide { max-width: 1240px; margin: 0 auto; padding: 60px 24px 72px; }
+.opt-guide-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 44px; padding-bottom: 20px; border-bottom: 1px solid #2a2a2a; flex-wrap: wrap; }
+.opt-guide-eyebrow { font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 6px; color: #C9A84C; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.opt-guide-eyebrow::before { content: ''; width: 28px; height: 1px; background: #C9A84C; flex-shrink: 0; }
+.opt-guide-h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(24px,3.5vw,42px); letter-spacing: 3px; color: #f5f5f5; line-height: 1; }
+.opt-guide-sub { margin-top: 6px; font-size: 11px; letter-spacing: 3px; color: #888; text-transform: uppercase; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* 공통 옵션 */
+.common-block-og { margin-bottom: 52px; background: #161616; border: 1px solid #2a2a2a; border-top: 2px solid #7a6330; padding: 24px 24px 20px; }
+.common-block-title-og { font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 5px; color: #C9A84C; text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+.common-block-title-og::after { content: ''; flex: 1; height: 1px; background: #2a2a2a; }
+.common-grid-og { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 3px; }
+.common-item-og { display: flex; align-items: baseline; padding: 7px 10px; border-left: 1px solid #222; font-size: 11.5px; color: #bbb; transition: background .12s, border-color .12s; }
+.common-item-og:hover { background: #1e1e1e; border-left-color: #7a6330; color: #e2e2e2; }
+.og-note { margin-top: 12px; font-size: 10px; color: #666; padding-left: 4px; }
 
-  body {
-    background: var(--black);
-    color: var(--text);
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-  }
-
-  /* ─────────────────────────────────────
-     LINEUP WRAPPER (페이지 내 삽입 단위)
-  ───────────────────────────────────── */
-  .lineup-section {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 72px 24px 80px;
-  }
-
-  /* ── 섹션 헤더 ── */
-  .section-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 52px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-  .section-head-left {}
-  .section-eyebrow {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    letter-spacing: 6px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-eyebrow::before {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(28px, 4vw, 48px);
-    letter-spacing: 3px;
-    color: var(--white);
-    line-height: 1;
-  }
-  .section-subtitle {
-    margin-top: 8px;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .section-head-right {
-    font-size: 11px;
-    color: var(--muted2);
-    line-height: 1.7;
-    max-width: 280px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .section-head-right strong {
-    color: var(--gold);
-    font-weight: 400;
-  }
-
-  /* ─────────────────────────────────────
-     공통 옵션 그리드
-  ───────────────────────────────────── */
-  .common-block {
-    margin-bottom: 60px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--gold-dim);
-    padding: 28px 28px 24px;
-    position: relative;
-  }
-  .common-block::before {
-    content: 'STANDARD';
-    position: absolute;
-    top: -1px;
-    right: 28px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 9px;
-    letter-spacing: 4px;
-    color: var(--gold-dim);
-    background: var(--card);
-    padding: 0 8px;
-    transform: translateY(-50%);
-  }
-  .common-block-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
-    letter-spacing: 5px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .common-block-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-  .common-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 4px;
-  }
-  .common-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 10px;
-    padding: 7px 10px;
-    border-left: 1px solid var(--border-light);
-    font-size: 11.5px;
-    color: #bbb;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .common-item:hover {
-    background: #1e1e1e;
-    border-left-color: var(--gold-dim);
-    color: var(--text);
-  }
-  .common-item .code {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 12px;
-    color: var(--gold-dim);
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: color 0.15s;
-  }
-  .common-item:hover .code { color: var(--gold); }
-  .common-note {
-    margin-top: 14px;
-    font-size: 10px;
-    color: var(--muted2);
-    letter-spacing: 1px;
-    padding-left: 4px;
-  }
-
-  /* ─────────────────────────────────────
-     모델 비교표 스크롤 래퍼
-  ───────────────────────────────────── */
-  .table-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
-    letter-spacing: 5px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .table-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .scroll-track {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-  }
-  .scroll-track::-webkit-scrollbar { height: 2px; }
-  .scroll-track::-webkit-scrollbar-track { background: var(--border); }
-  .scroll-track::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 1px; }
-
-  /* ── Table ── */
-  table.model-table {
-    border-collapse: collapse;
-    min-width: 1020px;
-    width: 100%;
-    table-layout: fixed;
-  }
-  table.model-table col.c-label { width: 120px; }
-  table.model-table col.c-model { width: 152px; }
-
-  /* 모델 헤더 행 */
-  tr.mh td {
-    background: var(--card);
-    border: 1px solid var(--border);
-    vertical-align: top;
-    padding: 0;
-  }
-  tr.mh td.lbl { background: transparent; border-color: transparent; }
-
-  .mcard {
-    padding: 18px 16px 14px;
-    position: relative;
-    overflow: hidden;
-  }
-  .mcard-bar {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--border);
-  }
-  .mcard-bar.amg { background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%); }
-  .mcard-bar.top { background: linear-gradient(90deg, var(--gold-light) 0%, #fffbe8 100%); }
-
-  .mbadge {
-    display: block;
-    font-size: 8.5px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 5px;
-  }
-  .mname {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 3px;
-  }
-  .mbody-type {
-    font-size: 9.5px;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-  }
-  /* AMG Line 모델에 배경 강조 */
-  tr.mh td.amg-col .mcard { background: rgba(201,168,76,0.04); }
-
-  /* 데이터 행 */
-  tr.dr td {
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    font-size: 11.5px;
-    vertical-align: middle;
-    line-height: 1.5;
-    transition: background 0.12s;
-  }
-  tr.dr:hover td { background: #1c1c1c; }
-
-  tr.dr td.lbl {
-    font-size: 9.5px;
-    letter-spacing: 2px;
-    color: var(--gold);
-    text-transform: uppercase;
-    background: var(--black);
-    border-right-color: var(--gold-dim);
-    white-space: nowrap;
-  }
-  tr.dr td.val { background: var(--card); color: var(--text); }
-  tr.dr td.val-hi { background: #181510; }
-  tr.dr td.empty { background: var(--black); }
-
-  /* 칩 */
-  .chip {
-    display: inline-block;
-    padding: 2px 7px;
-    border-radius: 2px;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-  }
-  .chip-gold { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.28); }
-  .chip-dim  { background: rgba(255,255,255,0.05); color: #bbb; border: 1px solid rgba(255,255,255,0.1); }
-  .chip-amg  { background: rgba(201,168,76,0.22); color: var(--gold-light); border: 1px solid var(--gold-dim); }
-
-  /* 휠 표시 */
-  .wheel-wrap { display: flex; flex-direction: column; gap: 3px; }
-  .wheel-size { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--white); font-weight: 400; line-height: 1; }
-  .wheel-code { font-size: 9.5px; color: var(--muted); letter-spacing: 1px; }
-
-  /* 코드 인라인 */
-  .code-inline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 12px;
-    color: var(--gold);
-  }
-
-  /* 내부 섹션 구분 */
-  tr.inner-head td {
-    padding: 18px 12px 6px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--gold);
-    text-transform: uppercase;
-    background: var(--black);
-    border: none;
-    border-bottom: 1px solid var(--gold-dim);
-  }
-
-  /* 옵션 목록 */
-  .opt-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .opt-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 6px;
-    padding: 4px 0;
-    font-size: 10.5px;
-    color: #bbb;
-    border-bottom: 1px solid #1d1d1d;
-    line-height: 1.45;
-  }
-  .opt-list li:last-child { border-bottom: none; }
-  .opt-list li .c { font-family: 'Cormorant Garamond', serif; font-size: 11px; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
-  .opt-list li.pkg { color: var(--gold-light); font-weight: 500; }
-  .opt-list li.sub { padding-left: 10px; color: #888; font-size: 10px; }
-  .opt-list li.sub::before { content: '└ '; color: var(--gold-dim); margin-right: 2px; }
-
-  /* ── 우드 트림 텍스트 작게 ── */
-  .trim-text { font-size: 10.5px; line-height: 1.5; }
-
-  /* ── 가격표 (하단) ── */
-  .price-row {
-    display: flex;
-    gap: 12px;
-    margin-top: 44px;
-    flex-wrap: wrap;
-  }
-  .price-card {
-    flex: 1;
-    min-width: 140px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--border);
-    padding: 16px 18px 14px;
-    transition: border-top-color 0.2s;
-  }
-  .price-card:hover { border-top-color: var(--gold-dim); }
-  .price-card.highlight { border-top-color: var(--gold); }
-  .price-model { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; }
-  .price-label { font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
-  .price-val {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    color: var(--gold-light);
-    font-weight: 600;
-    line-height: 1;
-  }
-  .price-unit { font-size: 10px; color: var(--muted); margin-top: 3px; }
-
-  /* ── 면책 ── */
-  .lineup-footer {
-    margin-top: 40px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-    font-size: 10px;
-    color: var(--muted2);
-    letter-spacing: 0.5px;
-    line-height: 1.8;
-  }
-  .lineup-footer strong { color: var(--muted); font-weight: 400; }
-
-  /* ── 반응형 ── */
-  @media (max-width: 600px) {
-    .section-head-right { display: none; }
-    .common-grid { grid-template-columns: 1fr; }
-    .price-row { gap: 8px; }
-    .price-card { min-width: 120px; }
-  }
+/* 테이블 */
+.table-lbl-og { font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 5px; color: #C9A84C; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.table-lbl-og::after { content: ''; flex: 1; height: 1px; background: #2a2a2a; }
+.scroll-og { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.scroll-og::-webkit-scrollbar { height: 2px; }
+.scroll-og::-webkit-scrollbar-track { background: #2a2a2a; }
+.scroll-og::-webkit-scrollbar-thumb { background: #7a6330; border-radius: 1px; }
+table.mtable { border-collapse: collapse; min-width: 980px; width: 100%; table-layout: fixed; }
+table.mtable col.mc-lbl { width: 110px; }
+table.mtable col.mc-col { width: 145px; }
+tr.mhdr td { background: #161616; border: 1px solid #2a2a2a; vertical-align: top; padding: 0; }
+tr.mhdr td.mc-lbl-cell { background: transparent; border-color: transparent; }
+.mcard-og { padding: 16px 14px 12px; position: relative; }
+.mbar { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #2a2a2a; }
+.mbar.amg { background: linear-gradient(90deg, #C9A84C 0%, #E8C97A 100%); }
+.mbar.top { background: linear-gradient(90deg, #E8C97A 0%, #fffbe8 100%); }
+.mbadge-og { display: block; font-size: 8px; letter-spacing: 3px; color: #C9A84C; text-transform: uppercase; margin-bottom: 4px; }
+.mname-og { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; color: #f5f5f5; line-height: 1; margin-bottom: 2px; }
+.mbody-og { font-size: 9px; color: #888; letter-spacing: 0.5px; }
+.chip-og { display: inline-block; padding: 2px 6px; border-radius: 2px; font-size: 9.5px; font-weight: 500; }
+.chip-gold-og { background: rgba(201,168,76,.12); color: #E8C97A; border: 1px solid rgba(201,168,76,.28); }
+.chip-dim-og { background: rgba(255,255,255,.05); color: #bbb; border: 1px solid rgba(255,255,255,.1); }
+.chip-amg-og { background: rgba(201,168,76,.2); color: #E8C97A; border: 1px solid #7a6330; }
+.wheel-og { display: flex; flex-direction: column; gap: 2px; }
+.wheel-size-og { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #f5f5f5; line-height: 1; }
+.wheel-code-og { font-size: 9px; color: #888; letter-spacing: 1px; }
+tr.dr-og td { padding: 9px 11px; border: 1px solid #2a2a2a; font-size: 11px; vertical-align: middle; line-height: 1.5; transition: background .12s; }
+tr.dr-og:hover td { background: #1c1c1c; }
+tr.dr-og td.mc-lbl-cell { font-size: 9px; letter-spacing: 2px; color: #C9A84C; text-transform: uppercase; background: #0a0a0a; border-right-color: #7a6330; white-space: nowrap; }
+tr.dr-og td.mc-val { background: #161616; color: #e2e2e2; }
+tr.dr-og td.mc-hi { background: #171410; }
+tr.dr-og td.mc-empty { background: #0a0a0a; }
+.trim-og { font-size: 10px; line-height: 1.5; }
+tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', serif; font-size: 10px; letter-spacing: 4px; color: #C9A84C; text-transform: uppercase; background: #0a0a0a; border: none; border-bottom: 1px solid #7a6330; }
+.opt-lst { list-style: none; padding: 0; margin: 0; }
+.opt-lst li { display: flex; justify-content: space-between; align-items: baseline; gap: 4px; padding: 4px 0; font-size: 10.5px; color: #bbb; border-bottom: 1px solid #1d1d1d; line-height: 1.4; }
+.opt-lst li:last-child { border-bottom: none; }
+.opt-lst li.pkg-og { color: #E8C97A; font-weight: 500; }
+.opt-lst li.sub-og { padding-left: 10px; color: #888; font-size: 10px; }
+.opt-lst li.sub-og::before { content: '└ '; color: #7a6330; }
+.og-footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid #2a2a2a; font-size: 10px; color: #666; line-height: 1.8; }
+@media (max-width:600px) { .opt-guide-head > div:last-child { display: none; } .common-grid-og { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -1617,6 +1283,200 @@ img { cursor: zoom-in; -webkit-tap-highlight-color: rgba(201,169,110,0.2); }
       </div>
     </div>
   </div>
+</section>
+
+
+<!-- ===== OPTION GUIDE ===== -->
+<section class="opt-guide" id="option-guide">
+
+  <div class="opt-guide-head">
+    <div>
+      <div class="opt-guide-eyebrow">MY27 국내 라인업</div>
+      <h2 class="opt-guide-h2">Model &amp; Option Guide</h2>
+      <p class="opt-guide-sub">The New S-Class · Korea Lineup</p>
+    </div>
+    <div style="font-size:11px;color:#666;line-height:1.7;max-width:260px;text-align:right;flex-shrink:0;">
+      전 모델 <span style="color:#C9A84C;">4MATIC</span> 기본 적용<br>
+      LWB 4종 · SWB 2종 도입 예정
+    </div>
+  </div>
+
+  <!-- 공통 옵션 -->
+  <div class="common-block-og">
+    <div class="common-block-title-og">전 모델 공통 적용 사양</div>
+    <div class="common-grid-og">
+      <div class="common-item-og">일루미네이티드 라디에이터 그릴</div>
+      <div class="common-item-og">디지털 라이트</div>
+      <div class="common-item-og">MBUX 슈퍼스크린</div>
+      <div class="common-item-og">앞좌석 열선 안전벨트</div>
+      <div class="common-item-og">플러시 도어 핸들 키레스 고</div>
+      <div class="common-item-og">발광 도어 실 패널 레터링</div>
+      <div class="common-item-og">공기 청정 패키지</div>
+      <div class="common-item-og">매직 비전 컨트롤</div>
+      <div class="common-item-og">리어 액슬 스티어링 (4.5도)</div>
+      <div class="common-item-og">앞좌석 열선 및 통풍 시트</div>
+      <div class="common-item-og">헤드업 디스플레이</div>
+      <div class="common-item-og">부메스터 3D 서라운드 사운드</div>
+      <div class="common-item-og">에어 밸런스 패키지</div>
+      <div class="common-item-og">액티브 앰비언트 라이트</div>
+      <div class="common-item-og">파노라믹 선루프</div>
+      <div class="common-item-og">메르세데스-벤츠 빔 프로젝션</div>
+      <div class="common-item-og">뒷좌석 열선 시트</div>
+      <div class="common-item-og">뒷좌석 사이드백</div>
+      <div class="common-item-og">선 프로텍션 패키지</div>
+      <div class="common-item-og">열선 패키지</div>
+      <div class="common-item-og">Digital Extra: 360° 카메라 포함 주차 어시스트</div>
+      <div class="common-item-og">Digital Extra: MB.드라이브 어시스트</div>
+    </div>
+    <p class="og-note">※ 사전계약 기준 구성 정보 · 실제 출시 사양과 상이할 수 있습니다.</p>
+  </div>
+
+  <!-- 모델 비교표 -->
+  <div class="table-lbl-og">모델별 세부 사양 비교</div>
+  <div class="scroll-og">
+  <table class="mtable">
+    <colgroup>
+      <col class="mc-lbl">
+      <col class="mc-col">
+      <col class="mc-col">
+      <col class="mc-col">
+      <col class="mc-col">
+      <col class="mc-col">
+      <col class="mc-col">
+    </colgroup>
+
+    <!-- 모델 헤더 -->
+    <tr class="mhdr">
+      <td class="mc-lbl-cell"></td>
+      <td><div class="mcard-og"><div class="mbar"></div><span class="mbadge-og">SWB · Diesel</span><div class="mname-og">S 350d 4M</div><div class="mbody-og">스탠다드 휠베이스</div></div></td>
+      <td><div class="mcard-og"><div class="mbar amg"></div><span class="mbadge-og">SWB · Petrol · AMG</span><div class="mname-og">S 450 4M</div><div class="mbody-og">스탠다드 휠베이스</div></div></td>
+      <td><div class="mcard-og"><div class="mbar"></div><span class="mbadge-og">LWB · Exclusive</span><div class="mname-og">S 450 4M L</div><div class="mbody-og">롱 휠베이스</div></div></td>
+      <td><div class="mcard-og"><div class="mbar amg"></div><span class="mbadge-og">LWB · AMG Line</span><div class="mname-og">S 450 4M L</div><div class="mbody-og">롱 휠베이스 AMG</div></div></td>
+      <td><div class="mcard-og"><div class="mbar amg"></div><span class="mbadge-og">LWB · Flagship</span><div class="mname-og">S 500 4M L</div><div class="mbody-og">롱 휠베이스</div></div></td>
+      <td><div class="mcard-og"><div class="mbar top"></div><span class="mbadge-og">LWB · Top of Range</span><div class="mname-og">S 580 4M L</div><div class="mbody-og">롱 휠베이스</div></div></td>
+    </tr>
+
+    <!-- 바디 타입 -->
+    <tr class="dr-og">
+      <td class="mc-lbl-cell">바디 타입</td>
+      <td class="mc-val" colspan="2" style="text-align:center;"><span class="chip-og chip-dim-og">스탠다드 휠베이스 (SWB)</span></td>
+      <td class="mc-val" colspan="4" style="text-align:center;"><span class="chip-og chip-gold-og">롱 휠베이스 (LWB)</span></td>
+    </tr>
+
+    <!-- 디자인 라인 -->
+    <tr class="dr-og">
+      <td class="mc-lbl-cell">디자인 라인</td>
+      <td class="mc-val" style="text-align:center;color:#888;">—</td>
+      <td class="mc-val" style="text-align:center;"><span class="chip-og chip-amg-og">AMG Line</span></td>
+      <td class="mc-val" style="text-align:center;color:#888;">—</td>
+      <td class="mc-val" style="text-align:center;"><span class="chip-og chip-amg-og">AMG Line</span></td>
+      <td class="mc-val" style="text-align:center;color:#888;">—</td>
+      <td class="mc-val" style="text-align:center;color:#888;">—</td>
+    </tr>
+
+    <!-- 내장 가죽 -->
+    <tr class="dr-og">
+      <td class="mc-lbl-cell">내장 가죽</td>
+      <td class="mc-val" style="text-align:center;font-size:10.5px;">가죽</td>
+      <td class="mc-val" style="text-align:center;font-size:10.5px;">가죽</td>
+      <td class="mc-val" style="text-align:center;font-size:10.5px;">가죽</td>
+      <td class="mc-val mc-hi" style="text-align:center;font-size:10.5px;">나파 가죽</td>
+      <td class="mc-val mc-hi" style="text-align:center;font-size:10.5px;">나파 가죽</td>
+      <td class="mc-val mc-hi" style="text-align:center;font-size:10.5px;">익스클루시브<br>나파 가죽</td>
+    </tr>
+
+    <!-- 기본 휠 -->
+    <tr class="dr-og">
+      <td class="mc-lbl-cell">기본 휠</td>
+      <td class="mc-val" style="text-align:center;"><div class="wheel-og"><span class="wheel-size-og">19"</span></div></td>
+      <td class="mc-val" style="text-align:center;"><div class="wheel-og"><span class="wheel-size-og">19"</span></div></td>
+      <td class="mc-val" style="text-align:center;"><div class="wheel-og"><span class="wheel-size-og">20"</span></div></td>
+      <td class="mc-val mc-hi" style="text-align:center;"><div class="wheel-og"><span class="wheel-size-og">20"</span><span class="wheel-code-og">AMG 크로스 스포크</span></div></td>
+      <td class="mc-val" style="text-align:center;"><div class="wheel-og"><span class="wheel-size-og">20"</span></div></td>
+      <td class="mc-val mc-hi" style="text-align:center;"><div class="wheel-og"><span class="wheel-size-og">20"</span><span class="wheel-code-og">10 트윈 스포크 단조</span></div></td>
+    </tr>
+
+    <!-- 우드 트림 -->
+    <tr class="dr-og">
+      <td class="mc-lbl-cell">우드 트림</td>
+      <td class="mc-val trim-og" colspan="2">앤트러사이트 오픈-포어 우드 트림</td>
+      <td class="mc-val trim-og" colspan="2">오픈-포어 브라운 우드 트림<br>피시본 패턴</td>
+      <td class="mc-val trim-og">유광 월넛 우드 트림, 블랙</td>
+      <td class="mc-val mc-hi trim-og">MANUFAKTUR 플로잉 라인<br>피아노 라커 트림, 블랙</td>
+    </tr>
+
+    <!-- 모델별 전용 옵션 -->
+    <tr class="inner-hdr-og">
+      <td colspan="7">모델별 전용 옵션 사항</td>
+    </tr>
+
+    <tr class="dr-og" style="vertical-align:top;">
+      <td class="mc-lbl-cell" style="padding-top:12px;line-height:1.6;">전용<br>옵션</td>
+
+      <!-- SWB 2종 -->
+      <td class="mc-val" colspan="2" style="color:#888;font-size:10.5px;padding:12px 11px;font-style:italic;">공통 사양 외 추가 전용 옵션 없음</td>
+
+      <!-- S 450 4M L Exclusive -->
+      <td class="mc-val" style="vertical-align:top;padding:9px 11px;">
+        <ul class="opt-lst">
+          <li><span>메모리 기능 포함 뒷좌석 전동 시트</span></li>
+          <li><span>뒷좌석 메모리 기능</span></li>
+          <li><span>뒷좌석 열선 및 통풍 시트</span></li>
+          <li><span>뒷좌석 시트 히팅 플러스</span></li>
+        </ul>
+      </td>
+
+      <!-- S 450 4M L AMG Line -->
+      <td class="mc-val mc-hi" style="vertical-align:top;padding:9px 11px;">
+        <ul class="opt-lst">
+          <li class="pkg-og">뒷좌석 컴포트 패키지</li>
+          <li class="sub-og">디자이너 벨트 버클</li>
+          <li class="sub-og">뒷좌석 무선 충전</li>
+          <li class="sub-og">뒷좌석 MBUX 리모트 컨트롤</li>
+          <li class="sub-og">뒷좌석 에어백</li>
+          <li><span>열선 패키지 플러스</span></li>
+          <li><span>MBUX 하이엔드 뒷좌석 엔터테인먼트</span></li>
+          <li><span>무선 헤드셋 (2개)</span></li>
+          <li><span>앞좌석 액티브 멀티컨투어 시트</span></li>
+        </ul>
+      </td>
+
+      <!-- S 500 4M L -->
+      <td class="mc-val mc-hi" style="vertical-align:top;padding:9px 11px;">
+        <ul class="opt-lst">
+          <li class="pkg-og">뒷좌석 컴포트 패키지 플러스</li>
+          <li class="sub-og">뒷좌석 마사지 패키지</li>
+          <li class="sub-og">쇼퍼 패키지</li>
+          <li class="sub-og">뒷좌석 벨트 피더</li>
+          <li class="sub-og">이그제큐티브 시트</li>
+          <li class="sub-og">어댑티브 뒷좌석 라이트</li>
+          <li class="sub-og">벨트백</li>
+          <li><span>IR 라미네이티드 글래스</span></li>
+          <li><span>리어 액슬 스티어링 (10도)</span></li>
+        </ul>
+      </td>
+
+      <!-- S 580 4M L -->
+      <td class="mc-val mc-hi" style="vertical-align:top;padding:9px 11px;">
+        <ul class="opt-lst">
+          <li><span>익스클루시브 나파 가죽</span></li>
+          <li><span>MBUX 증강현실 헤드업 디스플레이</span></li>
+          <li><span>3D 계기반</span></li>
+          <li><span>익스클루시브 패키지</span></li>
+          <li><span>디지털 라이트 프로젝션 기능</span></li>
+          <li><span>E-액티브 바디 컨트롤</span></li>
+          <li><span>Digital Extra: 에너자이징 컴포트</span></li>
+        </ul>
+      </td>
+    </tr>
+
+  </table>
+  </div>
+
+  <div class="og-footer">
+    <p>※ MY27 기준. 국내 상황 및 제조사 사정에 따라 변경될 수 있으며, 실제 국내 출시 모델 및 옵션 구성과 상이할 수 있습니다.</p>
+  </div>
+
 </section>
 
 <!-- ===== LAUNCH EDITION ===== -->
@@ -1909,283 +1769,5 @@ img { cursor: zoom-in; -webkit-tap-highlight-color: rgba(201,169,110,0.2); }
   });
 })();
 </script>
-
-<section class="lineup-section" id="lineup">
-
-  <!-- 섹션 헤더 -->
-  <div class="section-head">
-    <div class="section-head-left">
-      <div class="section-eyebrow">국내 출시 라인업</div>
-      <h2 class="section-title">Model &amp; Option Guide</h2>
-      <p class="section-subtitle">The New S-Class · MY27 · Korea Lineup</p>
-    </div>
-    <div class="section-head-right">
-      전 모델 <strong>4MATIC</strong> 기본 적용<br>
-      LWB 4종 · SWB 2종 도입 예정<br>
-      사전계약 기준 구성 정보 제공
-    </div>
-  </div>
-
-  <!-- ───────────────────────────────────
-       1. 전 모델 공통 옵션
-  ─────────────────────────────────── -->
-  <div class="common-block">
-    <div class="common-block-title">전 모델 공통 옵션 사항</div>
-    <div class="common-grid">
-      <div class="common-item"><span>일루미네이티드 라디에이터 그릴</span><span class="code">5B6</span></div>
-      <div class="common-item"><span>디지털 라이트</span><span class="code">P35</span></div>
-      <div class="common-item"><span>MBUX 슈퍼스크린</span><span class="code">860</span></div>
-      <div class="common-item"><span>앞좌석 열선 안전벨트</span><span class="code">303</span></div>
-      <div class="common-item"><span>플러시 도어 핸들 키레스 고</span><span class="code">889</span></div>
-      <div class="common-item"><span>발광 도어 실 패널 "Mercedes-Benz" 레터링</span><span class="code">U25</span></div>
-      <div class="common-item"><span>공기 청정 패키지</span><span class="code">P53</span></div>
-      <div class="common-item"><span>매직 비전 컨트롤</span><span class="code">874</span></div>
-      <div class="common-item"><span>리어 액슬 스티어링 (4.5도)</span><span class="code">201</span></div>
-      <div class="common-item"><span>앞좌석 열선 및 통풍 시트</span><span class="code">401</span></div>
-      <div class="common-item"><span>헤드업 디스플레이</span><span class="code">438</span></div>
-      <div class="common-item"><span>부메스터 3D 서라운드 사운드 시스템</span><span class="code">810</span></div>
-      <div class="common-item"><span>에어 밸런스 패키지</span><span class="code">P21</span></div>
-      <div class="common-item"><span>액티브 앰비언트 라이트</span><span class="code">878</span></div>
-      <div class="common-item"><span>파노라믹 선루프</span><span class="code">413</span></div>
-      <div class="common-item"><span>메르세데스-벤츠 레터링 빔 프로젝션</span><span class="code">588</span></div>
-      <div class="common-item"><span>뒷좌석 열선 시트</span><span class="code">872</span></div>
-      <div class="common-item"><span>뒷좌석 사이드백</span><span class="code">293</span></div>
-      <div class="common-item"><span>선 프로텍션 패키지</span><span class="code">P09</span></div>
-      <div class="common-item"><span>열선 패키지</span><span class="code">P68</span></div>
-      <div class="common-item"><span>Digital Extra: 360° 카메라 포함 주차 어시스트</span><span class="code">P47</span></div>
-      <div class="common-item"><span>Digital Extra: MB.드라이브 어시스트</span><span class="code">P20</span></div>
-    </div>
-    <p class="common-note">※ 옵션 코드는 MBKO 공식 코드 기준입니다.</p>
-  </div>
-
-  <!-- ───────────────────────────────────
-       2. 모델 비교 테이블
-  ─────────────────────────────────── -->
-  <div class="table-label">모델별 세부 사양 비교</div>
-
-  <div class="scroll-track">
-  <table class="model-table">
-    <colgroup>
-      <col class="c-label">
-      <col class="c-model"><!-- S 350d 4M -->
-      <col class="c-model"><!-- S 450 4M -->
-      <col class="c-model"><!-- S 450 4M L Exclusive -->
-      <col class="c-model"><!-- S 450 4M L AMG Line -->
-      <col class="c-model"><!-- S 500 4M L -->
-      <col class="c-model"><!-- S 580 4M L -->
-    </colgroup>
-
-    <!-- ── 모델 헤더 ── -->
-    <tr class="mh">
-      <td class="lbl"></td>
-      <!-- S 350d -->
-      <td>
-        <div class="mcard">
-          <div class="mcard-bar"></div>
-          <span class="mbadge">SWB · Diesel</span>
-          <div class="mname">S 350d 4M</div>
-          <div class="mbody-type">스탠다드 휠 베이스</div>
-        </div>
-      </td>
-      <!-- S 450 4M SWB -->
-      <td>
-        <div class="mcard">
-          <div class="mcard-bar amg"></div>
-          <span class="mbadge">SWB · Petrol · AMG</span>
-          <div class="mname">S 450 4M</div>
-          <div class="mbody-type">스탠다드 휠 베이스</div>
-        </div>
-      </td>
-      <!-- S 450 4M L Exclusive -->
-      <td>
-        <div class="mcard">
-          <div class="mcard-bar"></div>
-          <span class="mbadge">LWB · Exclusive</span>
-          <div class="mname">S 450 4M L</div>
-          <div class="mbody-type">롱 휠 베이스</div>
-        </div>
-      </td>
-      <!-- S 450 4M L AMG -->
-      <td class="amg-col">
-        <div class="mcard">
-          <div class="mcard-bar amg"></div>
-          <span class="mbadge">LWB · AMG Line</span>
-          <div class="mname">S 450 4M L</div>
-          <div class="mbody-type">롱 휠 베이스 AMG</div>
-        </div>
-      </td>
-      <!-- S 500 4M L -->
-      <td>
-        <div class="mcard">
-          <div class="mcard-bar amg"></div>
-          <span class="mbadge">LWB · Flagship</span>
-          <div class="mname">S 500 4M L</div>
-          <div class="mbody-type">롱 휠 베이스</div>
-        </div>
-      </td>
-      <!-- S 580 4M L -->
-      <td>
-        <div class="mcard">
-          <div class="mcard-bar top"></div>
-          <span class="mbadge">LWB · Top of Range</span>
-          <div class="mname">S 580 4M L</div>
-          <div class="mbody-type">롱 휠 베이스</div>
-        </div>
-      </td>
-    </tr>
-
-    <!-- 바디 타입 -->
-    <tr class="dr">
-      <td class="lbl">바디 타입</td>
-      <td class="val" colspan="2" style="text-align:center;"><span class="chip chip-dim">스탠다드 휠 베이스 (SWB)</span></td>
-      <td class="val" colspan="4" style="text-align:center;"><span class="chip chip-gold">롱 휠 베이스 (LWB)</span></td>
-    </tr>
-
-    <!-- 디자인 라인 -->
-    <tr class="dr">
-      <td class="lbl">디자인 라인</td>
-      <td class="val" style="text-align:center;color:var(--muted);">—</td>
-      <td class="val" style="text-align:center;"><span class="chip chip-amg">AMG Line</span></td>
-      <td class="val" style="text-align:center;color:var(--muted);">—</td>
-      <td class="val" style="text-align:center;"><span class="chip chip-amg">AMG Line</span></td>
-      <td class="val" style="text-align:center;color:var(--muted);">—</td>
-      <td class="val" style="text-align:center;color:var(--muted);">—</td>
-    </tr>
-
-    <!-- 내장 가죽 -->
-    <tr class="dr">
-      <td class="lbl">내장 가죽</td>
-      <td class="val" style="text-align:center;">가죽<br><span style="font-size:10px;color:var(--muted);">210A</span></td>
-      <td class="val" style="text-align:center;">가죽<br><span style="font-size:10px;color:var(--muted);">210A</span></td>
-      <td class="val" style="text-align:center;">가죽<br><span style="font-size:10px;color:var(--muted);">210A</span></td>
-      <td class="val val-hi" style="text-align:center;">나파 가죽<br><span class="code-inline">820A</span></td>
-      <td class="val val-hi" style="text-align:center;">나파 가죽<br><span class="code-inline">820A</span></td>
-      <td class="val val-hi" style="text-align:center;">익스클루시브<br>나파 가죽<br><span class="code-inline">520A</span></td>
-    </tr>
-
-    <!-- 휠 -->
-    <tr class="dr">
-      <td class="lbl">기본 휠</td>
-      <td class="val" style="text-align:center;">
-        <div class="wheel-wrap"><span class="wheel-size">19"</span><span class="wheel-code">R60</span></div>
-      </td>
-      <td class="val" style="text-align:center;">
-        <div class="wheel-wrap"><span class="wheel-size">19"</span><span class="wheel-code">RZI</span></div>
-      </td>
-      <td class="val" style="text-align:center;">
-        <div class="wheel-wrap"><span class="wheel-size">20"</span><span class="wheel-code">60R</span></div>
-      </td>
-      <td class="val val-hi" style="text-align:center;">
-        <div class="wheel-wrap"><span class="wheel-size">20"</span><span class="wheel-code">RTM</span></div>
-      </td>
-      <td class="val" style="text-align:center;">
-        <div class="wheel-wrap"><span class="wheel-size">20"</span><span class="wheel-code">60R</span></div>
-      </td>
-      <td class="val val-hi" style="text-align:center;">
-        <div class="wheel-wrap"><span class="wheel-size">20"</span><span class="wheel-code">R73</span></div>
-      </td>
-    </tr>
-
-    <!-- 우드 트림 -->
-    <tr class="dr">
-      <td class="lbl">우드 트림</td>
-      <td class="val trim-text" colspan="2">
-        앤트러사이트 오픈-포어 우드 트림<br>
-        <span class="code-inline">22H</span>
-      </td>
-      <td class="val trim-text" colspan="2">
-        오픈-포어 브라운 우드 트림<br>피시본 패턴<br>
-        <span class="code-inline">23H</span>
-      </td>
-      <td class="val trim-text">
-        유광 월넛 우드 트림, 블랙<br>
-        <span class="code-inline">H37</span>
-      </td>
-      <td class="val val-hi trim-text">
-        MANUFAKTUR 플로잉 라인<br>피아노 라커 트림, 블랙<br>
-        <span class="code-inline">H17</span>
-      </td>
-    </tr>
-
-    <!-- ──────────── 모델별 전용 옵션 ──────────── -->
-    <tr class="inner-head">
-      <td colspan="7">모델별 전용 옵션 사항</td>
-    </tr>
-
-    <!-- 전용 옵션 내용 행 -->
-    <tr class="dr" style="vertical-align:top;">
-      <td class="lbl" style="padding-top:14px;line-height:1.6;">전용<br>옵션</td>
-
-      <!-- S 350d -->
-      <td class="val" colspan="2" style="color:var(--muted);font-size:11px;padding:14px 12px;">
-        SWB 공통<br>(공통 옵션 외 추가 사항 없음)
-      </td>
-
-      <!-- S 450 4M L Exclusive -->
-      <td class="val" style="vertical-align:top;padding:10px 12px;">
-        <ul class="opt-list">
-          <li><span>메모리 기능 포함 뒷좌석 전동 시트</span><span class="c">223</span></li>
-          <li><span>뒷좌석 메모리 기능</span><span class="c">276</span></li>
-          <li><span>뒷좌석 열선 및 통풍 시트</span><span class="c">402</span></li>
-          <li><span>뒷좌석 시트 히팅 플러스</span><span class="c">903</span></li>
-        </ul>
-      </td>
-
-      <!-- S 450 4M L AMG Line -->
-      <td class="val val-hi" style="vertical-align:top;padding:10px 12px;">
-        <ul class="opt-list">
-          <li class="pkg"><span>뒷좌석 컴포트 패키지</span><span class="c">PAT</span></li>
-          <li class="sub"><span>디자이너 벨트 버클</span><span class="c">561</span></li>
-          <li class="sub"><span>뒷좌석 무선 충전 시스템</span><span class="c">898</span></li>
-          <li class="sub"><span>뒷좌석 MBUX 리모트 컨트롤</span><span class="c">816</span></li>
-          <li class="sub"><span>뒷좌석 에어백</span><span class="c">302</span></li>
-          <li><span>열선 패키지 플러스</span><span class="c">P69</span></li>
-          <li><span>MBUX 하이엔드 뒷좌석 엔터테인먼트</span><span class="c">854</span></li>
-          <li><span>무선 헤드셋 (2개)</span><span class="c">U58</span></li>
-          <li><span>앞좌석 액티브 멀티컨투어 시트</span><span class="c">432</span></li>
-        </ul>
-      </td>
-
-      <!-- S 500 4M L -->
-      <td class="val val-hi" style="vertical-align:top;padding:10px 12px;">
-        <ul class="opt-list">
-          <li class="pkg"><span>뒷좌석 컴포트 패키지 플러스</span><span class="c">PAW</span></li>
-          <li class="sub"><span>뒷좌석 마사지 패키지</span><span class="c">P43</span></li>
-          <li class="sub"><span>쇼퍼 패키지</span><span class="c">P07</span></li>
-          <li class="sub"><span>뒷좌석 벨트 피더</span><span class="c">U07</span></li>
-          <li class="sub"><span>이그제큐티브 시트</span><span class="c">453</span></li>
-          <li class="sub"><span>어댑티브 뒷좌석 라이트</span><span class="c">236</span></li>
-          <li class="sub"><span>벨트백</span><span class="c">306</span></li>
-          <li><span>IR 라미네이티드 글래스</span><span class="c">596</span></li>
-          <li><span>리어 액슬 스티어링 (10도)</span><span class="c">216</span></li>
-        </ul>
-      </td>
-
-      <!-- S 580 4M L -->
-      <td class="val val-hi" style="vertical-align:top;padding:10px 12px;">
-        <ul class="opt-list">
-          <li><span>익스클루시브 나파 가죽</span><span class="c">520A</span></li>
-          <li><span>MBUX AR 헤드업 디스플레이</span><span class="c">445</span></li>
-          <li><span>3D 계기반</span><span class="c">451</span></li>
-          <li><span>익스클루시브 패키지</span><span class="c">P34</span></li>
-          <li><span>디지털 라이트 프로젝션 기능</span><span class="c">PAX</span></li>
-          <li><span>E-액티브 바디 컨트롤</span><span class="c">490</span></li>
-          <li><span>Digital Extra: 에너자이징 컴포트</span><span class="c">PBP</span></li>
-        </ul>
-      </td>
-    </tr>
-
-  </table>
-  </div><!-- /scroll-track -->
-
-  <!-- ───────────────────────────────────
-       3. 면책 / 안내
-  ─────────────────────────────────── -->
-  <div class="lineup-footer">
-    <p>※ MY27 기준. 국내 상황 및 제조사 사정에 따라 변경될 수 있으며, 실제 국내 출시 모델 및 옵션 구성과 상이할 수 있습니다.</p>
-    <p>※ 옵션 코드는 MBKO 공식 코드 기준. 최종 계약 전 반드시 담당 SC에게 확인하시기 바랍니다.</p>
-  </div>
-
-</section>
 </body>
 </html>
