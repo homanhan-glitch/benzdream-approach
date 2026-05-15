@@ -1070,6 +1070,8 @@ tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', 
   object-fit: cover;
   object-position: center 30%;
   display: block;
+  pointer-events: none;
+  user-select: none;
 }
 .bd-cta-portrait::after {
   content: '';
@@ -1174,11 +1176,21 @@ tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', 
 @media (max-width: 560px) {
   .bd-cta-card { grid-template-columns: 1fr; }
   .bd-cta-portrait {
-    min-height: 200px;
-    background-position: center 25%;
+    height: 140px;
+    min-height: 0;
   }
-  .bd-cta-portrait img { object-position: center 20%; }
-  .bd-cta-body { padding: 26px 22px; }
+  .bd-cta-portrait img {
+    object-position: center 18%;
+  }
+  .bd-cta-portrait::after {
+    background: linear-gradient(180deg, transparent 30%, rgba(8,9,14,.85) 100%);
+  }
+  .bd-cta-portrait-caption {
+    bottom: 10px;
+  }
+  .bd-cta-portrait-caption .small { font-size: 8.5px; letter-spacing: 2px; }
+  .bd-cta-portrait-caption .name { font-size: 12px; }
+  .bd-cta-body { padding: 24px 20px; }
   .bd-cta-buttons { gap: 8px; }
   .bd-cta-btn { flex: 1; padding: 12px 14px; font-size: 12px; }
 }
