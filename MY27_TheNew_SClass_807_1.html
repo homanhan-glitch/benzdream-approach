@@ -968,8 +968,9 @@ img { cursor: zoom-in; -webkit-tap-highlight-color: rgba(201,169,110,0.2); }
 
 
 /* 트림 썸네일 라이트박스 */
-.trim-thumb { cursor:pointer; display:block; width:100%; aspect-ratio:16/9;
-  object-fit:cover; border-radius:4px; margin-top:8px;
+.trim-thumb { cursor:pointer; display:block; width:100%; max-width:220px;
+  aspect-ratio:16/9;
+  object-fit:cover; border-radius:4px; margin:8px auto 0;
   opacity:.88; transition:opacity .25s, transform .25s; }
 .trim-thumb:hover { opacity:1; transform:scale(1.02); }
 .lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.88);
