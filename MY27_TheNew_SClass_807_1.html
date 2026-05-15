@@ -968,7 +968,8 @@ img { cursor: zoom-in; -webkit-tap-highlight-color: rgba(201,169,110,0.2); }
 
 
 /* 트림 썸네일 라이트박스 */
-.trim-thumb { cursor:pointer; display:block; width:200px; height:112px;
+.trim-thumb { cursor:pointer; display:block; width:100%; max-width:200px;
+  aspect-ratio:200/112; height:auto;
   object-fit:cover; border-radius:4px; margin:8px auto 0;
   opacity:.88; transition:opacity .25s, transform .25s; }
 .trim-thumb:hover { opacity:1; transform:scale(1.02); }
