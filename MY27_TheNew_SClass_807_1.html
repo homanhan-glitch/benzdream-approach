@@ -996,12 +996,6 @@ img { cursor: zoom-in; -webkit-tap-highlight-color: rgba(201,169,110,0.2); }
 .opt-guide-sub { margin-top: 6px; font-size: 11px; letter-spacing: 3px; color: #888; text-transform: uppercase; }
 
 /* 공통 옵션 */
-.common-block-og { margin-bottom: 52px; background: #161616; border: 1px solid #2a2a2a; border-top: 2px solid #7a6330; padding: 24px 24px 20px; }
-.common-block-title-og { font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 5px; color: #C9A84C; text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
-.common-block-title-og::after { content: ''; flex: 1; height: 1px; background: #2a2a2a; }
-.common-grid-og { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 3px; }
-.common-item-og { display: flex; align-items: baseline; padding: 7px 10px; border-left: 1px solid #222; font-size: 11.5px; color: #bbb; transition: background .12s, border-color .12s; }
-.common-item-og:hover { background: #1e1e1e; border-left-color: #7a6330; color: #e2e2e2; }
 .og-note { margin-top: 12px; font-size: 10px; color: #666; padding-left: 4px; }
 
 /* 테이블 */
@@ -1046,8 +1040,43 @@ tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', 
 .opt-lst li.pkg-og { color: #E8C97A; font-weight: 500; }
 .opt-lst li.sub-og { padding-left: 10px; color: #888; font-size: 10px; }
 .opt-lst li.sub-og::before { content: '└ '; color: #7a6330; }
+
+/* 공통 사양 셀 (SWB colspan=2) + 옆 트림 셀과의 + 구분 */
+.mc-common-cell { position: relative; background: #0f1014;
+  border-right: 2px dashed #7a6330 !important; vertical-align: top; padding: 9px 11px; }
+.mc-common-cell::after {
+  content: '+'; position: absolute;
+  right: -13px; top: 50%; transform: translateY(-50%);
+  width: 24px; height: 24px; line-height: 22px; text-align: center;
+  background: var(--dark); color: #c9a96e;
+  border: 1.5px solid #c9a96e; border-radius: 50%;
+  font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 500;
+  z-index: 5; pointer-events: none;
+}
+.mc-common-cell .common-cell-title {
+  display: block; font-family: 'Cormorant Garamond', serif;
+  font-size: 10px; letter-spacing: 3px; color: #c9a96e;
+  text-transform: uppercase; margin-bottom: 8px; padding-bottom: 6px;
+  border-bottom: 1px solid #2a2515;
+}
+.mc-common-cell .common-cell-list {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px 10px;
+}
+.mc-common-cell .common-cell-list li {
+  font-size: 10px; color: #bbb; line-height: 1.4;
+  padding: 3px 0; border-bottom: 1px solid #1a1a1a;
+}
+.mc-common-cell .common-cell-list li:last-child,
+.mc-common-cell .common-cell-list li:nth-last-child(2):nth-child(odd) {
+  border-bottom: none;
+}
+@media (max-width: 700px) {
+  .mc-common-cell .common-cell-list { grid-template-columns: 1fr; }
+  .mc-common-cell::after { right: -11px; width: 20px; height: 20px; line-height: 17px; font-size: 13px; }
+}
 .og-footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid #2a2a2a; font-size: 10px; color: #666; line-height: 1.8; }
-@media (max-width:600px) { .opt-guide-head > div:last-child { display: none; } .common-grid-og { grid-template-columns: 1fr; } }
+@media (max-width:600px) { .opt-guide-head > div:last-child { display: none; } }
 </style>
 </head>
 <body>
@@ -1360,36 +1389,6 @@ tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', 
     </div>
   </div>
 
-  <!-- 공통 옵션 -->
-  <div class="common-block-og">
-    <div class="common-block-title-og">전 모델 공통 적용 사양</div>
-    <div class="common-grid-og">
-      <div class="common-item-og">일루미네이티드 라디에이터 그릴</div>
-      <div class="common-item-og">디지털 라이트</div>
-      <div class="common-item-og">MBUX 슈퍼스크린</div>
-      <div class="common-item-og">앞좌석 열선 안전벨트</div>
-      <div class="common-item-og">플러시 도어 핸들 키레스 고</div>
-      <div class="common-item-og">발광 도어 실 패널 레터링</div>
-      <div class="common-item-og">공기 청정 패키지</div>
-      <div class="common-item-og">매직 비전 컨트롤</div>
-      <div class="common-item-og">리어 액슬 스티어링 (4.5도)</div>
-      <div class="common-item-og">앞좌석 열선 및 통풍 시트</div>
-      <div class="common-item-og">헤드업 디스플레이</div>
-      <div class="common-item-og">부메스터 3D 서라운드 사운드</div>
-      <div class="common-item-og">에어 밸런스 패키지</div>
-      <div class="common-item-og">액티브 앰비언트 라이트</div>
-      <div class="common-item-og">파노라믹 선루프</div>
-      <div class="common-item-og">메르세데스-벤츠 빔 프로젝션</div>
-      <div class="common-item-og">뒷좌석 열선 시트</div>
-      <div class="common-item-og">뒷좌석 사이드백</div>
-      <div class="common-item-og">선 프로텍션 패키지</div>
-      <div class="common-item-og">열선 패키지</div>
-      <div class="common-item-og">Digital Extra: 360° 카메라 포함 주차 어시스트</div>
-      <div class="common-item-og">Digital Extra: MB.드라이브 어시스트</div>
-    </div>
-    <p class="og-note">※ 사전계약 기준 구성 정보 · 실제 출시 사양과 상이할 수 있습니다.</p>
-  </div>
-
   <!-- 모델 비교표 -->
   <div class="table-lbl-og">모델별 세부 사양 비교</div>
   <div class="scroll-og">
@@ -1485,16 +1484,42 @@ tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', 
     </tr>
 
 
-    <!-- 모델별 전용 옵션 -->
+    <!-- 옵션 사항: 공통 사양 + 모델별 추가 -->
     <tr class="inner-hdr-og">
-      <td colspan="7">모델별 전용 옵션 사항</td>
+      <td colspan="7">공통 사양 + 모델별 추가 옵션</td>
     </tr>
 
     <tr class="dr-og" style="vertical-align:top;">
-      <td class="mc-lbl-cell" style="padding-top:12px;line-height:1.6;">전용<br>옵션</td>
+      <td class="mc-lbl-cell" style="padding-top:12px;line-height:1.6;">옵션<br>구성</td>
 
-      <!-- SWB 2종 -->
-      <td class="mc-val" colspan="2" style="color:#888;font-size:10.5px;padding:12px 11px;font-style:italic;">공통 사양 외 추가 전용 옵션 없음</td>
+      <!-- SWB 2종: 전 모델 공통 사양 22종 -->
+      <td class="mc-val mc-common-cell" colspan="2">
+        <span class="common-cell-title">전 모델 공통 사양 (22종)</span>
+        <ul class="common-cell-list">
+          <li>일루미네이티드 라디에이터 그릴</li>
+          <li>디지털 라이트</li>
+          <li>MBUX 슈퍼스크린</li>
+          <li>앞좌석 열선 안전벨트</li>
+          <li>플러시 도어 핸들 키레스 고</li>
+          <li>발광 도어 실 패널 레터링</li>
+          <li>공기 청정 패키지</li>
+          <li>매직 비전 컨트롤</li>
+          <li>리어 액슬 스티어링 (4.5도)</li>
+          <li>앞좌석 열선 및 통풍 시트</li>
+          <li>헤드업 디스플레이</li>
+          <li>부메스터 3D 서라운드 사운드</li>
+          <li>에어 밸런스 패키지</li>
+          <li>액티브 앰비언트 라이트</li>
+          <li>파노라믹 선루프</li>
+          <li>벤츠 빔 프로젝션</li>
+          <li>뒷좌석 열선 시트</li>
+          <li>뒷좌석 사이드백</li>
+          <li>선 프로텍션 패키지</li>
+          <li>열선 패키지</li>
+          <li>Digital Extra: 360° 카메라 주차 어시스트</li>
+          <li>Digital Extra: MB.드라이브 어시스트</li>
+        </ul>
+      </td>
 
       <!-- S 450 4M L Exclusive -->
       <td class="mc-val" style="vertical-align:top;padding:9px 11px;">
