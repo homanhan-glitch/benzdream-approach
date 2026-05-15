@@ -566,93 +566,104 @@ section { padding: clamp(40px,6vw,80px) clamp(20px,5vw,80px); }
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
-.po-banner {
-  background: linear-gradient(135deg, rgba(201,169,110,.18), rgba(201,169,110,.04));
+/* ① 사전계약 핵심 정보 1행 */
+.po-core-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, rgba(201,169,110,.14), rgba(201,169,110,.04));
   border: 1px solid rgba(201,169,110,.35);
-  border-radius: 14px;
-  padding: 28px 32px;
-  margin-bottom: 36px;
-  text-align: center;
-  position: relative;
+  border-radius: 16px;
   overflow: hidden;
+  position: relative;
 }
-.po-banner::after {
+.po-core-row::after {
   content: 'PRE-ORDER';
   position: absolute;
-  right: -30px;
-  top: 18px;
+  right: -28px; top: 18px;
   transform: rotate(35deg);
   background: var(--gold);
   color: #0a0c14;
-  padding: 4px 40px;
-  font-size: .7rem;
+  padding: 4px 42px;
+  font-size: .65rem;
   letter-spacing: 3px;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'MBK CorpoA','Outfit',sans-serif;
 }
-.po-banner-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: .8rem;
-  color: var(--gold);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.po-banner-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  color: var(--white);
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-.po-banner-sub {
-  font-size: .92rem;
-  color: var(--gold-light);
-  letter-spacing: .04em;
-}
-
-.po-grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 24px;
-  margin-bottom: 32px;
-}
-.po-deposit {
-  background: linear-gradient(180deg, var(--card), #0f1119);
-  border: 1px solid rgba(201,169,110,.25);
-  border-radius: 14px;
-  padding: 32px 24px;
-  text-align: center;
+.po-core-card {
+  flex: 1;
+  padding: 26px 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.po-deposit-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: .75rem;
+.po-core-divider {
+  width: 1px;
+  background: rgba(201,169,110,.25);
+  flex-shrink: 0;
+  margin: 16px 0;
+}
+.po-core-label {
+  font-family: 'MBK CorpoA','Outfit',sans-serif;
+  font-size: .7rem;
   color: var(--gold);
   letter-spacing: 3px;
-  margin-bottom: 14px;
   text-transform: uppercase;
-}
-.po-deposit-amount {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -.02em;
-  line-height: 1;
   margin-bottom: 8px;
 }
-.po-deposit-amount span { color: var(--gold-light); font-size: 1.4rem; font-weight: 500; margin-left: 4px; }
-.po-deposit-note {
-  font-size: .78rem;
+.po-core-value {
+  font-family: 'MBK CorpoA','Outfit',sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.po-core-unit {
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-left: 4px;
+}
+.po-core-sub {
+  font-size: .8rem;
   color: var(--silver);
   line-height: 1.5;
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,.06);
 }
+
+/* ② 재구매 특별혜택 블록 */
+.po-retention-block {
+  margin-bottom: 4px;
+}
+.po-retention-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.po-retention-badge {
+  font-family: 'MBK CorpoA','Outfit',sans-serif;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: #0a0c14;
+  background: var(--gold);
+  border-radius: 20px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+.po-retention-title {
+  font-family: 'MBK CorpoA','Outfit',sans-serif;
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--silver);
+  letter-spacing: .04em;
+}
+
+/* 기존 po-deposit 관련 (레거시 — 미사용) */
+.po-deposit { display: none; }
+.po-grid { display: block; }
 
 .po-table-wrap { overflow-x: auto; }
 .po-table {
@@ -790,10 +801,11 @@ section { padding: clamp(40px,6vw,80px) clamp(20px,5vw,80px); }
 }
 
 @media (max-width: 768px) {
-  .po-banner { padding: 22px 20px; }
-  .po-banner-title { font-size: 1.35rem; }
-  .po-grid { grid-template-columns: 1fr; gap: 16px; }
-  .po-deposit-amount { font-size: 2.2rem; }
+  .po-core-row { flex-direction: column; }
+  .po-core-divider { width: auto; height: 1px; margin: 0 16px; }
+  .po-core-card { padding: 20px 20px; }
+  .po-core-value { font-size: 1.3rem; }
+  .po-retention-header { flex-wrap: wrap; gap: 8px; }
   .po-table th, .po-table td { padding: 12px 8px; font-size: .78rem; }
   .po-cta { grid-template-columns: 1fr; gap: 10px; }
   .float-kakao { bottom: 14px; right: 14px; padding: 10px 16px 10px 12px; font-size: .82rem; }
@@ -1589,24 +1601,29 @@ tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', 
   <div class="section-inner">
     <div class="sec-label">Pre-order &amp; Promotion</div>
     <div class="sec-title">사전계약 &amp; 재구매 프로모션</div>
-    <div class="sec-desc">신형 S-Class MY27 사전계약이 <strong style="color:#ddc08a">5월 18일(월)부터 시작</strong>됩니다. 한정 수량 조기 마감이 예상되며, 재구매 고객 대상 특별 혜택이 함께 적용됩니다.</div>
+    <div class="sec-desc">신형 S-Class MY27 사전계약이 <strong style="color:#ddc08a">5월 18일(월)부터 시작</strong>됩니다. 한정 수량 조기 마감이 예상됩니다.</div>
 
-    <div class="po-banner">
-      <div class="po-banner-label">Launch Pre-order</div>
-      <div class="po-banner-title">The new S-Class · 5월 18일 사전계약 시작</div>
-      <div class="po-banner-sub">런치 에디션 한정 수량 · 조기 마감 예상</div>
+    <!-- ① 사전계약 핵심 정보 (1줄 요약 카드) -->
+    <div class="po-core-row">
+      <div class="po-core-card">
+        <div class="po-core-label">LAUNCH PRE-ORDER</div>
+        <div class="po-core-value">The new S-Class</div>
+        <div class="po-core-sub">5월 18일(월) 사전계약 시작 · 런치 에디션 한정 수량</div>
+      </div>
+      <div class="po-core-divider"></div>
+      <div class="po-core-card">
+        <div class="po-core-label">CONTRACT DEPOSIT</div>
+        <div class="po-core-value">500<span class="po-core-unit">만원</span></div>
+        <div class="po-core-sub">신형 S-Class 계약금 500만원으로 확정</div>
+      </div>
     </div>
 
-    <div class="po-grid">
-      <div class="po-deposit">
-        <div class="po-deposit-label">Contract Deposit</div>
-        <div class="po-deposit-amount">500<span>만원</span></div>
-        <div class="po-deposit-note">
-          신형 S-Class 사전계약 계약금<br>
-          <strong style="color:var(--gold-light)">500만원</strong>으로 확정되었습니다
-        </div>
+    <!-- ② 기존 S클래스 보유고객 전용 재구매 혜택 -->
+    <div class="po-retention-block">
+      <div class="po-retention-header">
+        <span class="po-retention-badge">기존 S클래스 보유고객 전용</span>
+        <span class="po-retention-title">S 스페셜 재구매 혜택</span>
       </div>
-
       <div class="po-table-wrap">
         <table class="po-table">
           <thead>
@@ -1641,7 +1658,7 @@ tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', 
     </div>
 
     <div class="po-footnote">
-      ※ 본 혜택은 <strong>재구매 고객</strong> 기준이며, 결제 방식(현금 / MBFSK 금융)에 따라 적용 조건이 다릅니다.<br>
+      ※ 재구매 혜택은 <strong>기존 S클래스 보유고객</strong> 기준이며, 결제 방식(현금 / MBFSK 금융)에 따라 적용 조건이 다릅니다.<br>
       상세 조건 및 본인 적용 가능 여부는 <strong>한호만 팀장</strong>에게 문의해 주세요.
     </div>
 
