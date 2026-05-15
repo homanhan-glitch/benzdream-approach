@@ -1749,9 +1749,18 @@ tr.inner-hdr-og td { padding: 16px 11px 5px; font-family: 'Cormorant Garamond', 
     }
   }, true);
 
+  var _tsX = 0, _tsY = 0;
+  document.addEventListener('touchstart', function(e){
+    _tsX = e.touches[0].clientX;
+    _tsY = e.touches[0].clientY;
+  }, { passive: true, capture: true });
+
   document.addEventListener('touchend', function(e){
     var t = e.target;
     if (t && t.tagName === 'IMG' && t.id !== 'lightboxImg' && !overlay.contains(t)){
+      var dx = Math.abs(e.changedTouches[0].clientX - _tsX);
+      var dy = Math.abs(e.changedTouches[0].clientY - _tsY);
+      if (dx > 8 || dy > 8) return;
       e.preventDefault();
       openLightbox(t.currentSrc || t.src, t.alt);
     }
