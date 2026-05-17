@@ -3,6 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
+<script>
+  // IP 필터 — 내부 트래픽 제외
+  const BLOCKED_IPS = ["59.7.219.188"];
+  fetch("https://api.ipify.org?format=json")
+    .then(r=>r.json())
+    .then(d=>{
+      if(BLOCKED_IPS.includes(d.ip)) return;
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-7T2ECBWN0K");
+    }).catch(()=>{
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-7T2ECBWN0K");
+    });
+</script>
+
 <title>The new S-Class MY27 (807) 사전계약 | BenzDream 한호만 팀장</title>
 <meta name="description" content="신형 S-Class MY27 5월 18일 사전계약 시작. 계약금 500만원 · Cash Retention +2% · Trade-in +1% · 보증연장 최대 +2년/+7만km. 벤츠 고양 전시장 BenzDream 한호만 팀장.">
 
