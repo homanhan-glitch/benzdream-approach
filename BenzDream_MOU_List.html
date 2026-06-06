@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>벤츠코리아 MOU 체결 기업 리스트 | BenzDream</title>
+<meta name="description" content="벤츠코리아 RoF MOU 체결 기업 리스트 — 임직원 추가할인 2% 적용 대상 기업 현황 (2026년 6월 기준)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #08090e;
+    --card-bg: #141720;
+    --card-hover: #1c2030;
+    --gold: #c9a96e;
+    --gold-light: #e0c68a;
+    --text: #e2e3e7;
+    --silver: #9a9daa;
+    --border: #252836;
+  }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0 16px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0 60px;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 400;
+    margin-bottom: 28px;
+    transition: opacity .2s;
+  }
+  .back-link:hover { opacity: .75; }
+  .back-link svg { width: 16px; height: 16px; fill: currentColor; }
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .header h1 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -.02em;
+    margin-bottom: 10px;
+  }
+  .header .subtitle {
+    font-size: .88rem;
+    color: var(--silver);
+    font-weight: 300;
+  }
+  .search-area {
+    max-width: 480px;
+    margin: 0 auto 12px;
+    position: relative;
+  }
+  .search-area input {
+    width: 100%;
+    padding: 13px 18px 13px 44px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: .92rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-area input:focus { border-color: var(--gold); }
+  .search-area input::placeholder { color: var(--silver); }
+  .search-area .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    fill: var(--silver);
+  }
+  .count-bar {
+    text-align: center;
+    font-size: .8rem;
+    color: var(--silver);
+    margin-bottom: 28px;
+  }
+  .count-bar span { color: var(--gold); font-weight: 500; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 800px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+  .company-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: .82rem;
+    color: var(--text);
+    line-height: 1.45;
+    transition: border-color .2s, background .2s;
+  }
+  .company-card:hover {
+    border-color: var(--gold);
+    background: var(--card-hover);
+  }
+  .company-card.hidden { display: none; }
+  .no-result {
+    display: none;
+    text-align: center;
+    color: var(--silver);
+    font-size: .88rem;
+    padding: 48px 0;
+    grid-column: 1 / -1;
+  }
+  .footer-note {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 16px;
+    border-top: 1px solid var(--border);
+    font-size: .75rem;
+    color: var(--silver);
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="BenzDream_PriceAndPromotion_2026.html">
+    <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    가격 &amp; 프로모션 페이지로 돌아가기
+  </a>
+
+  <div class="header">
+    <h1>벤츠코리아 MOU 체결 기업 리스트</h1>
+    <p class="subtitle">2026년 6월 기준 &middot; 임직원 추가할인 2% 적용 대상</p>
+  </div>
+
+  <div class="search-area">
+    <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    <input type="text" id="searchBox" placeholder="기업명 검색 (예: 삼성, LG, 네이버...)">
+  </div>
+
+  <div class="count-bar">
+    전체 <span id="totalCount">603</span>개 기업 &middot; 검색 결과 <span id="filteredCount">603</span>개
+  </div>
+
+  <div class="grid" id="companyGrid">
+        <div class="company-card" data-name="(유)프라이스워터하우스쿠퍼스컨설팅">(유)프라이스워터하우스쿠퍼스컨설팅</div>
+        <div class="company-card" data-name="(유)한양특허법인">(유)한양특허법인</div>
+        <div class="company-card" data-name="(재)네이버커넥트">(재)네이버커넥트</div>
+        <div class="company-card" data-name="(주) 케이티엠앤에스">(주) 케이티엠앤에스</div>
+        <div class="company-card" data-name="(주) 토석이앤씨">(주) 토석이앤씨</div>
+        <div class="company-card" data-name="(주)넥슨네트웍스">(주)넥슨네트웍스</div>
+        <div class="company-card" data-name="(주)넥슨코리아">(주)넥슨코리아</div>
+        <div class="company-card" data-name="(주)디엑스이">(주)디엑스이</div>
+        <div class="company-card" data-name="(주)브랜드웍스코리아">(주)브랜드웍스코리아</div>
+        <div class="company-card" data-name="(주)블랙스톤리조트 이천">(주)블랙스톤리조트 이천</div>
+        <div class="company-card" data-name="(주)스튜디오테이크원">(주)스튜디오테이크원</div>
+        <div class="company-card" data-name="(주)신세계톰보이">(주)신세계톰보이</div>
+        <div class="company-card" data-name="(주)씨에스글로비즈">(주)씨에스글로비즈</div>
+        <div class="company-card" data-name="(주)씨제이메조미디어">(주)씨제이메조미디어</div>
+        <div class="company-card" data-name="(주)씨제이텔레닉스">(주)씨제이텔레닉스</div>
+        <div class="company-card" data-name="(주)아모레퍼시픽">(주)아모레퍼시픽</div>
+        <div class="company-card" data-name="(주)아모레퍼시픽홀딩스">(주)아모레퍼시픽홀딩스</div>
+        <div class="company-card" data-name="(주)에스원">(주)에스원</div>
+        <div class="company-card" data-name="(주)엔에스쇼핑">(주)엔에스쇼핑</div>
+        <div class="company-card" data-name="(주)엘지경영개발원">(주)엘지경영개발원</div>
+        <div class="company-card" data-name="(주)원지">(주)원지</div>
+        <div class="company-card" data-name="(주)지에스리테일">(주)지에스리테일</div>
+        <div class="company-card" data-name="(주)케이티">(주)케이티</div>
+        <div class="company-card" data-name="(주)코휘드">(주)코휘드</div>
+        <div class="company-card" data-name="(주)크래프톤">(주)크래프톤</div>
+        <div class="company-card" data-name="(주)티빙">(주)티빙</div>
+        <div class="company-card" data-name="(주)호반건설">(주)호반건설</div>
+        <div class="company-card" data-name="Daimler Truck Korea">Daimler Truck Korea</div>
+        <div class="company-card" data-name="HDC현대산업개발">HDC현대산업개발</div>
+        <div class="company-card" data-name="SK 트레이딩인터내셔널">SK 트레이딩인터내셔널</div>
+        <div class="company-card" data-name="SK바이오사이언스">SK바이오사이언스</div>
+        <div class="company-card" data-name="SK케미칼">SK케미칼</div>
+        <div class="company-card" data-name="SK하이스텍 주식회사">SK하이스텍 주식회사</div>
+        <div class="company-card" data-name="SK하이이엔지">SK하이이엔지</div>
+        <div class="company-card" data-name="㈜ 네오플">㈜ 네오플</div>
+        <div class="company-card" data-name="㈜ 라미에이스">㈜ 라미에이스</div>
+        <div class="company-card" data-name="㈜ 비바리퍼블리카">㈜ 비바리퍼블리카</div>
+        <div class="company-card" data-name="㈜ 선영후르츠">㈜ 선영후르츠</div>
+        <div class="company-card" data-name="㈜ 세정">㈜ 세정</div>
+        <div class="company-card" data-name="㈜ 셀트리온">㈜ 셀트리온</div>
+        <div class="company-card" data-name="㈜ 신세계인터내셔날">㈜ 신세계인터내셔날</div>
+        <div class="company-card" data-name="㈜ 아모스프로페셔널 (아모레퍼시픽)">㈜ 아모스프로페셔널 (아모레퍼시픽)</div>
+        <div class="company-card" data-name="㈜ 에스쁘아 (아모레퍼시픽)">㈜ 에스쁘아 (아모레퍼시픽)</div>
+        <div class="company-card" data-name="㈜ 엔에이치엔데이터">㈜ 엔에이치엔데이터</div>
+        <div class="company-card" data-name="㈜ 이노앤">㈜ 이노앤</div>
+        <div class="company-card" data-name="㈜ 이니스프리 (아모레퍼시픽)">㈜ 이니스프리 (아모레퍼시픽)</div>
+        <div class="company-card" data-name="㈜ 종선에프에이">㈜ 종선에프에이</div>
+        <div class="company-card" data-name="㈜ 쥬디스코퍼레이션">㈜ 쥬디스코퍼레이션</div>
+        <div class="company-card" data-name="㈜ 학산">㈜ 학산</div>
+        <div class="company-card" data-name="㈜ 한성엠엔에스">㈜ 한성엠엔에스</div>
+        <div class="company-card" data-name="㈜그레이스이엔엠">㈜그레이스이엔엠</div>
+        <div class="company-card" data-name="㈜넥슨커뮤니케이션즈">㈜넥슨커뮤니케이션즈</div>
+        <div class="company-card" data-name="㈜드림모션 (크래프톤)">㈜드림모션 (크래프톤)</div>
+        <div class="company-card" data-name="㈜몬텍">㈜몬텍</div>
+        <div class="company-card" data-name="㈜베리안메티컬시스템즈코리아">㈜베리안메티컬시스템즈코리아</div>
+        <div class="company-card" data-name="㈜부산은행">㈜부산은행</div>
+        <div class="company-card" data-name="㈜블루홀스튜디오 (크래프톤)">㈜블루홀스튜디오 (크래프톤)</div>
+        <div class="company-card" data-name="㈜비엔피컴퍼니">㈜비엔피컴퍼니</div>
+        <div class="company-card" data-name="㈜삼양사">㈜삼양사</div>
+        <div class="company-card" data-name="㈜서희솔루션">㈜서희솔루션</div>
+        <div class="company-card" data-name="㈜에뛰드(아모레퍼시픽)">㈜에뛰드(아모레퍼시픽)</div>
+        <div class="company-card" data-name="㈜에이치에스효성">㈜에이치에스효성</div>
+        <div class="company-card" data-name="㈜엔에이치엔에이스(NHN ACE Corpo">㈜엔에이치엔에이스(NHN ACE Corpo</div>
+        <div class="company-card" data-name="㈜엘지에너지솔루션">㈜엘지에너지솔루션</div>
+        <div class="company-card" data-name="㈜엘지화학">㈜엘지화학</div>
+        <div class="company-card" data-name="㈜엘케이로지스틱">㈜엘케이로지스틱</div>
+        <div class="company-card" data-name="㈜오버데어코리아 (크래프톤)">㈜오버데어코리아 (크래프톤)</div>
+        <div class="company-card" data-name="㈜오양기업">㈜오양기업</div>
+        <div class="company-card" data-name="㈜웨이브온스튜디오">㈜웨이브온스튜디오</div>
+        <div class="company-card" data-name="㈜인조이스튜디오 (크래프톤)">㈜인조이스튜디오 (크래프톤)</div>
+        <div class="company-card" data-name="㈜제이슨인터내셔날">㈜제이슨인터내셔날</div>
+        <div class="company-card" data-name="㈜종근당">㈜종근당</div>
+        <div class="company-card" data-name="㈜컴투스">㈜컴투스</div>
+        <div class="company-card" data-name="㈜플레디스엔터테인먼트">㈜플레디스엔터테인먼트</div>
+        <div class="company-card" data-name="㈜피더블유에이치">㈜피더블유에이치</div>
+        <div class="company-card" data-name="㈜한울이엔씨">㈜한울이엔씨</div>
+        <div class="company-card" data-name="㈜해평건설">㈜해평건설</div>
+        <div class="company-card" data-name="㈜효성">㈜효성</div>
+        <div class="company-card" data-name="가온감정평가법인">가온감정평가법인</div>
+        <div class="company-card" data-name="경남철강 ㈜">경남철강 ㈜</div>
+        <div class="company-card" data-name="경보해운 주식회사">경보해운 주식회사</div>
+        <div class="company-card" data-name="경상남도의사회">경상남도의사회</div>
+        <div class="company-card" data-name="경상남도치과의사회">경상남도치과의사회</div>
+        <div class="company-card" data-name="경상북도의사회">경상북도의사회</div>
+        <div class="company-card" data-name="경신글로비스">경신글로비스</div>
+        <div class="company-card" data-name="계룡건설산업">계룡건설산업</div>
+        <div class="company-card" data-name="고려차량">고려차량</div>
+        <div class="company-card" data-name="고성그린파워㈜">고성그린파워㈜</div>
+        <div class="company-card" data-name="골드리치파트너스">골드리치파트너스</div>
+        <div class="company-card" data-name="골프존">골프존</div>
+        <div class="company-card" data-name="골프존조이마루">골프존조이마루</div>
+        <div class="company-card" data-name="골프존지디알아카데미">골프존지디알아카데미</div>
+        <div class="company-card" data-name="골프존카운티">골프존카운티</div>
+        <div class="company-card" data-name="골프존카운티매니지먼트">골프존카운티매니지먼트</div>
+        <div class="company-card" data-name="골프존커머스">골프존커머스</div>
+        <div class="company-card" data-name="골프존클라우드">골프존클라우드</div>
+        <div class="company-card" data-name="골프존홀딩스">골프존홀딩스</div>
+        <div class="company-card" data-name="공덕경우개발 주식회사">공덕경우개발 주식회사</div>
+        <div class="company-card" data-name="광양주식회사">광양주식회사</div>
+        <div class="company-card" data-name="광양항운 ㈜">광양항운 ㈜</div>
+        <div class="company-card" data-name="광주광역시치과의사회">광주광역시치과의사회</div>
+        <div class="company-card" data-name="광주은행">광주은행</div>
+        <div class="company-card" data-name="광주의사회">광주의사회</div>
+        <div class="company-card" data-name="광주지방변호사회">광주지방변호사회</div>
+        <div class="company-card" data-name="교보증권">교보증권</div>
+        <div class="company-card" data-name="굿나이스푸드주식회사">굿나이스푸드주식회사</div>
+        <div class="company-card" data-name="길훈메디">길훈메디</div>
+        <div class="company-card" data-name="김앤장 법률사무소">김앤장 법률사무소</div>
+        <div class="company-card" data-name="나비스오토모티브시스템즈㈜">나비스오토모티브시스템즈㈜</div>
+        <div class="company-card" data-name="나우리의료재단 나우리요양병원">나우리의료재단 나우리요양병원</div>
+        <div class="company-card" data-name="나우주식회사">나우주식회사</div>
+        <div class="company-card" data-name="나주관광개발㈜">나주관광개발㈜</div>
+        <div class="company-card" data-name="네이버 주식회사">네이버 주식회사</div>
+        <div class="company-card" data-name="네이버랩스 주식회사">네이버랩스 주식회사</div>
+        <div class="company-card" data-name="네이버아이앤에스 주식회사">네이버아이앤에스 주식회사</div>
+        <div class="company-card" data-name="네이버웹툰 유한회사">네이버웹툰 유한회사</div>
+        <div class="company-card" data-name="네이버제트 주식회사">네이버제트 주식회사</div>
+        <div class="company-card" data-name="네이버클라우드 주식회사">네이버클라우드 주식회사</div>
+        <div class="company-card" data-name="네이버파이낸셜 주식회사">네이버파이낸셜 주식회사</div>
+        <div class="company-card" data-name="넥센타이어">넥센타이어</div>
+        <div class="company-card" data-name="넷마블네오">넷마블네오</div>
+        <div class="company-card" data-name="넷마블에프앤씨 주식회사">넷마블에프앤씨 주식회사</div>
+        <div class="company-card" data-name="노무법인 이산">노무법인 이산</div>
+        <div class="company-card" data-name="농가축산">농가축산</div>
+        <div class="company-card" data-name="농심개발주식회사">농심개발주식회사</div>
+        <div class="company-card" data-name="뉴트리플래닛">뉴트리플래닛</div>
+        <div class="company-card" data-name="다우">다우</div>
+        <div class="company-card" data-name="다울지오인포">다울지오인포</div>
+        <div class="company-card" data-name="다음상사">다음상사</div>
+        <div class="company-card" data-name="대구광역시의사회">대구광역시의사회</div>
+        <div class="company-card" data-name="대보건설 ㈜">대보건설 ㈜</div>
+        <div class="company-card" data-name="대신전선">대신전선</div>
+        <div class="company-card" data-name="대양롤랜트 주식회사">대양롤랜트 주식회사</div>
+        <div class="company-card" data-name="대전광역시치과의사회">대전광역시치과의사회</div>
+        <div class="company-card" data-name="대전지방변호사회">대전지방변호사회</div>
+        <div class="company-card" data-name="대주회계법인">대주회계법인</div>
+        <div class="company-card" data-name="대창엘리베이터㈜">대창엘리베이터㈜</div>
+        <div class="company-card" data-name="대한건축사협회울산광역시건축사회">대한건축사협회울산광역시건축사회</div>
+        <div class="company-card" data-name="대한변리사회">대한변리사회</div>
+        <div class="company-card" data-name="대한변호사협회">대한변호사협회</div>
+        <div class="company-card" data-name="대한수의사회 제주지부">대한수의사회 제주지부</div>
+        <div class="company-card" data-name="대한약사회">대한약사회</div>
+        <div class="company-card" data-name="대한여성치과의사회">대한여성치과의사회</div>
+        <div class="company-card" data-name="대한제지">대한제지</div>
+        <div class="company-card" data-name="대한치과의사협회 경기지부">대한치과의사협회 경기지부</div>
+        <div class="company-card" data-name="대한치과의사협회부산시지부">대한치과의사협회부산시지부</div>
+        <div class="company-card" data-name="대한통운에스비(주)">대한통운에스비(주)</div>
+        <div class="company-card" data-name="대한한의사협회">대한한의사협회</div>
+        <div class="company-card" data-name="더비즈">더비즈</div>
+        <div class="company-card" data-name="더시너지1 주식회사">더시너지1 주식회사</div>
+        <div class="company-card" data-name="더율">더율</div>
+        <div class="company-card" data-name="데상트코리아">데상트코리아</div>
+        <div class="company-card" data-name="델인터내셔널 주식회사">델인터내셔널 주식회사</div>
+        <div class="company-card" data-name="동경">동경</div>
+        <div class="company-card" data-name="동일전력 주식회사">동일전력 주식회사</div>
+        <div class="company-card" data-name="두리두리">두리두리</div>
+        <div class="company-card" data-name="두산밥캣코리아">두산밥캣코리아</div>
+        <div class="company-card" data-name="두산테스나">두산테스나</div>
+        <div class="company-card" data-name="두산퓨얼셀">두산퓨얼셀</div>
+        <div class="company-card" data-name="디씨코리아">디씨코리아</div>
+        <div class="company-card" data-name="디아이웨어(주)">디아이웨어(주)</div>
+        <div class="company-card" data-name="디앤디인베스트먼트㈜">디앤디인베스트먼트㈜</div>
+        <div class="company-card" data-name="디앤디프라퍼티솔루션㈜">디앤디프라퍼티솔루션㈜</div>
+        <div class="company-card" data-name="디자인인사이트">디자인인사이트</div>
+        <div class="company-card" data-name="딜로이트컨설팅 유한회사">딜로이트컨설팅 유한회사</div>
+        <div class="company-card" data-name="라비돌">라비돌</div>
+        <div class="company-card" data-name="라이나생명보험">라이나생명보험</div>
+        <div class="company-card" data-name="라이징윙스㈜ (크래프톤)">라이징윙스㈜ (크래프톤)</div>
+        <div class="company-card" data-name="램리서치코리아 유한회사">램리서치코리아 유한회사</div>
+        <div class="company-card" data-name="램리서치코리아테크놀로지 유한회사">램리서치코리아테크놀로지 유한회사</div>
+        <div class="company-card" data-name="롯데렌탈">롯데렌탈</div>
+        <div class="company-card" data-name="롯데이노베이트">롯데이노베이트</div>
+        <div class="company-card" data-name="롯데카드 주식회사">롯데카드 주식회사</div>
+        <div class="company-card" data-name="루디우스게임즈">루디우스게임즈</div>
+        <div class="company-card" data-name="리가켐바이오사이언스">리가켐바이오사이언스</div>
+        <div class="company-card" data-name="린스몰">린스몰</div>
+        <div class="company-card" data-name="링크 주식회사">링크 주식회사</div>
+        <div class="company-card" data-name="매그나칩반도체 유한회사">매그나칩반도체 유한회사</div>
+        <div class="company-card" data-name="맥킨지인코포레이티드">맥킨지인코포레이티드</div>
+        <div class="company-card" data-name="멀티캠퍼스">멀티캠퍼스</div>
+        <div class="company-card" data-name="메가박스 제주아라">메가박스 제주아라</div>
+        <div class="company-card" data-name="메리츠증권㈜">메리츠증권㈜</div>
+        <div class="company-card" data-name="명랑시대외식청년창업협동조합">명랑시대외식청년창업협동조합</div>
+        <div class="company-card" data-name="미라콤아이앤씨">미라콤아이앤씨</div>
+        <div class="company-card" data-name="법무법인 고구려">법무법인 고구려</div>
+        <div class="company-card" data-name="법무법인 대륜">법무법인 대륜</div>
+        <div class="company-card" data-name="법무법인 동인">법무법인 동인</div>
+        <div class="company-card" data-name="법무법인 세종">법무법인 세종</div>
+        <div class="company-card" data-name="법무법인 지평">법무법인 지평</div>
+        <div class="company-card" data-name="법무법인(유한) 광장">법무법인(유한) 광장</div>
+        <div class="company-card" data-name="법무법인(유한) 대륙아주">법무법인(유한) 대륙아주</div>
+        <div class="company-card" data-name="법무법인(유한) 태평양">법무법인(유한) 태평양</div>
+        <div class="company-card" data-name="법무법인(유한) 화우">법무법인(유한) 화우</div>
+        <div class="company-card" data-name="보람회계법인">보람회계법인</div>
+        <div class="company-card" data-name="보임">보임</div>
+        <div class="company-card" data-name="부경공영주식회사">부경공영주식회사</div>
+        <div class="company-card" data-name="부산광역시의사회">부산광역시의사회</div>
+        <div class="company-card" data-name="비룡">비룡</div>
+        <div class="company-card" data-name="비알코리아">비알코리아</div>
+        <div class="company-card" data-name="비알팜">비알팜</div>
+        <div class="company-card" data-name="비엔케이캐피탈">비엔케이캐피탈</div>
+        <div class="company-card" data-name="비와이엔블랙야크">비와이엔블랙야크</div>
+        <div class="company-card" data-name="비케이">비케이</div>
+        <div class="company-card" data-name="빅파이어게임즈">빅파이어게임즈</div>
+        <div class="company-card" data-name="삼덕회계법인">삼덕회계법인</div>
+        <div class="company-card" data-name="삼도회계법인">삼도회계법인</div>
+        <div class="company-card" data-name="삼성SDI">삼성SDI</div>
+        <div class="company-card" data-name="삼성디스플레이">삼성디스플레이</div>
+        <div class="company-card" data-name="삼성문화재단">삼성문화재단</div>
+        <div class="company-card" data-name="삼성물산">삼성물산</div>
+        <div class="company-card" data-name="삼성바이오로직스㈜">삼성바이오로직스㈜</div>
+        <div class="company-card" data-name="삼성바이오에피스">삼성바이오에피스</div>
+        <div class="company-card" data-name="삼성복지재단">삼성복지재단</div>
+        <div class="company-card" data-name="삼성생명공익재단">삼성생명공익재단</div>
+        <div class="company-card" data-name="삼성생명금융서비스보험대리점">삼성생명금융서비스보험대리점</div>
+        <div class="company-card" data-name="삼성생명보험">삼성생명보험</div>
+        <div class="company-card" data-name="삼성생명서비스손해사정">삼성생명서비스손해사정</div>
+        <div class="company-card" data-name="삼성액티브자산운용">삼성액티브자산운용</div>
+        <div class="company-card" data-name="삼성에스디에스">삼성에스디에스</div>
+        <div class="company-card" data-name="삼성여객 ㈜">삼성여객 ㈜</div>
+        <div class="company-card" data-name="삼성의료재단 강북삼성병원">삼성의료재단 강북삼성병원</div>
+        <div class="company-card" data-name="삼성이앤에이">삼성이앤에이</div>
+        <div class="company-card" data-name="삼성자산운용">삼성자산운용</div>
+        <div class="company-card" data-name="삼성전기">삼성전기</div>
+        <div class="company-card" data-name="삼성전자">삼성전자</div>
+        <div class="company-card" data-name="삼성전자로지텍">삼성전자로지텍</div>
+        <div class="company-card" data-name="삼성전자서비스">삼성전자서비스</div>
+        <div class="company-card" data-name="삼성전자판매">삼성전자판매</div>
+        <div class="company-card" data-name="삼성중공업">삼성중공업</div>
+        <div class="company-card" data-name="삼성증권">삼성증권</div>
+        <div class="company-card" data-name="삼성카드">삼성카드</div>
+        <div class="company-card" data-name="삼성화재애니카손해사정">삼성화재애니카손해사정</div>
+        <div class="company-card" data-name="삼성화재해상보험">삼성화재해상보험</div>
+        <div class="company-card" data-name="삼일피더블유씨엑셀러레이션센터">삼일피더블유씨엑셀러레이션센터</div>
+        <div class="company-card" data-name="삼일회계법인">삼일회계법인</div>
+        <div class="company-card" data-name="삼정케이피엠지 유한회사">삼정케이피엠지 유한회사</div>
+        <div class="company-card" data-name="삼정회계법인">삼정회계법인</div>
+        <div class="company-card" data-name="삼해상사(주)">삼해상사(주)</div>
+        <div class="company-card" data-name="샤브향기">샤브향기</div>
+        <div class="company-card" data-name="서린컴퍼니">서린컴퍼니</div>
+        <div class="company-card" data-name="성가롤로병원">성가롤로병원</div>
+        <div class="company-card" data-name="성원근로장애인협회">성원근로장애인협회</div>
+        <div class="company-card" data-name="세종병원장례식장">세종병원장례식장</div>
+        <div class="company-card" data-name="세홍">세홍</div>
+        <div class="company-card" data-name="셀트리온제약">셀트리온제약</div>
+        <div class="company-card" data-name="스노우 주식회사">스노우 주식회사</div>
+        <div class="company-card" data-name="스마일게이트">스마일게이트</div>
+        <div class="company-card" data-name="스마트컨버전스">스마트컨버전스</div>
+        <div class="company-card" data-name="스웨이브">스웨이브</div>
+        <div class="company-card" data-name="스테코">스테코</div>
+        <div class="company-card" data-name="스토브페이">스토브페이</div>
+        <div class="company-card" data-name="스튜디오 드래곤">스튜디오 드래곤</div>
+        <div class="company-card" data-name="스튜디오리코 주식회사">스튜디오리코 주식회사</div>
+        <div class="company-card" data-name="신세계엘앤비">신세계엘앤비</div>
+        <div class="company-card" data-name="신양산업개발">신양산업개발</div>
+        <div class="company-card" data-name="신영부동산신탁">신영부동산신탁</div>
+        <div class="company-card" data-name="신영종합건설 ㈜">신영종합건설 ㈜</div>
+        <div class="company-card" data-name="신영증권">신영증권</div>
+        <div class="company-card" data-name="신용산업">신용산업</div>
+        <div class="company-card" data-name="신원캐슬">신원캐슬</div>
+        <div class="company-card" data-name="신의도천일염(주)">신의도천일염(주)</div>
+        <div class="company-card" data-name="신한은행">신한은행</div>
+        <div class="company-card" data-name="싸이머코리아">싸이머코리아</div>
+        <div class="company-card" data-name="씨엔씨티에너지">씨엔씨티에너지</div>
+        <div class="company-card" data-name="씨제이㈜">씨제이㈜</div>
+        <div class="company-card" data-name="씨제이대한통운">씨제이대한통운</div>
+        <div class="company-card" data-name="씨제이대한통운비엔디(주)">씨제이대한통운비엔디(주)</div>
+        <div class="company-card" data-name="씨제이바이오사이언스(주)">씨제이바이오사이언스(주)</div>
+        <div class="company-card" data-name="씨제이브리딩(주)">씨제이브리딩(주)</div>
+        <div class="company-card" data-name="씨제이씨지브이">씨제이씨지브이</div>
+        <div class="company-card" data-name="씨제이씨푸드㈜">씨제이씨푸드㈜</div>
+        <div class="company-card" data-name="씨제이엠디원(주)">씨제이엠디원(주)</div>
+        <div class="company-card" data-name="씨제이올리브 네트웍스">씨제이올리브 네트웍스</div>
+        <div class="company-card" data-name="씨제이올리브영">씨제이올리브영</div>
+        <div class="company-card" data-name="씨제이웰케어(주)">씨제이웰케어(주)</div>
+        <div class="company-card" data-name="씨제이이엔엠">씨제이이엔엠</div>
+        <div class="company-card" data-name="씨제이이엔엠 스튜디오스(주)">씨제이이엔엠 스튜디오스(주)</div>
+        <div class="company-card" data-name="씨제이인베스트먼트(주)">씨제이인베스트먼트(주)</div>
+        <div class="company-card" data-name="씨제이제일제당">씨제이제일제당</div>
+        <div class="company-card" data-name="씨제이포디플렉스(주)">씨제이포디플렉스(주)</div>
+        <div class="company-card" data-name="씨제이푸드빌(주)">씨제이푸드빌(주)</div>
+        <div class="company-card" data-name="씨제이프레시웨이">씨제이프레시웨이</div>
+        <div class="company-card" data-name="씨피엔터테인먼트 주식회사">씨피엔터테인먼트 주식회사</div>
+        <div class="company-card" data-name="씨피엘비 주식회사">씨피엘비 주식회사</div>
+        <div class="company-card" data-name="아세아시멘트">아세아시멘트</div>
+        <div class="company-card" data-name="아이제이동수 (윈덤그랜드부산)(ECCK">아이제이동수 (윈덤그랜드부산)(ECCK</div>
+        <div class="company-card" data-name="아크로관광 ㈜">아크로관광 ㈜</div>
+        <div class="company-card" data-name="안진회계법인">안진회계법인</div>
+        <div class="company-card" data-name="언스트앤영어드바이저리 주식회사">언스트앤영어드바이저리 주식회사</div>
+        <div class="company-card" data-name="언제나위드">언제나위드</div>
+        <div class="company-card" data-name="에스디하우스">에스디하우스</div>
+        <div class="company-card" data-name="에스메리안">에스메리안</div>
+        <div class="company-card" data-name="에스엘글로벌">에스엘글로벌</div>
+        <div class="company-card" data-name="에스엘페이퍼앤팩">에스엘페이퍼앤팩</div>
+        <div class="company-card" data-name="에스엠씨엔지니어링 ㈜">에스엠씨엔지니어링 ㈜</div>
+        <div class="company-card" data-name="에스유머티리얼스">에스유머티리얼스</div>
+        <div class="company-card" data-name="에스케이가스㈜">에스케이가스㈜</div>
+        <div class="company-card" data-name="에스케이디스커버리">에스케이디스커버리</div>
+        <div class="company-card" data-name="에스케이디앤디 ㈜">에스케이디앤디 ㈜</div>
+        <div class="company-card" data-name="에스케이렌터카">에스케이렌터카</div>
+        <div class="company-card" data-name="에스케이멀티유틸리티㈜">에스케이멀티유틸리티㈜</div>
+        <div class="company-card" data-name="에스케이어드밴스드㈜">에스케이어드밴스드㈜</div>
+        <div class="company-card" data-name="에스케이이터닉스">에스케이이터닉스</div>
+        <div class="company-card" data-name="에스케이플라즈마㈜">에스케이플라즈마㈜</div>
+        <div class="company-card" data-name="에스케이하이닉스 주식회사">에스케이하이닉스 주식회사</div>
+        <div class="company-card" data-name="에스코어 주식회사">에스코어 주식회사</div>
+        <div class="company-card" data-name="에어부산">에어부산</div>
+        <div class="company-card" data-name="에이에스엠엘리페어센터코리아">에이에스엠엘리페어센터코리아</div>
+        <div class="company-card" data-name="에이에스엠엘코리아">에이에스엠엘코리아</div>
+        <div class="company-card" data-name="에이치디현대중공업">에이치디현대중공업</div>
+        <div class="company-card" data-name="에이치에스애드">에이치에스애드</div>
+        <div class="company-card" data-name="에이치에스효성첨단소재㈜">에이치에스효성첨단소재㈜</div>
+        <div class="company-card" data-name="엔씨">엔씨</div>
+        <div class="company-card" data-name="엔씨문화재단">엔씨문화재단</div>
+        <div class="company-card" data-name="엔씨아이디에스">엔씨아이디에스</div>
+        <div class="company-card" data-name="엔씨아이티에스">엔씨아이티에스</div>
+        <div class="company-card" data-name="엔씨에이아이">엔씨에이아이</div>
+        <div class="company-card" data-name="엔씨큐에이">엔씨큐에이</div>
+        <div class="company-card" data-name="엔아이티서비스 주식회사">엔아이티서비스 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔 주식회사">엔에이치엔 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔두레이 주식회사">엔에이치엔두레이 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔링크 ㈜">엔에이치엔링크 ㈜</div>
+        <div class="company-card" data-name="엔에이치엔서비스 주식회사(NHN Serv">엔에이치엔서비스 주식회사(NHN Serv</div>
+        <div class="company-card" data-name="엔에이치엔애드 ㈜">엔에이치엔애드 ㈜</div>
+        <div class="company-card" data-name="엔에이치엔에듀 주식회사(NHN Edu C">엔에이치엔에듀 주식회사(NHN Edu C</div>
+        <div class="company-card" data-name="엔에이치엔엔터프라이즈 주식회사">엔에이치엔엔터프라이즈 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔위투 주식회사">엔에이치엔위투 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔커머스㈜">엔에이치엔커머스㈜</div>
+        <div class="company-card" data-name="엔에이치엔케이씨피 주식회사">엔에이치엔케이씨피 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔코미코코리아 주식회사">엔에이치엔코미코코리아 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔클라우드 주식회사">엔에이치엔클라우드 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔토스트캠 주식회사">엔에이치엔토스트캠 주식회사</div>
+        <div class="company-card" data-name="엔에이치엔페이코 주식회사">엔에이치엔페이코 주식회사</div>
+        <div class="company-card" data-name="엔에이치투자증권">엔에이치투자증권</div>
+        <div class="company-card" data-name="엔테크서비스 주식회사">엔테크서비스 주식회사</div>
+        <div class="company-card" data-name="엘도라도리조트">엘도라도리조트</div>
+        <div class="company-card" data-name="엘아이지디펜스앤에어로스페이스">엘아이지디펜스앤에어로스페이스</div>
+        <div class="company-card" data-name="엘에스일렉트릭㈜">엘에스일렉트릭㈜</div>
+        <div class="company-card" data-name="엘에스전선">엘에스전선</div>
+        <div class="company-card" data-name="엘에스증권">엘에스증권</div>
+        <div class="company-card" data-name="엘엑스세미콘">엘엑스세미콘</div>
+        <div class="company-card" data-name="엘엑스홀딩스">엘엑스홀딩스</div>
+        <div class="company-card" data-name="엘지디스플레이">엘지디스플레이</div>
+        <div class="company-card" data-name="엘지마그나 이파워트레인">엘지마그나 이파워트레인</div>
+        <div class="company-card" data-name="엘지생활건강">엘지생활건강</div>
+        <div class="company-card" data-name="엘지에이치와이비씨엠">엘지에이치와이비씨엠</div>
+        <div class="company-card" data-name="엘지유플러스">엘지유플러스</div>
+        <div class="company-card" data-name="엠제이로지스틱">엠제이로지스틱</div>
+        <div class="company-card" data-name="예수병원유지재단">예수병원유지재단</div>
+        <div class="company-card" data-name="예일회계법인">예일회계법인</div>
+        <div class="company-card" data-name="온세미컨덕터코리아">온세미컨덕터코리아</div>
+        <div class="company-card" data-name="올텍">올텍</div>
+        <div class="company-card" data-name="옴니크래프트랩스㈜ (크래프톤)">옴니크래프트랩스㈜ (크래프톤)</div>
+        <div class="company-card" data-name="우아한청년들">우아한청년들</div>
+        <div class="company-card" data-name="운수소방">운수소방</div>
+        <div class="company-card" data-name="울산광역시 치과의사회">울산광역시 치과의사회</div>
+        <div class="company-card" data-name="울산광역시의사회">울산광역시의사회</div>
+        <div class="company-card" data-name="울산광역시한의사회">울산광역시한의사회</div>
+        <div class="company-card" data-name="울산지피에스㈜">울산지피에스㈜</div>
+        <div class="company-card" data-name="워킹투게더">워킹투게더</div>
+        <div class="company-card" data-name="위메이드플레이">위메이드플레이</div>
+        <div class="company-card" data-name="유안타증권 주식회사">유안타증권 주식회사</div>
+        <div class="company-card" data-name="유진기업">유진기업</div>
+        <div class="company-card" data-name="유진통신공업㈜">유진통신공업㈜</div>
+        <div class="company-card" data-name="유한양행">유한양행</div>
+        <div class="company-card" data-name="유한회사 분필">유한회사 분필</div>
+        <div class="company-card" data-name="의료법인 나라의료재단 부산나라요양병">의료법인 나라의료재단 부산나라요양병</div>
+        <div class="company-card" data-name="의료법인 센텀의료재단">의료법인 센텀의료재단</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은강안병원">의료법인 은성의료재단 좋은강안병원</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은리버뷰요양">의료법인 은성의료재단 좋은리버뷰요양</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은부산요양병">의료법인 은성의료재단 좋은부산요양병</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은삼정병원">의료법인 은성의료재단 좋은삼정병원</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은선린병원">의료법인 은성의료재단 좋은선린병원</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은선린요양병">의료법인 은성의료재단 좋은선린요양병</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은애인병원">의료법인 은성의료재단 좋은애인병원</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은연인요양병">의료법인 은성의료재단 좋은연인요양병</div>
+        <div class="company-card" data-name="의료법인 은성의료재단 좋은주례요양병">의료법인 은성의료재단 좋은주례요양병</div>
+        <div class="company-card" data-name="의료법인 인석의료재단 보람병원">의료법인 인석의료재단 보람병원</div>
+        <div class="company-card" data-name="의료법인 파란시티의료재단(부산항운병">의료법인 파란시티의료재단(부산항운병</div>
+        <div class="company-card" data-name="의료법인은성의료재단좋은삼선병원">의료법인은성의료재단좋은삼선병원</div>
+        <div class="company-card" data-name="이래에이엠에스">이래에이엠에스</div>
+        <div class="company-card" data-name="이와이관세법인">이와이관세법인</div>
+        <div class="company-card" data-name="이와이컨설팅 유한책임회사">이와이컨설팅 유한책임회사</div>
+        <div class="company-card" data-name="이와이케이디에스 유한회사">이와이케이디에스 유한회사</div>
+        <div class="company-card" data-name="이지쿡 ㈜">이지쿡 ㈜</div>
+        <div class="company-card" data-name="인디고파리">인디고파리</div>
+        <div class="company-card" data-name="인월">인월</div>
+        <div class="company-card" data-name="인터플라테크">인터플라테크</div>
+        <div class="company-card" data-name="인투원">인투원</div>
+        <div class="company-card" data-name="일성산업 주식회사">일성산업 주식회사</div>
+        <div class="company-card" data-name="일우회계법인">일우회계법인</div>
+        <div class="company-card" data-name="자람푸드시스템">자람푸드시스템</div>
+        <div class="company-card" data-name="자이씨앤에이 주식회사">자이씨앤에이 주식회사</div>
+        <div class="company-card" data-name="재경">재경</div>
+        <div class="company-card" data-name="재단법인 넥슨재단">재단법인 넥슨재단</div>
+        <div class="company-card" data-name="재단법인 해피빈">재단법인 해피빈</div>
+        <div class="company-card" data-name="전라남도 치과의사회">전라남도 치과의사회</div>
+        <div class="company-card" data-name="전라남도의사회">전라남도의사회</div>
+        <div class="company-card" data-name="제이디코리아인터내셔날">제이디코리아인터내셔날</div>
+        <div class="company-card" data-name="제이에이치케어스">제이에이치케어스</div>
+        <div class="company-card" data-name="제이원산전 ㈜">제이원산전 ㈜</div>
+        <div class="company-card" data-name="제일">제일</div>
+        <div class="company-card" data-name="제일기획">제일기획</div>
+        <div class="company-card" data-name="제주도의사회">제주도의사회</div>
+        <div class="company-card" data-name="제트벤처 캐피탈 코리아">제트벤처 캐피탈 코리아</div>
+        <div class="company-card" data-name="주식회사 5민랩">주식회사 5민랩</div>
+        <div class="company-card" data-name="주식회사 그린웹서비스">주식회사 그린웹서비스</div>
+        <div class="company-card" data-name="주식회사 나인비스튜디오">주식회사 나인비스튜디오</div>
+        <div class="company-card" data-name="주식회사 남부산업">주식회사 남부산업</div>
+        <div class="company-card" data-name="주식회사 넥슨게임즈 (NEXON Games">주식회사 넥슨게임즈 (NEXON Games</div>
+        <div class="company-card" data-name="주식회사 넥슨스페이스">주식회사 넥슨스페이스</div>
+        <div class="company-card" data-name="주식회사 넥슨에이치큐">주식회사 넥슨에이치큐</div>
+        <div class="company-card" data-name="주식회사 넥슨유니버스">주식회사 넥슨유니버스</div>
+        <div class="company-card" data-name="주식회사 니트로 스튜디오">주식회사 니트로 스튜디오</div>
+        <div class="company-card" data-name="주식회사 대륜">주식회사 대륜</div>
+        <div class="company-card" data-name="주식회사 더블유와이">주식회사 더블유와이</div>
+        <div class="company-card" data-name="주식회사 덕산디오종합건설">주식회사 덕산디오종합건설</div>
+        <div class="company-card" data-name="주식회사 데브캣">주식회사 데브캣</div>
+        <div class="company-card" data-name="주식회사 동산금형">주식회사 동산금형</div>
+        <div class="company-card" data-name="주식회사 드림에이지">주식회사 드림에이지</div>
+        <div class="company-card" data-name="주식회사 디엠크레이트">주식회사 디엠크레이트</div>
+        <div class="company-card" data-name="주식회사 딜로퀘스트">주식회사 딜로퀘스트</div>
+        <div class="company-card" data-name="주식회사 떠나요">주식회사 떠나요</div>
+        <div class="company-card" data-name="주식회사 렐루게임즈">주식회사 렐루게임즈</div>
+        <div class="company-card" data-name="주식회사 롯데아이스크림평택">주식회사 롯데아이스크림평택</div>
+        <div class="company-card" data-name="주식회사 룬샷게임즈">주식회사 룬샷게임즈</div>
+        <div class="company-card" data-name="주식회사 르젠퍼니처">주식회사 르젠퍼니처</div>
+        <div class="company-card" data-name="주식회사 마움디자인">주식회사 마움디자인</div>
+        <div class="company-card" data-name="주식회사 문피아">주식회사 문피아</div>
+        <div class="company-card" data-name="주식회사 민트로켓">주식회사 민트로켓</div>
+        <div class="company-card" data-name="주식회사 보더리스필름">주식회사 보더리스필름</div>
+        <div class="company-card" data-name="주식회사 브이앤지">주식회사 브이앤지</div>
+        <div class="company-card" data-name="주식회사 비에스에어텍">주식회사 비에스에어텍</div>
+        <div class="company-card" data-name="주식회사 비엔케이금융지주">주식회사 비엔케이금융지주</div>
+        <div class="company-card" data-name="주식회사 빅히트뮤직(BIGHIT MUSIC">주식회사 빅히트뮤직(BIGHIT MUSIC</div>
+        <div class="company-card" data-name="주식회사 빌리프랩 (BElift Lab Inc.)">주식회사 빌리프랩 (BElift Lab Inc.)</div>
+        <div class="company-card" data-name="주식회사 삼우에코">주식회사 삼우에코</div>
+        <div class="company-card" data-name="주식회사 세미콜론스튜디어">주식회사 세미콜론스튜디어</div>
+        <div class="company-card" data-name="주식회사 세보글로벌">주식회사 세보글로벌</div>
+        <div class="company-card" data-name="주식회사 세인트폴프렙센터">주식회사 세인트폴프렙센터</div>
+        <div class="company-card" data-name="주식회사 솔루엠">주식회사 솔루엠</div>
+        <div class="company-card" data-name="주식회사 수퍼톤">주식회사 수퍼톤</div>
+        <div class="company-card" data-name="주식회사 신화레저">주식회사 신화레저</div>
+        <div class="company-card" data-name="주식회사 신화주택건설">주식회사 신화주택건설</div>
+        <div class="company-card" data-name="주식회사 쏘스뮤직">주식회사 쏘스뮤직</div>
+        <div class="company-card" data-name="주식회사 씨케이피">주식회사 씨케이피</div>
+        <div class="company-card" data-name="주식회사 아이비티코리아">주식회사 아이비티코리아</div>
+        <div class="company-card" data-name="주식회사 아이원씨앤씨">주식회사 아이원씨앤씨</div>
+        <div class="company-card" data-name="주식회사 어도어(ADOR Co., Ltd.)">주식회사 어도어(ADOR Co., Ltd.)</div>
+        <div class="company-card" data-name="주식회사 어바웃씽킹">주식회사 어바웃씽킹</div>
+        <div class="company-card" data-name="주식회사 에스비">주식회사 에스비</div>
+        <div class="company-card" data-name="주식회사 에이비디(ABD CO.,Ltd)">주식회사 에이비디(ABD CO.,Ltd)</div>
+        <div class="company-card" data-name="주식회사 엔미디어플랫폼">주식회사 엔미디어플랫폼</div>
+        <div class="company-card" data-name="주식회사 엔엑스씨">주식회사 엔엑스씨</div>
+        <div class="company-card" data-name="주식회사 엔진스튜디오">주식회사 엔진스튜디오</div>
+        <div class="company-card" data-name="주식회사 엘엑스하우시스">주식회사 엘엑스하우시스</div>
+        <div class="company-card" data-name="주식회사 오설록 (아모레퍼시픽)">주식회사 오설록 (아모레퍼시픽)</div>
+        <div class="company-card" data-name="주식회사 올리브트리게임즈">주식회사 올리브트리게임즈</div>
+        <div class="company-card" data-name="주식회사 위드런">주식회사 위드런</div>
+        <div class="company-card" data-name="주식회사 위버스컴퍼니 (WEVERSE CO">주식회사 위버스컴퍼니 (WEVERSE CO</div>
+        <div class="company-card" data-name="주식회사 유니언이엔지">주식회사 유니언이엔지</div>
+        <div class="company-card" data-name="주식회사 이지로지스">주식회사 이지로지스</div>
+        <div class="company-card" data-name="주식회사 인트브릿지">주식회사 인트브릿지</div>
+        <div class="company-card" data-name="주식회사 조프소프트">주식회사 조프소프트</div>
+        <div class="company-card" data-name="주식회사 주원씨앤아이">주식회사 주원씨앤아이</div>
+        <div class="company-card" data-name="주식회사 지이피코리아">주식회사 지이피코리아</div>
+        <div class="company-card" data-name="주식회사 카카오브이엑스(KAKAO VX)">주식회사 카카오브이엑스(KAKAO VX)</div>
+        <div class="company-card" data-name="주식회사 카카오엔터테인먼트">주식회사 카카오엔터테인먼트</div>
+        <div class="company-card" data-name="주식회사 카탈리스터">주식회사 카탈리스터</div>
+        <div class="company-card" data-name="주식회사 컴투스플랫폼">주식회사 컴투스플랫폼</div>
+        <div class="company-card" data-name="주식회사 컴투스홀딩스">주식회사 컴투스홀딩스</div>
+        <div class="company-card" data-name="주식회사 컴파트너스">주식회사 컴파트너스</div>
+        <div class="company-card" data-name="주식회사 케이오지 엔터테인먼트">주식회사 케이오지 엔터테인먼트</div>
+        <div class="company-card" data-name="주식회사 케이티샛">주식회사 케이티샛</div>
+        <div class="company-card" data-name="주식회사 케이티스포츠">주식회사 케이티스포츠</div>
+        <div class="company-card" data-name="주식회사 태아보험가이드">주식회사 태아보험가이드</div>
+        <div class="company-card" data-name="주식회사 파크조경">주식회사 파크조경</div>
+        <div class="company-card" data-name="주식회사 포스코">주식회사 포스코</div>
+        <div class="company-card" data-name="주식회사 푸르미르">주식회사 푸르미르</div>
+        <div class="company-card" data-name="주식회사 플라이웨이게임즈">주식회사 플라이웨이게임즈</div>
+        <div class="company-card" data-name="주식회사 피쉬데이">주식회사 피쉬데이</div>
+        <div class="company-card" data-name="주식회사 하수구폴리스">주식회사 하수구폴리스</div>
+        <div class="company-card" data-name="주식회사 하이브(HYBE Co., Ltd.)">주식회사 하이브(HYBE Co., Ltd.)</div>
+        <div class="company-card" data-name="주식회사 해성티엠">주식회사 해성티엠</div>
+        <div class="company-card" data-name="주식회사 화순컨트리클럽">주식회사 화순컨트리클럽</div>
+        <div class="company-card" data-name="주식회사뉴템즈">주식회사뉴템즈</div>
+        <div class="company-card" data-name="주식회사부광공구마트">주식회사부광공구마트</div>
+        <div class="company-card" data-name="주식회사블랙스톤리조트">주식회사블랙스톤리조트</div>
+        <div class="company-card" data-name="주식회사에스씨엔터테인먼트">주식회사에스씨엔터테인먼트</div>
+        <div class="company-card" data-name="주식회사에스앤홀딩스">주식회사에스앤홀딩스</div>
+        <div class="company-card" data-name="지멘스㈜">지멘스㈜</div>
+        <div class="company-card" data-name="지멘스모빌리티유한회사">지멘스모빌리티유한회사</div>
+        <div class="company-card" data-name="지멘스에너지 유한회사">지멘스에너지 유한회사</div>
+        <div class="company-card" data-name="지멘스헬시니어스 주식회사">지멘스헬시니어스 주식회사</div>
+        <div class="company-card" data-name="지본코스메틱">지본코스메틱</div>
+        <div class="company-card" data-name="지안인터내셔날">지안인터내셔날</div>
+        <div class="company-card" data-name="지에스건설">지에스건설</div>
+        <div class="company-card" data-name="지에스동해전력">지에스동해전력</div>
+        <div class="company-card" data-name="지에스에너지주식회사">지에스에너지주식회사</div>
+        <div class="company-card" data-name="지에스차지비 주식회사">지에스차지비 주식회사</div>
+        <div class="company-card" data-name="지에스칼텍스 ㈜">지에스칼텍스 ㈜</div>
+        <div class="company-card" data-name="지엠">지엠</div>
+        <div class="company-card" data-name="지케이건설">지케이건설</div>
+        <div class="company-card" data-name="지티씨코리아">지티씨코리아</div>
+        <div class="company-card" data-name="지티엔알">지티엔알</div>
+        <div class="company-card" data-name="지피씨 주식회사(GPC Corp.)">지피씨 주식회사(GPC Corp.)</div>
+        <div class="company-card" data-name="진흥기업㈜">진흥기업㈜</div>
+        <div class="company-card" data-name="천명토건주식회사">천명토건주식회사</div>
+        <div class="company-card" data-name="청주폴리">청주폴리</div>
+        <div class="company-card" data-name="충북치과의사회">충북치과의사회</div>
+        <div class="company-card" data-name="충청북도의사회">충청북도의사회</div>
+        <div class="company-card" data-name="카루스">카루스</div>
+        <div class="company-card" data-name="카카오모빌리티">카카오모빌리티</div>
+        <div class="company-card" data-name="카카오뱅크">카카오뱅크</div>
+        <div class="company-card" data-name="컴앤에스">컴앤에스</div>
+        <div class="company-card" data-name="케이뱅크">케이뱅크</div>
+        <div class="company-card" data-name="케이비증권">케이비증권</div>
+        <div class="company-card" data-name="케이엠특수운송">케이엠특수운송</div>
+        <div class="company-card" data-name="케이크 주식회사">케이크 주식회사</div>
+        <div class="company-card" data-name="코닝정밀소재㈜">코닝정밀소재㈜</div>
+        <div class="company-card" data-name="코리아에너지터미널㈜">코리아에너지터미널㈜</div>
+        <div class="company-card" data-name="코리아축산유통">코리아축산유통</div>
+        <div class="company-card" data-name="코카콜라음료 주식회사">코카콜라음료 주식회사</div>
+        <div class="company-card" data-name="쿠팡 주식회사">쿠팡 주식회사</div>
+        <div class="company-card" data-name="쿠팡로지스틱스서비스 유한회사">쿠팡로지스틱스서비스 유한회사</div>
+        <div class="company-card" data-name="쿠팡이츠서비스 유한회사">쿠팡이츠서비스 유한회사</div>
+        <div class="company-card" data-name="쿠팡파이낸셜 주식회사">쿠팡파이낸셜 주식회사</div>
+        <div class="company-card" data-name="쿠팡페이 주식회사">쿠팡페이 주식회사</div>
+        <div class="company-card" data-name="쿠팡풀필먼트서비스 유한회사">쿠팡풀필먼트서비스 유한회사</div>
+        <div class="company-card" data-name="크로베리">크로베리</div>
+        <div class="company-card" data-name="크림 주식회사">크림 주식회사</div>
+        <div class="company-card" data-name="크림페이 주식회사">크림페이 주식회사</div>
+        <div class="company-card" data-name="타임인터내셔널">타임인터내셔널</div>
+        <div class="company-card" data-name="태산종합개발주식회사">태산종합개발주식회사</div>
+        <div class="company-card" data-name="태양이엔씨">태양이엔씨</div>
+        <div class="company-card" data-name="태영건설">태영건설</div>
+        <div class="company-card" data-name="태창산업">태창산업</div>
+        <div class="company-card" data-name="토스씨엑스 주식회사">토스씨엑스 주식회사</div>
+        <div class="company-card" data-name="토스인컴 주식회사">토스인컴 주식회사</div>
+        <div class="company-card" data-name="토스증권 주식회사">토스증권 주식회사</div>
+        <div class="company-card" data-name="토스페이먼츠 주식회사">토스페이먼츠 주식회사</div>
+        <div class="company-card" data-name="토스플레이스 주식회사">토스플레이스 주식회사</div>
+        <div class="company-card" data-name="티케이엘리베이터코리아">티케이엘리베이터코리아</div>
+        <div class="company-card" data-name="파루">파루</div>
+        <div class="company-card" data-name="파루전자">파루전자</div>
+        <div class="company-card" data-name="파인앤파트너스 자산운용 주식회사">파인앤파트너스 자산운용 주식회사</div>
+        <div class="company-card" data-name="팹 주식회사(PAPCorp.)">팹 주식회사(PAPCorp.)</div>
+        <div class="company-card" data-name="퍼스트스파크게임즈">퍼스트스파크게임즈</div>
+        <div class="company-card" data-name="포스코에이앤씨건축사사무소">포스코에이앤씨건축사사무소</div>
+        <div class="company-card" data-name="포스코이앤씨">포스코이앤씨</div>
+        <div class="company-card" data-name="포엠에듀">포엠에듀</div>
+        <div class="company-card" data-name="풀빌라소랑">풀빌라소랑</div>
+        <div class="company-card" data-name="프로힐">프로힐</div>
+        <div class="company-card" data-name="피유코어 주식회사">피유코어 주식회사</div>
+        <div class="company-card" data-name="하남시의사회">하남시의사회</div>
+        <div class="company-card" data-name="하이">하이</div>
+        <div class="company-card" data-name="하이브">하이브</div>
+        <div class="company-card" data-name="하티스트앤드컴퍼니 주식회사">하티스트앤드컴퍼니 주식회사</div>
+        <div class="company-card" data-name="한국공인노무사회 부울경지회">한국공인노무사회 부울경지회</div>
+        <div class="company-card" data-name="한국도자기">한국도자기</div>
+        <div class="company-card" data-name="한국램리서치 유한회사">한국램리서치 유한회사</div>
+        <div class="company-card" data-name="한국마이크로소프트">한국마이크로소프트</div>
+        <div class="company-card" data-name="한국베링거인겔하임">한국베링거인겔하임</div>
+        <div class="company-card" data-name="한국베링거인겔하임동물약품">한국베링거인겔하임동물약품</div>
+        <div class="company-card" data-name="한국복합물류(주)">한국복합물류(주)</div>
+        <div class="company-card" data-name="한국소둔열처리">한국소둔열처리</div>
+        <div class="company-card" data-name="한국신용카드결제㈜">한국신용카드결제㈜</div>
+        <div class="company-card" data-name="한국아이비엠">한국아이비엠</div>
+        <div class="company-card" data-name="한국지멘스일렉트로닉디자인오토메이션">한국지멘스일렉트로닉디자인오토메이션</div>
+        <div class="company-card" data-name="한국코닝㈜">한국코닝㈜</div>
+        <div class="company-card" data-name="한국타이어앤테크놀로지">한국타이어앤테크놀로지</div>
+        <div class="company-card" data-name="한국텔레콤">한국텔레콤</div>
+        <div class="company-card" data-name="한국휴렛팩커드">한국휴렛팩커드</div>
+        <div class="company-card" data-name="한미반도체">한미반도체</div>
+        <div class="company-card" data-name="한백엔지니어링">한백엔지니어링</div>
+        <div class="company-card" data-name="한섬">한섬</div>
+        <div class="company-card" data-name="한세실업">한세실업</div>
+        <div class="company-card" data-name="한영회계법인">한영회계법인</div>
+        <div class="company-card" data-name="한폴주식회사">한폴주식회사</div>
+        <div class="company-card" data-name="한풍제약">한풍제약</div>
+        <div class="company-card" data-name="한화에너지㈜">한화에너지㈜</div>
+        <div class="company-card" data-name="한화에어로스페이스">한화에어로스페이스</div>
+        <div class="company-card" data-name="한화오션">한화오션</div>
+        <div class="company-card" data-name="한화투자증권">한화투자증권</div>
+        <div class="company-card" data-name="합동마트">합동마트</div>
+        <div class="company-card" data-name="해운대비치골프앤리조트 주식회사">해운대비치골프앤리조트 주식회사</div>
+        <div class="company-card" data-name="해태에이치티비 ㈜">해태에이치티비 ㈜</div>
+        <div class="company-card" data-name="현대디에프">현대디에프</div>
+        <div class="company-card" data-name="현대시계">현대시계</div>
+        <div class="company-card" data-name="현대에버다임">현대에버다임</div>
+        <div class="company-card" data-name="호암재단">호암재단</div>
+        <div class="company-card" data-name="호텔신라">호텔신라</div>
+        <div class="company-card" data-name="홈플러스">홈플러스</div>
+        <div class="company-card" data-name="회계법인 베율">회계법인 베율</div>
+        <div class="company-card" data-name="효성ITX㈜">효성ITX㈜</div>
+        <div class="company-card" data-name="효성굿스프링스㈜">효성굿스프링스㈜</div>
+        <div class="company-card" data-name="효성네오켐 주식회사">효성네오켐 주식회사</div>
+        <div class="company-card" data-name="효성벤처스 주식회사">효성벤처스 주식회사</div>
+        <div class="company-card" data-name="효성인포메이션시스템㈜">효성인포메이션시스템㈜</div>
+        <div class="company-card" data-name="효성중공업㈜">효성중공업㈜</div>
+        <div class="company-card" data-name="효성티앤씨㈜">효성티앤씨㈜</div>
+        <div class="company-card" data-name="효성티앤에스㈜">효성티앤에스㈜</div>
+        <div class="company-card" data-name="효성화학㈜">효성화학㈜</div>
+    <div class="no-result" id="noResult">검색 결과가 없습니다.</div>
+  </div>
+
+  <div class="footer-note">
+    ※ 본 리스트는 벤츠코리아 RoF MOU 체결 기업 현황이며, 사업자등록번호 기준으로 확인됩니다.<br>
+    임직원 본인 또는 직계가족 명의 구매 시 적용됩니다.
+  </div>
+</div>
+
+<script>
+(function() {
+  const input = document.getElementById('searchBox');
+  const cards = document.querySelectorAll('.company-card');
+  const filteredEl = document.getElementById('filteredCount');
+  const noResult = document.getElementById('noResult');
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    let count = 0;
+    cards.forEach(card => {
+      if (!card.classList.contains('no-result')) {
+        const name = card.getAttribute('data-name').toLowerCase();
+        const show = !q || name.includes(q);
+        card.classList.toggle('hidden', !show);
+        if (show) count++;
+      }
+    });
+    filteredEl.textContent = count;
+    noResult.style.display = count === 0 ? 'block' : 'none';
+  });
+})();
+</script>
+</body>
+</html>
