@@ -1,0 +1,10 @@
+# GitHub Pages 설정
+# .nojekyll이 있으면 이 파일은 무시되지만, 명시적 exclude 목록으로 백업
+exclude:
+  - pipeline/
+  - "*.py"
+  - "*.json"
+  - ".gitignore"
+  - Gemfile
+  - Gemfile.lock
+  - README.md
