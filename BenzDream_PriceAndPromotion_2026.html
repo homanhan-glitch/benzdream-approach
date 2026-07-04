@@ -637,16 +637,16 @@ body {
 
 
 /* Tax Column Styles */
-.col-name{width:25%}
+.col-name{width:27%}
 .col-msrp{width:9%}
 .col-taxup{width:7%}
-.col-base{width:12%}
-.col-fin{width:15%}
+.col-base{width:8%}
+.col-fin{width:16%}
 .col-real{width:14%}
 .col-realtax{width:15%}
 .price-table td{vertical-align:middle}
 .price-table th{vertical-align:bottom}
-.price-table .c-name .m-main{white-space:normal;word-break:keep-all;display:block;line-height:1.3;font-size:.83rem}
+.price-table .c-name .m-main{white-space:normal;word-break:keep-all;display:block;line-height:1.25;font-size:.8rem}
 .price-table .c-name .m-sub,.price-table .c-name .m-trim{white-space:normal;word-break:keep-all;line-height:1.3}
 th .th-note{display:block;font-size:.55rem;color:var(--silver);font-weight:400;margin-top:2px;opacity:.7}
 th.c-taxup{text-align:center;color:#c9a96e;font-size:.66rem;padding:8px 3px;letter-spacing:0;line-height:1.15}
@@ -665,8 +665,10 @@ td.c-realtax .rt-val.dim{color:var(--silver);opacity:.5;font-weight:500}
 td.c-realtax .rt-diff{display:inline-block;font-size:.58rem;color:#7cc4ff;opacity:.55;margin-top:3px;font-family:'MBK CorpoA','Outfit',sans-serif;padding:1px 5px;background:rgba(124,196,255,.08);border-radius:3px}
 td.c-realtax .rt-diff small{font-size:.5rem;margin-left:1px;opacity:.8}
 th.c-base{padding:8px 4px}
-td.c-base{padding:12px 4px;white-space:nowrap}
-td.c-base .amt,td.c-base .pct{white-space:nowrap}
+td.c-base{padding:12px 4px;text-align:center}
+td.c-base .pct{display:block;margin-bottom:4px;white-space:nowrap}
+td.c-base .amt{display:block;font-size:.72rem;color:var(--silver);white-space:nowrap}
+td.c-base .pct.dim,td.c-base .amt.dim{display:inline-block;color:var(--silver);opacity:.5}
 th.c-fin{padding:8px 6px;text-align:center}
 td.c-fin{padding:12px 6px}
 td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
