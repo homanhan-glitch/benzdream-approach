@@ -636,165 +636,36 @@ body {
 }
 
 
-/* ═══ 개소세 인상폭 / 개소세인하 적용가 컬럼 - 개선판 ═══ */
-/* 컬럼 폭 재조정 (7컬럼) */
-.col-name { width: 20%; }
-.col-msrp { width: 11%; }
-.col-taxup { width: 9%; }
-.col-base { width: 10%; }
-.col-fin { width: 15%; }
-.col-real { width: 15%; }
-.col-realtax { width: 20%; }
-
-/* 셀 공통: 수직 중앙 정렬 */
-.price-table td { vertical-align: middle; }
-.price-table th { vertical-align: bottom; }
-
-/* 헤더 서브 라벨 (개소세 5% 등) */
-th .th-note {
-  display: block;
-  font-size: .58rem;
-  color: var(--silver);
-  font-weight: 400;
-  margin-top: 3px;
-  letter-spacing: 0;
-  opacity: .75;
-}
-
-/* 개소세 인상폭 컬럼 - 톤다운, 미묘한 강조 */
-th.c-taxup {
-  text-align: center;
-  color: #c9a96e;
-  font-size: .68rem;
-  letter-spacing: .04em;
-  padding: 8px 4px;
-}
-td.c-taxup {
-  text-align: center;
-  padding: 12px 4px;
-}
-td.c-taxup .tu-amt {
-  font-family: 'MBK CorpoA','Outfit',sans-serif;
-  font-size: .72rem;
-  color: #c9a96e;
-  background: rgba(201,169,110,.06);
-  border: 1px solid rgba(201,169,110,.18);
-  border-radius: 4px;
-  padding: 3px 7px;
-  white-space: nowrap;
-  display: inline-block;
-  font-weight: 500;
-}
-td.c-taxup .tu-amt small {
-  font-size: .55rem;
-  opacity: .7;
-  margin-left: 1px;
-  color: #c9a96e;
-}
-td.c-taxup .tu-none {
-  color: var(--silver);
-  opacity: .35;
-  font-size: .8rem;
-}
-
-/* 실 구매가 (정상 통관) - PRIMARY 강조 (골드) */
-th.c-real {
-  text-align: right;
-  color: var(--gold);
-  padding: 8px 10px;
-  font-size: .78rem;
-  letter-spacing: .04em;
-}
-td.c-real {
-  text-align: right;
-  padding: 12px 10px;
-  font-family: 'MBK CorpoA','Outfit',sans-serif;
-  font-weight: 700;
-  color: var(--gold);
-  font-size: 1.05rem;
-  letter-spacing: -.01em;
-  white-space: nowrap;
-}
-td.c-real small {
-  font-size: .62rem;
-  color: var(--silver);
-  margin-left: 2px;
-  font-weight: 400;
-}
-
-/* 개소세인하 적용가 (7/1 이전 통관) - SECONDARY 강조 (블루) */
-th.c-realtax {
-  text-align: right;
-  color: #7cc4ff;
-  padding: 8px 10px;
-  font-size: .72rem;
-  letter-spacing: .04em;
-}
-td.c-realtax {
-  text-align: right;
-  padding: 12px 12px;
-  background: rgba(124,196,255,.04);
-  border-left: 2px solid rgba(124,196,255,.22);
-  white-space: nowrap;
-}
-td.c-realtax .rt-val {
-  display: block;
-  font-family: 'MBK CorpoA','Outfit',sans-serif;
-  font-weight: 700;
-  color: #7cc4ff;
-  font-size: .95rem;
-  letter-spacing: -.005em;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-td.c-realtax .rt-val small {
-  font-size: .62rem;
-  color: #7cc4ff;
-  opacity: .75;
-  margin-left: 2px;
-  font-weight: 400;
-}
-td.c-realtax .rt-val.dim {
-  color: var(--silver);
-  opacity: .5;
-  font-weight: 500;
-}
-td.c-realtax .rt-diff {
-  display: inline-block;
-  font-size: .62rem;
-  color: #7cc4ff;
-  opacity: .55;
-  margin-top: 4px;
-  font-family: 'MBK CorpoA','Outfit',sans-serif;
-  padding: 1px 6px;
-  background: rgba(124,196,255,.08);
-  border-radius: 3px;
-  letter-spacing: -.01em;
-}
-td.c-realtax .rt-diff small {
-  font-size: .55rem;
-  margin-left: 1px;
-  opacity: .8;
-}
-
-/* 반응형 */
-@media (max-width: 1100px) {
-  .col-taxup { width: 8%; }
-  td.c-taxup .tu-amt { font-size: .66rem; padding: 2px 5px; }
-  td.c-real { font-size: .95rem; }
-  td.c-realtax .rt-val { font-size: .88rem; }
-}
-@media (max-width: 900px) {
-  th.c-taxup, td.c-taxup, th.c-realtax, td.c-realtax { display: none; }
-  .col-taxup, .col-realtax { display: none; }
-}
-
-/* 표 전체 여백 최적화 */
-.price-table { table-layout: fixed; }
-.price-table td, .price-table th {
-  padding-left: 6px;
-  padding-right: 6px;
-}
+/* Tax Column Styles */
+.col-name{width:20%}
+.col-msrp{width:11%}
+.col-taxup{width:9%}
+.col-base{width:10%}
+.col-fin{width:15%}
+.col-real{width:15%}
+.col-realtax{width:20%}
+.price-table td{vertical-align:middle}
+.price-table th{vertical-align:bottom}
+th .th-note{display:block;font-size:.58rem;color:var(--silver);font-weight:400;margin-top:3px;opacity:.75}
+th.c-taxup{text-align:center;color:#c9a96e;font-size:.68rem;padding:8px 4px}
+td.c-taxup{text-align:center;padding:12px 4px}
+td.c-taxup .tu-amt{font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.72rem;color:#c9a96e;background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.18);border-radius:4px;padding:3px 7px;white-space:nowrap;display:inline-block;font-weight:500}
+td.c-taxup .tu-amt small{font-size:.55rem;opacity:.7;margin-left:1px;color:#c9a96e}
+td.c-taxup .tu-none{color:var(--silver);opacity:.35;font-size:.8rem}
+th.c-real{text-align:right;color:var(--gold);padding:8px 10px;font-size:.78rem}
+td.c-real{text-align:right;padding:12px 10px;font-family:'MBK CorpoA','Outfit',sans-serif;font-weight:700;color:var(--gold);font-size:1.05rem;white-space:nowrap}
+td.c-real small{font-size:.62rem;color:var(--silver);margin-left:2px;font-weight:400}
+th.c-realtax{text-align:right;color:#7cc4ff;padding:8px 10px;font-size:.72rem}
+td.c-realtax{text-align:right;padding:12px 12px;background:rgba(124,196,255,.04);border-left:2px solid rgba(124,196,255,.22);white-space:nowrap}
+td.c-realtax .rt-val{display:block;font-family:'MBK CorpoA','Outfit',sans-serif;font-weight:700;color:#7cc4ff;font-size:.95rem;line-height:1.15;white-space:nowrap}
+td.c-realtax .rt-val small{font-size:.62rem;color:#7cc4ff;opacity:.75;margin-left:2px;font-weight:400}
+td.c-realtax .rt-val.dim{color:var(--silver);opacity:.5;font-weight:500}
+td.c-realtax .rt-diff{display:inline-block;font-size:.62rem;color:#7cc4ff;opacity:.55;margin-top:4px;font-family:'MBK CorpoA','Outfit',sans-serif;padding:1px 6px;background:rgba(124,196,255,.08);border-radius:3px}
+td.c-realtax .rt-diff small{font-size:.55rem;margin-left:1px;opacity:.8}
+@media(max-width:1100px){.col-taxup{width:8%}td.c-taxup .tu-amt{font-size:.66rem;padding:2px 5px}td.c-real{font-size:.95rem}td.c-realtax .rt-val{font-size:.88rem}}
+@media(max-width:900px){th.c-taxup,td.c-taxup,th.c-realtax,td.c-realtax{display:none}.col-taxup,.col-realtax{display:none}}
+.price-table{table-layout:fixed}
+.price-table td,.price-table th{padding-left:6px;padding-right:6px}
 
 </style>
 </head>
