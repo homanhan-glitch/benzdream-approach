@@ -261,7 +261,7 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 .adv-b.primary:hover{filter:brightness(1.06);}
 .adv-b.ghost{border:1px solid #8a7a50;color:#ddc08a;}
 .adv-b.ghost:hover{background:rgba(201,169,110,.1);}
-@media(max-width:760px){.adv-card{grid-template-columns:1fr;}.adv-photo{height:400px;}.adv-photo img{object-position:center 20%;}}
+@media(max-width:760px){.adv-card{grid-template-columns:1fr;}.adv-photo{height:auto;aspect-ratio:3/4;max-height:70vh;}.adv-photo img{object-fit:cover;object-position:center top;}.adv-photo::after{height:100px;}}
 
 .adv-photo{position:relative;}
 .adv-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(0deg,rgba(8,9,11,.86),transparent);pointer-events:none;z-index:1;}
