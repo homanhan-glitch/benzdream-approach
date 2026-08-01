@@ -3,316 +3,443 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 8월 벤츠 프로모션 총정리 | BenzDream 영상 슬라이드</title>
+<title>2026 8월 벤츠 프로모션 | BenzDream 영상 슬라이드</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Sans+KR:wght@200;300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --dark:#0d0f14; --navy:#141824; --card:#181c28; --card2:#1e2331;
-  --gold:#c9a96e; --gold-light:#ddc08a; --gold-dim:#8a7a50;
-  --silver:#a8aab0; --light:#e2e3e7; --white:#f5f5f7;
-  --up:#7fd0a0; --down:#eab079; --new:#7cc4ff; --end:#9a9daa;
-  --line:#2a2f3d;
+  --bg:#0a0b0f; --bg2:#101218; --panel:rgba(255,255,255,.035); --panel-b:rgba(255,255,255,.09);
+  --gold:#c9a96e; --gold-l:#e7d3a4; --gold-d:#8a7748;
+  --up:#83d6a6; --down:#ecac74; --new:#84b6ff; --end:#8d909b;
+  --ink:#f4f2ee; --mut:#9a9ba4; --dim:#63656f;
+  --e:cubic-bezier(.19,1,.22,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;background:#05060a;overflow:hidden;font-family:'Noto Sans KR',sans-serif}
-#stageWrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
-#stage{position:relative;width:1920px;height:1080px;transform-origin:center center;background:var(--dark);overflow:hidden}
-.num,.pct,.money,.big-n{font-family:'Outfit',sans-serif;font-variant-numeric:tabular-nums}
-.slide{position:absolute;inset:0;padding:96px 120px;opacity:0;visibility:hidden;transition:opacity .45s ease;display:flex;flex-direction:column}
+html,body{height:100%;background:#000;overflow:hidden;font-family:'Noto Sans KR',sans-serif;color:var(--ink)}
+.mono{font-family:'Outfit',sans-serif;font-variant-numeric:tabular-nums}
+.serif{font-family:'Cormorant Garamond',serif}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000}
+#stage{position:relative;width:1920px;height:1080px;transform-origin:center;background:
+  radial-gradient(120% 90% at 82% 8%, rgba(201,169,110,.10), transparent 42%),
+  radial-gradient(120% 100% at 8% 96%, rgba(70,96,150,.12), transparent 45%),
+  linear-gradient(160deg,#0c0d12 0%,#090a0e 55%,#0b0c11 100%);
+  overflow:hidden}
+/* ambient drifting light */
+.amb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;mix-blend-mode:screen}
+.amb.a{width:760px;height:760px;top:-260px;right:-180px;background:radial-gradient(circle,rgba(201,169,110,.28),transparent 62%);animation:drift1 26s var(--e) infinite alternate}
+.amb.b{width:680px;height:680px;bottom:-240px;left:-160px;background:radial-gradient(circle,rgba(86,116,180,.26),transparent 62%);animation:drift2 32s var(--e) infinite alternate}
+@keyframes drift1{to{transform:translate(-90px,70px) scale(1.12)}}
+@keyframes drift2{to{transform:translate(80px,-60px) scale(1.14)}}
+/* grain */
+#stage::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+/* hairline frame */
+.frame{position:absolute;inset:46px;border:1px solid rgba(201,169,110,.16);pointer-events:none;z-index:6}
+.frame::before,.frame::after{content:"";position:absolute;width:9px;height:9px;border:1px solid var(--gold)}
+.frame::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.frame::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+
+.slide{position:absolute;inset:0;padding:118px 150px 108px;opacity:0;visibility:hidden;display:flex;flex-direction:column;transition:opacity .5s ease}
 .slide.active{opacity:1;visibility:visible}
-/* backdrop accents */
-#stage::before{content:"";position:absolute;top:-30%;right:-15%;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.10),transparent 65%);pointer-events:none}
-#stage::after{content:"";position:absolute;bottom:-25%;left:-10%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(90,110,160,.10),transparent 65%);pointer-events:none}
-/* header / footer chrome */
-.chrome-top{position:absolute;top:52px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:center;font-family:'Outfit',sans-serif;letter-spacing:.14em;font-size:22px;color:var(--gold-dim);text-transform:uppercase;z-index:5}
-.chrome-top b{color:var(--gold);font-weight:700}
-.snum{color:var(--silver);font-weight:500}
-.kicker{display:inline-flex;align-items:center;gap:14px;font-family:'Outfit',sans-serif;font-weight:700;letter-spacing:.05em;font-size:26px;padding:10px 26px;border-radius:40px;width:max-content}
-.k-up{background:rgba(127,208,160,.13);color:var(--up)}
-.k-down{background:rgba(234,176,121,.14);color:var(--down)}
-.k-new{background:rgba(124,196,255,.13);color:var(--new)}
-.k-end{background:rgba(154,157,170,.12);color:var(--end)}
-.k-gold{background:rgba(201,169,110,.14);color:var(--gold-light)}
-h1.title{font-family:'Noto Sans KR',sans-serif;font-weight:900;color:var(--white);line-height:1.12;letter-spacing:-.02em}
-.sub{color:var(--silver);font-weight:400}
-/* row/card helpers */
-.chg-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:32px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--up);border-radius:18px;padding:26px 40px}
-.chg-row .mname{font-size:40px;font-weight:700;color:var(--light)}
-.chg-row .mtag{font-size:24px;color:var(--gold);font-weight:500;margin-left:14px}
-.arrowpct{font-family:'Outfit',sans-serif;font-weight:800;font-size:44px;white-space:nowrap}
-.arrowpct .old{color:#71757f;text-decoration:line-through;font-weight:600}
-.arrowpct .new{color:var(--up)}
-.realbox{text-align:right;min-width:340px}
-.realbox .lab{font-size:20px;color:var(--silver);letter-spacing:.02em}
-.realbox .val{font-family:'Outfit',sans-serif;font-weight:700;font-size:46px;color:var(--white);line-height:1}
-.realbox .val small{font-size:26px;color:var(--silver);font-weight:500}
-/* new cards grid */
-.newgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:14px}
-.newcard{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--new);border-radius:20px;padding:36px 40px;display:flex;flex-direction:column;gap:10px}
-.newcard .nt{font-size:42px;font-weight:800;color:var(--white)}
-.newcard .nd{font-size:26px;color:var(--silver);line-height:1.45}
-.newcard .np{font-family:'Outfit',sans-serif;font-weight:700;font-size:34px;color:var(--gold-light);margin-top:6px}
-.newcard .np small{font-size:22px;color:var(--silver);font-weight:500}
-/* overview cards */
-.ovgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:20px}
-.ovcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:40px 34px;display:flex;flex-direction:column;gap:18px;min-height:340px}
-.ovcard .ic{font-size:56px;line-height:1}
-.ovcard .ct{font-size:34px;font-weight:800}
-.ovcard .cn{font-family:'Outfit',sans-serif;font-weight:900;font-size:88px;line-height:.9}
-.ovcard .cd{font-size:23px;color:var(--silver);line-height:1.4;margin-top:auto}
-.ov-up{border-top:5px solid var(--up)} .ov-up .ct,.ov-up .cn{color:var(--up)}
-.ov-dn{border-top:5px solid var(--down)} .ov-dn .ct,.ov-dn .cn{color:var(--down)}
-.ov-nw{border-top:5px solid var(--new)} .ov-nw .ct,.ov-nw .cn{color:var(--new)}
-.ov-en{border-top:5px solid var(--end)} .ov-en .ct,.ov-en .cn{color:var(--end)}
-/* money highlight slide */
-.moneygrid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px}
-.mcard{background:linear-gradient(135deg,#171b27,#12151d);border:1px solid var(--line);border-radius:20px;padding:30px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.mcard .ml{display:flex;flex-direction:column;gap:6px}
-.mcard .mn{font-size:36px;font-weight:700;color:var(--light)}
-.mcard .mmeta{font-size:22px;color:var(--gold);font-weight:500}
-.mcard .mr{text-align:right}
-.mcard .mr .rl{font-size:19px;color:var(--silver)}
-.mcard .mr .rv{font-family:'Outfit',sans-serif;font-weight:800;font-size:48px;color:#fff;line-height:1}
-.mcard .mr .rv small{font-size:24px;color:var(--silver);font-weight:500}
-/* finance slide */
-.fin-hero{display:flex;gap:40px;margin-top:16px;flex:1}
-.fin-big{flex:1.1;background:linear-gradient(135deg,#1a1e2b,#13161f);border:1px solid var(--gold-dim);border-radius:24px;padding:50px;display:flex;flex-direction:column;justify-content:center;gap:16px}
-.fin-big .fl{font-size:30px;color:var(--gold-light);font-weight:500}
-.fin-big .fv{font-family:'Outfit',sans-serif;font-weight:900;font-size:120px;color:#fff;line-height:.95}
-.fin-big .fn{font-size:28px;color:var(--silver);line-height:1.5}
-.fin-side{flex:1;display:flex;flex-direction:column;gap:24px}
-.fin-item{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px 38px}
-.fin-item .fih{font-size:30px;font-weight:700;color:var(--white)}
-.fin-item .fis{font-size:24px;color:var(--silver);margin-top:8px;line-height:1.45}
-.fin-item b{color:var(--gold-light)}
-ul.clean{list-style:none;display:flex;flex-direction:column;gap:22px;margin-top:12px}
-ul.clean li{display:flex;align-items:flex-start;gap:22px;font-size:34px;color:var(--light);line-height:1.4}
-ul.clean li .dot{flex:none;width:16px;height:16px;border-radius:50%;background:var(--end);margin-top:14px}
-ul.clean li b{color:var(--white)}
-.pill{display:inline-block;font-family:'Outfit',sans-serif;font-size:22px;font-weight:600;color:var(--gold);border:1px solid var(--gold-dim);border-radius:30px;padding:6px 20px;margin:4px 6px 0 0}
-/* cover */
+/* ghost numeral */
+.ghost{position:absolute;right:96px;bottom:20px;font-family:'Playfair Display',serif;font-weight:900;font-size:440px;line-height:1;color:rgba(255,255,255,.028);letter-spacing:-.03em;z-index:0;pointer-events:none;font-style:italic}
+/* chrome */
+.top{position:absolute;top:70px;left:150px;right:150px;display:flex;justify-content:space-between;align-items:center;z-index:7}
+.wm{font-family:'Outfit',sans-serif;font-weight:800;letter-spacing:.42em;font-size:19px;color:var(--gold);text-transform:uppercase}
+.wm span{color:var(--mut);font-weight:400}
+.idx{font-family:'Outfit',sans-serif;font-size:19px;color:var(--mut);letter-spacing:.14em}
+.idx b{color:var(--ink);font-weight:700}
+/* reveal system */
+.rv{opacity:0;transform:translateY(34px);filter:blur(7px);transition:opacity .85s var(--e),transform .85s var(--e),filter .85s var(--e)}
+.slide.play .rv{opacity:1;transform:none;filter:none}
+.rv.sx{transform:translateX(-40px)}
+.rv.sc{transform:scale(.92)}
+/* kicker */
+.kick{display:inline-flex;align-items:center;gap:18px;font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:.16em;font-size:22px;text-transform:uppercase;color:var(--gold-l);width:max-content;z-index:2}
+.kick .ln{width:0;height:1px;background:linear-gradient(90deg,var(--gold),transparent);transition:width 1s var(--e) .25s}
+.slide.play .kick .ln{width:120px}
+.kick .kdot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px var(--gold)}
+.kick.up{color:var(--up)} .kick.up .kdot{background:var(--up);box-shadow:0 0 16px var(--up)} .kick.up .ln{background:linear-gradient(90deg,var(--up),transparent)}
+.kick.dn{color:var(--down)} .kick.dn .kdot{background:var(--down);box-shadow:0 0 16px var(--down)} .kick.dn .ln{background:linear-gradient(90deg,var(--down),transparent)}
+.kick.nw{color:var(--new)} .kick.nw .kdot{background:var(--new);box-shadow:0 0 16px var(--new)} .kick.nw .ln{background:linear-gradient(90deg,var(--new),transparent)}
+.kick.en{color:var(--end)} .kick.en .kdot{background:var(--end);box-shadow:none} .kick.en .ln{background:linear-gradient(90deg,var(--end),transparent)}
+h1.t{font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--ink);z-index:2;position:relative}
+h1.t em{font-style:normal;color:var(--gold)}
+.lead{color:var(--mut);font-weight:300;z-index:2}
+/* ===== COVER ===== */
 .cover{justify-content:center}
-.cover .brandline{font-family:'Outfit',sans-serif;letter-spacing:.35em;font-size:30px;color:var(--gold);font-weight:600;text-transform:uppercase}
-.cover h1{font-size:132px;margin:26px 0 0}
-.cover .cvsub{font-size:40px;color:var(--silver);margin-top:30px;font-weight:400}
-.cover .cvsub b{color:var(--gold-light);font-weight:700}
-.cover .cvtag{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap}
-.cover .cvtag span{font-size:26px;color:var(--light);background:var(--card);border:1px solid var(--line);border-radius:40px;padding:14px 30px}
-.cover .presenter{position:absolute;bottom:88px;left:120px;font-size:30px;color:var(--silver)}
-.cover .presenter b{color:var(--white);font-weight:700}
-/* CTA */
-.ctagrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-top:26px}
-.ctacard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:44px 38px;text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center}
-.ctacard .ci{font-size:60px}
-.ctacard .ch{font-size:34px;font-weight:800;color:var(--white)}
-.ctacard .cc{font-size:26px;color:var(--gold-light);word-break:break-all;line-height:1.4}
-.addr{margin-top:40px;text-align:center;font-size:30px;color:var(--silver)}
-.addr b{color:var(--white)}
-.disc{position:absolute;bottom:44px;left:120px;right:120px;text-align:center;font-size:20px;color:#6b6e79;line-height:1.5}
-/* progress + hint */
-#prog{position:fixed;bottom:0;left:0;height:6px;background:var(--gold);z-index:20;transition:width .3s}
-#hint{position:fixed;bottom:16px;right:20px;font-family:'Outfit',sans-serif;font-size:15px;color:#3d4150;z-index:20;letter-spacing:.05em}
-#notes{position:fixed;left:0;right:0;bottom:0;background:rgba(8,9,14,.96);border-top:2px solid var(--gold-dim);color:#dfe2ea;padding:26px 40px;font-size:22px;line-height:1.6;z-index:30;display:none;max-height:38vh;overflow:auto}
+.cv-eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:38px;color:var(--gold-l);letter-spacing:.02em}
+.cv-year{font-family:'Outfit',sans-serif;font-weight:300;font-size:34px;letter-spacing:.5em;color:var(--mut);margin:36px 0 4px}
+.cv-title{font-weight:900;font-size:150px;line-height:.98;letter-spacing:-.03em}
+.cv-title .mo{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;color:var(--gold);position:relative}
+.cv-rule{height:1px;width:0;background:linear-gradient(90deg,var(--gold),transparent);margin:44px 0 40px;transition:width 1.2s var(--e) .5s}
+.cover.play .cv-rule{width:640px}
+.cv-sub{font-family:'Cormorant Garamond',serif;font-size:46px;color:var(--ink);font-weight:400}
+.cv-sub b{color:var(--gold-l);font-weight:600}
+.cv-tags{display:flex;gap:14px;margin-top:52px}
+.cv-tags span{font-family:'Outfit',sans-serif;font-weight:500;font-size:23px;letter-spacing:.02em;color:var(--ink);padding:13px 28px;border:1px solid var(--panel-b);border-radius:4px;background:var(--panel);backdrop-filter:blur(4px)}
+.cv-tags span b{font-weight:800}
+.cv-foot{position:absolute;left:150px;bottom:104px;font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--mut)}
+.cv-foot b{font-family:'Noto Sans KR';font-weight:700;color:var(--ink);font-size:26px}
+/* ===== OVERVIEW ===== */
+.ov{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border-top:1px solid var(--panel-b);flex:1}
+.ov .cell{padding:44px 40px 40px;border-right:1px solid var(--panel-b);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.ov .cell:last-child{border-right:0}
+.ov .cell .em{font-size:40px;margin-bottom:26px}
+.ov .cell .n{font-family:'Outfit',sans-serif;font-weight:800;font-size:112px;line-height:.85;letter-spacing:-.03em}
+.ov .cell .lab{font-size:29px;font-weight:700;margin-top:20px}
+.ov .cell .d{font-size:22px;color:var(--mut);margin-top:auto;line-height:1.5;font-weight:300}
+.ov .cell .accent{position:absolute;left:0;bottom:0;height:3px;width:0;transition:width .9s var(--e)}
+.slide.play .ov .cell .accent{width:100%}
+.c-up .n,.c-up .lab{color:var(--up)} .c-up .accent{background:var(--up)}
+.c-dn .n,.c-dn .lab{color:var(--down)} .c-dn .accent{background:var(--down)}
+.c-nw .n,.c-nw .lab{color:var(--new)} .c-nw .accent{background:var(--new)}
+.c-en .n,.c-en .lab{color:var(--end)} .c-en .accent{background:var(--end)}
+/* ===== CHANGE ROWS (확대/축소) ===== */
+.rows{display:flex;flex-direction:column;flex:1;justify-content:center;gap:0;margin-top:24px}
+.row{display:grid;grid-template-columns:1.35fr 1fr .8fr;align-items:center;gap:44px;padding:26px 4px;border-bottom:1px solid rgba(255,255,255,.07)}
+.row:first-child{border-top:1px solid rgba(255,255,255,.07)}
+.row .name{font-size:38px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.row .name .badge{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--gold);margin-left:14px;font-weight:500}
+.row .track{position:relative;height:8px;border-radius:6px;background:rgba(255,255,255,.07);margin-top:16px;max-width:520px}
+.row .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:6px;transition:width 1.1s var(--e) .2s}
+.row .oldmark{position:absolute;top:-5px;bottom:-5px;width:2px;background:rgba(255,255,255,.35)}
+.row .oldmark::after{content:attr(data-l);position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-family:'Outfit';font-size:15px;color:var(--mut)}
+.up .fill{background:linear-gradient(90deg,var(--gold-d),var(--up))}
+.dn .fill{background:linear-gradient(90deg,var(--gold-d),var(--down))}
+.row .pcts{font-family:'Outfit',sans-serif;font-weight:800;font-size:46px;text-align:left;white-space:nowrap}
+.row .pcts .o{color:var(--dim);text-decoration:line-through;font-weight:500;font-size:34px}
+.row .pcts .arw{color:var(--mut);margin:0 8px;font-weight:300}
+.up .pcts .nw{color:var(--up)} .dn .pcts .nw{color:var(--down)}
+.row .real{text-align:right}
+.row .real .rl{font-size:19px;color:var(--mut);letter-spacing:.03em;font-weight:300}
+.row .real .rv{font-family:'Outfit',sans-serif;font-weight:700;font-size:44px;color:var(--ink);line-height:1.05}
+.row .real .rv small{font-size:23px;color:var(--mut);font-weight:400;margin-left:3px}
+/* ===== 개소세 (two panel) ===== */
+.duo{display:grid;grid-template-columns:1fr 1.15fr;gap:36px;margin-top:60px;flex:1}
+.pane{border:1px solid var(--panel-b);background:var(--panel);border-radius:8px;padding:52px;display:flex;flex-direction:column;justify-content:center;backdrop-filter:blur(6px);position:relative;overflow:hidden}
+.pane .ph{font-family:'Outfit',sans-serif;font-weight:300;letter-spacing:.22em;font-size:20px;text-transform:uppercase;color:var(--mut)}
+.pane .pt{font-size:40px;font-weight:700;margin:18px 0 22px;line-height:1.2}
+.pane .pd{font-size:27px;color:var(--mut);line-height:1.6;font-weight:300}
+.pane b{color:var(--ink);font-weight:500}
+.pane.hot{border-color:rgba(132,182,255,.4)}
+.pane.hot .pt{color:var(--new)} .pane.hot .pd b{color:var(--new)}
+.pane .pnum{position:absolute;right:-10px;bottom:-40px;font-family:'Playfair Display',serif;font-weight:900;font-style:italic;font-size:200px;color:rgba(255,255,255,.03)}
+/* ===== NEW (신규) ===== */
+.ng{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:44px;flex:1}
+.ncard{border:1px solid var(--panel-b);border-radius:8px;padding:40px 46px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(150deg,rgba(132,182,255,.05),rgba(255,255,255,.01));position:relative;overflow:hidden}
+.ncard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--new);transition:width .8s var(--e) .3s}
+.slide.play .ncard::before{width:4px}
+.ncard.gold{background:linear-gradient(150deg,rgba(201,169,110,.07),rgba(255,255,255,.01))}
+.ncard.gold::before{background:var(--gold)}
+.ncard .ni{font-family:'Outfit';font-weight:300;font-size:20px;letter-spacing:.2em;color:var(--dim)}
+.ncard .nt{font-size:42px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.ncard .nt small{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--gold);font-weight:500}
+.ncard .nd{font-size:25px;color:var(--mut);font-weight:300;line-height:1.4}
+.ncard .np{font-family:'Outfit',sans-serif;font-weight:700;font-size:36px;color:var(--gold-l);margin-top:8px}
+.ncard .np small{font-size:22px;color:var(--mut);font-weight:400}
+.ncard.gold .np{color:var(--gold-l)}
+/* ===== ENDED ===== */
+.endwrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;margin-top:56px;flex:1;align-items:center}
+.endlist{display:flex;flex-direction:column}
+.eitem{display:flex;align-items:center;gap:26px;padding:26px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:34px;color:var(--mut);font-weight:300}
+.eitem:first-child{border-top:1px solid rgba(255,255,255,.07)}
+.eitem b{color:var(--ink);font-weight:700;font-family:'Outfit',sans-serif;letter-spacing:.01em}
+.eitem .x{font-family:'Outfit';color:var(--end);font-size:26px}
+.endnote{border-left:2px solid var(--gold);padding:20px 0 20px 40px}
+.endnote .eh{font-size:36px;color:var(--gold-l);font-weight:700;margin-bottom:20px}
+.endnote .ed{font-size:27px;color:var(--mut);line-height:1.6;font-weight:300}
+.endnote b{color:var(--ink);font-weight:500}
+/* ===== FINANCE ===== */
+.finrow{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;margin-top:48px;flex:1}
+.finbig{border:1px solid var(--gold-d);border-radius:10px;padding:60px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(120% 120% at 20% 10%,rgba(201,169,110,.12),transparent 60%);position:relative;overflow:hidden}
+.finbig .fl{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:var(--gold-l)}
+.finbig .fv{font-weight:900;font-size:150px;line-height:.9;letter-spacing:-.03em;margin:14px 0 20px;background:linear-gradient(120deg,#fff,var(--gold-l));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.finbig .fn{font-size:26px;color:var(--mut);font-weight:300}
+.finbig .fn b{color:var(--ink);font-weight:500}
+.finbig .shine{position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.14),transparent);transform:skewX(-18deg)}
+.slide.play .finbig .shine{animation:shine 2.4s var(--e) .6s}
+@keyframes shine{0%{left:-60%}60%,100%{left:130%}}
+.finside{display:flex;flex-direction:column;gap:22px;justify-content:center}
+.fitem{border:1px solid var(--panel-b);border-radius:8px;padding:30px 38px;background:var(--panel)}
+.fitem.hl{border-color:var(--gold-d);background:rgba(201,169,110,.06)}
+.fitem .fh{font-size:29px;font-weight:700;color:var(--ink)}
+.fitem .fh b{color:var(--gold-l)}
+.fitem .fs{font-size:23px;color:var(--mut);margin-top:8px;font-weight:300;line-height:1.45}
+.fitem .fs b{color:var(--new)}
+/* ===== HIGHLIGHT ===== */
+.hg{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:44px;border-top:1px solid var(--panel-b);border-left:1px solid var(--panel-b)}
+.hcell{padding:40px 48px;border-right:1px solid var(--panel-b);border-bottom:1px solid var(--panel-b);display:flex;justify-content:space-between;align-items:center;gap:20px;position:relative;overflow:hidden}
+.hcell .hn{font-size:36px;font-weight:700;color:var(--ink)}
+.hcell .hm{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:25px;color:var(--gold);margin-top:6px}
+.hcell .hr{font-family:'Outfit',sans-serif;font-weight:800;font-size:52px;color:#fff;text-align:right;line-height:1;letter-spacing:-.02em}
+.hcell .hr small{font-size:24px;color:var(--mut);font-weight:400;margin-left:2px}
+.hnote{text-align:center;font-size:23px;color:var(--mut);margin-top:34px;font-weight:300;letter-spacing:.02em}
+/* ===== CTA ===== */
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:52px}
+.cc{border:1px solid var(--panel-b);border-radius:8px;padding:50px 40px;text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center;background:var(--panel);transition:border-color .4s}
+.cc .ci{font-size:52px}
+.cc .ch{font-size:32px;font-weight:800;color:var(--ink)}
+.cc .cd{font-family:'Outfit',sans-serif;font-size:24px;color:var(--gold-l);word-break:break-all;line-height:1.45;font-weight:400}
+.cc .cd .kr{font-family:'Noto Sans KR';color:var(--mut);font-size:22px;font-weight:300}
+.caddr{margin-top:46px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--mut)}
+.caddr b{font-family:'Noto Sans KR';font-weight:700;color:var(--ink);font-size:27px}
+.cdisc{position:absolute;bottom:70px;left:150px;right:150px;text-align:center;font-size:18px;color:var(--dim);line-height:1.5;font-weight:300}
+/* progress */
+#dots{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;display:flex;gap:11px;z-index:30}
+#dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.16);transition:all .4s var(--e);cursor:pointer}
+#dots i.on{background:var(--gold);width:30px;border-radius:6px}
+#hint{position:fixed;bottom:16px;right:22px;font-family:'Outfit';font-size:14px;color:#33353f;z-index:30;letter-spacing:.06em}
+#notes{position:fixed;left:0;right:0;bottom:0;background:rgba(6,7,10,.97);border-top:1px solid var(--gold-d);color:#e3e5ec;padding:26px 46px;font-size:22px;line-height:1.6;z-index:40;display:none;max-height:40vh;overflow:auto;font-weight:300}
 #notes.show{display:block}
-#notes .nh{font-family:'Outfit',sans-serif;color:var(--gold);font-weight:700;letter-spacing:.1em;font-size:16px;margin-bottom:8px;text-transform:uppercase}
-.mono{font-family:'Outfit',sans-serif}
-.updot{color:var(--up)} .dndot{color:var(--down)}
+#notes .nh{font-family:'Outfit';color:var(--gold);font-weight:600;letter-spacing:.16em;font-size:14px;margin-bottom:8px;text-transform:uppercase}
 </style>
 </head>
 <body>
-<div id="stageWrap"><div id="stage">
+<div id="wrap"><div id="stage">
+<div class="amb a"></div><div class="amb b"></div>
+<div class="frame"></div>
 
 <!-- 1 COVER -->
-<section class="slide cover active">
-  <div class="brandline">BENZ DREAM · 한호만 팀장</div>
-  <h1 class="title">2026 <b style="color:var(--gold)">8월</b> 벤츠<br>프로모션 총정리</h1>
-  <div class="cvsub">지난달 대비 <b>무엇이 달라졌나</b> — 5분 완전 정리</div>
-  <div class="cvtag">
-    <span>🔺 할인 확대 5</span><span>🔻 할인 축소 2</span><span>✨ 신규 4</span><span>⛔ 종료 1</span>
+<section class="slide cover" data-ghost="">
+  <div class="rv cv-eyebrow" data-d="0">Mercedes-Benz · BenzDream</div>
+  <div class="rv cv-year" data-d=".08">2 0 2 6</div>
+  <h1 class="rv cv-title" data-d=".16"><span class="mo">8월</span> 벤츠 프로모션</h1>
+  <div class="cv-rule"></div>
+  <div class="rv cv-sub" data-d=".3">지난달 대비 <b>무엇이 달라졌나</b> — 5분 완전 정리</div>
+  <div class="rv cv-tags" data-d=".42">
+    <span><b style="color:var(--up)">확대</b> 5</span>
+    <span><b style="color:var(--down)">축소</b> 2</span>
+    <span><b style="color:var(--new)">신규</b> 4</span>
+    <span><b style="color:var(--end)">종료</b> 1</span>
   </div>
-  <div class="presenter">벤츠 고양 전시장 · 모터원 고양 &nbsp;|&nbsp; <b>BenzDream 한호만 팀장</b></div>
+  <div class="rv cv-foot" data-d=".55">벤츠 고양 전시장 · 모터원 고양 &nbsp;—&nbsp; <b>BenzDream 한호만 팀장</b></div>
 </section>
 
 <!-- 2 OVERVIEW -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">02</span></div>
-  <span class="kicker k-gold">이번 달 한눈에 보기</span>
-  <h1 class="title" style="font-size:66px;margin-top:26px">개소세 5% 유지 · 지난달 대비 <b style="color:var(--gold)">4가지</b>가 바뀌었습니다</h1>
-  <div class="ovgrid">
-    <div class="ovcard ov-up"><div class="ic">🔺</div><div class="ct">할인 확대</div><div class="cn">5</div><div class="cd">140주년 에디션<br>대폭 상향</div></div>
-    <div class="ovcard ov-dn"><div class="ic">🔻</div><div class="ct">할인 축소</div><div class="cn">2</div><div class="cd">GLE 450 · GLC 300<br>일부 조정</div></div>
-    <div class="ovcard ov-nw"><div class="ic">✨</div><div class="ct">신규 추가</div><div class="cn">4</div><div class="cd">신차 3종 +<br>E클래스 보증연장</div></div>
-    <div class="ovcard ov-en"><div class="ic">⛔</div><div class="ct">캠페인 종료</div><div class="cn">1</div><div class="cd">MBM 조인트<br>일부 AMG 라인</div></div>
+<section class="slide" data-ghost="02">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>02</b> / 10</div></div>
+  <div class="kick rv" data-d="0"><span class="kdot"></span>이번 달 한눈에<span class="ln"></span></div>
+  <h1 class="t rv" data-d=".08" style="font-size:60px;margin-top:30px">개소세 5% 유지 · 지난달 대비 <em>네 가지</em>가 바뀌었습니다</h1>
+  <div class="ov">
+    <div class="cell c-up rv" data-d=".2"><div class="em">🔺</div><div class="n mono" data-to="5">0</div><div class="lab">할인 확대</div><div class="d">140주년 에디션<br>대폭 상향</div><span class="accent"></span></div>
+    <div class="cell c-dn rv" data-d=".3"><div class="em">🔻</div><div class="n mono" data-to="2">0</div><div class="lab">할인 축소</div><div class="d">GLE 450 · GLC 300<br>소폭 조정</div><span class="accent"></span></div>
+    <div class="cell c-nw rv" data-d=".4"><div class="em">✨</div><div class="n mono" data-to="4">0</div><div class="lab">신규 추가</div><div class="d">신차 3종 +<br>E클래스 보증연장</div><span class="accent"></span></div>
+    <div class="cell c-en rv" data-d=".5"><div class="em">⛔</div><div class="n mono" data-to="1">0</div><div class="lab">캠페인 종료</div><div class="d">MBM 조인트<br>일부 AMG 라인</div><span class="accent"></span></div>
   </div>
 </section>
 
 <!-- 3 개소세 -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">03</span></div>
-  <span class="kicker k-gold">먼저, 개별소비세</span>
-  <h1 class="title" style="font-size:72px;margin-top:26px">8월에도 <b style="color:var(--gold)">개소세 5% 정상세율</b> 그대로입니다</h1>
-  <div style="display:flex;gap:36px;margin-top:44px;flex:1">
-    <div class="fin-item" style="flex:1;display:flex;flex-direction:column;justify-content:center">
-      <div class="fih" style="font-size:38px">지금 통관 차량</div>
-      <div class="fis" style="font-size:28px">권장소비자가에 개소세 5% 반영 —<br>표의 <b>‘실 구매가’</b> 기준으로 상담하시면 됩니다.</div>
+<section class="slide" data-ghost="03">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>03</b> / 10</div></div>
+  <div class="kick rv" data-d="0"><span class="kdot"></span>먼저, 개별소비세<span class="ln"></span></div>
+  <h1 class="t rv" data-d=".08" style="font-size:66px;margin-top:28px">8월에도 <em>개소세 5% 정상세율</em> 그대로</h1>
+  <div class="duo">
+    <div class="pane rv sx" data-d=".22"><div class="ph">Now</div><div class="pt">지금 통관 차량</div><div class="pd">권장소비자가에 개소세 5% 반영 — 표의 <b>‘실 구매가’</b> 기준으로 상담하시면 됩니다.</div><div class="pnum">5%</div></div>
+    <div class="pane hot rv sx" data-d=".34"><div class="ph" style="color:var(--new)">Opportunity</div><div class="pt">7/1 이전 통관 물량, 아직 많습니다</div><div class="pd">개소세 인상 전 통관 차량은 <b>‘개소세인하 적용가’</b>로 인상폭만큼 <b>추가 할인</b>. 특히 <b>E클래스 재고 다수</b> — 문의 시 통관일 확인 필수.</div></div>
+  </div>
+</section>
+
+<!-- 4 확대 -->
+<section class="slide" data-ghost="04">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>04</b> / 10</div></div>
+  <div class="kick up rv" data-d="0"><span class="kdot"></span>할인 확대 · 140주년 에디션<span class="ln"></span></div>
+  <div class="rows">
+    <div class="row up rv" data-d=".12">
+      <div><div class="name">E 300 4M AMG Line<span class="badge">140주년</span></div><div class="track"><span class="oldmark" style="left:33.3%" data-l="5%"></span><span class="fill" data-w="66.7"></span></div></div>
+      <div class="pcts"><span class="o">5%</span><span class="arw">→</span><span class="nw mono" data-to="10" data-suf="%">0%</span></div>
+      <div class="real"><div class="rl">실구매가</div><div class="rv"><span class="mono" data-money="9004">0</span><small>만원</small></div></div>
     </div>
-    <div class="fin-item" style="flex:1.2;display:flex;flex-direction:column;justify-content:center;border-color:var(--new)">
-      <div class="fih" style="font-size:38px;color:var(--new)">7/1 이전 통관 물량 <span style="font-size:26px;color:var(--gold-light)">아직 많습니다</span></div>
-      <div class="fis" style="font-size:28px">개소세 인상 전 통관된 차량은 <b style="color:#7cc4ff">‘개소세인하 적용가’</b>로<br>인상폭만큼 <b style="color:#7cc4ff">추가 할인</b>이 들어갑니다. 특히 E클래스 재고 다수.</div>
+    <div class="row up rv" data-d=".22">
+      <div><div class="name">GLC 300 4M AMG Line<span class="badge">140주년</span></div><div class="track"><span class="oldmark" style="left:40%" data-l="6%"></span><span class="fill" data-w="80"></span></div></div>
+      <div class="pcts"><span class="o">6%</span><span class="arw">→</span><span class="nw mono" data-to="12" data-suf="%">0%</span></div>
+      <div class="real"><div class="rl">실구매가</div><div class="rv"><span class="mono" data-money="8615">0</span><small>만원</small></div></div>
+    </div>
+    <div class="row up rv" data-d=".32">
+      <div><div class="name">GLC 300 쿠페 AMG Line<span class="badge">140주년</span></div><div class="track"><span class="oldmark" style="left:26.7%" data-l="4%"></span><span class="fill" data-w="60"></span></div></div>
+      <div class="pcts"><span class="o">4%</span><span class="arw">→</span><span class="nw mono" data-to="9" data-suf="%">0%</span></div>
+      <div class="real"><div class="rl">실구매가</div><div class="rv"><span class="mono" data-money="9309">0</span><small>만원</small></div></div>
+    </div>
+    <div class="row up rv" data-d=".42">
+      <div><div class="name">CLE 200 쿠페<span class="badge">140주년</span></div><div class="track"><span class="oldmark" style="left:13.3%" data-l="2%"></span><span class="fill" data-w="33.3"></span></div></div>
+      <div class="pcts"><span class="o">2%</span><span class="arw">→</span><span class="nw mono" data-to="5" data-suf="%">0%</span></div>
+      <div class="real"><div class="rl">실구매가</div><div class="rv"><span class="mono" data-money="7714">0</span><small>만원</small></div></div>
+    </div>
+    <div class="row up rv" data-d=".52">
+      <div><div class="name">CLE 200 카브리올레<span class="badge">140주년</span></div><div class="track"><span class="oldmark" style="left:13.3%" data-l="2%"></span><span class="fill" data-w="26.7"></span></div></div>
+      <div class="pcts"><span class="o">2%</span><span class="arw">→</span><span class="nw mono" data-to="4" data-suf="%">0%</span></div>
+      <div class="real"><div class="rl">실구매가</div><div class="rv"><span class="mono" data-money="8390">0</span><small>만원</small></div></div>
     </div>
   </div>
 </section>
 
-<!-- 4 할인 확대 -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">04</span></div>
-  <span class="kicker k-up">🔺 할인 확대 · 140주년 에디션</span>
-  <h1 class="title" style="font-size:56px;margin:20px 0 26px">140주년 에디션, 할인이 <b style="color:var(--up)">확 올랐습니다</b></h1>
-  <div style="display:flex;flex-direction:column;gap:18px;flex:1;justify-content:center">
-    <div class="chg-row"><div><span class="mname">E 300 4M AMG Line</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">5%</span> <span class="new">→ 10%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">9,004<small>만원</small></div></div></div>
-    <div class="chg-row"><div><span class="mname">GLC 300 4M AMG Line</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">6%</span> <span class="new">→ 12%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">8,615<small>만원</small></div></div></div>
-    <div class="chg-row"><div><span class="mname">GLC 300 쿠페 AMG Line</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">4%</span> <span class="new">→ 9%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">9,309<small>만원</small></div></div></div>
-    <div class="chg-row"><div><span class="mname">CLE 200 쿠페</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">2%</span> <span class="new">→ 5%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">7,714<small>만원</small></div></div></div>
-    <div class="chg-row"><div><span class="mname">CLE 200 카브리올레</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">2%</span> <span class="new">→ 4%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">8,390<small>만원</small></div></div></div>
+<!-- 5 축소 -->
+<section class="slide" data-ghost="05">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>05</b> / 10</div></div>
+  <div class="kick dn rv" data-d="0"><span class="kdot"></span>할인 축소 · 솔직하게<span class="ln"></span></div>
+  <h1 class="t rv" data-d=".08" style="font-size:58px;margin-top:26px">이 두 그룹은 <em style="color:var(--down)">소폭 줄었습니다</em> — 그래도 강력</h1>
+  <div class="rows" style="flex:none;margin-top:44px">
+    <div class="row dn rv" data-d=".2">
+      <div><div class="name">GLE 450 4M<span class="badge">4M·AMG·쿠페·쿠페AMG</span></div><div class="track"><span class="oldmark" style="left:86.7%" data-l="13%"></span><span class="fill" data-w="80"></span></div></div>
+      <div class="pcts"><span class="o">13%</span><span class="arw">→</span><span class="nw mono" data-to="12" data-suf="%">0%</span></div>
+      <div class="real"><div class="rl">파이낸셜 16% 실구매가</div><div class="rv"><span class="mono" data-money="10836">0</span><small>만원~</small></div></div>
+    </div>
+    <div class="row dn rv" data-d=".32">
+      <div><div class="name">GLC 300 4M AV / 쿠페 AV<span class="badge">기본 할인</span></div><div class="track"><span class="oldmark" style="left:53.3%" data-l="8%"></span><span class="fill" data-w="46.7"></span></div></div>
+      <div class="pcts"><span class="o">8%</span><span class="arw">→</span><span class="nw mono" data-to="7" data-suf="%">0%</span></div>
+      <div class="real"><div class="rl">파이낸셜 11% 실구매가</div><div class="rv"><span class="mono" data-money="7342">0</span><small>만원~</small></div></div>
+    </div>
   </div>
-</section>
-
-<!-- 5 할인 축소 -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">05</span></div>
-  <span class="kicker k-down">🔻 할인 축소 · 솔직하게</span>
-  <h1 class="title" style="font-size:56px;margin:20px 0 26px">이 두 그룹은 <b style="color:var(--down)">소폭 줄었습니다</b> — 그래도 강력</h1>
-  <div style="display:flex;flex-direction:column;gap:22px;flex:1;justify-content:center">
-    <div class="chg-row" style="border-left-color:var(--down)"><div><span class="mname">GLE 450 4M</span><span class="mtag">4M · AMG · 쿠페 · 쿠페AMG 전 라인</span></div><div class="arrowpct"><span class="old">13%</span> <span style="color:var(--down)">→ 12%</span></div><div class="realbox"><div class="lab">파이낸셜 16% 실구매가</div><div class="val">1억 836<small>만원~</small></div></div></div>
-    <div class="chg-row" style="border-left-color:var(--down)"><div><span class="mname">GLC 300 4M AV / 쿠페 AV</span><span class="mtag">기본 할인</span></div><div class="arrowpct"><span class="old">8%</span> <span style="color:var(--down)">→ 7%</span></div><div class="realbox"><div class="lab">파이낸셜 11% 실구매가</div><div class="val">7,342<small>만원~</small></div></div></div>
-    <div style="text-align:center;font-size:30px;color:var(--silver);margin-top:8px">두 그룹 모두 <b style="color:var(--gold-light)">MBM 특별 +4%</b>는 그대로 — 금융상품 이용 시 여전히 최상위 할인폭</div>
-  </div>
+  <div class="rv" data-d=".5" style="text-align:center;font-size:30px;color:var(--mut);margin-top:52px;font-weight:300">두 그룹 모두 <b style="color:var(--gold-l);font-weight:500">MBM 특별 +4%</b>는 그대로 — 금융상품 이용 시 여전히 최상위 할인폭</div>
 </section>
 
 <!-- 6 신규 -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">06</span></div>
-  <span class="kicker k-new">✨ 신규 추가</span>
-  <h1 class="title" style="font-size:56px;margin:20px 0 14px">이번 달 새로 들어온 <b style="color:var(--new)">4가지</b></h1>
-  <div class="newgrid">
-    <div class="newcard"><div class="nt">C 200 Final Edition</div><div class="nd">C클래스 신규 편입 · 기본 10% + MBM 특별 +4%</div><div class="np">실구매가 5,701<small>만원</small></div></div>
-    <div class="newcard"><div class="nt">EQS 580 4MATIC SUV</div><div class="nd">전동화 대형 SUV · 기본 10% + 무상 보증연장</div><div class="np">실구매가 1억 7,280<small>만원</small></div></div>
-    <div class="newcard"><div class="nt">AMG GT 43 <span style="font-size:28px;color:var(--gold)">(C192·2도어)</span></div><div class="nd">2도어 쿠페 신규 편입 · 기본 9%</div><div class="np">실구매가 1억 3,604<small>만원</small></div></div>
-    <div class="newcard" style="border-top-color:var(--gold)"><div class="nt" style="color:var(--gold-light)">MY26 E클래스 무상 보증연장</div><div class="nd">E클래스 전 모델 · 최대 4년 / 13만km</div><div class="np" style="color:var(--gold-light)">별도 비용 없이 기본 제공</div></div>
+<section class="slide" data-ghost="06">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>06</b> / 10</div></div>
+  <div class="kick nw rv" data-d="0"><span class="kdot"></span>신규 추가<span class="ln"></span></div>
+  <h1 class="t rv" data-d=".08" style="font-size:58px;margin-top:22px">이번 달 새로 들어온 <em style="color:var(--new)">네 가지</em></h1>
+  <div class="ng">
+    <div class="ncard rv sc" data-d=".2"><div class="ni">NEW · C-CLASS</div><div class="nt">C 200 Final Edition</div><div class="nd">신규 편입 · 기본 10% + MBM 특별 +4%</div><div class="np">실구매가 <span class="mono" data-money="5701">0</span><small>만원</small></div></div>
+    <div class="ncard rv sc" data-d=".3"><div class="ni">NEW · ELECTRIC</div><div class="nt">EQS 580 4MATIC SUV</div><div class="nd">전동화 대형 SUV · 기본 10% + 무상 보증연장</div><div class="np">실구매가 <span class="mono" data-money="17280">0</span><small>만원</small></div></div>
+    <div class="ncard rv sc" data-d=".4"><div class="ni">NEW · AMG</div><div class="nt">AMG GT 43 <small>C192 · 2도어</small></div><div class="nd">2도어 쿠페 신규 편입 · 기본 9%</div><div class="np">실구매가 <span class="mono" data-money="13604">0</span><small>만원</small></div></div>
+    <div class="ncard gold rv sc" data-d=".5"><div class="ni" style="color:var(--gold-d)">BENEFIT · E-CLASS</div><div class="nt" style="color:var(--gold-l)">MY26 E클래스 무상 보증연장</div><div class="nd">E클래스 전 모델 · 최대 4년 / 13만km</div><div class="np">별도 비용 없이 <b style="color:#fff">기본 제공</b></div></div>
   </div>
 </section>
 
 <!-- 7 종료 -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">07</span></div>
-  <span class="kicker k-end">⛔ 캠페인 종료</span>
-  <h1 class="title" style="font-size:56px;margin:20px 0 20px">일부 AMG 라인 <b style="color:var(--end)">MBM 조인트 캠페인 종료</b></h1>
-  <div style="display:flex;gap:40px;flex:1;align-items:center">
-    <ul class="clean" style="flex:1">
-      <li><span class="dot"></span><div><b>E 450</b> 4M AMG Line / EXCLUSIVE</div></li>
-      <li><span class="dot"></span><div><b>GLC 300</b> AMG 라인 (일반·RoF·140주년·쿠페)</div></li>
-      <li><span class="dot"></span><div><b>GLE 53</b> · GLE 300d · GLE 450d 쿠페</div></li>
-      <li><span class="dot"></span><div><b>GT 43</b> (C192 · X290)</div></li>
-    </ul>
-    <div class="fin-item" style="flex:.9;border-color:var(--gold-dim);display:flex;flex-direction:column;justify-content:center">
-      <div class="fih" style="font-size:34px;color:var(--gold-light)">그래도 걱정 마세요</div>
-      <div class="fis" style="font-size:28px">기본 현금 할인은 그대로 유지됩니다.<br>해당 트림의 <b>금융 추가할인(파이낸셜 JC)</b>만 빠지는 것 —<br>재고·통관 조건에 따라 실구매가는 상담으로 조율 가능합니다.</div>
+<section class="slide" data-ghost="07">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>07</b> / 10</div></div>
+  <div class="kick en rv" data-d="0"><span class="kdot"></span>캠페인 종료<span class="ln"></span></div>
+  <h1 class="t rv" data-d=".08" style="font-size:58px;margin-top:22px">일부 AMG 라인 <em style="color:var(--end)">MBM 조인트 캠페인 종료</em></h1>
+  <div class="endwrap">
+    <div class="endlist">
+      <div class="eitem rv sx" data-d=".2"><span class="x">✕</span><div><b>E 450</b> 4M AMG Line / EXCLUSIVE</div></div>
+      <div class="eitem rv sx" data-d=".28"><span class="x">✕</span><div><b>GLC 300</b> AMG 라인 (일반·RoF·140·쿠페)</div></div>
+      <div class="eitem rv sx" data-d=".36"><span class="x">✕</span><div><b>GLE 53</b> · GLE 300d · GLE 450d 쿠페</div></div>
+      <div class="eitem rv sx" data-d=".44"><span class="x">✕</span><div><b>GT 43</b> (C192 · X290)</div></div>
+    </div>
+    <div class="endnote rv" data-d=".55"><div class="eh">그래도 걱정 마세요</div><div class="ed">기본 현금 할인은 <b>그대로 유지</b>됩니다. 해당 트림의 <b>금융 추가할인(파이낸셜 JC)</b>만 빠지는 것 — 재고·통관 조건에 따라 실구매가는 상담으로 조율 가능합니다.</div></div>
+  </div>
+</section>
+
+<!-- 8 파이낸셜 -->
+<section class="slide" data-ghost="08">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>08</b> / 10</div></div>
+  <div class="kick rv" data-d="0"><span class="kdot"></span>이번 달의 무기 · 파이낸셜<span class="ln"></span></div>
+  <h1 class="t rv" data-d=".08" style="font-size:56px;margin-top:20px">현금 할인에 <em>금융 혜택</em>까지 겹치면</h1>
+  <div class="finrow">
+    <div class="finbig rv sc" data-d=".22"><span class="shine"></span><div class="fl">선수금 65% · 24개월</div><div class="fv">무이자</div><div class="fn">중도상환수수료 <b>0원</b> · 벤츠 파이낸셜 기준</div></div>
+    <div class="finside">
+      <div class="fitem rv" data-d=".34"><div class="fh">MBM 특별 할인 <b>최대 +7%</b></div><div class="fs">C200 · E200/300 · S450 SWB · GLC 300 · GLE 450 · GLA/GLB · AMG A45S/GLB35 등</div></div>
+      <div class="fitem rv" data-d=".44"><div class="fh">EQA · EQB 전용 <b style="color:var(--new)">무이자 금리표</b></div><div class="fs">24 / 36개월 <b>무이자</b> · 48개월 0.5% · 전동화 4종 한정</div></div>
+      <div class="fitem hl rv" data-d=".54"><div class="fh" style="color:var(--gold-l)">기본 현금할인 + MBM 특별 = 최대 +4~7% 중첩</div></div>
     </div>
   </div>
 </section>
 
-<!-- 8 파이낸셜/무이자 -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">08</span></div>
-  <span class="kicker k-gold">💳 이번 달의 무기 · 파이낸셜</span>
-  <h1 class="title" style="font-size:56px;margin:18px 0 6px">현금 할인에 <b style="color:var(--gold)">금융 혜택</b>까지 겹치면</h1>
-  <div class="fin-hero">
-    <div class="fin-big">
-      <div class="fl">선수금 65% · 24개월</div>
-      <div class="fv">무이자</div>
-      <div class="fn">중도상환수수료 <b style="color:#fff">0원</b> · 벤츠 파이낸셜 기준</div>
-    </div>
-    <div class="fin-side">
-      <div class="fin-item"><div class="fih">MBM 특별 할인 <b style="color:var(--gold-light)">최대 +7%</b></div><div class="fis">C200 · E200/300 · S450 SWB · GLC 300 · GLE 450 · GLA/GLB · AMG A45S/GLB35 등 대상</div></div>
-      <div class="fin-item"><div class="fih">EQA · EQB 전용 <b style="color:#7cc4ff">무이자 금리표</b></div><div class="fis">24 / 36개월 무이자 · 48개월 0.5% · 전동화 4종 한정</div></div>
-      <div class="fin-item" style="border-color:var(--gold-dim)"><div class="fih" style="color:var(--gold-light)">기본 현금할인 + MBM 특별 = 최대 +4~7% 중첩</div></div>
-    </div>
+<!-- 9 하이라이트 -->
+<section class="slide" data-ghost="09">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>09</b> / 10</div></div>
+  <div class="kick rv" data-d="0"><span class="kdot"></span>이번 달 이 가격<span class="ln"></span></div>
+  <h1 class="t rv" data-d=".08" style="font-size:58px;margin-top:20px">주력 모델 <em>실구매가</em> 하이라이트</h1>
+  <div class="hg">
+    <div class="hcell rv" data-d=".2"><div><div class="hn">E 300 4M AMG Line</div><div class="hm">기본 10% + 파이낸셜 14%</div></div><div class="hr"><span class="mono" data-money="8514">0</span><small>만원</small></div></div>
+    <div class="hcell rv" data-d=".28"><div><div class="hn">GLC 300 4M AV</div><div class="hm">기본 7% + 파이낸셜 11%</div></div><div class="hr"><span class="mono" data-money="7342">0</span><small>만원</small></div></div>
+    <div class="hcell rv" data-d=".36"><div><div class="hn">GLE 450 4M</div><div class="hm">기본 12% + 파이낸셜 16%</div></div><div class="hr"><span class="mono" data-money="10836">0</span><small>만원</small></div></div>
+    <div class="hcell rv" data-d=".44"><div><div class="hn">S 450 4M Sedan (SWB)</div><div class="hm">기본 7% + 파이낸셜 11%</div></div><div class="hr"><span class="mono" data-money="14418">0</span><small>만원</small></div></div>
   </div>
-</section>
-
-<!-- 9 실구매가 하이라이트 -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">09</span></div>
-  <span class="kicker k-gold">💰 이번 달 이 가격</span>
-  <h1 class="title" style="font-size:56px;margin:18px 0 12px">주력 모델 <b style="color:var(--gold)">실구매가</b> 하이라이트</h1>
-  <div class="moneygrid">
-    <div class="mcard"><div class="ml"><div class="mn">E 300 4M AMG Line</div><div class="mmeta">기본 10% + 파이낸셜 14%</div></div><div class="mr"><div class="rl">실구매가</div><div class="rv">8,514<small>만원</small></div></div></div>
-    <div class="mcard"><div class="ml"><div class="mn">GLC 300 4M AV</div><div class="mmeta">기본 7% + 파이낸셜 11%</div></div><div class="mr"><div class="rl">실구매가</div><div class="rv">7,342<small>만원</small></div></div></div>
-    <div class="mcard"><div class="ml"><div class="mn">GLE 450 4M</div><div class="mmeta">기본 12% + 파이낸셜 16%</div></div><div class="mr"><div class="rl">실구매가</div><div class="rv">1억 836<small>만원</small></div></div></div>
-    <div class="mcard"><div class="ml"><div class="mn">S 450 4M Sedan (SWB)</div><div class="mmeta">기본 7% + 파이낸셜 11%</div></div><div class="mr"><div class="rl">실구매가</div><div class="rv">1억 4,418<small>만원</small></div></div></div>
-  </div>
-  <div style="text-align:center;font-size:24px;color:var(--silver);margin-top:26px">※ VAT 포함 · 만원 단위 · 정상 통관 기준 &nbsp;|&nbsp; 전 차종 가격은 아래 가격표에서 확인</div>
+  <div class="hnote rv" data-d=".55">※ VAT 포함 · 만원 단위 · 정상 통관 기준 &nbsp;—&nbsp; 전 차종 가격은 가격표 페이지에서 확인</div>
 </section>
 
 <!-- 10 CTA -->
-<section class="slide">
-  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">10</span></div>
-  <span class="kicker k-gold">상담 · 전체 가격표</span>
-  <h1 class="title" style="font-size:60px;margin:18px 0 10px">궁금한 차종, <b style="color:var(--gold)">편하게 문의</b> 주세요</h1>
-  <div class="ctagrid">
-    <div class="ctacard"><div class="ci">💬</div><div class="ch">카카오톡 1:1 상담</div><div class="cc">가장 빠른 답변<br>24시간 문자 가능</div></div>
-    <div class="ctacard"><div class="ci">📋</div><div class="ch">실구매 상담 신청</div><div class="cc">견적 · 재고 요청<br>구글폼 접수</div></div>
-    <div class="ctacard"><div class="ci">📺</div><div class="ch">BenzDream 유튜브</div><div class="cc">youtube.com/@benzdream<br>벤츠 구독자 No.1</div></div>
+<section class="slide" data-ghost="10">
+  <div class="top"><div class="wm">BENZDREAM <span>· 2026.08</span></div><div class="idx"><b>10</b> / 10</div></div>
+  <div class="kick rv" data-d="0"><span class="kdot"></span>상담 · 전체 가격표<span class="ln"></span></div>
+  <h1 class="t rv" data-d=".08" style="font-size:64px;margin-top:20px">궁금한 차종, <em>편하게 문의</em> 주세요</h1>
+  <div class="cg">
+    <div class="cc rv sc" data-d=".24"><div class="ci">💬</div><div class="ch">카카오톡 1:1 상담</div><div class="cd"><span class="kr">가장 빠른 답변<br>24시간 문자 가능</span></div></div>
+    <div class="cc rv sc" data-d=".34"><div class="ci">📋</div><div class="ch">실구매 상담 신청</div><div class="cd"><span class="kr">견적 · 재고 요청<br>구글폼 접수</span></div></div>
+    <div class="cc rv sc" data-d=".44"><div class="ci">📺</div><div class="ch">BenzDream 유튜브</div><div class="cd">youtube.com/@benzdream<br><span class="kr">벤츠 구독자 No.1</span></div></div>
   </div>
-  <div class="addr">🗺 <b>벤츠 고양 전시장</b> · 경기도 고양시 덕양구 의장로 110 모터원 고양</div>
-  <div class="disc">본 자료는 2026년 8월 메르세데스-벤츠 코리아 공식 프로모션 기준 · VAT 포함/만원 단위 · 옵션·재고·통관 조건에 따라 실제 견적과 차이가 있을 수 있습니다.</div>
+  <div class="caddr rv" data-d=".55">🗺 <b>벤츠 고양 전시장</b> · 경기도 고양시 덕양구 의장로 110 모터원 고양</div>
+  <div class="cdisc">본 자료는 2026년 8월 메르세데스-벤츠 코리아 공식 프로모션 기준 · VAT 포함/만원 단위 · 옵션·재고·통관 조건에 따라 실제 견적과 차이가 있을 수 있습니다.</div>
 </section>
 
 </div></div>
 
-<div id="prog"></div>
+<div id="dots"></div>
 <div id="hint">← → 넘기기 · F 전체화면 · N 대본</div>
-<div id="notes"><div class="nh">SLIDE NOTE</div><div id="notesBody"></div></div>
+<div id="notes"><div class="nh">Slide Note</div><div id="nb"></div></div>
 
 <script>
 const slides=[...document.querySelectorAll('.slide')];
 let i=0;
-const notesData=[
+const notes=[
 "[오프닝] 안녕하세요, 벤츠 고양 전시장 BenzDream 한호만 팀장입니다. 8월 벤츠 프로모션, 지난달과 뭐가 달라졌는지 딱 5분 안에 정리해 드리겠습니다. 확대·축소·신규·종료 네 가지만 보시면 됩니다.",
-"[한눈에] 먼저 큰 그림입니다. 8월에도 개별소비세 5% 정상세율은 그대로 유지되고요. 지난달 대비 바뀐 건 크게 네 가지 — 할인이 올라간 게 다섯 개 트림, 소폭 줄어든 게 두 그룹, 신규가 네 건, 그리고 종료된 캠페인 하나입니다.",
-"[개소세] 개소세부터 짚을게요. 지금 통관되는 차량은 개소세 5%가 반영된 '실 구매가' 기준으로 보시면 됩니다. 그런데 중요한 건 — 7월 1일 이전에 통관된 물량이 아직 많습니다. 특히 E클래스요. 이 차량들은 '개소세인하 적용가'로 인상폭만큼 추가 할인이 들어가니, 재고 문의하실 때 통관일을 꼭 확인하세요.",
-"[할인 확대] 이번 달 하이라이트, 140주년 에디션 할인이 확 올랐습니다. E300 AMG Line 140주년이 5에서 10%로 두 배, GLC 300 AMG Line 140주년은 6에서 12%로, 쿠페 140주년도 4에서 9%로 뛰었고요. CLE 200 쿠페·카브리올레 140주년도 각각 올랐습니다. 140주년 에디션 노리셨던 분들은 지금이 타이밍입니다.",
-"[할인 축소] 솔직하게 줄어든 것도 말씀드릴게요. GLE 450 전 라인이 기본 13에서 12%로 1% 조정됐고, GLC 300 AV·쿠페 AV가 8에서 7%로 내렸습니다. 다만 두 그룹 모두 MBM 특별 +4%는 그대로라, 금융상품 이용하시면 GLE 450은 여전히 파이낸셜 16%, 실구매가 1억 8백만 원대로 최상위 할인폭입니다.",
-"[신규] 새로 들어온 것도 네 가지. C200 파이널 에디션이 C클래스에 편입돼 실구매가 5천7백만 원대, 전동화 대형 EQS 580 SUV, 그리고 AMG GT 43 2도어 C192 모델이 신규로 들어왔고요. 무엇보다 MY26 E클래스 전 모델에 최대 4년·13만km 무상 보증연장이 별도 비용 없이 기본 제공됩니다. 이건 정말 큰 혜택이에요.",
-"[종료] 반대로 종료된 것도 투명하게. E450, GLC AMG 라인, GLE 53, GT 43 등 일부 AMG 라인의 MBM 조인트 캠페인이 8월부터 빠집니다. 다만 기본 현금 할인은 그대로 유지되고, 금융 추가할인만 빠지는 거라 재고·통관 조건에 따라 실구매가는 상담으로 충분히 조율 가능합니다.",
-"[파이낸셜] 이번 달 진짜 무기는 파이낸셜입니다. 선수금 65%에 24개월이면 무이자, 중도상환수수료도 0원이고요. MBM 특별 할인은 대상 차종에서 최대 +7%까지 현금할인에 중첩됩니다. EQA·EQB는 전용 무이자 금리표까지 있어요. 현금 할인만 보지 마시고 금융 혜택을 꼭 같이 계산하셔야 실구매가가 확 내려갑니다.",
-"[실구매가] 주력 모델 실구매가 정리해 드릴게요. E300 AMG Line 8천5백만 원대, GLC 300 AV 7천3백만 원대, GLE 450이 1억 8백만 원대, S450 SWB가 1억 4천4백만 원대입니다. 전부 VAT 포함, 정상 통관 기준이고요. 전 차종 가격은 가격표 링크에서 바로 확인하실 수 있습니다.",
-"[마무리] 궁금하신 차종 있으시면 편하게 문의 주세요. 카카오톡 1:1 상담이 가장 빠르고, 견적·재고는 구글폼으로 신청하시면 됩니다. 전시장은 고양 덕양구 의장로 110 모터원 고양이고요. 벤츠 구매 전 반드시 확인하는 채널, BenzDream 구독 부탁드립니다. 감사합니다!"
+"[한눈에] 8월에도 개별소비세 5% 정상세율은 그대로 유지되고요. 지난달 대비 바뀐 건 크게 네 가지 — 할인 확대 다섯 트림, 축소 두 그룹, 신규 네 건, 종료된 캠페인 하나입니다.",
+"[개소세] 지금 통관 차량은 개소세 5% 반영된 '실 구매가' 기준입니다. 중요한 건 7월 1일 이전 통관 물량이 아직 많다는 것, 특히 E클래스요. 이 차량은 '개소세인하 적용가'로 인상폭만큼 추가 할인이 들어가니 통관일을 꼭 확인하세요.",
+"[할인 확대] 이번 달 하이라이트, 140주년 에디션 할인이 확 올랐습니다. E300 AMG Line이 5에서 10%로 두 배, GLC 300 AMG Line 6에서 12%, 쿠페 4에서 9%, CLE 200 쿠페·카브리올레도 각각 상향. 140주년 노리셨던 분들은 지금이 타이밍입니다.",
+"[할인 축소] 솔직하게 줄어든 것도 말씀드릴게요. GLE 450 전 라인이 13에서 12%, GLC 300 AV·쿠페 AV가 8에서 7%로 내렸습니다. 다만 MBM 특별 +4%는 그대로라 GLE 450은 여전히 파이낸셜 16%, 실구매가 1억 8백만 원대로 최상위 할인폭입니다.",
+"[신규] 새로 들어온 것 넷. C200 파이널 에디션 실구매가 5천7백만 원대, 전동화 EQS 580 SUV, AMG GT 43 2도어 C192. 무엇보다 MY26 E클래스 전 모델에 최대 4년·13만km 무상 보증연장이 별도 비용 없이 기본 제공됩니다.",
+"[종료] 반대로 종료된 것도 투명하게. E450, GLC AMG, GLE 53, GT 43 등 일부 AMG 라인 MBM 조인트 캠페인이 8월부터 빠집니다. 다만 기본 현금 할인은 유지되고 금융 추가할인만 빠지는 거라 실구매가는 상담으로 조율 가능합니다.",
+"[파이낸셜] 이번 달 진짜 무기는 파이낸셜입니다. 선수금 65%에 24개월이면 무이자, 중도상환수수료 0원. MBM 특별 할인은 최대 +7%까지 현금할인에 중첩되고 EQA·EQB는 전용 무이자 금리표까지 있어요. 금융 혜택을 꼭 같이 계산하셔야 실구매가가 확 내려갑니다.",
+"[실구매가] 주력 모델 실구매가입니다. E300 AMG Line 8천5백, GLC 300 AV 7천3백, GLE 450 1억 8백, S450 SWB 1억 4천4백만 원대. 전부 VAT 포함, 정상 통관 기준. 전 차종은 가격표 링크에서 확인하세요.",
+"[마무리] 궁금한 차종 있으시면 편하게 문의 주세요. 카카오톡 1:1 상담이 가장 빠르고 견적·재고는 구글폼으로. 전시장은 고양 덕양구 의장로 110 모터원 고양. 벤츠 구매 전 반드시 확인하는 채널, BenzDream 구독 부탁드립니다. 감사합니다!"
 ];
-function show(n){
-  slides[i].classList.remove('active');
-  i=(n+slides.length)%slides.length;
-  slides[i].classList.add('active');
-  document.getElementById('prog').style.width=((i+1)/slides.length*100)+'%';
-  document.getElementById('notesBody').textContent=notesData[i]||'';
+// dots
+const dc=document.getElementById('dots');
+slides.forEach((_,k)=>{const d=document.createElement('i');d.onclick=()=>go(k);dc.appendChild(d);});
+const dots=[...dc.children];
+
+function fmtMoney(v){v=Math.round(v);const e=Math.floor(v/10000),m=v%10000;
+  return e>0?(e+'억'+(m?' '+m.toLocaleString():'')):m.toLocaleString();}
+function ease(t){return 1-Math.pow(1-t,3);}
+function animNum(el,to,dur,fmt){
+  const start=performance.now();
+  function step(now){
+    let p=Math.min(1,(now-start)/dur);const v=to*ease(p);
+    el.textContent=fmt(v);
+    if(p<1)requestAnimationFrame(step);else el.textContent=fmt(to);
+  }
+  requestAnimationFrame(step);
 }
-function fit(){
-  const s=document.getElementById('stage');
-  const k=Math.min(innerWidth/1920, innerHeight/1080);
-  s.style.transform='scale('+k+')';
+function reset(s){
+  s.classList.remove('play');
+  s.querySelectorAll('.fill').forEach(f=>f.style.width='0');
+  s.querySelectorAll('[data-money]').forEach(n=>n.textContent=fmtMoney(0));
+  s.querySelectorAll('[data-to]').forEach(n=>n.textContent='0'+(n.dataset.suf||''));
 }
-addEventListener('resize',fit); fit(); show(0);
+function run(s){
+  s.querySelectorAll('.rv').forEach(el=>{el.style.transitionDelay=(el.dataset.d||0)+'s';});
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    s.classList.add('play');
+    s.querySelectorAll('.fill').forEach(f=>{f.style.width=f.dataset.w+'%';});
+    s.querySelectorAll('[data-money]').forEach(n=>{const base=parseFloat(n.dataset.d||0)*1000;setTimeout(()=>animNum(n,+n.dataset.money,1100,fmtMoney),200+base);});
+    s.querySelectorAll('[data-to]').forEach(n=>{const suf=n.dataset.suf||'';const base=parseFloat(n.dataset.d||0)*1000;setTimeout(()=>animNum(n,+n.dataset.to,900,v=>Math.round(v)+suf),200+base);});
+  }));
+}
+function go(n){
+  const prev=i;i=(n+slides.length)%slides.length;
+  if(prev!==i){slides[prev].classList.remove('active');reset(slides[prev]);}
+  const s=slides[i];s.classList.add('active');
+  dots.forEach((d,k)=>d.classList.toggle('on',k===i));
+  document.getElementById('nb').textContent=notes[i]||'';
+  run(s);
+}
+function fit(){const s=document.getElementById('stage');const k=Math.min(innerWidth/1920,innerHeight/1080);s.style.transform='scale('+k+')';}
+addEventListener('resize',fit);fit();
+// init
+slides.forEach(reset);go(0);
 addEventListener('keydown',e=>{
-  if(['ArrowRight','PageDown',' '].includes(e.key)){show(i+1);e.preventDefault();}
-  else if(['ArrowLeft','PageUp'].includes(e.key)){show(i-1);e.preventDefault();}
-  else if(e.key==='Home'){show(0);}
-  else if(e.key==='End'){show(slides.length-1);}
-  else if(e.key.toLowerCase()==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}
-  else if(e.key.toLowerCase()==='n'){document.getElementById('notes').classList.toggle('show');}
+  const k=e.key.toLowerCase();
+  if(['arrowright','pagedown',' '].includes(e.key.toLowerCase())||e.key===' '){go(i+1);e.preventDefault();}
+  else if(['arrowleft','pageup'].includes(k)){go(i-1);e.preventDefault();}
+  else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(slides.length-1);}
+  else if(k==='f'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+  else if(k==='n'){document.getElementById('notes').classList.toggle('show');}
 });
-addEventListener('click',e=>{ if(e.clientX < innerWidth*0.28) show(i-1); else show(i+1); });
+addEventListener('click',e=>{if(e.target.closest('#dots'))return;e.clientX<innerWidth*0.26?go(i-1):go(i+1);});
 </script>
 </body>
 </html>
