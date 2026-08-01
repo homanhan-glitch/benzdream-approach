@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 8월 벤츠 프로모션 총정리 | BenzDream 영상 슬라이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0d0f14; --navy:#141824; --card:#181c28; --card2:#1e2331;
+  --gold:#c9a96e; --gold-light:#ddc08a; --gold-dim:#8a7a50;
+  --silver:#a8aab0; --light:#e2e3e7; --white:#f5f5f7;
+  --up:#7fd0a0; --down:#eab079; --new:#7cc4ff; --end:#9a9daa;
+  --line:#2a2f3d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#05060a;overflow:hidden;font-family:'Noto Sans KR',sans-serif}
+#stageWrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:1920px;height:1080px;transform-origin:center center;background:var(--dark);overflow:hidden}
+.num,.pct,.money,.big-n{font-family:'Outfit',sans-serif;font-variant-numeric:tabular-nums}
+.slide{position:absolute;inset:0;padding:96px 120px;opacity:0;visibility:hidden;transition:opacity .45s ease;display:flex;flex-direction:column}
+.slide.active{opacity:1;visibility:visible}
+/* backdrop accents */
+#stage::before{content:"";position:absolute;top:-30%;right:-15%;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.10),transparent 65%);pointer-events:none}
+#stage::after{content:"";position:absolute;bottom:-25%;left:-10%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(90,110,160,.10),transparent 65%);pointer-events:none}
+/* header / footer chrome */
+.chrome-top{position:absolute;top:52px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:center;font-family:'Outfit',sans-serif;letter-spacing:.14em;font-size:22px;color:var(--gold-dim);text-transform:uppercase;z-index:5}
+.chrome-top b{color:var(--gold);font-weight:700}
+.snum{color:var(--silver);font-weight:500}
+.kicker{display:inline-flex;align-items:center;gap:14px;font-family:'Outfit',sans-serif;font-weight:700;letter-spacing:.05em;font-size:26px;padding:10px 26px;border-radius:40px;width:max-content}
+.k-up{background:rgba(127,208,160,.13);color:var(--up)}
+.k-down{background:rgba(234,176,121,.14);color:var(--down)}
+.k-new{background:rgba(124,196,255,.13);color:var(--new)}
+.k-end{background:rgba(154,157,170,.12);color:var(--end)}
+.k-gold{background:rgba(201,169,110,.14);color:var(--gold-light)}
+h1.title{font-family:'Noto Sans KR',sans-serif;font-weight:900;color:var(--white);line-height:1.12;letter-spacing:-.02em}
+.sub{color:var(--silver);font-weight:400}
+/* row/card helpers */
+.chg-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:32px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--up);border-radius:18px;padding:26px 40px}
+.chg-row .mname{font-size:40px;font-weight:700;color:var(--light)}
+.chg-row .mtag{font-size:24px;color:var(--gold);font-weight:500;margin-left:14px}
+.arrowpct{font-family:'Outfit',sans-serif;font-weight:800;font-size:44px;white-space:nowrap}
+.arrowpct .old{color:#71757f;text-decoration:line-through;font-weight:600}
+.arrowpct .new{color:var(--up)}
+.realbox{text-align:right;min-width:340px}
+.realbox .lab{font-size:20px;color:var(--silver);letter-spacing:.02em}
+.realbox .val{font-family:'Outfit',sans-serif;font-weight:700;font-size:46px;color:var(--white);line-height:1}
+.realbox .val small{font-size:26px;color:var(--silver);font-weight:500}
+/* new cards grid */
+.newgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:14px}
+.newcard{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--new);border-radius:20px;padding:36px 40px;display:flex;flex-direction:column;gap:10px}
+.newcard .nt{font-size:42px;font-weight:800;color:var(--white)}
+.newcard .nd{font-size:26px;color:var(--silver);line-height:1.45}
+.newcard .np{font-family:'Outfit',sans-serif;font-weight:700;font-size:34px;color:var(--gold-light);margin-top:6px}
+.newcard .np small{font-size:22px;color:var(--silver);font-weight:500}
+/* overview cards */
+.ovgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:20px}
+.ovcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:40px 34px;display:flex;flex-direction:column;gap:18px;min-height:340px}
+.ovcard .ic{font-size:56px;line-height:1}
+.ovcard .ct{font-size:34px;font-weight:800}
+.ovcard .cn{font-family:'Outfit',sans-serif;font-weight:900;font-size:88px;line-height:.9}
+.ovcard .cd{font-size:23px;color:var(--silver);line-height:1.4;margin-top:auto}
+.ov-up{border-top:5px solid var(--up)} .ov-up .ct,.ov-up .cn{color:var(--up)}
+.ov-dn{border-top:5px solid var(--down)} .ov-dn .ct,.ov-dn .cn{color:var(--down)}
+.ov-nw{border-top:5px solid var(--new)} .ov-nw .ct,.ov-nw .cn{color:var(--new)}
+.ov-en{border-top:5px solid var(--end)} .ov-en .ct,.ov-en .cn{color:var(--end)}
+/* money highlight slide */
+.moneygrid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px}
+.mcard{background:linear-gradient(135deg,#171b27,#12151d);border:1px solid var(--line);border-radius:20px;padding:30px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.mcard .ml{display:flex;flex-direction:column;gap:6px}
+.mcard .mn{font-size:36px;font-weight:700;color:var(--light)}
+.mcard .mmeta{font-size:22px;color:var(--gold);font-weight:500}
+.mcard .mr{text-align:right}
+.mcard .mr .rl{font-size:19px;color:var(--silver)}
+.mcard .mr .rv{font-family:'Outfit',sans-serif;font-weight:800;font-size:48px;color:#fff;line-height:1}
+.mcard .mr .rv small{font-size:24px;color:var(--silver);font-weight:500}
+/* finance slide */
+.fin-hero{display:flex;gap:40px;margin-top:16px;flex:1}
+.fin-big{flex:1.1;background:linear-gradient(135deg,#1a1e2b,#13161f);border:1px solid var(--gold-dim);border-radius:24px;padding:50px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.fin-big .fl{font-size:30px;color:var(--gold-light);font-weight:500}
+.fin-big .fv{font-family:'Outfit',sans-serif;font-weight:900;font-size:120px;color:#fff;line-height:.95}
+.fin-big .fn{font-size:28px;color:var(--silver);line-height:1.5}
+.fin-side{flex:1;display:flex;flex-direction:column;gap:24px}
+.fin-item{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px 38px}
+.fin-item .fih{font-size:30px;font-weight:700;color:var(--white)}
+.fin-item .fis{font-size:24px;color:var(--silver);margin-top:8px;line-height:1.45}
+.fin-item b{color:var(--gold-light)}
+ul.clean{list-style:none;display:flex;flex-direction:column;gap:22px;margin-top:12px}
+ul.clean li{display:flex;align-items:flex-start;gap:22px;font-size:34px;color:var(--light);line-height:1.4}
+ul.clean li .dot{flex:none;width:16px;height:16px;border-radius:50%;background:var(--end);margin-top:14px}
+ul.clean li b{color:var(--white)}
+.pill{display:inline-block;font-family:'Outfit',sans-serif;font-size:22px;font-weight:600;color:var(--gold);border:1px solid var(--gold-dim);border-radius:30px;padding:6px 20px;margin:4px 6px 0 0}
+/* cover */
+.cover{justify-content:center}
+.cover .brandline{font-family:'Outfit',sans-serif;letter-spacing:.35em;font-size:30px;color:var(--gold);font-weight:600;text-transform:uppercase}
+.cover h1{font-size:132px;margin:26px 0 0}
+.cover .cvsub{font-size:40px;color:var(--silver);margin-top:30px;font-weight:400}
+.cover .cvsub b{color:var(--gold-light);font-weight:700}
+.cover .cvtag{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap}
+.cover .cvtag span{font-size:26px;color:var(--light);background:var(--card);border:1px solid var(--line);border-radius:40px;padding:14px 30px}
+.cover .presenter{position:absolute;bottom:88px;left:120px;font-size:30px;color:var(--silver)}
+.cover .presenter b{color:var(--white);font-weight:700}
+/* CTA */
+.ctagrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-top:26px}
+.ctacard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:44px 38px;text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center}
+.ctacard .ci{font-size:60px}
+.ctacard .ch{font-size:34px;font-weight:800;color:var(--white)}
+.ctacard .cc{font-size:26px;color:var(--gold-light);word-break:break-all;line-height:1.4}
+.addr{margin-top:40px;text-align:center;font-size:30px;color:var(--silver)}
+.addr b{color:var(--white)}
+.disc{position:absolute;bottom:44px;left:120px;right:120px;text-align:center;font-size:20px;color:#6b6e79;line-height:1.5}
+/* progress + hint */
+#prog{position:fixed;bottom:0;left:0;height:6px;background:var(--gold);z-index:20;transition:width .3s}
+#hint{position:fixed;bottom:16px;right:20px;font-family:'Outfit',sans-serif;font-size:15px;color:#3d4150;z-index:20;letter-spacing:.05em}
+#notes{position:fixed;left:0;right:0;bottom:0;background:rgba(8,9,14,.96);border-top:2px solid var(--gold-dim);color:#dfe2ea;padding:26px 40px;font-size:22px;line-height:1.6;z-index:30;display:none;max-height:38vh;overflow:auto}
+#notes.show{display:block}
+#notes .nh{font-family:'Outfit',sans-serif;color:var(--gold);font-weight:700;letter-spacing:.1em;font-size:16px;margin-bottom:8px;text-transform:uppercase}
+.mono{font-family:'Outfit',sans-serif}
+.updot{color:var(--up)} .dndot{color:var(--down)}
+</style>
+</head>
+<body>
+<div id="stageWrap"><div id="stage">
+
+<!-- 1 COVER -->
+<section class="slide cover active">
+  <div class="brandline">BENZ DREAM · 한호만 팀장</div>
+  <h1 class="title">2026 <b style="color:var(--gold)">8월</b> 벤츠<br>프로모션 총정리</h1>
+  <div class="cvsub">지난달 대비 <b>무엇이 달라졌나</b> — 5분 완전 정리</div>
+  <div class="cvtag">
+    <span>🔺 할인 확대 5</span><span>🔻 할인 축소 2</span><span>✨ 신규 4</span><span>⛔ 종료 1</span>
+  </div>
+  <div class="presenter">벤츠 고양 전시장 · 모터원 고양 &nbsp;|&nbsp; <b>BenzDream 한호만 팀장</b></div>
+</section>
+
+<!-- 2 OVERVIEW -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">02</span></div>
+  <span class="kicker k-gold">이번 달 한눈에 보기</span>
+  <h1 class="title" style="font-size:66px;margin-top:26px">개소세 5% 유지 · 지난달 대비 <b style="color:var(--gold)">4가지</b>가 바뀌었습니다</h1>
+  <div class="ovgrid">
+    <div class="ovcard ov-up"><div class="ic">🔺</div><div class="ct">할인 확대</div><div class="cn">5</div><div class="cd">140주년 에디션<br>대폭 상향</div></div>
+    <div class="ovcard ov-dn"><div class="ic">🔻</div><div class="ct">할인 축소</div><div class="cn">2</div><div class="cd">GLE 450 · GLC 300<br>일부 조정</div></div>
+    <div class="ovcard ov-nw"><div class="ic">✨</div><div class="ct">신규 추가</div><div class="cn">4</div><div class="cd">신차 3종 +<br>E클래스 보증연장</div></div>
+    <div class="ovcard ov-en"><div class="ic">⛔</div><div class="ct">캠페인 종료</div><div class="cn">1</div><div class="cd">MBM 조인트<br>일부 AMG 라인</div></div>
+  </div>
+</section>
+
+<!-- 3 개소세 -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">03</span></div>
+  <span class="kicker k-gold">먼저, 개별소비세</span>
+  <h1 class="title" style="font-size:72px;margin-top:26px">8월에도 <b style="color:var(--gold)">개소세 5% 정상세율</b> 그대로입니다</h1>
+  <div style="display:flex;gap:36px;margin-top:44px;flex:1">
+    <div class="fin-item" style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div class="fih" style="font-size:38px">지금 통관 차량</div>
+      <div class="fis" style="font-size:28px">권장소비자가에 개소세 5% 반영 —<br>표의 <b>‘실 구매가’</b> 기준으로 상담하시면 됩니다.</div>
+    </div>
+    <div class="fin-item" style="flex:1.2;display:flex;flex-direction:column;justify-content:center;border-color:var(--new)">
+      <div class="fih" style="font-size:38px;color:var(--new)">7/1 이전 통관 물량 <span style="font-size:26px;color:var(--gold-light)">아직 많습니다</span></div>
+      <div class="fis" style="font-size:28px">개소세 인상 전 통관된 차량은 <b style="color:#7cc4ff">‘개소세인하 적용가’</b>로<br>인상폭만큼 <b style="color:#7cc4ff">추가 할인</b>이 들어갑니다. 특히 E클래스 재고 다수.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 할인 확대 -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">04</span></div>
+  <span class="kicker k-up">🔺 할인 확대 · 140주년 에디션</span>
+  <h1 class="title" style="font-size:56px;margin:20px 0 26px">140주년 에디션, 할인이 <b style="color:var(--up)">확 올랐습니다</b></h1>
+  <div style="display:flex;flex-direction:column;gap:18px;flex:1;justify-content:center">
+    <div class="chg-row"><div><span class="mname">E 300 4M AMG Line</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">5%</span> <span class="new">→ 10%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">9,004<small>만원</small></div></div></div>
+    <div class="chg-row"><div><span class="mname">GLC 300 4M AMG Line</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">6%</span> <span class="new">→ 12%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">8,615<small>만원</small></div></div></div>
+    <div class="chg-row"><div><span class="mname">GLC 300 쿠페 AMG Line</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">4%</span> <span class="new">→ 9%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">9,309<small>만원</small></div></div></div>
+    <div class="chg-row"><div><span class="mname">CLE 200 쿠페</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">2%</span> <span class="new">→ 5%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">7,714<small>만원</small></div></div></div>
+    <div class="chg-row"><div><span class="mname">CLE 200 카브리올레</span><span class="mtag">140주년</span></div><div class="arrowpct"><span class="old">2%</span> <span class="new">→ 4%</span></div><div class="realbox"><div class="lab">실구매가</div><div class="val">8,390<small>만원</small></div></div></div>
+  </div>
+</section>
+
+<!-- 5 할인 축소 -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">05</span></div>
+  <span class="kicker k-down">🔻 할인 축소 · 솔직하게</span>
+  <h1 class="title" style="font-size:56px;margin:20px 0 26px">이 두 그룹은 <b style="color:var(--down)">소폭 줄었습니다</b> — 그래도 강력</h1>
+  <div style="display:flex;flex-direction:column;gap:22px;flex:1;justify-content:center">
+    <div class="chg-row" style="border-left-color:var(--down)"><div><span class="mname">GLE 450 4M</span><span class="mtag">4M · AMG · 쿠페 · 쿠페AMG 전 라인</span></div><div class="arrowpct"><span class="old">13%</span> <span style="color:var(--down)">→ 12%</span></div><div class="realbox"><div class="lab">파이낸셜 16% 실구매가</div><div class="val">1억 836<small>만원~</small></div></div></div>
+    <div class="chg-row" style="border-left-color:var(--down)"><div><span class="mname">GLC 300 4M AV / 쿠페 AV</span><span class="mtag">기본 할인</span></div><div class="arrowpct"><span class="old">8%</span> <span style="color:var(--down)">→ 7%</span></div><div class="realbox"><div class="lab">파이낸셜 11% 실구매가</div><div class="val">7,342<small>만원~</small></div></div></div>
+    <div style="text-align:center;font-size:30px;color:var(--silver);margin-top:8px">두 그룹 모두 <b style="color:var(--gold-light)">MBM 특별 +4%</b>는 그대로 — 금융상품 이용 시 여전히 최상위 할인폭</div>
+  </div>
+</section>
+
+<!-- 6 신규 -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">06</span></div>
+  <span class="kicker k-new">✨ 신규 추가</span>
+  <h1 class="title" style="font-size:56px;margin:20px 0 14px">이번 달 새로 들어온 <b style="color:var(--new)">4가지</b></h1>
+  <div class="newgrid">
+    <div class="newcard"><div class="nt">C 200 Final Edition</div><div class="nd">C클래스 신규 편입 · 기본 10% + MBM 특별 +4%</div><div class="np">실구매가 5,701<small>만원</small></div></div>
+    <div class="newcard"><div class="nt">EQS 580 4MATIC SUV</div><div class="nd">전동화 대형 SUV · 기본 10% + 무상 보증연장</div><div class="np">실구매가 1억 7,280<small>만원</small></div></div>
+    <div class="newcard"><div class="nt">AMG GT 43 <span style="font-size:28px;color:var(--gold)">(C192·2도어)</span></div><div class="nd">2도어 쿠페 신규 편입 · 기본 9%</div><div class="np">실구매가 1억 3,604<small>만원</small></div></div>
+    <div class="newcard" style="border-top-color:var(--gold)"><div class="nt" style="color:var(--gold-light)">MY26 E클래스 무상 보증연장</div><div class="nd">E클래스 전 모델 · 최대 4년 / 13만km</div><div class="np" style="color:var(--gold-light)">별도 비용 없이 기본 제공</div></div>
+  </div>
+</section>
+
+<!-- 7 종료 -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">07</span></div>
+  <span class="kicker k-end">⛔ 캠페인 종료</span>
+  <h1 class="title" style="font-size:56px;margin:20px 0 20px">일부 AMG 라인 <b style="color:var(--end)">MBM 조인트 캠페인 종료</b></h1>
+  <div style="display:flex;gap:40px;flex:1;align-items:center">
+    <ul class="clean" style="flex:1">
+      <li><span class="dot"></span><div><b>E 450</b> 4M AMG Line / EXCLUSIVE</div></li>
+      <li><span class="dot"></span><div><b>GLC 300</b> AMG 라인 (일반·RoF·140주년·쿠페)</div></li>
+      <li><span class="dot"></span><div><b>GLE 53</b> · GLE 300d · GLE 450d 쿠페</div></li>
+      <li><span class="dot"></span><div><b>GT 43</b> (C192 · X290)</div></li>
+    </ul>
+    <div class="fin-item" style="flex:.9;border-color:var(--gold-dim);display:flex;flex-direction:column;justify-content:center">
+      <div class="fih" style="font-size:34px;color:var(--gold-light)">그래도 걱정 마세요</div>
+      <div class="fis" style="font-size:28px">기본 현금 할인은 그대로 유지됩니다.<br>해당 트림의 <b>금융 추가할인(파이낸셜 JC)</b>만 빠지는 것 —<br>재고·통관 조건에 따라 실구매가는 상담으로 조율 가능합니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 파이낸셜/무이자 -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">08</span></div>
+  <span class="kicker k-gold">💳 이번 달의 무기 · 파이낸셜</span>
+  <h1 class="title" style="font-size:56px;margin:18px 0 6px">현금 할인에 <b style="color:var(--gold)">금융 혜택</b>까지 겹치면</h1>
+  <div class="fin-hero">
+    <div class="fin-big">
+      <div class="fl">선수금 65% · 24개월</div>
+      <div class="fv">무이자</div>
+      <div class="fn">중도상환수수료 <b style="color:#fff">0원</b> · 벤츠 파이낸셜 기준</div>
+    </div>
+    <div class="fin-side">
+      <div class="fin-item"><div class="fih">MBM 특별 할인 <b style="color:var(--gold-light)">최대 +7%</b></div><div class="fis">C200 · E200/300 · S450 SWB · GLC 300 · GLE 450 · GLA/GLB · AMG A45S/GLB35 등 대상</div></div>
+      <div class="fin-item"><div class="fih">EQA · EQB 전용 <b style="color:#7cc4ff">무이자 금리표</b></div><div class="fis">24 / 36개월 무이자 · 48개월 0.5% · 전동화 4종 한정</div></div>
+      <div class="fin-item" style="border-color:var(--gold-dim)"><div class="fih" style="color:var(--gold-light)">기본 현금할인 + MBM 특별 = 최대 +4~7% 중첩</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 실구매가 하이라이트 -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">09</span></div>
+  <span class="kicker k-gold">💰 이번 달 이 가격</span>
+  <h1 class="title" style="font-size:56px;margin:18px 0 12px">주력 모델 <b style="color:var(--gold)">실구매가</b> 하이라이트</h1>
+  <div class="moneygrid">
+    <div class="mcard"><div class="ml"><div class="mn">E 300 4M AMG Line</div><div class="mmeta">기본 10% + 파이낸셜 14%</div></div><div class="mr"><div class="rl">실구매가</div><div class="rv">8,514<small>만원</small></div></div></div>
+    <div class="mcard"><div class="ml"><div class="mn">GLC 300 4M AV</div><div class="mmeta">기본 7% + 파이낸셜 11%</div></div><div class="mr"><div class="rl">실구매가</div><div class="rv">7,342<small>만원</small></div></div></div>
+    <div class="mcard"><div class="ml"><div class="mn">GLE 450 4M</div><div class="mmeta">기본 12% + 파이낸셜 16%</div></div><div class="mr"><div class="rl">실구매가</div><div class="rv">1억 836<small>만원</small></div></div></div>
+    <div class="mcard"><div class="ml"><div class="mn">S 450 4M Sedan (SWB)</div><div class="mmeta">기본 7% + 파이낸셜 11%</div></div><div class="mr"><div class="rl">실구매가</div><div class="rv">1억 4,418<small>만원</small></div></div></div>
+  </div>
+  <div style="text-align:center;font-size:24px;color:var(--silver);margin-top:26px">※ VAT 포함 · 만원 단위 · 정상 통관 기준 &nbsp;|&nbsp; 전 차종 가격은 아래 가격표에서 확인</div>
+</section>
+
+<!-- 10 CTA -->
+<section class="slide">
+  <div class="chrome-top"><span><b>BENZDREAM</b> · 2026.08 프로모션</span><span class="snum">10</span></div>
+  <span class="kicker k-gold">상담 · 전체 가격표</span>
+  <h1 class="title" style="font-size:60px;margin:18px 0 10px">궁금한 차종, <b style="color:var(--gold)">편하게 문의</b> 주세요</h1>
+  <div class="ctagrid">
+    <div class="ctacard"><div class="ci">💬</div><div class="ch">카카오톡 1:1 상담</div><div class="cc">가장 빠른 답변<br>24시간 문자 가능</div></div>
+    <div class="ctacard"><div class="ci">📋</div><div class="ch">실구매 상담 신청</div><div class="cc">견적 · 재고 요청<br>구글폼 접수</div></div>
+    <div class="ctacard"><div class="ci">📺</div><div class="ch">BenzDream 유튜브</div><div class="cc">youtube.com/@benzdream<br>벤츠 구독자 No.1</div></div>
+  </div>
+  <div class="addr">🗺 <b>벤츠 고양 전시장</b> · 경기도 고양시 덕양구 의장로 110 모터원 고양</div>
+  <div class="disc">본 자료는 2026년 8월 메르세데스-벤츠 코리아 공식 프로모션 기준 · VAT 포함/만원 단위 · 옵션·재고·통관 조건에 따라 실제 견적과 차이가 있을 수 있습니다.</div>
+</section>
+
+</div></div>
+
+<div id="prog"></div>
+<div id="hint">← → 넘기기 · F 전체화면 · N 대본</div>
+<div id="notes"><div class="nh">SLIDE NOTE</div><div id="notesBody"></div></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let i=0;
+const notesData=[
+"[오프닝] 안녕하세요, 벤츠 고양 전시장 BenzDream 한호만 팀장입니다. 8월 벤츠 프로모션, 지난달과 뭐가 달라졌는지 딱 5분 안에 정리해 드리겠습니다. 확대·축소·신규·종료 네 가지만 보시면 됩니다.",
+"[한눈에] 먼저 큰 그림입니다. 8월에도 개별소비세 5% 정상세율은 그대로 유지되고요. 지난달 대비 바뀐 건 크게 네 가지 — 할인이 올라간 게 다섯 개 트림, 소폭 줄어든 게 두 그룹, 신규가 네 건, 그리고 종료된 캠페인 하나입니다.",
+"[개소세] 개소세부터 짚을게요. 지금 통관되는 차량은 개소세 5%가 반영된 '실 구매가' 기준으로 보시면 됩니다. 그런데 중요한 건 — 7월 1일 이전에 통관된 물량이 아직 많습니다. 특히 E클래스요. 이 차량들은 '개소세인하 적용가'로 인상폭만큼 추가 할인이 들어가니, 재고 문의하실 때 통관일을 꼭 확인하세요.",
+"[할인 확대] 이번 달 하이라이트, 140주년 에디션 할인이 확 올랐습니다. E300 AMG Line 140주년이 5에서 10%로 두 배, GLC 300 AMG Line 140주년은 6에서 12%로, 쿠페 140주년도 4에서 9%로 뛰었고요. CLE 200 쿠페·카브리올레 140주년도 각각 올랐습니다. 140주년 에디션 노리셨던 분들은 지금이 타이밍입니다.",
+"[할인 축소] 솔직하게 줄어든 것도 말씀드릴게요. GLE 450 전 라인이 기본 13에서 12%로 1% 조정됐고, GLC 300 AV·쿠페 AV가 8에서 7%로 내렸습니다. 다만 두 그룹 모두 MBM 특별 +4%는 그대로라, 금융상품 이용하시면 GLE 450은 여전히 파이낸셜 16%, 실구매가 1억 8백만 원대로 최상위 할인폭입니다.",
+"[신규] 새로 들어온 것도 네 가지. C200 파이널 에디션이 C클래스에 편입돼 실구매가 5천7백만 원대, 전동화 대형 EQS 580 SUV, 그리고 AMG GT 43 2도어 C192 모델이 신규로 들어왔고요. 무엇보다 MY26 E클래스 전 모델에 최대 4년·13만km 무상 보증연장이 별도 비용 없이 기본 제공됩니다. 이건 정말 큰 혜택이에요.",
+"[종료] 반대로 종료된 것도 투명하게. E450, GLC AMG 라인, GLE 53, GT 43 등 일부 AMG 라인의 MBM 조인트 캠페인이 8월부터 빠집니다. 다만 기본 현금 할인은 그대로 유지되고, 금융 추가할인만 빠지는 거라 재고·통관 조건에 따라 실구매가는 상담으로 충분히 조율 가능합니다.",
+"[파이낸셜] 이번 달 진짜 무기는 파이낸셜입니다. 선수금 65%에 24개월이면 무이자, 중도상환수수료도 0원이고요. MBM 특별 할인은 대상 차종에서 최대 +7%까지 현금할인에 중첩됩니다. EQA·EQB는 전용 무이자 금리표까지 있어요. 현금 할인만 보지 마시고 금융 혜택을 꼭 같이 계산하셔야 실구매가가 확 내려갑니다.",
+"[실구매가] 주력 모델 실구매가 정리해 드릴게요. E300 AMG Line 8천5백만 원대, GLC 300 AV 7천3백만 원대, GLE 450이 1억 8백만 원대, S450 SWB가 1억 4천4백만 원대입니다. 전부 VAT 포함, 정상 통관 기준이고요. 전 차종 가격은 가격표 링크에서 바로 확인하실 수 있습니다.",
+"[마무리] 궁금하신 차종 있으시면 편하게 문의 주세요. 카카오톡 1:1 상담이 가장 빠르고, 견적·재고는 구글폼으로 신청하시면 됩니다. 전시장은 고양 덕양구 의장로 110 모터원 고양이고요. 벤츠 구매 전 반드시 확인하는 채널, BenzDream 구독 부탁드립니다. 감사합니다!"
+];
+function show(n){
+  slides[i].classList.remove('active');
+  i=(n+slides.length)%slides.length;
+  slides[i].classList.add('active');
+  document.getElementById('prog').style.width=((i+1)/slides.length*100)+'%';
+  document.getElementById('notesBody').textContent=notesData[i]||'';
+}
+function fit(){
+  const s=document.getElementById('stage');
+  const k=Math.min(innerWidth/1920, innerHeight/1080);
+  s.style.transform='scale('+k+')';
+}
+addEventListener('resize',fit); fit(); show(0);
+addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){show(i+1);e.preventDefault();}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){show(i-1);e.preventDefault();}
+  else if(e.key==='Home'){show(0);}
+  else if(e.key==='End'){show(slides.length-1);}
+  else if(e.key.toLowerCase()==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}
+  else if(e.key.toLowerCase()==='n'){document.getElementById('notes').classList.toggle('show');}
+});
+addEventListener('click',e=>{ if(e.clientX < innerWidth*0.28) show(i-1); else show(i+1); });
+</script>
+</body>
+</html>
