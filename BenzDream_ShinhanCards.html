@@ -448,6 +448,44 @@
   .check { color: var(--mb-gold-light); font-size: 14px; }
   .dash { color: #444; }
 
+  /* ---------- FIRST-MONTH / RATE MATRIX ---------- */
+  .fm-callout{background:linear-gradient(135deg,rgba(184,148,92,.15),rgba(184,148,92,.02));border:1px solid var(--mb-gold);padding:38px 42px;margin-bottom:26px;position:relative;overflow:hidden;}
+  .fm-callout::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--mb-gold);}
+  .fm-badge{display:inline-flex;align-items:center;gap:9px;font-family:'MBK CorpoA','Cormorant Garamond',serif;font-style:italic;letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--mb-gold);margin-bottom:16px;}
+  .fm-badge .mk{display:inline-flex;width:22px;height:22px;border:1px solid var(--mb-gold);border-radius:50%;align-items:center;justify-content:center;font-style:normal;font-weight:600;font-size:13px;}
+  .fm-title{font-family:'MBK CorpoA Cond','Noto Serif KR',serif;font-size:27px;color:#fff;font-weight:400;letter-spacing:-.01em;margin-bottom:12px;line-height:1.4;}
+  .fm-title b{color:var(--mb-gold-light);font-weight:500;}
+  .fm-desc{font-size:13.5px;color:var(--mb-silver);line-height:1.75;max-width:820px;}
+  .fm-desc b{color:#fff;font-weight:500;}
+  .fm-rates{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
+  .fm-rate{border:1px solid var(--mb-line-strong);background:rgba(0,0,0,.3);padding:24px;text-align:center;}
+  .fm-rate .rc{font-family:'MBK CorpoA','Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--mb-chrome);letter-spacing:.08em;margin-bottom:10px;}
+  .fm-rate .rn{font-family:'MBK CorpoA Cond','Outfit','Noto Serif KR',serif;font-size:46px;font-weight:500;color:#fff;line-height:1;}
+  .fm-rate .rl{font-size:11px;color:var(--mb-chrome);margin-top:10px;letter-spacing:.04em;}
+  .fm-rate .rl b{color:var(--mb-gold-light);font-weight:500;}
+  .rate-matrix th.col-first,.rate-matrix td.col-first{background:rgba(184,148,92,.12)!important;}
+  .rate-matrix th.col-first{color:var(--mb-gold)!important;}
+  .rate-matrix td.col-first{font-weight:600!important;color:var(--mb-gold-light)!important;font-size:16px!important;}
+  .rate-matrix .sublab{display:block;font-size:10px;color:var(--mb-gold);letter-spacing:.04em;margin-top:5px;font-style:italic;font-family:'MBK CorpoA','Cormorant Garamond',serif;text-transform:none;}
+  .rate-matrix td.rowhead{color:#fafafa!important;font-weight:500!important;font-size:15px!important;font-family:'MBK CorpoA Cond','Noto Serif KR',serif;letter-spacing:0!important;}
+  .rate-note{font-size:12px;color:var(--mb-chrome);line-height:1.8;margin-top:18px;}
+  .rate-note b{color:var(--mb-gold-light);font-weight:500;}
+  /* pay example */
+  .pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .pay-card{border:1px solid var(--mb-line);background:linear-gradient(180deg,#141414,#0d0d0d);padding:34px 32px;}
+  .pay-card.top{border-color:var(--mb-gold);}
+  .pay-card .pcn{font-family:'MBK CorpoA Cond','Noto Serif KR',serif;font-size:20px;color:#fff;margin-bottom:2px;}
+  .pay-card .pcs{font-family:'MBK CorpoA','Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--mb-chrome);margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--mb-line);}
+  .pay-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;}
+  .pay-row .k{font-size:12px;color:var(--mb-chrome);}
+  .pay-row .v{font-family:'MBK CorpoA Cond','Outfit',serif;font-size:15px;color:#e5e5e5;}
+  .pay-row.max{padding-top:14px;}
+  .pay-row.max .k{color:var(--mb-gold);}
+  .pay-row.max .v{font-size:28px;color:var(--mb-gold-light);font-weight:500;}
+  .pay-first{margin-top:18px;padding-top:16px;border-top:1px solid var(--mb-line);font-size:11.5px;color:var(--mb-chrome);line-height:1.65;}
+  .pay-first b{color:#fff;font-weight:500;}
+  @media(max-width:720px){.fm-rates,.pay-grid{grid-template-columns:1fr;}}
+
   /* ---------- RECOMMENDATION ---------- */
   .recommendation {
     margin-top: 72px;
@@ -645,7 +683,7 @@
         <div class="headline-value">5<span class="headline-unit">만 포인트</span></div>
       </div>
 
-      <div class="card-feature"><span class="feature-label">국내 최대 할인</span><span class="feature-value">1.2%</span></div>
+      <div class="card-feature"><span class="feature-label">국내 할인 <span style="color:var(--mb-gold);font-size:11px;font-style:italic">첫 달 0.5%</span></span><span class="feature-value">최대 1.2%</span></div>
       <div class="card-feature"><span class="feature-label">벤츠 스토어</span><span class="feature-value">최대 10%</span></div>
       <div class="card-feature"><span class="feature-label">전기차 충전</span><span class="feature-value">최대 20%</span></div>
       <div class="card-feature"><span class="feature-label">월 라이프스타일 한도</span><span class="feature-value">3만원</span></div>
@@ -676,7 +714,7 @@
         <div class="headline-value">12<span class="headline-unit">만 상당</span></div>
       </div>
 
-      <div class="card-feature"><span class="feature-label">국내 최대 할인</span><span class="feature-value">1.2%</span></div>
+      <div class="card-feature"><span class="feature-label">국내 할인 <span style="color:var(--mb-gold);font-size:11px;font-style:italic">첫 달 0.7%</span></span><span class="feature-value">최대 1.2%</span></div>
       <div class="card-feature"><span class="feature-label">벤츠 스토어</span><span class="feature-value">최대 20%</span></div>
       <div class="card-feature"><span class="feature-label">전기차 충전</span><span class="feature-value">최대 30%</span></div>
       <div class="card-feature"><span class="feature-label">월 라이프스타일 한도</span><span class="feature-value">5만원</span></div>
@@ -707,7 +745,7 @@
         <div class="headline-value">65<span class="headline-unit">만 상당</span></div>
       </div>
 
-      <div class="card-feature"><span class="feature-label">국내 최대 할인</span><span class="feature-value">1.5%</span></div>
+      <div class="card-feature"><span class="feature-label">국내 할인 <span style="color:var(--mb-gold);font-size:11px;font-style:italic">첫 달 0.7%</span></span><span class="feature-value">최대 1.5%</span></div>
       <div class="card-feature"><span class="feature-label">벤츠 스토어</span><span class="feature-value">최대 50%</span></div>
       <div class="card-feature"><span class="feature-label">전기차 충전</span><span class="feature-value">최대 40%</span></div>
       <div class="card-feature"><span class="feature-label">월 라이프스타일 한도</span><span class="feature-value">7만원</span></div>
@@ -722,6 +760,69 @@
       <a href="https://www.shinhancard.com/pconts/html/card/apply/family/1238025_2215.html" target="_blank" rel="noopener" class="apply-btn">
         카드 신청하기 <span class="arrow">→</span>
       </a>
+    </div>
+  </div>
+
+  <!-- ★ 발급 첫 달 할인율 · 전월 실적별 구간 -->
+  <div class="section-title">
+    <div class="eyebrow">Payment Discount Rate</div>
+    <h2>국내 할인율은 전월 실적에 따라 달라집니다</h2>
+  </div>
+
+  <div class="fm-callout">
+    <div class="fm-badge"><span class="mk">!</span> 발급 첫 달 꼭 확인하세요</div>
+    <div class="fm-title">‘국내 최대 <b>1.2% ~ 1.5%</b>’는 전월 실적 <b>300만원 이상</b>일 때 적용됩니다</div>
+    <p class="fm-desc">카드 발급 <b>첫 달</b>은 전월 실적이 없어 <b>실적 유예(최소 할인율)</b> 구간이 적용됩니다. 아래가 발급 첫 달 국내 일시불·할부 할인율입니다.</p>
+    <div class="fm-rates">
+      <div class="fm-rate"><div class="rc">Avantgarde</div><div class="rn">0.5%</div><div class="rl">이후 최대 <b>1.2%</b></div></div>
+      <div class="fm-rate"><div class="rc">Exclusive</div><div class="rn">0.7%</div><div class="rl">이후 최대 <b>1.2%</b></div></div>
+      <div class="fm-rate"><div class="rc">MANUFAKTUR</div><div class="rn">0.7%</div><div class="rl">이후 최대 <b>1.5%</b></div></div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="rate-matrix">
+      <thead>
+        <tr>
+          <th>전월 이용금액 (일시불+할부)</th>
+          <th>50만원 미만</th>
+          <th class="col-first">50만 ~ 150만원<span class="sublab">발급 첫 달 · 실적 유예</span></th>
+          <th>150만 ~ 300만원</th>
+          <th class="tier-top-col">300만원 이상<span class="sublab" style="color:var(--mb-gold-light)">최대 할인</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="rowhead">Avantgarde</td><td><span class="dash">—</span></td><td class="col-first">0.5%</td><td>0.7%</td><td class="tier-top-col">1.2%</td></tr>
+        <tr><td class="rowhead">Exclusive</td><td><span class="dash">—</span></td><td class="col-first">0.7%</td><td>1.0%</td><td class="tier-top-col">1.2%</td></tr>
+        <tr><td class="rowhead">MANUFAKTUR</td><td><span class="dash">—</span></td><td class="col-first">0.7%</td><td>1.0%</td><td class="tier-top-col">1.5%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="rate-note">· <b>국내 일시불·할부</b> 기준 할인율입니다 (해외 일시불: Avantgarde 최대 2% · Exclusive/MANUFAKTUR 최대 3%).<br>· 매월 <b>전월 이용금액(일시불+할부)</b> 실적으로 다음 달 할인율이 정해지며, 발급 첫 달은 실적 유예로 최소 구간이 적용됩니다.<br>· 할인 한도 없음 · 전월 실적 50만원 이상 시 서비스 제공.</p>
+
+  <!-- ★ 차량 잔금 결제 예시 -->
+  <div class="section-title" style="margin-top:76px;">
+    <div class="eyebrow">Real Example</div>
+    <h2>차량 잔금 1억원 카드 결제 시 할인</h2>
+  </div>
+  <div class="pay-grid">
+    <div class="pay-card">
+      <div class="pcn">Avantgarde</div><div class="pcs">아방가르드 · 할인형</div>
+      <div class="pay-row"><span class="k">발급 첫 달 (최소)</span><span class="v">50만원</span></div>
+      <div class="pay-row max"><span class="k">최대 · 전월 300만원↑</span><span class="v">120만원</span></div>
+      <div class="pay-first">* 발급 최초월에는 <b>최소 50만원</b> 할인 구간이 적용됩니다.</div>
+    </div>
+    <div class="pay-card">
+      <div class="pcn">Exclusive</div><div class="pcs">익스클루시브 · 할인형</div>
+      <div class="pay-row"><span class="k">발급 첫 달 (최소)</span><span class="v">70만원</span></div>
+      <div class="pay-row max"><span class="k">최대 · 전월 300만원↑</span><span class="v">120만원</span></div>
+      <div class="pay-first">* 마일리지형 선택 시 <b>66,667마일</b> 일시 적립 — 발급 첫 달 포함 전 구간 동일.</div>
+    </div>
+    <div class="pay-card top">
+      <div class="pcn">MANUFAKTUR</div><div class="pcs">마누팍투어 · 할인형</div>
+      <div class="pay-row"><span class="k">발급 첫 달 (최소)</span><span class="v">70만원</span></div>
+      <div class="pay-row max"><span class="k">최대 · 전월 300만원↑</span><span class="v">150만원</span></div>
+      <div class="pay-first">* 마일리지형 선택 시 <b>66,667마일</b> 일시 적립 — 발급 첫 달 포함 전 구간 동일.</div>
     </div>
   </div>
 
@@ -804,9 +905,9 @@
         <tr class="category-row"><td colspan="4">기본 서비스 · Payment Discount</td></tr>
         <tr>
           <td>국내 일시불·할부 할인</td>
-          <td>최대 1.2%</td>
-          <td>최대 1.2%</td>
-          <td class="tier-top-col">최대 1.5%</td>
+          <td>첫 달 0.5% · 최대 1.2%</td>
+          <td>첫 달 0.7% · 최대 1.2%</td>
+          <td class="tier-top-col">첫 달 0.7% · 최대 1.5%</td>
         </tr>
         <tr>
           <td>해외 일시불 할인</td>
