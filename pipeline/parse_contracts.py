@@ -107,16 +107,19 @@ def diff(prev, cur, d, pd_):
         p = prev.get(vin)
         k = f'{r[S_CAT]}|{r[S_MODEL]}'
         now_c = r[S_STATE] in CONTRACT
+        pre = r[S_ITYPE] == '예정 물량'
         if p is None:
-            agg[k]['new_stock'] += 1
+            agg[k]['new_stock' if not pre else 'pre_new_stock'] += 1
             if now_c:
                 agg[k]['mo_new'] += 1
+                if pre: agg[k]['pre_new'] += 1
                 srd[r[S_SR] or '미지정'] += 1; srm[(r[S_SR] or '미지정', r[S_CAT])] += 1
                 cdem[k][f'{r[S_EXT]}|{r[S_INT]}'] += 1
             continue
         was_c = p[S_STATE] in CONTRACT
         if not was_c and now_c:
             agg[k]['mo_new'] += 1
+            if pre: agg[k]['pre_new'] += 1
             srd[r[S_SR] or '미지정'] += 1; srm[(r[S_SR] or '미지정', r[S_CAT])] += 1
             cdem[k][f'{r[S_EXT]}|{r[S_INT]}'] += 1
         elif was_c and not now_c:
@@ -156,6 +159,24 @@ def snapshot_stock(cur):
     return {k: dict(total=v['total'], combos=dict(v['combos']), pdd=dict(v['pdd']))
             for k, v in st.items()}
 
+def snapshot_pre(cur):
+    """예정 물량(사전계약/버추얼빈) 현황 — 재고현황 파일에 뜬 pre-order 물량"""
+    st = {}
+    for r in cur.values():
+        if r[S_ITYPE] != '예정 물량': continue
+        k = f'{r[S_CAT]}|{r[S_MODEL]}'
+        e = st.setdefault(k, dict(total=0, contracted=0, sr=Counter(), pdd=Counter()))
+        e['total'] += 1
+        if r[S_STATE] in CONTRACT:
+            e['contracted'] += 1
+            if r[S_SR]: e['sr'][r[S_SR]] += 1
+        if r[S_PDD]: e['pdd'][r[S_PDD]] += 1
+    return {k: dict(total=v['total'], contracted=v['contracted'],
+                    avail=v['total'] - v['contracted'],
+                    sr=dict(v['sr']), pdd=dict(v['pdd']))
+            for k, v in sorted(st.items(), key=lambda x: -x[1]['total'])}
+
+
 def build_web(store, last_cur):
     daily = store['daily']
     dates = sorted(daily)
@@ -180,7 +201,7 @@ def build_web(store, last_cur):
         rows.append(dict(
             cat=cat, model=model, mo_new=a['mo_new'], mo_cancel=a['mo_cancel'],
             mo_confirm=a['mo_confirm'], mo_deliv=a['mo_delivered'], nat=a['nat_other'],
-            new_stock=a['new_stock'], stock=st['total'], pdd=st['pdd'],
+            new_stock=a['new_stock'], pre_new=a['pre_new'], stock=st['total'], pdd=st['pdd'],
             combos=dict(sorted(st['combos'].items(), key=lambda x: -x[1])[:14]),
             vel=round(vel, 2), dos=(round(dos, 1) if dos is not None and dos < 999 else None),
             share=(round(100 * a['mo_new'] / dem, 1) if dem else None)))
@@ -198,7 +219,7 @@ def build_web(store, last_cur):
         ndays=ndays, cat_order=CAT_ORDER, rows=rows, heat=heat,
         daily={d: dict(gap=daily[d]['gap'], sell=daily[d]['sell'],
                        **{x: sum(m.get(x, 0) for m in daily[d]['models'].values())
-                          for x in ['mo_new','mo_confirm','mo_cancel','mo_delivered','nat_other','new_stock']})
+                          for x in ['mo_new','mo_confirm','mo_cancel','mo_delivered','nat_other','new_stock','pre_new']})
                for d in dates},
         sr_daily={k: v for k, v in sr_daily.items()},
         sr_model={k: dict(v) for k, v in sr_model.items()},
@@ -207,6 +228,8 @@ def build_web(store, last_cur):
         mo_by_sr=dict(Counter(r[S_SR] for r in last_cur.values()
                               if r[S_STATE] in CONTRACT and r[S_SR])),
         sellable_now=sum(v['total'] for v in stock.values()),
+        pre=snapshot_pre(last_cur),
+        pre_daily={d: sum(m.get('pre_new', 0) for m in daily[d]['models'].values()) for d in dates},
     )
     json.dump(web, open(WEB, 'w'), ensure_ascii=False, separators=(',', ':'))
     return web

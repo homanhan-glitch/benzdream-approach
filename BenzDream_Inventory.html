@@ -174,8 +174,31 @@ svg.ch text{font-family:'Outfit',sans-serif;fill:var(--silver)}
     <button class="tab" data-p="velo">소진 랭킹</button>
     <button class="tab" data-p="trend">일자별 추이</button>
     <button class="tab" data-p="sr">전시장 비교</button>
+    <button class="tab" data-p="pre">사전계약</button>
     <button class="tab" data-p="color">색상 수요</button>
   </div>
+
+  <!-- ============ 사전계약 ============ -->
+  <section class="pane" id="p-pre">
+    <div class="note">
+      <b>사전계약 = 재고 유형 <code>예정 물량</code>(버추얼빈)</b> — 실물이 아직 안 들어온 배정 예정 물량입니다.
+      본계약 재고(입고 물량)와 성격이 달라 다른 탭 수치에서는 분리해 뒀습니다.<br>
+      <b style="color:#ff8b76">주의</b> — 이 표에 없는 차종은 아직 재고현황 파일에 안 올라온 것입니다.
+      <b>MY27 GLC(300 AMG Line / AMG Line+)와 GLC 일렉트릭은 집계기간 24일 전체에서 한 건도 잡히지 않았습니다.</b>
+      본사 오더 시스템에만 있고 배정 단계로 안 내려온 상태라, 이 파일로는 확인이 불가능합니다.
+    </div>
+    <div class="kpis" id="preKpis" style="margin:0 0 16px"></div>
+    <div class="sec">
+      <h2>일자별 사전계약 체결</h2>
+      <p class="hint">예정 물량 VIN이 계약 상태로 전이된 건수입니다.</p>
+      <div class="chartbox"><svg class="ch" id="chPre" viewBox="0 0 1000 220" preserveAspectRatio="xMinYMid meet"></svg></div>
+    </div>
+    <div class="sec">
+      <h2>모델별 사전계약 물량</h2>
+      <p class="hint">잔여가 0이면 배정분이 전부 팔린 것 — 추가 물량 요청 대상입니다. 잔여가 많으면 지금 선점할 수 있습니다.</p>
+      <div class="tblwrap"><table class="dt" id="preTable"></table></div>
+    </div>
+  </section>
 
   <!-- ============ 히트맵 ============ -->
   <section class="pane on" id="p-heat">
@@ -308,7 +331,7 @@ async function boot(){
     if(!r.ok) throw new Error('HTTP '+r.status);
     D=await r.json();
     $('loading').style.display='none';
-    renderHead(); renderCatChips(); renderHeat(); renderVelo(); renderTrend(); renderSr(); renderColor();
+    renderHead(); renderCatChips(); renderHeat(); renderVelo(); renderTrend(); renderSr(); renderPre(); renderColor();
     bindUI();
   }catch(e){
     $('loading').innerHTML='데이터를 불러오지 못했습니다.<br><span style="font-size:.75rem;opacity:.7">'+esc(e.message)+'</span>';
@@ -538,6 +561,60 @@ function renderSr(){
   h+=`<tr style="border-top:1px solid var(--line)"><td style="color:var(--gold)">전체</td>${tot.map(v=>`<td style="color:var(--gold-light);font-weight:600">${v}</td>`).join('')}
     <td style="color:var(--gold);font-weight:700">${tot.reduce((a,b)=>a+b,0)}</td><td>—</td></tr>`;
   $('srTable').innerHTML=h+'</tbody>';
+}
+
+/* ===================== 사전계약 ===================== */
+function renderPre(){
+  const P=D.pre||{}, keys=Object.keys(P);
+  const tot=keys.reduce((a,k)=>a+P[k].total,0);
+  const ct=keys.reduce((a,k)=>a+P[k].contracted,0);
+  const newTot=Object.values(D.pre_daily||{}).reduce((a,b)=>a+b,0);
+  const goyang=keys.reduce((a,k)=>a+(P[k].sr['고양 SR']||0),0);
+  const soldout=keys.filter(k=>P[k].total>0&&P[k].avail===0).length;
+  $('preKpis').innerHTML=[
+    ['사전계약 물량',fmt(tot),'대','예정 물량(버추얼빈)'],
+    ['이미 계약됨',fmt(ct),'대',tot?((100*ct/tot).toFixed(0)+'% 소진'):'—'],
+    ['선점 가능 잔여',fmt(tot-ct),'대',`${keys.length}개 모델`],
+    ['기간 내 신규 사전계약',fmt(newTot),'건',`일평균 ${(newTot/D.ndays).toFixed(1)}건`],
+    ['고양 SR 사전계약',fmt(goyang),'건','보유 중'],
+    ['완판된 모델',fmt(soldout),'개','추가 물량 요청 대상'],
+  ].map(([k,v,u,d])=>`<div class="kpi"><div class="k">${k}</div><div class="v">${v}<small>${u}</small></div><div class="d">${d}</div></div>`).join('');
+
+  // 일자별 차트
+  const ds=D.dates,W=1000,H=220,PL=40,PR=16,PT=14,PB=26,bw=(W-PL-PR)/ds.length;
+  const vals=ds.map(d=>(D.pre_daily||{})[d]||0), max=Math.max(1,...vals)*1.2;
+  const y=v=>PT+(H-PT-PB)*(1-v/max);
+  let s='';
+  for(let i=0;i<=3;i++){const yy=PT+(H-PT-PB)*(1-i/3);
+    s+=`<line x1="${PL}" y1="${yy}" x2="${W-PR}" y2="${yy}" stroke="rgba(255,255,255,.06)"/>
+        <text x="${PL-8}" y="${yy+4}" text-anchor="end" font-size="10" opacity=".65">${Math.round(max*i/3)}</text>`;}
+  ds.forEach((d,i)=>{const hgt=(H-PB)-y(vals[i]);
+    s+=`<rect x="${PL+bw*i+bw*.18}" y="${y(vals[i])}" width="${bw*.64}" height="${Math.max(0,hgt)}" rx="2" fill="#4a7fc1" opacity=".85"><title>${d} 사전계약 ${vals[i]}건</title></rect>`;
+    if(vals[i]) s+=`<text x="${PL+bw*(i+.5)}" y="${y(vals[i])-4}" text-anchor="middle" font-size="9" fill="#7fa9d8">${vals[i]}</text>`;});
+  s+=xlabels(ds,W,PL,PR,H,PB);
+  $('chPre').innerHTML=s;
+
+  // 테이블
+  const rows=keys.map(k=>{const [cat,model]=k.split('|',2);return {cat,model,...P[k]};})
+    .sort((a,b)=>b.total-a.total);
+  let h=`<thead><tr><th>차종</th><th>모델</th><th>총 물량</th><th>계약</th><th>선점 가능</th>
+    <th>소진율</th><th>출고예정(PDD)</th><th>계약 전시장</th></tr></thead><tbody>`;
+  rows.forEach(r=>{
+    const rate=r.total?100*r.contracted/r.total:0;
+    const pdd=Object.entries(r.pdd).sort().map(([m,n])=>`${m.slice(5)}월 ${n}`).join(' · ')||'—';
+    const sr=Object.entries(r.sr).sort((a,b)=>b[1]-a[1])
+      .map(([s2,n])=>`<span style="color:${s2==='고양 SR'?'var(--gold-light)':'var(--silver)'}">${esc(s2.replace(' SR',''))} ${n}</span>`).join(' · ')||'<span style="opacity:.3">—</span>';
+    h+=`<tr>
+      <td><span class="catbadge">${esc(r.cat)}</span></td>
+      <td style="color:var(--white)">${esc(r.model)}</td>
+      <td>${fmt(r.total)}</td>
+      <td style="color:var(--gold-light)">${fmt(r.contracted)}</td>
+      <td style="color:${r.avail===0?'#ff8b76':'var(--light)'};font-weight:${r.avail===0?600:400}">${r.avail===0?'완판':fmt(r.avail)}</td>
+      <td><span class="dosbadge ${rate>=100?'d0':rate>=50?'d1':rate>0?'d2':'d3'}">${rate.toFixed(0)}%</span></td>
+      <td style="text-align:left;font-size:.72rem;color:var(--silver);font-family:'Noto Sans KR',sans-serif">${pdd}</td>
+      <td style="text-align:left;font-size:.72rem;font-family:'Noto Sans KR',sans-serif">${sr}</td></tr>`;
+  });
+  $('preTable').innerHTML=h+'</tbody>';
 }
 
 /* ===================== 색상 ===================== */
