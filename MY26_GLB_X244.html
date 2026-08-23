@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="ko"><head>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
+<script>
+  const BLOCKED_IPS=["59.7.219.188"];
+  fetch("https://api.ipify.org?format=json").then(r=>r.json()).then(d=>{if(BLOCKED_IPS.includes(d.ip))return;window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-7T2ECBWN0K");}).catch(()=>{window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-7T2ECBWN0K");});
+</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The all-new electric GLB | BenzDream 한호만 팀장</title>
 <meta name="author" content="BenzDream 한호만 팀장 · 메르세데스-벤츠 모터원 고양전시장">
 <style>
