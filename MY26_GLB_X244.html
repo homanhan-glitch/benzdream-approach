@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The all-new GLB | BenzDream 한호만 팀장</title>
+<title>The all-new electric GLB | BenzDream 한호만 팀장</title>
 <meta name="author" content="BenzDream 한호만 팀장 · 메르세데스-벤츠 모터원 고양전시장">
 <style>
 @font-face{font-family:'MBK CorpoA';src:url('fonts/MBKCorpoA.woff2') format('woff2');font-display:swap;}
@@ -286,80 +286,239 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 .faq-list .faq-a{padding:0 24px 22px;font-size:.9rem;color:var(--silver);line-height:1.85;}
 
 .notice{background:linear-gradient(90deg,rgba(47,184,166,.14),rgba(201,169,110,.06));border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.notice .wrap{padding:22px clamp(20px,5vw,60px);display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;text-align:center;}
-.notice .nb{font-size:.9rem;color:var(--light);} .notice .nb b{color:var(--teal);}
+.notice .wrap{padding:20px clamp(20px,5vw,60px);display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;text-align:center;}
+.notice .nb{font-size:.88rem;color:var(--light);} .notice .nb b{color:var(--teal);}
 .notice .ntag{font-size:.72rem;color:var(--teal);border:1px solid var(--teal-d);border-radius:20px;padding:5px 14px;}
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin-top:18px;}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .35s,border-color .35s;cursor:zoom-in;}
+.gcard:hover{transform:translateY(-5px);border-color:rgba(47,184,166,.4);}
+.gcard .im{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#20242b,#0c0d10);}
+.gcard .im img{width:100%;display:block;transition:transform .6s;}
+.gcard:hover .im img{transform:scale(1.05);}
+.gcard .bd{padding:12px 14px 15px;}
+.gcard .cd{font-family:monospace;font-size:.7rem;color:var(--gold);letter-spacing:.5px;}
+.gcard .nm{font-size:.85rem;color:#fff;margin-top:3px;line-height:1.35;}
+.gcard .ds{font-size:.74rem;color:var(--silver);margin-top:5px;line-height:1.5;}
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px;margin-top:20px;}
+.pkg{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;position:relative;}
+.pkg.lv1{border-top:3px solid var(--silver);} .pkg.lv2{border-top:3px solid var(--teal);} .pkg.lv3{border-top:3px solid var(--gold);} .pkg.lv4{border-top:3px solid #c0392b;}
+.pkg .pc{font-family:monospace;font-size:.72rem;color:var(--gold);} .pkg .pn{font-family:'MBK CorpoA Cond',serif;font-size:1.25rem;color:#fff;margin:4px 0 6px;}
+.pkg .pb{font-size:.74rem;color:var(--teal);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+.pkg ul{list-style:none;display:grid;gap:7px;} .pkg li{position:relative;padding-left:16px;font-size:.8rem;color:var(--light);line-height:1.5;}
+.pkg li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--teal);}
+.lineup2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:20px;}
+.lc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;}
+.lc.a{border-top:3px solid var(--teal);} .lc.b{border-top:3px solid var(--gold);}
+.lc .ln{font-family:'MBK CorpoA Cond',serif;font-size:1.35rem;color:#fff;} .lc .lt{font-size:.75rem;color:var(--teal);margin-top:4px;}
+.lc .lr{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;padding:9px 0;border-bottom:1px solid var(--line);}
+.lc .lr span:first-child{color:var(--silver);} .lc .lr span:last-child{color:#fff;font-weight:500;text-align:right;}
 </style></head><body>
 <div class="progress" id="prog"></div>
 <nav class="nav">
   <div class="nav-brand">BENZ<b>DREAM</b> · GLB <small>· 한호만 팀장</small></div>
-  <div class="nav-links"><a href="#highlights">하이라이트</a><a href="#exterior">익스테리어</a><a href="#interior">인테리어</a><a href="#gallery">갤러리</a></div>
+  <div class="nav-links"><a href="#highlights">하이라이트</a><a href="#powertrain">공간·성능</a><a href="#spec">제원</a><a href="#color">컬러</a><a href="#wheel">휠</a><a href="#interior">시트</a><a href="#package">패키지</a></div>
   <a href="#contact" class="nav-cta">출시 알림 · 상담</a>
 </nav>
 <header class="hero">
   <div class="hero-bg" id="heroBg" style="background-image:url('assets/glb/glb_hero.jpg');"></div><div class="hero-scrim"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Mercedes-Benz · The all-new GLB · X244</div>
+    <div class="hero-eyebrow">Mercedes-Benz · The all-new electric GLB · X244</div>
     <h1 class="hero-h1">The all-new<br><span>GLB</span></h1>
-    <p class="hero-sub">신형 GLB · 컴팩트 SUV · 일렉트릭 · MMA 플랫폼</p>
+    <p class="hero-sub">MMA 기반 첫 SUV · 100% 전기 · 최대 7인승</p>
     <div class="hero-by">BenzDream 한호만 팀장 · 벤츠 유튜브 구독자 2.2만 · 모터원 고양전시장</div>
     <div class="hero-tags"><span class="htag fill">국내 출시 준비 중</span><span class="htag out">사전예약 오픈 시 업데이트</span></div>
   </div>
 </header>
-<section class="notice"><div class="wrap"><span class="ntag">PRE-LAUNCH · v1</span><span class="nb">본 페이지는 <b>글로벌 교육자료 기준</b>으로 먼저 구성한 v1입니다. <b>국내 사양·가격·사전예약 일정</b>은 확정되는 대로 업데이트됩니다.</span></div></section>
+<section class="notice"><div class="wrap"><span class="ntag">PRE-LAUNCH</span><span class="nb">아래 사양·구성은 <b>제조사 공개 기준</b>입니다. <b>국내 출시 사양·가격·사전예약 일정</b>은 확정되는 대로 이 페이지에서 업데이트됩니다.</span></div></section>
 
-<section class="advisory">
-  <div class="adv-card reveal">
-    <div class="adv-photo"><img src="assets/glcev/profile_card.jpg" alt="BenzDream 한호만 팀장"><div class="adv-plabel"><div class="b">BENZDREAM</div><div class="n">한호만 팀장</div></div></div>
-    <div class="adv-body">
-      <div class="adv-eyebrow">Strategic Pre-Order Advisory</div>
-      <div class="adv-title">GLB, <b>공간과 실용</b>을 갖춘 컴팩트 SUV의 정답.</div>
-      <div class="adv-desc">출시 전부터 사양·구성·사전예약 전략까지, 고객 관점의 가장 합리적인 선택을 미리 준비해 드립니다. 출시 알림을 신청해 두시면 오픈 즉시 안내드립니다.</div>
-      <div class="adv-stats">
-        <div class="adv-stat"><div class="v">매월</div><div class="l">구매 전략 리포트</div></div>
-        <div class="adv-stat"><div class="v">2.2만+</div><div class="l">벤츠 유튜브 No.1</div></div>
-        <div class="adv-stat"><div class="v">1:1</div><div class="l">전략 컨설팅</div></div>
-      </div>
-      <div class="adv-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="adv-b primary">출시 · 사전예약 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="adv-b ghost">출시 알림 신청</a></div>
-    </div>
-  </div>
-</section>
+<section class="advisory"><div class="adv-card reveal">
+  <div class="adv-photo"><img src="assets/glcev/profile_card.jpg" alt="BenzDream 한호만 팀장"><div class="adv-plabel"><div class="b">BENZDREAM</div><div class="n">한호만 팀장</div></div></div>
+  <div class="adv-body">
+    <div class="adv-eyebrow">Strategic Pre-Order Advisory</div>
+    <div class="adv-title">GLB, <b>공간과 실용</b>을 갖춘 전기 SUV의 정답.</div>
+    <div class="adv-desc">색상 조합부터 패키지 선택, 사전예약 순번 전략까지. 출시 전부터 준비하면 원하는 사양을 가장 빠르게 받으실 수 있습니다.</div>
+    <div class="adv-stats"><div class="adv-stat"><div class="v">매월</div><div class="l">구매 전략 리포트</div></div><div class="adv-stat"><div class="v">2.2만+</div><div class="l">벤츠 유튜브 No.1</div></div><div class="adv-stat"><div class="v">1:1</div><div class="l">전략 컨설팅</div></div></div>
+    <div class="adv-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="adv-b primary">사전예약 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="adv-b ghost">출시 알림 신청</a></div>
+  </div></div></section>
+
+<section class="statband"><div class="stat-grid"><div class="stat"><div class="stat-num" data-count=320>0</div><div class="stat-lab">최대 충전 출력 (kW)</div></div><div class="stat"><div class="stat-num" data-count=7>0</div><div class="stat-lab">최대 탑승 인원 (인승)</div></div><div class="stat"><div class="stat-num" data-count=540>0</div><div class="stat-lab">트렁크 기본 (L)</div></div><div class="stat"><div class="stat-num" data-count=127>0</div><div class="stat-lab">프렁크 (L)</div></div></div></section>
 
 <section id="highlights"><div class="wrap">
-  <div class="eyebrow reveal">Highlights</div><h2 class="stitle reveal">각진 매력, 넓어진 공간</h2>
-  <p class="sdesc reveal">MMA 플랫폼 기반의 신형 GLB. 박스형 실루엣이 주는 넉넉한 공간과 일렉트릭 파워트레인, 그리고 MBUX 슈퍼스크린이 컴팩트 SUV의 실용을 완성합니다. (사양은 글로벌 기준)</p>
-  <div class="hl-grid"><div class="hl-card reveal"><div class="hl-fig">MMA</div><div class="hl-t">전용 플랫폼</div><div class="hl-d">전기·내연을 아우르는 차세대 구조</div></div><div class="hl-card reveal"><div class="hl-fig">EQ</div><div class="hl-t">일렉트릭 GLB</div><div class="hl-d">전동화된 컴팩트 SUV</div></div><div class="hl-card reveal"><div class="hl-fig">7</div><div class="hl-t">인승 구성</div><div class="hl-d">동급을 넘어서는 공간 활용</div></div><div class="hl-card reveal"><div class="hl-fig">MBUX</div><div class="hl-t">슈퍼스크린</div><div class="hl-d">필러 투 필러 대형 디스플레이</div></div><div class="hl-card reveal"><div class="hl-fig">MB.OS</div><div class="hl-t">최신 인포테인먼트</div><div class="hl-d">OTA 업데이트 지원</div></div><div class="hl-card reveal"><div class="hl-fig">BOX</div><div class="hl-t">각진 실루엣</div><div class="hl-d">GLB만의 견고한 디자인</div></div></div>
+  <div class="eyebrow reveal">Part 1 · Highlights</div><h2 class="stitle reveal">가족을 위한 안전한 공간</h2>
+  <p class="sdesc reveal">MMA(Mercedes-Benz Modular Architecture) 기반 최초의 SUV. 대담한 박스형 실루엣과 3열 7인승 구성, 800V 초급속 충전, 그리고 MBUX 슈퍼스크린이 라이프스타일 SUV를 새롭게 정의합니다.</p>
+  <div class="hl-grid"><div class="hl-card reveal"><div class="hl-fig">800V</div><div class="hl-t">초급속 충전</div><div class="hl-d">호환 충전소에서 최대 320kW</div></div><div class="hl-card reveal"><div class="hl-fig">7</div><div class="hl-t">인승 3열 시트</div><div class="hl-d">EASY-ENTRY로 편리한 승하차</div></div><div class="hl-card reveal"><div class="hl-fig">540L</div><div class="hl-t">트렁크 기본 용량</div><div class="hl-d">40:20:40 분할 폴딩</div></div><div class="hl-card reveal"><div class="hl-fig">127L</div><div class="hl-t">프렁크</div><div class="hl-d">보닛 아래 · 최대 20kg 적재</div></div><div class="hl-card reveal"><div class="hl-fig">14″</div><div class="hl-t">MBUX 슈퍼스크린</div><div class="hl-d">2,504 × 1,260 · 조수석 프라이버시 제어</div></div><div class="hl-card reveal"><div class="hl-fig">MB.OS</div><div class="hl-t">슈퍼컴퓨터</div><div class="hl-d">제로 레이어 UI · 버추얼 어시스턴트</div></div></div>
 </div></section>
 
-<section id="exterior"></section>
 <section class="showcase">
   <div class="showcase-bg" data-parallax style="background-image:url('assets/glb/glb_black.jpg');background-color:#0a0a0a;"></div>
-  <div class="showcase-scrim 견고한 박스형 실루엣에 스타 패턴 그릴. 신형 GLB는 실용과 개성을 동시에 담았습니다."></div>
-  <div class="showcase-txt reveal"><div class="eyebrow">Exterior</div><h2>각진 존재감,<br>도시와 오프로드</h2><p>sc-left</p></div>
-  <div class="sc-wm">BenzDream · 한호만</div>
-</section>
+  <div class="showcase-scrim 일루미네이티드 Mercedes-Benz 스타 패턴 전면 패널, 강인한 휠 아치 라이닝과 큼직한 윈도우가 GLB만의 견고한 측면 프로필을 완성합니다."></div>
+  <div class="showcase-txt reveal"><div class="eyebrow">Exterior</div><h2>각진 존재감,<br>현대적인 SUV</h2><p>sc-left</p></div>
+  <div class="sc-wm">BenzDream · 한호만</div></section>
 <section class="showcase">
   <div class="showcase-bg" data-parallax style="background-image:url('assets/glb/glb_int.jpg');background-color:#0a0a0a;"></div>
-  <div class="showcase-scrim MBUX 슈퍼스크린과 넉넉한 실내. 컴팩트 SUV에서 기대하기 어려운 공간감과 첨단 인포테인먼트를 제공합니다."></div>
-  <div class="showcase-txt reveal"><div class="eyebrow">Interior · MBUX</div><h2>넓은 공간,<br>디지털 콕핏</h2><p>sc-left</p></div>
-  <div class="sc-wm">BenzDream · 한호만</div>
-</section>
+  <div class="showcase-scrim 2단 구조의 플로팅 센터 콘솔, 마치 떠 있는 듯한 도어 패널. MBUX 슈퍼스크린(860)은 14인치 조수석 디스플레이까지 품습니다."></div>
+  <div class="showcase-txt reveal"><div class="eyebrow">Interior · MBUX</div><h2>플로팅 센터 콘솔과<br>와이드 디스플레이</h2><p>sc-left</p></div>
+  <div class="sc-wm">BenzDream · 한호만</div></section>
 
 <section class="ctaband"><div class="cta-inner reveal">
   <img class="cta-ava" src="assets/glcev/profile.jpg" alt="한호만 팀장">
-  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">GLB 국내 사양·사전예약 준비 중입니다. 출시 알림을 신청해 두세요.</div></div>
+  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">GLB, 7인승 구성과 적재까지 실제 사용 관점에서 안내드립니다.</div></div>
   <div class="cta-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="cta-b kk">카카오톡 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-b fm">출시 알림 신청</a></div>
 </div></section>
 
-<section id="gallery" style="background:var(--bg2)"><div class="wrap">
-  <div class="eyebrow reveal">Gallery</div><h2 class="stitle reveal">GLB 갤러리</h2>
-  <p class="sdesc reveal" style="margin-bottom:24px;">이미지를 누르면 크게 볼 수 있습니다. (글로벌 사양 기준 · 국내 사양과 상이할 수 있음)</p>
-  <div class="gstrip"><div class="gtile reveal" data-zoom="assets/glb/glb_blue.jpg" data-cap="GLB · 블루"><img loading="lazy" src="assets/glb/glb_blue.jpg" alt="GLB · 블루"><span class="zoomhint">&#9974;</span><div class="gtile-cap">GLB · 블루</div></div><div class="gtile reveal d1" data-zoom="assets/glb/glb_front.jpg" data-cap="GLB · 프론트"><img loading="lazy" src="assets/glb/glb_front.jpg" alt="GLB · 프론트"><span class="zoomhint">&#9974;</span><div class="gtile-cap">GLB · 프론트</div></div><div class="gtile reveal d2" data-zoom="assets/glb/glb_int2.jpg" data-cap="인테리어 · 디테일"><img loading="lazy" src="assets/glb/glb_int2.jpg" alt="인테리어 · 디테일"><span class="zoomhint">&#9974;</span><div class="gtile-cap">인테리어 · 디테일</div></div></div>
+<section id="powertrain" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Part 2 · Powertrain &amp; Line-up</div><h2 class="stitle reveal">공간, 그리고 전기 주행</h2>
+  <p class="sdesc reveal">3열 7인승과 넉넉한 적재, 800V 초급속 충전을 함께 갖춘 컴팩트 전기 SUV. (제조사 공개 기준 · 국내 사양 확정 시 업데이트)</p>
+  <div class="lineup2"><div class="lc a reveal"><div class="ln">전기 파워트레인</div><div class="lt">MMA · 800V</div><div style="margin-top:12px"><div class="lr"><span>시스템 전압</span><span>800V</span></div><div class="lr"><span>최대 DC 충전</span><span>320 kW</span></div><div class="lr"><span>AC 충전</span><span>최대 11 kW</span></div><div class="lr"><span>열관리</span><span>지능형 배터리 열관리</span></div><div class="lr"><span>추가 옵션</span><span>400V DC 충전 시스템 (83B)</span></div></div></div><div class="lc b reveal"><div class="ln">공간 · 적재</div><div class="lt">7인승 구성</div><div style="margin-top:12px"><div class="lr"><span>트렁크 (기본)</span><span>540 L</span></div><div class="lr"><span>프렁크</span><span>127 L · 최대 20kg</span></div><div class="lr"><span>3열</span><span>2인 추가 · EASY-ENTRY</span></div><div class="lr"><span>2열 폴딩</span><span>40:20:40 분할</span></div><div class="lr"><span>뒷좌석 암레스트</span><span>PDB 패키지부터 (400)</span></div></div></div></div>
+</div></section>
+
+<section id="spec"><div class="wrap">
+  <div class="eyebrow reveal">Specification</div><h2 class="stitle reveal">상세 제원</h2>
+  <p class="sdesc reveal" style="margin-bottom:26px;">제조사 공개 자료 기준입니다. 국내 배터리 용량·주행거리·출력 등 인증 수치는 출시 시 확정됩니다.</p>
+  <div class="tablewrap reveal"><table class="tbl"><tr><th>항목</th><th>The all-new electric GLB (X244)</th></tr><tr class="spec-group"><td colspan="2">플랫폼 · 충전</td></tr><tr class="reveal"><td class="spec-k">플랫폼</td><td class="spec-v">MMA (Mercedes-Benz Modular Architecture)</td></tr><tr class="reveal"><td class="spec-k">시스템 전압</td><td class="spec-v">800V</td></tr><tr class="reveal"><td class="spec-k">DC 급속 충전</td><td class="spec-v">최대 320 kW (호환 충전소)</td></tr><tr class="reveal"><td class="spec-k">추가 DC 옵션</td><td class="spec-v">400V 대응 DC 충전 시스템 (83B)</td></tr><tr class="reveal"><td class="spec-k">배터리 열관리</td><td class="spec-v">지능형 열관리 · 저온 시 예열</td></tr><tr class="spec-group"><td colspan="2">공간 · 적재</td></tr><tr class="reveal"><td class="spec-k">트렁크 기본</td><td class="spec-v">540 L</td></tr><tr class="reveal"><td class="spec-k">프렁크</td><td class="spec-v">127 L (최대 20 kg)</td></tr><tr class="reveal"><td class="spec-k">2열 폴딩</td><td class="spec-v">40:20:40 분할</td></tr><tr class="reveal"><td class="spec-k">3열</td><td class="spec-v">2인 추가 탑승 · EASY-ENTRY</td></tr><tr class="reveal"><td class="spec-k">도어 포켓</td><td class="spec-v">1리터 물병 수납 가능</td></tr><tr class="spec-group"><td colspan="2">디스플레이</td></tr><tr class="reveal"><td class="spec-k">MBUX 슈퍼스크린 (860)</td><td class="spec-v">14인치 (35.6cm) 조수석 디스플레이 포함</td></tr><tr class="reveal"><td class="spec-k">해상도</td><td class="spec-v">2,504 × 1,260 픽셀</td></tr><tr class="reveal"><td class="spec-k">프라이버시</td><td class="spec-v">주행 중 운전자 시선 분산 방지 제어</td></tr><tr class="reveal"><td class="spec-k">구성</td><td class="spec-v">운전자 디스플레이(458) + 중앙 디스플레이(868)</td></tr></table></div>
+</div></section>
+
+<section id="color"><div class="wrap">
+  <div class="eyebrow reveal">Exterior Colours · 9</div><h2 class="stitle reveal">익스테리어 컬러 9종</h2>
+  <p class="sdesc reveal" style="margin-bottom:26px;">우아한 솔리드 컬러부터 광택이 돋보이는 메탈릭, 정교한 MANUFAKTUR 컬러까지. 컬러를 눌러 실차 이미지를 비교해 보세요. (국내 도입 컬러는 출시 시 확정)</p>
+  <div class="color-stage reveal"><div class="cstage-img" id="cstage"><img src="assets/glb/color_149U.jpg" id="ci_149U" class="on" alt="폴라 화이트" loading="eager"><img src="assets/glb/color_696U.jpg" id="ci_696U" class="" alt="미드나잇 블랙" loading="lazy"><img src="assets/glb/color_341U.jpg" id="ci_341U" class="" alt="아쿠아 민트" loading="lazy"><img src="assets/glb/color_191U.jpg" id="ci_191U" class="" alt="코스모스 블랙" loading="lazy"><img src="assets/glb/color_809U.jpg" id="ci_809U" class="" alt="클리어 블루" loading="lazy"><img src="assets/glb/color_922U.jpg" id="ci_922U" class="" alt="하이테크 실버" loading="lazy"><img src="assets/glb/color_956U.jpg" id="ci_956U" class="" alt="MANUFAKTUR 알파인 그레이" loading="lazy"><img src="assets/glb/color_957U.jpg" id="ci_957U" class="" alt="MANUFAKTUR 코스모스 블랙 마그노" loading="lazy"><img src="assets/glb/color_993U.jpg" id="ci_993U" class="" alt="MANUFAKTUR 파타고니아 레드" loading="lazy"></div>
+    <div class="cinfo"><div class="cc" id="ciCat">솔리드</div><div class="cn"><span id="ciName">폴라 화이트</span><small id="ciCode">149U</small></div></div></div>
+  <div class="color-chips"><button class="cchip active" data-code="149U" onclick="selColor('149U',this)"><span class="cdot light" style="background:#eceef0"></span><span class="cmeta"><span class="cname">폴라 화이트</span><span class="ccode">149U</span></span></button>
+<button class="cchip" data-code="696U" onclick="selColor('696U',this)"><span class="cdot" style="background:#131417"></span><span class="cmeta"><span class="cname">미드나잇 블랙</span><span class="ccode">696U</span></span></button>
+<button class="cchip" data-code="341U" onclick="selColor('341U',this)"><span class="cdot light" style="background:#cfd6d3"></span><span class="cmeta"><span class="cname">아쿠아 민트</span><span class="ccode">341U</span></span></button>
+<button class="cchip" data-code="191U" onclick="selColor('191U',this)"><span class="cdot" style="background:#1b1c20"></span><span class="cmeta"><span class="cname">코스모스 블랙</span><span class="ccode">191U</span></span></button>
+<button class="cchip" data-code="809U" onclick="selColor('809U',this)"><span class="cdot" style="background:#1f5f9e"></span><span class="cmeta"><span class="cname">클리어 블루</span><span class="ccode">809U</span></span></button>
+<button class="cchip" data-code="922U" onclick="selColor('922U',this)"><span class="cdot light" style="background:#c8cbcd"></span><span class="cmeta"><span class="cname">하이테크 실버</span><span class="ccode">922U</span></span></button>
+<button class="cchip" data-code="956U" onclick="selColor('956U',this)"><span class="cdot" style="background:#9a9c9a"></span><span class="cmeta"><span class="cname">MANUFAKTUR 알파인 그레이</span><span class="ccode">956U</span></span></button>
+<button class="cchip" data-code="957U" onclick="selColor('957U',this)"><span class="cdot" style="background:#232427"></span><span class="cmeta"><span class="cname">MANUFAKTUR 코스모스 블랙 마그노</span><span class="ccode">957U</span></span></button>
+<button class="cchip" data-code="993U" onclick="selColor('993U',this)"><span class="cdot" style="background:#8d2130"></span><span class="cmeta"><span class="cname">MANUFAKTUR 파타고니아 레드</span><span class="ccode">993U</span></span></button>
+</div>
+</div></section>
+
+<section id="wheel" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Wheels · 10</div><h2 class="stitle reveal">휠 디자인</h2>
+  <p class="sdesc reveal">10가지 휠 디자인이 제공되며, 각 디자인은 공기역학적으로 최적화되어 있습니다.</p>
+  <div class="grid-cards"><div class="gcard reveal" data-zoom="assets/glb/wheel_R19.jpg" data-cap="18″ 경량 휠 · 풀커버 휠 트림 (R19)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_R19.jpg" alt="18″ 경량 휠 · 풀커버 휠 트림"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">R19</div><div class="nm">18″ 경량 휠 · 풀커버 휠 트림</div><div class="ds">45.7cm · 고광택 블랙 + 바나듐 실버 탈착식 트림</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_83R.jpg" data-cap="18″ 5-트윈 스포크 경량 알로이 (83R)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_83R.jpg" alt="18″ 5-트윈 스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">83R</div><div class="nm">18″ 5-트윈 스포크 경량 알로이</div><div class="ds">45.7cm · 고광택 블랙 도장 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_28R.jpg" data-cap="19″ 멀티 스포크 경량 알로이 (28R)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_28R.jpg" alt="19″ 멀티 스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">28R</div><div class="nm">19″ 멀티 스포크 경량 알로이</div><div class="ds">48.3cm · 고광택 블랙 도장 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_49R.jpg" data-cap="19″ 5-스포크 경량 알로이 (49R)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_49R.jpg" alt="19″ 5-스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">49R</div><div class="nm">19″ 5-스포크 경량 알로이</div><div class="ds">48.3cm · 고광택 블랙 도장 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_RRD.jpg" data-cap="19″ AMG 5-스포크 경량 알로이 (RRD)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_RRD.jpg" alt="19″ AMG 5-스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">RRD</div><div class="nm">19″ AMG 5-스포크 경량 알로이</div><div class="ds">48.3cm · 탄탈룸 그레이 도장 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_RRE.jpg" data-cap="19″ AMG 5-스포크 경량 알로이 (RRE)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_RRE.jpg" alt="19″ AMG 5-스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">RRE</div><div class="nm">19″ AMG 5-스포크 경량 알로이</div><div class="ds">48.3cm · 고광택 블랙 도장 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_13R.jpg" data-cap="20″ 멀티 스포크 경량 알로이 (13R)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_13R.jpg" alt="20″ 멀티 스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">13R</div><div class="nm">20″ 멀티 스포크 경량 알로이</div><div class="ds">50.8cm · 고광택 블랙 도장 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_RRS.jpg" data-cap="20″ AMG 5-트윈 스포크 경량 알로이 (RRS)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_RRS.jpg" alt="20″ AMG 5-트윈 스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">RRS</div><div class="nm">20″ AMG 5-트윈 스포크 경량 알로이</div><div class="ds">50.8cm · 글로시 블랙 + 다크 플래티넘 · 틴티드 클리어코트</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_RVM.jpg" data-cap="20″ AMG 멀티 스포크 경량 알로이 (RVM)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_RVM.jpg" alt="20″ AMG 멀티 스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">RVM</div><div class="nm">20″ AMG 멀티 스포크 경량 알로이</div><div class="ds">50.8cm · 고광택 블랙 도장 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/wheel_RVN.jpg" data-cap="20″ AMG 멀티 스포크 경량 알로이 (RVN)">
+  <div class="im"><img loading="lazy" src="assets/glb/wheel_RVN.jpg" alt="20″ AMG 멀티 스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">RVN</div><div class="nm">20″ AMG 멀티 스포크 경량 알로이</div><div class="ds">50.8cm · 고광택 블랙 + 림 플랜지 고광택 마감</div></div></div></div>
+</div></section>
+
+<section id="interior"><div class="wrap">
+  <div class="eyebrow reveal">Upholstery · 12</div><h2 class="stitle reveal">시트 &amp; 내장 조합</h2>
+  <p class="sdesc reveal">MICROCUT 마이크로파이버와 ARTICO 인조 가죽 조합(부분 재활용 소재)부터 천연 가죽까지. 일부 옵션은 출시 시점에 따라 선택이 제한될 수 있습니다.</p>
+  <div class="grid-cards"><div class="gcard reveal" data-zoom="assets/glb/seat_301A.jpg" data-cap="ARTICO / Sortland 패브릭 · 블랙 (301A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_301A.jpg" alt="ARTICO / Sortland 패브릭 · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">301A</div><div class="nm">ARTICO / Sortland 패브릭 · 블랙</div><div class="ds">Progressive</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_101A.jpg" data-cap="ARTICO 인조 가죽 · 블랙 (101A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_101A.jpg" alt="ARTICO 인조 가죽 · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">101A</div><div class="nm">ARTICO 인조 가죽 · 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_105A.jpg" data-cap="ARTICO · 아이보리 베이지 / 블랙 (105A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_105A.jpg" alt="ARTICO · 아이보리 베이지 / 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">105A</div><div class="nm">ARTICO · 아이보리 베이지 / 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_201A.jpg" data-cap="가죽 · 블랙 (201A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_201A.jpg" alt="가죽 · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">201A</div><div class="nm">가죽 · 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_224A.jpg" data-cap="가죽 · 너도밤나무 브라운 / 블랙 (224A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_224A.jpg" alt="가죽 · 너도밤나무 브라운 / 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">224A</div><div class="nm">가죽 · 너도밤나무 브라운 / 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_651A.jpg" data-cap="ARTICO 나파룩 / MICROCUT · 블랙 (651A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_651A.jpg" alt="ARTICO 나파룩 / MICROCUT · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">651A</div><div class="nm">ARTICO 나파룩 / MICROCUT · 블랙</div><div class="ds">AMG 라인</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_681A.jpg" data-cap="ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄 (681A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_681A.jpg" alt="ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">681A</div><div class="nm">ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_151A.jpg" data-cap="ARTICO 나파룩 / MICROCUT · 블랙 / 파워 레드 (151A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_151A.jpg" alt="ARTICO 나파룩 / MICROCUT · 블랙 / 파워 레드"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">151A</div><div class="nm">ARTICO 나파룩 / MICROCUT · 블랙 / 파워 레드</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_211A.jpg" data-cap="가죽 · 블랙 (211A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_211A.jpg" alt="가죽 · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">211A</div><div class="nm">가죽 · 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_241A.jpg" data-cap="가죽 투톤 · 블랙 / 에너지 그린 (241A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_241A.jpg" alt="가죽 투톤 · 블랙 / 에너지 그린"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">241A</div><div class="nm">가죽 투톤 · 블랙 / 에너지 그린</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_234A.jpg" data-cap="가죽 · 너도밤나무 브라운 / 블랙 (234A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_234A.jpg" alt="가죽 · 너도밤나무 브라운 / 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">234A</div><div class="nm">가죽 · 너도밤나무 브라운 / 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/seat_661A.jpg" data-cap="ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄 (661A)">
+  <div class="im"><img loading="lazy" src="assets/glb/seat_661A.jpg" alt="ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">661A</div><div class="nm">ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄</div><div class="ds">나이트 에디션 (P19)</div></div></div></div>
+</div></section>
+
+<section id="trim" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Trim · 6</div><h2 class="stitle reveal">인테리어 트림</h2>
+  <p class="sdesc reveal">압도적인 크기의 센터 콘솔 트림. 컵홀더와 수납이 디자인에 매끄럽게 통합되어 있습니다.</p>
+  <div class="grid-cards"><div class="gcard reveal" data-zoom="assets/glb/trim_59H.jpg" data-cap="앤트러사이트 아노다이징 룩 (59H)">
+  <div class="im"><img loading="lazy" src="assets/glb/trim_59H.jpg" alt="앤트러사이트 아노다이징 룩"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">59H</div><div class="nm">앤트러사이트 아노다이징 룩</div><div class="ds">기본 트림</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/trim_H43.jpg" data-cap="라이트 카본 그레인 알루미늄 (H43)">
+  <div class="im"><img loading="lazy" src="assets/glb/trim_H43.jpg" alt="라이트 카본 그레인 알루미늄"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">H43</div><div class="nm">라이트 카본 그레인 알루미늄</div><div class="ds">AMG 라인</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/trim_42H.jpg" data-cap="라이트 브러시드 알루미늄 (42H)">
+  <div class="im"><img loading="lazy" src="assets/glb/trim_42H.jpg" alt="라이트 브러시드 알루미늄"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">42H</div><div class="nm">라이트 브러시드 알루미늄</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/trim_17H.jpg" data-cap="오픈포어 브라운 오크 · 쉽스덱 알루미늄 라인 (17H)">
+  <div class="im"><img loading="lazy" src="assets/glb/trim_17H.jpg" alt="오픈포어 브라운 오크 · 쉽스덱 알루미늄 라인"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">17H</div><div class="nm">오픈포어 브라운 오크 · 쉽스덱 알루미늄 라인</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/trim_18H.jpg" data-cap="오픈포어 그레이 버치 우드 (18H)">
+  <div class="im"><img loading="lazy" src="assets/glb/trim_18H.jpg" alt="오픈포어 그레이 버치 우드"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">18H</div><div class="nm">오픈포어 그레이 버치 우드</div></div></div>
+<div class="gcard reveal" data-zoom="assets/glb/trim_19H.jpg" data-cap="매트 화이트 천연섬유 사일런트 라인 (19H)">
+  <div class="im"><img loading="lazy" src="assets/glb/trim_19H.jpg" alt="매트 화이트 천연섬유 사일런트 라인"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">19H</div><div class="nm">매트 화이트 천연섬유 사일런트 라인</div></div></div></div>
+  
 </div></section>
 
 <section class="ctaband"><div class="cta-inner reveal">
   <img class="cta-ava" src="assets/glcev/profile.jpg" alt="한호만 팀장">
-  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">국내 사양·가격이 확정되면 가장 먼저 안내드립니다. BenzDream 한호만 팀장.</div></div>
+  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">원하시는 컬러·시트 조합을 미리 정리해 두면 사전예약 때 빠릅니다.</div></div>
+  <div class="cta-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="cta-b kk">카카오톡 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-b fm">출시 알림 신청</a></div>
+</div></section>
+
+<section id="package"><div class="wrap">
+  <div class="eyebrow reveal">Part 3 · Option Packages</div><h2 class="stitle reveal">옵션 구성 패키지</h2>
+  <p class="sdesc reveal">각 패키지는 하위 패키지를 모두 포함하며, 상위로 갈수록 사양이 누적됩니다. 국내 적용 구성은 출시 시 확정됩니다.</p>
+  <div class="pkg-grid"><div class="pkg lv1 reveal"><div class="pc">PDA</div><div class="pn">어드밴스드 패키지</div><div class="pb">디지털 서비스 포함 · 기본</div><ul><li>LED 고성능 헤드램프 + 어댑티브 하이빔 어시스트</li><li>미러 패키지</li><li>운전자 디스플레이(458) + 중앙 디스플레이(868)</li><li>자동 온도 조절 · 앞좌석 열선</li><li>디지털 서비스 기본 구성</li></ul></div><div class="pkg lv2 reveal"><div class="pc">PDB</div><div class="pn">어드밴스드 플러스 패키지</div><div class="pb">PDA 포함 + 추가</div><ul><li>앰비언트 라이트</li><li>키레스-고</li><li>2열 암레스트(400) · 컵홀더 2개 + 거치대</li><li>1열 무선 충전</li></ul></div><div class="pkg lv3 reveal"><div class="pc">PDC</div><div class="pn">프리미엄 패키지</div><div class="pb">PDB 포함 + 추가</div><ul><li>THERMOTRONIC 자동 온도 조절</li><li>KEYLESS-GO 컴포트 패키지</li><li>발광 도어 실 패널</li><li>메모리 패키지</li><li>MBUX 엔터테인먼트</li></ul></div><div class="pkg lv4 reveal"><div class="pc">PDD</div><div class="pn">프리미엄 플러스 패키지</div><div class="pb">PDC 포함 + 추가</div><ul><li>MULTIBEAM LED</li><li>Burmester® 서라운드 사운드(810)</li><li>헤드업 디스플레이</li><li>PRE-SAFE® 시스템</li></ul></div></div>
+</div></section>
+
+<section id="design" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Design Lines</div><h2 class="stitle reveal">디자인 라인 &amp; 패키지</h2>
+  <p class="sdesc reveal">Progressive와 AMG 라인, 그리고 나이트 에디션(P19)까지. 라인에 따라 시트·스티어링·트림·페달이 함께 달라집니다.</p>
+  <div class="eq-grid"><div class="eq-card reveal"><div class="eq-head"><span class="eq-ic">&#9678;</span><span class="eq-title">Progressive (P59)</span></div><ul class="eq-list"><li>컴포트 시트 (7U2) · ARTICO / Sortland 블랙 패브릭 (301A)</li><li>다기능 스포츠 스티어링 휠</li><li>앤트러사이트 아노다이징 룩 트림 (59H)</li><li>벨루어 플로어 매트 (U12) · 표준 페달</li></ul></div>
+ <div class="eq-card reveal"><div class="eq-head"><span class="eq-ic">&#9670;</span><span class="eq-title">AMG 라인 (950)</span></div><ul class="eq-list"><li>스포츠 시트 (7U4) · ARTICO 나파룩 / MICROCUT (651A)</li><li>가죽 다기능 스포츠 스티어링 휠 (L3E)</li><li>라이트 카본 그레인 알루미늄 트림 (H43)</li><li>AMG 스포츠 페달 시스템 · AMG 플로어 매트 (U26)</li></ul></div>
+ <div class="eq-card reveal"><div class="eq-head"><span class="eq-ic">&#10022;</span><span class="eq-title">AMG 라인 + 스포츠 시트 패키지 (949)</span></div><ul class="eq-list"><li>AMG 라인 구성 전체 포함</li><li>레드 컬러 대비 스티치 도어 패널</li><li>나파 가죽 스티어링 휠 (L5C)</li><li>MANUFAKTUR 레드 안전벨트 (Y05)</li></ul></div>
+ <div class="eq-card reveal"><div class="eq-head"><span class="eq-ic">&#9728;</span><span class="eq-title">나이트 에디션 (P19)</span></div><ul class="eq-list"><li>전용 MANUFAKTUR 코스모스 블랙 마그노 (957U) 선택 가능</li><li>전용 시트 조합 (661A)</li><li>블랙 하이라이트 익스테리어 요소</li><li>AMG 라인 플러스 (956) 확장 구성</li></ul></div></div>
+</div></section>
+
+<section class="ctaband"><div class="cta-inner reveal">
+  <img class="cta-ava" src="assets/glcev/profile.jpg" alt="한호만 팀장">
+  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">국내 사양·가격이 확정되면 가장 먼저 안내드립니다. 출시 알림을 신청해 두세요.</div></div>
   <div class="cta-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="cta-b kk">카카오톡 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-b fm">출시 알림 신청</a></div>
 </div></section>
 
@@ -374,17 +533,39 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
     <a class="co-card reveal d2" href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank"><div class="co-ic">&#128203;</div><div class="co-l">ALERT</div><div class="co-v">출시 알림 신청</div></a>
   </div>
   <div class="co-addr reveal">경기도 고양시 덕양구 의장로 110 모터원고양</div>
-  <div class="co-disc reveal">본 페이지는 BenzDream 한호만 팀장이 제작한 고객 안내 자료입니다. 글로벌 교육자료 기준 v1이며, 국내 출시 사양·가격·사전예약 정보는 확정 시 업데이트됩니다. 이미지·사양은 참고용으로 국내 출시 구성과 상이할 수 있습니다.</div>
+  <div class="co-disc reveal">본 페이지는 BenzDream 한호만 팀장이 제작한 고객 안내 자료입니다. 사양·컬러·옵션·제원은 제조사 공개 자료 기준으로, 국내 출시 사양 및 가격은 확정 시 업데이트됩니다. 이미지는 참고용이며 실제 차량과 다를 수 있습니다.</div>
 </div>
 <div class="backbtn"><a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_Landing.html">&#8592; 전체 어프로치북 목록 보기</a></div>
 </section>
 
-<a class="fab" href="http://pf.kakao.com/_UqxiIX/chat" target="_blank"><img src="assets/glcev/profile.jpg" alt="한호만 팀장"><div class="fb-t"><div class="fb-n">한호만 팀장</div><div class="fb-s">출시 알림 &rarr;</div></div></a>
+<a class="fab" href="http://pf.kakao.com/_UqxiIX/chat" target="_blank"><img src="assets/glcev/profile.jpg" alt="한호만 팀장"><div class="fb-t"><div class="fb-n">한호만 팀장</div><div class="fb-s">상담 &rarr;</div></div></a>
 <div class="wm">© BenzDream 한호만 팀장 · 모터원 고양</div>
 <div class="lb" id="lb"><span class="lb-x" id="lbx">&times;</span><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div><div class="lb-wm">© BenzDream 한호만 팀장 · 모터원 고양전시장</div></div>
 <script>
+const COLORS={
+  "149U":{name:"폴라 화이트",cat:"솔리드"},
+  "696U":{name:"미드나잇 블랙",cat:"솔리드"},
+  "341U":{name:"아쿠아 민트",cat:"솔리드"},
+  "191U":{name:"코스모스 블랙",cat:"메탈릭"},
+  "809U":{name:"클리어 블루",cat:"메탈릭"},
+  "922U":{name:"하이테크 실버",cat:"메탈릭"},
+  "956U":{name:"MANUFAKTUR 알파인 그레이",cat:"MANUFAKTUR 솔리드"},
+  "957U":{name:"MANUFAKTUR 코스모스 블랙 마그노",cat:"MANUFAKTUR · 나이트 에디션(P19) 전용"},
+  "993U":{name:"MANUFAKTUR 파타고니아 레드",cat:"MANUFAKTUR 메탈릭"}
+};
+const ORDER=['149U', '696U', '341U', '191U', '809U', '922U', '956U', '957U', '993U'];
+function selColor(code,el){
+  ORDER.forEach(c=>{const e=document.getElementById('ci_'+c); if(e) e.classList.remove('on');});
+  const t=document.getElementById('ci_'+code); if(t) t.classList.add('on');
+  const c=COLORS[code];
+  document.getElementById('ciName').textContent=c.name;document.getElementById('ciCode').textContent=code;document.getElementById('ciCat').textContent=c.cat;
+  document.querySelectorAll('.cchip').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+}
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function countUp(el){const t=+el.dataset.count,dur=1300,t0=performance.now();function s(x){let p=Math.min((x-t0)/dur,1);p=1-Math.pow(1-p,3);el.textContent=Math.round(t*p).toLocaleString();if(p<1)requestAnimationFrame(s);}requestAnimationFrame(s);}
+const io2=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){countUp(e.target);io2.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>io2.observe(el));
 const prog=document.getElementById('prog'),heroBg=document.getElementById('heroBg'),plx=document.querySelectorAll('[data-parallax]');
 function onScroll(){const y=window.scrollY,h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(y/h*100)+'%';if(heroBg)heroBg.style.transform='translateY('+(y*0.32)+'px) scale(1.05)';plx.forEach(p=>{const r=p.parentElement.getBoundingClientRect();const off=(r.top-innerHeight/2)*-0.08;p.style.transform='translateY('+off+'px) scale(1.12)';});}
 window.addEventListener('scroll',onScroll,{passive:true});onScroll();

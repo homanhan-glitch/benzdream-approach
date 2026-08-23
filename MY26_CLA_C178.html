@@ -286,86 +286,232 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 .faq-list .faq-a{padding:0 24px 22px;font-size:.9rem;color:var(--silver);line-height:1.85;}
 
 .notice{background:linear-gradient(90deg,rgba(47,184,166,.14),rgba(201,169,110,.06));border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.notice .wrap{padding:22px clamp(20px,5vw,60px);display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;text-align:center;}
-.notice .nb{font-size:.9rem;color:var(--light);} .notice .nb b{color:var(--teal);}
+.notice .wrap{padding:20px clamp(20px,5vw,60px);display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;text-align:center;}
+.notice .nb{font-size:.88rem;color:var(--light);} .notice .nb b{color:var(--teal);}
 .notice .ntag{font-size:.72rem;color:var(--teal);border:1px solid var(--teal-d);border-radius:20px;padding:5px 14px;}
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin-top:18px;}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .35s,border-color .35s;cursor:zoom-in;}
+.gcard:hover{transform:translateY(-5px);border-color:rgba(47,184,166,.4);}
+.gcard .im{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#20242b,#0c0d10);}
+.gcard .im img{width:100%;display:block;transition:transform .6s;}
+.gcard:hover .im img{transform:scale(1.05);}
+.gcard .bd{padding:12px 14px 15px;}
+.gcard .cd{font-family:monospace;font-size:.7rem;color:var(--gold);letter-spacing:.5px;}
+.gcard .nm{font-size:.85rem;color:#fff;margin-top:3px;line-height:1.35;}
+.gcard .ds{font-size:.74rem;color:var(--silver);margin-top:5px;line-height:1.5;}
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px;margin-top:20px;}
+.pkg{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;position:relative;}
+.pkg.lv1{border-top:3px solid var(--silver);} .pkg.lv2{border-top:3px solid var(--teal);} .pkg.lv3{border-top:3px solid var(--gold);} .pkg.lv4{border-top:3px solid #c0392b;}
+.pkg .pc{font-family:monospace;font-size:.72rem;color:var(--gold);} .pkg .pn{font-family:'MBK CorpoA Cond',serif;font-size:1.25rem;color:#fff;margin:4px 0 6px;}
+.pkg .pb{font-size:.74rem;color:var(--teal);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+.pkg ul{list-style:none;display:grid;gap:7px;} .pkg li{position:relative;padding-left:16px;font-size:.8rem;color:var(--light);line-height:1.5;}
+.pkg li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--teal);}
+.lineup2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:20px;}
+.lc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;}
+.lc.a{border-top:3px solid var(--teal);} .lc.b{border-top:3px solid var(--gold);}
+.lc .ln{font-family:'MBK CorpoA Cond',serif;font-size:1.35rem;color:#fff;} .lc .lt{font-size:.75rem;color:var(--teal);margin-top:4px;}
+.lc .lr{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;padding:9px 0;border-bottom:1px solid var(--line);}
+.lc .lr span:first-child{color:var(--silver);} .lc .lr span:last-child{color:#fff;font-weight:500;text-align:right;}
 </style></head><body>
 <div class="progress" id="prog"></div>
 <nav class="nav">
   <div class="nav-brand">BENZ<b>DREAM</b> · CLA <small>· 한호만 팀장</small></div>
-  <div class="nav-links"><a href="#highlights">하이라이트</a><a href="#exterior">익스테리어</a><a href="#interior">인테리어</a><a href="#gallery">갤러리</a></div>
+  <div class="nav-links"><a href="#highlights">하이라이트</a><a href="#powertrain">파워트레인</a><a href="#spec">제원</a><a href="#color">컬러</a><a href="#wheel">휠</a><a href="#interior">시트</a><a href="#package">패키지</a></div>
   <a href="#contact" class="nav-cta">출시 알림 · 상담</a>
 </nav>
 <header class="hero">
   <div class="hero-bg" id="heroBg" style="background-image:url('assets/cla/cla_hero.jpg');"></div><div class="hero-scrim"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Mercedes-Benz · The all-new CLA · C178 / C174</div>
+    <div class="hero-eyebrow">Mercedes-Benz · The all-new CLA · C174 / C178</div>
     <h1 class="hero-h1">The all-new<br><span>CLA</span></h1>
-    <p class="hero-sub">신형 CLA · 일렉트릭 & 마일드 하이브리드 · MMA 플랫폼</p>
+    <p class="hero-sub">MMA 전용 플랫폼 · 일렉트릭 & 48V 마일드 하이브리드</p>
     <div class="hero-by">BenzDream 한호만 팀장 · 벤츠 유튜브 구독자 2.2만 · 모터원 고양전시장</div>
     <div class="hero-tags"><span class="htag fill">국내 출시 준비 중</span><span class="htag out">사전예약 오픈 시 업데이트</span></div>
   </div>
 </header>
-<section class="notice"><div class="wrap"><span class="ntag">PRE-LAUNCH · v1</span><span class="nb">본 페이지는 <b>글로벌 교육자료 기준</b>으로 먼저 구성한 v1입니다. <b>국내 사양·가격·사전예약 일정</b>은 확정되는 대로 업데이트됩니다.</span></div></section>
+<section class="notice"><div class="wrap"><span class="ntag">PRE-LAUNCH</span><span class="nb">아래 사양·구성은 <b>제조사 공개 기준</b>입니다. <b>국내 출시 사양·가격·사전예약 일정</b>은 확정되는 대로 이 페이지에서 업데이트됩니다.</span></div></section>
 
-<section class="advisory">
-  <div class="adv-card reveal">
-    <div class="adv-photo"><img src="assets/glcev/profile_card.jpg" alt="BenzDream 한호만 팀장"><div class="adv-plabel"><div class="b">BENZDREAM</div><div class="n">한호만 팀장</div></div></div>
-    <div class="adv-body">
-      <div class="adv-eyebrow">Strategic Pre-Order Advisory</div>
-      <div class="adv-title">CLA, <b>내연과 전기 사이</b> 최적의 선택을 함께 찾습니다.</div>
-      <div class="adv-desc">출시 전부터 사양·구성·사전예약 전략까지, 고객 관점의 가장 합리적인 선택을 미리 준비해 드립니다. 출시 알림을 신청해 두시면 오픈 즉시 안내드립니다.</div>
-      <div class="adv-stats">
-        <div class="adv-stat"><div class="v">매월</div><div class="l">구매 전략 리포트</div></div>
-        <div class="adv-stat"><div class="v">2.2만+</div><div class="l">벤츠 유튜브 No.1</div></div>
-        <div class="adv-stat"><div class="v">1:1</div><div class="l">전략 컨설팅</div></div>
-      </div>
-      <div class="adv-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="adv-b primary">출시 · 사전예약 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="adv-b ghost">출시 알림 신청</a></div>
-    </div>
-  </div>
-</section>
+<section class="advisory"><div class="adv-card reveal">
+  <div class="adv-photo"><img src="assets/glcev/profile_card.jpg" alt="BenzDream 한호만 팀장"><div class="adv-plabel"><div class="b">BENZDREAM</div><div class="n">한호만 팀장</div></div></div>
+  <div class="adv-body">
+    <div class="adv-eyebrow">Strategic Pre-Order Advisory</div>
+    <div class="adv-title">CLA, <b>전기와 내연</b> 사이 최적의 구성을 찾아드립니다.</div>
+    <div class="adv-desc">색상 조합부터 패키지 선택, 사전예약 순번 전략까지. 출시 전부터 준비하면 원하는 사양을 가장 빠르게 받으실 수 있습니다.</div>
+    <div class="adv-stats"><div class="adv-stat"><div class="v">매월</div><div class="l">구매 전략 리포트</div></div><div class="adv-stat"><div class="v">2.2만+</div><div class="l">벤츠 유튜브 No.1</div></div><div class="adv-stat"><div class="v">1:1</div><div class="l">전략 컨설팅</div></div></div>
+    <div class="adv-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="adv-b primary">사전예약 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="adv-b ghost">출시 알림 신청</a></div>
+  </div></div></section>
+
+<section class="statband"><div class="stat-grid"><div class="stat"><div class="stat-num" data-count=792>0</div><div class="stat-lab">최대 주행거리 (km·WLTP)</div></div><div class="stat"><div class="stat-num" data-count=320>0</div><div class="stat-lab">최대 충전 출력 (kW)</div></div><div class="stat"><div class="stat-num" data-count=354>0</div><div class="stat-lab">최고출력 (hp·350 4MATIC)</div></div><div class="stat"><div class="stat-num" data-count=800>0</div><div class="stat-lab">시스템 전압 (V)</div></div></div></section>
 
 <section id="highlights"><div class="wrap">
-  <div class="eyebrow reveal">Highlights</div><h2 class="stitle reveal">세대를 바꾼 컴팩트의 기준</h2>
-  <p class="sdesc reveal">MMA 전용 플랫폼 위에 태어난 3세대 CLA. 일렉트릭과 마일드 하이브리드 두 파워트레인, 그리고 필러를 가로지르는 MBUX 슈퍼스크린으로 컴팩트 세단의 기준을 다시 씁니다. (사양은 글로벌 기준)</p>
-  <div class="hl-grid"><div class="hl-card reveal"><div class="hl-fig">MMA</div><div class="hl-t">전용 플랫폼</div><div class="hl-d">전기·내연 아우르는 차세대 아키텍처</div></div><div class="hl-card reveal"><div class="hl-fig">EQ</div><div class="hl-t">일렉트릭 CLA</div><div class="hl-d">장거리를 겨냥한 전기 세단</div></div><div class="hl-card reveal"><div class="hl-fig">48V</div><div class="hl-t">마일드 하이브리드</div><div class="hl-d">효율과 정숙성을 더한 내연 모델</div></div><div class="hl-card reveal"><div class="hl-fig">MBUX</div><div class="hl-t">슈퍼스크린</div><div class="hl-d">필러 투 필러 대형 디스플레이</div></div><div class="hl-card reveal"><div class="hl-fig">MB.OS</div><div class="hl-t">최신 인포테인먼트</div><div class="hl-d">OTA로 계속 좋아지는 시스템</div></div><div class="hl-card reveal"><div class="hl-fig">Cd</div><div class="hl-t">낮은 공기저항</div><div class="hl-d">효율을 끌어올린 유려한 실루엣</div></div></div>
+  <div class="eyebrow reveal">Part 1 · Highlights</div><h2 class="stitle reveal">세대를 바꾼 컴팩트의 기준</h2>
+  <p class="sdesc reveal">VISION EQXX의 혁신을 담은 MMA 아키텍처 위에 태어난 3세대 CLA. 800V 전기 구동계와 2단 기어박스, MB.OS 슈퍼컴퓨터, 그리고 필러를 가로지르는 MBUX 슈퍼스크린이 컴팩트의 기준을 다시 씁니다.</p>
+  <div class="hl-grid"><div class="hl-card reveal"><div class="hl-fig">792</div><div class="hl-t">km 주행거리</div><div class="hl-d">WLTP · CLA 250+ electric</div></div><div class="hl-card reveal"><div class="hl-fig">320kW</div><div class="hl-t">800V 초급속 충전</div><div class="hl-d">10분 충전 시 최대 300km</div></div><div class="hl-card reveal"><div class="hl-fig">2단</div><div class="hl-t">eATS 기어박스</div><div class="hl-d">고속 효율까지 잡은 전기 구동계</div></div><div class="hl-card reveal"><div class="hl-fig">MB.OS</div><div class="hl-t">슈퍼컴퓨터</div><div class="hl-d">OTA · AI 버추얼 어시스턴트</div></div><div class="hl-card reveal"><div class="hl-fig">MBUX</div><div class="hl-t">슈퍼스크린</div><div class="hl-d">대시보드를 가로지르는 최대 3개 디스플레이</div></div><div class="hl-card reveal"><div class="hl-fig">48V</div><div class="hl-t">마일드 하이브리드</div><div class="hl-d">M252 1.5L + 최대 22kW 부스트</div></div></div>
 </div></section>
 
-<section id="exterior"></section>
 <section class="showcase">
   <div class="showcase-bg" data-parallax style="background-image:url('assets/cla/cla_black.jpg');background-color:#0a0a0a;"></div>
-  <div class="showcase-scrim 스타 패턴 그릴과 매끈한 4도어 쿠페 실루엣. 3세대 CLA는 한눈에 알아볼 수 있는 존재감을 갖췄습니다."></div>
-  <div class="showcase-txt reveal"><div class="eyebrow">Exterior</div><h2>새로운 얼굴,<br>완성된 비율</h2><p>sc-left</p></div>
-  <div class="sc-wm">BenzDream · 한호만</div>
-</section>
+  <div class="showcase-scrim 일루미네이티드 Mercedes-Benz 스타 패턴 패널(4B7)과 부분 조명 스타(3K0). MULTIBEAM LED(642)와 어댑티브 하이빔 어시스트 플러스(628)가 야간 주행을 밝힙니다."></div>
+  <div class="showcase-txt reveal"><div class="eyebrow">Exterior</div><h2>스타 패턴이 빛나는<br>새로운 얼굴</h2><p>sc-left</p></div>
+  <div class="sc-wm">BenzDream · 한호만</div></section>
 <section class="showcase">
   <div class="showcase-bg" data-parallax style="background-image:url('assets/cla/cla_int.jpg');background-color:#0a0a0a;"></div>
-  <div class="showcase-scrim 대시보드를 가로지르는 MBUX 슈퍼스크린과 앰비언트 라이트. 컴팩트 세그먼트를 뛰어넘는 디지털 경험을 제공합니다."></div>
-  <div class="showcase-txt reveal"><div class="eyebrow">Interior · MBUX</div><h2>운전석을 감싸는<br>슈퍼스크린</h2><p>sc-left</p></div>
-  <div class="sc-wm">BenzDream · 한호만</div>
-</section>
+  <div class="showcase-scrim MBUX 슈퍼스크린(860)은 운전자 디스플레이(458)와 중앙 미디어 디스플레이(868)를 하나의 면으로 잇습니다. AI 기반 MBUX 버추얼 어시스턴트가 아바타로 응답합니다."></div>
+  <div class="showcase-txt reveal"><div class="eyebrow">Interior · MBUX</div><h2>대시보드를 가로지르는<br>MBUX 슈퍼스크린</h2><p>sc-left</p></div>
+  <div class="sc-wm">BenzDream · 한호만</div></section>
 <section class="showcase">
   <div class="showcase-bg" data-parallax style="background-image:url('assets/cla/cla_drivetrain.jpg');background-color:#0a0a0a;"></div>
-  <div class="showcase-scrim 고효율 전동화 구동계로 장거리 주행을 겨냥한 일렉트릭 CLA. 국내 배터리·주행거리 사양은 확정 시 안내드립니다."></div>
-  <div class="showcase-txt reveal"><div class="eyebrow">Electric CLA</div><h2>전기로 더 멀리</h2><p>sc-dark</p></div>
-  <div class="sc-wm">BenzDream · 한호만</div>
-</section>
+  <div class="showcase-scrim 영구자석 동기모터(PSM)와 2단 기어박스, 파워일렉트로닉스가 후륜 차축에 eATS를 구성합니다. 165~260kW 출력 범위, NCM 배터리는 차량 바닥에 배치돼 낮은 무게중심을 만듭니다."></div>
+  <div class="showcase-txt reveal"><div class="eyebrow">eATS · Electric Drive</div><h2>후륜에 집약된<br>차세대 전기 구동계</h2><p>sc-dark</p></div>
+  <div class="sc-wm">BenzDream · 한호만</div></section>
 
 <section class="ctaband"><div class="cta-inner reveal">
   <img class="cta-ava" src="assets/glcev/profile.jpg" alt="한호만 팀장">
-  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">CLA, 전기와 내연 중 무엇이 맞을지 지금부터 함께 준비해요. 출시 알림을 신청하세요.</div></div>
+  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">CLA, 전기와 내연 중 어떤 구성이 맞을지 지금부터 함께 준비해요.</div></div>
   <div class="cta-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="cta-b kk">카카오톡 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-b fm">출시 알림 신청</a></div>
 </div></section>
 
-<section id="gallery" style="background:var(--bg2)"><div class="wrap">
-  <div class="eyebrow reveal">Gallery</div><h2 class="stitle reveal">CLA 갤러리</h2>
-  <p class="sdesc reveal" style="margin-bottom:24px;">이미지를 누르면 크게 볼 수 있습니다. (글로벌 사양 기준 · 국내 사양과 상이할 수 있음)</p>
-  <div class="gstrip"><div class="gtile reveal" data-zoom="assets/cla/cla_white.jpg" data-cap="CLA · 화이트"><img loading="lazy" src="assets/cla/cla_white.jpg" alt="CLA · 화이트"><span class="zoomhint">&#9974;</span><div class="gtile-cap">CLA · 화이트</div></div><div class="gtile reveal d1" data-zoom="assets/cla/cla_side.jpg" data-cap="일렉트릭 CLA · 측면"><img loading="lazy" src="assets/cla/cla_side.jpg" alt="일렉트릭 CLA · 측면"><span class="zoomhint">&#9974;</span><div class="gtile-cap">일렉트릭 CLA · 측면</div></div><div class="gtile reveal d2" data-zoom="assets/cla/cla_city.jpg" data-cap="CLA · 시티 드라이브"><img loading="lazy" src="assets/cla/cla_city.jpg" alt="CLA · 시티 드라이브"><span class="zoomhint">&#9974;</span><div class="gtile-cap">CLA · 시티 드라이브</div></div></div>
+<section id="powertrain" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Part 2 · Powertrain &amp; Line-up</div><h2 class="stitle reveal">두 개의 심장, 하나의 CLA</h2>
+  <p class="sdesc reveal">일렉트릭 CLA는 85.5kWh NCM 배터리와 800V 아키텍처를, 내연 CLA는 1.5L M252 엔진에 48V 마일드 하이브리드를 조합합니다. (제조사 공개 기준)</p>
+  <div class="lineup2"><div class="lc a reveal"><div class="ln">CLA 250+ electric</div><div class="lt">일렉트릭 · 후륜</div><div style="margin-top:12px"><div class="lr"><span>최고출력</span><span>200 kW (272 hp)</span></div><div class="lr"><span>최대토크</span><span>335 Nm</span></div><div class="lr"><span>배터리</span><span>85.5 kWh · NCM</span></div><div class="lr"><span>주행거리</span><span>최대 792 km (WLTP)</span></div><div class="lr"><span>전비</span><span>14.1–12.2 kWh/100km</span></div></div></div><div class="lc a reveal"><div class="ln">CLA 350 4MATIC electric</div><div class="lt">일렉트릭 · 4MATIC</div><div style="margin-top:12px"><div class="lr"><span>최고출력</span><span>260 kW (354 hp)</span></div><div class="lr"><span>최대토크</span><span>515 Nm</span></div><div class="lr"><span>배터리</span><span>85.5 kWh · NCM</span></div><div class="lr"><span>주행거리</span><span>최대 771 km (WLTP)</span></div><div class="lr"><span>전비</span><span>14.7–12.5 kWh/100km</span></div></div></div><div class="lc b reveal"><div class="ln">CLA with MHEV</div><div class="lt">내연 · 48V 마일드 하이브리드</div><div style="margin-top:12px"><div class="lr"><span>엔진</span><span>1.5L 4기통 M252 (FAME)</span></div><div class="lr"><span>출력 범위</span><span>100 / 120 / 140 kW</span></div><div class="lr"><span>전기 부스트</span><span>최대 22 kW</span></div><div class="lr"><span>48V 배터리</span><span>최대 1.3 kWh</span></div><div class="lr"><span>세일링</span><span>최대 약 110 km/h 전기 주행</span></div></div></div></div>
+</div></section>
+
+<section id="spec"><div class="wrap">
+  <div class="eyebrow reveal">Specification</div><h2 class="stitle reveal">상세 제원</h2>
+  <p class="sdesc reveal" style="margin-bottom:26px;">제조사 공개 제원 기준입니다. 국내 인증 수치는 출시 시 확정되며, 확정되는 대로 업데이트됩니다.</p>
+  <div class="tablewrap reveal"><table class="tbl"><tr><th>항목</th><th>CLA 250+ electric</th><th>CLA 350 4MATIC electric</th></tr><tr class="spec-group"><td colspan="3">파워트레인</td></tr><tr class="reveal"><td class="spec-k">구동 방식</td><td class="spec-v">후륜 구동</td><td class="spec-v">4MATIC 사륜 구동</td></tr><tr class="reveal"><td class="spec-k">모터</td><td class="spec-v">영구자석 동기모터 (PSM)</td><td class="spec-v">영구자석 동기모터 (PSM)</td></tr><tr class="reveal"><td class="spec-k">기어박스</td><td class="spec-v">2단 (2-Stage)</td><td class="spec-v">2단 (2-Stage)</td></tr><tr class="reveal"><td class="spec-k">최고출력</td><td class="spec-v">200 kW (272 hp)</td><td class="spec-v">260 kW (354 hp)</td></tr><tr class="reveal"><td class="spec-k">최대토크</td><td class="spec-v">335 Nm</td><td class="spec-v">515 Nm</td></tr><tr class="spec-group"><td colspan="3">배터리 · 충전</td></tr><tr class="reveal"><td class="spec-k">배터리 용량</td><td class="spec-v">85.5 kWh</td><td class="spec-v">85.5 kWh</td></tr><tr class="reveal"><td class="spec-k">셀 화학</td><td class="spec-v">NCM (니켈-코발트-망간)</td><td class="spec-v">NCM</td></tr><tr class="reveal"><td class="spec-k">시스템 전압</td><td class="spec-v">800V</td><td class="spec-v">800V</td></tr><tr class="reveal"><td class="spec-k">최대 DC 충전</td><td class="spec-v">320 kW</td><td class="spec-v">320 kW</td></tr><tr class="reveal"><td class="spec-k">10분 충전</td><td class="spec-v">최대 약 300 km (WLTP)</td><td class="spec-v">최대 약 300 km (WLTP)</td></tr><tr class="reveal"><td class="spec-k">AC 완속</td><td class="spec-v">최대 11 kW (OneBox)</td><td class="spec-v">최대 11 kW (OneBox)</td></tr><tr class="spec-group"><td colspan="3">효율 · 주행거리</td></tr><tr class="reveal"><td class="spec-k">WLTP 주행거리</td><td class="spec-v">최대 792 km</td><td class="spec-v">최대 771 km</td></tr><tr class="reveal"><td class="spec-k">전비 (WLTP)</td><td class="spec-v">14.1 – 12.2 kWh/100km</td><td class="spec-v">14.7 – 12.5 kWh/100km</td></tr><tr class="reveal"><td class="spec-k">회생제동</td><td class="spec-v">4단계 (D Auto / D / D- / D+)</td><td class="spec-v">4단계 (D Auto / D / D- / D+)</td></tr></table></div>
+</div></section>
+
+<section id="color"><div class="wrap">
+  <div class="eyebrow reveal">Exterior Colours · 6</div><h2 class="stitle reveal">익스테리어 컬러</h2>
+  <p class="sdesc reveal" style="margin-bottom:26px;">우아한 솔리드 컬러, 고광택 메탈릭, 그리고 정교한 MANUFAKTUR 컬러. 컬러를 눌러 실차 이미지를 비교해 보세요. (국내 도입 컬러는 출시 시 확정)</p>
+  <div class="color-stage reveal"><div class="cstage-img" id="cstage"><img src="assets/cla/color_149U.jpg" id="ci_149U" class="on" alt="폴라 화이트" loading="eager"><img src="assets/cla/color_696U.jpg" id="ci_696U" class="" alt="나이트 블랙" loading="lazy"><img src="assets/cla/color_191U.jpg" id="ci_191U" class="" alt="코스모스 블랙" loading="lazy"><img src="assets/cla/color_809U.jpg" id="ci_809U" class="" alt="클리어 블루" loading="lazy"><img src="assets/cla/color_956U.jpg" id="ci_956U" class="" alt="MANUFAKTUR 알파인 그레이" loading="lazy"><img src="assets/cla/color_993U.jpg" id="ci_993U" class="" alt="MANUFAKTUR 파타고니아 레드" loading="lazy"></div>
+    <div class="cinfo"><div class="cc" id="ciCat">솔리드</div><div class="cn"><span id="ciName">폴라 화이트</span><small id="ciCode">149U</small></div></div></div>
+  <div class="color-chips"><button class="cchip active" data-code="149U" onclick="selColor('149U',this)"><span class="cdot light" style="background:#eceef0"></span><span class="cmeta"><span class="cname">폴라 화이트</span><span class="ccode">149U</span></span></button>
+<button class="cchip" data-code="696U" onclick="selColor('696U',this)"><span class="cdot" style="background:#111214"></span><span class="cmeta"><span class="cname">나이트 블랙</span><span class="ccode">696U</span></span></button>
+<button class="cchip" data-code="191U" onclick="selColor('191U',this)"><span class="cdot" style="background:#1b1c20"></span><span class="cmeta"><span class="cname">코스모스 블랙</span><span class="ccode">191U</span></span></button>
+<button class="cchip" data-code="809U" onclick="selColor('809U',this)"><span class="cdot" style="background:#1f5f9e"></span><span class="cmeta"><span class="cname">클리어 블루</span><span class="ccode">809U</span></span></button>
+<button class="cchip" data-code="956U" onclick="selColor('956U',this)"><span class="cdot" style="background:#9a9c9a"></span><span class="cmeta"><span class="cname">MANUFAKTUR 알파인 그레이</span><span class="ccode">956U</span></span></button>
+<button class="cchip" data-code="993U" onclick="selColor('993U',this)"><span class="cdot" style="background:#8d2130"></span><span class="cmeta"><span class="cname">MANUFAKTUR 파타고니아 레드</span><span class="ccode">993U</span></span></button>
+</div>
+</div></section>
+
+<section id="wheel" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Wheels · 6</div><h2 class="stitle reveal">휠 디자인</h2>
+  <p class="sdesc reveal">6가지 휠 디자인이 제공되며, 모두 공기역학적으로 최적화되어 주행거리에 기여합니다.</p>
+  <div class="grid-cards"><div class="gcard reveal" data-zoom="assets/cla/wheel_R32.jpg" data-cap="18″ 5-스포크 알로이 휠 (R32)">
+  <div class="im"><img loading="lazy" src="assets/cla/wheel_R32.jpg" alt="18″ 5-스포크 알로이 휠"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">R32</div><div class="nm">18″ 5-스포크 알로이 휠</div><div class="ds">45.7cm · 고광택 블랙 페인트 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/wheel_R87.jpg" data-cap="18″ 5-트윈 스포크 알로이 휠 (R87)">
+  <div class="im"><img loading="lazy" src="assets/cla/wheel_R87.jpg" alt="18″ 5-트윈 스포크 알로이 휠"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">R87</div><div class="nm">18″ 5-트윈 스포크 알로이 휠</div><div class="ds">45.7cm · 고광택 블랙 페인트 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/wheel_RQJ.jpg" data-cap="18″ AMG 5-스포크 경량 알로이 (RQJ)">
+  <div class="im"><img loading="lazy" src="assets/cla/wheel_RQJ.jpg" alt="18″ AMG 5-스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">RQJ</div><div class="nm">18″ AMG 5-스포크 경량 알로이</div><div class="ds">45.7cm · 탄탈룸 그레이 (블랙 변경 시 RQK)</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/wheel_R82.jpg" data-cap="19″ 5-스포크 경량 알로이 휠 (R82)">
+  <div class="im"><img loading="lazy" src="assets/cla/wheel_R82.jpg" alt="19″ 5-스포크 경량 알로이 휠"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">R82</div><div class="nm">19″ 5-스포크 경량 알로이 휠</div><div class="ds">48.3cm · 고광택 블랙 페인트 + 고광택 마감</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/wheel_RRD.jpg" data-cap="19″ AMG 5-트윈 스포크 경량 알로이 (RRD)">
+  <div class="im"><img loading="lazy" src="assets/cla/wheel_RRD.jpg" alt="19″ AMG 5-트윈 스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">RRD</div><div class="nm">19″ AMG 5-트윈 스포크 경량 알로이</div><div class="ds">48.3cm · 고광택 블랙 (림 플랜지 마감 RRE)</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/wheel_RRF.jpg" data-cap="19″ AMG 멀티 스포크 경량 알로이 (RRF)">
+  <div class="im"><img loading="lazy" src="assets/cla/wheel_RRF.jpg" alt="19″ AMG 멀티 스포크 경량 알로이"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">RRF</div><div class="nm">19″ AMG 멀티 스포크 경량 알로이</div><div class="ds">48.3cm · 고광택 블랙 + 다크 플래티넘 · 틴트 클리어코트</div></div></div></div>
+</div></section>
+
+<section id="interior"><div class="wrap">
+  <div class="eyebrow reveal">Upholstery · 11</div><h2 class="stitle reveal">시트 &amp; 내장 조합</h2>
+  <p class="sdesc reveal">ARTICO 인조 가죽, MICROCUT 마이크로파이버, 그리고 천연 가죽의 조합. PROGRESSIVE(P59)와 AMG 라인(950)에 따라 선택 범위가 달라집니다.</p>
+  <div class="grid-cards"><div class="gcard reveal" data-zoom="assets/cla/seat_301A.jpg" data-cap="ARTICO 인조 가죽 / Sortland 패브릭 · 블랙 (301A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_301A.jpg" alt="ARTICO 인조 가죽 / Sortland 패브릭 · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">301A</div><div class="nm">ARTICO 인조 가죽 / Sortland 패브릭 · 블랙</div><div class="ds">PROGRESSIVE (P59)</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_101A.jpg" data-cap="ARTICO 인조 가죽 · 블랙 (101A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_101A.jpg" alt="ARTICO 인조 가죽 · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">101A</div><div class="nm">ARTICO 인조 가죽 · 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_105A.jpg" data-cap="ARTICO 인조 가죽 · 아이보리 베이지 / 블랙 (105A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_105A.jpg" alt="ARTICO 인조 가죽 · 아이보리 베이지 / 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">105A</div><div class="nm">ARTICO 인조 가죽 · 아이보리 베이지 / 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_201A.jpg" data-cap="가죽 · 블랙 (201A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_201A.jpg" alt="가죽 · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">201A</div><div class="nm">가죽 · 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_224A.jpg" data-cap="가죽 · 비치 브라운 / 블랙 (224A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_224A.jpg" alt="가죽 · 비치 브라운 / 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">224A</div><div class="nm">가죽 · 비치 브라운 / 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_211A.jpg" data-cap="가죽 · 블랙 (211A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_211A.jpg" alt="가죽 · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">211A</div><div class="nm">가죽 · 블랙</div><div class="ds">AMG 라인 (950)</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_234A.jpg" data-cap="가죽 · 비치 브라운 / 블랙 (234A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_234A.jpg" alt="가죽 · 비치 브라운 / 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">234A</div><div class="nm">가죽 · 비치 브라운 / 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_241A.jpg" data-cap="가죽 투톤 · 블랙 / 에너지 그린 (241A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_241A.jpg" alt="가죽 투톤 · 블랙 / 에너지 그린"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">241A</div><div class="nm">가죽 투톤 · 블랙 / 에너지 그린</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_151A.jpg" data-cap="ARTICO 나파룩 / MICROCUT · 블랙 / 파워 레드 (151A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_151A.jpg" alt="ARTICO 나파룩 / MICROCUT · 블랙 / 파워 레드"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">151A</div><div class="nm">ARTICO 나파룩 / MICROCUT · 블랙 / 파워 레드</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_651A.jpg" data-cap="ARTICO 나파룩 / MICROCUT · 블랙 (651A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_651A.jpg" alt="ARTICO 나파룩 / MICROCUT · 블랙"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">651A</div><div class="nm">ARTICO 나파룩 / MICROCUT · 블랙</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/seat_681A.jpg" data-cap="ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄 (681A)">
+  <div class="im"><img loading="lazy" src="assets/cla/seat_681A.jpg" alt="ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">681A</div><div class="nm">ARTICO 나파룩 / MICROCUT 투톤 · 블랙 / 클린 화이트 펄</div></div></div></div>
+</div></section>
+
+<section id="trim" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Trim · 6</div><h2 class="stitle reveal">인테리어 트림</h2>
+  <p class="sdesc reveal">트림은 인테리어에 개성을 더합니다. 6가지 트림 요소가 제공됩니다.</p>
+  <div class="grid-cards"><div class="gcard reveal" data-zoom="assets/cla/trim_59H.jpg" data-cap="앤트러사이트 아노다이즈드 룩 (59H)">
+  <div class="im"><img loading="lazy" src="assets/cla/trim_59H.jpg" alt="앤트러사이트 아노다이즈드 룩"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">59H</div><div class="nm">앤트러사이트 아노다이즈드 룩</div><div class="ds">PROGRESSIVE 기본</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/trim_H43.jpg" data-cap="라이트 카본-그레인 알루미늄 (H43)">
+  <div class="im"><img loading="lazy" src="assets/cla/trim_H43.jpg" alt="라이트 카본-그레인 알루미늄"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">H43</div><div class="nm">라이트 카본-그레인 알루미늄</div><div class="ds">AMG 라인 기본</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/trim_42H.jpg" data-cap="라이트 브러시드 알루미늄 (42H)">
+  <div class="im"><img loading="lazy" src="assets/cla/trim_42H.jpg" alt="라이트 브러시드 알루미늄"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">42H</div><div class="nm">라이트 브러시드 알루미늄</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/trim_17H.jpg" data-cap="오픈포어 브라운 오크 · 알루미늄 라인 (17H)">
+  <div class="im"><img loading="lazy" src="assets/cla/trim_17H.jpg" alt="오픈포어 브라운 오크 · 알루미늄 라인"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">17H</div><div class="nm">오픈포어 브라운 오크 · 알루미늄 라인</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/trim_18H.jpg" data-cap="오픈포어 그레이 자작나무 (18H)">
+  <div class="im"><img loading="lazy" src="assets/cla/trim_18H.jpg" alt="오픈포어 그레이 자작나무"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">18H</div><div class="nm">오픈포어 그레이 자작나무</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/trim_19H.jpg" data-cap="무광 화이트 천연섬유 사일런트 라인 (19H)">
+  <div class="im"><img loading="lazy" src="assets/cla/trim_19H.jpg" alt="무광 화이트 천연섬유 사일런트 라인"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">19H</div><div class="nm">무광 화이트 천연섬유 사일런트 라인</div></div></div></div>
+  <div class="seat-block-label reveal" style="margin-top:34px;">스티어링 휠 2종</div>
+ <div class="grid-cards"><div class="gcard reveal" data-zoom="assets/cla/steer_L3E.jpg" data-cap="가죽 다기능 스포츠 스티어링 휠 (L3E)">
+  <div class="im"><img loading="lazy" src="assets/cla/steer_L3E.jpg" alt="가죽 다기능 스포츠 스티어링 휠"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">L3E</div><div class="nm">가죽 다기능 스포츠 스티어링 휠</div><div class="ds">PROGRESSIVE (P59)</div></div></div>
+<div class="gcard reveal" data-zoom="assets/cla/steer_L5C.jpg" data-cap="나파 가죽 다기능 스포츠 스티어링 휠 (L5C)">
+  <div class="im"><img loading="lazy" src="assets/cla/steer_L5C.jpg" alt="나파 가죽 다기능 스포츠 스티어링 휠"><span class="zoomhint">&#9974;</span></div>
+  <div class="bd"><div class="cd">L5C</div><div class="nm">나파 가죽 다기능 스포츠 스티어링 휠</div><div class="ds">AMG 라인 (950)</div></div></div></div>
 </div></section>
 
 <section class="ctaband"><div class="cta-inner reveal">
   <img class="cta-ava" src="assets/glcev/profile.jpg" alt="한호만 팀장">
-  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">국내 사양·가격이 확정되면 가장 먼저 안내드립니다. BenzDream 한호만 팀장.</div></div>
+  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">원하시는 컬러·시트 조합을 미리 정리해 두면 사전예약 때 빠릅니다.</div></div>
+  <div class="cta-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="cta-b kk">카카오톡 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-b fm">출시 알림 신청</a></div>
+</div></section>
+
+<section id="package"><div class="wrap">
+  <div class="eyebrow reveal">Part 3 · Option Packages</div><h2 class="stitle reveal">옵션 구성 패키지</h2>
+  <p class="sdesc reveal">각 패키지는 하위 패키지를 모두 포함하며, 상위로 갈수록 사양이 누적됩니다. 국내 적용 구성은 출시 시 확정됩니다.</p>
+  <div class="pkg-grid"><div class="pkg lv1 reveal"><div class="pc">PDA</div><div class="pn">어드밴스드 패키지</div><div class="pb">디지털 서비스 포함 · 기본 사양</div><ul><li>LED 고성능 헤드램프(632) + 어댑티브 하이빔 어시스트(608)</li><li>일루미네이티드 스타 패턴 패널(4B7)</li><li>파노라믹 루프(416)</li><li>운전자 디스플레이(458) + 중앙 미디어 디스플레이(868)</li><li>셀카·비디오 카메라(219) + 얼굴 인식(46U)</li><li>미러 패키지(P49)</li><li>THERMATIC 자동 온도 조절(580)</li><li>앞좌석 열선 시트(873) · 4방향 요추 지지대(U22)</li><li>5G 통신 모듈(370)</li><li>디지털 서비스: 표준(4U1) · MB.CHARGE PUBLIC(39U) · MBUX 내비게이션(365)</li></ul></div><div class="pkg lv2 reveal"><div class="pc">PDB</div><div class="pn">어드밴스드 플러스 패키지</div><div class="pb">PDA 전체 포함 + 추가</div><ul><li>앰비언트 라이트(891)</li><li>키레스-고(889)</li><li>2열 암레스트(400)</li><li>1열 무선 충전 시스템(897)</li><li>플러시 타입 도어 핸들(87B)</li></ul></div><div class="pkg lv3 reveal"><div class="pc">PDC</div><div class="pn">프리미엄 패키지</div><div class="pb">PDB 전체 포함 + 추가</div><ul><li>THERMOTRONIC 자동 온도 조절(581)</li><li>KEYLESS-GO 컴포트 패키지(P17)</li><li>발광 도어 실 패널(U45)</li><li>메모리 패키지(275)</li><li>디지털 서비스: MBUX 엔터테인먼트(03W)</li></ul></div><div class="pkg lv4 reveal"><div class="pc">PDD</div><div class="pn">프리미엄 플러스 패키지</div><div class="pb">PDC 전체 포함 + 추가</div><ul><li>MULTIBEAM LED(642) + 어댑티브 하이빔 어시스트 플러스(628)</li><li>Burmester® 3D 서라운드 사운드(810) · 16스피커 850W</li><li>헤드업 디스플레이(438) · 12.2인치</li><li>PRE-SAFE® 시스템(299)</li></ul></div></div>
+</div></section>
+
+<section id="design" style="background:var(--bg2)"><div class="wrap">
+  <div class="eyebrow reveal">Design Lines</div><h2 class="stitle reveal">디자인 라인 &amp; 패키지</h2>
+  <p class="sdesc reveal">PROGRESSIVE 라인과 AMG 라인, 그리고 나이트 패키지로 개성을 더합니다.</p>
+  <div class="eq-grid"><div class="eq-card reveal"><div class="eq-head"><span class="eq-ic">&#9678;</span><span class="eq-title">PROGRESSIVE 라인 (P59)</span></div><ul class="eq-list"><li>크롬 트림 요소</li><li>가죽 다기능 스포츠 스티어링 휠 (L3E)</li><li>컴포트 시트 (7U2) · ARTICO / 패브릭</li><li>앤트러사이트 아노다이즈드 트림 (59H)</li></ul></div>
+ <div class="eq-card reveal"><div class="eq-head"><span class="eq-ic">&#9670;</span><span class="eq-title">AMG Line (950)</span></div><ul class="eq-list"><li>AMG 전·후면 표현력 있는 범퍼 · 리어 디퓨저 룩</li><li>18인치 AMG 5-스포크 휠 (RQJ) · 탄탈룸 그레이</li><li>스포츠 시트 (7U4) · 일체형 헤드레스트</li><li>나파 가죽 스티어링 휠 (L5C) · 카본 그레인 트림 (H43)</li></ul></div>
+ <div class="eq-card reveal"><div class="eq-head"><span class="eq-ic">&#9728;</span><span class="eq-title">나이트 패키지 (P55)</span></div><ul class="eq-list"><li>블랙 사이드미러 하우징 · 범퍼 인서트</li><li>윈도우 벨트라인 블랙 트림 스트립</li><li>열 차단 다크 틴티드 글라스 (840)</li><li>18인치 경량 알로이 휠</li></ul></div>
+ <div class="eq-card reveal"><div class="eq-head"><span class="eq-ic">&#10022;</span><span class="eq-title">AMG Line Plus (956)</span></div><ul class="eq-list"><li>AMG Line + 나이트 패키지(P55) 구성 포함</li><li>고광택 블랙 AMG 스포일러 립 (U95)</li><li>19인치 AMG 멀티 스포크 휠 (RRF)</li><li>MANUFAKTUR 레드 안전벨트 (Y05)</li></ul></div></div>
+</div></section>
+
+<section class="ctaband"><div class="cta-inner reveal">
+  <img class="cta-ava" src="assets/glcev/profile.jpg" alt="한호만 팀장">
+  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">국내 사양·가격이 확정되면 가장 먼저 안내드립니다. 출시 알림을 신청해 두세요.</div></div>
   <div class="cta-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="cta-b kk">카카오톡 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-b fm">출시 알림 신청</a></div>
 </div></section>
 
@@ -380,17 +526,36 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
     <a class="co-card reveal d2" href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank"><div class="co-ic">&#128203;</div><div class="co-l">ALERT</div><div class="co-v">출시 알림 신청</div></a>
   </div>
   <div class="co-addr reveal">경기도 고양시 덕양구 의장로 110 모터원고양</div>
-  <div class="co-disc reveal">본 페이지는 BenzDream 한호만 팀장이 제작한 고객 안내 자료입니다. 글로벌 교육자료 기준 v1이며, 국내 출시 사양·가격·사전예약 정보는 확정 시 업데이트됩니다. 이미지·사양은 참고용으로 국내 출시 구성과 상이할 수 있습니다.</div>
+  <div class="co-disc reveal">본 페이지는 BenzDream 한호만 팀장이 제작한 고객 안내 자료입니다. 사양·컬러·옵션·제원은 제조사 공개 자료 기준으로, 국내 출시 사양 및 가격은 확정 시 업데이트됩니다. 이미지는 참고용이며 실제 차량과 다를 수 있습니다.</div>
 </div>
 <div class="backbtn"><a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_Landing.html">&#8592; 전체 어프로치북 목록 보기</a></div>
 </section>
 
-<a class="fab" href="http://pf.kakao.com/_UqxiIX/chat" target="_blank"><img src="assets/glcev/profile.jpg" alt="한호만 팀장"><div class="fb-t"><div class="fb-n">한호만 팀장</div><div class="fb-s">출시 알림 &rarr;</div></div></a>
+<a class="fab" href="http://pf.kakao.com/_UqxiIX/chat" target="_blank"><img src="assets/glcev/profile.jpg" alt="한호만 팀장"><div class="fb-t"><div class="fb-n">한호만 팀장</div><div class="fb-s">상담 &rarr;</div></div></a>
 <div class="wm">© BenzDream 한호만 팀장 · 모터원 고양</div>
 <div class="lb" id="lb"><span class="lb-x" id="lbx">&times;</span><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div><div class="lb-wm">© BenzDream 한호만 팀장 · 모터원 고양전시장</div></div>
 <script>
+const COLORS={
+  "149U":{name:"폴라 화이트",cat:"솔리드"},
+  "696U":{name:"나이트 블랙",cat:"솔리드"},
+  "191U":{name:"코스모스 블랙",cat:"메탈릭"},
+  "809U":{name:"클리어 블루",cat:"메탈릭"},
+  "956U":{name:"MANUFAKTUR 알파인 그레이",cat:"MANUFAKTUR 솔리드"},
+  "993U":{name:"MANUFAKTUR 파타고니아 레드",cat:"MANUFAKTUR 메탈릭"}
+};
+const ORDER=['149U', '696U', '191U', '809U', '956U', '993U'];
+function selColor(code,el){
+  ORDER.forEach(c=>{const e=document.getElementById('ci_'+c); if(e) e.classList.remove('on');});
+  const t=document.getElementById('ci_'+code); if(t) t.classList.add('on');
+  const c=COLORS[code];
+  document.getElementById('ciName').textContent=c.name;document.getElementById('ciCode').textContent=code;document.getElementById('ciCat').textContent=c.cat;
+  document.querySelectorAll('.cchip').forEach(x=>x.classList.remove('active'));el.classList.add('active');
+}
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function countUp(el){const t=+el.dataset.count,dur=1300,t0=performance.now();function s(x){let p=Math.min((x-t0)/dur,1);p=1-Math.pow(1-p,3);el.textContent=Math.round(t*p).toLocaleString();if(p<1)requestAnimationFrame(s);}requestAnimationFrame(s);}
+const io2=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){countUp(e.target);io2.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>io2.observe(el));
 const prog=document.getElementById('prog'),heroBg=document.getElementById('heroBg'),plx=document.querySelectorAll('[data-parallax]');
 function onScroll(){const y=window.scrollY,h=document.documentElement.scrollHeight-innerHeight;prog.style.width=(y/h*100)+'%';if(heroBg)heroBg.style.transform='translateY('+(y*0.32)+'px) scale(1.05)';plx.forEach(p=>{const r=p.parentElement.getBoundingClientRect();const off=(r.top-innerHeight/2)*-0.08;p.style.transform='translateY('+off+'px) scale(1.12)';});}
 window.addEventListener('scroll',onScroll,{passive:true});onScroll();
