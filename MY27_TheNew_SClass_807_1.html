@@ -364,14 +364,22 @@ table.ptbl .grp td{background:#0c0d10;color:var(--teal);font-family:'MBK CorpoA 
 .mayc:hover{transform:translateY(-5px);} .mayc .mi{aspect-ratio:16/9;background:#0c0d10;overflow:hidden;} .mayc .mi img{width:100%;height:100%;object-fit:cover;}
 .mayc .mb2{padding:15px 18px 18px;} .mayc .mn{font-family:'MBK CorpoA Cond',serif;font-size:1.1rem;color:#fff;} .mayc .mp{color:var(--gold);font-size:.95rem;margin-top:5px;}
 @media(max-width:820px){.may-cars{grid-template-columns:1fr;}}
-/* lineup cards */
-.lineup2{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
-.lc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;cursor:zoom-in;transition:transform .35s;}
-.lc:hover{transform:translateY(-4px);}
+/* lineup cards (image visible, no click needed) */
+.lineup2{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px;}
+.lc{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .35s,border-color .35s;}
+.lc:hover{transform:translateY(-6px);border-color:rgba(201,169,110,.4);}
 .lc.a{border-top:3px solid var(--teal);} .lc.b{border-top:3px solid var(--gold);}
-.lc .ln{font-family:'MBK CorpoA Cond',serif;font-size:1.15rem;color:#fff;line-height:1.25;} .lc .lt{font-size:.74rem;color:var(--teal);margin-top:5px;}
-.lc .lr{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;padding:8px 0;border-bottom:1px solid var(--line);}
-.lc .lr span:first-child{color:var(--silver);} .lc .lr span:last-child{color:#fff;font-weight:500;text-align:right;}
+.lci{aspect-ratio:16/9;background:radial-gradient(ellipse at 50% 62%,#1b1e23,#050506);position:relative;overflow:hidden;cursor:zoom-in;}
+.lci img{width:100%;height:100%;object-fit:cover;transition:transform .6s;} .lc:hover .lci img{transform:scale(1.04);}
+.lci .lline{position:absolute;top:12px;left:12px;font-size:.68rem;letter-spacing:1px;color:#fff;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.22);padding:4px 11px;border-radius:20px;}
+.lci .zoomhint{position:absolute;}
+.lcb{padding:18px 20px 20px;}
+.lcb .ln{font-family:'MBK CorpoA Cond',serif;font-size:1.22rem;color:#fff;line-height:1.25;}
+.lcb .lprice{color:var(--gold);font-family:'MBK CorpoA Cond',serif;font-size:1.5rem;margin:5px 0 12px;}
+.lcb .lr{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;padding:7px 0;border-bottom:1px solid var(--line);}
+.lcb .lr span:first-child{color:var(--silver);} .lcb .lr span:last-child{color:#fff;font-weight:500;text-align:right;}
+.lctags{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;}
+.lctag{font-size:.7rem;color:var(--light);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:4px 10px;line-height:1.3;}
 /* mobile */
 @media(max-width:600px){
  .grid-cards{grid-template-columns:1fr 1fr;gap:9px;} .gcard .nm{font-size:.76rem;} .gcard .ds{font-size:.67rem;}
@@ -469,7 +477,7 @@ table.ptbl .grp td{background:#0c0d10;color:var(--teal);font-family:'MBK CorpoA 
   <p class="sdesc reveal">이미지를 누르면 크게 볼 수 있습니다.</p>
   <div class="feat-grid"><div class="feat reveal" data-zoom="assets/sclass/chassis.jpg" data-cap="E-액티브 바디 컨트롤">
   <div class="fim"><img loading="lazy" src="assets/sclass/chassis.jpg" alt="E-액티브 바디 컨트롤"><span class="zoomhint">&#9974;</span></div>
-  <div class="fb"><div class="ft">E-액티브 바디 컨트롤</div><div class="fd">노면을 미리 읽어 각 바퀴를 개별 제어하는 능동 서스펜션. 흔들림 없는 평온한 승차감을 완성합니다. (S 500 4M L 이상)</div></div></div>
+  <div class="fb"><div class="ft">E-액티브 바디 컨트롤</div><div class="fd">노면을 미리 읽어 각 바퀴를 개별 제어하는 능동 서스펜션. 흔들림 없는 평온한 승차감을 완성합니다. (S 580 4MATIC Long부터 · 마이바흐 기본)</div></div></div>
 <div class="feat reveal" data-zoom="assets/sclass/arhud.jpg" data-cap="MBUX 증강현실 헤드업 디스플레이">
   <div class="fim"><img loading="lazy" src="assets/sclass/arhud.jpg" alt="MBUX 증강현실 헤드업 디스플레이"><span class="zoomhint">&#9974;</span></div>
   <div class="fb"><div class="ft">MBUX 증강현실 헤드업 디스플레이</div><div class="fd">실제 도로 위에 내비게이션 안내를 겹쳐 표시해, 시선을 뗄 필요 없이 직관적으로 길을 안내합니다.</div></div></div>
@@ -567,26 +575,72 @@ table.ptbl .grp td{background:#0c0d10;color:var(--teal);font-family:'MBK CorpoA 
 
 <section id="lineup" style="background:var(--bg2)"><div class="wrap">
   <div class="eyebrow reveal">Part 4 · Line-up &amp; Price</div><h2 class="stitle reveal">라인업 &amp; 가격</h2>
-  <p class="sdesc reveal">권장 소비자가격(부가세 포함) 기준 · 2026년 8월 13일 발효. 개별소비세 5% 기준이며 정책에 따라 변동될 수 있습니다.</p>
+  <p class="sdesc reveal">각 트림을 한눈에 — 이미지·가격·기본 구성을 카드로 정리했습니다. 권장 소비자가격(부가세 포함) 기준 · 2026년 8월 13일 발효, 개별소비세 5% 기준으로 정책에 따라 변동될 수 있습니다.</p>
+  <div class="lineup2"><div class="lc a reveal">
+      <div class="lci" data-zoom="assets/sclass/car_s350d.jpg" data-cap="S 350 d 4MATIC"><img loading="lazy" src="assets/sclass/car_s350d.jpg" alt="S 350 d 4MATIC"><span class="lline">Standard</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">S 350 d 4MATIC</div><div class="lprice">1억 5,400만원</div>
+        <div class="lr"><span>기본 휠</span><span>19″ R60</span></div>
+        <div class="lr"><span>내장</span><span>가죽 (213A~)</span></div>
+        <div class="lctags"><span class="lctag">디젤 직6</span><span class="lctag">스탠다드 휠베이스</span><span class="lctag">페이스리프트 기본사양 강화</span><span class="lctag">에어매틱</span></div>
+      </div></div>
+<div class="lc a reveal">
+      <div class="lci" data-zoom="assets/sclass/car_s450.jpg" data-cap="S 450 4MATIC"><img loading="lazy" src="assets/sclass/car_s450.jpg" alt="S 450 4MATIC"><span class="lline">AMG Line</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">S 450 4MATIC</div><div class="lprice">1억 6,240만원</div>
+        <div class="lr"><span>기본 휠</span><span>19″ RZI</span></div>
+        <div class="lr"><span>내장</span><span>가죽 (213A~)</span></div>
+        <div class="lctags"><span class="lctag">48V 가솔린 직6</span><span class="lctag">스탠다드 휠베이스</span><span class="lctag">앞좌석 열선</span><span class="lctag">통풍</span><span class="lctag">뒷좌석 열선</span></div>
+      </div></div>
+<div class="lc a reveal">
+      <div class="lci" data-zoom="assets/sclass/car_s450le.jpg" data-cap="S 450 4MATIC Long Exclusive"><img loading="lazy" src="assets/sclass/car_s450le.jpg" alt="S 450 4MATIC Long Exclusive"><span class="lline">Standard</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">S 450 4MATIC Long Exclusive</div><div class="lprice">1억 7,540만원</div>
+        <div class="lr"><span>기본 휠</span><span>20″ 60R</span></div>
+        <div class="lr"><span>내장</span><span>가죽 (213A~)</span></div>
+        <div class="lctags"><span class="lctag">롱휠베이스</span><span class="lctag">뒷좌석 전동시트(메모리)</span><span class="lctag">뒷좌석 열선</span><span class="lctag">통풍</span><span class="lctag">MBUX 리어 엔터테인먼트</span></div>
+      </div></div>
+<div class="lc a reveal">
+      <div class="lci" data-zoom="assets/sclass/car_s450la.jpg" data-cap="S 450 4MATIC Long AMG Line"><img loading="lazy" src="assets/sclass/car_s450la.jpg" alt="S 450 4MATIC Long AMG Line"><span class="lline">AMG Line</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">S 450 4MATIC Long AMG Line</div><div class="lprice">1억 9,540만원</div>
+        <div class="lr"><span>기본 휠</span><span>20″ RTM</span></div>
+        <div class="lr"><span>내장</span><span>나파 가죽 (823A~)</span></div>
+        <div class="lctags"><span class="lctag">롱휠베이스</span><span class="lctag">AMG Line</span><span class="lctag">앞좌석 액티브 멀티컨투어 시트</span></div>
+      </div></div>
+<div class="lc a reveal">
+      <div class="lci" data-zoom="assets/sclass/car_s500.jpg" data-cap="S 500 4MATIC Long"><img loading="lazy" src="assets/sclass/car_s500.jpg" alt="S 500 4MATIC Long"><span class="lline">Standard</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">S 500 4MATIC Long</div><div class="lprice">2억 2,000만원</div>
+        <div class="lr"><span>기본 휠</span><span>20″ 60R</span></div>
+        <div class="lr"><span>내장</span><span>나파 가죽 (823A~)</span></div>
+        <div class="lctags"><span class="lctag">고출력 48V 직6</span><span class="lctag">쇼퍼/뒷좌석 마사지 패키지</span><span class="lctag">MBUX AR HUD</span><span class="lctag">익스클루시브 패키지</span><span class="lctag">IR 라미네이티드 글라스</span></div>
+      </div></div>
+<div class="lc a reveal">
+      <div class="lci" data-zoom="assets/sclass/car_s580.jpg" data-cap="S 580 4MATIC Long"><img loading="lazy" src="assets/sclass/car_s580.jpg" alt="S 580 4MATIC Long"><span class="lline">Standard</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">S 580 4MATIC Long</div><div class="lprice">2억 7,000만원</div>
+        <div class="lr"><span>기본 휠</span><span>20″ R73</span></div>
+        <div class="lr"><span>내장</span><span>익스클루시브 나파 (523A~)</span></div>
+        <div class="lctags"><span class="lctag">V8 비터보</span><span class="lctag">E-액티브 바디 컨트롤</span><span class="lctag">익스클루시브 나파</span><span class="lctag">20″ 단조 휠</span></div>
+      </div></div>
+<div class="lc b reveal">
+      <div class="lci" data-zoom="assets/sclass/car_may580.jpg" data-cap="Mercedes-Maybach S 580"><img loading="lazy" src="assets/sclass/car_may580.jpg" alt="Mercedes-Maybach S 580"><span class="lline">Maybach</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">Mercedes-Maybach S 580</div><div class="lprice">3억 1,700만원</div>
+        <div class="lr"><span>기본 휠</span><span>20″ 마이바흐 5홀 단조</span></div>
+        <div class="lr"><span>내장</span><span>마이바흐 익스클루시브 나파</span></div>
+        <div class="lctags"><span class="lctag">E-액티브 바디 컨트롤</span><span class="lctag">MANUFAKTUR 인테리어 패키지</span><span class="lctag">뒷좌석 컴포트 도어</span></div>
+      </div></div>
+<div class="lc b reveal">
+      <div class="lci" data-zoom="assets/sclass/car_may580m.jpg" data-cap="Mercedes-Maybach S 580 MANUFAKTUR"><img loading="lazy" src="assets/sclass/car_may580m.jpg" alt="Mercedes-Maybach S 580 MANUFAKTUR"><span class="lline">Maybach</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">Mercedes-Maybach S 580 MANUFAKTUR</div><div class="lprice">3억 3,600만원</div>
+        <div class="lr"><span>기본 휠</span><span>20″ 마이바흐 5홀 단조</span></div>
+        <div class="lr"><span>내장</span><span>MANUFAKTUR 마이바흐 나파</span></div>
+        <div class="lctags"><span class="lctag">MANUFAKTUR 가죽 패키지</span><span class="lctag">360° 프로텍션 플러스</span><span class="lctag">MANUFAKTUR 백레스트 트림</span></div>
+      </div></div>
+<div class="lc b reveal">
+      <div class="lci" data-zoom="assets/sclass/car_may680.jpg" data-cap="Mercedes-Maybach S 680"><img loading="lazy" src="assets/sclass/car_may680.jpg" alt="Mercedes-Maybach S 680"><span class="lline">Maybach</span><span class="zoomhint">&#9974;</span></div>
+      <div class="lcb"><div class="ln">Mercedes-Maybach S 680</div><div class="lprice">4억 700만원</div>
+        <div class="lr"><span>기본 휠</span><span>21″ 마이바흐 멀티스포크 단조</span></div>
+        <div class="lr"><span>내장</span><span>마이바흐 익스클루시브 나파</span></div>
+        <div class="lctags"><span class="lctag">V12 6.0L 비터보</span><span class="lctag">MANUFAKTUR 외장 컬러</span><span class="lctag">플래그십의 정점</span></div>
+      </div></div></div>
+  <div class="subhead reveal">한눈에 보는 가격 비교표</div>
   <div class="ptbl-wrap reveal"><table class="ptbl"><tr><th>모델</th><th>익스테리어</th><th>내장</th><th>기본 휠</th><th style="text-align:right">가격</th></tr><tr class="grp"><td colspan="5">S-Class</td></tr><tr><td><div class="mname">S 350 d 4MATIC</div><div class="msub">디젤 직6 · 스탠다드 휠베이스 · 페이스리프트 기본사양 강화 · 에어매틱</div></td><td>Standard</td><td>가죽 (213A~)</td><td>19″ R60</td><td class="price">1억 5,400만원</td></tr><tr><td><div class="mname">S 450 4MATIC</div><div class="msub">48V 가솔린 직6 · 스탠다드 휠베이스 · 앞좌석 열선·통풍 · 뒷좌석 열선</div></td><td>AMG Line</td><td>가죽 (213A~)</td><td>19″ RZI</td><td class="price">1억 6,240만원</td></tr><tr><td><div class="mname">S 450 4MATIC Long Exclusive</div><div class="msub">롱휠베이스 · 뒷좌석 전동시트(메모리) · 뒷좌석 열선·통풍 · MBUX 리어 엔터테인먼트</div></td><td>Standard</td><td>가죽 (213A~)</td><td>20″ 60R</td><td class="price">1억 7,540만원</td></tr><tr><td><div class="mname">S 450 4MATIC Long AMG Line</div><div class="msub">롱휠베이스 · AMG Line · 앞좌석 액티브 멀티컨투어 시트</div></td><td>AMG Line</td><td>나파 가죽 (823A~)</td><td>20″ RTM</td><td class="price">1억 9,540만원</td></tr><tr><td><div class="mname">S 500 4MATIC Long</div><div class="msub">고출력 48V 직6 · 쇼퍼/뒷좌석 마사지 패키지 · MBUX AR HUD · 익스클루시브 패키지 · IR 라미네이티드 글라스</div></td><td>Standard</td><td>나파 가죽 (823A~)</td><td>20″ 60R</td><td class="price">2억 2,000만원</td></tr><tr><td><div class="mname">S 580 4MATIC Long</div><div class="msub">V8 비터보 · E-액티브 바디 컨트롤 · 익스클루시브 나파 · 20″ 단조 휠</div></td><td>Standard</td><td>익스클루시브 나파 (523A~)</td><td>20″ R73</td><td class="price">2억 7,000만원</td></tr><tr class="grp"><td colspan="5">Mercedes-Maybach</td></tr><tr class="mb-row"><td><div class="mname">Mercedes-Maybach S 580</div><div class="msub">E-액티브 바디 컨트롤 · MANUFAKTUR 인테리어 패키지 · 뒷좌석 컴포트 도어</div></td><td>Maybach</td><td>마이바흐 익스클루시브 나파</td><td>20″ 마이바흐 5홀 단조</td><td class="price">3억 1,700만원</td></tr><tr class="mb-row"><td><div class="mname">Mercedes-Maybach S 580 MANUFAKTUR</div><div class="msub">MANUFAKTUR 가죽 패키지 · 360° 프로텍션 플러스 · MANUFAKTUR 백레스트 트림</div></td><td>Maybach</td><td>MANUFAKTUR 마이바흐 나파</td><td>20″ 마이바흐 5홀 단조</td><td class="price">3억 3,600만원</td></tr><tr class="mb-row"><td><div class="mname">Mercedes-Maybach S 680</div><div class="msub">V12 6.0L 비터보 · MANUFAKTUR 외장 컬러 · 플래그십의 정점</div></td><td>Maybach</td><td>마이바흐 익스클루시브 나파</td><td>21″ 마이바흐 멀티스포크 단조</td><td class="price">4억 700만원</td></tr></table></div>
-  <div class="lineup2" style="margin-top:26px"><div class="lc a reveal" data-zoom="assets/sclass/car_s350d.jpg" data-cap="S 350 d 4MATIC"><div class="ln">S 350 d 4MATIC</div><div class="lt">Standard · 19″ R60</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>1억 5,400만원</span></div><div class="lr"><span>내장</span><span>가죽 (213A~)</span></div></div></div>
-<div class="lc a reveal" data-zoom="assets/sclass/car_s450.jpg" data-cap="S 450 4MATIC"><div class="ln">S 450 4MATIC</div><div class="lt">AMG Line · 19″ RZI</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>1억 6,240만원</span></div><div class="lr"><span>내장</span><span>가죽 (213A~)</span></div></div></div>
-<div class="lc a reveal" data-zoom="assets/sclass/car_s450le.jpg" data-cap="S 450 4MATIC Long Exclusive"><div class="ln">S 450 4MATIC Long Exclusive</div><div class="lt">Standard · 20″ 60R</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>1억 7,540만원</span></div><div class="lr"><span>내장</span><span>가죽 (213A~)</span></div></div></div>
-<div class="lc a reveal" data-zoom="assets/sclass/car_s450la.jpg" data-cap="S 450 4MATIC Long AMG Line"><div class="ln">S 450 4MATIC Long AMG Line</div><div class="lt">AMG Line · 20″ RTM</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>1억 9,540만원</span></div><div class="lr"><span>내장</span><span>나파 가죽 (823A~)</span></div></div></div>
-<div class="lc a reveal" data-zoom="assets/sclass/car_s500.jpg" data-cap="S 500 4MATIC Long"><div class="ln">S 500 4MATIC Long</div><div class="lt">Standard · 20″ 60R</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>2억 2,000만원</span></div><div class="lr"><span>내장</span><span>나파 가죽 (823A~)</span></div></div></div>
-<div class="lc a reveal" data-zoom="assets/sclass/car_s580.jpg" data-cap="S 580 4MATIC Long"><div class="ln">S 580 4MATIC Long</div><div class="lt">Standard · 20″ R73</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>2억 7,000만원</span></div><div class="lr"><span>내장</span><span>익스클루시브 나파 (523A~)</span></div></div></div>
-<div class="lc b reveal" data-zoom="assets/sclass/car_may580.jpg" data-cap="Mercedes-Maybach S 580"><div class="ln">Mercedes-Maybach S 580</div><div class="lt">Maybach · 20″ 마이바흐 5홀 단조</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>3억 1,700만원</span></div><div class="lr"><span>내장</span><span>마이바흐 익스클루시브 나파</span></div></div></div>
-<div class="lc b reveal" data-zoom="assets/sclass/car_may580m.jpg" data-cap="Mercedes-Maybach S 580 MANUFAKTUR"><div class="ln">Mercedes-Maybach S 580 MANUFAKTUR</div><div class="lt">Maybach · 20″ 마이바흐 5홀 단조</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>3억 3,600만원</span></div><div class="lr"><span>내장</span><span>MANUFAKTUR 마이바흐 나파</span></div></div></div>
-<div class="lc b reveal" data-zoom="assets/sclass/car_may680.jpg" data-cap="Mercedes-Maybach S 680"><div class="ln">Mercedes-Maybach S 680</div><div class="lt">Maybach · 21″ 마이바흐 멀티스포크 단조</div>
-      <div style="margin-top:12px"><div class="lr"><span>가격</span><span>4억 700만원</span></div><div class="lr"><span>내장</span><span>마이바흐 익스클루시브 나파</span></div></div></div></div>
 </div></section>
 
 <section id="edition"><div class="wrap">
