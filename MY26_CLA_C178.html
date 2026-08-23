@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The all-new CLA | BenzDream 한호만 팀장</title>
+<title>The all-new electric CLA | BenzDream 한호만 팀장</title>
 <meta name="author" content="BenzDream 한호만 팀장 · 메르세데스-벤츠 모터원 고양전시장">
 <style>
 @font-face{font-family:'MBK CorpoA';src:url('fonts/MBKCorpoA.woff2') format('woff2');font-display:swap;}
@@ -312,6 +312,14 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 .lc .ln{font-family:'MBK CorpoA Cond',serif;font-size:1.35rem;color:#fff;} .lc .lt{font-size:.75rem;color:var(--teal);margin-top:4px;}
 .lc .lr{display:flex;justify-content:space-between;gap:10px;font-size:.8rem;padding:9px 0;border-bottom:1px solid var(--line);}
 .lc .lr span:first-child{color:var(--silver);} .lc .lr span:last-child{color:#fff;font-weight:500;text-align:right;}
+/* mobile optimization */
+@media(max-width:600px){
+ .grid-cards{grid-template-columns:1fr 1fr;gap:9px;}
+ .gcard .bd{padding:9px 10px 11px;} .gcard .nm{font-size:.78rem;} .gcard .ds{font-size:.68rem;}
+ .pkg-grid{grid-template-columns:1fr;} .pkg{padding:18px 18px;}
+ .cinfo{padding:14px 16px!important;} .cinfo .cn{font-size:1.3rem!important;}
+}
+@media(max-width:420px){ .grid-cards{grid-template-columns:1fr;} }
 </style></head><body>
 <div class="progress" id="prog"></div>
 <nav class="nav">
@@ -322,9 +330,9 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 <header class="hero">
   <div class="hero-bg" id="heroBg" style="background-image:url('assets/cla/cla_hero.jpg');"></div><div class="hero-scrim"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Mercedes-Benz · The all-new CLA · C174 / C178</div>
-    <h1 class="hero-h1">The all-new<br><span>CLA</span></h1>
-    <p class="hero-sub">MMA 전용 플랫폼 · 일렉트릭 & 48V 마일드 하이브리드</p>
+    <div class="hero-eyebrow">Mercedes-Benz · The all-new electric CLA · C174</div>
+    <h1 class="hero-h1">The all-new<br>electric <span>CLA</span></h1>
+    <p class="hero-sub">MMA 전용 아키텍처 · 100% 일렉트릭 (C174)</p>
     <div class="hero-by">BenzDream 한호만 팀장 · 벤츠 유튜브 구독자 2.2만 · 모터원 고양전시장</div>
     <div class="hero-tags"><span class="htag fill">국내 출시 준비 중</span><span class="htag out">사전예약 오픈 시 업데이트</span></div>
   </div>
@@ -335,18 +343,18 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
   <div class="adv-photo"><img src="assets/glcev/profile_card.jpg" alt="BenzDream 한호만 팀장"><div class="adv-plabel"><div class="b">BENZDREAM</div><div class="n">한호만 팀장</div></div></div>
   <div class="adv-body">
     <div class="adv-eyebrow">Strategic Pre-Order Advisory</div>
-    <div class="adv-title">CLA, <b>전기와 내연</b> 사이 최적의 구성을 찾아드립니다.</div>
+    <div class="adv-title">일렉트릭 CLA, <b>주행거리와 구성</b>의 최적 조합을 찾아드립니다.</div>
     <div class="adv-desc">색상 조합부터 패키지 선택, 사전예약 순번 전략까지. 출시 전부터 준비하면 원하는 사양을 가장 빠르게 받으실 수 있습니다.</div>
     <div class="adv-stats"><div class="adv-stat"><div class="v">매월</div><div class="l">구매 전략 리포트</div></div><div class="adv-stat"><div class="v">2.2만+</div><div class="l">벤츠 유튜브 No.1</div></div><div class="adv-stat"><div class="v">1:1</div><div class="l">전략 컨설팅</div></div></div>
     <div class="adv-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="adv-b primary">사전예약 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="adv-b ghost">출시 알림 신청</a></div>
   </div></div></section>
 
-<section class="statband"><div class="stat-grid"><div class="stat"><div class="stat-num" data-count=792>0</div><div class="stat-lab">최대 주행거리 (km·WLTP)</div></div><div class="stat"><div class="stat-num" data-count=320>0</div><div class="stat-lab">최대 충전 출력 (kW)</div></div><div class="stat"><div class="stat-num" data-count=354>0</div><div class="stat-lab">최고출력 (hp·350 4MATIC)</div></div><div class="stat"><div class="stat-num" data-count=800>0</div><div class="stat-lab">시스템 전압 (V)</div></div></div></section>
+<section class="statband"><div class="stat-grid"><div class="stat"><div class="stat-num" data-count=792>0</div><div class="stat-lab">최대 주행거리 (km · WLTP)</div></div><div class="stat"><div class="stat-num" data-count=320>0</div><div class="stat-lab">최대 DC 충전 (kW)</div></div><div class="stat"><div class="stat-num" data-count=300>0</div><div class="stat-lab">10분 충전 주행거리 (km · WLTP)</div></div><div class="stat"><div class="stat-num" data-count=800>0</div><div class="stat-lab">시스템 전압 (V)</div></div></div></section>
 
 <section id="highlights"><div class="wrap">
-  <div class="eyebrow reveal">Part 1 · Highlights</div><h2 class="stitle reveal">세대를 바꾼 컴팩트의 기준</h2>
-  <p class="sdesc reveal">VISION EQXX의 혁신을 담은 MMA 아키텍처 위에 태어난 3세대 CLA. 800V 전기 구동계와 2단 기어박스, MB.OS 슈퍼컴퓨터, 그리고 필러를 가로지르는 MBUX 슈퍼스크린이 컴팩트의 기준을 다시 씁니다.</p>
-  <div class="hl-grid"><div class="hl-card reveal"><div class="hl-fig">792</div><div class="hl-t">km 주행거리</div><div class="hl-d">WLTP · CLA 250+ electric</div></div><div class="hl-card reveal"><div class="hl-fig">320kW</div><div class="hl-t">800V 초급속 충전</div><div class="hl-d">10분 충전 시 최대 300km</div></div><div class="hl-card reveal"><div class="hl-fig">2단</div><div class="hl-t">eATS 기어박스</div><div class="hl-d">고속 효율까지 잡은 전기 구동계</div></div><div class="hl-card reveal"><div class="hl-fig">MB.OS</div><div class="hl-t">슈퍼컴퓨터</div><div class="hl-d">OTA · AI 버추얼 어시스턴트</div></div><div class="hl-card reveal"><div class="hl-fig">MBUX</div><div class="hl-t">슈퍼스크린</div><div class="hl-d">대시보드를 가로지르는 최대 3개 디스플레이</div></div><div class="hl-card reveal"><div class="hl-fig">48V</div><div class="hl-t">마일드 하이브리드</div><div class="hl-d">M252 1.5L + 최대 22kW 부스트</div></div></div>
+  <div class="eyebrow reveal">Part 1 · Highlights</div><h2 class="stitle reveal">주행거리로 증명하는 컴팩트 전기 세단</h2>
+  <p class="sdesc reveal">VISION EQXX의 효율 혁신을 담은 MMA 아키텍처 위에 태어난 100% 전기 CLA(C174). 한 번 충전으로 최대 792km(WLTP)를 달리고, 800V 초급속 충전과 MB.OS 슈퍼컴퓨터, MBUX 슈퍼스크린이 새로운 기준을 만듭니다.</p>
+  <div class="hl-grid"><div class="hl-card reveal"><div class="hl-fig">792km</div><div class="hl-t">WLTP 주행거리</div><div class="hl-d">한 번 충전 · CLA 250+ electric</div></div><div class="hl-card reveal"><div class="hl-fig">320kW</div><div class="hl-t">800V 초급속 충전</div><div class="hl-d">10분 충전 시 최대 300km (WLTP)</div></div><div class="hl-card reveal"><div class="hl-fig">2단</div><div class="hl-t">eATS 기어박스</div><div class="hl-d">고속 효율까지 잡은 전기 구동계</div></div><div class="hl-card reveal"><div class="hl-fig">85.5kWh</div><div class="hl-t">NCM 배터리</div><div class="hl-d">차량 바닥 배치 · 낮은 무게중심</div></div><div class="hl-card reveal"><div class="hl-fig">MB.OS</div><div class="hl-t">슈퍼컴퓨터</div><div class="hl-d">OTA · AI 버추얼 어시스턴트</div></div><div class="hl-card reveal"><div class="hl-fig">MBUX</div><div class="hl-t">슈퍼스크린</div><div class="hl-d">대시보드를 가로지르는 최대 3개 디스플레이</div></div></div>
 </div></section>
 
 <section class="showcase">
@@ -367,14 +375,14 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 
 <section class="ctaband"><div class="cta-inner reveal">
   <img class="cta-ava" src="assets/glcev/profile.jpg" alt="한호만 팀장">
-  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">CLA, 전기와 내연 중 어떤 구성이 맞을지 지금부터 함께 준비해요.</div></div>
+  <div class="cta-txt"><div class="cta-name">BenzDream 한호만 팀장 <span>· 모터원 고양전시장</span></div><div class="cta-msg">일렉트릭 CLA, 후륜과 4MATIC 중 어떤 구성이 맞을지 지금부터 함께 준비해요.</div></div>
   <div class="cta-btns"><a href="http://pf.kakao.com/_UqxiIX/chat" target="_blank" class="cta-b kk">카카오톡 상담</a><a href="https://forms.gle/Qmn8ktsg9G2ZWFHY9" target="_blank" class="cta-b fm">출시 알림 신청</a></div>
 </div></section>
 
 <section id="powertrain" style="background:var(--bg2)"><div class="wrap">
-  <div class="eyebrow reveal">Part 2 · Powertrain &amp; Line-up</div><h2 class="stitle reveal">두 개의 심장, 하나의 CLA</h2>
-  <p class="sdesc reveal">일렉트릭 CLA는 85.5kWh NCM 배터리와 800V 아키텍처를, 내연 CLA는 1.5L M252 엔진에 48V 마일드 하이브리드를 조합합니다. (제조사 공개 기준)</p>
-  <div class="lineup2"><div class="lc a reveal"><div class="ln">CLA 250+ electric</div><div class="lt">일렉트릭 · 후륜</div><div style="margin-top:12px"><div class="lr"><span>최고출력</span><span>200 kW (272 hp)</span></div><div class="lr"><span>최대토크</span><span>335 Nm</span></div><div class="lr"><span>배터리</span><span>85.5 kWh · NCM</span></div><div class="lr"><span>주행거리</span><span>최대 792 km (WLTP)</span></div><div class="lr"><span>전비</span><span>14.1–12.2 kWh/100km</span></div></div></div><div class="lc a reveal"><div class="ln">CLA 350 4MATIC electric</div><div class="lt">일렉트릭 · 4MATIC</div><div style="margin-top:12px"><div class="lr"><span>최고출력</span><span>260 kW (354 hp)</span></div><div class="lr"><span>최대토크</span><span>515 Nm</span></div><div class="lr"><span>배터리</span><span>85.5 kWh · NCM</span></div><div class="lr"><span>주행거리</span><span>최대 771 km (WLTP)</span></div><div class="lr"><span>전비</span><span>14.7–12.5 kWh/100km</span></div></div></div><div class="lc b reveal"><div class="ln">CLA with MHEV</div><div class="lt">내연 · 48V 마일드 하이브리드</div><div style="margin-top:12px"><div class="lr"><span>엔진</span><span>1.5L 4기통 M252 (FAME)</span></div><div class="lr"><span>출력 범위</span><span>100 / 120 / 140 kW</span></div><div class="lr"><span>전기 부스트</span><span>최대 22 kW</span></div><div class="lr"><span>48V 배터리</span><span>최대 1.3 kWh</span></div><div class="lr"><span>세일링</span><span>최대 약 110 km/h 전기 주행</span></div></div></div></div>
+  <div class="eyebrow reveal">Part 2 · Powertrain &amp; Line-up</div><h2 class="stitle reveal">두 가지 일렉트릭 파워트레인</h2>
+  <p class="sdesc reveal">100% 전기 CLA(C174)는 85.5kWh NCM 배터리와 800V 아키텍처를 공유하며, 후륜 구동과 4MATIC 사륜 구동 두 가지로 제공됩니다. 주행거리는 모두 WLTP 기준입니다. (독일 사양 기준 · 국내 인증 수치는 출시 시 확정)</p>
+  <div class="lineup2"><div class="lc a reveal"><div class="ln">CLA 250+ electric</div><div class="lt">일렉트릭 · 후륜 구동</div><div style="margin-top:12px"><div class="lr"><span>최고출력</span><span>200 kW (272 hp)</span></div><div class="lr"><span>최대토크</span><span>335 Nm</span></div><div class="lr"><span>배터리</span><span>85.5 kWh · NCM</span></div><div class="lr"><span>WLTP 주행거리</span><span>최대 792 km</span></div><div class="lr"><span>전비</span><span>14.1–12.2 kWh/100km</span></div></div></div><div class="lc b reveal"><div class="ln">CLA 350 4MATIC electric</div><div class="lt">일렉트릭 · 4MATIC 사륜</div><div style="margin-top:12px"><div class="lr"><span>최고출력</span><span>260 kW (354 hp)</span></div><div class="lr"><span>최대토크</span><span>515 Nm</span></div><div class="lr"><span>배터리</span><span>85.5 kWh · NCM</span></div><div class="lr"><span>WLTP 주행거리</span><span>최대 771 km</span></div><div class="lr"><span>전비</span><span>14.7–12.5 kWh/100km</span></div></div></div></div>
 </div></section>
 
 <section id="spec"><div class="wrap">
