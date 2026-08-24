@@ -173,6 +173,8 @@ svg.ch text{font-family:'Outfit',sans-serif;fill:var(--silver)}
     <button class="tab on" data-p="heat">계약 히트맵</button>
     <button class="tab" data-p="velo">소진 랭킹</button>
     <button class="tab" data-p="trend">일자별 추이</button>
+    <button class="tab" data-p="week">주간</button>
+    <button class="tab" data-p="month">월간</button>
     <button class="tab" data-p="sr">전시장 비교</button>
     <button class="tab" data-p="pre">사전계약</button>
     <button class="tab" data-p="color">색상 수요</button>
@@ -265,6 +267,58 @@ svg.ch text{font-family:'Outfit',sans-serif;fill:var(--silver)}
     </div>
   </section>
 
+  <!-- ============ 주간 ============ -->
+  <section class="pane" id="p-week">
+    <div class="note">
+      <b>월요일 시작 주 단위 집계.</b> 첫 주·마지막 주는 데이터 수집 시작일/오늘 기준으로 잘려서 일수가 적을 수 있습니다 (표의 "집계일수" 참고).
+      재고 증감(Δ)은 직전 주 마지막 스냅샷 대비입니다.
+    </div>
+    <div class="kpis" id="weekKpis" style="margin:0 0 16px"></div>
+    <div class="sec">
+      <h2>주별 계약 흐름</h2>
+      <p class="hint">모터원 신규계약(금색)과 타 파트너 소진(회색)의 주간 합계입니다.</p>
+      <div class="chartbox"><svg class="ch" id="chWeekFlow" viewBox="0 0 1000 300" preserveAspectRatio="xMinYMid meet"></svg></div>
+      <div class="legend">
+        <span><i style="background:#c9a96e"></i>모터원 신규계약</span>
+        <span><i style="background:#4a5568"></i>타 파트너 소진</span>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>주말 기준 판매가능 재고</h2>
+      <div class="chartbox"><svg class="ch" id="chWeekStock" viewBox="0 0 1000 260" preserveAspectRatio="xMinYMid meet"></svg></div>
+    </div>
+    <div class="sec">
+      <h2>주별 상세</h2>
+      <div class="tblwrap"><table class="dt" id="weekTable"></table></div>
+    </div>
+  </section>
+
+  <!-- ============ 월간 ============ -->
+  <section class="pane" id="p-month">
+    <div class="note">
+      <b>달력월 기준 집계.</b> 첫 달·이번 달은 데이터 수집 시작일/오늘 기준으로 잘려서 일수가 적을 수 있습니다.
+      재고 증감(Δ)은 전월 마지막 스냅샷 대비입니다.
+    </div>
+    <div class="kpis" id="monthKpis" style="margin:0 0 16px"></div>
+    <div class="sec">
+      <h2>월별 계약 흐름</h2>
+      <p class="hint">모터원 신규계약(금색)과 타 파트너 소진(회색)의 월간 합계입니다.</p>
+      <div class="chartbox"><svg class="ch" id="chMonthFlow" viewBox="0 0 1000 300" preserveAspectRatio="xMinYMid meet"></svg></div>
+      <div class="legend">
+        <span><i style="background:#c9a96e"></i>모터원 신규계약</span>
+        <span><i style="background:#4a5568"></i>타 파트너 소진</span>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>월말 기준 판매가능 재고</h2>
+      <div class="chartbox"><svg class="ch" id="chMonthStock" viewBox="0 0 1000 260" preserveAspectRatio="xMinYMid meet"></svg></div>
+    </div>
+    <div class="sec">
+      <h2>월별 상세</h2>
+      <div class="tblwrap"><table class="dt" id="monthTable"></table></div>
+    </div>
+  </section>
+
   <!-- ============ 전시장 ============ -->
   <section class="pane" id="p-sr">
     <div class="note">모터원 4개 전시장의 신규계약을 비교합니다. <b>고양 SR</b>이 우리 전시장입니다.</div>
@@ -331,7 +385,7 @@ async function boot(){
     if(!r.ok) throw new Error('HTTP '+r.status);
     D=await r.json();
     $('loading').style.display='none';
-    renderHead(); renderCatChips(); renderHeat(); renderVelo(); renderTrend(); renderSr(); renderPre(); renderColor();
+    renderHead(); renderCatChips(); renderHeat(); renderVelo(); renderTrend(); renderPeriodPane(D.weekly,'week'); renderPeriodPane(D.monthly,'month'); renderSr(); renderPre(); renderColor();
     bindUI();
   }catch(e){
     $('loading').innerHTML='데이터를 불러오지 못했습니다.<br><span style="font-size:.75rem;opacity:.7">'+esc(e.message)+'</span>';
@@ -520,6 +574,81 @@ function renderTrend(){
     s3+=`<text x="${PL3+w+9}" y="${yy+bh/2+4}" font-size="11" fill="#c9a96e" font-weight="600">${v}</text>`;
   });
   $('chCat').innerHTML=s3;
+}
+
+/* ===================== 주간/월간 ===================== */
+function periodLabel(p, kind){
+  if(kind==='month') return p.start.slice(0,7);
+  return md(p.start)+'~'+md(p.end);
+}
+function renderPeriodPane(list, kind){
+  if(!list || !list.length) return;
+  const pfx = kind==='week' ? 'Week' : 'Month';
+  const totalMo = list.reduce((a,p)=>a+p.mo_new,0);
+  const totalNat = list.reduce((a,p)=>a+p.nat_other,0);
+  const totalNew = list.reduce((a,p)=>a+p.new_stock,0);
+  const last = list[list.length-1];
+  const first = list[0];
+  const netDelta = list.reduce((a,p)=>a+(p.sell_delta||0),0);
+  const avgMo = totalMo/list.length, avgNat = totalNat/list.length;
+  $(kind+'Kpis').innerHTML=[
+    [(kind==='week'?'주':'월')+' 평균 모터원 계약', avgMo.toFixed(1),'건','기간 '+list.length+(kind==='week'?'주':'개월')],
+    [(kind==='week'?'주':'월')+' 평균 타 파트너 소진', avgNat.toFixed(0),'대','', ],
+    ['최근 '+(kind==='week'?'주':'월')+' 재고 증감', (netDelta>0?'+':'')+fmt(last.sell_delta),'대', last.sell_start!=null?`${fmt(last.sell_start)} → ${fmt(last.sell_end)}`:'첫 구간'],
+    ['누적 신규입고', fmt(totalNew),'대','재고 오픈 포함'],
+  ].map(([k,v,u,d])=>`<div class="kpi"><div class="k">${k}</div><div class="v">${v}<small>${u}</small></div><div class="d">${d||''}</div></div>`).join('');
+
+  // 흐름 차트
+  const W=1000,H=300,PL=48,PR=16,PT=16,PB=28,bw=(W-PL-PR)/list.length;
+  const mo=list.map(p=>p.mo_new), nat=list.map(p=>p.nat_other);
+  const max=Math.max(...nat,...mo)*1.15||10;
+  let s=axis(null,W,H,PL,PR,PT,PB,Math.ceil(max/50)*50);
+  const y=v=>PT+(H-PT-PB)*(1-v/(Math.ceil(max/50)*50));
+  list.forEach((p,i)=>{const hgt=(H-PB)-y(nat[i]);
+    s+=`<rect x="${PL+bw*i+bw*.12}" y="${y(nat[i])}" width="${bw*.76}" height="${Math.max(0,hgt)}" fill="#4a5568" opacity=".8" rx="2"><title>${periodLabel(p,kind)} 타 파트너 ${nat[i]}대</title></rect>`;});
+  list.forEach((p,i)=>{const hgt=(H-PB)-y(mo[i]);
+    s+=`<rect x="${PL+bw*i+bw*.28}" y="${y(mo[i])}" width="${bw*.44}" height="${Math.max(0,hgt)}" fill="#c9a96e" rx="2"><title>${periodLabel(p,kind)} 모터원 ${mo[i]}건</title></rect>`;});
+  list.forEach((p,i)=>{s+=`<text x="${PL+bw*(i+.5)}" y="${H-PB+16}" text-anchor="middle" font-size="9" opacity=".6">${periodLabel(p,kind)}</text>`;});
+  $('ch'+pfx+'Flow').innerHTML=s;
+
+  // 재고 추이 (구간 말 기준)
+  const H2=260,PB2=28;
+  const sv=list.map(p=>p.sell_end);
+  const mn=Math.min(...sv)*.95, mx=Math.max(...sv)*1.02;
+  const y2=v=>PT+(H2-PT-PB2)*(1-(v-mn)/(mx-mn||1));
+  let s2='';
+  for(let i=0;i<=4;i++){const yy=PT+(H2-PT-PB2)*(1-i/4),v=Math.round(mn+(mx-mn)*i/4);
+    s2+=`<line x1="${PL}" y1="${yy}" x2="${W-PR}" y2="${yy}" stroke="rgba(255,255,255,.06)"/>
+         <text x="${PL-8}" y="${yy+4}" text-anchor="end" font-size="10" opacity=".65">${v.toLocaleString()}</text>`;}
+  const denom=Math.max(1,list.length-1);
+  const pts=list.map((p,i)=>`${PL+((W-PL-PR)/denom)*i},${y2(sv[i])}`);
+  s2+=`<polygon points="${PL},${H2-PB2} ${pts.join(' ')} ${W-PR},${H2-PB2}" fill="url(#gg2${pfx})" opacity=".22"/>`;
+  s2+=`<defs><linearGradient id="gg2${pfx}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9a96e"/><stop offset="1" stop-color="#c9a96e" stop-opacity="0"/></linearGradient></defs>`;
+  s2+=`<polyline points="${pts.join(' ')}" fill="none" stroke="#c9a96e" stroke-width="2"/>`;
+  list.forEach((p,i)=>{const [X,Y]=pts[i].split(',');
+    s2+=`<circle cx="${X}" cy="${Y}" r="3" fill="#0d0f14" stroke="#c9a96e" stroke-width="1.6"><title>${periodLabel(p,kind)} · ${sv[i].toLocaleString()}대</title></circle>`;});
+  list.forEach((p,i)=>{s2+=`<text x="${PL+((W-PL-PR)/denom)*i}" y="${H2-PB2+16}" text-anchor="middle" font-size="9" opacity=".6">${periodLabel(p,kind)}</text>`;});
+  $('ch'+pfx+'Stock').innerHTML=s2;
+
+  // 상세 테이블
+  let h=`<thead><tr><th>${kind==='week'?'주':'월'}</th><th>집계일수</th><th>모터원 계약</th><th>계약확정전환</th><th>해지</th>
+    <th>출고</th><th>타 파트너 소진</th><th>신규입고</th><th>재고 Δ</th><th>이 기간 Top 트림</th></tr></thead><tbody>`;
+  [...list].reverse().forEach(p=>{
+    const top=(p.top_models||[]).slice(0,3).map(t=>`${esc(t.model)} ${t.n}`).join(' · ')||'—';
+    const delta=p.sell_delta;
+    h+=`<tr>
+      <td style="color:var(--white)">${periodLabel(p,kind)}</td>
+      <td>${p.days.length}일<span style="opacity:.5">/${p.ndays}</span></td>
+      <td style="color:var(--gold-light)">${fmt(p.mo_new)}</td>
+      <td>${fmt(p.mo_confirm)}</td>
+      <td>${fmt(p.mo_cancel)}</td>
+      <td>${fmt(p.mo_delivered)}</td>
+      <td style="color:var(--silver)">${fmt(p.nat_other)}</td>
+      <td style="color:var(--silver)">${fmt(p.new_stock)}</td>
+      <td style="color:${delta==null?'var(--silver)':delta<0?'#ff8b76':'#7fd19a'}">${delta==null?'—':(delta>0?'+':'')+fmt(delta)}</td>
+      <td style="text-align:left;font-size:.72rem;font-family:'Noto Sans KR',sans-serif">${top}</td></tr>`;
+  });
+  $(kind+'Table').innerHTML=h+'</tbody>';
 }
 
 /* ===================== 전시장 ===================== */

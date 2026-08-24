@@ -22,7 +22,7 @@ VIN 단위 상태 전이로 일자별·차종별·트림별 계약/소진을 산
 """
 import pandas as pd, json, gzip, os, re, sys, glob, warnings
 from collections import defaultdict, Counter
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 warnings.filterwarnings('ignore')
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -34,6 +34,14 @@ WEB   = os.path.join(ROOT, 'contracts_web.json')
 CONTRACT = {'가계약 체결', '계약 확정', '결제 완료'}
 CAT_ORDER = ['A클래스','CLA','C클래스','E클래스','CLE','S클래스','AMG GT·SL',
              'GLA·GLB','GLC','GLE','GLS','G클래스','전동화 EQ','Maybach','기타']
+
+def period_key(d, kind):
+    y, m, dd = map(int, d.split('-'))
+    dt = date(y, m, dd)
+    if kind == 'week':
+        monday = dt - timedelta(days=dt.weekday())
+        return monday.isoformat()
+    return f'{y:04d}-{m:02d}-01'
 
 def categorize(m):
     m = str(m)
@@ -213,6 +221,50 @@ def build_web(store, last_cur):
             sr, c = kk.split('|', 1); sr_model[sr][c] += n
         for k, cc in daily[d].get('color', {}).items(): color_dem[k].update(cc)
 
+    # ---- 주간/월간 집계 (데이터가 쌓일수록 유용해짐) ----
+    FLOW = ['mo_new', 'mo_confirm', 'mo_cancel', 'mo_delivered', 'nat_other', 'new_stock', 'pre_new']
+    periods = {'week': {}, 'month': {}}
+    prev_sell = {'week': None, 'month': None}
+    for d in dates:
+        t = daily[d]
+        sell = t['sell']
+        for kind in ('week', 'month'):
+            pk = period_key(d, kind)
+            p = periods[kind].get(pk)
+            if p is None:
+                p = periods[kind][pk] = dict(
+                    start=pk, days=[], ndays=0, sell_before=prev_sell[kind], sell_end=None,
+                    cat_totals=Counter(), models=Counter(),
+                    **{x: 0 for x in FLOW})
+            p['days'].append(d)
+            p['ndays'] += t['gap']
+            p['sell_end'] = sell
+            for x in FLOW:
+                v = sum(m.get(x, 0) for m in t['models'].values())
+                p[x] += v
+            for k, m in t['models'].items():
+                cat = k.split('|', 1)[0]
+                p['cat_totals'][cat] += m.get('mo_new', 0)
+                p['models'][k] += m.get('mo_new', 0) + m.get('nat_other', 0)
+            prev_sell[kind] = sell
+
+    def finalize_periods(kind):
+        out = []
+        for pk in sorted(periods[kind]):
+            p = periods[kind][pk]
+            top = sorted(p['models'].items(), key=lambda x: -x[1])[:8]
+            sell_delta = (p['sell_end'] - p['sell_before']) if p['sell_before'] is not None else None
+            out.append(dict(
+                start=pk, end=p['days'][-1], days=p['days'], ndays=p['ndays'] or 1,
+                sell_start=p['sell_before'], sell_end=p['sell_end'], sell_delta=sell_delta,
+                cat_totals=dict(p['cat_totals']),
+                top_models=[dict(cat=k.split('|', 1)[0], model=k.split('|', 1)[1], n=v) for k, v in top],
+                **{x: p[x] for x in FLOW}))
+        return out
+
+    weekly = finalize_periods('week')
+    monthly = finalize_periods('month')
+
     web = dict(
         generated_at=datetime.now().strftime('%Y-%m-%d %H:%M'),
         dates=dates, first=store.get('first', dates[0]), last=dates[-1],
@@ -230,6 +282,7 @@ def build_web(store, last_cur):
         sellable_now=sum(v['total'] for v in stock.values()),
         pre=snapshot_pre(last_cur),
         pre_daily={d: sum(m.get('pre_new', 0) for m in daily[d]['models'].values()) for d in dates},
+        weekly=weekly, monthly=monthly,
     )
     json.dump(web, open(WEB, 'w'), ensure_ascii=False, separators=(',', ':'))
     return web
