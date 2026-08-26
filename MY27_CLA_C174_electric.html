@@ -431,10 +431,10 @@ table.omx tr:hover td{background:rgba(255,255,255,.03);}
 .platrow .why{color:var(--teal);font-size:.8rem;}
 @media(max-width:640px){.platrow{grid-template-columns:1fr 1fr;}.platrow .why{grid-column:1/-1;border-top:1px dashed var(--line);}}
 /* sensors */
-.sensor-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:20px;}
+.sensor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;align-items:stretch;}
 .sensor{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
 .sensor .sv{font-family:'MBK CorpoA Cond',serif;font-size:1.5rem;color:var(--teal);}
-.sensor .sn{font-size:.78rem;color:var(--light);margin-top:4px;line-height:1.45;}
+.sensor .sn{font-size:.9rem;color:var(--light);margin-top:5px;line-height:1.4;}.sensor .sd{font-size:.73rem;color:var(--silver,#9aa0a6);margin-top:10px;padding-top:9px;border-top:1px solid var(--line);line-height:1.55;}
 /* dims */
 .dimtable{min-width:760px;}
 .dimtable th,.dimtable td{white-space:nowrap;}
@@ -451,7 +451,7 @@ table.omx tr:hover td{background:rgba(255,255,255,.03);}
 }
 
 @media(max-width:900px){.sensor-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:520px){.sensor-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.sensor-grid{grid-template-columns:repeat(1,1fr);}}
 .omxwrap{max-height:72vh;}
 .gcard .im{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;}
 .gcard .im img{max-height:100%;width:auto;object-fit:contain;}
@@ -573,14 +573,7 @@ table.omx tr:hover td.k{background:#1a1e26;}
   <div class="pickrow reveal"><div class="n">2</div><div class="t">0.21 Cd · 등급 최고 수준의 공기역학</div></div>
   <p class="sdesc reveal">2013년 1세대 CLA(C117)가 0.22 Cd로 당시 양산차 최고 수준의 공기저항계수를 기록했습니다. 일렉트릭 CLA는 이를 다시 경신한 <b style="color:var(--teal)">0.21 Cd</b>로, WLTP 기준 최대 792km(250+ 기준)의 주행거리를 만들어냅니다.</p>
   <div class="pickrow reveal"><div class="n">3</div><div class="t">인텔리전트 드라이브를 위한 센서 구성</div></div>
-  <div class="sensor-grid reveal">
-    <div class="sensor"><div class="sv">12 ×</div><div class="sn">초음파 센서</div></div>
-    <div class="sensor"><div class="sv">4 ×</div><div class="sn">코너링 레이더</div></div>
-    <div class="sensor"><div class="sv">4 ×</div><div class="sn">어라운드 뷰 카메라</div></div>
-    <div class="sensor"><div class="sv">2 ×</div><div class="sn">측면 카메라</div></div>
-    <div class="sensor"><div class="sv">1 ×</div><div class="sn">중거리 레이더</div></div>
-    <div class="sensor"><div class="sv">1 ×</div><div class="sn">망원 · 광각 카메라</div></div>
-  </div>
+  <div class="sensor-grid reveal"><div class="sensor"><div class="sv">8 ×</div><div class="sn">카메라</div><div class="sd">어라운드뷰 4 · 측면 2 · 망원 1 · 광각 1</div></div><div class="sensor"><div class="sv">12 ×</div><div class="sn">초음파 센서</div><div class="sd">근접 · 주차 감지</div></div><div class="sensor"><div class="sv">5 ×</div><div class="sn">레이더</div><div class="sd">코너링 4 · 중거리 1</div></div></div>
   <p class="figcap reveal" style="margin-top:16px">인텔리전트 드라이브 컨트롤러와 안테나 모듈이 이 센서들을 통합 제어합니다.</p>
 </div></section>
 
