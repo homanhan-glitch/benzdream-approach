@@ -42,7 +42,7 @@ img{display:block;max-width:100%;}
 /* hero */
 .hero{position:relative;height:86vh;min-height:560px;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse at 60% 40%,#1a1f24,#050607);}
 .hero-bg{position:absolute;inset:0;background:url('assets/glcev/hero_silver.jpg') center/cover no-repeat;opacity:.92;will-change:transform;}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,6,7,.92) 0%,rgba(5,6,7,.5) 44%,transparent 76%),linear-gradient(0deg,rgba(5,6,7,.9),transparent 45%);}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,6,7,.9) 0%,rgba(5,6,7,.42) 40%,transparent 68%),linear-gradient(0deg,rgba(5,6,7,.72),transparent 38%);}
 .hero-inner{position:relative;z-index:3;padding:0 clamp(24px,6vw,90px);max-width:1000px;}
 .hero-eyebrow{font-family:'MBK CorpoA',serif;letter-spacing:6px;font-size:.7rem;color:var(--teal);text-transform:uppercase;margin-bottom:18px;opacity:0;animation:up .9s .1s forwards;}
 .hero-h1{font-family:'MBK CorpoA Cond',serif;font-size:clamp(3rem,7.5vw,6rem);line-height:.98;color:var(--white);margin-bottom:14px;opacity:0;animation:up .9s .25s forwards;}
@@ -179,7 +179,7 @@ table.tbl td{padding:12px 13px;border-top:1px solid var(--line);}
 .matrix td.yes{color:var(--teal);font-weight:800;font-size:1.05rem;background:rgba(47,184,166,.13);} .matrix td.no{color:#31343a;} .matrix tr.optrow td.mk{color:#fff;} .matrix tr.optrow td{border-top:1px solid rgba(47,184,166,.12);} .matrix tr.optrow:hover td{background:rgba(47,184,166,.07);} .matrix tr.optrow td.yes:hover{background:rgba(47,184,166,.2);}
 table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 /* lineup */
-.lu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px;}
+.lu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
 .lu-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.4s;cursor:zoom-in;}
 .lu-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.5);border-color:rgba(47,184,166,.4);}
 .lu-card.standard{border-top:3px solid var(--silver);} .lu-card.amg{border-top:3px solid var(--teal);} .lu-card.amgplus{border-top:3px solid var(--gold);} .lu-card.top{border-top:3px solid #c0392b;}
@@ -494,7 +494,7 @@ table.omx tr:hover td.k{background:#1a1e26;}
 </nav>
 
 <header class="hero">
-  <div class="hero-bg" id="heroBg" style="background-image:url('assets/cla_c174/hero_amg_road.webp');"></div><div class="hero-scrim"></div>
+  <div class="hero-bg" id="heroBg" style="background-image:url('assets/cla_c174/hero_amg_road.webp');opacity:1;background-position:62% 58%;"></div><div class="hero-scrim"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow">MY27 · The all-new electric CLA · C174</div>
     <h1 class="hero-h1">The all-new<br>electric <span>CLA</span></h1>
@@ -580,7 +580,7 @@ table.omx tr:hover td.k{background:#1a1e26;}
 <section id="lineup"><div class="wrap">
   <div class="eyebrow reveal">Part 3 · Line-up</div><h2 class="stitle reveal">국내 출시 5개 트림</h2>
   <p class="sdesc reveal">CLA 200 electric은 Essential · Advanced · AMG Line 3트림, CLA 250+ electric은 기본 · AMG Line 2트림으로 출시됩니다. AMG Line은 <b style="color:var(--gold)">Launch Edition</b>으로 운영됩니다.</p>
-  <div class="lu-grid reveal" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">
+  <div class="lu-grid reveal">
     <div class="lu-card standard" data-lb="assets/cla_c174/ext_ess_front.webp" data-cap="CLA 200 electric Essential">
       <div class="lu-img"><span class="zoomhint">⤢</span><span class="lu-dline">PROGRESSIVE</span><img src="assets/cla_c174/ext_ess_front.webp" alt="CLA 200 electric Essential" loading="lazy"></div>
       <div class="lu-body"><div class="lu-name">CLA 200 electric<br>Essential</div>
