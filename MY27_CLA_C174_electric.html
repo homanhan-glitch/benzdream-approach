@@ -885,6 +885,14 @@ table.omx tr:hover td.k{background:#1a1e26;}
 .ts-name{font-family:'MBK CorpoA Cond',serif;font-size:1.2rem;color:#fff;}
 .ts-code{font-family:monospace;font-size:.72rem;color:var(--gold,#c9a96e);}
 .ts-tag{display:inline-block;font-size:.74rem;color:var(--teal);background:rgba(47,184,166,.1);border:1px solid rgba(47,184,166,.28);border-radius:20px;padding:4px 13px;margin:7px 0 16px;line-height:1.3;}
+
+.eq-im{aspect-ratio:16/10;overflow:hidden;border-radius:10px;margin-bottom:14px;background:#000;}
+.eq-im img{width:100%;height:100%;object-fit:cover;transition:transform .5s;} .eq-card:hover .eq-im img{transform:scale(1.04);}
+.ts-plus{display:flex!important;align-items:center;gap:8px;background:linear-gradient(90deg,rgba(47,184,166,.18),rgba(47,184,166,.05))!important;border-color:rgba(47,184,166,.45)!important;color:#fff!important;font-weight:600;}
+.ts-plus .tsp{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#04110f;font-weight:800;font-size:.9rem;flex:none;}
+.ts-card.amg .ts-plus{background:linear-gradient(90deg,rgba(201,169,110,.2),rgba(201,169,110,.05))!important;border-color:rgba(201,169,110,.5)!important;}
+.ts-card.amg .ts-plus .tsp{background:var(--gold,#c9a96e);}
+
 .ts-inc{font-size:.8rem;color:var(--silver,#9aa0a6);background:rgba(255,255,255,.04);border-radius:8px;padding:8px 11px;margin-bottom:14px;}
 .ts-grp{font-size:.71rem;letter-spacing:1.5px;color:var(--silver,#9aa0a6);text-transform:uppercase;margin:16px 0 9px;display:flex;align-items:center;gap:8px;}.ts-grp::before{content:'';display:inline-block;width:3px;height:11px;background:var(--teal);border-radius:2px;flex:none;}.ts-chip.i{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13);color:var(--light);}.ts-le{display:inline-block;font-size:.64rem;font-weight:700;color:#1a1405;background:var(--gold);border-radius:5px;padding:3px 8px;letter-spacing:.06em;vertical-align:middle;flex:none;}.ts-card{transition:border-color .3s,transform .3s;}.ts-card:hover{border-color:rgba(47,184,166,.45);transform:translateY(-3px);}
 .ts-chips{display:flex;flex-wrap:wrap;gap:7px;}
@@ -901,13 +909,13 @@ table.omx tr:hover td.k{background:#1a1e26;}
 </div>
 <div class="ts-card reveal">
   <div class="ts-head"><div class="ts-name">CLA 200 electric Advanced</div></div>
-  <div class="ts-tag">Essential 전 사양 포함 +</div>
+  <div class="ts-tag ts-plus"><span class="tsp">＋</span> Essential 전 사양에 아래 항목 추가</div>
   <div class="ts-grp">외관</div><div class="ts-chips"><span class="ts-chip">18인치 5스포크 알로이 휠 (R32)</span></div>
   <div class="ts-grp">내장 · 편의</div><div class="ts-chips"><span class="ts-chip i">헤드업 디스플레이</span><span class="ts-chip i">스마트폰 연동(Apple CarPlay·Android Auto)</span><span class="ts-chip i">MB.DRIVE 어시스트(주행보조)</span></div>
 </div>
 <div class="ts-card reveal amg">
   <div class="ts-head"><div class="ts-name">CLA 200 electric AMG Line</div><span class="ts-le">LAUNCH EDITION</span></div>
-  <div class="ts-tag">Advanced 전 사양 포함 +</div>
+  <div class="ts-tag ts-plus"><span class="tsp">＋</span> Advanced 전 사양에 아래 항목 추가</div>
   <div class="ts-grp">외관</div><div class="ts-chips"><span class="ts-chip">18인치 AMG 5스포크 알로이 휠 (RQJ)</span><span class="ts-chip">AMG 전용 범퍼·사이드패널·프론트 에이프런</span><span class="ts-chip">메르세데스-벤츠 패턴 애니메이션 프로젝션 라이트</span></div>
   <div class="ts-grp">내장 · 편의</div><div class="ts-chips"><span class="ts-chip i">나파가죽 다기능 스포츠 스티어링 휠</span><span class="ts-chip i">스포츠 시트</span><span class="ts-chip i">AMG 플로어 매트</span><span class="ts-chip i">스포티 엔진 사운드</span></div>
 </div>
@@ -920,7 +928,7 @@ table.omx tr:hover td.k{background:#1a1e26;}
 </div>
 <div class="ts-card reveal amg">
   <div class="ts-head"><div class="ts-name">CLA 250+ electric AMG Line</div><span class="ts-le">LAUNCH EDITION</span></div>
-  <div class="ts-tag">CLA 250+ 전 사양 포함 +</div>
+  <div class="ts-tag ts-plus"><span class="tsp">＋</span> CLA 250+ 전 사양에 아래 항목 추가</div>
   <div class="ts-grp">외관</div><div class="ts-chips"><span class="ts-chip">18인치 AMG 5스포크 알로이 휠 (RQK)</span><span class="ts-chip">AMG 전용 범퍼·사이드패널·프론트 에이프런</span><span class="ts-chip">메르세데스-벤츠 패턴 애니메이션 프로젝션 라이트</span></div>
   <div class="ts-grp">내장 · 편의</div><div class="ts-chips"><span class="ts-chip i">나파가죽 다기능 스포츠 스티어링 휠</span><span class="ts-chip i">스포티 엔진 사운드</span><span class="ts-chip i">AMG 플로어 매트</span></div>
 </div></div>
@@ -929,23 +937,23 @@ table.omx tr:hover td.k{background:#1a1e26;}
 
 <section id="color"><div class="wrap">
   <div class="eyebrow reveal">Part 7 · Colors</div><h2 class="stitle reveal">외장 컬러 6종</h2>
-  <p class="sdesc reveal">일렉트릭 CLA의 외장 컬러는 <b style="color:var(--teal)">PROGRESSIVE 계열 3종</b>과 <b style="color:var(--gold)">AMG 라인 전용 3종</b>으로 나뉩니다. 트림을 정하면 선택 가능한 컬러가 결정되는 구조이므로, 원하는 색이 있다면 트림 선택 단계에서 함께 고려하셔야 합니다.</p>
+  <p class="sdesc reveal">일렉트릭 CLA의 외장 컬러는 <b style="color:var(--teal)">PROGRESSIVE 계열 3종</b>과 <b style="color:var(--gold)">메탈릭 3종</b>으로 나뉩니다. <b>Progressive 계열(Essential · Advanced · 250+)</b>은 솔리드 3종을, <b>AMG Line 계열</b>은 <b style="color:var(--teal)">6종 전체</b>를 선택할 수 있습니다. (메탈릭 3종은 Progressive 계열에서는 선택되지 않습니다.)</p>
 <div class="colorgrid"><div class="ccard">
  <div class="cswatch"><img src="assets/cla_c174/chip_149U.webp" alt="폴라 화이트" loading="lazy"></div>
  <div class="cbody"><div class="cn2">폴라 화이트</div><div class="cc2">149U · 솔리드</div>
- <div class="cav">Essential 기본 · Advanced 기본 · 250+ 기본</div></div></div><div class="ccard">
+ <div class="cav">전 트림 선택 가능 · Progressive & AMG Line</div></div></div><div class="ccard">
  <div class="cswatch"><img src="assets/cla_c174/chip_341U.webp" alt="아쿠아 민트" loading="lazy"></div>
  <div class="cbody"><div class="cn2">아쿠아 민트</div><div class="cc2">341U · 솔리드</div>
- <div class="cav">Essential 무상 · Advanced 무상 · 250+ 무상</div></div></div><div class="ccard">
+ <div class="cav">전 트림 선택 가능 · Progressive & AMG Line</div></div></div><div class="ccard">
  <div class="cswatch"><img src="assets/cla_c174/chip_696U.webp" alt="제트 블랙" loading="lazy"></div>
  <div class="cbody"><div class="cn2">제트 블랙</div><div class="cc2">696U · 솔리드</div>
- <div class="cav">Essential 무상 · Advanced 무상 · 250+ 무상</div></div></div><div class="ccard">
- <div class="cswatch"><img src="assets/cla_c174/chip_809U.webp" alt="시어 블루" loading="lazy"></div>
- <div class="cbody"><div class="cn2">시어 블루</div><div class="cc2">809U · 메탈릭</div>
- <div class="cav amg">AMG Line 무상 · 250+ AMG 무상</div></div></div><div class="ccard">
+ <div class="cav">전 트림 선택 가능 · Progressive & AMG Line</div></div></div><div class="ccard">
+ <div class="cswatch"><img src="assets/cla_c174/chip_809U.webp" alt="클리어 블루" loading="lazy"></div>
+ <div class="cbody"><div class="cn2">클리어 블루</div><div class="cc2">809U · 메탈릭</div>
+ <div class="cav amg">AMG Line · 250+ AMG 계열 (Progressive 선택 불가)</div></div></div><div class="ccard">
  <div class="cswatch"><img src="assets/cla_c174/chip_922U.webp" alt="하이테크 실버" loading="lazy"></div>
  <div class="cbody"><div class="cn2">하이테크 실버</div><div class="cc2">922U · 메탈릭</div>
- <div class="cav amg">AMG Line 무상 · 250+ AMG 무상</div></div></div><div class="ccard">
+ <div class="cav amg">AMG Line · 250+ AMG 계열 (Progressive 선택 불가)</div></div></div><div class="ccard">
  <div class="cswatch"><img src="assets/cla_c174/chip_993U.webp" alt="MANUFAKTUR 파타고니아 레드" loading="lazy"></div>
  <div class="cbody"><div class="cn2">MANUFAKTUR 파타고니아 레드</div><div class="cc2">993U · 메탈릭</div>
  <div class="cav amg">AMG Line 기본 · 250+ AMG 기본</div></div></div></div>  
@@ -976,63 +984,29 @@ table.omx tr:hover td.k{background:#1a1e26;}
   <div class="eyebrow reveal">Part 8 · Interior</div><h2 class="stitle reveal">내장 컬러 4종</h2>
   <p class="sdesc reveal">기본은 ARTICO 가죽 블랙(101A)이며, 마키아토 베이지(105A)와 천연 가죽 브라운(224A)은 유상 옵션입니다. AMG 라인 트림은 마이크로컷 투톤(681A)이 전용으로 적용됩니다.</p>
 <div class="colorgrid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))"><div class="ccard">
- <div class="seat2"><img src="assets/cla_c174/seat_101A_f.webp" alt="ARTICO 가죽 · 블랙/블랙 앞좌석" loading="lazy"><img src="assets/cla_c174/seat_101A_r.webp" alt="ARTICO 가죽 · 블랙/블랙 뒷좌석" loading="lazy"></div>
+ <div class="seat2"><img src="assets/cla_c174/seat_101A_f.webp" alt="ARTICO 가죽 · 블랙/블랙 앞좌석" loading="lazy" data-lb="assets/cla_c174/seat_101A_f.webp" data-cap="ARTICO 가죽 · 블랙/블랙 앞좌석" style="cursor:zoom-in"><img src="assets/cla_c174/seat_101A_r.webp" alt="ARTICO 가죽 · 블랙/블랙 뒷좌석" loading="lazy" data-lb="assets/cla_c174/seat_101A_r.webp" data-cap="ARTICO 가죽 · 블랙/블랙 뒷좌석" style="cursor:zoom-in"></div>
  <div class="cbody"><div class="cn2">ARTICO 가죽 · 블랙/블랙</div><div class="cc2">101A · 기본 적용</div>
  <div class="cav">Essential · Advanced · 250+</div></div></div><div class="ccard">
- <div class="seat2"><img src="assets/cla_c174/seat_105A_f.webp" alt="ARTICO 가죽 · 마키아토(아이보리) 베이지/블랙 앞좌석" loading="lazy"><img src="assets/cla_c174/seat_105A_r.webp" alt="ARTICO 가죽 · 마키아토(아이보리) 베이지/블랙 뒷좌석" loading="lazy"></div>
+ <div class="seat2"><img src="assets/cla_c174/seat_105A_f.webp" alt="ARTICO 가죽 · 마키아토(아이보리) 베이지/블랙 앞좌석" loading="lazy" data-lb="assets/cla_c174/seat_105A_f.webp" data-cap="ARTICO 가죽 · 마키아토(아이보리) 베이지/블랙 앞좌석" style="cursor:zoom-in"><img src="assets/cla_c174/seat_105A_r.webp" alt="ARTICO 가죽 · 마키아토(아이보리) 베이지/블랙 뒷좌석" loading="lazy" data-lb="assets/cla_c174/seat_105A_r.webp" data-cap="ARTICO 가죽 · 마키아토(아이보리) 베이지/블랙 뒷좌석" style="cursor:zoom-in"></div>
  <div class="cbody"><div class="cn2">ARTICO 가죽 · 마키아토(아이보리) 베이지/블랙</div><div class="cc2">105A · 유료 옵션</div>
  <div class="cav">Essential · Advanced · 250+</div><div class="cav amg">210,000원</div></div></div><div class="ccard">
- <div class="seat2"><img src="assets/cla_c174/seat_224A_f.webp" alt="천연 가죽 · 브라운/블랙 앞좌석" loading="lazy"><img src="assets/cla_c174/seat_224A_r.webp" alt="천연 가죽 · 브라운/블랙 뒷좌석" loading="lazy"></div>
+ <div class="seat2"><img src="assets/cla_c174/seat_224A_f.webp" alt="천연 가죽 · 브라운/블랙 앞좌석" loading="lazy" data-lb="assets/cla_c174/seat_224A_f.webp" data-cap="천연 가죽 · 브라운/블랙 앞좌석" style="cursor:zoom-in"><img src="assets/cla_c174/seat_224A_r.webp" alt="천연 가죽 · 브라운/블랙 뒷좌석" loading="lazy" data-lb="assets/cla_c174/seat_224A_r.webp" data-cap="천연 가죽 · 브라운/블랙 뒷좌석" style="cursor:zoom-in"></div>
  <div class="cbody"><div class="cn2">천연 가죽 · 브라운/블랙</div><div class="cc2">224A · 유료 옵션</div>
  <div class="cav">Essential · Advanced · 250+</div><div class="cav amg">2,690,000원 · 293+U10 조합</div></div></div><div class="ccard">
- <div class="seat2"><img src="assets/cla_c174/seat_681A_f.webp" alt="ARTICO 가죽 + 마이크로컷 투톤 마이크로파이버 · 블랙/클린 화이트 앞좌석" loading="lazy"><img src="assets/cla_c174/seat_681A_r.webp" alt="ARTICO 가죽 + 마이크로컷 투톤 마이크로파이버 · 블랙/클린 화이트 뒷좌석" loading="lazy"></div>
+ <div class="seat2"><img src="assets/cla_c174/seat_681A_f.webp" alt="ARTICO 가죽 + 마이크로컷 투톤 마이크로파이버 · 블랙/클린 화이트 앞좌석" loading="lazy" data-lb="assets/cla_c174/seat_681A_f.webp" data-cap="ARTICO 가죽 + 마이크로컷 투톤 마이크로파이버 · 블랙/클린 화이트 앞좌석" style="cursor:zoom-in"><img src="assets/cla_c174/seat_681A_r.webp" alt="ARTICO 가죽 + 마이크로컷 투톤 마이크로파이버 · 블랙/클린 화이트 뒷좌석" loading="lazy" data-lb="assets/cla_c174/seat_681A_r.webp" data-cap="ARTICO 가죽 + 마이크로컷 투톤 마이크로파이버 · 블랙/클린 화이트 뒷좌석" style="cursor:zoom-in"></div>
  <div class="cbody"><div class="cn2">ARTICO 가죽 + 마이크로컷 투톤 마이크로파이버 · 블랙/클린 화이트</div><div class="cc2">681A · AMG 라인 기본</div>
  <div class="cav">AMG Line · 250+ AMG</div></div></div></div>  <p class="figcap reveal" style="margin-top:20px">각 카드의 왼쪽은 앞좌석, 오른쪽은 뒷좌석 이미지입니다. · 681A는 AMG Line 적용 시트입니다.</p>
 
   <div class="pickrow reveal"><div class="n">◆</div><div class="t">인테리어 트림</div></div>
   <div class="eq-grid reveal">
-    <div class="eq-card"><div class="eq-head"><div class="eq-ic">▦</div><div class="eq-title">앤트러사이트 아노다이즈드 룩 (59H)</div></div>
+    <div class="eq-card"><div class="eq-im" data-lb="assets/cla_c174/trim_59H.webp" data-cap="앤트러사이트 아노다이즈드 룩 (59H)" style="cursor:zoom-in"><img src="assets/cla_c174/trim_59H.webp" alt="앤트러사이트 아노다이즈드 룩" loading="lazy"></div><div class="eq-head"><div class="eq-ic">▦</div><div class="eq-title">앤트러사이트 아노다이즈드 룩 (59H)</div></div>
       <ul class="eq-list"><li>CLA 200 Essential · Advanced</li><li>CLA 250+ electric 기본</li><li>매트한 다크 메탈 질감</li></ul></div>
-    <div class="eq-card"><div class="eq-head"><div class="eq-ic">◈</div><div class="eq-title">카본-그레인 알루미늄 (H43)</div></div>
+    <div class="eq-card"><div class="eq-im" data-lb="assets/cla_c174/trim_H43.webp" data-cap="카본-그레인 알루미늄 (H43)" style="cursor:zoom-in"><img src="assets/cla_c174/trim_H43.webp" alt="카본-그레인 알루미늄" loading="lazy"></div><div class="eq-head"><div class="eq-ic">◈</div><div class="eq-title">카본-그레인 알루미늄 (H43)</div></div>
       <ul class="eq-list"><li>CLA 200 AMG Line</li><li>CLA 250+ AMG Line</li><li>AMG 라인 전용 카본 패턴</li></ul></div>
   </div>
 </div></section>
 
-<section id="package" style="background:var(--bg2)"><div class="wrap">
-  <div class="eyebrow reveal">Part 9 · Packages</div><h2 class="stitle reveal">MMA 패키지 구성</h2>
-  <p class="sdesc reveal">MMA 플랫폼 차량은 어드밴스드 → 어드밴스드 플러스 → 프리미엄 순으로 패키지가 누적되는 구조입니다. 국내 출시 트림에는 <b style="color:var(--teal)">CLA 200 = 어드밴스드 플러스(PDB)</b>, <b style="color:var(--gold)">CLA 250+ = 프리미엄(PDC)</b>이 기본 내장됩니다.</p>
-  <div class="pkg-grid reveal">
-    <div class="pkg lv1"><div class="pc">PDA</div><div class="pn">어드밴스드 패키지</div><div class="pb">기본 구성 (국내 단독 판매 없음)</div>
-      <ul>
-        <li>어댑티브 상향등 어시스트(608)가 있는 LED 고성능 헤드램프(632)</li>
-        <li>일루미네이티드 패널(4B7)</li><li>파노라믹 선루프(416)</li>
-        <li>디지털 계기반(458) · 센트럴 디스플레이(868)</li>
-        <li>얼굴 인식(46U)이 있는 셀피/비디오 카메라(219)</li>
-        <li>미러 패키지(P49)</li>
-        <li>자동 온도 조절 시스템 THERMATIC(580)</li>
-        <li>앞좌석 열선 시트(873) · 4웨이 요추 지지대(U22)</li>
-        <li>Digital Extras 커뮤니케이션 모듈(370)</li>
-        <li>Digital Extra: 기본(4U1) · MB.CHARGE Public(35U) · MBUX 내비게이션(365)</li>
-      </ul></div>
-    <div class="pkg lv2"><div class="pc">PDB</div><div class="pn">어드밴스드 플러스 패키지</div><div class="pb">CLA 200 electric 전 트림 기본 내장 · PDA 전체 포함</div>
-      <ul>
-        <li>앰비언트 라이트(891)</li>
-        <li>키레스 고(889)</li>
-        <li>뒷좌석 암레스트(400)</li>
-        <li>앞좌석 무선 충전 시스템(897)</li>
-        <li>플러시 도어 핸들(87B)</li>
-      </ul></div>
-    <div class="pkg lv3"><div class="pc">PDC</div><div class="pn">프리미엄 패키지</div><div class="pb">CLA 250+ electric 전 트림 기본 내장 · PDB 전체 포함</div>
-      <ul>
-        <li>2존 온도 조절 시스템 THERMOTRONIC(581)</li>
-        <li>키레스 고 패키지(P17)</li>
-        <li>일루미네이티드 도어 실(U45)</li>
-        <li>메모리 패키지(275)</li>
-        <li>Digital Extra: MBUX 엔터테인먼트(03W)</li>
-      </ul></div>
-  </div>
-  <p class="figcap reveal" style="margin-top:18px">CLA 250+ electric은 프리미엄 패키지에 더해 MBUX 슈퍼스크린(860) · 전동 트렁크(881) · 핸즈 프리 액세스(871)가 추가로 기본 적용됩니다.</p>
-</div></section>
+
 <section id="guide"><div class="wrap">
   <div class="eyebrow reveal">Part 10 · Buying Guide</div><h2 class="stitle reveal">어느 트림을 선택해야 할까</h2>
   <p class="sdesc reveal">주행 패턴과 충전 환경, 그리고 원하는 외장 컬러까지 함께 놓고 보면 답이 빨리 나옵니다. 실제 상담 기준으로 정리했습니다.</p>
@@ -1042,18 +1016,18 @@ table.omx tr:hover td.k{background:#1a1e26;}
     <div class="gd"><div class="gt">CLA 200 electric Advanced</div><div class="gs">CLA 200 중 가성비 균형점</div>
       <ul><li>애플 카플레이 · 안드로이드 오토가 필요한 분</li><li>헤드업 디스플레이를 원하는 분</li><li>MB.DRIVE 어시스트(반자율 주행)가 필요한 분</li><li>18인치 휠 디자인을 선호하는 분</li></ul></div>
     <div class="gd"><div class="gt">CLA 200 electric AMG Line</div><div class="gs">Launch Edition · 디자인 우선</div>
-      <ul><li>MANUFAKTUR 파타고니아 레드 · 시어 블루 · 하이테크 실버를 원하는 분</li><li>스포츠 시트와 나파 가죽 스티어링 휠</li><li>AMG 바디스타일링 · 프로젝션 라이트</li><li>주행거리 542km로 충분한 분</li></ul></div>
+      <ul><li>MANUFAKTUR 파타고니아 레드 · 클리어 블루 · 하이테크 실버를 원하는 분</li><li>스포츠 시트와 나파 가죽 스티어링 휠</li><li>AMG 바디스타일링 · 프로젝션 라이트</li><li>주행거리 542km로 충분한 분</li></ul></div>
     <div class="gd pick"><div class="gribbon">가장 많이 찾는 조합</div><div class="gt">CLA 250+ electric</div><div class="gs">주행거리 · 충전 속도 우선</div>
       <ul><li>장거리 주행이 잦은 분 (WLTP 792km)</li><li>급속충전 의존도가 높은 분 (최대 320kW)</li><li>MBUX 슈퍼스크린 · 2존 공조가 필요한 분</li><li>전동 트렁크 · 핸즈 프리 액세스 기본</li></ul></div>
     <div class="gd pick"><div class="gribbon">풀옵션</div><div class="gt">CLA 250+ electric AMG Line</div><div class="gs">Launch Edition · 최상위 구성</div>
-      <ul><li>사실상 모든 사양이 기본으로 들어가는 트림</li><li>AMG 전용 3색 (시어 블루 · 하이테크 실버 · 파타고니아 레드)</li><li>AMG 스포츠 시트 + 마이크로컷 투톤(681A)</li><li>중고차 잔가 방어에 유리한 구성</li></ul></div>
+      <ul><li>사실상 모든 사양이 기본으로 들어가는 트림</li><li>AMG 전용 3색 (클리어 블루 · 하이테크 실버 · 파타고니아 레드)</li><li>AMG 스포츠 시트 + 마이크로컷 투톤(681A)</li><li>중고차 잔가 방어에 유리한 구성</li></ul></div>
   </div>
 
   <div class="pickrow reveal"><div class="n">?</div><div class="t">자주 묻는 질문</div></div>
   <div class="faq-list reveal">
     <details><summary>CLA 200 electric과 250+ 중 어떤 걸 선택해야 하나요?</summary><div class="faq-a">가장 큰 차이는 배터리입니다. CLA 200은 58kWh LFP로 WLTP 542km, CLA 250+는 85kWh NCM으로 WLTP 792km입니다. 충전 속도도 200kW vs 320kW로 차이가 납니다. <b>집·직장 완속 충전이 확보돼 있고 일상 주행 위주라면 CLA 200</b>, <b>장거리 주행이 잦거나 급속충전 의존도가 높다면 CLA 250+</b>를 권해드립니다. 여기에 MBUX 슈퍼스크린·2존 공조·전동 트렁크가 250+에만 들어간다는 점도 함께 보셔야 합니다.</div></details>
-    <details><summary>AMG Line은 왜 Launch Edition인가요?</summary><div class="faq-a">국내 출시 초기 물량에서 AMG Line 트림은 Launch Edition 구성으로 운영됩니다. 외장 컬러가 시어 블루 · 하이테크 실버 · MANUFAKTUR 파타고니아 레드 3색으로 한정되고, 내장은 마이크로컷 투톤(681A) 전용, 휠은 AMG 5스포크(RQJ / RQK)가 적용됩니다. 초기 물량이 한정될 수 있으므로 사전예약 순번이 중요합니다.</div></details>
-    <details><summary>폴라 화이트나 제트 블랙을 AMG Line으로 살 수 있나요?</summary><div class="faq-a">불가능합니다. 폴라 화이트(149U) · 아쿠아 민트(341U) · 제트 블랙(696U)은 PROGRESSIVE 외장 트림(Essential · Advanced · CLA 250+ 기본) 전용이고, 시어 블루(809U) · 하이테크 실버(922U) · MANUFAKTUR 파타고니아 레드(993U)는 AMG Line 전용입니다. 원하는 컬러가 있다면 트림 선택 단계에서 함께 결정하셔야 합니다.</div></details>
+    <details><summary>AMG Line은 왜 Launch Edition인가요?</summary><div class="faq-a">국내 출시 초기 물량에서 AMG Line 트림은 Launch Edition 구성으로 운영됩니다. 외장 컬러가 클리어 블루 · 하이테크 실버 · MANUFAKTUR 파타고니아 레드 3색으로 한정되고, 내장은 마이크로컷 투톤(681A) 전용, 휠은 AMG 5스포크(RQJ / RQK)가 적용됩니다. 초기 물량이 한정될 수 있으므로 사전예약 순번이 중요합니다.</div></details>
+    <details><summary>폴라 화이트나 제트 블랙을 AMG Line으로 살 수 있나요?</summary><div class="faq-a">불가능합니다. 폴라 화이트(149U) · 아쿠아 민트(341U) · 제트 블랙(696U)은 PROGRESSIVE 외장 트림(Essential · Advanced · CLA 250+ 기본) 전용이고, 클리어 블루(809U) · 하이테크 실버(922U) · MANUFAKTUR 파타고니아 레드(993U)는 AMG Line 전용입니다. 원하는 컬러가 있다면 트림 선택 단계에서 함께 결정하셔야 합니다.</div></details>
     <details><summary>Essential에서 빠지는 사양은 정확히 무엇인가요?</summary><div class="faq-a">헤드업 디스플레이(438), 스마트폰 연동 / 애플 카플레이 / 안드로이드 오토(14U · 16U · 17U), MB.DRIVE 어시스트(P20), 차선 변경 어시스트(K32), 스티어링 어시스트(K65) 등입니다. Essential은 MB.DRIVE 스탠다드(PBM)가 적용됩니다. 그 외 파노라믹 루프, 앰비언트 라이트, 키레스 고, 무선 충전, 앞좌석 열선 시트, 열선 스티어링 휠 등은 Essential에도 기본 적용됩니다.</div></details>
     <details><summary>천연 가죽 시트(224A)는 왜 조건이 붙나요?</summary><div class="faq-a">224A 천연 가죽(브라운/블랙)은 2,690,000원 유상 옵션이며, 뒷좌석 사이드 에어백(293) 270,000원과 동반석 에어백 자동 해제 장치(U10) 200,000원을 함께 선택해야 하는 조합 옵션입니다. CLA 250+ 기본 트림은 U10이 이미 기본 적용이라 293만 추가됩니다. AMG Line 트림에서는 224A를 선택할 수 없습니다.</div></details>
     <details><summary>가격과 사전예약 일정은 언제 나오나요?</summary><div class="faq-a">사양은 확정됐고, 판매 가격과 사전예약 일정은 별도 공지 예정입니다. 확정되는 즉시 이 페이지에 반영하고, 카카오톡 채널을 추가해 주신 분들께는 우선 안내드립니다. 사전예약 순번이 초기 출고 시점을 좌우하므로 미리 준비해 두시는 것이 유리합니다.</div></details>
