@@ -86,3 +86,18 @@ allocation 시트를 VIN 단위로 전일과 비교해서 상태 전이를 잡�
 ```
 
 2026-07-13 ~ 08-14 기준: `321 − 424 + 285 = 182` ✓
+
+
+## BenzDream_Stock.html (고객용 재고표) 갱신
+
+`build_stock.py`가 `parse_inventory_v3.build_snapshot()`을 호출해 `latest_stock.json`을 생성합니다.
+(수량은 노출하지 않지만 latest_stock.json 자체에는 색상별 대수가 들어있음 — Stock.html은 배지만 렌더링)
+
+```bash
+python3 pipeline/build_stock.py "<새 엑셀 경로>" latest_stock.json
+```
+
+- G클래스는 `build_snapshot()`이 이미 별도 분리하므로 자동 제외.
+- Virtual VIN(예정 물량/버추얼빈)은 `car_status`가 '판매 가능'이 되지 않으므로 자동 제외.
+- 새 내장/외장 색상이 나오면 `BenzDream_Stock.html`의 `EXT_CLR`/`INT_CLR` JS 객체에 hex 추가 (없으면 회색 `#ccc`로 폴백, 깨지지는 않음).
+- 커밋 대상에 `latest_stock.json`도 반드시 포함.
