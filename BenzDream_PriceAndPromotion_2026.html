@@ -678,6 +678,11 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
 .price-table{table-layout:fixed}
 .price-table td,.price-table th{padding-left:4px;padding-right:4px}
 
+/* Model-Year Group Divider */
+.price-table tr.grp td{background:linear-gradient(90deg,rgba(201,169,110,.14),rgba(201,169,110,0));border-left:3px solid var(--gold);border-bottom:1px solid rgba(201,169,110,.2);padding:11px 16px;font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--gold-light);text-align:left}
+.price-table tr.grp td small{display:block;margin-top:3px;font-size:.66rem;font-weight:400;letter-spacing:0;color:var(--silver)}
+@media(max-width:600px){.price-table tr.grp{display:block;margin:4px 0 12px!important;padding:0!important;border:none!important;background:transparent!important}.price-table tr.grp td{display:block;width:100%!important;padding:10px 14px!important;background:rgba(201,169,110,.1)!important;border-left:3px solid var(--gold)!important;border-radius:6px;margin:0}.price-table tr.grp td::before{content:none!important;display:none!important}}
+
 </style>
 </head>
 <body>
@@ -1353,8 +1358,11 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       </tr>
     </thead>
     <tbody>
+<tr class="grp">
+      <td colspan="7">MY26 · 현행 모델<small>기존 W223 · 재고 판매 중 — 최대 10% 할인 적용</small></td>
+    </tr>
 <tr class="">
-      <td class="c-name"><span class="m-main">S 350 d 4MATIC</span><span class="m-sub">MY26 · MY27 동일 가격</span></td>
+      <td class="c-name"><span class="m-main">S 350 d 4MATIC</span></td>
       <td class="c-msrp">154,000,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-amt">+1,400,000<small>원</small></span></td>
       <td class="c-base"><span class="pct">10%</span><span class="amt">-15,400,000<small>원</small></span></td>
@@ -1386,7 +1394,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-taxup"><span class="tu-amt">+1,400,000<small>원</small></span></td>
       <td class="c-base"><span class="pct">10%</span><span class="amt">-21,500,000<small>원</small></span></td>
       <td class="c-fin"><span class="pct dim">-</span><span class="amt dim">-</span></td>
-      <td class="c-real">194,900,000<small>원</small></td>
+      <td class="c-real">193,500,000<small>원</small></td>
       <td class="c-realtax"><span class="rt-val">192,100,000<small>원</small></span><span class="rt-diff">-1,400,000<small>원</small></span></td>
     </tr>
 <tr class="">
@@ -1408,7 +1416,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-realtax"><span class="rt-val">267,700,000<small>원</small></span><span class="rt-diff">-1,400,000<small>원</small></span></td>
     </tr>
 <tr class="maybach">
-      <td class="c-name"><span class="m-main">Maybach<br>S 580 4MATIC</span><span class="m-sub">EW 보증연장 · MY26 · MY27 동일 가격</span></td>
+      <td class="c-name"><span class="m-main">Maybach<br>S 580 4MATIC</span><span class="m-sub">EW 보증연장</span></td>
       <td class="c-msrp">317,000,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-amt">+1,400,000<small>원</small></span></td>
       <td class="c-base"><span class="pct">9%</span><span class="amt">-28,530,000<small>원</small></span></td>
@@ -1417,7 +1425,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-realtax"><span class="rt-val">287,070,000<small>원</small></span><span class="rt-diff">-1,400,000<small>원</small></span></td>
     </tr>
 <tr class="maybach">
-      <td class="c-name"><span class="m-main">Maybach<br>S 680 4MATIC</span><span class="m-sub">EW 보증연장 · MY26 · MY27 동일 가격</span></td>
+      <td class="c-name"><span class="m-main">Maybach<br>S 680 4MATIC</span><span class="m-sub">EW 보증연장</span></td>
       <td class="c-msrp">403,000,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-amt">+1,400,000<small>원</small></span></td>
       <td class="c-base"><span class="pct">9%</span><span class="amt">-36,270,000<small>원</small></span></td>
@@ -1425,8 +1433,20 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-real">366,730,000<small>원</small></td>
       <td class="c-realtax"><span class="rt-val">365,330,000<small>원</small></span><span class="rt-diff">-1,400,000<small>원</small></span></td>
     </tr>
+<tr class="grp">
+      <td colspan="7">MY27 · 신형 페이스리프트<small>W223 페이스리프트 · 807 생산분 — 신규 연식 (개별소비세 5% 적용)</small></td>
+    </tr>
+<tr class="">
+      <td class="c-name"><span class="m-main">S 350 d 4MATIC</span><span class="m-sub">MY27 신형</span></td>
+      <td class="c-msrp">154,000,000<small>원</small></td>
+      <td class="c-taxup"><span class="tu-none">-</span></td>
+      <td class="c-base"><span class="pct">10%</span><span class="amt">-15,400,000<small>원</small></span></td>
+      <td class="c-fin"><span class="pct dim">-</span><span class="amt dim">-</span></td>
+      <td class="c-real">138,600,000<small>원</small></td>
+      <td class="c-realtax"><span class="rt-val dim">138,600,000<small>원</small></span></td>
+    </tr>
 <tr class="has-fin">
-      <td class="c-name"><span class="m-main">S 450 4MATIC<br>Sedan (SWB)</span><span class="m-sub" style="color:#c9a96e;">MY27 신규 연식</span></td>
+      <td class="c-name"><span class="m-main">S 450 4MATIC<br>Sedan (SWB)</span><span class="m-sub">MY27 신형</span></td>
       <td class="c-msrp">162,400,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-none">-</span></td>
       <td class="c-base"><span class="pct">7%</span><span class="amt">-11,360,000<small>원</small></span></td>
@@ -1435,7 +1455,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-realtax"><span class="rt-val dim">144,530,000<small>원</small></span></td>
     </tr>
 <tr class="">
-      <td class="c-name"><span class="m-main">S 450 4MATIC<br>Long EXCLUSIVE</span><span class="m-sub" style="color:#c9a96e;">MY27 신규 연식</span></td>
+      <td class="c-name"><span class="m-main">S 450 4MATIC<br>Long EXCLUSIVE</span><span class="m-sub">MY27 신형</span></td>
       <td class="c-msrp">175,400,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-none">-</span></td>
       <td class="c-base"><span class="pct">10%</span><span class="amt">-17,540,000<small>원</small></span></td>
@@ -1444,7 +1464,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-realtax"><span class="rt-val dim">157,860,000<small>원</small></span></td>
     </tr>
 <tr class="">
-      <td class="c-name"><span class="m-main">S 450 4MATIC<br>Long AMG Line</span><span class="m-sub" style="color:#c9a96e;">MY27 신규 연식</span></td>
+      <td class="c-name"><span class="m-main">S 450 4MATIC<br>Long AMG Line</span><span class="m-sub">MY27 신형</span></td>
       <td class="c-msrp">195,400,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-none">-</span></td>
       <td class="c-base"><span class="pct">10%</span><span class="amt">-19,540,000<small>원</small></span></td>
@@ -1453,7 +1473,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-realtax"><span class="rt-val dim">175,860,000<small>원</small></span></td>
     </tr>
 <tr class="">
-      <td class="c-name"><span class="m-main">S 500 4MATIC<br>Long</span><span class="m-sub" style="color:#c9a96e;">MY27 신규 연식</span></td>
+      <td class="c-name"><span class="m-main">S 500 4MATIC<br>Long</span><span class="m-sub">MY27 신형</span></td>
       <td class="c-msrp">220,000,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-none">-</span></td>
       <td class="c-base"><span class="pct">10%</span><span class="amt">-22,000,000<small>원</small></span></td>
@@ -1462,7 +1482,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-realtax"><span class="rt-val dim">198,000,000<small>원</small></span></td>
     </tr>
 <tr class="">
-      <td class="c-name"><span class="m-main">S 580 4MATIC<br>Long</span><span class="m-sub" style="color:#c9a96e;">MY27 신규 연식</span></td>
+      <td class="c-name"><span class="m-main">S 580 4MATIC<br>Long</span><span class="m-sub">MY27 신형</span></td>
       <td class="c-msrp">270,000,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-none">-</span></td>
       <td class="c-base"><span class="pct">10%</span><span class="amt">-27,000,000<small>원</small></span></td>
@@ -1471,13 +1491,31 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <td class="c-realtax"><span class="rt-val dim">243,000,000<small>원</small></span></td>
     </tr>
 <tr class="maybach">
-      <td class="c-name"><span class="m-main">Maybach S 580<br>MANUFAKTUR</span><span class="m-sub" style="color:#c9a96e;">MY27 신규 연식 · EW 보증연장</span></td>
+      <td class="c-name"><span class="m-main">Maybach<br>S 580 4MATIC</span><span class="m-sub">MY27 신형 · EW 보증연장</span></td>
+      <td class="c-msrp">317,000,000<small>원</small></td>
+      <td class="c-taxup"><span class="tu-none">-</span></td>
+      <td class="c-base"><span class="pct">9%</span><span class="amt">-28,530,000<small>원</small></span></td>
+      <td class="c-fin"><span class="pct dim">-</span><span class="amt dim">-</span></td>
+      <td class="c-real">288,470,000<small>원</small></td>
+      <td class="c-realtax"><span class="rt-val dim">288,470,000<small>원</small></span></td>
+    </tr>
+<tr class="maybach">
+      <td class="c-name"><span class="m-main">Maybach S 580<br>MANUFAKTUR</span><span class="m-sub">MY27 신형 · EW 보증연장</span></td>
       <td class="c-msrp">336,000,000<small>원</small></td>
       <td class="c-taxup"><span class="tu-none">-</span></td>
       <td class="c-base"><span class="pct">9%</span><span class="amt">-30,240,000<small>원</small></span></td>
       <td class="c-fin"><span class="pct dim">-</span><span class="amt dim">-</span></td>
       <td class="c-real">305,760,000<small>원</small></td>
       <td class="c-realtax"><span class="rt-val dim">305,760,000<small>원</small></span></td>
+    </tr>
+<tr class="maybach">
+      <td class="c-name"><span class="m-main">Maybach<br>S 680 4MATIC</span><span class="m-sub">MY27 신형 · EW 보증연장</span></td>
+      <td class="c-msrp">407,000,000<small>원</small></td>
+      <td class="c-taxup"><span class="tu-none">-</span></td>
+      <td class="c-base"><span class="pct">9%</span><span class="amt">-36,630,000<small>원</small></span></td>
+      <td class="c-fin"><span class="pct dim">-</span><span class="amt dim">-</span></td>
+      <td class="c-real">370,370,000<small>원</small></td>
+      <td class="c-realtax"><span class="rt-val dim">370,370,000<small>원</small></span></td>
     </tr>
     </tbody>
   </table>
