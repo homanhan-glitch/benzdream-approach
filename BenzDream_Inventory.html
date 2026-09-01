@@ -118,6 +118,21 @@ table.dt tbody tr:hover td{background:rgba(201,169,110,.05)}
 .bar{height:5px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden;min-width:60px}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:3px}
 
+
+/* ---------- 재고 트리맵 ---------- */
+.tmwrap{position:relative;width:100%;background:#11141d;border:1px solid var(--line);border-radius:12px;padding:8px}
+.tm{width:100%;height:auto;display:block}
+.tm g.cell{cursor:pointer}
+.tm g.cell rect{transition:opacity .15s}
+.tm g.cell:hover rect.bg{opacity:.85}
+.tm g.cell.sel rect.bg{stroke:var(--gold);stroke-width:2}
+.tmleg{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:.7rem;color:var(--silver)}
+.tmleg i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.pill{font-family:'Outfit',sans-serif;font-size:.62rem;padding:2px 7px;border-radius:20px;display:inline-block;
+  border:1px solid rgba(224,85,63,.45);background:rgba(224,85,63,.16);color:#ff8b76;letter-spacing:.04em}
+.pill.warn{border-color:rgba(224,162,63,.4);background:rgba(224,162,63,.14);color:#f0bb6b}
+.pill.mut{border-color:rgba(168,170,176,.25);background:rgba(168,170,176,.1);color:var(--silver)}
+
 /* ---------- charts ---------- */
 .chartbox{width:100%;overflow-x:auto}
 svg.ch{display:block;min-width:640px}
@@ -177,6 +192,7 @@ svg.ch text{font-family:'Outfit',sans-serif;fill:var(--silver)}
     <button class="tab" data-p="month">월간</button>
     <button class="tab" data-p="sr">전시장 비교</button>
     <button class="tab" data-p="pre">사전계약</button>
+    <button class="tab" data-p="stock">재고 분석</button>
     <button class="tab" data-p="color">색상 수요</button>
   </div>
 
@@ -350,6 +366,67 @@ svg.ch text{font-family:'Outfit',sans-serif;fill:var(--silver)}
     <div class="grid3" id="colorGrid"></div>
   </section>
 
+
+  <!-- ============ 재고 분석 ============ -->
+  <section class="pane" id="p-stock">
+    <div class="note">
+      <b>지금 전국에 남아있는 판매가능 재고</b>(전국재고 · 미배정 · 입고물량)를 구조로 봅니다.
+      트리맵의 <b>칸 크기 = 재고 대수</b>, <b>색 = 그 차종 전체의 소진 예상일수</b>입니다.
+      빨간 칸은 물량이 곧 사라지는 차종, 회색 칸은 재고가 도는 속도보다 많이 쌓인 차종입니다.
+      <b>칸을 클릭하면</b> 아래 표가 그 차종만 남습니다. (기준일 <b id="stDate">—</b>)
+    </div>
+    <div class="kpis" id="stKpis" style="margin:0 0 16px"></div>
+
+    <div class="sec">
+      <h2>차종별 재고 구성</h2>
+      <p class="hint">즉시출고 기준으로 바꾸면 <b>지금 당장 인도 가능한 물량만</b> 보입니다. 두 화면의 크기 차이가 큰 차종은 재고는 있어도 출고가 밀려 있는 차종입니다.</p>
+      <div class="ctl">
+        <div class="seg" id="stSize">
+          <button class="on" data-v="stock">전체 재고 기준</button>
+          <button data-v="imm">즉시출고 기준</button>
+        </div>
+        <span style="flex:1"></span>
+        <button class="chip" id="stClear">전체 보기</button>
+      </div>
+      <div class="tmwrap"><svg class="tm" id="stTree" viewBox="0 0 1000 440" preserveAspectRatio="xMidYMid meet"></svg></div>
+      <div class="tmleg">
+        <span><i style="background:#e0553f"></i>7일 미만 · 이번 주 소진</span>
+        <span><i style="background:#e0a23f"></i>7~21일</span>
+        <span><i style="background:#4d9e6a"></i>21~60일</span>
+        <span><i style="background:#6a6e73"></i>60일 이상 · 적체</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>트림별 재고 상세</h2>
+      <p class="hint">
+        <b>즉시</b>는 출고예정일(PDD)이 기준월 이내인 물량, <b>9월 / 10월+</b>는 대기 물량입니다.
+        즉시가 0인 트림은 상담 시 "지금 출고 가능"이라고 말하면 안 되는 차종입니다.
+      </p>
+      <div class="ctl">
+        <div class="seg" id="stSort">
+          <button class="on" data-v="stock">재고 많은순</button>
+          <button data-v="dos">소진 임박순</button>
+          <button data-v="imm">즉시출고 많은순</button>
+          <button data-v="wait">대기물량 많은순</button>
+        </div>
+        <input class="search" id="stSearch" placeholder="트림 검색 (예: E 300, GLC)">
+        <span style="flex:1"></span>
+        <span style="font-size:.72rem;color:var(--silver)" id="stCount"></span>
+      </div>
+      <div class="tblwrap"><table class="dt" id="stTable"></table></div>
+    </div>
+
+    <div class="sec">
+      <h2>적체 재고 — 물량은 많은데 안 나가는 차종</h2>
+      <p class="hint">
+        소진 예상 60일 초과이거나 집계기간 내 소진이 아예 없었던 트림입니다.
+        본사 물량 협의·프로모션 요청·전시차 전환의 근거로 쓰는 목록입니다.
+      </p>
+      <div class="tblwrap"><table class="dt" id="stDead"></table></div>
+    </div>
+  </section>
+
   <div class="backbtn">
     <a href="https://homanhan-glitch.github.io/benzdream-approach/BenzDream_Landing.html">← 전체 어프로치북 목록 보기</a>
   </div>
@@ -385,7 +462,7 @@ async function boot(){
     if(!r.ok) throw new Error('HTTP '+r.status);
     D=await r.json();
     $('loading').style.display='none';
-    renderHead(); renderCatChips(); renderHeat(); renderVelo(); renderTrend(); renderPeriodPane(D.weekly,'week'); renderPeriodPane(D.monthly,'month'); renderSr(); renderPre(); renderColor();
+    renderHead(); renderCatChips(); renderHeat(); renderVelo(); renderTrend(); renderPeriodPane(D.weekly,'week'); renderPeriodPane(D.monthly,'month'); renderSr(); renderPre(); renderColor(); renderStock();
     bindUI();
   }catch(e){
     $('loading').innerHTML='데이터를 불러오지 못했습니다.<br><span style="font-size:.75rem;opacity:.7">'+esc(e.message)+'</span>';
@@ -502,6 +579,170 @@ function renderVelo(){
       <td style="color:var(--silver)">${fmt(r.new_stock)}</td></tr>`;
   });
   $('veloTable').innerHTML=h+'</tbody>';
+}
+
+
+/* ===================== 재고 분석 ===================== */
+let ST_SORT='stock', ST_SIZE='stock', ST_CAT=null;
+const DOS_COL=d=>d==null?'#6a6e73':d<7?'#e0553f':d<21?'#e0a23f':d<60?'#4d9e6a':'#6a6e73';
+function curMonth(){return D.last.slice(0,7);}
+function pddSplit(r){
+  const cm=curMonth(); let imm=0,m1=0,m2=0;
+  const nm=(()=>{const [y,m]=cm.split('-').map(Number);const d=new Date(Date.UTC(y,m,1));
+    return d.toISOString().slice(0,7);})();
+  Object.entries(r.pdd||{}).forEach(([k,v])=>{ if(k<=cm) imm+=v; else if(k===nm) m1+=v; else m2+=v; });
+  return {imm,m1,m2,wait:m1+m2};
+}
+function stockRows(){ return D.rows.filter(r=>r.stock>0); }
+
+/* --- squarified treemap --- */
+function squarify(data,X,Y,W,H){
+  const out=[], total=data.reduce((a,d)=>a+d.v,0);
+  if(!total||W<=0||H<=0) return out;
+  const items=data.map(d=>({d,a:d.v/total*W*H})).sort((p,q)=>q.a-p.a);
+  const worst=(row,short)=>{
+    const s=row.reduce((a,d)=>a+d.a,0);
+    const mx=Math.max(...row.map(d=>d.a)), mn=Math.min(...row.map(d=>d.a));
+    return Math.max(short*short*mx/(s*s), s*s/(short*short*mn));
+  };
+  let x=X,y=Y,w=W,h=H,rest=items;
+  let guard=0;
+  while(rest.length && guard++<500){
+    if(rest.length===1){ out.push({d:rest[0].d,x,y,w,h}); break; }
+    const short=Math.min(w,h);
+    let row=[rest[0]], i=1;
+    while(i<rest.length){
+      const cand=row.concat([rest[i]]);
+      if(worst(cand,short)<=worst(row,short)){ row=cand; i++; } else break;
+    }
+    const ra=row.reduce((a,d)=>a+d.a,0);
+    if(w>=h){
+      const rw=ra/h; let cy=y;
+      row.forEach(it=>{const rh=it.a/rw; out.push({d:it.d,x,y:cy,w:rw,h:rh}); cy+=rh;});
+      x+=rw; w-=rw;
+    }else{
+      const rh=ra/w; let cxp=x;
+      row.forEach(it=>{const rw2=it.a/rh; out.push({d:it.d,x:cxp,y,w:rw2,h:rh}); cxp+=rw2;});
+      y+=rh; h-=rh;
+    }
+    rest=rest.slice(row.length);
+  }
+  return out;
+}
+
+function renderStock(){
+  const rows=stockRows();
+  $('stDate').textContent=D.last;
+
+  /* --- KPI --- */
+  let tot=0,imm=0,wait=0,hotN=0,hotQ=0,deadN=0,deadQ=0,zeroImm=0;
+  rows.forEach(r=>{
+    const p=pddSplit(r); tot+=r.stock; imm+=p.imm; wait+=p.wait;
+    if(r.dos!=null&&r.dos<7){hotN++;hotQ+=r.stock;}
+    if(r.vel===0||(r.dos!=null&&r.dos>60)){deadN++;deadQ+=r.stock;}
+    if(p.imm===0) zeroImm+=r.stock;
+  });
+  const K=[
+    ['전국 판매가능 재고',fmt(tot),'대',`${rows.length}개 트림`],
+    ['즉시출고 가능',fmt(imm),'대',`전체의 ${(100*imm/tot).toFixed(0)}%`],
+    ['출고 대기',fmt(wait),'대',`즉시출고 0인 물량 ${fmt(zeroImm)}대`],
+    ['소진 임박',fmt(hotQ),'대',`DOS 7일 미만 ${hotN}개 트림`],
+    ['적체 재고',fmt(deadQ),'대',`60일 초과·정체 ${deadN}개 트림`],
+  ];
+  $('stKpis').innerHTML=K.map(([k,v,u,d])=>
+    `<div class="kpi"><div class="k">${k}</div><div class="v">${v}<small>${u}</small></div><div class="d">${d}</div></div>`).join('');
+
+  /* --- 트리맵 --- */
+  const agg={};
+  rows.forEach(r=>{
+    const p=pddSplit(r);
+    const a=agg[r.cat]||(agg[r.cat]={cat:r.cat,stock:0,imm:0,vel:0,n:0});
+    a.stock+=r.stock; a.imm+=p.imm; a.vel+=r.vel; a.n++;
+  });
+  const cells=Object.values(agg).map(a=>{
+    const dos=a.vel>0?a.stock/a.vel:null;
+    return {...a, dos, v:(ST_SIZE==='imm'?a.imm:a.stock)};
+  }).filter(a=>a.v>0);
+  const W=1000,H=440;
+  const laid=squarify(cells,0,0,W,H);
+  let g='';
+  laid.forEach(({d,x,y,w,h})=>{
+    const col=DOS_COL(d.dos), sel=ST_CAT===d.cat?' sel':'';
+    const big=w>78&&h>44, mid=w>52&&h>28;
+    g+=`<g class="cell${sel}" data-c="${esc(d.cat)}">`;
+    g+=`<rect class="bg" x="${x+1.5}" y="${y+1.5}" width="${Math.max(0,w-3)}" height="${Math.max(0,h-3)}" rx="6" fill="${col}" opacity=".62"/>`;
+    g+=`<rect x="${x+1.5}" y="${y+1.5}" width="${Math.max(0,w-3)}" height="${Math.max(0,h-3)}" rx="6" fill="none" stroke="rgba(0,0,0,.35)"/>`;
+    if(big){
+      g+=`<text x="${x+12}" y="${y+24}" font-size="13" fill="#fff" font-family="'Noto Sans KR',sans-serif" font-weight="500">${esc(d.cat)}</text>`;
+      g+=`<text x="${x+12}" y="${y+46}" font-size="17" fill="#fff" font-family="'Outfit',sans-serif" font-weight="600">${fmt(d.v)}<tspan font-size="10" opacity=".8">대</tspan></text>`;
+      if(h>72) g+=`<text x="${x+12}" y="${y+64}" font-size="10" fill="rgba(255,255,255,.8)" font-family="'Outfit',sans-serif">${d.dos==null?'소진 없음':'DOS '+d.dos.toFixed(0)+'일'} · 즉시 ${fmt(d.imm)}</text>`;
+    }else if(mid){
+      g+=`<text x="${x+7}" y="${y+17}" font-size="10" fill="#fff" font-family="'Noto Sans KR',sans-serif">${esc(d.cat)}</text>`;
+      g+=`<text x="${x+7}" y="${y+32}" font-size="12" fill="#fff" font-family="'Outfit',sans-serif" font-weight="600">${fmt(d.v)}</text>`;
+    }
+    g+=`<title>${esc(d.cat)} · ${fmt(d.stock)}대 (즉시 ${fmt(d.imm)}대) · ${d.dos==null?'소진 없음':'소진예상 '+d.dos.toFixed(0)+'일'} · ${d.n}개 트림</title>`;
+    g+='</g>';
+  });
+  $('stTree').innerHTML=g;
+
+  /* --- 상세표 --- */
+  const q=($('stSearch').value||'').trim().toLowerCase();
+  let list=rows.filter(r=>(!ST_CAT||r.cat===ST_CAT)&&(!q||r.model.toLowerCase().includes(q)||r.cat.toLowerCase().includes(q)));
+  list=list.map(r=>({r,p:pddSplit(r)}));
+  list.sort((a,b)=>{
+    if(ST_SORT==='dos'){const x=a.r.dos==null?1e9:a.r.dos,y=b.r.dos==null?1e9:b.r.dos;return x-y||b.r.stock-a.r.stock;}
+    if(ST_SORT==='imm')return b.p.imm-a.p.imm;
+    if(ST_SORT==='wait')return b.p.wait-a.p.wait;
+    return b.r.stock-a.r.stock;
+  });
+  const sum=list.reduce((a,o)=>a+o.r.stock,0);
+  $('stCount').textContent=`${list.length}개 트림 · ${fmt(sum)}대`+(ST_CAT?` · ${ST_CAT}`:'');
+  const maxS=Math.max(...list.map(o=>o.r.stock),1);
+  let h2=`<thead><tr><th>차종</th><th>트림</th><th>재고</th><th>즉시</th><th>9월</th><th>10월+</th>
+    <th>일평균 소진</th><th>소진예상(DOS)</th><th>모터원 계약</th><th>점유율</th><th>상태</th></tr></thead><tbody>`;
+  list.forEach(({r,p})=>{
+    let tag='';
+    if(p.imm===0) tag='<span class="pill">즉시출고 불가</span>';
+    else if(r.dos!=null&&r.dos<7) tag='<span class="pill">이번 주 소진</span>';
+    else if(r.vel===0||(r.dos!=null&&r.dos>60)) tag='<span class="pill mut">적체</span>';
+    else if(p.wait>p.imm) tag='<span class="pill warn">대기 우세</span>';
+    h2+=`<tr>
+      <td><span class="catbadge">${esc(r.cat)}</span></td>
+      <td style="color:var(--white)">${esc(r.model)}</td>
+      <td><div style="display:flex;align-items:center;gap:8px;justify-content:flex-end">
+        <span>${fmt(r.stock)}</span><div class="bar" style="width:60px"><i style="width:${Math.min(100,100*r.stock/maxS)}%"></i></div></div></td>
+      <td style="color:${p.imm?'var(--gold-light)':'#ff8b76'}">${fmt(p.imm)}</td>
+      <td style="color:var(--silver)">${p.m1?fmt(p.m1):'—'}</td>
+      <td style="color:var(--silver)">${p.m2?fmt(p.m2):'—'}</td>
+      <td>${r.vel.toFixed(2)}</td>
+      <td><span class="dosbadge ${dosClass(r.dos)}">${r.dos==null?'—':r.dos<1?'<1일':r.dos+'일'}</span></td>
+      <td style="color:var(--gold-light)">${fmt(r.mo_new)}</td>
+      <td>${r.share==null?'—':r.share.toFixed(1)+'%'}</td>
+      <td style="text-align:left">${tag}</td></tr>`;
+  });
+  $('stTable').innerHTML=h2+'</tbody>';
+
+  /* --- 적체 --- */
+  const dead=rows.filter(r=>r.vel===0||(r.dos!=null&&r.dos>60)).sort((a,b)=>b.stock-a.stock);
+  let h3=`<thead><tr><th>차종</th><th>트림</th><th>재고</th><th>즉시</th><th>일평균 소진</th>
+    <th>소진예상(DOS)</th><th>기간 내 신규입고</th><th>모터원 계약</th><th>정체 사유</th></tr></thead><tbody>`;
+  if(!dead.length) h3+=`<tr><td colspan="9" style="text-align:center;color:var(--silver);padding:22px">적체로 분류된 트림이 없습니다.</td></tr>`;
+  dead.forEach(r=>{
+    const p=pddSplit(r);
+    const why = r.vel===0 ? '집계기간 내 소진 0건'
+      : (r.new_stock>r.stock*.5 ? '최근 대량 입고분 미소화' : '수요 대비 물량 과다');
+    h3+=`<tr>
+      <td><span class="catbadge">${esc(r.cat)}</span></td>
+      <td style="color:var(--white)">${esc(r.model)}</td>
+      <td>${fmt(r.stock)}</td>
+      <td style="color:${p.imm?'var(--gold-light)':'#ff8b76'}">${fmt(p.imm)}</td>
+      <td>${r.vel.toFixed(2)}</td>
+      <td><span class="dosbadge ${dosClass(r.dos)}">${r.dos==null?'소진 없음':r.dos+'일'}</span></td>
+      <td style="color:var(--silver)">${fmt(r.new_stock)}</td>
+      <td style="color:var(--gold-light)">${fmt(r.mo_new)}</td>
+      <td style="text-align:left;color:var(--silver);font-family:'Noto Sans KR',sans-serif">${why}</td></tr>`;
+  });
+  $('stDead').innerHTML=h3+'</tbody>';
 }
 
 /* ===================== 차트 유틸 ===================== */
@@ -789,10 +1030,18 @@ function bindUI(){
     [...$('veloSort').children].forEach(x=>x.classList.toggle('on',x===b));VELO_SORT=b.dataset.v;renderVelo();};
   $('colorMode').onclick=e=>{const b=e.target.closest('button');if(!b)return;
     [...$('colorMode').children].forEach(x=>x.classList.toggle('on',x===b));COLOR_MODE=b.dataset.v;renderColor();};
-  let t1,t2,t3;
+  $('stSize').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+    [...$('stSize').children].forEach(x=>x.classList.toggle('on',x===b));ST_SIZE=b.dataset.v;renderStock();};
+  $('stSort').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+    [...$('stSort').children].forEach(x=>x.classList.toggle('on',x===b));ST_SORT=b.dataset.v;renderStock();};
+  $('stTree').onclick=e=>{const g=e.target.closest('g.cell');if(!g)return;
+    ST_CAT=(ST_CAT===g.dataset.c)?null:g.dataset.c;renderStock();};
+  $('stClear').onclick=()=>{ST_CAT=null;$('stSearch').value='';renderStock();};
+  let t1,t2,t3,t4;
   $('hmSearch').oninput=()=>{clearTimeout(t1);t1=setTimeout(renderHeat,180);};
   $('veloSearch').oninput=()=>{clearTimeout(t2);t2=setTimeout(renderVelo,180);};
   $('colorSearch').oninput=()=>{clearTimeout(t3);t3=setTimeout(renderColor,180);};
+  $('stSearch').oninput=()=>{clearTimeout(t4);t4=setTimeout(renderStock,180);};
 }
 boot();
 </script>
