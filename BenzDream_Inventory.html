@@ -133,6 +133,26 @@ table.dt tbody tr:hover td{background:rgba(201,169,110,.05)}
 .pill.warn{border-color:rgba(224,162,63,.4);background:rgba(224,162,63,.14);color:#f0bb6b}
 .pill.mut{border-color:rgba(168,170,176,.25);background:rgba(168,170,176,.1);color:var(--silver)}
 
+
+/* ---------- 색상 조합 드릴다운 ---------- */
+table.dt tr.exp{cursor:pointer}
+table.dt tr.exp>td:first-child{position:relative;padding-left:24px}
+table.dt tr.exp:hover>td{background:rgba(201,169,110,.07)}
+.caret{position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--gold-dim);font-size:.55rem;transition:transform .15s}
+table.dt tr.exp.on .caret{transform:translateY(-50%) rotate(90deg);color:var(--gold)}
+table.dt tr.sub>td{background:#0f1219;padding:12px 14px 15px;border-bottom:1px solid rgba(255,255,255,.06)}
+.cmbhd{font-size:.68rem;color:var(--silver);margin-bottom:9px;font-family:'Noto Sans KR',sans-serif}
+.cmb{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:6px}
+.cmbi{display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.sw{width:28px;height:17px;border-radius:4px;flex:0 0 auto;border:1px solid rgba(255,255,255,.18);display:flex;overflow:hidden}
+.sw b{display:block;flex:1}
+.cmbi .nm{flex:1;min-width:0;font-family:'Noto Sans KR',sans-serif;font-size:.69rem;color:var(--light);line-height:1.35;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cmbi .nm i{display:block;color:var(--silver);font-style:normal;font-size:.63rem;overflow:hidden;text-overflow:ellipsis}
+.cmbi .q{font-family:'Outfit',sans-serif;font-weight:600;font-size:.85rem;color:var(--gold-light);flex:0 0 auto}
+.cmbi .q small{font-size:.6rem;color:var(--gold-dim);margin-left:2px}
+@media(max-width:680px){ .cmb{grid-template-columns:1fr} }
+
 /* ---------- charts ---------- */
 .chartbox{width:100%;overflow-x:auto}
 svg.ch{display:block;min-width:640px}
@@ -401,7 +421,8 @@ svg.ch text{font-family:'Outfit',sans-serif;fill:var(--silver)}
       <h2>트림별 재고 상세</h2>
       <p class="hint">
         <b>즉시</b>는 출고예정일(PDD)이 기준월 이내인 물량, <b>9월 / 10월+</b>는 대기 물량입니다.
-        즉시가 0인 트림은 상담 시 "지금 출고 가능"이라고 말하면 안 되는 차종입니다.
+        즉시가 0인 트림은 상담 시 "지금 출고 가능"이라고 말하면 안 되는 차종입니다.<br>
+        <b>행을 클릭하면 그 트림의 외장·내장 색상 조합별 잔여 대수</b>가 펼쳐집니다.
       </p>
       <div class="ctl">
         <div class="seg" id="stSort">
@@ -411,6 +432,7 @@ svg.ch text{font-family:'Outfit',sans-serif;fill:var(--silver)}
           <button data-v="wait">대기물량 많은순</button>
         </div>
         <input class="search" id="stSearch" placeholder="트림 검색 (예: E 300, GLC)">
+        <button class="chip" id="stExpand">색상 전체 펼치기</button>
         <span style="flex:1"></span>
         <span style="font-size:.72rem;color:var(--silver)" id="stCount"></span>
       </div>
@@ -442,7 +464,12 @@ const EXT_CLR={'폴라 화이트':'#f2f3f5','노틱 화이트':'#eef0f3','다이
 '셀레나이트 그레이':'#8e9296','그래파이트 그레이':'#4a4d52','마운틴 그레이':'#6e7276','매니지 그레이':'#7d8186','하이테크 실버':'#b8bcc0',
 '아이리듐 실버':'#a8acb0','모하비 실버':'#b0b4b8','스펙트럴 블루':'#1d3a63','나우틱 블루':'#22406e','캐벤사이트 블루':'#1b2a44',
 '루비 레드':'#7d1520','패트라이트 레드':'#8e1a24','하이퍼 블루':'#1e5fa8','MANUFAKTUR 알파인 그레이':'#6b6f74',
-'에메랄드 그린':'#12463a','베르데 실버':'#5d6b62','수르레드':'#a01f2a','라벤더':'#7d6f9c','MANUFAKTUR 다이아몬드 화이트 브라이트':'#fafbfc'};
+'에메랄드 그린':'#12463a','베르데 실버':'#5d6b62','수르레드':'#a01f2a','라벤더':'#7d6f9c','MANUFAKTUR 다이아몬드 화이트 브라이트':'#fafbfc',
+'옵시디안 블랙':'#0e0e10','그라파이트 그레이':'#4a4d52','나이트 블랙':'#0d0d10','제트 블랙':'#0b0b0d','하이 테크 실버':'#b8bcc0',
+'마운틴 그레이 메탈릭':'#6e7276','MANUFAKTUR 알파인 그레이 솔리드':'#6b6f74','MANUFAKTUR 오팔라이트 화이트':'#f4f5f7',
+'MANUFAKTUR 오팔라이트 화이트 메탈릭':'#f4f5f7','MANUFAKTUR 오팔라이트 화이트 브라이트':'#fafbfc','MANUFAKTUR 오팔라이트 화이트 마그노':'#eceef0',
+'MANUFAKTUR 그라파이트 그레이':'#4a4d52','MANUFAKTUR 그라파이트 그레이 마그노':'#44474c','MANUFAKTUR 클래식 그레이 논-메탈릭':'#8b8e92',
+'MANUFAKTUR 가넷 레드 메탈릭':'#6e1520'};
 const INT_CLR={'블랙':'#111214','블랙 인조가죽':'#111214','시에나 브라운':'#5c3a24','마키아토 베이지':'#c8b394','네바 그레이':'#8b8e93',
 '티타늄 그레이 펄':'#7e8288','레드 페퍼':'#7d1a1e','발라오 브라운':'#4a2f22','트러플 브라운':'#6b4a33','베이지':'#cbb79a',
 '다이나미카 블랙':'#141518','크리스탈 그레이':'#a9adb2','카탈라나 베이지':'#c3ae8d','스페이스 그레이':'#5e6266','실버 그레이':'#9ea2a7'};
@@ -584,7 +611,7 @@ function renderVelo(){
 
 
 /* ===================== 재고 분석 ===================== */
-let ST_SORT='stock', ST_SIZE='stock', ST_CAT=null;
+let ST_SORT='stock', ST_SIZE='stock', ST_CAT=null, ST_OPEN=new Set();
 const DOS_COL=d=>d==null?'#6a6e73':d<7?'#e0553f':d<21?'#e0a23f':d<60?'#4d9e6a':'#6a6e73';
 function curMonth(){return D.last.slice(0,7);}
 function pddSplit(r){
@@ -629,6 +656,22 @@ function squarify(data,X,Y,W,H){
     rest=rest.slice(row.length);
   }
   return out;
+}
+
+
+function comboCells(r){
+  const list=Object.entries(r.combos||{}).sort((a,b)=>b[1]-a[1]);
+  if(!list.length) return '<div class="cmbhd">색상 정보가 없습니다.</div>';
+  const cm=curMonth();
+  let h=`<div class="cmbhd">${esc(r.model)} · 재고 ${fmt(r.stock)}대 · 색상 조합 ${list.length}종 <span style="opacity:.6">(왼쪽 = 외장, 오른쪽 = 내장)</span></div><div class="cmb">`;
+  list.forEach(([k,v])=>{
+    const i=k.indexOf('|'), ex=i<0?k:k.slice(0,i), inn=i<0?'—':k.slice(i+1);
+    h+=`<div class="cmbi" title="${esc(ex)} / ${esc(inn)} — ${fmt(v)}대">
+      <span class="sw"><b style="background:${cx(EXT_CLR,ex)}"></b><b style="background:${cx(INT_CLR,inn)}"></b></span>
+      <span class="nm">${esc(ex)}<i>${esc(inn)}</i></span>
+      <span class="q">${fmt(v)}<small>대</small></span></div>`;
+  });
+  return h+'</div>';
 }
 
 function renderStock(){
@@ -708,8 +751,9 @@ function renderStock(){
     else if(r.vel<1) tag='<span class="pill mut">정체</span>';
     else if(r.dos!=null&&r.dos>60) tag='<span class="pill mut">물량 과잉</span>';
     else if(p.wait>p.imm) tag='<span class="pill warn">대기 우세</span>';
-    h2+=`<tr>
-      <td><span class="catbadge">${esc(r.cat)}</span></td>
+    const key=r.cat+'|'+r.model, op=ST_OPEN.has(key);
+    h2+=`<tr class="exp${op?' on':''}" data-k="${esc(key)}">
+      <td><span class="caret">▶</span><span class="catbadge">${esc(r.cat)}</span></td>
       <td style="color:var(--white)">${esc(r.model)}</td>
       <td><div style="display:flex;align-items:center;gap:8px;justify-content:flex-end">
         <span>${fmt(r.stock)}</span><div class="bar" style="width:60px"><i style="width:${Math.min(100,100*r.stock/maxS)}%"></i></div></div></td>
@@ -721,6 +765,7 @@ function renderStock(){
       <td style="color:var(--gold-light)">${fmt(r.mo_new)}</td>
       <td>${r.share==null?'—':r.share.toFixed(1)+'%'}</td>
       <td style="text-align:left">${tag}</td></tr>`;
+    h2+=`<tr class="sub" data-k="${esc(key)}"${op?'':' style="display:none"'}><td colspan="11">${comboCells(r)}</td></tr>`;
   });
   $('stTable').innerHTML=h2+'</tbody>';
 
@@ -1041,6 +1086,18 @@ function bindUI(){
   $('stTree').onclick=e=>{const g=e.target.closest('g.cell');if(!g)return;
     ST_CAT=(ST_CAT===g.dataset.c)?null:g.dataset.c;renderStock();};
   $('stClear').onclick=()=>{ST_CAT=null;$('stSearch').value='';renderStock();};
+  $('stExpand').onclick=()=>{
+    const rows=[...$('stTable').querySelectorAll('tr.exp')];
+    const allOpen=rows.length&&rows.every(t=>ST_OPEN.has(t.dataset.k));
+    if(allOpen){rows.forEach(t=>ST_OPEN.delete(t.dataset.k));$('stExpand').textContent='색상 전체 펼치기';}
+    else{rows.forEach(t=>ST_OPEN.add(t.dataset.k));$('stExpand').textContent='색상 전체 접기';}
+    renderStock();};
+  $('stTable').onclick=e=>{const tr=e.target.closest('tr.exp');if(!tr)return;
+    const k=tr.dataset.k;
+    if(ST_OPEN.has(k)) ST_OPEN.delete(k); else ST_OPEN.add(k);
+    tr.classList.toggle('on',ST_OPEN.has(k));
+    const sub=tr.nextElementSibling;
+    if(sub&&sub.classList.contains('sub')) sub.style.display=ST_OPEN.has(k)?'':'none';};
   let t1,t2,t3,t4;
   $('hmSearch').oninput=()=>{clearTimeout(t1);t1=setTimeout(renderHeat,180);};
   $('veloSearch').oninput=()=>{clearTimeout(t2);t2=setTimeout(renderVelo,180);};
