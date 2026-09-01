@@ -421,7 +421,8 @@ svg.ch text{font-family:'Outfit',sans-serif;fill:var(--silver)}
       <h2>적체 재고 — 물량은 많은데 안 나가는 차종</h2>
       <p class="hint">
         소진 예상 60일 초과이거나 집계기간 내 소진이 아예 없었던 트림입니다.
-        본사 물량 협의·프로모션 요청·전시차 전환의 근거로 쓰는 목록입니다.
+        <b>정체</b>(하루 1대 미만)는 수요 자체가 없는 차종, <b>물량 과잉</b>은 잘 나가는데도 배정이 과했던 차종입니다.
+        앞은 프로모션·전시차 전환, 뒤는 본사 물량 협의와 공격적 클로징의 근거로 씁니다.
       </p>
       <div class="tblwrap"><table class="dt" id="stDead"></table></div>
     </div>
@@ -704,7 +705,8 @@ function renderStock(){
     let tag='';
     if(p.imm===0) tag='<span class="pill">즉시출고 불가</span>';
     else if(r.dos!=null&&r.dos<7) tag='<span class="pill">이번 주 소진</span>';
-    else if(r.vel===0||(r.dos!=null&&r.dos>60)) tag='<span class="pill mut">적체</span>';
+    else if(r.vel<1) tag='<span class="pill mut">정체</span>';
+    else if(r.dos!=null&&r.dos>60) tag='<span class="pill mut">물량 과잉</span>';
     else if(p.wait>p.imm) tag='<span class="pill warn">대기 우세</span>';
     h2+=`<tr>
       <td><span class="catbadge">${esc(r.cat)}</span></td>
@@ -729,8 +731,10 @@ function renderStock(){
   if(!dead.length) h3+=`<tr><td colspan="9" style="text-align:center;color:var(--silver);padding:22px">적체로 분류된 트림이 없습니다.</td></tr>`;
   dead.forEach(r=>{
     const p=pddSplit(r);
-    const why = r.vel===0 ? '집계기간 내 소진 0건'
-      : (r.new_stock>r.stock*.5 ? '최근 대량 입고분 미소화' : '수요 대비 물량 과다');
+    const why = r.vel===0 ? '집계기간 내 소진 0건 — 수요 자체가 없음'
+      : r.vel<1 ? '소진 속도 하루 1대 미만 — 실질 정체'
+      : r.new_stock>r.stock*.5 ? '최근 대량 입고분 미소화'
+      : '수요는 있으나 배정 물량이 과다';
     h3+=`<tr>
       <td><span class="catbadge">${esc(r.cat)}</span></td>
       <td style="color:var(--white)">${esc(r.model)}</td>
