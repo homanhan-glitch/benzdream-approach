@@ -257,8 +257,8 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
 }
 
 .banner{margin:0;padding:0;background:#000;overflow:hidden}
-.banner img{width:100%;max-height:340px;object-fit:cover;object-position:center;display:block}
-@media (max-width:640px){.banner img{max-height:200px}}
+.banner img{width:100%;height:auto;display:block}
+
 
 /* ===== Video Section ===== */
 .videos{padding:40px 48px 36px;background:var(--paper-2);border-bottom:1px solid var(--line-soft)}
@@ -434,8 +434,27 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
       <div class="kp-num">01</div>
       <div class="kp-label">STRATEGY 01</div>
       <div class="kp-title">지금 결정하셔야 하는 차</div>
-      <div class="kp-desc"><strong>전동화 EQ · 현행 S클래스 · G클래스 · GLE 450 AMG Line · C 200 아방가르드 · GLC 300 AMG Line</strong>. 조건과 무관하게 <em>물량이 먼저 사라지는 라인</em>입니다. 원하시는 사양이 보이면 그 자리에서 결정하시는 편이 낫습니다.</div>
+      <div class="kp-desc"><strong>E 300 AMG Line · GLC 300 쿠페 · 현행 S클래스 · AMG GT · SL · GLE 450 AMG Line(일반형) · C 200</strong>. 조건과 무관하게 <em>즉시 출고 물량이 이미 얼마 남지 않은 라인</em>입니다. 특히 E 300 AMG Line은 색상 선택지가 사실상 하나뿐입니다.</div>
     </div>
+    <div class="kp">
+      <div class="kp-num">02</div>
+      <div class="kp-label">STRATEGY 02</div>
+      <div class="kp-title">고를 여유가 있는 차</div>
+      <div class="kp-desc"><strong>E 200 AMG Line · E 200 EXCLUSIVE · E 300 EXCLUSIVE · GLE 450 쿠페 AMG Line · GLS 450 AMG Line · GLB 250 · E 220 d</strong>. 외장과 인테리어를 비교해 고르실 수 있습니다. 다만 <em>여유가 있다는 뜻이지 조건이 다음 달에도 유지된다는 뜻은 아닙니다.</em></div>
+    </div>
+    <div class="kp">
+      <div class="kp-num">03</div>
+      <div class="kp-label">STRATEGY 03</div>
+      <div class="kp-title">대기 계약으로 접근할 차</div>
+      <div class="kp-desc"><strong>GLC 300 아방가르드 · EQA · EQB · G클래스 · MY27 사전예약 라인</strong>. 즉시 출고 물량이 사실상 정리된 라인으로, <em>배정 순번 확보</em>가 핵심입니다. 대기 계약은 계약 시점이 아니라 <em>출고 시점 조건</em>이 적용된다는 점을 함께 고려하셔야 합니다.</div>
+    </div>
+    <div class="kp">
+      <div class="kp-num">04</div>
+      <div class="kp-label">STRATEGY 04</div>
+      <div class="kp-title">협의 여지가 큰 차</div>
+      <div class="kp-desc"><strong>AMG GLE 53 · AMG GLB 35 · GLS · E 220 d · GLC 220 d</strong>. 표면 할인은 크지 않지만 물량에 여유가 있어 <em>전시차 · 재구매 · 트레이드인 같은 개인별 조건을 얹을 여지</em>가 가장 넓습니다. AMG는 이달 위켄드 백까지 함께 붙습니다.</div>
+    </div>
+  </div>
     <div class="kp">
       <div class="kp-num">02</div>
       <div class="kp-label">STRATEGY 02</div>
@@ -464,12 +483,16 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
     <table class="ptbl">
       <thead><tr><th>모델</th><th style="text-align:left">지금 고르기 좋은 조합</th><th style="text-align:left">먼저 확인이 필요한 조합</th></tr></thead>
       <tbody>
-        <tr class="hl"><td>E 200 AMG Line</td><td style="text-align:left">폴라 화이트 · 통카 브라운<br><span style="color:var(--muted)">선택 폭이 가장 넓은 조합입니다</span></td><td style="text-align:left">옵시디안 블랙 계열<br><span style="color:var(--muted)">수량이 제한적이라 조기 확인 권장</span></td></tr>
-        <tr><td>E 200 EXCLUSIVE</td><td style="text-align:left">폴라 화이트 · 통카 브라운 / 블랙</td><td style="text-align:left">마키아토 베이지 조합<br><span style="color:var(--muted)">수요가 몰리는 구성입니다</span></td></tr>
-        <tr><td>E 300 4MATIC EXCLUSIVE</td><td style="text-align:left">폴라 화이트 · 옵시디안 블랙 계열</td><td style="text-align:left">그라파이트 그레이<br><span style="color:var(--muted)">인기 대비 물량이 적습니다</span></td></tr>
-        <tr class="hl"><td>GLE 450 4MATIC AMG Line</td><td style="text-align:left">폴라 화이트</td><td style="text-align:left">옵시디안 블랙<br><span style="color:var(--muted)">가장 선호도가 높은 색상이지만 확보가 어렵습니다</span></td></tr>
-        <tr><td>C 200 AVANTGARDE</td><td style="text-align:left">폴라 화이트 · 마키아토 베이지</td><td style="text-align:left">시에나 브라운 조합<br><span style="color:var(--muted)">수요가 가장 많은 인테리어입니다</span></td></tr>
-        <tr><td>GLC 300 4MATIC AMG Line</td><td style="text-align:left">폴라 화이트 · 시에나 브라운 투톤</td><td style="text-align:left">블랙 인테리어 · 네바 그레이</td></tr>
+        <tr class="hl"><td>E 200 AMG Line</td><td style="text-align:left">폴라 화이트 · 통카 브라운<br><span style="color:var(--muted)">선택 폭이 가장 넓습니다</span></td><td style="text-align:left">옵시디안 블랙 · 마키아토 베이지<br><span style="color:var(--muted)">선택은 가능하지만 화이트 대비 수량이 적습니다</span></td></tr>
+        <tr><td>E 200 EXCLUSIVE</td><td style="text-align:left">폴라 화이트 · 옵시디안 블랙 계열</td><td style="text-align:left">그라파이트 그레이<br><span style="color:var(--muted)">E클래스에서 그레이를 찾으신다면 이 트림이 거의 유일합니다</span></td></tr>
+        <tr><td>E 300 4MATIC EXCLUSIVE</td><td style="text-align:left">폴라 화이트 · 옵시디안 블랙 · 통카 브라운</td><td style="text-align:left">그라파이트 그레이<br><span style="color:var(--muted)">물량이 극히 제한적입니다</span></td></tr>
+        <tr class="hl"><td>E 300 4MATIC AMG Line</td><td style="text-align:left">폴라 화이트<br><span style="color:var(--muted)">현재 사실상 유일한 외장색입니다</span></td><td style="text-align:left">옵시디안 블랙 등 그 외 색상<br><span style="color:var(--muted)">즉시 출고 물량이 없어 대기 계약으로 접근하셔야 합니다</span></td></tr>
+        <tr><td>E 450 EXCLUSIVE · E 350 e</td><td style="text-align:left">폴라 화이트</td><td style="text-align:left">그 외 전 색상<br><span style="color:var(--muted)">현재 화이트 외 선택지가 없습니다</span></td></tr>
+        <tr class="hl"><td>GLE 450 4MATIC AMG Line</td><td style="text-align:left">폴라 화이트</td><td style="text-align:left">옵시디안 블랙<br><span style="color:var(--muted)">블랙 온 블랙 구성이 남아 있지만 소수입니다. 즉시 확인이 필요합니다</span></td></tr>
+        <tr><td>GLE 450 4MATIC 쿠페 AMG Line</td><td style="text-align:left">폴라 화이트 · 옵시디안 블랙<br><span style="color:var(--muted)">블랙 온 블랙도 여유 있게 고르실 수 있습니다</span></td><td style="text-align:left">셀레나이트 그레이 · MANUFAKTUR 컬러</td></tr>
+        <tr><td>GLC 300 4MATIC AMG Line</td><td style="text-align:left">폴라 화이트 · 시에나 브라운 투톤 · 옵시디안 블랙</td><td style="text-align:left">네바 그레이 · 블랙 단색 인테리어<br><span style="color:var(--muted)">조합별 수량 차이가 큽니다</span></td></tr>
+        <tr><td>C 200 AVANTGARDE · AMG Line</td><td style="text-align:left">폴라 화이트 계열</td><td style="text-align:left">옵시디안 블랙 · 시에나 브라운 조합<br><span style="color:var(--muted)">선호도가 높아 먼저 확인이 필요합니다</span></td></tr>
+        <tr><td>AMG GLE 53 · GLS 450 AMG Line</td><td style="text-align:left">옵시디안 블랙<br><span style="color:var(--muted)">블랙 중심으로 구성돼 있습니다</span></td><td style="text-align:left">폴라 화이트<br><span style="color:var(--muted)">화이트를 원하시면 물량이 적어 사전 확인이 필수입니다</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -509,7 +532,7 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
     <div class="pick-body">
       <h4>GLC 300 4MATIC AMG Line / Coupé AMG Line</h4>
       <span class="pick-tag tag-red">NEW FINANCE · HOTTEST</span>
-      <p>이달 <strong>가장 주목할 변화</strong>입니다. 그동안 아방가르드에만 붙던 MBM 특별 할인 4%가 <em>AMG Line까지 신규 확대</em>됐습니다. 기본 12% + 4%로 <strong>최종 16%</strong>, 쿠페 AMG Line은 기본 9% + 4%로 <strong>최종 13%</strong>. RoF 에디션과 140주년 에디션도 동일 적용됩니다. 여기에 6개월 월 납입금 지원 <em>월 45만원</em>과 Conquest +1%까지 겹칠 수 있습니다. 27년식은 7% / 5%로 내려가므로 26년식 재고가 관건입니다.</p>
+      <p>이달 <strong>가장 주목할 변화</strong>입니다. 그동안 아방가르드에만 붙던 MBM 특별 할인 4%가 <em>AMG Line까지 신규 확대</em>됐습니다. 기본 12% + 4%로 <strong>최종 16%</strong>, 쿠페 AMG Line은 기본 9% + 4%로 <strong>최종 13%</strong>. RoF 에디션과 140주년 에디션도 동일 적용됩니다. 일반형은 화이트 · 블랙 모두 선택 가능하지만 <em>쿠페는 즉시 출고 물량이 한 자릿수 수준</em>이라 사전 확인이 필요합니다. 여기에 6개월 월 납입금 지원 <em>월 45만원</em>과 Conquest +1%까지 겹칠 수 있습니다. 27년식은 7% / 5%로 내려가므로 26년식 재고가 관건입니다.</p>
       <div class="pick-price">
         <div><span class="lbl">AMG Line</span><span class="val gold">16% · 7,770만</span></div>
         <div><span class="lbl">쿠페 AMG Line</span><span class="val">13% · 8,430만</span></div>
@@ -537,7 +560,7 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
     <div class="pick-body">
       <h4>EQA 250 · EQB 300 4MATIC</h4>
       <span class="pick-tag tag-gold">ELECTRIC · NO RUSH</span>
-      <p>기본 10% + MBM 특별 할인 4%로 <strong>최종 14%</strong>, 무상 보증연장(최대 5년 / 17만km)까지 기본 포함입니다. 무엇보다 <em>EQA 250은 27년식도 26년식과 완전히 동일한 조건</em>이라 연식 전환에 따른 손해가 없습니다. 급하게 결정하지 않아도 되는 몇 안 되는 라인업이고, 그만큼 색상·사양을 골라서 잡을 수 있습니다.</p>
+      <p>기본 10% + MBM 특별 할인 4%로 <strong>최종 14%</strong>, 무상 보증연장(최대 5년 / 17만km)까지 기본 포함입니다. 다만 <em>26년식 즉시 출고 물량은 사실상 정리된 상태</em>입니다. 대신 <strong>27년식이 완전히 동일한 조건으로 이어지기 때문에</strong> 대기 계약이어도 손해가 없는, 이달 몇 안 되는 라인업입니다. 조건 하락을 걱정하지 않고 색상·사양을 고르실 수 있습니다.</p>
       <div class="pick-price">
         <div><span class="lbl">기본 → 최종</span><span class="val gold">10% → 14%</span></div>
         <div><span class="lbl">MY27</span><span class="val">동일 조건 유지</span></div>
@@ -661,9 +684,9 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
   <div class="class-block">
     <div class="class-head"><span class="class-badge">CMP</span><span class="class-name">컴팩트 — A · CLA · GLA · GLB</span><span class="class-view view-buy">BUY</span></div>
     <ul>
-      <li><b>GLB 250 · AMG GLB 35</b> — 총 13% 유지. <em>컴팩트 SUV 중 가장 여유 있는 라인</em>으로, 색상과 사양을 비교해 고르실 수 있습니다. 급하게 결정하실 필요가 없는 구간입니다.</li>
-      <li><b>GLA 250 4MATIC AMG Line</b> — 같은 총 13%지만 물량이 상대적으로 제한적이라 원하시는 색상이 보이면 빠른 확인을 권합니다. <em>27년식도 동일 조건</em>이라 연식 때문에 서두르실 필요는 없습니다.</li>
-      <li><b>AMG A 45 S</b> — 총 11% + 무이자. 27년식은 9월 조건표에 등재되지 않아 <em>26년식이 유일한 선택지</em>입니다.</li>
+      <li><b>GLB 250 · AMG GLB 35</b> — 총 13% 유지. <em>컴팩트 SUV 중 가장 여유 있는 라인</em>으로 화이트 · 블랙 · 그레이까지 고르실 수 있습니다. 급하게 결정하실 필요가 없는 구간입니다.</li>
+      <li><b>GLA 250 4MATIC</b> — 같은 총 13%지만 <em>즉시 출고 물량이 화이트 중심으로 좁혀져</em> 있습니다. AMG Line 사양은 특히 제한적이라 사전 확인이 필요합니다. 27년식도 동일 조건이라 대기 계약도 손해가 없습니다.</li>
+      <li><b>AMG A 45 S</b> — 총 11% + 무이자. 물량이 많지 않고 27년식은 9월 조건표에 등재되지 않아 <em>26년식이 유일한 선택지</em>입니다.</li>
       <li><b>CLA 250 4MATIC AMG Line</b> — 7% 단독으로 금융 추가 할인이 없습니다. 전동화 CLA 사전예약과 함께 비교해 보시는 것을 권합니다.</li>
     </ul>
     <div class="ptbl-wrap">
@@ -690,8 +713,8 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
   <div class="class-block">
     <div class="class-head"><span class="class-badge">C</span><span class="class-name">C-Class</span><span class="class-view view-buy">BUY</span></div>
     <ul>
-      <li><b>C 200 AVANTGARDE</b> — 총 14%. 5,000만원대 진입 수요가 가장 많이 몰리는 트림이라 <em>회전이 빠릅니다.</em> 특히 시에나 브라운 인테리어는 선호도가 높아 먼저 확인하셔야 합니다.</li>
-      <li><b>C 200 AMG Line</b> — 같은 총 14%이면서 상대적으로 선택 폭이 넓습니다. 색상을 고르고 싶으시다면 이쪽이 유리합니다.</li>
+      <li><b>C 200 AVANTGARDE · AMG Line</b> — 모두 총 14%. 두 트림 모두 <em>즉시 출고 물량이 넉넉하지 않고 회전이 빠릅니다.</em> 5,000만원대 진입 수요가 가장 많이 몰리는 구간이라 원하시는 색상이 보이면 빠른 결정을 권합니다.</li>
+      <li><b>색상</b> — 폴라 화이트가 중심이고 옵시디안 블랙도 선택 가능합니다. 다만 <em>시에나 브라운 인테리어는 선호도가 높아</em> 조합에 따라 먼저 빠집니다.</li>
       <li><b>월 납입금 지원</b> — 안심보장할부 이용 시 월 30만원 × 6개월. C클래스 금액대에서는 체감이 큰 혜택입니다.</li>
     </ul>
     <div class="ptbl-wrap">
@@ -711,10 +734,12 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
     <div class="class-head"><span class="class-badge">E</span><span class="class-name">E-Class</span><span class="class-view view-buy">BUY · FOCUS</span></div>
     <ul>
       <li><b>E 200 AVANTGARDE</b> — 현금 할인 <em>16%</em>로 E클래스 최대 할인율. 실구매 6,510만원.</li>
-      <li><b>E 200 EXCLUSIVE · AMG Line</b> — 기본 할인이 각각 4%→8%, 10%→12%로 확대됐습니다. <em>E클래스에서 색상과 사양을 가장 여유 있게 고를 수 있는 구간</em>이 지금입니다. 다만 옵시디안 블랙 계열은 수량이 제한적이라 먼저 확인이 필요합니다.</li>
-      <li><b>E 300 4MATIC EXCLUSIVE</b> — 총 14%. E 200 대비 회전이 빠른 편이고, <em>그라파이트 그레이는 인기 대비 물량이 적어</em> 원하시면 조기 확인을 권합니다.</li>
-      <li><b>E 220 d 4MATIC EXCLUSIVE</b> — 9% 유지. 선택 폭이 넓게 남아 있는 트림이라 <em>전시차 · 재구매 등 개인별 조건을 얹을 여지</em>가 상대적으로 큽니다.</li>
-      <li><b>E 450 · AMG E 53</b> — 물량이 제한적입니다. 원하시는 색상이 있으시면 사전 확인이 필수입니다.</li>
+      <li><b>E 200 EXCLUSIVE · AMG Line</b> — 기본 할인이 각각 4%→8%, 10%→12%로 확대됐습니다. <em>E클래스에서 색상과 사양을 가장 여유 있게 고를 수 있는 구간</em>입니다. 화이트가 중심이지만 옵시디안 블랙도 선택 가능하고, <b>그라파이트 그레이는 EXCLUSIVE에서만</b> 소량 잡으실 수 있습니다.</li>
+      <li><b>E 300 4MATIC AMG Line</b> — 총 14%로 조건은 EXCLUSIVE와 같지만 <em>즉시 출고 물량이 극히 적고 외장색이 폴라 화이트로 사실상 단일</em>합니다. AMG Line 사양을 원하신다면 지금 남아 있는 차량을 잡으시거나 대기 계약으로 가셔야 합니다.</li>
+      <li><b>E 300 4MATIC EXCLUSIVE</b> — 같은 총 14%이면서 <em>화이트 · 블랙 · 통카 브라운 · 베이지까지 폭넓게 고르실 수 있습니다.</em> E 300을 보고 계신다면 현실적으로 선택지가 가장 넓은 트림입니다. 그라파이트 그레이만 물량이 극소량입니다.</li>
+      <li><b>E 450 EXCLUSIVE · E 350 e</b> — 11% 유지. 현재 <em>폴라 화이트 외 선택지가 없습니다.</em> 다른 색상을 원하시면 대기 계약이 전제입니다.</li>
+      <li><b>E 220 d 4MATIC EXCLUSIVE</b> — 9% 유지. 화이트 · 블랙 모두 여유가 있어 <em>전시차 · 재구매 등 개인별 조건을 얹을 여지</em>가 상대적으로 큽니다.</li>
+      <li><b>AMG E 53 HYBRID</b> — 10% 유지. 옵시디안 블랙 중심으로 구성돼 있습니다.</li>
       <li><b>주의</b> — <em>MY26 E클래스 무상 보증연장은 8월로 종료</em>됐습니다. 보증연장이 빠진 대신 현금 할인이 커진 구조로 이해하시면 됩니다.</li>
     </ul>
     <div class="ptbl-wrap">
@@ -742,9 +767,9 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
   <div class="class-block">
     <div class="class-head"><span class="class-badge">S</span><span class="class-name">S-Class</span><span class="class-view view-mix">BUY · MY27 주의</span></div>
     <ul>
-      <li><b>S 450 4MATIC SWB</b> — 총 11%(리스·렌트는 최대 13%). 현행 S클래스는 <em>즉시 출고 물량이 매우 제한적</em>이라, 조건보다 매칭 가능한 차량이 있는지가 먼저입니다.</li>
-      <li><b>마이바흐 S 580 · S 680</b> — 9%에 더해 <em>운용리스 이용 시 추가 2%가 9월 신설</em>됐습니다. 무상 보증연장도 유지됩니다.</li>
-      <li><b>현행과 신형 중 선택</b> — 현행 재고가 소진 국면에 들어선 만큼, 실질적으로는 <em>MY27 사전예약과 비교해 결정</em>하시게 됩니다. 사전예약 고객은 골든타임 혜택을 전원 받습니다.</li>
+      <li><b>S 450 4MATIC SWB</b> — 총 11%(리스 · 렌트는 최대 13%). 다만 <em>현행 S클래스는 전 트림을 합쳐도 즉시 출고 물량이 한 자릿수</em>입니다. 조건보다 매칭 가능한 차량이 있는지가 먼저입니다.</li>
+      <li><b>마이바흐 S 580 · S 680</b> — 9%에 더해 <em>운용리스 이용 시 추가 2%가 9월 신설</em>됐습니다. 무상 보증연장도 유지되며, 옵시디안 블랙 중심으로 구성돼 있습니다.</li>
+      <li><b>현행과 신형 중 선택</b> — 현행 재고가 사실상 정리된 만큼 실질적으로는 <em>MY27 사전예약과 비교해 결정</em>하시게 됩니다. 사전예약 고객은 골든타임 혜택을 전원 받습니다.</li>
     </ul>
     <div class="ptbl-wrap">
       <div class="ptbl-head"><span class="ptbl-head-label">S-Class · MY26 현행</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
@@ -791,9 +816,10 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
   <div class="class-block">
     <div class="class-head"><span class="class-badge">CLE</span><span class="class-name">CLE · AMG GT · SL</span><span class="class-view view-mix">SEASON · MY27 주의</span></div>
     <ul>
-      <li><b>CLE 450 4MATIC 쿠페</b> — 9%로 CLE 라인업 최대. 27년식은 2%까지 내려가므로 <em>26년식 확보 자체가 조건</em>입니다.</li>
-      <li><b>CLE 200 카브리올레</b> — 시즌 수요가 몰리는 트림으로 회전이 빠릅니다. 원하시는 색상이 있으시면 즉시 확인을 권합니다.</li>
-      <li><b>AMG SL 43 · GT 43</b> — 9% 유지. 드림카 라인은 물량 자체가 극소량이라 프로모션보다 <em>선호 색상 매칭</em>이 우선입니다.</li>
+      <li><b>CLE 200 카브리올레</b> — 4% · CLE 라인에서 <em>선택 폭이 가장 넓은 트림</em>입니다. 폴라 화이트뿐 아니라 MANUFAKTUR 알파인 그레이, 옵시디안 블랙까지 고르실 수 있습니다.</li>
+      <li><b>CLE 450 4MATIC 쿠페</b> — 9%로 CLE 최대 할인이지만 <em>즉시 출고 물량이 거의 남지 않았습니다.</em> 27년식은 2%까지 내려가므로 26년식 확보 자체가 조건입니다.</li>
+      <li><b>CLE 450 카브리올레 · AMG CLE 53 카브리올레</b> — 각각 6% / 3%. 카브리올레 쪽이 쿠페보다 선택지가 넓게 남아 있습니다.</li>
+      <li><b>AMG SL 43 · GT 43</b> — 9% 유지. <em>물량이 극소량</em>이라 프로모션보다 선호 색상 매칭이 우선입니다.</li>
     </ul>
     <div class="ptbl-wrap">
       <div class="ptbl-head"><span class="ptbl-head-label">CLE · AMG GT · SL · MY26</span><span class="ptbl-head-unit">단위: 만원 · VAT 포함</span></div>
@@ -843,9 +869,10 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
   <div class="class-block">
     <div class="class-head"><span class="class-badge">GLC</span><span class="class-name">GLC-Class</span><span class="class-view view-buy">BUY · FOCUS</span></div>
     <ul>
-      <li><b>GLC 300 AMG Line · 쿠페 AMG Line</b> — MBM 특별 할인 4%가 이번 달 신규 적용되어 총 16% / 13%. <em>조건이 가장 좋아진 동시에 회전도 빠른 조합</em>이라, 9월 중 결정하실 계획이라면 우선순위가 높습니다.</li>
-      <li><b>GLC 300 아방가르드</b> — 총 11%이지만 <em>즉시 출고 물량이 소진 국면</em>입니다. 실질적으로 대기 계약으로 접근하시거나 AMG Line으로 넘어가시는 편이 현실적입니다.</li>
-      <li><b>GLC 220 d</b> — 7%. 선택 폭이 넓게 남아 있어 <em>개인별 추가 조건을 얹기 좋은</em> 구간입니다.</li>
+      <li><b>GLC 300 4MATIC AMG Line</b> — MBM 특별 할인 4%가 이번 달 신규 적용되어 총 16%. <em>조건이 가장 좋아진 동시에 회전도 빠른 조합</em>입니다. 화이트와 옵시디안 블랙 모두 선택 가능하니 9월 중 결정하실 계획이라면 우선순위가 높습니다.</li>
+      <li><b>GLC 300 4MATIC 쿠페 AMG Line</b> — 총 13%로 조건은 좋지만 <em>즉시 출고 물량이 한 자릿수 수준</em>입니다. 쿠페를 원하신다면 즉시 확인이 필요합니다.</li>
+      <li><b>GLC 300 아방가르드</b> — 총 11%이지만 일반형은 <em>즉시 출고 물량이 정리된 상태</em>이고 쿠페 아방가르드도 소량만 남았습니다. 실질적으로 대기 계약이거나 AMG Line으로 넘어가시는 편이 현실적입니다.</li>
+      <li><b>GLC 220 d</b> — 7%. 화이트 · 블랙 모두 여유가 있어 <em>개인별 추가 조건을 얹기 좋은</em> 구간입니다.</li>
       <li><b>MY27 GLC 300(내연)</b> — 아방가르드 · AMG Line 7%, 쿠페 5%. <em>권장 소비자가는 아직 미고시</em>입니다. <b>GLC Electric(X540)</b>은 사전계약 단계입니다.</li>
     </ul>
     <div class="ptbl-wrap">
@@ -874,10 +901,10 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
   <div class="class-block">
     <div class="class-head"><span class="class-badge">GLE</span><span class="class-name">GLE-Class</span><span class="class-view view-buy">BUY · BEST DEAL</span></div>
     <ul>
-      <li><b>GLE 450 4MATIC AMG Line (일반형)</b> — 총 16%로 조건은 최고 수준이지만 <em>즉시 출고 물량이 소진 임박</em>입니다. 원하시는 사양이 있으시면 즉시 확인이 필요하고, 특히 옵시디안 블랙은 확보가 어렵습니다.</li>
-      <li><b>GLE 450 4MATIC 쿠페 AMG Line</b> — 같은 총 16%이면서 <em>선택 폭이 넓게 남아 있습니다.</em> GLE를 보고 계신다면 현실적으로 가장 좋은 선택지입니다.</li>
-      <li><b>GLE 350 · GLE 300 d</b> — 각각 10% / 8%. 수요가 꾸준해 회전이 빠른 편입니다.</li>
-      <li><b>AMG GLE 53 · 쿠페</b> — 현금 할인은 8% / 5%로 크지 않지만 <em>물량에 여유가 있어 협의 여지가 넓고</em>, 이달 AMG 위켄드 백까지 함께 제공됩니다.</li>
+      <li><b>GLE 450 4MATIC AMG Line (일반형)</b> — 총 16%로 조건은 최고 수준이지만 <em>즉시 출고 물량이 소진 임박</em>입니다. 폴라 화이트가 대부분이고 <b>옵시디안 블랙 온 블랙 구성도 남아 있지만 소수</b>라, 블랙을 원하시면 그날 바로 확인하셔야 합니다.</li>
+      <li><b>GLE 450 4MATIC 쿠페 AMG Line</b> — 같은 총 16%이면서 <em>화이트와 블랙 모두 여유 있게 고르실 수 있습니다.</em> GLE를 보고 계신다면 현실적으로 가장 좋은 선택지입니다.</li>
+      <li><b>GLE 350 4MATIC</b> — 10%. 화이트 · 블랙 모두 선택 가능하고 수요가 꾸준한 트림입니다. <b>GLE 300 d</b>는 물량이 많지 않습니다.</li>
+      <li><b>AMG GLE 53 · 쿠페</b> — 현금 할인은 8% / 5%로 크지 않지만 <em>옵시디안 블랙 중심으로 물량에 여유가 있어 협의 여지가 넓고</em>, 이달 AMG 위켄드 백까지 함께 제공됩니다.</li>
       <li><b>월 납입금 지원 월 60만원</b> — 전 차종 최대 지원액입니다. Conquest +1%까지 겹치면 실효 17%대까지 확장됩니다.</li>
     </ul>
     <div class="ptbl-wrap">
@@ -902,8 +929,9 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
   <div class="class-block">
     <div class="class-head"><span class="class-badge">GLS·G</span><span class="class-name">GLS · G-Class</span><span class="class-view view-watch">WATCH</span></div>
     <ul>
-      <li><b>GLS</b> — 전월과 동일한 조건입니다. 회전이 빠른 라인은 아니어서 <em>재구매 · 전시차 등 개인별 조건을 얹을 여지</em>가 있는 편입니다. 다만 원하시는 사양은 미리 잡아두시는 편이 안전합니다.</li>
-      <li><b>G-Class</b> — 현금 할인 없음. <em>즉시 출고 물량이 극히 제한적</em>이라 대기 계약이 기본입니다. 계약금 기준이 500만원으로 올랐고, 2026년 9월 7일 이후 생성되는 모든 계약은 수출 방지 서약 및 근저당 설정 계약서 작성이 필요합니다. 현금·할부 구매는 출고 6개월 후 근저당이 자동 해지됩니다.</li>
+      <li><b>GLS 450 4MATIC AMG Line</b> — 5%. <em>GLS 중 물량이 가장 넉넉하고 옵시디안 블랙 중심</em>으로 구성돼 있습니다. 회전이 빠른 라인은 아니어서 재구매 · 전시차 등 개인별 조건을 얹을 여지가 있습니다.</li>
+      <li><b>GLS 580 · GLS 450 d · AMG GLS 63</b> — 각각 6% / 2% / 1%. 물량이 제한적이라 원하시는 사양은 미리 잡아두시는 편이 안전합니다.</li>
+      <li><b>G-Class</b> — 현금 할인 없음. <em>즉시 출고 물량이 거의 없어</em> 대기 계약이 기본입니다. 계약금 기준이 500만원으로 올랐고, 2026년 9월 7일 이후 생성되는 모든 계약은 수출 방지 서약 및 근저당 설정 계약서 작성이 필요합니다. 현금 · 할부 구매는 출고 6개월 후 근저당이 자동 해지됩니다.</li>
       <li><b>골든타임 프로그램</b> — G클래스는 제외 대상입니다.</li>
     </ul>
     <div class="ptbl-wrap">
@@ -933,9 +961,9 @@ table.ptbl tr.hl td:first-child::before{content:"▶ ";color:var(--gold);font-si
   <div class="class-block">
     <div class="class-head"><span class="class-badge">EQ</span><span class="class-name">전동화 EQ</span><span class="class-view view-buy">BUY · NO RUSH</span></div>
     <ul>
-      <li><b>EQ 전 라인업</b> — <em>즉시 출고 물량이 가장 빠르게 빠지는 라인</em>입니다. 조건은 전월과 동일하지만, 원하시는 사양이 보이면 그 자리에서 결정하시는 편이 낫습니다.</li>
-      <li><b>EQA · EQB</b> — 총 14%에 무상 보증연장 기본 포함. <em>EQA 250은 27년식도 동일 조건</em>이라 연식 전환 부담이 없습니다.</li>
-      <li><b>EQE · EQS</b> — 10% 유지, 무상 보증연장 포함. 사양별 선택 폭이 좁으니 사전 확인이 필수입니다.</li>
+      <li><b>EQA · EQB</b> — 총 14%에 무상 보증연장 기본 포함. 다만 <em>26년식 즉시 출고 물량은 사실상 정리됐습니다.</em> <b>27년식이 동일한 조건(10% + MBM 4%)으로 이어지므로</b> 대기 계약이어도 손해가 없는 몇 안 되는 라인입니다.</li>
+      <li><b>EQS 450 4MATIC SUV</b> — 10% + 무상 보증연장. <em>EQ 라인 중 즉시 출고가 가장 여유 있는 모델</em>이고 옵시디안 블랙 중심입니다.</li>
+      <li><b>EQE 계열</b> — 10% 유지. 물량이 매우 적어 원하시는 사양이 보이면 즉시 결정하셔야 합니다.</li>
       <li><b>G 580 · 마이바흐 EQS 680</b> — 현금 할인 없이 무상 보증연장만 적용됩니다.</li>
     </ul>
     <div class="ptbl-wrap">
