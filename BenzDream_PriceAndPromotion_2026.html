@@ -778,7 +778,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
   <div style="text-align:center;margin-bottom:20px;">
     <span style="display:inline-block;background:#c9a96e22;color:#c9a96e;font-size:.68rem;font-weight:500;padding:4px 14px;border-radius:20px;letter-spacing:.04em;margin-bottom:8px;">FINANCE RATE TABLE</span>
     <h3 style="font-size:1.2rem;font-weight:700;color:#c9a96e;margin:8px 0 6px;letter-spacing:-.01em;">벤츠 금리표</h3>
-    <p style="font-size:.78rem;color:#9a9daa;line-height:1.5;">C 200 &middot; E 200/300 &middot; S 450 SWB &middot; GLC 300 &middot; GLE 450 &middot; GLA/GLB &middot; AMG A45S/GLB35 — MBM 특별 할인 대상 모델</p>
+    <p style="font-size:.78rem;color:#9a9daa;line-height:1.5;">C 200 &middot; E 300 &middot; S 450 SWB &middot; GLC 300 &middot; GLE 450 &middot; GLA/GLB &middot; AMG A45S/GLB35 — MBM 특별 할인 대상 모델<br><span style="color:#e0a090;">E 200 EXCLUSIVE &middot; E 200 AMG Line은 별도 금리 적용 (아래 참조)</span></p>
   </div>
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
     <table style="width:100%;border-collapse:collapse;font-size:.78rem;min-width:560px;">
@@ -802,7 +802,7 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
           <td style="padding:11px 8px;text-align:center;color:#88c8a0;border-bottom:1px solid #1a1d28;background:#12151c;">2.69%</td>
           <td style="padding:11px 8px;text-align:center;color:#6cc8a8;border-bottom:1px solid #1a1d28;background:#12151c;">1.16%</td>
           <td style="padding:11px 8px;text-align:center;border-bottom:1px solid #1a1d28;background:linear-gradient(135deg,#1a2a20,#142018);border-radius:0 0 0 0;">
-            <span style="display:inline-block;background:#c9a96e;color:#08090e;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:12px;">무이자 *</span>
+            <span style="display:inline-block;background:#c9a96e;color:#08090e;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:12px;">무이자</span>
           </td>
         </tr>
         <tr>
@@ -843,8 +843,34 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
       <span style="color:#9a9daa;font-weight:500;">그 외 전 구간</span> &rarr; 중도상환수수료 <b style="color:#e2e3e7;">2%</b>
     </div>
   </div>
-  <div style="margin-top:10px;padding:10px 14px;background:rgba(216,140,120,.08);border:1px solid rgba(216,140,120,.28);border-radius:10px;font-size:.73rem;color:#c4c6cd;line-height:1.6;">
-    <b style="color:#e0a090;">* 무이자 제외 모델</b> &middot; <b style="color:#e2e3e7;">E 200 EXCLUSIVE</b> 및 <b style="color:#e2e3e7;">E 200 AMG Line (RoF Edition 포함)</b>은 선수금 65% &middot; 24개월 무이자 조건이 적용되지 않습니다. 두 모델은 MBM 특별 할인(+7% / +4%)과 별도의 특별 저금리 프로그램이 적용됩니다.
+  <div style="margin-top:14px;padding:14px 16px;background:rgba(216,140,120,.07);border:1px solid rgba(216,140,120,.3);border-radius:12px;">
+    <div style="font-size:.82rem;font-weight:700;color:#e0a090;margin-bottom:4px;">E 200 EXCLUSIVE &middot; E 200 AMG Line 전용 금리</div>
+    <p style="font-size:.73rem;color:#9a9daa;line-height:1.6;margin:0 0 11px;">두 모델은 위 금리표가 적용되지 않으며, <b style="color:#e2e3e7;">선수금 65% &middot; 24개월 무이자 조건도 제외</b>됩니다. 대신 아래 특별 저금리가 적용됩니다. (60개월 &middot; 선수금 30% 기준 / 앞은 신규, 뒤는 재구매 고객 금리)</p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+      <table style="width:100%;border-collapse:collapse;min-width:460px;">
+        <thead><tr>
+          <th style="padding:9px 8px;text-align:left;font-size:.72rem;font-weight:600;color:#c9d8ec;background:#182335;border-bottom:1px solid #252836;border-radius:8px 0 0 0;">모델</th>
+          <th style="padding:9px 8px;text-align:center;font-size:.72rem;font-weight:600;color:#c9d8ec;background:#182335;border-bottom:1px solid #252836;">MBM 특별 할인</th>
+          <th style="padding:9px 8px;text-align:center;font-size:.72rem;font-weight:600;color:#c9d8ec;background:#182335;border-bottom:1px solid #252836;">일반 할부</th>
+          <th style="padding:9px 8px;text-align:center;font-size:.72rem;font-weight:600;color:#c9d8ec;background:#182335;border-bottom:1px solid #252836;border-radius:0 8px 0 0;">안심보장할부</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 8px;font-size:.76rem;color:#e2e3e7;font-weight:500;background:#10131a;border-bottom:1px solid #1a1d28;">E 200 EXCLUSIVE</td>
+            <td style="padding:10px 8px;text-align:center;font-size:.76rem;color:#88c8a0;font-weight:700;border-bottom:1px solid #1a1d28;">+7%</td>
+            <td style="padding:10px 8px;text-align:center;font-size:.76rem;color:#88c8a0;font-weight:600;border-bottom:1px solid #1a1d28;">5.86% / 5.46%</td>
+            <td style="padding:10px 8px;text-align:center;font-size:.76rem;color:#88c8a0;font-weight:600;border-bottom:1px solid #1a1d28;">4.80% / 4.40%</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 8px;font-size:.76rem;color:#e2e3e7;font-weight:500;background:#10131a;">E 200 AMG Line<span style="display:block;font-size:.68rem;color:#8a8d98;margin-top:2px;">RoF Edition 포함</span></td>
+            <td style="padding:10px 8px;text-align:center;font-size:.76rem;color:#88c8a0;font-weight:700;">+4%</td>
+            <td style="padding:10px 8px;text-align:center;font-size:.76rem;color:#88c8a0;font-weight:600;">5.84% / 5.44%</td>
+            <td style="padding:10px 8px;text-align:center;font-size:.76rem;color:#88c8a0;font-weight:600;">5.63% / 5.23%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.72rem;color:#8a8d98;line-height:1.6;margin:10px 0 0;">※ 안심보장할부는 신차교환보상 + 타이어교환 3년이 포함되며, 6개월 월 납입금 지원(E 200 EX 35만원 / AMG Line 37만원 × 6개월) 대상입니다.</p>
   </div>
 </div>
 
