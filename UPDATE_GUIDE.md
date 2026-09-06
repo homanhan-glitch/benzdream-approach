@@ -7,7 +7,7 @@
 ## 0. 저장소·배포 정보
 
 - **Repo**: `homanhan-glitch/benzdream-approach`
-- **Pages**: https://homanhan-glitch.github.io/benzdream-approach/
+- **Pages**: https://mb-hansdream.co.kr/
   - 고객용 재고표: `/BenzDream_Stock.html`
   - 내부 분석 대시보드: `/BenzDream_Inventory.html`
 - **Git commit 계정**: `benzdream@auto.com` / `BenzDream Claude`

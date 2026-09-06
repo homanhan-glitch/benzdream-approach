@@ -12,7 +12,7 @@ Usage:
 import sys, re, os
 from datetime import datetime
 
-BASE_URL = "https://homanhan-glitch.github.io/benzdream-approach/"
+BASE_URL = "https://mb-hansdream.co.kr/"
 
 REPLACE_MAP = {
     "AV": "AVANTGARDE", "AVG": "AVANTGARDE",

@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://homanhan-glitch.github.io/benzdream-approach/sitemap.xml
+User-agent: Yeti
+Allow: /
+
+Sitemap: https://mb-hansdream.co.kr/sitemap.xml
