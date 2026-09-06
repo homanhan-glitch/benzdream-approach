@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
+<script>
+  const BLOCKED_IPS = ["59.7.219.188"];
+  function _bdGaInit(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-7T2ECBWN0K");
+  }
+  fetch("https://api.ipify.org?format=json").then(r=>r.json())
+    .then(d=>{ if(!BLOCKED_IPS.includes(d.ip)) _bdGaInit(); })
+    .catch(()=>_bdGaInit());
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BenzDream 실시간 재고 | 벤츠 모터원 고양전시장</title>
@@ -102,6 +116,34 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR','Inter',-
 @media (min-width:640px){.hero-title{font-size:32px}.stat-num{font-size:34px}.summary{grid-template-columns:repeat(3,1fr);gap:14px}}
 @media (max-width:480px){.summary{grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:14px 8px}.stat-num{font-size:24px}.stat-lbl{font-size:10px}}
 </style>
+<!-- BenzDream 전환 추적 v1 -->
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  function bdEvent(n,p){ window.dataLayer.push(arguments.length?["event",n,p]:null); }
+  function label(){
+    var t=(document.title||"").trim();
+    return t || location.pathname.split("/").pop();
+  }
+  document.addEventListener("click", function(e){
+    var a = e.target && e.target.closest ? e.target.closest("a") : null;
+    if(!a || !a.href) return;
+    var h = a.href, type = null;
+    if(h.indexOf("pf.kakao.com") > -1)              type = "kakao";
+    else if(h.indexOf("forms.gle") > -1)            type = "form";
+    else if(h.indexOf("docs.google.com/forms") > -1) type = "form";
+    else if(h.indexOf("tel:") === 0)                type = "phone";
+    else if(h.indexOf("youtube.com") > -1 || h.indexOf("youtu.be") > -1) type = "youtube";
+    if(!type) return;
+    bdEvent("lead_click", {
+      lead_type: type,
+      source_page: label(),
+      page_path: location.pathname,
+      link_url: h
+    });
+  }, true);
+})();
+</script>
 </head>
 <body>
 <div class="wrap">

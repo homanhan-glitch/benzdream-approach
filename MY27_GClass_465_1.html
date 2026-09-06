@@ -302,6 +302,34 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 .gn-code{font-family:monospace;font-size:.72rem;color:var(--gold);} .gn-name{font-size:.9rem;color:#fff;margin-top:3px;}
 .lu-card.diesel{border-top:3px solid #6f7377;} .lu-card.eq{border-top:3px solid var(--teal);} .lu-card.amg{border-top:3px solid #c0392b;}
 </style>
+<!-- BenzDream 전환 추적 v1 -->
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  function bdEvent(n,p){ window.dataLayer.push(arguments.length?["event",n,p]:null); }
+  function label(){
+    var t=(document.title||"").trim();
+    return t || location.pathname.split("/").pop();
+  }
+  document.addEventListener("click", function(e){
+    var a = e.target && e.target.closest ? e.target.closest("a") : null;
+    if(!a || !a.href) return;
+    var h = a.href, type = null;
+    if(h.indexOf("pf.kakao.com") > -1)              type = "kakao";
+    else if(h.indexOf("forms.gle") > -1)            type = "form";
+    else if(h.indexOf("docs.google.com/forms") > -1) type = "form";
+    else if(h.indexOf("tel:") === 0)                type = "phone";
+    else if(h.indexOf("youtube.com") > -1 || h.indexOf("youtu.be") > -1) type = "youtube";
+    if(!type) return;
+    bdEvent("lead_click", {
+      lead_type: type,
+      source_page: label(),
+      page_path: location.pathname,
+      link_url: h
+    });
+  }, true);
+})();
+</script>
 </head>
 <body>
 <div class="progress" id="prog"></div>

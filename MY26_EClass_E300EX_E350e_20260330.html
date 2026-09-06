@@ -247,6 +247,34 @@ body{font-family:'MBK CorpoS Light','Noto Sans KR',sans-serif;background:var(--d
 .co-yt-cnt{margin-left:auto;font-family:'MBK CorpoA','Outfit',sans-serif;font-size:.8rem;font-weight:700;color:#ff4444;}
 @media(max-width:768px){.cta-btn{padding:14px 16px;}}
 </style>
+<!-- BenzDream 전환 추적 v1 -->
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  function bdEvent(n,p){ window.dataLayer.push(arguments.length?["event",n,p]:null); }
+  function label(){
+    var t=(document.title||"").trim();
+    return t || location.pathname.split("/").pop();
+  }
+  document.addEventListener("click", function(e){
+    var a = e.target && e.target.closest ? e.target.closest("a") : null;
+    if(!a || !a.href) return;
+    var h = a.href, type = null;
+    if(h.indexOf("pf.kakao.com") > -1)              type = "kakao";
+    else if(h.indexOf("forms.gle") > -1)            type = "form";
+    else if(h.indexOf("docs.google.com/forms") > -1) type = "form";
+    else if(h.indexOf("tel:") === 0)                type = "phone";
+    else if(h.indexOf("youtube.com") > -1 || h.indexOf("youtu.be") > -1) type = "youtube";
+    if(!type) return;
+    bdEvent("lead_click", {
+      lead_type: type,
+      source_page: label(),
+      page_path: location.pathname,
+      link_url: h
+    });
+  }, true);
+})();
+</script>
 </head><body>
 
 <!-- ==================== PAGE 1: COVER ==================== -->

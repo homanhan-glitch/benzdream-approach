@@ -684,6 +684,34 @@ td.c-fin .pct,td.c-fin .amt{white-space:nowrap}
 @media(max-width:600px){.price-table tr.grp{display:block;margin:4px 0 12px!important;padding:0!important;border:none!important;background:transparent!important}.price-table tr.grp td{display:block;width:100%!important;padding:10px 14px!important;background:rgba(201,169,110,.1)!important;border-left:3px solid var(--gold)!important;border-radius:6px;margin:0}.price-table tr.grp td::before{content:none!important;display:none!important}}
 
 </style>
+<!-- BenzDream 전환 추적 v1 -->
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  function bdEvent(n,p){ window.dataLayer.push(arguments.length?["event",n,p]:null); }
+  function label(){
+    var t=(document.title||"").trim();
+    return t || location.pathname.split("/").pop();
+  }
+  document.addEventListener("click", function(e){
+    var a = e.target && e.target.closest ? e.target.closest("a") : null;
+    if(!a || !a.href) return;
+    var h = a.href, type = null;
+    if(h.indexOf("pf.kakao.com") > -1)              type = "kakao";
+    else if(h.indexOf("forms.gle") > -1)            type = "form";
+    else if(h.indexOf("docs.google.com/forms") > -1) type = "form";
+    else if(h.indexOf("tel:") === 0)                type = "phone";
+    else if(h.indexOf("youtube.com") > -1 || h.indexOf("youtu.be") > -1) type = "youtube";
+    if(!type) return;
+    bdEvent("lead_click", {
+      lead_type: type,
+      source_page: label(),
+      page_path: location.pathname,
+      link_url: h
+    });
+  }, true);
+})();
+</script>
 </head>
 <body>
 
