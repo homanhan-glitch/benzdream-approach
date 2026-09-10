@@ -102,6 +102,8 @@ def load(path):
             clean_int_color(d_.get('내장 색상')) if pd.notna(d_.get('내장 색상')) else '기타',
             d_.get('재고 유형') if pd.notna(d_.get('재고 유형')) else '입고 물량',
             pdd_month(d_.get('차량 출고 가능일(PDD)')),
+            (str(d_.get('모델 연도')).strip().removesuffix('.0')
+             if pd.notna(d_.get('모델 연도')) else None),
         ]
     return out
 
@@ -185,6 +187,21 @@ def snapshot_pre(cur):
             for k, v in sorted(st.items(), key=lambda x: -x[1]['total'])}
 
 
+def snapshot_year_stock(cur):
+    """Keep model years separate without guessing years in legacy snapshots."""
+    result = {}
+    for r in cur.values():
+        if not (r[S_ITYPE] == '입고 물량' and r[S_STATE] == '미배정' and r[S_GRP] == '전국재고'):
+            continue
+        key = f'{r[S_CAT]}|{r[S_MODEL]}'
+        year = r[9] if len(r) > 9 and r[9] else 'unknown'
+        item = result.setdefault(key, {}).setdefault(year, dict(stock=0, combos={}))
+        item['stock'] += 1
+        combo = f'{r[S_EXT]}|{r[S_INT]}'
+        item['combos'][combo] = item['combos'].get(combo, 0) + 1
+    return result
+
+
 def build_web(store, last_cur):
     daily = store['daily']
     dates = sorted(daily)
@@ -210,7 +227,7 @@ def build_web(store, last_cur):
             cat=cat, model=model, mo_new=a['mo_new'], mo_cancel=a['mo_cancel'],
             mo_confirm=a['mo_confirm'], mo_deliv=a['mo_delivered'], nat=a['nat_other'],
             new_stock=a['new_stock'], pre_new=a['pre_new'], stock=st['total'], pdd=st['pdd'],
-            combos=dict(sorted(st['combos'].items(), key=lambda x: -x[1])[:14]),
+            combos=dict(sorted(st['combos'].items(), key=lambda x: -x[1])),
             vel=round(vel, 2), dos=(round(dos, 1) if dos is not None and dos < 999 else None),
             share=(round(100 * a['mo_new'] / dem, 1) if dem else None)))
 
@@ -280,6 +297,7 @@ def build_web(store, last_cur):
         mo_by_sr=dict(Counter(r[S_SR] for r in last_cur.values()
                               if r[S_STATE] in CONTRACT and r[S_SR])),
         sellable_now=sum(v['total'] for v in stock.values()),
+        year_stock=snapshot_year_stock(last_cur),
         pre=snapshot_pre(last_cur),
         pre_daily={d: sum(m.get('pre_new', 0) for m in daily[d]['models'].values()) for d in dates},
         weekly=weekly, monthly=monthly,
