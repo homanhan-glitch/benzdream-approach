@@ -1,7 +1,7 @@
 /* Supplied Prohibition logo. Original PNG is preserved, including its alpha channel. */
 body .benzdream-logo{display:block;text-decoration:none;flex-shrink:0}
-body .benzdream-logo .logo-image-window{display:block!important;position:relative;width:180px;aspect-ratio:1890/599;height:auto!important;overflow:hidden;background:#17151b;box-shadow:0 0 0 7px #17151b;margin:7px 7px 12px!important;padding:0!important}
-body .benzdream-logo .logo-image-window img{position:absolute!important;left:-33.7566%!important;top:-55.7596%!important;width:169.3122%!important;max-width:none!important;height:auto!important;display:block!important;object-fit:initial!important}
+body .benzdream-logo .logo-image-window{display:block!important;position:relative;width:180px;aspect-ratio:1890/599;height:auto!important;overflow:hidden;background:transparent;box-shadow:none;margin:7px 7px 12px!important;padding:0!important}
+body .benzdream-logo .logo-image-window img{position:absolute!important;left:-23.7566%!important;top:-55.7596%!important;width:169.3122%!important;max-width:none!important;height:auto!important;display:block!important;object-fit:initial!important}
 body .benzdream-logo>small,body .benzdream-logo>span:not(.logo-image-window){display:block;font:10px/1.5 Arial,sans-serif!important;letter-spacing:0!important;text-transform:none;color:#75667d}
 body .person-brand.benzdream-logo{margin:18px 0 24px!important}
 body .person-brand.benzdream-logo .logo-image-window{width:min(280px,calc(100% - 14px))}
