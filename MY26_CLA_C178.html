@@ -8,7 +8,7 @@
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
     gtag("js", new Date());
-    gtag("config", "G-7T2ECBWN0K");
+    gtag("config", "G-7T2ECBWN0K", { content_group: "어프로치북" });
   }
   fetch("https://api.ipify.org?format=json").then(r=>r.json())
     .then(d=>{ if(!BLOCKED_IPS.includes(d.ip)) _bdGaInit(); })

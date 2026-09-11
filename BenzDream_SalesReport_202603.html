@@ -15,7 +15,20 @@ table{width:100%;border-collapse:collapse;font-size:10px}th{padding:5px 3px;text
 .branch-card{background:#111;border-radius:10px;padding:10px 12px;margin-bottom:8px;border-left:3px solid}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;margin-top:6px;font-size:10px}.stat-item{background:#0f0f1a;border-radius:6px;padding:4px 6px;text-align:center}.stat-item .sl{font-size:8px;color:#666}.stat-item .sv{font-size:13px;font-weight:700;color:#fff}
 .note{font-size:9px;color:#666;line-height:1.5;margin-top:8px}.footer{text-align:center;font-size:8px;color:#333;margin-top:16px;padding-bottom:8px}.highlight{background:#f59e0b10}
-</style></head><body>
+</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
+<script>
+  const BLOCKED_IPS = ["59.7.219.188"];
+  function _bdGaInit(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-7T2ECBWN0K", { content_group: "구매전략 리포트" });
+  }
+  fetch("https://api.ipify.org?format=json").then(r=>r.json())
+    .then(d=>{ if(!BLOCKED_IPS.includes(d.ip)) _bdGaInit(); })
+    .catch(()=>_bdGaInit());
+</script>
+</head><body>
 <div class="tag">Motor One · 2026년 3월 최종 실적 분석</div>
 <h1>영업사원 실적 분포 & 불균등 분석</h1>
 <div class="sub">3/3→3/31 VIN 비교 · 배정 기준 · 전 지점 163명 · 총 매출 701대 · 민병화 배정+1</div>

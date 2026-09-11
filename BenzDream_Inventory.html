@@ -6,7 +6,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());
-    gtag("config", "G-7T2ECBWN0K", { page_title: "재고 세일즈데스크(내부)" });
+    gtag("config", "G-7T2ECBWN0K", { content_group: "재고(내부)" });
   }
   fetch("https://api.ipify.org?format=json").then(r=>r.json())
     .then(d=>{ if(!BLOCKED_IPS.includes(d.ip)) _bdGaInit(); })

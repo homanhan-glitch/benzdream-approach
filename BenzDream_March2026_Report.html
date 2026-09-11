@@ -498,6 +498,19 @@ body {
   .sum-table th, .sum-table td { padding: 8px; }
 }
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
+<script>
+  const BLOCKED_IPS = ["59.7.219.188"];
+  function _bdGaInit(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-7T2ECBWN0K", { content_group: "구매전략 리포트" });
+  }
+  fetch("https://api.ipify.org?format=json").then(r=>r.json())
+    .then(d=>{ if(!BLOCKED_IPS.includes(d.ip)) _bdGaInit(); })
+    .catch(()=>_bdGaInit());
+</script>
 </head>
 <body>
 

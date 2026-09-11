@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /BenzDream_Inventory.html
+Disallow: /BenzDream_Sales_Inventory.html
+Disallow: /quote_
+
 
 User-agent: Yeti
 Allow: /
