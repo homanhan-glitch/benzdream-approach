@@ -1,5 +1,18 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>BenzDream 전국 재고·판매 흐름</title></head><body style="margin:0;background:#f3f6fa">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>BenzDream 전국 재고·판매 흐름</title><script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
+<script>
+  const BLOCKED_IPS = ["59.7.219.188"];
+  function _bdGaInit(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-7T2ECBWN0K", { page_title: "재고 세일즈데스크(내부)" });
+  }
+  fetch("https://api.ipify.org?format=json").then(r=>r.json())
+    .then(d=>{ if(!BLOCKED_IPS.includes(d.ip)) _bdGaInit(); })
+    .catch(()=>_bdGaInit());
+</script>
+</head><body style="margin:0;background:#f3f6fa">
 <div id="bd-sales-desk" aria-label="BenzDream 전국 재고·판매 흐름">
 <style>
 #bd-sales-desk [hidden]{display:none!important}
