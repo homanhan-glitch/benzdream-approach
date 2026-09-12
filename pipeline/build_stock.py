@@ -49,4 +49,8 @@ result = {
 with open(out, 'w', encoding='utf-8') as f:
     json.dump(result, f, ensure_ascii=False)
 
+# Keep crawler-readable HTML and the browser JSON on the same source date.
+from render_stock_snapshot import render_snapshot
+render_snapshot(out)
+
 print(f"date={result['date']} sellable_total={result['sellable_total']} models={len(models_out)}")
