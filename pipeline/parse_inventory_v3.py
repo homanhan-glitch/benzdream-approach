@@ -17,6 +17,7 @@ G클래스 제외: 모델명에 ' G '로 시작 또는 'AMG G '로 시작 (단, 
 """
 
 import openpyxl
+from vehicle_identity import commission_id
 import re
 import json
 from pathlib import Path
@@ -161,7 +162,7 @@ def parse_excel(filepath):
             rows.append({
                 'date': date_str,
                 'vin': str(vin).strip() if vin else None,
-                'com': str(com).strip() if com else None,
+                'com': commission_id(com),
                 'model': mname,
                 'model_code': str(g(i_mcode)).strip() if g(i_mcode) else None,
                 'ext_color': clean_model(g(i_ext)),
@@ -196,7 +197,7 @@ def parse_excel(filepath):
 
             # 위탁재고 시트는 컬럼 다름
             i_vin = find_col(header, ['차대 번호', '차대번호', 'VIN'])
-            i_com = find_col(header, ['커미션', 'COM'])
+            i_com = find_col(header, ['커미션', 'Comm.No.', 'COM'])
             i_mcode = find_col(header, ['모델 코드', '모델코드', 'BM'])
             i_mname = find_col(header, ['모델명', '모델', '차종'])
             i_ext = find_col(header, ['외장', '외색'])
@@ -215,14 +216,14 @@ def parse_excel(filepath):
 
             vin = g(i_vin)
             mname = clean_model(g(i_mname))
-            if not mname or not vin: continue
+            if not mname: continue
 
             inv_class_val = clean_model(g(i_class)) or sn  # '위탁재고' or '전시차재고'
 
             rows.append({
                 'date': date_str,
-                'vin': str(vin).strip(),
-                'com': str(g(i_com)).strip() if g(i_com) else None,
+                'vin': str(vin).strip() if vin else None,
+                'com': commission_id(g(i_com)),
                 'model': mname,
                 'model_code': str(g(i_mcode)).strip() if g(i_mcode) else None,
                 'ext_color': clean_model(g(i_ext)),
@@ -244,6 +245,7 @@ def parse_excel(filepath):
                 'source': sn,
             })
 
+    wb.close()
     return {
         'date': date_str,
         'filename': fp.name,
@@ -268,13 +270,17 @@ def build_snapshot(parsed):
     rows = parsed['rows']
 
     # 위탁/전시차는 "일반 재고와 완전 합산" — 별도 처리 없이 그대로 집계
-    # 단, VIN 중복 제거 (같은 VIN이 allocation과 위탁에 모두 있을 수 있음)
+    # 단, 커미션넘버 중복 제거 (같은 VIN이 allocation과 위탁에 모두 있을 수 있음)
     seen_vins = set()
     deduped = []
     for r in rows:
-        v = r['vin']
-        if not v: continue
-        if v in seen_vins: continue
+        v = commission_id(r['com'])
+        if not v:
+            raise ValueError('Missing commission number')
+        if v in seen_vins:
+            if r['source'] == 'allocation':
+                raise ValueError('Duplicate allocation commission number')
+            continue
         seen_vins.add(v)
         deduped.append(r)
 
@@ -282,9 +288,8 @@ def build_snapshot(parsed):
     g_models = {}
     vins_meta = {}
 
-    for r in rows:
-        v = r['vin']
-        if not v: continue
+    for r in deduped:
+        v = commission_id(r['com'])
 
         is_g = is_g_class(r['model'])
         target = g_models if is_g else models

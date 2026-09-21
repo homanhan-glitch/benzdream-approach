@@ -3,13 +3,13 @@
 """
 BenzDream 계약·재고 파이프라인 v1  (2026-08-18)
 
-VIN 단위 상태 전이로 일자별·차종별·트림별 계약/소진을 산출한다.
+커미션넘버 단위 상태 전이로 일자별·차종별·트림별 계약/소진을 산출한다.
 
   python3 parse_contracts.py <xlsx> [<xlsx> ...]     # 신규 파일 반영 (append)
   python3 parse_contracts.py --bootstrap <dir>       # 폴더 전체로 처음부터 재구축
 
 산출물
-  pipeline/contracts_state.json.gz  전일 VIN 스냅샷 (diff 계산용, 1개만 유지)
+  pipeline/contracts_state.json.gz  전일 차량 스냅샷 (diff 계산용, 1개만 유지)
   pipeline/contracts_daily.json     일자별 집계 (append-only, 절대 rebuild 금지)
   contracts_web.json                웹 대시보드용 경량 데이터
 
@@ -22,6 +22,7 @@ VIN 단위 상태 전이로 일자별·차종별·트림별 계약/소진을 산
 """
 import pandas as pd, json, gzip, os, re, sys, glob, warnings
 from collections import defaultdict, Counter
+from vehicle_identity import commission_id
 from datetime import datetime, date, timedelta
 warnings.filterwarnings('ignore')
 
@@ -83,29 +84,59 @@ def date_of(path):
     m = re.search(r'(20\d{2})[-_.]?(\d{2})[-_.]?(\d{2})', os.path.basename(path))
     return f'{m.group(1)}-{m.group(2)}-{m.group(3)}' if m else None
 
-def load(path):
-    """xlsx → {vin: [state, grp, sr, model, cat, ext, intr, itype, pddm]}"""
+def load(path, identity="commission"):
+    """xlsx → {commission: [state, grp, sr, model, cat, ext, intr, itype, pddm]}"""
     df = pd.read_excel(path, sheet_name='allocation')
     df.columns = [str(c).replace('\n', ' ').strip() for c in df.columns]
-    df = df[df['차대 번호'].notna()].drop_duplicates('차대 번호')
+    column = '커미션 번호' if identity == 'commission' else '차대 번호'
+    if column not in df:
+        raise ValueError(f'Missing identity column: {column}')
+    keys = df[column].map(commission_id)
+    if keys.isna().any() or keys.duplicated().any():
+        raise ValueError(f'{column}: missing={keys.isna().sum()}, duplicate={keys.duplicated().sum()}')
+    if not len(df):
+        raise ValueError('Empty allocation sheet')
     out = {}
     for r in df.itertuples(index=False):
         g = lambda c, d='': getattr(r, c, d)
         d_ = dict(zip(df.columns, r))
         model = str(d_.get('모델명', '')).strip()
-        out[str(d_['차대 번호']).strip()] = [
-            d_.get('판매 상태') if pd.notna(d_.get('판매 상태')) else '미배정',
-            d_.get('재고구분') if pd.notna(d_.get('재고구분')) else '전국재고',
+        out[commission_id(d_[column])] = [
+            d_.get('판매 상태') if pd.notna(d_.get('판매 상태')) else '미확인',
+            d_.get('재고구분') if pd.notna(d_.get('재고구분')) else '미확인',
             (d_.get('배정 전시장') if pd.notna(d_.get('배정 전시장')) else ''),
             model, categorize(model),
             (str(d_.get('외장 색상')).strip() if pd.notna(d_.get('외장 색상')) else '기타'),
             clean_int_color(d_.get('내장 색상')) if pd.notna(d_.get('내장 색상')) else '기타',
-            d_.get('재고 유형') if pd.notna(d_.get('재고 유형')) else '입고 물량',
+            d_.get('재고 유형') if pd.notna(d_.get('재고 유형')) else '미확인',
             pdd_month(d_.get('차량 출고 가능일(PDD)')),
             (str(d_.get('모델 연도')).strip().removesuffix('.0')
              if pd.notna(d_.get('모델 연도')) else None),
         ]
     return out
+
+def migrate_identity(previous, source_files):
+    """Rekey only with explicit VIN/commission pairs; preserve prior state values."""
+    mapping = {}
+    for path in source_files:
+        df = pd.read_excel(path, sheet_name='allocation')
+        df.columns = [str(c).replace('\n', ' ').strip() for c in df.columns]
+        if not {'차대 번호', '커미션 번호'} <= set(df.columns):
+            raise ValueError('Identity source lacks VIN/commission columns')
+        for vin, com in zip(df['차대 번호'], df['커미션 번호']):
+            vin, com = commission_id(vin), commission_id(com)
+            if vin not in previous or not com:
+                continue
+            if vin in mapping and mapping[vin] != com:
+                raise ValueError('Conflicting VIN/commission mapping')
+            mapping[vin] = com
+    missing = set(previous) - set(mapping)
+    if missing:
+        raise ValueError(f'Previous snapshot has {len(missing)} unmapped vehicles; provide prior original with --identity-source. No data written.')
+    if len(set(mapping.values())) != len(previous):
+        raise ValueError('Multiple previous vehicles share a commission number')
+    return {mapping[vin]: row for vin, row in previous.items()}
+
 
 S_STATE, S_GRP, S_SR, S_MODEL, S_CAT, S_EXT, S_INT, S_ITYPE, S_PDD = range(9)
 
@@ -119,7 +150,9 @@ def diff(prev, cur, d, pd_):
         now_c = r[S_STATE] in CONTRACT
         pre = r[S_ITYPE] == '예정 물량'
         if p is None:
-            agg[k]['new_stock' if not pre else 'pre_new_stock'] += 1
+            incoming = ('pre_new_stock' if pre else
+                        'new_stock' if r[S_ITYPE] == '입고 물량' else 'unclassified_new')
+            agg[k][incoming] += 1
             if now_c:
                 agg[k]['mo_new'] += 1
                 if pre: agg[k]['pre_new'] += 1
@@ -307,6 +340,13 @@ def build_web(store, last_cur):
 
 def main():
     args = sys.argv[1:]
+    identity_sources = []
+    while '--identity-source' in args:
+        i = args.index('--identity-source')
+        if i + 1 >= len(args):
+            raise ValueError('--identity-source requires an original workbook')
+        identity_sources.append(args[i + 1])
+        del args[i:i + 2]
     if not args:
         print(__doc__); sys.exit(1)
 
@@ -321,6 +361,8 @@ def main():
         if os.path.exists(STATE):
             with gzip.open(STATE, 'rt', encoding='utf-8') as fh:
                 s = json.load(fh); prev, prev_d = s['vins'], s['date']
+            if s.get('identity_key', 'vin') != 'commission':
+                prev = migrate_identity(prev, identity_sources)
 
     cur = None
     for f in files:
@@ -332,7 +374,7 @@ def main():
         cur = load(f)
         if prev is None:
             store['first'] = d
-            print(f'  기준 스냅샷 {d}  VIN {len(cur)}')
+            print(f'  기준 스냅샷 {d}  차량 {len(cur)}')
         else:
             store['daily'][d] = diff(prev, cur, d, prev_d)
             t = store['daily'][d]
@@ -344,14 +386,14 @@ def main():
     if cur is None:
         print('반영할 신규 파일이 없습니다.'); 
         if os.path.exists(STATE) and os.path.exists(DAILY):
-            with gzip.open(STATE, 'rt', encoding='utf-8') as fh: cur = json.load(fh)['vins']
+            cur = prev
             build_web(json.load(open(DAILY)), cur); print('웹 데이터만 재생성 완료.')
         return
 
     store['last_date'] = prev_d
     json.dump(store, open(DAILY, 'w'), ensure_ascii=False, separators=(',', ':'))
     with gzip.open(STATE, 'wt', encoding='utf-8') as fh:
-        json.dump(dict(date=prev_d, vins=prev), fh, ensure_ascii=False, separators=(',', ':'))
+        json.dump(dict(date=prev_d, identity_key="commission", vins=prev), fh, ensure_ascii=False, separators=(',', ':'))
     w = build_web(store, prev)
     print(f'\n완료: {w["first"]} ~ {w["last"]} · 영업일 {w["ndays"]}일 · 트림 {len(w["rows"])}개')
     print(f'      판매가능 {w["sellable_now"]:,}대 · 미출고 계약 {w["mo_open"]}건 · {w["mo_by_sr"]}')
