@@ -2,8 +2,9 @@ import unittest
 from unittest.mock import patch
 import pandas as pd
 import parse_contracts as contracts
-from vehicle_identity import commission_id
+from vehicle_identity import commission_id, normalize_interior_color
 from parse_inventory_v3 import build_snapshot
+from build_stock import validate_source_coverage
 
 
 class CommissionTests(unittest.TestCase):
@@ -19,6 +20,11 @@ class CommissionTests(unittest.TestCase):
         self.assertEqual(commission_id(123.0), '123')
         self.assertEqual(commission_id(' 00123 '), '00123')
         self.assertIsNone(commission_id(float('nan')))
+
+    def test_artico_beige_is_not_classified_as_black(self):
+        self.assertEqual(normalize_interior_color('ARTICO man-made leather beige'), '베이지 인조가죽')
+        self.assertEqual(normalize_interior_color('black ARTICO man-made leather'), '블랙 인조가죽')
+        self.assertEqual(contracts.clean_int_color('ARTICO man-made leather beige'), '베이지 인조가죽')
 
     def test_vin_disappears_without_false_new_or_depleted(self):
         previous = self.load([self.row('OLDVIN')])
@@ -53,6 +59,17 @@ class CommissionTests(unittest.TestCase):
                                'rows':[row, dict(row, source='위탁재고')]})
         self.assertEqual(snap['sellable_total'], 1)
         self.assertEqual(snap['models']['E 200']['colors']['블랙|브라운']['total'], 1)
+        validate_source_coverage({'rows':[row, dict(row, source='위탁재고')]}, snap)
+
+    def test_coverage_check_rejects_missing_commission(self):
+        row = dict(com='123', vin=None, model='E 200', is_virtual=False,
+                   car_status='판매 가능', sale_status='미배정', inv_class='전국재고',
+                   source='allocation', pdd=None, ext_color='폴라 화이트', int_color='베이지 인조가죽',
+                   salesman='', customer='', branch='')
+        snap = build_snapshot({'date':'2026-09-21', 'filename':'test.xlsx', 'rows':[row]})
+        snap['sellable_commissions'] = []
+        with self.assertRaisesRegex(ValueError, 'commission coverage'):
+            validate_source_coverage({'rows':[row]}, snap)
 
 
 if __name__ == '__main__':

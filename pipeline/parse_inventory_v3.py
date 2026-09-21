@@ -17,7 +17,7 @@ G클래스 제외: 모델명에 ' G '로 시작 또는 'AMG G '로 시작 (단, 
 """
 
 import openpyxl
-from vehicle_identity import commission_id
+from vehicle_identity import commission_id, normalize_interior_color
 import re
 import json
 from pathlib import Path
@@ -166,7 +166,7 @@ def parse_excel(filepath):
                 'model': mname,
                 'model_code': str(g(i_mcode)).strip() if g(i_mcode) else None,
                 'ext_color': clean_model(g(i_ext)),
-                'int_color': clean_model(g(i_int)),
+                'int_color': normalize_interior_color(clean_model(g(i_int))),
                 'pdd': str(g(i_pdd)) if g(i_pdd) else None,
                 'prod_date': str(g(i_prod)) if g(i_prod) else None,
                 'branch': clean_model(g(i_branch)),
@@ -227,7 +227,7 @@ def parse_excel(filepath):
                 'model': mname,
                 'model_code': str(g(i_mcode)).strip() if g(i_mcode) else None,
                 'ext_color': clean_model(g(i_ext)),
-                'int_color': clean_model(g(i_int)),
+                'int_color': normalize_interior_color(clean_model(g(i_int))),
                 'pdd': str(g(i_pdd)) if g(i_pdd) else None,
                 'prod_date': None,
                 'branch': clean_model(g(i_branch)) or '모터원',
@@ -287,6 +287,7 @@ def build_snapshot(parsed):
     models = {}
     g_models = {}
     vins_meta = {}
+    sellable_commissions = []
 
     for r in deduped:
         v = commission_id(r['com'])
@@ -316,6 +317,8 @@ def build_snapshot(parsed):
             m['actual'] += 1
         if r['car_status'] == '판매 가능':
             m['sellable'] += 1
+            if not is_g:
+                sellable_commissions.append(v)
         if r['sale_status'] in ('가계약', '계약 확정', '배정'):
             m['assigned'] += 1
         if '배정재고' in (r['inv_class'] or ''):
@@ -371,6 +374,7 @@ def build_snapshot(parsed):
             'sellable': sum(m['sellable'] for m in g_models.values()),
         },
         'vins_meta': vins_meta,
+        'sellable_commissions': sellable_commissions,
     }
 
 

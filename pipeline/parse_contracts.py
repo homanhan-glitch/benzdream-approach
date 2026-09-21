@@ -22,7 +22,7 @@ BenzDream 계약·재고 파이프라인 v1  (2026-08-18)
 """
 import pandas as pd, json, gzip, os, re, sys, glob, warnings
 from collections import defaultdict, Counter
-from vehicle_identity import commission_id
+from vehicle_identity import commission_id, normalize_interior_color
 from datetime import datetime, date, timedelta
 warnings.filterwarnings('ignore')
 
@@ -63,7 +63,7 @@ def categorize(m):
     return '기타'
 
 def clean_int_color(s):
-    s = str(s).strip()
+    s = normalize_interior_color(s)
     for p in ['MAYBACH 익스클루시브 나파 가죽,','MANUFAKTUR 익스클루시브 나파 가죽,',
               'MANUFAKTUR 나파 가죽,','AMG 나파 가죽,','나파 가죽,','아티코 인조 가죽,',
               '아티코 가죽 / 마이크로컷 마이크로파이버 ','아티코 가죽/다이나미카 ',
@@ -72,7 +72,6 @@ def clean_int_color(s):
             s = s[len(p):].strip()
             if p == '아티코 가죽/다이나미카 ': s = '다이나미카 ' + s
             break
-    if 'ARTICO' in s or 'man-made' in s: s = '블랙 인조가죽'
     return s.strip(' ,') or '기타'
 
 def pdd_month(v):

@@ -20,37 +20,79 @@ Virtual VIN은 car_status가 '판매 가능'이 되지 않으므로 자동 제�
 """
 import sys, json
 import os; sys.path.insert(0, os.path.dirname(__file__))
-from parse_inventory_v3 import parse_excel, build_snapshot
+from collections import Counter
+from parse_inventory_v3 import parse_excel, build_snapshot, is_g_class
+from vehicle_identity import commission_id
 
-fp = sys.argv[1]
-out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(__file__), '..', 'latest_stock.json')
 
-parsed = parse_excel(fp)
-snap = build_snapshot(parsed)
+def validate_source_coverage(parsed, snap):
+    """Fail before publishing when a commission or color combination is omitted."""
+    seen = set()
+    expected_ids = []
+    expected_combos = Counter()
+    for row in parsed['rows']:
+        key = commission_id(row['com'])
+        if not key:
+            raise ValueError('Missing commission number')
+        if key in seen:
+            # allocation is parsed first; a later consign row is the same vehicle.
+            if row['source'] == 'allocation':
+                raise ValueError(f'Duplicate allocation commission number: {key}')
+            continue
+        seen.add(key)
+        if row['car_status'] == '판매 가능' and not is_g_class(row['model']):
+            expected_ids.append(key)
+            expected_combos[(row['model'], row['ext_color'], row['int_color'])] += 1
 
-models_out = {}
-for name, m in snap['models'].items():
-    if m['sellable'] <= 0:
-        continue
-    colors = {combo: v['total'] for combo, v in m['colors'].items()}
-    models_out[name] = {
-        'cat': m['cat'],
-        'colors': colors,
-        'pdd_buckets': m['sellable_pdd'],
-        'pdd_total': m['sellable'],
+    actual_ids = snap.get('sellable_commissions', [])
+    if Counter(actual_ids) != Counter(expected_ids):
+        raise ValueError('Sellable commission coverage mismatch')
+
+    actual_combos = Counter()
+    for model, data in snap['models'].items():
+        for combo, value in data['colors'].items():
+            ext, interior = combo.split('|', 1)
+            actual_combos[(model, ext, interior)] += value['total']
+    if actual_combos != expected_combos:
+        raise ValueError('Sellable model/color coverage mismatch')
+    if sum(actual_combos.values()) != snap['sellable_total']:
+        raise ValueError('Sellable total mismatch')
+
+def main():
+    fp = sys.argv[1]
+    out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(__file__), '..', 'latest_stock.json')
+
+    parsed = parse_excel(fp)
+    snap = build_snapshot(parsed)
+    validate_source_coverage(parsed, snap)
+
+    models_out = {}
+    for name, m in snap['models'].items():
+        if m['sellable'] <= 0:
+            continue
+        colors = {combo: v['total'] for combo, v in m['colors'].items()}
+        models_out[name] = {
+            'cat': m['cat'],
+            'colors': colors,
+            'pdd_buckets': m['sellable_pdd'],
+            'pdd_total': m['sellable'],
+        }
+
+    result = {
+        'date': snap['date'],
+        'sellable_total': snap['sellable_total'],
+        'models': models_out,
     }
 
-result = {
-    'date': snap['date'],
-    'sellable_total': snap['sellable_total'],
-    'models': models_out,
-}
+    with open(out, 'w', encoding='utf-8') as f:
+        json.dump(result, f, ensure_ascii=False)
 
-with open(out, 'w', encoding='utf-8') as f:
-    json.dump(result, f, ensure_ascii=False)
+    # Keep crawler-readable HTML and the browser JSON on the same source date.
+    from render_stock_snapshot import render_snapshot
+    render_snapshot(out)
 
-# Keep crawler-readable HTML and the browser JSON on the same source date.
-from render_stock_snapshot import render_snapshot
-render_snapshot(out)
+    print(f"date={result['date']} sellable_total={result['sellable_total']} models={len(models_out)}")
 
-print(f"date={result['date']} sellable_total={result['sellable_total']} models={len(models_out)}")
+
+if __name__ == '__main__':
+    main()

@@ -14,6 +14,8 @@ python pipeline/parse_contracts.py --identity-source <직전원본.xlsx> <신규
 
 검증: `python -m unittest discover -s pipeline -p test_vehicle_identity.py`
 
+`build_stock.py`는 배포 파일을 쓰기 전에 판매 가능 차량의 커미션넘버 전체와 차종·외장·내장 조합을 원본과 대조한다. 이 대조에서 누락·중복·집계 불일치가 발생하면 JSON과 HTML을 갱신하지 않고 중단한다.
+
 
 ## 매일 하는 일
 
