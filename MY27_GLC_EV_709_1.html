@@ -7,8 +7,10 @@
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K"></script>
 <script>
+  if (!["localhost", "127.0.0.1", "::1", "[::1]", ""].includes(location.hostname)) {
   const BLOCKED_IPS=["59.7.219.188"];
   fetch("https://api.ipify.org?format=json").then(r=>r.json()).then(d=>{if(BLOCKED_IPS.includes(d.ip))return;window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config", "G-7T2ECBWN0K", { content_group: "어프로치북" });}).catch(()=>{window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config", "G-7T2ECBWN0K", { content_group: "어프로치북" });});
+  }
 </script>
 
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -337,13 +339,29 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 })();
 </script>
 <script defer src="assets/benzdream-contact-tracking.js?v=1"></script>
+<style>
+.ev-player{position:relative;aspect-ratio:16/9;background:#101114}.ev-play{display:block;position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:#101114}.ev-play img{width:100%;height:100%;object-fit:cover}.ev-play span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:14px 24px;background:#17141ee8;color:white;border-radius:8px;font:bold 16px sans-serif}.ev-video-card iframe[hidden]{display:none}
+/* Domestic certification and BenzDream video guide, 2026-09-24 */
+.ev-update{padding:56px 24px;background:#f6f5f8;color:#18191c;scroll-margin-top:90px}
+.ev-update-inner{max-width:1180px;margin:auto}.ev-update h2{font-size:clamp(26px,4vw,40px);line-height:1.3;margin:10px 0 22px;color:#18191c}
+.ev-update .ev-kicker{font:600 12px/1.5 sans-serif;letter-spacing:2px;color:#65518a}
+.ev-range-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.ev-range-card{padding:26px;background:#fff;border:1px solid #dedce4;border-top:3px solid #827099}
+.ev-range-card h3{font-size:19px;color:#222;margin:0 0 12px}.ev-range-card strong{font:600 clamp(36px,6vw,52px)/1.2 sans-serif;color:#18191c}
+.ev-range-card p{font-size:14px;line-height:1.8;margin:10px 0;color:#4c4a52}.ev-range-card .ev-label{display:block;font-size:13px;color:#65518a;margin-bottom:6px}
+.ev-note{font-size:13px;line-height:1.8;color:#62616a;margin-top:20px}.ev-note a,.ev-jump a,.ev-video-link{color:#594477;text-underline-offset:4px}
+.ev-jump{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}.ev-jump a{padding:9px 14px;border:1px solid #d4cddd;text-decoration:none;font-size:14px}
+.ev-videos{padding-top:45px;background:#fff}.ev-video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.ev-video-card{min-width:0}.ev-video-card:first-child{grid-column:1/-1;max-width:900px;width:100%;margin:0 auto 10px}
+.ev-video-card iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#101114}.ev-video-card h3{font-size:18px;line-height:1.6;margin:14px 0 6px;color:#222}.ev-video-link{font-size:13px}
+@media(max-width:640px){.ev-update{padding:34px 18px}.ev-range-grid,.ev-video-grid{grid-template-columns:1fr}.ev-range-card{padding:20px}.ev-video-card:first-child{grid-column:auto}.ev-video-card h3{font-size:16px}}
+</style>
 </head>
 <body>
 <div class="progress" id="prog"></div>
 
 <nav class="nav">
   <div class="nav-brand">BENZ<b>DREAM</b> · GLC EV <small>· 한호만 팀장</small></div>
-  <div class="nav-links"><a href="#highlights">특징</a><a href="#design">디자인 라인</a><a href="#interior">인테리어</a><a href="#screens">스크린</a><a href="#lineup">라인업</a><a href="#color">색상</a><a href="#option">옵션</a></div>
+  <div class="nav-links"><a href="#certification">인증·배터리</a><a href="#videos">영상</a><a href="#highlights">특징</a><a href="#design">디자인 라인</a><a href="#interior">인테리어</a><a href="#screens">스크린</a><a href="#lineup">라인업</a><a href="#color">색상</a><a href="#option">옵션</a></div>
   <a href="#preorder" class="nav-cta">사전계약 문의</a>
 </nav>
 
@@ -377,17 +395,19 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 
 <section class="statband"><div class="stat-grid">
   <div class="stat"><div class="stat-num" data-count="421">0</div><div class="stat-lab">최고출력 (마력)</div></div>
-  <div class="stat"><div class="stat-num" data-count="616"><span>0</span></div><div class="stat-lab">1회 충전 주행 (km·WLTP)</div></div>
+  <div class="stat"><div class="stat-num" data-count="448"><span>0</span></div><div class="stat-lab">국내 상온 복합 (km·GLC 300)</div></div>
   <div class="stat"><div class="stat-num" data-count="22">0</div><div class="stat-lab">초급속 충전 (분·10-80%)</div></div>
   <div class="stat"><div class="stat-num" data-count="800">0</div><div class="stat-lab">시스템 전압 (V)</div></div>
 </div></section>
 
 <!-- ===== PART 1. 차량 주요 특징 ===== -->
+<section id="certification" class="ev-update"><div class="ev-update-inner"><div class="ev-kicker">KOREA CERTIFICATION · 2026.09.24 UPDATE</div><h2>국내 인증 주행거리와 배터리</h2><div class="ev-jump"><a href="#videos">한호만 팀장 영상 보기 ↗</a><a href="#spec">전체 제원 보기</a><a href="#contact">내 주행 환경에 맞춰 상담하기</a></div><div class="ev-range-grid"><article class="ev-range-card"><h3>GLC 300 4MATIC electric</h3><span class="ev-label">국내 인증 · 상온 복합</span><strong>448<small> km</small></strong><p>상온 도심 467km · 고속 424km<br>저온 복합 <b>395km</b></p><p>배터리 셀 제조사 <b>CATL</b><br>85.5kWh · NCM</p><p>인증일 2026.09.23</p></article></div><p class="ev-note">GLC 400 4MATIC의 국내 인증 주행거리는 추후 안내합니다. GLC 300의 인증 수치를 GLC 400에 적용하지 않습니다.</p><p class="ev-note">국내 인증 수치는 KENCIS 1회 충전 주행거리 기준입니다. 상온·저온과 도심·고속 조건을 구분해 확인하세요. 유럽 WLTP와는 시험 기준이 다르며, 실제 주행거리는 기온·속도·공조 사용·주행 환경에 따라 달라집니다. <a href="https://kencis.me.go.kr/new_kencis/hms/cs01/hmscs01ev.do?pageIndex=1" target="_blank" rel="noopener noreferrer">국내 인증 현황 ↗</a></p></div></section>
+<section id="videos" class="ev-update ev-videos"><div class="ev-update-inner"><div class="ev-kicker">BENZDREAM VIDEO GUIDE</div><h2>한호만 팀장이 직접 설명드립니다</h2><div class="ev-video-grid"><article class="ev-video-card"><div class="ev-player"><button class="ev-play" type="button" aria-label="영상 재생"><img src="https://i.ytimg.com/vi/9J4MbwfOWTw/hqdefault.jpg" alt="" loading="lazy"><span>▶ 영상 재생</span></button><iframe hidden data-src="https://www.youtube.com/embed/9J4MbwfOWTw" title="BenzDream · 국내 인증 주행거리와 CATL 배터리, 직접 설명드립니다" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><h3>국내 인증 주행거리와 CATL 배터리, 직접 설명드립니다</h3><a class="ev-video-link" href="https://www.youtube.com/watch?v=9J4MbwfOWTw" target="_blank" rel="noopener noreferrer">YouTube에서 보기 ↗</a></article><article class="ev-video-card"><div class="ev-player"><button class="ev-play" type="button" aria-label="영상 재생"><img src="https://i.ytimg.com/vi/9chdXPRwnkg/hqdefault.jpg" alt="" loading="lazy"><span>▶ 영상 재생</span></button><iframe hidden data-src="https://www.youtube.com/embed/9chdXPRwnkg" title="BenzDream · GLC 일렉트릭 국내 라인업 · 옵션 · 색상" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><h3>GLC 일렉트릭 국내 라인업 · 옵션 · 색상</h3><a class="ev-video-link" href="https://www.youtube.com/watch?v=9chdXPRwnkg" target="_blank" rel="noopener noreferrer">YouTube에서 보기 ↗</a></article><article class="ev-video-card"><div class="ev-player"><button class="ev-play" type="button" aria-label="영상 재생"><img src="https://i.ytimg.com/vi/ugbs3liI5dE/hqdefault.jpg" alt="" loading="lazy"><span>▶ 영상 재생</span></button><iframe hidden data-src="https://www.youtube.com/embed/ugbs3liI5dE" title="BenzDream · GLC 일렉트릭 실물 둘러보기" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><h3>GLC 일렉트릭 실물 둘러보기</h3><a class="ev-video-link" href="https://www.youtube.com/watch?v=ugbs3liI5dE" target="_blank" rel="noopener noreferrer">YouTube에서 보기 ↗</a></article><p class="ev-note">이전 영상의 가격·일정·사양은 촬영 시점 기준입니다. 주행거리와 배터리는 위 최신 안내를 함께 확인해 주세요.</p></div></div></section>
 <section id="highlights"><div class="wrap">
   <div class="eyebrow reveal">Part 1 · Vehicle Highlights</div>
   <h2 class="stitle reveal">전기로 완성한 GLC</h2>
   <p class="sdesc reveal">독일 브레멘 공장에서 생산되는 전용 전기 아키텍처(X540 · MB.EA-M) 기반의 100% 전기 SUV. 800V 초고압 시스템이 충전·주행거리·성능을 한 단계 끌어올렸습니다.</p>
-  <div class="hl-grid"><div class="hl-card reveal"><div class="hl-fig">800V</div><div class="hl-t">초고압 아키텍처</div><div class="hl-d">X540 · MB.EA-M 전용 플랫폼</div></div><div class="hl-card reveal"><div class="hl-fig">330kW</div><div class="hl-t">초급속 충전</div><div class="hl-d">10 → 80% 단 22분</div></div><div class="hl-card reveal"><div class="hl-fig">421</div><div class="hl-t">마력 듀얼 모터</div><div class="hl-d">전·후륜 PSM · 4MATIC</div></div><div class="hl-card reveal"><div class="hl-fig">616</div><div class="hl-t">km 주행거리</div><div class="hl-d">WLTP · GLC 400 최대 715km</div></div><div class="hl-card reveal"><div class="hl-fig">4.7</div><div class="hl-t">초 · 0-100km/h</div><div class="hl-d">최대 토크 800Nm</div></div><div class="hl-card reveal"><div class="hl-fig">0.26</div><div class="hl-t">Cd 공기저항</div><div class="hl-d">동급 최고 수준 효율</div></div></div>
+  <div class="hl-grid"><div class="hl-card reveal"><div class="hl-fig">800V</div><div class="hl-t">초고압 아키텍처</div><div class="hl-d">X540 · MB.EA-M 전용 플랫폼</div></div><div class="hl-card reveal"><div class="hl-fig">330kW</div><div class="hl-t">초급속 충전</div><div class="hl-d">10 → 80% 단 22분</div></div><div class="hl-card reveal"><div class="hl-fig">421</div><div class="hl-t">마력 듀얼 모터</div><div class="hl-d">전·후륜 PSM · 4MATIC</div></div><div class="hl-card reveal"><div class="hl-fig">448</div><div class="hl-t">km 국내 상온 복합</div><div class="hl-d">GLC 300 · 저온 복합 395km</div></div><div class="hl-card reveal"><div class="hl-fig">4.7</div><div class="hl-t">초 · 0-100km/h</div><div class="hl-d">최대 토크 800Nm</div></div><div class="hl-card reveal"><div class="hl-fig">0.26</div><div class="hl-t">Cd 공기저항</div><div class="hl-d">동급 최고 수준 효율</div></div></div>
 </div></section>
 
 <section class="showcase">
@@ -517,7 +537,7 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
     <div class="lu-price">예상가 <b>8,700~8,800만원대</b></div>
     <div class="lu-row"><span>내장</span><span>ARTICO 인조 가죽 (111A~)</span></div>
     <div class="lu-row"><span>휠</span><span>20″ (RRM)</span></div>
-    <div class="lu-tags"><span class="lu-tag">MBUX 슈퍼스크린 (860)</span><span class="lu-tag">페이스리프트 공통 사양</span><span class="lu-tag">85.5 kWh · 최대 616km</span></div>
+    <div class="lu-tags"><span class="lu-tag">MBUX 슈퍼스크린 (860)</span><span class="lu-tag">페이스리프트 공통 사양</span><span class="lu-tag">85.5 kWh · 국내 상온 복합 448km</span></div>
   </div></div>
 <div class="lu-card amg reveal" data-zoom="assets/glcev/dl_950.jpg" data-cap="GLC 300 4MATIC AMG Line Electric">
   <div class="lu-img"><img loading="lazy" src="assets/glcev/dl_950.jpg" alt="GLC 300 4MATIC AMG Line Electric"><span class="lu-dline">AMG LINE</span><span class="zoomhint">&#9974;</span></div>
@@ -556,6 +576,7 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 <tr class="reveal"><td class="spec-k">0-100 km/h</td><td class="spec-v">4.7초</td><td class="spec-v ">—</td></tr>
 <tr class="reveal"><td class="spec-k">최고 속도</td><td class="spec-v">210 km/h</td><td class="spec-v ">210 km/h</td></tr>
 <tr class="spec-group"><td colspan="3">배터리 및 충전</td></tr>
+<tr><td class="spec-k">배터리 셀 제조사</td><td class="spec-v">CATL</td><td class="spec-v">추후 안내</td></tr>
 <tr class="reveal"><td class="spec-k">셀 타입 · 화학 조성</td><td class="spec-v">각형 (Prismatic) · NCM</td><td class="spec-v ">공통</td></tr>
 <tr class="reveal"><td class="spec-k">배터리 구성</td><td class="spec-v">셀-모듈-팩 (4개 모듈)</td><td class="spec-v ">공통</td></tr>
 <tr class="reveal"><td class="spec-k">에너지 용량</td><td class="spec-v">85.5 kWh</td><td class="spec-v diff">94.4 kWh</td></tr>
@@ -563,9 +584,12 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
 <tr class="reveal"><td class="spec-k">완속 충전 (0-100%)</td><td class="spec-v">약 9시간 (11 kW AC)</td><td class="spec-v ">공통</td></tr>
 <tr class="reveal"><td class="spec-k">급속 충전 (DC 최대)</td><td class="spec-v">최대 330 kW · 800V</td><td class="spec-v ">공통</td></tr>
 <tr class="reveal"><td class="spec-k">급속 충전 (10-80%)</td><td class="spec-v">약 22분</td><td class="spec-v ">공통</td></tr>
-<tr class="spec-group"><td colspan="3">전비 및 주행거리 (WLTP)</td></tr>
+<tr class="spec-group"><td colspan="3">국내 인증 주행거리</td></tr>
+<tr><td class="spec-k">상온 복합</td><td class="spec-v">448 km</td><td class="spec-v">추후 안내</td></tr>
+<tr><td class="spec-k">저온 복합</td><td class="spec-v">395 km</td><td class="spec-v">추후 안내</td></tr>
+<tr class="spec-group"><td colspan="3">전비 및 주행거리 (유럽 WLTP · 국내 인증과 별도)</td></tr>
 <tr class="reveal"><td class="spec-k">복합 전비</td><td class="spec-v">약 5.3 ~ 6.3 km/kWh</td><td class="spec-v diff">5.3 ~ 6.7 km/kWh</td></tr>
-<tr class="reveal"><td class="spec-k">인증 주행거리</td><td class="spec-v">523 ~ 616 km</td><td class="spec-v diff">568 ~ 715 km</td></tr>
+<tr class="reveal"><td class="spec-k">WLTP 주행거리</td><td class="spec-v">523 ~ 616 km</td><td class="spec-v diff">568 ~ 715 km</td></tr>
 <tr class="spec-group"><td colspan="3">서스펜션 · 브레이크</td></tr>
 <tr class="reveal"><td class="spec-k">서스펜션 (전/후)</td><td class="spec-v">코일 or 에어 스프링 · 멀티링크</td><td class="spec-v ">공통</td></tr>
 <tr class="reveal"><td class="spec-k">브레이크</td><td class="spec-v">내부 벤틸레이티드 디스크 (공랭식)</td><td class="spec-v ">공통</td></tr>
@@ -681,7 +705,7 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
   <div class="faq-list"><details class="reveal"><summary>프렁크는 어떻게 여나요?</summary><div class="faq-a">전자식 전방 프렁크(3K1)라 손으로 들 필요가 없습니다. 보닛의 벤츠 엠블럼 터치, 운전석 도어 버튼, 중앙 디스플레이 중 편한 방법으로 열 수 있고, 128 L 공간은 충전 케이블 전용 수납으로 쓰기 좋습니다.</div></details>
 <details class="reveal"><summary>800V 초급속, 국내에서 제대로 쓸 수 있나요?</summary><div class="faq-a">네. 최대 330 kW 충전을 지원하며, 전국 주요 거점의 350 kW급 초급속 충전기에서 10%→80%를 약 22분에 채웁니다. 50~100 kW 일반 급속에서는 속도 차가 크지 않으니, 장거리는 초급속 거점 위주로 경로를 잡는 것을 권합니다.</div></details>
 <details class="reveal"><summary>AMG Line+의 리어 액슬 스티어링은 어떻게 작동하나요?</summary><div class="faq-a">아질리티 &amp; 컴포트 패키지(PAD)에 포함됩니다. 저속(약 60 km/h 이하)에서는 후륜이 전륜과 반대 방향으로 최대 4.5° 조향해 회전 반경을 줄이고, 고속에서는 같은 방향으로 조향해 주행 안정성을 높입니다.</div></details>
-<details class="reveal"><summary>배터리 사양과 보증은요?</summary><div class="faq-a">각형 NCM 셀 4개 모듈 구성으로, GLC 300은 85.5 kWh, GLC 400은 94.4 kWh입니다. 배터리 팩 설계와 BMS는 메르세데스-벤츠가 담당합니다. 국내 셀 제조사·보증 조건 등 확정 사항은 출시 시 공식 자료 기준으로 상담 시 안내드립니다.</div></details>
+<details class="reveal"><summary>배터리 사양과 보증은요?</summary><div class="faq-a">각형 NCM 셀 4개 모듈 구성으로, GLC 300은 85.5 kWh, GLC 400은 94.4 kWh입니다. 배터리 팩 설계와 BMS는 메르세데스-벤츠가 담당합니다. GLC 300의 배터리 셀 제조사는 CATL입니다. 국내 인증 주행거리는 상온 복합 448km, 저온 복합 395km입니다. GLC 400의 국내 인증과 보증 세부 조건은 확정되는 대로 안내드리겠습니다.</div></details>
 <details class="reveal"><summary>충전 케이블이 안 빠질 때는요?</summary><div class="faq-a">차량이 잠겨 있으면 케이블도 함께 잠깁니다. 잠금을 해제한 뒤 충전을 종료하고, 소켓의 흰색 LED가 점등되면 케이블을 분리할 수 있습니다.</div></details>
 <details class="reveal"><summary>장거리 주행 시 충전 걱정은요?</summary><div class="faq-a">일렉트릭 인텔리전스 내비게이션에 목적지만 입력하면 충전 정차까지 경로에 자동 포함됩니다. 도착 전 배터리가 최적 온도로 예열돼 겨울에도 빠른 충전 속도가 유지됩니다.</div></details>
 <details class="reveal"><summary>슈퍼스크린과 하이퍼스크린은 뭐가 다른가요?</summary><div class="faq-a">GLC 300 기본에는 계기반 + 중앙 디스플레이의 MBUX 슈퍼스크린이, AMG Line 이상에는 조수석까지 하나의 글라스로 이어지는 대형 MBUX 하이퍼스크린이 적용됩니다.</div></details></div>
@@ -705,7 +729,7 @@ table.tbl tr:hover td{background:rgba(255,255,255,.02);}
   <p class="reveal" style="font-size:.85rem;color:var(--silver);margin-top:24px;">계약금·프로모션 조건, 재고 및 인도 순번 등 상세 안내는 BenzDream 한호만 팀장에게 문의해 주세요.</p>
 </div></section>
 
-<section class="contact"><div class="wrap">
+<section class="contact" id="contact"><div class="wrap">
   <img class="co-photo reveal" src="assets/glcev/profile.jpg" alt="한호만 팀장">
   <div class="co-badge reveal">BenzDream · Brand Experiencer</div>
   <div class="co-name reveal">한호만 팀장</div>
@@ -759,5 +783,6 @@ document.querySelectorAll('[data-zoom]').forEach(el=>{
 lb.addEventListener('click',closeLB);document.getElementById('lbx').addEventListener('click',closeLB);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
 </script>
+<script>document.querySelectorAll(".ev-play").forEach(button=>button.addEventListener("click",()=>{const frame=button.nextElementSibling;frame.src=frame.dataset.src;frame.hidden=false;button.remove();}));</script>
 </body>
 </html>
