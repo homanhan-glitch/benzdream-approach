@@ -1,0 +1,92 @@
+.bd-price{background:#fff;color:#191b1c;font-family:"MBK CorpoS Light",Arial,sans-serif}
+.bd-price .price-layout{max-width:1452px;margin:0 auto;padding:0 24px 72px}
+.bd-price .price-layout *{box-sizing:border-box}
+.bd-price .price-layout a{color:inherit}
+.bd-price .price-kicker{margin:0 0 11px;color:#6844ad;font:600 11px/1.3 "MBK CorpoA",sans-serif;letter-spacing:.16em}
+.bd-price .price-opening{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:36px;align-items:end;padding:58px 0 32px;border-bottom:1px solid #dce4e0}
+.bd-price .price-opening h2{margin:0 0 12px;color:#191b1c;font:700 clamp(29px,3.4vw,48px)/1.14 "MBK CorpoA Cond",sans-serif;letter-spacing:-.025em}
+.bd-price .price-opening p:not(.price-kicker){margin:0;max-width:720px;color:#505b57;font-size:15px;line-height:1.7;word-break:keep-all}
+.bd-price .price-opening-meta{display:grid;gap:4px;padding-left:20px;border-left:2px solid #6844ad}
+.bd-price .price-opening-meta span{font-size:12px;color:#68716d}
+.bd-price .price-opening-meta strong{font:700 24px/1.2 "MBK CorpoA Cond",sans-serif}
+.bd-price .price-basis{padding:17px 20px;margin:20px 0 0;background:#f3f7f5;border-left:3px solid #a7ddc2;color:#56615c;font-size:12px;line-height:1.7}
+.bd-price .price-basis p{margin:0}
+.bd-price .price-direct{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:30px 0 66px}
+.bd-price .price-direct a{display:grid;grid-template-columns:36px 1fr;column-gap:10px;align-items:center;min-height:90px;padding:18px 20px;border:1px solid #dce4e0;text-decoration:none;transition:border-color .2s,background .2s}
+.bd-price .price-direct a:hover{border-color:#6844ad;background:#f7f5fb}
+.bd-price .price-direct span{grid-row:1/3;align-self:start;font:700 22px/1 "MBK CorpoA Cond",sans-serif;color:#6844ad}
+.bd-price .price-direct b{font:700 17px/1.3 "MBK CorpoA Cond",sans-serif}
+.bd-price .price-direct small{color:#69736f;font-size:11px}
+.bd-price .price-section-heading{margin-bottom:22px}
+.bd-price .price-section-heading h2{margin:0 0 8px;color:#191b1c;font:700 clamp(28px,2.8vw,38px)/1.2 "MBK CorpoA Cond",sans-serif}
+.bd-price .price-section-heading>p:last-child:not(.price-kicker){margin:0;color:#5f6965;font-size:13px;line-height:1.7}
+.bd-price .price-brief{margin-bottom:72px}
+.bd-price .price-brief-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.bd-price .price-brief-grid article{display:flex;flex-direction:column;min-height:172px;padding:25px 26px;background:#f5f8f6;border-top:2px solid #191b1c}
+.bd-price .price-brief-grid article:first-child{background:#e4f8ee;border-top-color:#6844ad}
+.bd-price .price-brief-grid article>span{font:600 10px/1.3 "MBK CorpoA",sans-serif;letter-spacing:.12em;color:#6844ad}
+.bd-price .price-brief-grid h3{margin:12px 0 5px;color:#191b1c;font:700 21px/1.25 "MBK CorpoA Cond",sans-serif}
+.bd-price .price-brief-grid p{margin:0 0 10px;color:#59635f;font-size:12px;line-height:1.6;word-break:keep-all}
+.bd-price .price-brief-grid a{margin-top:auto;align-self:flex-start;font-size:12px;text-decoration:none;border-bottom:1px solid #68716d}
+.bd-price .price-models,.bd-price .price-conditions,.bd-price .price-extras{scroll-margin-top:100px}
+.bd-price .price-model-nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:31px}
+.bd-price .price-model-nav a{display:inline-flex;align-items:center;gap:6px;min-height:37px;padding:7px 12px;background:#fff;border:1px solid #d6e0db;text-decoration:none;font:500 12px/1.2 "MBK CorpoA",sans-serif}
+.bd-price .price-model-nav a:hover,.bd-price .price-model-nav a:focus{background:#d8f8ea;border-color:#79cfa4}
+.bd-price .price-model-nav span{font-size:10px;color:#6e7974}
+.bd-price .price-model{scroll-margin-top:98px;margin:0 0 54px;border-top:2px solid #191b1c}
+.bd-price .price-model-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:24px 0 16px}
+.bd-price .price-model-head h3{margin:0;color:#191b1c;font:700 clamp(25px,2.7vw,35px)/1.15 "MBK CorpoA Cond",sans-serif}
+.bd-price .price-model-head>span{font-size:12px;color:#62706a;white-space:nowrap}
+.bd-price .price-table-scroll{width:100%;overflow-x:auto;border:1px solid #dce4e0}
+.bd-price .price-table{width:100%;min-width:1050px;border-collapse:collapse;table-layout:fixed;color:#191b1c}
+.bd-price .price-table col.col-name{width:24%}.bd-price .price-table col.col-msrp{width:12%}.bd-price .price-table col.col-taxup{width:10%}.bd-price .price-table col.col-base{width:11%}.bd-price .price-table col.col-fin{width:16%}.bd-price .price-table col.col-real{width:13%}.bd-price .price-table col.col-realtax{width:14%}
+.bd-price .price-table th{padding:13px 10px;background:#f1f5f2;color:#4d5753;font:600 11px/1.35 "MBK CorpoA",sans-serif;text-align:left;vertical-align:bottom;white-space:normal;border-bottom:1px solid #cdd8d2}
+.bd-price .price-table th:not(:first-child){text-align:right}
+.bd-price .price-table th .th-note{display:block;margin-top:2px;color:#7d8983;font-size:10px;font-weight:400}
+.bd-price .price-table th.c-real{color:#252c29;background:#e1f4e9}.bd-price .price-table th.c-realtax{color:#654494}
+.bd-price .price-table td{padding:13px 10px;border-bottom:1px solid #e5ebe7;vertical-align:middle;font-size:12px;text-align:right;line-height:1.42;background:#fff}
+.bd-price .price-table tr:last-child td{border-bottom:0}
+.bd-price .price-table tbody tr:not(.grp):hover td{background:#f9fcfa}
+.bd-price .price-table td.c-name{text-align:left}.bd-price .price-table .m-main{display:block;color:#191b1c;font:600 13px/1.35 "MBK CorpoA",sans-serif;word-break:keep-all}
+.bd-price .price-table .m-sub,.bd-price .price-table .m-trim{display:block;color:#68736e;font-size:10px;margin-top:3px}
+.bd-price .price-table td.c-msrp{font:500 12px/1.3 "MBK CorpoA",sans-serif;white-space:nowrap}
+.bd-price .price-table td small{font:400 10px/1.2 "MBK CorpoS Light",sans-serif;color:#77817c}
+.bd-price .price-table td.c-taxup,.bd-price .price-table td.c-realtax{color:#5d6661}
+.bd-price .price-table .tu-amt,.bd-price .price-table .rt-val{white-space:nowrap}
+.bd-price .price-table .rt-diff{display:block;margin-top:3px;color:#75817a;font-size:10px}
+.bd-price .price-table .pct{display:block;color:#6844ad;font:700 13px/1.2 "MBK CorpoA",sans-serif}
+.bd-price .price-table .amt{display:block;margin-top:3px;color:#6d7772;font-size:10px;white-space:normal}
+.bd-price .price-table .pct.dim,.bd-price .price-table .amt.dim{color:#9aa39e}
+.bd-price .price-table td.c-real{background:#e8f7ee;color:#191b1c;font:700 15px/1.2 "MBK CorpoA Cond",sans-serif;white-space:nowrap}
+.bd-price .price-table tr.has-fin td.c-name{border-left:3px solid #6844ad;padding-left:7px}
+.bd-price .price-table tr.grp td{padding:11px 14px;background:#e9efec;color:#26312b;font:600 12px/1.3 "MBK CorpoA",sans-serif;text-align:left;border-left:3px solid #6844ad}
+.bd-price .price-table tr.grp small{display:block;color:#64716a;font-size:10px}
+.bd-price .price-model-note,.bd-price .price-related{padding:14px 17px;background:#f7f9f8;border-left:2px solid #b7dfca;color:#404b45;font-size:12px;line-height:1.75;word-break:keep-all}
+.bd-price .price-model-note{margin-bottom:15px}.bd-price .price-related{margin-top:12px}
+.bd-price .price-model-note p,.bd-price .price-related p{margin:0}.bd-price .price-model-note a,.bd-price .price-related a{color:#6844ad;text-underline-offset:3px}
+.bd-price .price-conditions{margin-top:78px}.bd-price .price-extras{margin-top:65px}
+.bd-price .price-accordions{display:grid;gap:8px}
+.bd-price .price-detail{border:1px solid #dce4e0;background:#fff}
+.bd-price .price-detail>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;list-style:none;font:600 16px/1.35 "MBK CorpoA",sans-serif;color:#252b28}
+.bd-price .price-detail>summary::-webkit-details-marker{display:none}.bd-price .price-detail>summary span{color:#6844ad;font:700 20px/1 "MBK CorpoA Cond",sans-serif}.bd-price .price-detail[open]>summary{border-bottom:1px solid #dce4e0;background:#f5faf7}.bd-price .price-detail[open]>summary span{transform:rotate(45deg)}
+.bd-price .price-detail-body{padding:18px 21px 22px;color:#323c37;font-size:13px;line-height:1.75;word-break:keep-all}
+.bd-price .price-detail-body div{margin-bottom:5px}.bd-price .price-detail-body p{margin:5px 0}.bd-price .price-detail-body b,.bd-price .price-detail-body strong{font-weight:700;color:#191b1c}.bd-price .price-detail-body a{color:#6844ad;text-decoration:underline;text-underline-offset:3px}
+.bd-price .price-detail-body table{width:100%;border-collapse:collapse;margin:15px 0;font-size:12px;min-width:520px}.bd-price .price-detail-body table th,.bd-price .price-detail-body table td{padding:10px 12px;border:1px solid #dce4e0;text-align:left;color:#252b28;background:#fff}.bd-price .price-detail-body table th{background:#eff4f1;font-weight:700}
+.bd-price .price-detail-body:has(table){overflow-x:auto}
+.bd-price .price-extras .price-detail-body>div>div:first-child{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;margin-bottom:16px;padding-bottom:13px;border-bottom:1px solid #e0e8e3}
+.bd-price .price-extras .price-detail-body>div>div:first-child>span:first-child{font:700 16px/1.2 "MBK CorpoA Cond",sans-serif;color:#191b1c}
+.bd-price .price-extras .price-detail-body>div>div:first-child>span{color:#65716a}
+.bd-price .price-extras .price-detail-body>div>div:nth-child(2){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.bd-price .price-extras .price-detail-body>div>div:nth-child(2)>div{display:grid;grid-template-columns:54px 1fr;gap:10px;padding:14px;border:1px solid #e3eae5;background:#fbfcfb;margin:0}
+.bd-price .price-extras .price-detail-body>div>div:nth-child(2)>div>span:first-child{font:700 19px/1.2 "MBK CorpoA Cond",sans-serif;color:#6844ad}
+.bd-price .price-extras .price-detail-body>div>div:nth-child(2)>div>span:last-child{color:#5e6a63;font-size:12px;line-height:1.5}
+.bd-price .price-extras .price-detail-body>div>div:nth-child(2)>div>span:last-child b{display:block;margin-bottom:3px;font-size:13px}
+.bd-price .price-extras .price-detail-body>div>div:nth-child(2)>div>span:last-child span{display:block}
+.bd-price .price-disclaimer{margin-top:48px;padding:21px 22px;background:#f3f7f5;color:#606c65;font-size:12px;line-height:1.8}.bd-price .price-disclaimer a{color:#6844ad!important}
+.bd-price .price-disclaimer>div>div:first-child{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.bd-price .price-disclaimer>div>div:first-child a{display:inline-flex;align-items:center;min-height:39px;padding:8px 14px;border:1px solid #cddbd3;background:#fff;color:#191b1c!important;font-size:12px;text-decoration:none}
+.bd-price .price-disclaimer>div>div:first-child a:last-child{background:#191b1c;border-color:#191b1c;color:#fff!important}
+.bd-price .price-disclaimer>div>div:last-child{color:#5e6a63;font-size:11px;line-height:1.7}
+@media(max-width:900px){.bd-price .price-opening{grid-template-columns:1fr}.bd-price .price-opening-meta{display:flex;align-items:baseline;gap:10px;padding:0;border:0}.bd-price .price-brief-grid{grid-template-columns:1fr}.bd-price .price-brief-grid article{min-height:0}.bd-price .price-direct{grid-template-columns:1fr}.bd-price .price-direct a{min-height:70px}}
+@media(max-width:650px){.bd-price .price-layout{padding:0 16px 54px}.bd-price .price-opening{padding:34px 0 22px;gap:20px}.bd-price .price-opening p:not(.price-kicker){font-size:13px}.bd-price .price-opening-meta strong{font-size:19px}.bd-price .price-basis{padding:14px;font-size:11px}.bd-price .price-direct{gap:6px;margin:21px 0 50px}.bd-price .price-direct a{padding:12px 15px}.bd-price .price-brief{margin-bottom:54px}.bd-price .price-model-nav{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}.bd-price .price-model-nav a{white-space:nowrap;flex:none}.bd-price .price-model{scroll-margin-top:116px;margin-bottom:41px}.bd-price .price-model-head{padding:20px 0 13px}.bd-price .price-model-head>span{font-size:10px}.bd-price .price-table-scroll{border:0;overflow:visible}.bd-price .price-table{display:block;min-width:0;width:100%}.bd-price .price-table colgroup,.bd-price .price-table thead{display:none}.bd-price .price-table tbody{display:grid;gap:9px}.bd-price .price-table tbody tr:not(.grp){display:grid;grid-template-columns:1fr 1fr;gap:0 13px;border:1px solid #dce4e0;padding:15px 15px 13px;background:#fff}.bd-price .price-table td{display:block;padding:8px 0;border-bottom:0;text-align:left;font-size:12px;min-width:0;background:transparent!important}.bd-price .price-table td.c-name{grid-column:1/-1;padding:0 0 10px;border-bottom:1px solid #e3e9e5}.bd-price .price-table .m-main{font-size:15px}.bd-price .price-table td.c-msrp,.bd-price .price-table td.c-base,.bd-price .price-table td.c-fin,.bd-price .price-table td.c-taxup,.bd-price .price-table td.c-realtax{grid-column:auto}.bd-price .price-table td.c-fin{grid-column:2}.bd-price .price-table td.c-real{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:11px 12px;margin-top:7px;background:#e6f6ec!important;font-size:19px}.bd-price .price-table td.c-realtax{grid-column:1/-1;padding:5px 0 0}.bd-price .price-table td.c-realtax .rt-diff{display:inline;margin-left:8px}.bd-price .price-table td:not(.c-name):not(.c-real)::before{display:block;margin-bottom:2px;color:#65716a;font:500 10px/1.3 "MBK CorpoA",sans-serif}.bd-price .price-table td.c-msrp::before{content:"권장 소비자가"}.bd-price .price-table td.c-taxup::before{content:"개소세 인상폭"}.bd-price .price-table td.c-base::before{content:"기본 할인"}.bd-price .price-table td.c-fin::before{content:"파이낸셜 · JC"}.bd-price .price-table td.c-real::before{content:"실구매가";font:600 11px/1.2 "MBK CorpoA",sans-serif}.bd-price .price-table td.c-realtax::before{content:"개소세인하 적용가 · 7/1 이전 통관"}.bd-price .price-table tr.has-fin td.c-name{border-left:0;padding-left:0}.bd-price .price-table tbody tr.grp{display:block;margin-top:6px}.bd-price .price-table tr.grp td{padding:10px 12px}.bd-price .price-model-note,.bd-price .price-related{font-size:11px;padding:12px}.bd-price .price-conditions{margin-top:55px}.bd-price .price-extras{margin-top:48px}.bd-price .price-detail>summary{font-size:14px;padding:15px}.bd-price .price-detail-body{padding:14px 15px;font-size:12px}}
+@media(max-width:650px){.bd-price .price-extras .price-detail-body>div>div:nth-child(2){grid-template-columns:1fr}.bd-price .price-extras .price-detail-body>div>div:nth-child(2)>div{grid-template-columns:45px 1fr;padding:12px}}

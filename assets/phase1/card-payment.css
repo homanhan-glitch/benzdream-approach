@@ -1,0 +1,44 @@
+.bd-cards .bd-payment-guide{max-width:1180px;margin:0 auto;padding:56px 24px 24px;color:#191b1c;font-family:"MBK CorpoS Light",Arial,sans-serif;scroll-margin-top:90px}
+.bd-cards .bd-payment-guide *{box-sizing:border-box}
+.bd-cards .bd-payment-guide a{color:#191b1c;text-underline-offset:3px}
+.bd-cards .bd-payment-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:22px}
+.bd-cards .bd-payment-heading h2{font:700 clamp(29px,3vw,42px)/1.18 "MBK CorpoA Cond",sans-serif;margin:0 0 10px;color:#191b1c}
+.bd-cards .bd-payment-heading p:not(.bd-eyebrow){font-size:14px;line-height:1.7;margin:0;color:#56625c;max-width:760px;word-break:keep-all}
+.bd-cards .bd-payment-heading>a{font-size:12px;white-space:nowrap}
+.bd-cards .bd-referral{display:flex;align-items:center;gap:22px;padding:18px 22px;margin-bottom:12px;background:#d8f8ea;border-left:4px solid #6844ad}
+.bd-cards .bd-referral span{flex:none;font:600 11px/1.3 "MBK CorpoA",sans-serif;color:#6844ad;letter-spacing:.06em}
+.bd-cards .bd-referral strong{font:700 16px/1.45 "MBK CorpoA",sans-serif;color:#191b1c;word-break:keep-all}
+.bd-cards .bd-referral em{font-style:normal;color:#6844ad}
+.bd-cards .bd-payment-methods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.bd-cards .bd-payment-method{display:flex;flex-direction:column;border:1px solid #dce4e0;padding:26px 28px;background:#fff}
+.bd-cards .bd-payment-method.is-recommended{border-top:3px solid #6844ad}
+.bd-cards .bd-payment-method:not(.is-recommended){border-top:3px solid #191b1c}
+.bd-cards .bd-payment-method-head>span{font:600 10px/1.2 "MBK CorpoA",sans-serif;color:#6844ad;letter-spacing:.13em}
+.bd-cards .bd-payment-method h3{font:700 25px/1.2 "MBK CorpoA Cond",sans-serif;color:#191b1c;margin:9px 0}
+.bd-cards .bd-payment-method-head p{min-height:52px;margin:0 0 19px;color:#54605a;font-size:13px;line-height:1.6;word-break:keep-all}
+.bd-cards .bd-payment-method ol{list-style:none;counter-reset:payment;display:grid;gap:10px;margin:0;padding:0}
+.bd-cards .bd-payment-method li{counter-increment:payment;position:relative;min-height:40px;padding:3px 0 5px 41px}
+.bd-cards .bd-payment-method li::before{content:counter(payment, decimal-leading-zero);position:absolute;left:0;top:1px;font:700 15px/1 "MBK CorpoA Cond",sans-serif;color:#6844ad}
+.bd-cards .bd-payment-method li b{display:block;color:#191b1c;font:600 13px/1.5 "MBK CorpoA",sans-serif}
+.bd-cards .bd-payment-method li a,.bd-cards .bd-payment-method li span{display:inline-block;margin-top:3px;font-size:12px;color:#55615b}
+.bd-cards .bd-payment-method li a{color:#6844ad!important}
+.bd-cards .bd-payment-method-note{margin-top:auto;padding-top:18px;border-top:1px solid #e4ebe6;color:#53605a;font-size:12px;line-height:1.6}
+.bd-cards .bd-payment-method-note b{color:#191b1c}
+.bd-cards .bd-payment-bottomline{padding:19px 22px;margin:12px 0 49px;background:#f3f7f5;color:#53605a;font-size:13px;line-height:1.65}
+.bd-cards .bd-payment-bottomline strong{color:#191b1c}
+.bd-cards .bd-card-issue-title{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:20px}
+.bd-cards .bd-card-issue-title h3{font:700 clamp(26px,2.6vw,36px)/1.2 "MBK CorpoA Cond",sans-serif;margin:0;color:#191b1c}
+.bd-cards .bd-card-issue-title>a{font-size:12px;white-space:nowrap}
+.bd-cards .bd-card-issue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.bd-cards .bd-card-issue-grid article{display:flex;flex-direction:column;padding:23px 24px;border:1px solid #dce4e0;border-top:2px solid #191b1c;background:#fff}
+.bd-cards .bd-card-issue-grid article:first-child{border-top-color:#6844ad}
+.bd-cards .bd-card-issue-grid article>span{color:#6844ad;font:600 10px/1.2 "MBK CorpoA",sans-serif;letter-spacing:.13em}
+.bd-cards .bd-card-issue-grid h4{color:#191b1c;font:700 22px/1.2 "MBK CorpoA Cond",sans-serif;margin:8px 0 2px}
+.bd-cards .bd-card-issue-grid p{margin:12px 0 0;color:#38443e;font-size:12px;line-height:1.72}
+.bd-cards .bd-card-issue-grid .bd-issue-fee{color:#69736e;margin:1px 0 6px}
+.bd-cards .bd-card-issue-grid small{display:block;color:#7a8580;font-size:10px}
+.bd-cards .bd-card-issue-grid article>a{align-self:flex-start;margin-top:auto;padding-top:20px;font-size:12px;color:#6844ad!important}
+.bd-cards .bd-card-issue-note{margin:17px 0 0;color:#62706a;font-size:11px;line-height:1.7;word-break:keep-all}
+.bd-cards .bd-card-issue-note a{color:#6844ad!important}
+@media(max-width:850px){.bd-cards .bd-payment-guide{padding:42px 16px 16px;scroll-margin-top:112px}.bd-cards .bd-payment-heading{display:block}.bd-cards .bd-payment-heading>a{display:inline-block;margin-top:13px}.bd-cards .bd-payment-methods{grid-template-columns:1fr}.bd-cards .bd-payment-method-head p{min-height:0}.bd-cards .bd-card-issue-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.bd-cards .bd-referral{display:block;padding:16px}.bd-cards .bd-referral strong{display:block;margin-top:6px;font-size:15px}.bd-cards .bd-payment-method{padding:21px}.bd-cards .bd-card-issue-title{display:block}.bd-cards .bd-card-issue-title>a{display:inline-block;margin-top:10px}.bd-cards .bd-card-issue-grid{grid-template-columns:1fr}.bd-cards .bd-card-issue-grid article{padding:20px}.bd-cards .bd-payment-bottomline{margin-bottom:42px}}
