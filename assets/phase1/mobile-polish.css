@@ -1,3 +1,18 @@
+/* Keep the complete 16:9 owner banner visible at every breakpoint. */
+.bd-phase1 .bd-page-intro-visual img {
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 850px) {
+  .bd-phase1 .bd-page-intro-visual {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+}
+
 /* Shared phone layout for the landing page and the phase-one purchase pages. */
 @media (max-width: 700px) {
   html { scroll-padding-top: 116px; }
@@ -98,34 +113,66 @@
     padding: 0 16px;
     -webkit-overflow-scrolling: touch;
   }
-  .bd-phase1 .bd-global-nav a { min-height: 43px; padding: 0 10px; font-size: 12px; }
+  .bd-phase1 .bd-global-nav a { min-height: 43px; padding: 0 10px; font-size: 13px; }
   .bd-phase1 .bd-page-shell { padding: 12px 12px 0; }
   .bd-phase1 .bd-page-intro-copy { padding: 24px 22px 21px; }
-  .bd-phase1 .bd-eyebrow { margin-bottom: 11px !important; font-size: 10px !important; }
+  .bd-phase1 .bd-eyebrow { margin-bottom: 11px !important; font-size: 12px !important; }
   .bd-phase1 .bd-page-title { margin-bottom: 12px !important; font-size: clamp(29px, 8vw, 36px) !important; }
   .bd-phase1 .bd-page-title { word-break: keep-all; overflow-wrap: break-word; }
-  .bd-phase1 .bd-page-lead { margin-bottom: 17px !important; font-size: 13px !important; line-height: 1.58 !important; }
+  .bd-phase1 .bd-page-lead { margin-bottom: 17px !important; font-size: 16px !important; line-height: 1.58 !important; }
   .bd-phase1 .bd-intro-actions { gap: 10px 14px; }
-  .bd-phase1 .bd-primary-action { padding: 10px 13px; font-size: 12px; }
-  .bd-phase1 .bd-text-action { font-size: 12px; }
-  .bd-phase1 .bd-page-intro-visual { height: 116px; min-height: 116px; }
+  .bd-phase1 .bd-primary-action { min-height: 44px; padding: 10px 14px; font-size: 14px; }
+  .bd-phase1 .bd-text-action { font-size: 14px; }
   .bd-phase1 .bd-journey { padding: 8px 10px; }
-  .bd-phase1 .bd-journey p { font-size: 11px !important; }
-  .bd-phase1 .bd-journey a { padding: 6px 9px; }
+  .bd-phase1 .bd-journey p { font-size: 13px !important; }
+  .bd-phase1 .bd-journey a { padding: 7px 10px; font-size: 13px; }
+  .bd-phase1 .bd-journey a b { font-size: 13px; }
   .bd-phase1 .bd-next-step { margin: 35px 12px 0; padding: 25px 20px; }
   .bd-report .bd-page-intro { padding: 0; }
 }
 
 @media (max-width: 650px) {
-  .bd-price .price-table tbody tr:not(.grp) { padding: 17px 16px 15px; gap: 2px 14px; }
-  .bd-price .price-table td { font-size: 14px; line-height: 1.45; }
-  .bd-price .price-table .m-main { font-size: 17px; }
-  .bd-price .price-table td:not(.c-name):not(.c-real)::before { font-size: 11px; line-height: 1.4; }
-  .bd-price .price-table td.c-real { font-size: 21px; }
-  .bd-price .price-table td.c-real::before { font-size: 12px; }
-  .bd-price .price-model-head > span { font-size: 12px; }
+  .bd-price .price-opening p:not(.price-kicker),
+  .bd-price .price-section-heading > p:last-child:not(.price-kicker),
+  .bd-price .price-brief-grid p { font-size: 16px; line-height: 1.6; }
+  .bd-price .price-basis,
   .bd-price .price-model-note,
-  .bd-price .price-related { font-size: 13px; line-height: 1.6; }
+  .bd-price .price-related { font-size: 15px; line-height: 1.65; }
+  .bd-price .price-opening-meta span,
+  .bd-price .price-direct small,
+  .bd-price .price-brief-grid a { font-size: 14px; }
+  .bd-price .price-direct b { font-size: 19px; }
+  .bd-price .price-brief-grid article > span { font-size: 12px; }
+  .bd-price .price-model-nav a { min-height: 44px; font-size: 15px; }
+  .bd-price .price-model-nav span { font-size: 12px; }
+  .bd-price .price-table tbody tr:not(.grp) { padding: 17px 16px 15px; gap: 2px 14px; }
+  .bd-price .price-table td,
+  .bd-price .price-table td.c-msrp { font-size: 16px; line-height: 1.45; }
+  .bd-price .price-table .m-main { font-size: 19px; }
+  .bd-price .price-table .m-sub,
+  .bd-price .price-table .m-trim,
+  .bd-price .price-table .amt,
+  .bd-price .price-table td small { font-size: 14px; }
+  .bd-price .price-table .pct { font-size: 17px; }
+  .bd-price .price-table td:not(.c-name):not(.c-real)::before { font-size: 13px; line-height: 1.4; }
+  .bd-price .price-table tr:not(.has-fin) td.c-fin { display: none; }
+  .bd-price .price-table tr.has-fin td.c-fin {
+    grid-column: 1 / -1;
+    padding: 11px 13px;
+    background: #f5f1fb !important;
+    border-left: 2px solid #6844ad;
+  }
+  .bd-price .price-table td.c-real { font-size: 24px; }
+  .bd-price .price-table td.c-real::before { font-size: 14px; }
+  .bd-price .price-model-head > span { font-size: 14px; }
+  .bd-price .price-detail > summary { font-size: 18px; }
+  .bd-price .price-detail-body { font-size: 16px; line-height: 1.65; }
+  .bd-price .price-detail-body table { font-size: 15px; }
+  .bd-price .price-extras .price-detail-body > div > div:nth-child(2) > div > span:last-child,
+  .bd-price .price-extras .price-detail-body > div > div:nth-child(2) > div > span:last-child b { font-size: 15px; }
+  .bd-price .price-disclaimer,
+  .bd-price .price-disclaimer > div > div:last-child { font-size: 14px; line-height: 1.65; }
+  .bd-price .price-disclaimer > div > div:first-child a { font-size: 14px; }
 }
 
 @media (max-width: 360px) {

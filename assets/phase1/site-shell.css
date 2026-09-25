@@ -64,7 +64,7 @@
 .bd-price .price-table tr:hover{background:#edf7f2}
 .bd-price .price-val{text-shadow:none}
 .bd-price td.c-realtax{background:#f3f7fb;border-color:#c4d6e6}
-.bd-price td.c-realtax .rt-val,.bd-price td.c-realtax .rt-val small,.bd-price td.c-realtax .rt-diff{color:#285b82;opacity:1}
+.bd-price td.c-realtax .rt-val,.bd-price td.c-realtax .rt-val small{color:#285b82;opacity:1}
 .bd-price th.c-realtax{color:#285b82}
 .bd-price .section>div[style*="color:#c9d8ec"]{color:#36413d!important}
 .bd-price .section>div[style*="color:#c9d8ec"] b[style*="#7cc4ff"]{color:#285b82!important}
