@@ -1,0 +1,135 @@
+/* Shared phone layout for the landing page and the phase-one purchase pages. */
+@media (max-width: 700px) {
+  html { scroll-padding-top: 116px; }
+  .bd-phase1 { min-width: 0; }
+
+  .home-v2 .site-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 68px 44px;
+    column-gap: 8px;
+    row-gap: 0;
+    min-height: 112px;
+    padding: 0 16px;
+    align-items: center;
+  }
+  .home-v2 .site-header .brand {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+  .home-v2 .site-header .brand .logo-image-window {
+    width: min(168px, calc(100vw - 170px));
+    margin: 2px 0 5px !important;
+  }
+  .home-v2 .site-header .brand > span:not(.logo-image-window) {
+    margin: 0;
+    font-size: 9px !important;
+  }
+  .home-v2 .site-header .contact-link {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  .home-v2 .site-header .contact-link span { margin-left: 7px; }
+  .home-v2 .site-header .global-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-basis: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-self: stretch;
+    gap: 18px;
+    min-width: 0;
+    margin: 0 -16px;
+    padding: 0 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border-top: 1px solid #edf1ee;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .home-v2 .site-header .global-nav::-webkit-scrollbar { display: none; }
+  .home-v2 .site-header .global-nav a {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    height: 44px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .home-v2 .home-main { padding: 0 16px; }
+  .home-v2 .brand-stage { margin: 14px 0 42px; }
+  .home-v2 .stage-visual {
+    height: calc(56.25vw + 30px);
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+  .home-v2 .stage-slide[data-slide="0"] img { object-fit: cover; }
+  .home-v2 .stage-controls { height: 48px; }
+  .home-v2 .stage-controls > div { gap: 14px; }
+  .home-v2 .stage-controls button { font-size: 12px; }
+  .home-v2 .stage-controls button span { font-size: 10px; }
+  .home-v2 .stage-person { padding: 21px 22px 20px; }
+  .home-v2 .stage-person .eyebrow { margin-bottom: 9px; font-size: 10px; }
+  .home-v2 .person-intro { margin-bottom: 4px; }
+  .home-v2 .stage-person h1 { font-size: 44px; line-height: 1.12; }
+  .home-v2 .stage-person h1 span { font-size: 15px; }
+  .home-v2 .stage-person .person-brand.benzdream-logo { margin: 9px 0 12px !important; }
+  .home-v2 .stage-person .person-brand .logo-image-window {
+    width: min(205px, calc(100% - 14px));
+    margin: 0 !important;
+  }
+  .home-v2 .person-message { margin: 6px 0 8px; font-size: 17px; line-height: 1.45; }
+  .home-v2 .person-note { margin-bottom: 12px; font-size: 11px; line-height: 1.55; }
+  .home-v2 .person-actions > a { min-height: 42px; padding: 10px 7px; }
+  .home-v2 .stage-next { padding-top: 13px; }
+
+  .bd-phase1 .bd-site-header { grid-template-rows: 55px 43px; }
+  .bd-phase1 .bd-global-nav {
+    min-width: 0;
+    margin: 0 -16px;
+    padding: 0 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .bd-phase1 .bd-global-nav a { min-height: 43px; padding: 0 10px; font-size: 12px; }
+  .bd-phase1 .bd-page-shell { padding: 12px 12px 0; }
+  .bd-phase1 .bd-page-intro-copy { padding: 24px 22px 21px; }
+  .bd-phase1 .bd-eyebrow { margin-bottom: 11px !important; font-size: 10px !important; }
+  .bd-phase1 .bd-page-title { margin-bottom: 12px !important; font-size: clamp(29px, 8vw, 36px) !important; }
+  .bd-phase1 .bd-page-title { word-break: keep-all; overflow-wrap: break-word; }
+  .bd-phase1 .bd-page-lead { margin-bottom: 17px !important; font-size: 13px !important; line-height: 1.58 !important; }
+  .bd-phase1 .bd-intro-actions { gap: 10px 14px; }
+  .bd-phase1 .bd-primary-action { padding: 10px 13px; font-size: 12px; }
+  .bd-phase1 .bd-text-action { font-size: 12px; }
+  .bd-phase1 .bd-page-intro-visual { height: 116px; min-height: 116px; }
+  .bd-phase1 .bd-journey { padding: 8px 10px; }
+  .bd-phase1 .bd-journey p { font-size: 11px !important; }
+  .bd-phase1 .bd-journey a { padding: 6px 9px; }
+  .bd-phase1 .bd-next-step { margin: 35px 12px 0; padding: 25px 20px; }
+  .bd-report .bd-page-intro { padding: 0; }
+}
+
+@media (max-width: 650px) {
+  .bd-price .price-table tbody tr:not(.grp) { padding: 17px 16px 15px; gap: 2px 14px; }
+  .bd-price .price-table td { font-size: 14px; line-height: 1.45; }
+  .bd-price .price-table .m-main { font-size: 17px; }
+  .bd-price .price-table td:not(.c-name):not(.c-real)::before { font-size: 11px; line-height: 1.4; }
+  .bd-price .price-table td.c-real { font-size: 21px; }
+  .bd-price .price-table td.c-real::before { font-size: 12px; }
+  .bd-price .price-model-head > span { font-size: 12px; }
+  .bd-price .price-model-note,
+  .bd-price .price-related { font-size: 13px; line-height: 1.6; }
+}
+
+@media (max-width: 360px) {
+  .home-v2 .stage-controls > div { gap: 9px; }
+  .home-v2 .stage-person { padding-inline: 18px; }
+  .home-v2 .person-actions { flex-direction: column; }
+}
