@@ -60,7 +60,7 @@
 <meta property="og:image" content="https://mb-hansdream.co.kr/assets/landing-v2/owner-banner.jpg">
 <link rel="stylesheet" href="assets/landing-v2/brand/benzdream-brand.css">
 <link rel="stylesheet" href="assets/phase1/site-shell.css?v=1">
-<link rel="stylesheet" href="assets/phase1/price-redesign.css?v=2">
+<link rel="stylesheet" href="assets/phase1/price-redesign.css?v=4">
 <link rel="stylesheet" href="assets/phase1/mobile-polish.css?v=8">
 </head>
 
@@ -248,7 +248,7 @@
       <td class="c-real">60,900,000<small>원</small></td>
       <td class="c-realtax"><span class="rt-val">60,000,000<small>원</small></span></td>
     </tr>
-<tr class="">
+<tr class="" id="sec_GLB" data-class-anchor>
       <td class="c-name"><span class="m-main">GLB 200 d</span></td>
       <td class="c-msrp">65,100,000<small>원</small></td>
       <td class="c-base"><span class="pct dim">-</span><span class="amt dim">-</span></td>
@@ -689,7 +689,7 @@
       <td class="c-real">111,550,000<small>원</small></td>
       <td class="c-realtax"><span class="rt-val">110,150,000<small>원</small></span></td>
     </tr>
-<tr class="amg">
+<tr class="amg" id="sec_SL" data-class-anchor>
       <td class="c-name"><span class="m-main">Mercedes-AMG<br>SL 43</span></td>
       <td class="c-msrp">160,000,000<small>원</small></td>
       <td class="c-base"><span class="pct">9%</span><span class="amt">-14,400,000<small>원</small></span></td>
@@ -697,7 +697,7 @@
       <td class="c-real">145,600,000<small>원</small></td>
       <td class="c-realtax"><span class="rt-val">144,200,000<small>원</small></span></td>
     </tr>
-<tr class="amg">
+<tr class="amg" id="sec_AMG_GT" data-class-anchor>
       <td class="c-name"><span class="m-main">Mercedes-AMG<br>GT 43</span><span class="m-sub">Coupé (C192 · 2-Door)</span></td>
       <td class="c-msrp">149,500,000<small>원</small></td>
       <td class="c-base"><span class="pct">9%</span><span class="amt">-13,450,000<small>원</small></span></td>
@@ -1101,7 +1101,7 @@
       <td class="c-real">320,150,000<small>원</small></td>
       <td class="c-realtax"><span class="rt-val">318,750,000<small>원</small></span></td>
     </tr>
-<tr class="">
+<tr class="" id="sec_G" data-class-anchor>
       <td class="c-name"><span class="m-main">G 450 d</span></td>
       <td class="c-msrp">194,900,000<small>원</small></td>
       <td class="c-base"><span class="pct dim">-</span><span class="amt dim">-</span></td>
@@ -1644,5 +1644,72 @@
 <aside class="bd-next-step" aria-label="다음에 볼 정보"><div><p class="bd-eyebrow">Next step</p><h2>가격과 프로모션 다음에는?</h2><p>가격, 재고, 구매 조건을 함께 놓고 비교해 보세요. 상담할 때 필요한 내용도 더 빨리 정리할 수 있습니다.</p></div><div class="bd-next-links"><a href="BenzDream_PriceAndPromotion_2026.html">가격·프로모션 ↗</a><a href="BenzDream_Stock.html">전국 재고 ↗</a><a href="BenzDream_MonthlyReport_202609.html">구매전략리포트 ↗</a><a href="BenzDream_ShinhanCards.html">카드혜택 ↗</a><a href="BenzDream_MOU_List.html">MOU 확인 ↗</a><a href="/#models">차종별 가이드 ↗</a></div></aside>
 <footer class="bd-site-footer"><a href="/">BenzDream 홈</a><span>한호만 · 메르세데스-벤츠 고양 전시장</span><a href="http://pf.kakao.com/_UqxiIX/chat">상담하기 ↗</a></footer>
 
+<details class="price-class-jump" id="price-class-jump">
+  <summary><span class="price-class-jump-icon" aria-hidden="true">☷</span><span>차종 바로가기</span><span class="price-class-jump-arrow" aria-hidden="true"></span></summary>
+  <nav aria-label="차종별 가격표 바로가기">
+    <p>원하는 차종을 선택하세요</p>
+    <div class="price-class-jump-links">
+      <a href="#sec_A">A클래스</a>
+      <a href="#sec_CLA">CLA</a>
+      <a href="#sec_GLA_GLB">GLA</a>
+      <a href="#sec_GLB">GLB</a>
+      <a href="#sec_C">C클래스</a>
+      <a href="#sec_E">E클래스</a>
+      <a href="#sec_S">S클래스</a>
+      <a href="#sec_CLE">CLE</a>
+      <a href="#sec_SL">SL</a>
+      <a href="#sec_AMG_GT">AMG GT</a>
+      <a href="#sec_GLC">GLC</a>
+      <a href="#sec_GLE">GLE</a>
+      <a href="#sec_GLS_G">GLS</a>
+      <a href="#sec_G">G클래스</a>
+      <a href="#sec_EQ">전동화 EQ</a>
+    </div>
+  </nav>
+</details>
+<script>
+(() => {
+  const jump = document.getElementById('price-class-jump');
+  const links = [...jump.querySelectorAll('nav a')];
+  const sections = links.map(link => document.querySelector(link.getAttribute('href')));
+  const modelEnd = document.getElementById('price-conditions');
+  let frame = 0;
+
+  function updateCurrent() {
+    frame = 0;
+    const edge = window.innerWidth <= 850 ? 128 : 106;
+    let current = null;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= edge) current = section.id;
+    }
+    if (modelEnd.getBoundingClientRect().top <= edge) current = null;
+    for (const link of links) {
+      if (link.hash === '#' + current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+  }
+
+  function scheduleCurrent() {
+    if (!frame) frame = requestAnimationFrame(updateCurrent);
+  }
+
+  jump.addEventListener('click', event => {
+    if (event.target.closest('nav a')) jump.open = false;
+  });
+  document.addEventListener('click', event => {
+    if (jump.open && !jump.contains(event.target)) jump.open = false;
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && jump.open) {
+      jump.open = false;
+      jump.querySelector('summary').focus();
+    }
+  });
+  window.addEventListener('scroll', scheduleCurrent, { passive: true });
+  window.addEventListener('resize', scheduleCurrent);
+  window.addEventListener('hashchange', scheduleCurrent);
+  updateCurrent();
+})();
+</script>
 
 </body></html>
