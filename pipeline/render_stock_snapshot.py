@@ -21,7 +21,9 @@ def render_snapshot(stock_path, page_path=None):
         if not isinstance(colors, dict):
             raise ValueError('Invalid stock colors; do not publish')
         names = [escape(k.replace('|', ' / ')) for k in colors]
-        rows.append('<li><strong>' + escape(name) + '</strong><br>' + ' · '.join(names) + '</li>')
+        years = sorted(y for y in model.get('year_groups', {}) if y.isdigit())
+        label = (' <small>(MY' + ' / MY'.join(y[-2:] for y in years) + ')</small>') if len(years) > 1 else ''
+        rows.append('<li><strong>' + escape(name) + '</strong>' + label + '<br>' + ' · '.join(names) + '</li>')
     block = START + '\n<section id="stockSnapshot" data-date="' + stamp + '">\n'
     block += '<details><summary>' + stamp + ' 기준 차종·색상 목록</summary><p>재고는 변동될 수 있습니다. 현재 배정 가능 여부는 상담으로 확인해 주세요.</p><ul>'
     block += ''.join(rows) + '</ul></details></section>\n' + END

@@ -59,7 +59,20 @@ class CommissionTests(unittest.TestCase):
                                'rows':[row, dict(row, source='위탁재고')]})
         self.assertEqual(snap['sellable_total'], 1)
         self.assertEqual(snap['models']['E 200']['colors']['블랙|브라운']['total'], 1)
+        self.assertEqual(snap['models']['E 200']['sellable_years']['unknown']['블랙|브라운'], 1)
         validate_source_coverage({'rows':[row, dict(row, source='위탁재고')]}, snap)
+
+    def test_customer_stock_keeps_model_year_separate(self):
+        base = dict(com='123', vin=None, model='GLC 300', is_virtual=False,
+                    car_status='판매 가능', sale_status='미배정', inv_class='전국재고',
+                    source='allocation', pdd=None, ext_color='폴라 화이트', int_color='블랙',
+                    salesman='', customer='', branch='')
+        rows = [dict(base, com='123', model_year='2026'), dict(base, com='124', model_year='2027')]
+        snap = build_snapshot({'date':'2026-09-21', 'filename':'test.xlsx', 'rows':rows})
+        years = snap['models']['GLC 300']['sellable_years']
+        self.assertEqual(years['2026']['폴라 화이트|블랙'], 1)
+        self.assertEqual(years['2027']['폴라 화이트|블랙'], 1)
+        validate_source_coverage({'rows':rows}, snap)
 
     def test_coverage_check_rejects_missing_commission(self):
         row = dict(com='123', vin=None, model='E 200', is_virtual=False,

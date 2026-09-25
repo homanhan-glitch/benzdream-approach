@@ -74,6 +74,14 @@ def pdd_to_month(pdd):
     if m: return f"{m.group(1)}-{m.group(2)}"
     return None
 
+
+def model_year(value):
+    """Keep the source model year as a four-digit label when supplied."""
+    if value is None:
+        return None
+    s = str(value).strip().removesuffix('.0')
+    return s if re.fullmatch(r'\d{4}', s) else None
+
 def is_virtual_vin(vin, vehicle_purpose, process_type):
     """Virtual VIN 판별. 'DK'로 시작 OR purpose='Virtual VIN' OR process='Dummy'"""
     if vin and str(vin).startswith('DK'): return True
@@ -132,6 +140,7 @@ def parse_excel(filepath):
             i_com = find_col(header, ['커미션 번호', '커미션'])
             i_mcode = find_col(header, ['모델 코드', '모델코드'])
             i_mname = find_col(header, ['모델명', 'DFE모델명'])
+            i_myear = find_col(header, ['모델 연도', '모델연도'])
             i_vin = find_col(header, ['차대 번호', '차대번호'])
             i_ext = find_col(header, ['외장 색상'])
             i_int = find_col(header, ['내장 색상'])
@@ -164,6 +173,7 @@ def parse_excel(filepath):
                 'vin': str(vin).strip() if vin else None,
                 'com': commission_id(com),
                 'model': mname,
+                'model_year': model_year(g(i_myear)),
                 'model_code': str(g(i_mcode)).strip() if g(i_mcode) else None,
                 'ext_color': clean_model(g(i_ext)),
                 'int_color': normalize_interior_color(clean_model(g(i_int))),
@@ -200,6 +210,7 @@ def parse_excel(filepath):
             i_com = find_col(header, ['커미션', 'Comm.No.', 'COM'])
             i_mcode = find_col(header, ['모델 코드', '모델코드', 'BM'])
             i_mname = find_col(header, ['모델명', '모델', '차종'])
+            i_myear = find_col(header, ['모델 연도', '모델연도'])
             i_ext = find_col(header, ['외장', '외색'])
             i_int = find_col(header, ['내장', '내색'])
             i_pdd = find_col(header, ['출고가능일', 'PDD', '출고 가능일'])
@@ -225,6 +236,7 @@ def parse_excel(filepath):
                 'vin': str(vin).strip() if vin else None,
                 'com': commission_id(g(i_com)),
                 'model': mname,
+                'model_year': model_year(g(i_myear)),
                 'model_code': str(g(i_mcode)).strip() if g(i_mcode) else None,
                 'ext_color': clean_model(g(i_ext)),
                 'int_color': normalize_interior_color(clean_model(g(i_int))),
@@ -308,6 +320,7 @@ def build_snapshot(parsed):
                 'pdd_buckets': {},   # 전체 재고 기준 PDD 월 분포 (YYYY-MM → count, 'unknown' = PDD없음)
                 'sellable_pdd': {},  # 판매가능 기준 PDD 월 분포
                 'colors': {},        # 판매가능 색상조합 → {total, pdd: {YYYY-MM → N}}
+                'sellable_years': {}, # 판매가능 연식 → 색상조합 → count
             }
         m = target[r['model']]
         m['total'] += 1
@@ -340,6 +353,9 @@ def build_snapshot(parsed):
                 m['colors'][combo] = {'total': 0, 'pdd': {}}
             m['colors'][combo]['total'] += 1
             m['colors'][combo]['pdd'][pdd_m] = m['colors'][combo]['pdd'].get(pdd_m, 0) + 1
+            year = r.get('model_year') or 'unknown'
+            year_colors = m['sellable_years'].setdefault(year, {})
+            year_colors[combo] = year_colors.get(combo, 0) + 1
 
         vins_meta[v] = {
             'model': r['model'],

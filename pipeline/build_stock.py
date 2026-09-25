@@ -10,6 +10,7 @@ BenzDream_Stock.html이 기대하는 스키마로 변환.
     "모델명": {
       "cat": "카테고리",
       "colors": {"외장|내장": count, ...},
+      "year_groups": {"2026": {"colors": {"외장|내장": count}}, ...},
       "pdd_buckets": {"YYYY-MM": count, ...},
       "pdd_total": N
     }
@@ -30,6 +31,7 @@ def validate_source_coverage(parsed, snap):
     seen = set()
     expected_ids = []
     expected_combos = Counter()
+    expected_year_combos = Counter()
     for row in parsed['rows']:
         key = commission_id(row['com'])
         if not key:
@@ -43,6 +45,7 @@ def validate_source_coverage(parsed, snap):
         if row['car_status'] == '판매 가능' and not is_g_class(row['model']):
             expected_ids.append(key)
             expected_combos[(row['model'], row['ext_color'], row['int_color'])] += 1
+            expected_year_combos[(row['model'], row.get('model_year') or 'unknown', row['ext_color'], row['int_color'])] += 1
 
     actual_ids = snap.get('sellable_commissions', [])
     if Counter(actual_ids) != Counter(expected_ids):
@@ -57,6 +60,15 @@ def validate_source_coverage(parsed, snap):
         raise ValueError('Sellable model/color coverage mismatch')
     if sum(actual_combos.values()) != snap['sellable_total']:
         raise ValueError('Sellable total mismatch')
+
+    actual_year_combos = Counter()
+    for model, data in snap['models'].items():
+        for year, colors in data.get('sellable_years', {}).items():
+            for combo, count in colors.items():
+                ext, interior = combo.split('|', 1)
+                actual_year_combos[(model, year, ext, interior)] += count
+    if actual_year_combos != expected_year_combos:
+        raise ValueError('Sellable model/year/color coverage mismatch')
 
 def main():
     fp = sys.argv[1]
@@ -74,6 +86,10 @@ def main():
         models_out[name] = {
             'cat': m['cat'],
             'colors': colors,
+            'year_groups': {
+                year: {'colors': dict(sorted(year_colors.items()))}
+                for year, year_colors in sorted(m.get('sellable_years', {}).items())
+            },
             'pdd_buckets': m['sellable_pdd'],
             'pdd_total': m['sellable'],
         }
