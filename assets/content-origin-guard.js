@@ -1,0 +1,7 @@
+/* Attribution on verbatim copies. This is a deterrent, not access control. */
+(()=>{'use strict';const host=location.hostname.toLowerCase();
+if(location.protocol==='file:'||['mb-hansdream.co.kr','www.mb-hansdream.co.kr','localhost','127.0.0.1','[::1]'].includes(host)||(host==='homanhan-glitch.github.io'&&location.pathname.startsWith('/benzdream-approach/')))return;
+function show(){if(document.getElementById('bd-original-notice'))return;let target='https://mb-hansdream.co.kr/';try{const canonical=new URL(document.querySelector('link[rel="canonical"]')?.href||target);if(['mb-hansdream.co.kr','www.mb-hansdream.co.kr'].includes(canonical.hostname))target=canonical.href}catch(_){}
+const box=document.createElement('aside');box.id='bd-original-notice';box.setAttribute('aria-label','BenzDream 원문 안내');box.style.cssText='box-sizing:border-box;padding:16px 20px;background:#fff6dc;color:#222;font:16px/1.6 sans-serif;border-bottom:2px solid #75558b;position:relative;z-index:10000;overflow-wrap:anywhere';
+const text=document.createElement('span');text.textContent='BenzDream · 한호만의 콘텐츠입니다. 최신 정보는 공식 원문에서 확인하세요. ';const link=document.createElement('a');link.href=target;link.textContent='mb-hansdream.co.kr 원문 보기 ↗';link.target='_blank';link.rel='noopener noreferrer';link.style.cssText='color:#493469;font-weight:bold;text-decoration:underline;display:inline-block;padding:8px 0';box.append(text,link);document.body.prepend(box);}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',show,{once:true});else show();})();
