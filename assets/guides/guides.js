@@ -31,7 +31,7 @@
     $('selected-specs').innerHTML=items.length?`<h3>${esc(selected.year+' '+selected.name)}</h3>${selected.spec_note?`<p class="small">${esc(selected.spec_note)}</p>`:''}<dl class="spec-lines">${items.map(([k,v])=>`<div><dt>${esc(statenames[k])}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`:`<p class="notice">${esc(selected.year+' '+selected.name)}의 국내 제원 확인이 필요한 항목은 아래 연식이 표시된 참고 제원과 구분해 보세요.</p>`;
   }
   function renderOptions(){
-    if(vehicle.customer_compare){renderCustomerOptions();return;}
+    if(vehicle.customer_compare){renderEquipmentOverview();renderCustomerOptions();return;}
     const rows=selected.options||[];
     $('option-year-note').textContent=rows.length?selected.year+' · '+selected.name+' 기준입니다. 기본 / 선택 / 유료 선택 / 미적용을 구분했습니다.':selected.year+' 상세 옵션표는 보완 예정입니다. 아래 연식이 표시된 카탈로그·비교 자료를 함께 확인하세요.';
     const keys=rows.filter(r=>!/^[0-9]{3}[AU]$/.test(r.code)&&/헤드업|사운드|선루프|서스펜션|스티어링|라이트|통풍|카메라|시트|MBUX/.test(r.name)).slice(0,15);
@@ -41,6 +41,32 @@
     const q=$('option-search').value.toLowerCase();const entries=[...all.entries()].filter(([,r])=>(r.code+' '+r.name).toLowerCase().includes(q));
     $('option-table').innerHTML=entries.length?`<div class="table-scroll" role="region" tabindex="0" aria-label="트림별 전체 옵션 비교"><table class="option-matrix"><caption>${esc(selected.year)} 장비·옵션 비교 · 옆으로 이동해 다른 트림을 확인하세요.</caption><thead><tr><th scope="col">장비</th>${same.map(t=>`<th scope="col" class="${t.id===selected.id?'selected':''}">${esc(t.name)}<br><small>${esc(t.nst)}</small></th>`).join('')}</tr></thead><tbody>${entries.map(([key,r])=>`<tr><th scope="row">${esc(r.name)}<br><small>${esc(r.code)}</small></th>${same.map(t=>{const v=t.options.find(x=>x.code+'|'+x.name===key);return `<td class="${t.id===selected.id?'selected':''}">${esc(v?.state||'확인 필요')}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>`:'<p class="notice">일치하는 장비 항목이 없습니다. 아래 참고 자료 또는 상담으로 확인해 주세요.</p>';
   }
+
+  const equipmentCategories=['주행·승차감','안전·주차','시트·공간','디스플레이·오디오','실내 편의','외관·생활 편의','충전·전기차 기능'];
+  function equipmentGroups(rows,prefix,reference=false){
+    const merged=new Map();rows.forEach(r=>{const key=[r.category,r.label,r.state].join('|');if(!merged.has(key))merged.set(key,{...r,scopes:[]});if(r.scope&&!merged.get(key).scopes.includes(r.scope))merged.get(key).scopes.push(r.scope)});
+    return '<div class="equipment-sections">'+equipmentCategories.map((cat,i)=>{const items=[...merged.values()].filter(r=>r.category===cat);if(!items.length)return '';return `<section class="equipment-category" id="${prefix}-${i}"><h4>${esc(cat)}</h4><ul>${items.map(r=>`<li><span>${esc(r.label)}${r.scopes.length?`<small>${esc(r.scopes.join(' · '))}</small>`:''}</span>${reference&&r.state==='구성별 확인'?'':`<span class="equipment-state ${r.state==='기본'?'is-standard':''}">${esc(r.state)}</span>`}</li>`).join('')}</ul></section>`}).join('')+'</div>';
+  }
+  function renderEquipmentOverview(){
+    if(!vehicle.equipment||!$('equipment-overview'))return;
+    const entry=vehicle.equipment.trims[selected.id],rows=entry?.rows||[],ref=vehicle.equipment.reference;
+    $('equipment-trim').innerHTML=vehicle.trims.filter(t=>t.year===selected.year).map(t=>`<option value="${esc(t.id)}" ${t.id===selected.id?'selected':''}>${esc(t.display_name||t.name)}</option>`).join('');
+    $('equipment-trim').onchange=e=>selectTrim(e.target.value);
+    $('equipment-selected-name').textContent=selected.year+' · '+(selected.display_name||selected.name);
+    $('equipment-note').textContent=entry.matrix?'기본 장비와 선택 가능한 장비를 분야별로 모았습니다. 선택 사양의 주문 조합은 별도로 확인해 주세요.':'아래 차종 주요 장비도 함께 살펴보세요. 트림별 적용 여부는 구분해 안내합니다.';
+    const nav='<nav class="equipment-nav" aria-label="주요 장비 분야">'+equipmentCategories.map((c,i)=>rows.some(r=>r.category===c)?`<a href="#equipment-${i}">${esc(c)}</a>`:'').join('')+'</nav>';
+    $('equipment-primary').innerHTML=rows.length?nav+equipmentGroups(rows,'equipment'):'<p class="notice">이 구성의 확정 장비 목록은 보완 중입니다. 아래 연식과 구성 안내를 함께 확인해 주세요.</p>';
+    const reference=!entry.matrix&&ref.rows.length>0;
+    $('equipment-reference').hidden=!reference;
+    $('equipment-reference-title').textContent=(ref.year+' '+vehicle.family+' 주요 장비').trim();
+    $('equipment-reference-note').textContent=(ref.year!==selected.year?`선택한 ${selected.year}와 다른 ${ref.year} 참고 안내입니다. `:'')+'트림에 따라 기본·선택 적용이 달라집니다. 항목 아래에 표시된 구성도 함께 확인해 주세요.';
+    const refnav='<nav class="equipment-nav" aria-label="차종 주요 장비 분야">'+equipmentCategories.map((c,i)=>ref.rows.some(r=>r.category===c)?`<a href="#equipment-reference-${i}">${esc(c)}</a>`:'').join('')+'</nav>';
+    $('equipment-reference-list').innerHTML=reference?refnav+equipmentGroups(ref.rows,'equipment-reference',true):'';
+    const alternatives=vehicle.trims.filter(t=>t.year!==selected.year&&vehicle.equipment.trims[t.id]?.matrix).filter((t,i,a)=>a.findIndex(x=>x.year===t.year)===i);
+    $('equipment-year-links').innerHTML=!entry.matrix&&!reference&&alternatives.length?'<p>다른 연식의 주요 장비도 확인할 수 있습니다.</p>'+alternatives.map(t=>`<button class="equipment-other-year" data-equipment-trim="${esc(t.id)}">${esc(t.year)} 주요 장비 보기 ↗</button>`).join(''):'';
+    $('equipment-year-links').querySelectorAll('[data-equipment-trim]').forEach(b=>b.onclick=()=>selectTrim(b.dataset.equipmentTrim));
+  }
+
   let comparePair=null,compareYear=null;
   const trimLabel=t=>(t.display_name||t.name)+(t.price?'':' · 가격 안내 전');
   const activeComparison=()=>vehicle.customer_compare.years[selected.year];
@@ -54,14 +80,14 @@
     $('common-heading').textContent=selected.year+' 주요 공통 기본 사양';
     $('common-list').innerHTML=config.common.map(f=>`<li><span aria-hidden="true">✓</span>${esc(f.values?Object.values(f.values)[0]:f.label)}</li>`).join('');
     const missing=trims.filter(t=>!config.coverage[t.id]);
-    $('option-year-note').textContent=selected.year+' · 승차감, 편의장비와 실내 구성에서 중요한 차이를 확인하세요.';
+    $('option-year-note').textContent=selected.year+' · 주요 장비 전체를 살펴보고, 트림별 차이도 비교하세요.';
     $('customer-previous-year').hidden=!missing.length;
-    $('customer-previous-year').textContent=available?'일부 구성은 세부 장비 확인이 필요합니다. 확인되지 않은 장비를 미적용으로 표시하지 않습니다.':'선택 연식의 트림별 장비는 확인 후 안내합니다. 아래 연식이 표시된 주요 장비와 상세 가이드를 함께 확인해 주세요.';
-    $('catalog-equipment-reference').hidden=!missing.length||!vehicle.catalog_highlights?.length;
+    $('customer-previous-year').textContent=available?'트림에 따라 기본·선택 사양과 주문 가능한 조합이 다릅니다.':'선택 연식의 트림별 적용 여부는 추가 확인이 필요합니다. 위 주요 장비 안내의 연식과 구성을 함께 확인해 주세요.';
+    $('catalog-equipment-reference').hidden=true;
     const single=trims.length===1;
     $('comparison-heading').textContent=single?'이 트림의 주요 장비.':'고민 중인 두 트림을 비교하세요.';
     document.querySelector('.compare-pickers').hidden=single;document.querySelector('.compare-tools').hidden=single;
-    if(compareYear!==selected.year){comparePair=[...config.default_pair];compareYear=selected.year;$('differences-only').checked=!single;}
+    if(compareYear!==selected.year){comparePair=[...config.default_pair];compareYear=selected.year;$('differences-only').checked=false;}
     for(const [i,id] of ['compare-left','compare-right'].entries()){
       const el=$(id);el.innerHTML=trims.map(t=>`<option value="${esc(t.id)}" ${t.id===comparePair[i]?'selected':''}>${esc(trimLabel(t))}</option>`).join('');
       el.onchange=()=>{comparePair[i]=el.value;renderCustomerTable();track('vehicle_comparison_select',{comparison_side:i})};
@@ -71,7 +97,8 @@
   function renderCustomerTable(){
     const config=activeComparison(),[left,right]=comparePair.map(id=>vehicle.trims.find(t=>t.id===id));
     const single=vehicle.trims.filter(t=>t.year===selected.year).length===1;
-    const all=config.features.map(f=>({...f,values:[customerValue(left,f),customerValue(right,f)]}));
+    const common=config.common.map(f=>({...f,values:f.values||Object.fromEntries(vehicle.trims.filter(t=>t.year===selected.year).map(t=>[t.id,'기본 적용']))}));
+    const all=[...config.features,...common].map(f=>({...f,values:[customerValue(left,f),customerValue(right,f)]}));
     const differs=f=>!f.values.some(unknown)&&f.values[0]!==f.values[1];
     const differences=all.filter(differs),pending=all.filter(f=>f.values.some(unknown));
     const shown=single?all:($('differences-only').checked?all.filter(f=>differs(f)||f.values.some(unknown)):all);
