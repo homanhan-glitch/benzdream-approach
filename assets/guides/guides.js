@@ -117,13 +117,15 @@
     let colors=selected.options.filter(r=>(/^[0-9]{3}[AU]$/.test(r.code)||(/^C\d{2}$/.test(r.code)&&/투톤.*페인트/.test(r.name)))&&!['미적용','개별 확인'].includes(r.state));
     const fallback=!colors.length;
     if(fallback)colors=selected.color_override?.colors||vehicle.catalog_colors||[];
+    const hasPhoto=c=>!!((selected.color_override?.images||vehicle.color_images)[c.code]||c.image);
+    colors=[...colors].sort((a,b)=>Number(hasPhoto(b))-Number(hasPhoto(a)));
     $('color-year-note').textContent=fallback?`${selected.color_override?.year||vehicle.catalog_year||'보관 카탈로그'}의 ${vehicle.family} 컬러입니다. ${selected.year} 선택 트림의 주문 가능 조합은 확인이 필요합니다.`:selected.year+' · '+selected.name+'의 선택 색상입니다. 일부 조합은 함께 선택할 수 없습니다.';
     $('color-stage').hidden=true;
     for(const [id,ending] of [['exterior-colors','U'],['interior-colors','A']]){
       const cs=colors.filter(c=>ending==='A'?c.code.endsWith('A'):(c.code.endsWith('U')||/^C\d{2}$/.test(c.code)));$(id).innerHTML=cs.length?cs.map(c=>{const img=(selected.color_override?.images||vehicle.color_images)[c.code]||c.image;return `<button class="color-card" data-color="${esc(c.code)}" aria-pressed="false">${img?`<img src="${esc(img)}" alt="${esc(c.name)}" loading="lazy" width="115" height="90">`:`<span class="color-swatch" style="--color:${swatch(c.name)}"></span>`}<span><strong>${esc(c.name)}</strong><small>${esc(c.code)} · ${esc(c.state)}</small></span></button>`}).join(''):'<p class="notice">해당 트림의 선택 색상은 추가 확인 후 안내하겠습니다.</p>';
-      $(id).querySelectorAll('[data-color]').forEach(b=>b.addEventListener('click',()=>{const c=cs.find(x=>x.code===b.dataset.color);showColor(c);track('vehicle_color_select',{color_code:c.code})}));
+      $(id).querySelectorAll('[data-color]').forEach(b=>b.addEventListener('click',()=>{const c=cs.find(x=>x.code===b.dataset.color);showColor(c);if(matchMedia('(max-width:760px)').matches)$('color-stage').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'});track('vehicle_color_select',{color_code:c.code})}));
     }
-    if(colors.length)showColor(colors[0]);
+    if(colors.length)showColor(colors.find(c=>c.code.endsWith('U')&&hasPhoto(c))||colors.find(c=>c.code.endsWith('U'))||colors[0]);
   }
   function renderBuying(){
     $('selected-name').textContent=selected.year+' · '+selected.name;

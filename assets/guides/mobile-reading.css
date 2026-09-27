@@ -1,0 +1,61 @@
+/* Full-width labels and values on phones; the complete comparison remains on desktop. */
+.mobile-table-view{display:none}
+.comparison-settings{border:0;margin:0;padding:0}
+.comparison-settings>summary{display:none}
+.content-origin{font:15px/1.6 MBKS,'Malgun Gothic',sans-serif;color:#526159;margin:24px 0 0;padding-top:16px;border-top:1px solid #dbe2dc;overflow-wrap:anywhere}
+.content-origin a{color:inherit;text-underline-offset:4px}
+.reference-model{margin:24px 0;border:1px solid #dbe2dc;background:#fff;padding:24px}
+.reference-model h4{font-size:23px;line-height:1.5;margin:0 0 18px}
+.reference-model .spec-lines{margin-bottom:0}
+.reference-model .spec-lines dd{font-size:20px;color:#191d1b}
+.spec-reference-picker{display:block;margin:24px 0 12px;font-size:17px}
+.spec-reference-picker select{display:block;width:100%;max-width:720px;min-height:52px;margin-top:8px;padding:12px;border:1px solid #aab8b0;background:#fff}
+.spec-reference-note{font-size:17px;color:#526159;line-height:1.7;margin:16px 0}
+@media(max-width:760px){
+  html{scroll-padding-top:116px}
+  .page-nav .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;overflow:visible;width:calc(100% - 24px)}
+  .page-nav a{font-size:16px;text-align:center;min-height:44px;padding:9px 2px;white-space:nowrap}
+  .has-mobile-view{display:none}
+  .comparison-settings{margin:20px 0;background:white;border-block:1px solid #dbe2dc;padding:0 14px}
+  .comparison-settings>summary{display:list-item;font-size:17px;padding:17px 0;min-height:54px;line-height:1.6}
+  .comparison-settings[open]{padding-bottom:18px}
+  .comparison-settings .compare-pickers{margin-top:6px}
+  .mobile-table-view{display:block;margin:20px 0}
+  .mobile-table-caption{font-size:16px;line-height:1.7;margin-bottom:16px;color:#526159}
+  .mobile-data-row{border:1px solid #dbe2dc;background:#fff;margin:0 0 16px;padding:0;scroll-margin-top:120px}
+  .mobile-data-label{font:600 19px/1.55 MBKS,'Malgun Gothic',sans-serif;background:#eef3ef;margin:0;padding:15px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;overflow-wrap:anywhere}
+  .mobile-data-values{margin:0;padding:0 18px}
+  .mobile-data-value{padding:15px 0}
+  .mobile-data-value+.mobile-data-value{border-top:1px solid #e7ebe7}
+  .mobile-data-value dt{font-size:16px;line-height:1.6;color:#526159;word-break:keep-all;overflow-wrap:anywhere}
+  .mobile-data-value dd{font-size:19px;line-height:1.65;margin:5px 0 0;word-break:keep-all;overflow-wrap:anywhere;color:#191d1b}
+  .mobile-data-row.is-different{border-color:#cbbedd}
+  .mobile-data-row.is-different .mobile-data-label{background:#f0ebf7}
+  .mobile-difference{font-size:14px;font-weight:400;color:#604285;white-space:nowrap}
+  .mobile-data-row.price-row .mobile-data-label{background:#def4e8}
+  .common-equipment ul{grid-template-columns:1fr;gap:16px}
+  .common-equipment li{font-size:18px;line-height:1.7}
+  .equipment-category li{display:block}
+  .equipment-state{display:block;text-align:left;max-width:none;margin-top:4px;font-size:16px}
+  .equipment-category small{font-size:16px}
+  .equipment-nav a{min-height:44px;padding:10px 0}
+  .equipment-category{scroll-margin-top:120px}
+  .equipment-trim-label,.compare-pickers label{font-size:17px}
+  .equipment-trim-label select,.compare-pickers select{font-size:18px;min-height:54px}
+  .comparison-price strong{display:block;margin:8px 0 0}
+  .reference-model{padding:20px 16px}
+  .reference-model h4{font-size:22px}
+  .reference-model .spec-lines div{padding:14px 0}
+  #colors .color-stage-visual{aspect-ratio:16/10}
+  #exterior-colors{grid-template-columns:1fr}
+  #exterior-colors .color-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;padding:10px;gap:10px;min-height:125px}
+  #exterior-colors .color-card img{aspect-ratio:4/3}
+  #exterior-colors .color-card>.color-swatch{height:100px;border:1px solid #dbe2dc}
+  #exterior-colors .color-card>span:last-child{padding:0}
+  #exterior-colors .color-card strong{font-size:18px;line-height:1.6}
+  #exterior-colors .color-card small{font-size:16px}
+  #interior-colors .color-card{flex-wrap:wrap}
+  #interior-colors .color-card>span:last-child{flex:1;min-width:140px}
+  .content-origin{font-size:16px;line-height:1.7}
+}
+@media print{.content-origin{display:block!important}.model-dock,.page-nav{display:none!important}}
