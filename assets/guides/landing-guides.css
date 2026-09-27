@@ -1,0 +1,15 @@
+#models .guide-hub-entry{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 34px;padding:18px 0;border-block:1px solid var(--rule)}
+#models .guide-hub-entry p{font-size:16px;color:var(--muted);margin:0}#models .guide-hub-entry a{font-size:17px;min-height:44px;padding:10px 0;white-space:nowrap}
+#models .landing-model-group{margin:0 0 50px}#models .landing-group-title{font-size:27px;margin:0 0 22px;font-weight:400}
+#models .model-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:28px 24px}
+#models .model-card{display:flex;flex-direction:column;border:1px solid var(--rule);background:white;min-width:0}
+#models .model-main-link{display:block;text-decoration:none}#models .model-main-link:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+#models .framed-media{display:block;position:relative;width:100%;aspect-ratio:8/5;overflow:hidden;background:var(--media-background,#f4f5f4)}
+#models .framed-media>img{display:block;position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;padding:0;object-fit:var(--media-fit,cover);object-position:var(--media-position,50% 50%);transform:scale(var(--media-zoom,1));transform-origin:var(--media-position,50% 50%)}
+#models .model-main-copy{display:block;padding:22px 22px 17px}#models .model-main-copy h4{font-family:BDText,MBKS,sans-serif;font-size:25px;line-height:1.35;font-weight:400;margin:0 0 10px}#models .model-main-copy span{font-size:16px;color:#245745}
+#models .model-links{padding:0 22px 18px;margin-top:auto}#models .model-links a{font-size:16px;line-height:1.5;min-height:44px;padding:11px 0}#models .model-card:hover{border-color:var(--purple)}
+#models .model-card[hidden],#models .landing-model-group[hidden]{display:none!important}
+#models .search-label,#models .search-label input{font-size:16px}
+#models .model-image-note{font-size:14px;color:var(--muted);line-height:1.7;margin:16px 0 30px}
+@media(max-width:1000px){#models .model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){#models .model-grid{grid-template-columns:1fr;gap:22px}#models .guide-hub-entry{display:block}#models .guide-hub-entry a{display:inline-block;margin-top:8px}#models .model-main-copy h4{font-size:25px}#models .model-main-copy{padding:20px 20px 16px}#models .model-links{padding-inline:20px}#models .landing-group-title{font-size:25px}#models .model-links a{font-size:17px}}
