@@ -23,7 +23,7 @@
     $('model-search').addEventListener('input',filter);document.querySelectorAll('button[data-category]').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;document.querySelectorAll('button[data-category]').forEach(a=>a.setAttribute('aria-pressed',a===b));filter()}));
   }
   if(!$('vehicle-data'))return;
-  vehicle=JSON.parse($('vehicle-data').textContent);let stock=null, offers=[],reportMonth='',reportUrl='BenzDream_MonthlyReport_latest.html';
+  vehicle=JSON.parse($('vehicle-data').textContent);let stock=null, offers=[],reportMonth='',reportUrl='BenzDream_PriceAndPromotion_2026.html#price-models';
   selected=vehicle.trims[0];
   const statenames={length_mm:'전장 (mm)',width_mm:'전폭 (mm)',height_mm:'전고 (mm)',wheelbase_mm:'휠베이스 (mm)',engine_cc:'배기량 (cc)',power_ps:'최고출력 (PS)',torque_nm:'최대토크 (Nm)',torque_kgfm:'최대토크 (kg·m)',drive:'구동 방식',transmission:'변속기',zero_to_100_s:'0–100 km/h (초)',combined_efficiency:'복합 연비·전비',battery_kwh:'배터리 용량 (kWh)',certified_range_km:'국내 인증 주행거리 (km)',battery_cell_maker:'배터리 셀 제조사'};
   function renderSpecs(){
@@ -131,10 +131,10 @@
     $('selected-name').textContent=selected.year+' · '+selected.name;
     $('current-price').textContent=selected.price?(selected.price/10000).toLocaleString('ko-KR')+'만원':'가격 확인 중';
     $('price-date').textContent=selected.price?'2026.09.25 권장 소비자가 · VAT 포함':'선택 연식의 공식 가격 확인 후 안내';
-    const offer=reportMonth===kst().slice(0,7)?offers.find(x=>x.year===selected.year&&normalize(x.name)===normalize(selected.name)):null;
-    $('offer-rate').textContent=offer?offer.rate+'%':'개별 조건 확인';
-    $('offer-note').textContent=offer?`${reportMonth.replace('-','.')} · ${selected.year} 안내 조건. 금융상품·대상 차량 등 세부 적용 조건은 리포트에서 확인하세요.`:'이번 달 리포트에서 연식과 금융 이용 조건을 확인하세요. 이전 월 할인율은 표시하지 않습니다.';
-    $('report-link').href=reportUrl;
+    const offer=reportMonth===kst().slice(0,7)?offers.find(x=>x.year===selected.year&&x.nst===selected.nst&&normalize(x.name)===normalize(selected.name)):null;
+    $('offer-rate').textContent=offer?(offer.rate===0?'기본 할인 없음':offer.rate+'%'):'개별 조건 확인';
+    $('offer-note').textContent=offer?`${reportMonth.replace('-','.')} · ${selected.year} · ${offer.condition}. 고객별 추가 혜택은 가격·프로모션에서 확인하세요.`:'선택 연식·트림의 이번 달 조건은 가격·프로모션에서 확인하세요.';
+    $('report-link').href=reportUrl;$('report-link').textContent=(reportMonth===kst().slice(0,7)?Number(reportMonth.slice(5))+'월 ':'')+'가격·프로모션 확인 ↗';
     $('stock-link').href='BenzDream_Stock.html?model='+encodeURIComponent(selected.name);
     $('stock-colors').replaceChildren();
     if(!stock){$('stock-value').textContent='재고 확인 필요';$('stock-note').textContent='재고 연결을 확인 중입니다. 전국 재고 페이지에서 확인할 수 있습니다.';return;}
@@ -160,20 +160,13 @@
   selectTrim(selected.id,false);
   async function getText(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error(r.status);return r.text()}
   async function loadOffers(){
-    const landing=new DOMParser().parseFromString(await getText('BenzDream_Landing.html'),'text/html');
-    const current=[...landing.querySelectorAll('a[href]')].map(a=>a.getAttribute('href')).filter(u=>/BenzDream_MonthlyReport_\d{6}\.html/.test(u)).sort().reverse()[0];
-    if(!current)return;const stamp=current.match(/_(\d{4})(\d{2})\.html/);reportMonth=stamp[1]+'-'+stamp[2];reportUrl=current;
-    if(reportMonth!==kst().slice(0,7)){renderBuying();return;}
-    const doc=new DOMParser().parseFromString(await getText(current),'text/html');
-    doc.querySelectorAll('table').forEach(tab=>{
-      const headers=[...tab.querySelectorAll('thead th')].map(x=>x.textContent.trim());
-      if(headers.includes('MY26')&&headers.includes('MY27')){
-        tab.querySelectorAll('tbody tr').forEach(tr=>{const cells=[...tr.querySelectorAll('td')];['MY26','MY27'].forEach(year=>{const value=cells[headers.indexOf(year)]?.textContent.trim();if(/^\d+(?:\.\d+)?%$/.test(value||''))offers.push({name:cells[0].textContent.trim(),year,rate:parseFloat(value)})})});
-      }else if(headers.some(x=>/실효 할인/.test(x))){
-        const caption=tab.closest('.ptbl-wrap')?.querySelector('.ptbl-head-label')?.textContent||'';const ym=caption.match(/MY2[67]/);if(!ym)return;
-        tab.querySelectorAll('tbody tr').forEach(tr=>{const cells=[...tr.querySelectorAll('td')];const value=cells[headers.findIndex(x=>/실효 할인/.test(x))]?.textContent.trim();if(/^\d+(?:\.\d+)?%$/.test(value||''))offers.push({name:cells[0].textContent.split('·')[0].trim(),year:ym[0],rate:parseFloat(value)})});
-      }
-    });renderBuying();
+    const response=await fetch('assets/current-promotions.json?v='+Date.now(),{cache:'no-store'});
+    if(!response.ok)throw Error('promotion source unavailable');
+    const data=await response.json();
+    if(!/^\d{4}-\d{2}$/.test(data.month)||!Array.isArray(data.offers))throw Error('invalid promotion data');
+    reportMonth=data.month;reportUrl='BenzDream_PriceAndPromotion_2026.html#price-models';offers=[];
+    if(reportMonth===kst().slice(0,7))offers=data.offers;
+    renderBuying();
   }
   Promise.allSettled([
     fetch('latest_stock.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(d.date)||!d.models)throw Error('invalid stock');stock=d;renderBuying()}),

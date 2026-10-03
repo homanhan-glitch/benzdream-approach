@@ -1,0 +1,848 @@
+{
+  "month": "2026-10",
+  "updated": "2026-10-03",
+  "source_date": "2026-10-01",
+  "url": "BenzDream_PriceAndPromotion_2026.html#price-models",
+  "offers": [
+    {
+      "name": "A 220 Sedan",
+      "year": "MY26",
+      "nst": "17714412-KR7",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%"
+    },
+    {
+      "name": "CLA 250 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "11834712-KR1",
+      "base": 7,
+      "rate": 7,
+      "condition": "기본 7%"
+    },
+    {
+      "name": "C 200 AVANTGARDE",
+      "year": "MY26",
+      "nst": "20605012-KR6",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "C 200 Final Edition",
+      "year": "MY26",
+      "nst": "20605012-KR8",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "C 200 AMG Line",
+      "year": "MY26",
+      "nst": "20605012-KR7",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "E 300 4MATIC EXCLUSIVE",
+      "year": "MY27",
+      "nst": "21404712-KR7",
+      "base": 8,
+      "rate": 12,
+      "condition": "기본 8% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "E 300 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "21404712-KR8",
+      "base": 8,
+      "rate": 12,
+      "condition": "기본 8% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "E 450 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "21406112-KR7",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "E 450 4MATIC EXCLUSIVE",
+      "year": "MY27",
+      "nst": "21406112-KR8",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "E 450 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "21406112-KR9",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "E 200 AVANTGARDE",
+      "year": "MY26",
+      "nst": "21405012-KR4",
+      "base": 16,
+      "rate": 16,
+      "condition": "기본 16%"
+    },
+    {
+      "name": "E 200 EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21405012-KR9",
+      "base": 15,
+      "rate": 20,
+      "condition": "기본 15% + 금융 추가 5% (대상 상품 이용 시)"
+    },
+    {
+      "name": "E 200 AMG Line",
+      "year": "MY26",
+      "nst": "21405012-KR5",
+      "base": 15,
+      "rate": 19,
+      "condition": "기본 15% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "E 220 d 4MATIC EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21400512-KR3",
+      "base": 12,
+      "rate": 12,
+      "condition": "기본 12%"
+    },
+    {
+      "name": "E 300 4MATIC EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21404712-KR5",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "E 300 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "21404712-KR6",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "E 350 e 4MATIC EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21405612-KR2",
+      "base": 14,
+      "rate": 14,
+      "condition": "기본 14%"
+    },
+    {
+      "name": "E 450 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "21406112-KR6",
+      "base": 11,
+      "rate": 11,
+      "condition": "기본 11%"
+    },
+    {
+      "name": "E 450 4MATIC EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21406112-KR5",
+      "base": 11,
+      "rate": 11,
+      "condition": "기본 11%"
+    },
+    {
+      "name": "S 350 d 4MATIC",
+      "year": "MY27",
+      "nst": "22302412-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "S 450 4MATIC",
+      "year": "MY27",
+      "nst": "22306512-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "S 450 4MATIC Long Exclusive",
+      "year": "MY27",
+      "nst": "22316512-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "S 450 4MATIC Long AMG Line",
+      "year": "MY27",
+      "nst": "22316512-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "S 500 4MATIC Long",
+      "year": "MY27",
+      "nst": "22316412-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "S 580 4MATIC Long",
+      "year": "MY27",
+      "nst": "22317712-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "S 350 d 4MATIC",
+      "year": "MY26",
+      "nst": "22302112-KR2",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "GLA 250 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "24774712-KR3",
+      "base": 9,
+      "rate": 13,
+      "condition": "기본 9% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLA 250 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "24774712-KR2",
+      "base": 9,
+      "rate": 13,
+      "condition": "기본 9% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLB 250 4MATIC",
+      "year": "MY26",
+      "nst": "24764712-KR6",
+      "base": 13,
+      "rate": 17,
+      "condition": "기본 13% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLC 300 4MATIC AVANTGARDE",
+      "year": "MY27",
+      "nst": "25464712-KR9",
+      "base": 7,
+      "rate": 7,
+      "condition": "기본 7%"
+    },
+    {
+      "name": "GLC 300 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "25464712-KR1",
+      "base": 7,
+      "rate": 7,
+      "condition": "기본 7%"
+    },
+    {
+      "name": "GLC 220 d 4MATIC",
+      "year": "MY26",
+      "nst": "25460512-KR4",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "GLC 300 4MATIC AVANTGARDE",
+      "year": "MY26",
+      "nst": "25464712-KR6",
+      "base": 7,
+      "rate": 11,
+      "condition": "기본 7% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLC 300 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "25464712-KR5",
+      "base": 12,
+      "rate": 16,
+      "condition": "기본 12% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "year": "MY27",
+      "nst": "25434712-KR8",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AMG Line (MY27 초기 생산분)",
+      "year": "MY27",
+      "nst": "25434712-KR1",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupe AMG Line",
+      "year": "MY27",
+      "nst": "25434712-KR9",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "year": "MY26",
+      "nst": "25434712-KR5",
+      "base": 7,
+      "rate": 11,
+      "condition": "기본 7% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AMG Line",
+      "year": "MY26",
+      "nst": "25434712-KR4",
+      "base": 9,
+      "rate": 13,
+      "condition": "기본 9% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLE 350 4MATIC",
+      "year": "MY26",
+      "nst": "16714512-KR2",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "GLE 300 d 4MATIC",
+      "year": "MY26",
+      "nst": "16710912-KR6",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8%"
+    },
+    {
+      "name": "GLE 450 4MATIC",
+      "year": "MY26",
+      "nst": "16715912-KR8",
+      "base": 12,
+      "rate": 16,
+      "condition": "기본 12% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLE 450 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "16715912-KR9",
+      "base": 12,
+      "rate": 16,
+      "condition": "기본 12% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "GLS 450 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "16795912-KR2",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8%"
+    },
+    {
+      "name": "GLS 450 d 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "16793312-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "GLS 580 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "16798512-KR3",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%"
+    },
+    {
+      "name": "G 450 d",
+      "year": "MY26",
+      "nst": "46531012-KR4",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "G 450 d MANUFAKTUR",
+      "year": "MY26",
+      "nst": "46531012-KR5",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "Mercedes-AMG G 63",
+      "year": "MY26",
+      "nst": "46525012-KR3",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "Mercedes-AMG G 63 MANUFAKTUR",
+      "year": "MY26",
+      "nst": "46525012-KR4",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "EQE 350+",
+      "year": "MY26",
+      "nst": "29512112-KR6",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "EQA 250 Progressive",
+      "year": "MY27",
+      "nst": "24370112-KR7",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "EQA 250 AMG Line",
+      "year": "MY27",
+      "nst": "24370112-KR8",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "EQA 250 Progressive",
+      "year": "MY26",
+      "nst": "24370112-KR5",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "EQA 250 AMG Line",
+      "year": "MY26",
+      "nst": "24370112-KR6",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "EQB 300 4MATIC Progressive",
+      "year": "MY26",
+      "nst": "24360812-KR5",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "EQB 300 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "24360812-KR6",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "EQE 350+ SUV",
+      "year": "MY26",
+      "nst": "29462112-KR1",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "EQE 500 4MATIC SUV",
+      "year": "MY26",
+      "nst": "29462212-KR6",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "EQS 450 4MATIC SUV",
+      "year": "MY26",
+      "nst": "29662412-KR5",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "EQS 580 4MATIC SUV",
+      "year": "MY26",
+      "nst": "29664412-KR5",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "G 580 with EQ Technology",
+      "year": "MY26",
+      "nst": "46560012-KR3",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "CLE 200 Coupé",
+      "year": "MY27",
+      "nst": "23635012-KR4",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "CLE 450 4MATIC Coupé",
+      "year": "MY27",
+      "nst": "23636112-KR4",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "CLE 200 Coupé",
+      "year": "MY27",
+      "nst": "23635012-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "CLE 450 4MATIC Coupé",
+      "year": "MY27",
+      "nst": "23636112-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "CLE 200 Coupe AMG Line",
+      "year": "MY26",
+      "nst": "23635012-KR3",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%"
+    },
+    {
+      "name": "CLE 450 4MATIC Coupe AMG Line",
+      "year": "MY26",
+      "nst": "23636112-KR3",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%"
+    },
+    {
+      "name": "CLE 200 Cabriolet",
+      "year": "MY27",
+      "nst": "23645012-KR4",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "CLE 450 4MATIC Cabriolet",
+      "year": "MY27",
+      "nst": "23646112-KR4",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "CLE 450 4MATIC Cabriolet",
+      "year": "MY27",
+      "nst": "23646112-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "CLE 200 Cabriolet",
+      "year": "MY27",
+      "nst": "23645012-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "CLE 200 Cabriolet AMG Line",
+      "year": "MY26",
+      "nst": "23645012-KR3",
+      "base": 4,
+      "rate": 4,
+      "condition": "기본 4%"
+    },
+    {
+      "name": "CLE 450 4MATIC Cabriolet AMG Line",
+      "year": "MY26",
+      "nst": "23646112-KR3",
+      "base": 6,
+      "rate": 6,
+      "condition": "기본 6%"
+    },
+    {
+      "name": "Mercedes-AMG A 45 S 4MATIC+",
+      "year": "MY26",
+      "nst": "17705412-KR4",
+      "base": 7,
+      "rate": 11,
+      "condition": "기본 7% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "Mercedes-AMG CLA 45 S 4MATIC+",
+      "year": "MY26",
+      "nst": "11835412-KR8",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%"
+    },
+    {
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
+      "year": "MY26",
+      "nst": "21406312-KR3",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
+      "year": "MY26",
+      "nst": "21406312-KR4",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "Mercedes-AMG S 63 E Performance",
+      "year": "MY26",
+      "nst": "22318212-KR3",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%"
+    },
+    {
+      "name": "Mercedes-AMG GT 43 4MATIC+",
+      "year": "MY26",
+      "nst": "29065912-KR2",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%"
+    },
+    {
+      "name": "Mercedes-AMG GLB 35 4MATIC",
+      "year": "MY26",
+      "nst": "24765112-KR8",
+      "base": 9,
+      "rate": 13,
+      "condition": "기본 9% + 금융 추가 4% (대상 상품 이용 시)"
+    },
+    {
+      "name": "Mercedes-AMG GLC 43 4MATIC",
+      "year": "MY26",
+      "nst": "25468712-KR3",
+      "base": 7,
+      "rate": 7,
+      "condition": "기본 7%"
+    },
+    {
+      "name": "Mercedes-AMG GLC 43 4MATIC Coupé",
+      "year": "MY26",
+      "nst": "25438712-KR3",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%"
+    },
+    {
+      "name": "Mercedes-AMG GLE 53 4MATIC+",
+      "year": "MY26",
+      "nst": "16716112-KR8",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8%"
+    },
+    {
+      "name": "Mercedes-AMG GLE 53 4MATIC+ Coupé",
+      "year": "MY26",
+      "nst": "16736112-KR8",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%"
+    },
+    {
+      "name": "Mercedes-AMG GLS 63 4MATIC+",
+      "year": "MY26",
+      "nst": "16798912-KR1",
+      "base": 1,
+      "rate": 1,
+      "condition": "기본 1%"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupé",
+      "year": "MY27",
+      "nst": "23636212-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupé",
+      "year": "MY27",
+      "nst": "23636212-KR1",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupe",
+      "year": "MY26",
+      "nst": "23636212-KR1",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "year": "MY27",
+      "nst": "23646212-KR5",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "year": "MY27",
+      "nst": "23646212-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "year": "MY26",
+      "nst": "23646212-KR3",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%"
+    },
+    {
+      "name": "Mercedes-AMG GT 43",
+      "year": "MY27",
+      "nst": "19234212-KR2",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8%"
+    },
+    {
+      "name": "Mercedes-AMG GT 55 4MATIC+",
+      "year": "MY27",
+      "nst": "19238012-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    },
+    {
+      "name": "Mercedes-AMG GT 43",
+      "year": "MY26",
+      "nst": "19234212-KR1",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%"
+    },
+    {
+      "name": "Mercedes-AMG GT 55 4MATIC+",
+      "year": "MY26",
+      "nst": "19238012-KR2",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%"
+    },
+    {
+      "name": "Mercedes-AMG GT 63 S E Performance",
+      "year": "MY26",
+      "nst": "19238212-KR2",
+      "base": 4,
+      "rate": 4,
+      "condition": "기본 4%"
+    },
+    {
+      "name": "Mercedes-AMG SL 43",
+      "year": "MY27",
+      "nst": "23245012-KR3",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8%"
+    },
+    {
+      "name": "Mercedes-AMG SL 43",
+      "year": "MY26",
+      "nst": "23245012-KR2",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%"
+    },
+    {
+      "name": "Mercedes-Maybach S 580",
+      "year": "MY27",
+      "nst": "22397712-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "Mercedes-Maybach S 580 MANUFAKTUR",
+      "year": "MY27",
+      "nst": "22397712-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "Mercedes-Maybach S 680",
+      "year": "MY27",
+      "nst": "22397912-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "Mercedes-Maybach GLS 600",
+      "year": "MY26",
+      "nst": "16798712-KR1",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%"
+    },
+    {
+      "name": "Mercedes-Maybach EQS 680 SUV",
+      "year": "MY26",
+      "nst": "29695512-KR3",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%"
+    },
+    {
+      "name": "Mercedes-Maybach SL 680",
+      "year": "MY26",
+      "nst": "23298112-KR1",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%"
+    }
+  ]
+}
