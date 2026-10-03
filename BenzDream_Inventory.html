@@ -76,7 +76,7 @@ $('bd-period').onclick=e=>{const b=e.target.closest('[data-period]');if(!b)retur
     const period=()=>selected==='week'?D.weekly.at(-1):D.monthly.at(-1);
     function render(){
       const p=period(),title=selected==='week'?'최근 1주':'최근 1개월';
-      $('bd-analysis-caption').textContent=`${title} · ${p.start} ~ ${p.end} · 관측 ${p.ndays}일`;
+      $('bd-analysis-caption').textContent=`${title} · ${p.start} ~ ${p.end}`;
       const signed=p.sell_delta==null?'–':`${p.sell_delta>0?'+':''}${fmt(p.sell_delta)}대`;
       $('bd-analysis').innerHTML=[
         ['전국 계약 추정',fmt(p.mo_new+p.nat_other)+'대','모터원 신규계약 + 타 파트너 계약 추정'],
