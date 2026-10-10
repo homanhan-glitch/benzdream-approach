@@ -681,6 +681,21 @@
 <link rel="stylesheet" href="assets/phase1/site-shell.css?v=1">
 <link rel="stylesheet" href="assets/phase1/card-payment.css?v=1">
 <link rel="stylesheet" href="assets/phase1/mobile-polish.css?v=8">
+<style>
+.bd-cards .installment-section {scroll-margin-top:130px}
+.bd-cards .installment-section .rate-months {font-size:20px}
+.bd-cards .installment-section .rate-value {font-size:24px;line-height:1.4;font-weight:700}
+.bd-cards .bd-installment-note {margin:16px 0 24px;text-align:center;font-size:18px;line-height:1.7;color:var(--mb-chrome);word-break:keep-all}
+.bd-cards .bd-installment-action {display:flex;justify-content:center}
+.bd-cards .bd-installment-action a {font-size:18px;min-height:48px;text-align:center}
+@media(max-width:600px){
+.bd-cards .installment-section .rate-months {font-size:18px}
+.bd-cards .installment-section .rate-item {border-bottom:1px solid var(--mb-line)}
+.bd-cards .installment-section .rate-item:nth-child(2n) {border-right:0}
+.bd-cards .installment-section .rate-item:last-child {grid-column:1/-1;border-bottom:0}
+.bd-cards .bd-installment-action a {width:100%}
+}
+</style>
 <script defer src="assets/content-origin-guard.js?v=20260927"></script></head>
 <body class="bd-phase1 bd-cards">
 <a class="bd-skip" href="#bd-main">본문으로 이동</a>
@@ -738,34 +753,35 @@
   </div>
 
   <!-- INSTALLMENT RATE -->
-  <div class="installment-section">
-    <div class="eyebrow">Installment Plan</div>
-    <h2 style="font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif; font-weight: 300; font-size: 28px; color: #fafafa; margin-top: 8px; text-align:center; margin-bottom: 12px;">할부 금리 안내</h2>
-    <p style="text-align:center; color:var(--mb-chrome); font-size:13px; line-height:1.7; margin-bottom: 32px;">기존 고이자율의 대출상품이 부담된다면 신차 차량 전체 금액을<br>신용카드 승인 후 대출 없이 할부로 구매할 수 있습니다.</p>
+  <section class="installment-section" id="installment-rates" aria-labelledby="installment-title">
+    <div class="eyebrow">2026년 10월 · 벤츠 신한카드</div>
+    <h2 id="installment-title" style="font-family: 'MBK CorpoA Cond', 'Noto Serif KR', serif; font-weight: 300; font-size: 28px; color: #fafafa; margin-top: 8px; text-align:center; margin-bottom: 12px;">할부 금리 안내</h2>
+    <p class="bd-installment-note">할부 기간별 연 금리를 확인하세요.</p>
     <div class="rate-grid">
       <div class="rate-item">
-        <div class="rate-months">12</div>
-        <div class="rate-value">3.7%</div>
+        <div class="rate-months">12개월</div>
+        <div class="rate-value">연 4.1%</div>
       </div>
       <div class="rate-item">
-        <div class="rate-months">24</div>
-        <div class="rate-value">3.8%</div>
+        <div class="rate-months">24개월</div>
+        <div class="rate-value">연 4.2%</div>
       </div>
       <div class="rate-item">
-        <div class="rate-months">36</div>
-        <div class="rate-value">3.9%</div>
+        <div class="rate-months">36개월</div>
+        <div class="rate-value">연 4.3%</div>
       </div>
       <div class="rate-item">
-        <div class="rate-months">48</div>
-        <div class="rate-value">4.0%</div>
+        <div class="rate-months">48개월</div>
+        <div class="rate-value">연 4.4%</div>
       </div>
       <div class="rate-item">
-        <div class="rate-months">60</div>
-        <div class="rate-value">4.1%</div>
+        <div class="rate-months">60개월</div>
+        <div class="rate-value">연 4.4%</div>
       </div>
     </div>
-    <div style="text-align:right; font-size:10px; color:#555; margin-top:12px; letter-spacing:0.05em;">[할부개월, 연 할부금리]</div>
-  </div>
+    <p class="bd-installment-note">2026년 10월 기준 · 신청 시 적용 금리와 이용 조건을 확인해주세요.</p>
+    <div class="bd-installment-action"><a class="bd-primary-action" href="https://shcard.io/benz" target="_blank" rel="noopener noreferrer">벤츠카드 발급·한도 안내 ↗</a></div>
+  </section>
 
   <!-- CARD HEADLINE GRID -->
   <div class="cards-grid">
