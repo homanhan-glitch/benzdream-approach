@@ -1,600 +1,26 @@
 {
-  "month": "2026-10",
-  "updated": "2026-10-05",
-  "source_date": "2026-10-01",
+  "month": "2026-11",
+  "updated": "2026-11-02",
+  "source_date": "2026-11-02",
   "url": "BenzDream_PriceAndPromotion_2026.html#price-models",
   "offers": [
+    {
+      "name": "A 220 Hatch",
+      "year": "MY26",
+      "nst": "17704412-KR7",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-1"
+    },
     {
       "name": "A 220 Sedan",
       "year": "MY26",
       "nst": "17714412-KR7",
       "base": 5,
       "rate": 5,
-      "condition": "기본 5%"
-    },
-    {
-      "name": "CLA 250 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "11834712-KR1",
-      "base": 7,
-      "rate": 7,
-      "condition": "기본 7%"
-    },
-    {
-      "name": "C 200 AVANTGARDE",
-      "year": "MY26",
-      "nst": "20605012-KR6",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "C 200 Final Edition",
-      "year": "MY26",
-      "nst": "20605012-KR8",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "C 200 AMG Line",
-      "year": "MY26",
-      "nst": "20605012-KR7",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "E 300 4MATIC EXCLUSIVE",
-      "year": "MY27",
-      "nst": "21404712-KR7",
-      "base": 8,
-      "rate": 12,
-      "condition": "기본 8% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "E 300 4MATIC AMG Line",
-      "year": "MY27",
-      "nst": "21404712-KR8",
-      "base": 8,
-      "rate": 12,
-      "condition": "기본 8% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "E 450 4MATIC AMG Line",
-      "year": "MY27",
-      "nst": "21406112-KR7",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "E 450 4MATIC EXCLUSIVE",
-      "year": "MY27",
-      "nst": "21406112-KR8",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "E 450 4MATIC AMG Line",
-      "year": "MY27",
-      "nst": "21406112-KR9",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "E 200 AVANTGARDE",
-      "year": "MY26",
-      "nst": "21405012-KR4",
-      "base": 16,
-      "rate": 16,
-      "condition": "기본 16%"
-    },
-    {
-      "name": "E 200 EXCLUSIVE",
-      "year": "MY26",
-      "nst": "21405012-KR9",
-      "base": 15,
-      "rate": 20,
-      "condition": "기본 15% + 금융 추가 5% (대상 상품 이용 시)"
-    },
-    {
-      "name": "E 200 AMG Line",
-      "year": "MY26",
-      "nst": "21405012-KR5",
-      "base": 15,
-      "rate": 19,
-      "condition": "기본 15% + 금융 추가 4% (대상 상품 이용 시). RoF 에디션: 차량 8,100만원 + 옵션 93만원 = 8,193만원에 19% 할인, 옵션 추가 할인 22만원과 개소세 인하 100만원 적용 시 최종 6,514만원 (대상 금융 상품 이용 및 개소세 인하 적용 차량 기준)"
-    },
-    {
-      "name": "E 220 d 4MATIC EXCLUSIVE",
-      "year": "MY26",
-      "nst": "21400512-KR3",
-      "base": 12,
-      "rate": 12,
-      "condition": "기본 12%"
-    },
-    {
-      "name": "E 300 4MATIC EXCLUSIVE",
-      "year": "MY26",
-      "nst": "21404712-KR5",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "E 300 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "21404712-KR6",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "E 350 e 4MATIC EXCLUSIVE",
-      "year": "MY26",
-      "nst": "21405612-KR2",
-      "base": 14,
-      "rate": 14,
-      "condition": "기본 14%"
-    },
-    {
-      "name": "E 450 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "21406112-KR6",
-      "base": 11,
-      "rate": 11,
-      "condition": "기본 11%"
-    },
-    {
-      "name": "E 450 4MATIC EXCLUSIVE",
-      "year": "MY26",
-      "nst": "21406112-KR5",
-      "base": 11,
-      "rate": 11,
-      "condition": "기본 11%"
-    },
-    {
-      "name": "S 350 d 4MATIC",
-      "year": "MY27",
-      "nst": "22302412-KR1",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "S 450 4MATIC",
-      "year": "MY27",
-      "nst": "22306512-KR1",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "S 450 4MATIC Long Exclusive",
-      "year": "MY27",
-      "nst": "22316512-KR1",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "S 450 4MATIC Long AMG Line",
-      "year": "MY27",
-      "nst": "22316512-KR2",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "S 500 4MATIC Long",
-      "year": "MY27",
-      "nst": "22316412-KR1",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "S 580 4MATIC Long",
-      "year": "MY27",
-      "nst": "22317712-KR1",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "S 350 d 4MATIC",
-      "year": "MY26",
-      "nst": "22302112-KR2",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "GLA 250 4MATIC AMG Line",
-      "year": "MY27",
-      "nst": "24774712-KR3",
-      "base": 9,
-      "rate": 13,
-      "condition": "기본 9% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLA 250 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "24774712-KR2",
-      "base": 9,
-      "rate": 13,
-      "condition": "기본 9% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLB 250 4MATIC",
-      "year": "MY26",
-      "nst": "24764712-KR6",
-      "base": 13,
-      "rate": 17,
-      "condition": "기본 13% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLC 300 4MATIC AVANTGARDE",
-      "year": "MY27",
-      "nst": "25464712-KR9",
-      "base": 7,
-      "rate": 7,
-      "condition": "기본 7%"
-    },
-    {
-      "name": "GLC 300 4MATIC AMG Line",
-      "year": "MY27",
-      "nst": "25464712-KR1",
-      "base": 7,
-      "rate": 7,
-      "condition": "기본 7%"
-    },
-    {
-      "name": "GLC 220 d 4MATIC",
-      "year": "MY26",
-      "nst": "25460512-KR4",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "GLC 300 4MATIC AVANTGARDE",
-      "year": "MY26",
-      "nst": "25464712-KR6",
-      "base": 7,
-      "rate": 11,
-      "condition": "기본 7% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLC 300 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "25464712-KR5",
-      "base": 12,
-      "rate": 16,
-      "condition": "기본 12% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
-      "year": "MY27",
-      "nst": "25434712-KR8",
-      "base": 5,
-      "rate": 5,
-      "condition": "기본 5%"
-    },
-    {
-      "name": "GLC 300 4MATIC Coupé AMG Line (MY27 초기 생산분)",
-      "year": "MY27",
-      "nst": "25434712-KR1",
-      "base": 5,
-      "rate": 5,
-      "condition": "기본 5%"
-    },
-    {
-      "name": "GLC 300 4MATIC Coupe AMG Line",
-      "year": "MY27",
-      "nst": "25434712-KR9",
-      "base": 5,
-      "rate": 5,
-      "condition": "기본 5%"
-    },
-    {
-      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
-      "year": "MY26",
-      "nst": "25434712-KR5",
-      "base": 7,
-      "rate": 11,
-      "condition": "기본 7% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLC 300 4MATIC Coupé AMG Line",
-      "year": "MY26",
-      "nst": "25434712-KR4",
-      "base": 9,
-      "rate": 13,
-      "condition": "기본 9% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLE 350 4MATIC",
-      "year": "MY26",
-      "nst": "16714512-KR2",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "GLE 300 d 4MATIC",
-      "year": "MY26",
-      "nst": "16710912-KR6",
-      "base": 8,
-      "rate": 8,
-      "condition": "기본 8%"
-    },
-    {
-      "name": "GLE 450 4MATIC",
-      "year": "MY26",
-      "nst": "16715912-KR8",
-      "base": 12,
-      "rate": 16,
-      "condition": "기본 12% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLE 450 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "16715912-KR9",
-      "base": 12,
-      "rate": 16,
-      "condition": "기본 12% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "GLS 450 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "16795912-KR2",
-      "base": 8,
-      "rate": 8,
-      "condition": "기본 8%"
-    },
-    {
-      "name": "GLS 450 d 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "16793312-KR3",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "GLS 580 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "16798512-KR3",
-      "base": 9,
-      "rate": 9,
-      "condition": "기본 9%"
-    },
-    {
-      "name": "G 450 d",
-      "year": "MY26",
-      "nst": "46531012-KR4",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "G 450 d MANUFAKTUR",
-      "year": "MY26",
-      "nst": "46531012-KR5",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "Mercedes-AMG G 63",
-      "year": "MY26",
-      "nst": "46525012-KR3",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "Mercedes-AMG G 63 MANUFAKTUR",
-      "year": "MY26",
-      "nst": "46525012-KR4",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "EQE 350+",
-      "year": "MY26",
-      "nst": "29512112-KR6",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "EQA 250 Progressive",
-      "year": "MY27",
-      "nst": "24370112-KR7",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "EQA 250 AMG Line",
-      "year": "MY27",
-      "nst": "24370112-KR8",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "EQA 250 Progressive",
-      "year": "MY26",
-      "nst": "24370112-KR5",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "EQA 250 AMG Line",
-      "year": "MY26",
-      "nst": "24370112-KR6",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "EQB 300 4MATIC Progressive",
-      "year": "MY26",
-      "nst": "24360812-KR5",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "EQB 300 4MATIC AMG Line",
-      "year": "MY26",
-      "nst": "24360812-KR6",
-      "base": 10,
-      "rate": 14,
-      "condition": "기본 10% + 금융 추가 4% (대상 상품 이용 시)"
-    },
-    {
-      "name": "EQE 350+ SUV",
-      "year": "MY26",
-      "nst": "29462112-KR1",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "EQE 500 4MATIC SUV",
-      "year": "MY26",
-      "nst": "29462212-KR6",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "EQS 450 4MATIC SUV",
-      "year": "MY26",
-      "nst": "29662412-KR5",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "EQS 580 4MATIC SUV",
-      "year": "MY26",
-      "nst": "29664412-KR5",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
-    },
-    {
-      "name": "G 580 with EQ Technology",
-      "year": "MY26",
-      "nst": "46560012-KR3",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
-    },
-    {
-      "name": "CLE 200 Coupé",
-      "year": "MY27",
-      "nst": "23635012-KR4",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "CLE 450 4MATIC Coupé",
-      "year": "MY27",
-      "nst": "23636112-KR4",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "CLE 200 Coupé",
-      "year": "MY27",
-      "nst": "23635012-KR3",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "CLE 450 4MATIC Coupé",
-      "year": "MY27",
-      "nst": "23636112-KR3",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "CLE 200 Coupe AMG Line",
-      "year": "MY26",
-      "nst": "23635012-KR3",
-      "base": 5,
-      "rate": 5,
-      "condition": "기본 5%"
-    },
-    {
-      "name": "CLE 450 4MATIC Coupe AMG Line",
-      "year": "MY26",
-      "nst": "23636112-KR3",
-      "base": 9,
-      "rate": 9,
-      "condition": "기본 9%"
-    },
-    {
-      "name": "CLE 200 Cabriolet",
-      "year": "MY27",
-      "nst": "23645012-KR4",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "CLE 450 4MATIC Cabriolet",
-      "year": "MY27",
-      "nst": "23646112-KR4",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "CLE 450 4MATIC Cabriolet",
-      "year": "MY27",
-      "nst": "23646112-KR3",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "CLE 200 Cabriolet",
-      "year": "MY27",
-      "nst": "23645012-KR3",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "CLE 200 Cabriolet AMG Line",
-      "year": "MY26",
-      "nst": "23645012-KR3",
-      "base": 4,
-      "rate": 4,
-      "condition": "기본 4%"
-    },
-    {
-      "name": "CLE 450 4MATIC Cabriolet AMG Line",
-      "year": "MY26",
-      "nst": "23646112-KR3",
-      "base": 6,
-      "rate": 6,
-      "condition": "기본 6%"
+      "condition": "기본 5%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-2"
     },
     {
       "name": "Mercedes-AMG A 45 S 4MATIC+",
@@ -602,7 +28,17 @@
       "nst": "17705412-KR4",
       "base": 7,
       "rate": 11,
-      "condition": "기본 7% + 금융 추가 4% (대상 상품 이용 시)"
+      "condition": "기본 7% + 대상 금융 추가 4% · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-3"
+    },
+    {
+      "name": "CLA 250 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "11834712-KR1",
+      "base": 7,
+      "rate": 7,
+      "condition": "기본 7%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-6"
     },
     {
       "name": "Mercedes-AMG CLA 45 S 4MATIC+",
@@ -610,39 +46,76 @@
       "nst": "11835412-KR8",
       "base": 5,
       "rate": 5,
-      "condition": "기본 5%"
+      "condition": "기본 5%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-7"
     },
     {
-      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
-      "year": "MY26",
-      "nst": "21406312-KR3",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
+      "name": "CLA 200 electric Essential",
+      "year": "MY27",
+      "nst": "17431112-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "MY27 electric 특별지원 100만원 · 대상 차량 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-9",
+      "display_label": "특별지원 100만원"
     },
     {
-      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
-      "year": "MY26",
-      "nst": "21406312-KR4",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
+      "name": "CLA 200 electric Advanced",
+      "year": "MY27",
+      "nst": "17431112-KR3",
+      "base": 0,
+      "rate": 0,
+      "condition": "MY27 electric 특별지원 100만원 · 대상 차량 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-10",
+      "display_label": "특별지원 100만원"
     },
     {
-      "name": "Mercedes-AMG S 63 E Performance",
-      "year": "MY26",
-      "nst": "22318212-KR3",
-      "base": 10,
-      "rate": 10,
-      "condition": "기본 10%"
+      "name": "CLA 200 electric AMG Line",
+      "year": "MY27",
+      "nst": "17431112-KR4",
+      "base": 0,
+      "rate": 0,
+      "condition": "MY27 electric 특별지원 100만원 · 대상 차량 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-11",
+      "display_label": "특별지원 100만원"
     },
     {
-      "name": "Mercedes-AMG GT 43 4MATIC+",
+      "name": "CLA 250+ electric",
+      "year": "MY27",
+      "nst": "17431312-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "MY27 electric 특별지원 100만원 · 대상 차량 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-12",
+      "display_label": "특별지원 100만원"
+    },
+    {
+      "name": "CLA 250+ electric AMG Line",
+      "year": "MY27",
+      "nst": "17431312-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "MY27 electric 특별지원 100만원 · 대상 차량 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-13",
+      "display_label": "특별지원 100만원"
+    },
+    {
+      "name": "GLA 250 4MATIC AMG Line",
       "year": "MY26",
-      "nst": "29065912-KR2",
+      "nst": "24774712-KR2",
       "base": 9,
-      "rate": 9,
-      "condition": "기본 9%"
+      "rate": 13,
+      "condition": "기본 9% + 대상 금융 추가 4% · 해당 모빌리티 장기렌트 총 16% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-14"
+    },
+    {
+      "name": "GLB 250 4MATIC",
+      "year": "MY26",
+      "nst": "24764712-KR6",
+      "base": 13,
+      "rate": 17,
+      "condition": "기본 13% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 20% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-16"
     },
     {
       "name": "Mercedes-AMG GLB 35 4MATIC",
@@ -650,143 +123,407 @@
       "nst": "24765112-KR8",
       "base": 9,
       "rate": 13,
-      "condition": "기본 9% + 금융 추가 4% (대상 상품 이용 시)"
+      "condition": "기본 9% + 대상 금융 추가 4% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 16% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-17"
     },
     {
-      "name": "Mercedes-AMG GLC 43 4MATIC",
-      "year": "MY26",
-      "nst": "25468712-KR3",
-      "base": 7,
-      "rate": 7,
-      "condition": "기본 7%"
+      "name": "GLA 250 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "24774712-KR3",
+      "base": 9,
+      "rate": 13,
+      "condition": "기본 9% + 대상 금융 추가 4% · 해당 모빌리티 장기렌트 총 16% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-18"
     },
     {
-      "name": "Mercedes-AMG GLC 43 4MATIC Coupé",
-      "year": "MY26",
-      "nst": "25438712-KR3",
-      "base": 3,
-      "rate": 3,
-      "condition": "기본 3%"
+      "name": "GLB 250+ electric",
+      "year": "MY27",
+      "nst": "24461312-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "11월 할인 적용 구매가 6,880만원 · 등록비·보험료·보조금 별도",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-19",
+      "display_label": "총 할인 110만원",
+      "purchase_price_krw": 68800000,
+      "discount_amount_krw": 1100000
     },
     {
-      "name": "Mercedes-AMG GLE 53 4MATIC+",
+      "name": "C 200 AVANTGARDE",
       "year": "MY26",
-      "nst": "16716112-KR8",
+      "nst": "20605012-KR6",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 17% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-20"
+    },
+    {
+      "name": "C 200 AMG Line",
+      "year": "MY26",
+      "nst": "20605012-KR7",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 17% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-21"
+    },
+    {
+      "name": "C 200 Final Edition",
+      "year": "MY26",
+      "nst": "20605012-KR8",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 대상 금융 추가 4%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-22"
+    },
+    {
+      "name": "E 200 AVANTGARDE",
+      "year": "MY26",
+      "nst": "21405012-KR4",
+      "base": 16,
+      "rate": 16,
+      "condition": "기본 16%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-23"
+    },
+    {
+      "name": "E 200 EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21405012-KR9",
+      "base": 15,
+      "rate": 20,
+      "condition": "기본 15% + 대상 금융 추가 5% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 23% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-24"
+    },
+    {
+      "name": "E 200 AMG Line",
+      "year": "MY26",
+      "nst": "21405012-KR5",
+      "base": 15,
+      "rate": 19,
+      "condition": "기본 15% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 22% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-25"
+    },
+    {
+      "name": "E 220 d 4MATIC EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21400512-KR3",
+      "base": 12,
+      "rate": 12,
+      "condition": "기본 12%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-27"
+    },
+    {
+      "name": "E 300 4MATIC EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21404712-KR5",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 17% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-28"
+    },
+    {
+      "name": "E 300 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "21404712-KR6",
+      "base": 10,
+      "rate": 14,
+      "condition": "기본 10% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 17% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-29"
+    },
+    {
+      "name": "E 350 e 4MATIC EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21405612-KR2",
+      "base": 14,
+      "rate": 14,
+      "condition": "기본 14%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-31"
+    },
+    {
+      "name": "E 450 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "21406112-KR6",
+      "base": 11,
+      "rate": 11,
+      "condition": "기본 11%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-32"
+    },
+    {
+      "name": "E 450 4MATIC EXCLUSIVE",
+      "year": "MY26",
+      "nst": "21406112-KR5",
+      "base": 11,
+      "rate": 11,
+      "condition": "기본 11%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-33"
+    },
+    {
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
+      "year": "MY26",
+      "nst": "21406312-KR3",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 13% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-34"
+    },
+    {
+      "name": "E 300 4MATIC EXCLUSIVE",
+      "year": "MY27",
+      "nst": "21404712-KR7",
       "base": 8,
-      "rate": 8,
-      "condition": "기본 8%"
+      "rate": 12,
+      "condition": "기본 8% + 대상 금융 추가 4% · 해당 모빌리티 장기렌트 총 15% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-35"
     },
     {
-      "name": "Mercedes-AMG GLE 53 4MATIC+ Coupé",
+      "name": "E 300 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "21404712-KR8",
+      "base": 8,
+      "rate": 12,
+      "condition": "기본 8% + 대상 금융 추가 4% · 해당 모빌리티 장기렌트 총 15% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-36"
+    },
+    {
+      "name": "E 450 4MATIC EXCLUSIVE",
+      "year": "MY27",
+      "nst": "21406112-KR8",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-37"
+    },
+    {
+      "name": "E 450 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "21406112-KR7",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-38"
+    },
+    {
+      "name": "E 200 EXCLUSIVE",
+      "year": "MY27",
+      "nst": "21405012-KR6",
+      "base": 14,
+      "rate": 18,
+      "condition": "기본 14% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 21% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-39"
+    },
+    {
+      "name": "E 200 AMG Line",
+      "year": "MY27",
+      "nst": "21405012-KR7",
+      "base": 14,
+      "rate": 17,
+      "condition": "기본 14% + 대상 금융 추가 3% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 20% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-40"
+    },
+    {
+      "name": "S 350 d 4MATIC",
       "year": "MY26",
-      "nst": "16736112-KR8",
+      "nst": "22302112-KR2",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-41"
+    },
+    {
+      "name": "S 450 4MATIC Sedan (SWB)",
+      "year": "MY26",
+      "nst": "22306112-KR2",
+      "base": 7,
+      "rate": 11,
+      "condition": "기본 7% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 16% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-42"
+    },
+    {
+      "name": "S 450 4MATIC Long",
+      "year": "MY26",
+      "nst": "22316112-KR5",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-43"
+    },
+    {
+      "name": "S 500 4MATIC Long",
+      "year": "MY26",
+      "nst": "22316312-KR7",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-44"
+    },
+    {
+      "name": "S 580 4MATIC Long",
+      "year": "MY26",
+      "nst": "22317612-KR6",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-45"
+    },
+    {
+      "name": "Mercedes-AMG S 63 E Performance",
+      "year": "MY26",
+      "nst": "22318212-KR3",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 13% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-46"
+    },
+    {
+      "name": "Maybach S 580 4MATIC",
+      "year": "MY26",
+      "nst": "22397612-KR9",
+      "base": 9,
+      "rate": 11,
+      "condition": "기본 9% + 대상 금융 추가 2% · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-47"
+    },
+    {
+      "name": "Maybach S 680 4MATIC",
+      "year": "MY26",
+      "nst": "22397912-KR7",
+      "base": 9,
+      "rate": 11,
+      "condition": "기본 9% + 대상 금융 추가 2% · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-s680-my26"
+    },
+    {
+      "name": "S 350 d 4MATIC",
+      "year": "MY27",
+      "nst": "22302412-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-49"
+    },
+    {
+      "name": "S 450 4MATIC Sedan (SWB)",
+      "year": "MY27",
+      "nst": "22306512-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-50"
+    },
+    {
+      "name": "S 450 4MATIC Long EXCLUSIVE",
+      "year": "MY27",
+      "nst": "22316512-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-51"
+    },
+    {
+      "name": "S 450 4MATIC Long AMG Line",
+      "year": "MY27",
+      "nst": "22316512-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-52"
+    },
+    {
+      "name": "S 500 4MATIC Long",
+      "year": "MY27",
+      "nst": "22316412-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-53"
+    },
+    {
+      "name": "S 580 4MATIC Long",
+      "year": "MY27",
+      "nst": "22317712-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-54"
+    },
+    {
+      "name": "Maybach S 580 4MATIC",
+      "year": "MY27",
+      "nst": "22397712-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-55"
+    },
+    {
+      "name": "Maybach S 580 MANUFAKTUR",
+      "year": "MY27",
+      "nst": "22397712-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-56"
+    },
+    {
+      "name": "Maybach S 680 4MATIC",
+      "year": "MY27",
+      "nst": "22397912-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-57"
+    },
+    {
+      "name": "CLE 200 Coupé AMG Line",
+      "year": "MY26",
+      "nst": "23635012-KR3",
       "base": 5,
       "rate": 5,
-      "condition": "기본 5%"
+      "condition": "기본 5%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-58"
     },
     {
-      "name": "Mercedes-AMG GLS 63 4MATIC+",
+      "name": "CLE 200 Cabriolet AMG Line",
       "year": "MY26",
-      "nst": "16798912-KR1",
-      "base": 1,
-      "rate": 1,
-      "condition": "기본 1%"
-    },
-    {
-      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupé",
-      "year": "MY27",
-      "nst": "23636212-KR3",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupé",
-      "year": "MY27",
-      "nst": "23636212-KR1",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupe",
-      "year": "MY26",
-      "nst": "23636212-KR1",
-      "base": 3,
-      "rate": 3,
-      "condition": "기본 3%"
-    },
-    {
-      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
-      "year": "MY27",
-      "nst": "23646212-KR5",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
-      "year": "MY27",
-      "nst": "23646212-KR3",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
-      "year": "MY26",
-      "nst": "23646212-KR3",
-      "base": 3,
-      "rate": 3,
-      "condition": "기본 3%"
-    },
-    {
-      "name": "Mercedes-AMG GT 43",
-      "year": "MY27",
-      "nst": "19234212-KR2",
-      "base": 8,
-      "rate": 8,
-      "condition": "기본 8%"
-    },
-    {
-      "name": "Mercedes-AMG GT 55 4MATIC+",
-      "year": "MY27",
-      "nst": "19238012-KR3",
-      "base": 2,
-      "rate": 2,
-      "condition": "기본 2%"
-    },
-    {
-      "name": "Mercedes-AMG GT 43",
-      "year": "MY26",
-      "nst": "19234212-KR1",
-      "base": 9,
-      "rate": 9,
-      "condition": "기본 9%"
-    },
-    {
-      "name": "Mercedes-AMG GT 55 4MATIC+",
-      "year": "MY26",
-      "nst": "19238012-KR2",
-      "base": 3,
-      "rate": 3,
-      "condition": "기본 3%"
-    },
-    {
-      "name": "Mercedes-AMG GT 63 S E Performance",
-      "year": "MY26",
-      "nst": "19238212-KR2",
+      "nst": "23645012-KR3",
       "base": 4,
       "rate": 4,
-      "condition": "기본 4%"
+      "condition": "기본 4%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-60"
     },
     {
-      "name": "Mercedes-AMG SL 43",
-      "year": "MY27",
-      "nst": "23245012-KR3",
-      "base": 8,
-      "rate": 8,
-      "condition": "기본 8%"
+      "name": "CLE 450 4MATIC Coupé AMG Line",
+      "year": "MY26",
+      "nst": "23636112-KR3",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-62"
+    },
+    {
+      "name": "CLE 450 4MATIC Cabriolet AMG Line",
+      "year": "MY26",
+      "nst": "23646112-KR3",
+      "base": 6,
+      "rate": 6,
+      "condition": "기본 6%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-63"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupé",
+      "year": "MY26",
+      "nst": "23636212-KR1",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-64"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "year": "MY26",
+      "nst": "23646212-KR3",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-65"
     },
     {
       "name": "Mercedes-AMG SL 43",
@@ -794,39 +531,746 @@
       "nst": "23245012-KR2",
       "base": 9,
       "rate": 9,
-      "condition": "기본 9%"
+      "condition": "기본 9%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#sec_SL"
     },
     {
-      "name": "Mercedes-Maybach S 580",
+      "name": "Mercedes-AMG GT 43",
+      "year": "MY26",
+      "nst": "19234212-KR1",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#sec_AMG_GT"
+    },
+    {
+      "name": "Mercedes-AMG GT 43 4MATIC+",
+      "year": "MY26",
+      "nst": "29065912-KR2",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-68"
+    },
+    {
+      "name": "Mercedes-AMG GT 55 4MATIC+ Coupe",
+      "year": "MY26",
+      "nst": "19238012-KR2",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-69"
+    },
+    {
+      "name": "Mercedes-AMG GT 63 S E Performance",
+      "year": "MY26",
+      "nst": "19238212-KR2",
+      "base": 4,
+      "rate": 4,
+      "condition": "기본 4%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-70"
+    },
+    {
+      "name": "Maybach SL 680",
+      "year": "MY26",
+      "nst": "23298112-KR1",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-71"
+    },
+    {
+      "name": "CLE 200 Coupé",
       "year": "MY27",
-      "nst": "22397712-KR1",
+      "nst": "23635012-KR4",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-72"
+    },
+    {
+      "name": "CLE 450 4MATIC Coupé",
+      "year": "MY27",
+      "nst": "23636112-KR4",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-73"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupé",
+      "year": "MY27",
+      "nst": "23636212-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-74"
+    },
+    {
+      "name": "CLE 200 Cabriolet",
+      "year": "MY27",
+      "nst": "23645012-KR4",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-75"
+    },
+    {
+      "name": "CLE 450 4MATIC Cabriolet",
+      "year": "MY27",
+      "nst": "23646112-KR4",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-76"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "year": "MY27",
+      "nst": "23646212-KR5",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-77"
+    },
+    {
+      "name": "Mercedes-AMG GT 43",
+      "year": "MY27",
+      "nst": "19234212-KR2",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-78"
+    },
+    {
+      "name": "Mercedes-AMG GT 55 4MATIC+",
+      "year": "MY27",
+      "nst": "19238012-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-79"
+    },
+    {
+      "name": "Mercedes-AMG SL 43",
+      "year": "MY27",
+      "nst": "23245012-KR3",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-80"
+    },
+    {
+      "name": "GLC 220 d 4MATIC",
+      "year": "MY26",
+      "nst": "25460512-KR4",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-81"
+    },
+    {
+      "name": "GLC 300 4MATIC AVANTGARDE",
+      "year": "MY26",
+      "nst": "25464712-KR6",
+      "base": 7,
+      "rate": 11,
+      "condition": "기본 7% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-82"
+    },
+    {
+      "name": "GLC 300 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "25464712-KR5",
+      "base": 12,
+      "rate": 16,
+      "condition": "기본 12% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 19% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-83"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "year": "MY26",
+      "nst": "25434712-KR5",
+      "base": 7,
+      "rate": 11,
+      "condition": "기본 7% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-86"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AMG Line",
+      "year": "MY26",
+      "nst": "25434712-KR4",
+      "base": 9,
+      "rate": 13,
+      "condition": "기본 9% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 16% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-87"
+    },
+    {
+      "name": "Mercedes-AMG GLC 43 4MATIC",
+      "year": "MY26",
+      "nst": "25468712-KR3",
+      "base": 7,
+      "rate": 7,
+      "condition": "기본 7%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-90"
+    },
+    {
+      "name": "Mercedes-AMG GLC 43 4MATIC Coupé",
+      "year": "MY26",
+      "nst": "25438712-KR3",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-91"
+    },
+    {
+      "name": "GLC 300 4MATIC AMG Line electric",
+      "year": "MY27",
+      "nst": "54062212-KR2",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%"
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-92"
     },
     {
-      "name": "Mercedes-Maybach S 580 MANUFAKTUR",
+      "name": "GLC 300 4MATIC AMG Line+ electric",
       "year": "MY27",
-      "nst": "22397712-KR2",
+      "nst": "54062212-KR3",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%"
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-93"
     },
     {
-      "name": "Mercedes-Maybach S 680",
+      "name": "GLC 300 4MATIC AVANTGARDE",
       "year": "MY27",
-      "nst": "22397912-KR1",
-      "base": 0,
-      "rate": 0,
-      "condition": "기본 0%"
+      "nst": "25464712-KR9",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 해당 모빌리티 장기렌트 총 11% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-94"
     },
     {
-      "name": "Mercedes-Maybach GLS 600",
+      "name": "GLC 300 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "25464712-KR1",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 해당 모빌리티 장기렌트 총 11% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-95"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "year": "MY27",
+      "nst": "25434712-KR8",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-96"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AMG Line",
+      "year": "MY27",
+      "nst": "25434712-KR1",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-97"
+    },
+    {
+      "name": "GLC 300 4MATIC",
+      "year": "MY27",
+      "nst": "25464712-KR8",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 해당 모빌리티 장기렌트 총 11% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-98"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé",
+      "year": "MY27",
+      "nst": "25434712-KR7",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-99"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AMG Line",
+      "year": "MY27",
+      "nst": "25434712-KR9",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-100"
+    },
+    {
+      "name": "GLE 350 4MATIC",
+      "year": "MY26",
+      "nst": "16714512-KR2",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 13% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-101"
+    },
+    {
+      "name": "GLE 300 d 4MATIC",
+      "year": "MY26",
+      "nst": "16710912-KR6",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-102"
+    },
+    {
+      "name": "GLE 450 4MATIC",
+      "year": "MY26",
+      "nst": "16715912-KR8",
+      "base": 12,
+      "rate": 16,
+      "condition": "기본 12% + 대상 금융 추가 4% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 19% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-103"
+    },
+    {
+      "name": "GLE 450 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "16715912-KR9",
+      "base": 12,
+      "rate": 16,
+      "condition": "기본 12% + 대상 금융 추가 4% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 19% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-104"
+    },
+    {
+      "name": "GLE 450 d 4MATIC Coupé AMG Line",
+      "year": "MY26",
+      "nst": "16733312-KR4",
+      "base": 12,
+      "rate": 12,
+      "condition": "기본 12% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 15% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-106"
+    },
+    {
+      "name": "GLE 450 4MATIC Coupé AMG Line",
+      "year": "MY26",
+      "nst": "16735912-KR2",
+      "base": 15,
+      "rate": 19,
+      "condition": "기본 15% + 대상 금융 추가 4% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 22% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-107"
+    },
+    {
+      "name": "Mercedes-AMG GLE 53 4MATIC+",
+      "year": "MY26",
+      "nst": "16716112-KR8",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 11% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-110"
+    },
+    {
+      "name": "Mercedes-AMG GLE 53 4MATIC+ Coupé",
+      "year": "MY26",
+      "nst": "16736112-KR8",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-111"
+    },
+    {
+      "name": "GLS 450 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "16795912-KR2",
+      "base": 8,
+      "rate": 8,
+      "condition": "기본 8% · 해당 모빌리티 장기렌트 총 11% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-112"
+    },
+    {
+      "name": "GLS 450 d 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "16793312-KR3",
+      "base": 2,
+      "rate": 2,
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-113"
+    },
+    {
+      "name": "GLS 580 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "16798512-KR3",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9% · 해당 모빌리티 장기렌트 총 12% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-114"
+    },
+    {
+      "name": "Mercedes-AMG GLS 63 4MATIC+",
+      "year": "MY26",
+      "nst": "16798912-KR1",
+      "base": 1,
+      "rate": 1,
+      "condition": "기본 1% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 4% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-116"
+    },
+    {
+      "name": "Maybach GLS 600",
       "year": "MY26",
       "nst": "16798712-KR1",
       "base": 5,
       "rate": 5,
-      "condition": "기본 5%"
+      "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-my26"
+    },
+    {
+      "name": "Maybach GLS 600 MANUFAKTUR",
+      "year": "MY26",
+      "nst": "16798712-KR2",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-manufaktur-my26"
+    },
+    {
+      "name": "G 450 d",
+      "year": "MY26",
+      "nst": "46531012-KR4",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#sec_G"
+    },
+    {
+      "name": "G 450 d MANUFAKTUR",
+      "year": "MY26",
+      "nst": "46531012-KR5",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-120"
+    },
+    {
+      "name": "Mercedes-AMG G 63",
+      "year": "MY26",
+      "nst": "46525012-KR3",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0% · 24/36개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-121"
+    },
+    {
+      "name": "Mercedes-AMG G 63 MANUFAKTUR",
+      "year": "MY26",
+      "nst": "46525012-KR4",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0% · 24/36개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-122"
+    },
+    {
+      "name": "G 450 d",
+      "year": "MY27",
+      "nst": "46531012-KR6",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-123"
+    },
+    {
+      "name": "G 450 d MANUFAKTUR",
+      "year": "MY27",
+      "nst": "46531012-KR7",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-124"
+    },
+    {
+      "name": "Mercedes-AMG G 63",
+      "year": "MY27",
+      "nst": "46525012-KR5",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0% · 24/36개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-125"
+    },
+    {
+      "name": "Mercedes-AMG G 63 MANUFAKTUR",
+      "year": "MY27",
+      "nst": "46525012-KR6",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0% · 24/36개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-126"
+    },
+    {
+      "name": "EQA 250 Progressive",
+      "year": "MY26",
+      "nst": "24370112-KR5",
+      "base": 0,
+      "rate": 0,
+      "condition": "기존 현금 10%·금융 추가 4%·특별 조인트 상품 종료 · 현재 일반 금융 조건 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-127"
+    },
+    {
+      "name": "EQA 250 AMG Line",
+      "year": "MY26",
+      "nst": "24370112-KR6",
+      "base": 0,
+      "rate": 0,
+      "condition": "기존 현금 10%·금융 추가 4%·특별 조인트 상품 종료 · 현재 일반 금융 조건 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-128"
+    },
+    {
+      "name": "EQB 300 4MATIC Progressive",
+      "year": "MY26",
+      "nst": "24360812-KR5",
+      "base": 0,
+      "rate": 0,
+      "condition": "기존 현금 10%·금융 추가 4%·특별 조인트 상품 종료 · 현재 일반 금융 조건 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-129"
+    },
+    {
+      "name": "EQB 300 4MATIC AMG Line",
+      "year": "MY26",
+      "nst": "24360812-KR6",
+      "base": 0,
+      "rate": 0,
+      "condition": "기존 현금 10%·금융 추가 4%·특별 조인트 상품 종료 · 현재 일반 금융 조건 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-130"
+    },
+    {
+      "name": "EQE 350+ SUV",
+      "year": "MY26",
+      "nst": "29462112-KR1",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 13% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-131"
+    },
+    {
+      "name": "EQE 350+",
+      "year": "MY26",
+      "nst": "29512112-KR6",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 13% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-132"
+    },
+    {
+      "name": "EQE 500 4MATIC SUV",
+      "year": "MY26",
+      "nst": "29462212-KR6",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 13% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-133"
+    },
+    {
+      "name": "EQS 450 4MATIC SUV",
+      "year": "MY26",
+      "nst": "29662412-KR5",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 13% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-134"
+    },
+    {
+      "name": "EQS 580 4MATIC SUV",
+      "year": "MY26",
+      "nst": "29664412-KR5",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 13% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-135"
+    },
+    {
+      "name": "G 580 with EQ Technology",
+      "year": "MY26",
+      "nst": "46560012-KR3",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-136"
+    },
+    {
+      "name": "Maybach EQS 680 SUV",
+      "year": "MY26",
+      "nst": "29695512-KR3",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-137"
+    },
+    {
+      "name": "EQA 250 Progressive",
+      "year": "MY27",
+      "nst": "24370112-KR7",
+      "base": 0,
+      "rate": 0,
+      "condition": "기존 현금 10%·금융 추가 4%·특별 조인트 상품 종료 · 현재 일반 금융 조건 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-138"
+    },
+    {
+      "name": "EQA 250 AMG Line",
+      "year": "MY27",
+      "nst": "24370112-KR8",
+      "base": 0,
+      "rate": 0,
+      "condition": "기존 현금 10%·금융 추가 4%·특별 조인트 상품 종료 · 현재 일반 금융 조건 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-139"
+    },
+    {
+      "name": "CLA 220",
+      "year": "MY27",
+      "nst": "17834612-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my27-17834612-kr1"
+    },
+    {
+      "name": "E 450 4MATIC AMG Line",
+      "year": "MY27",
+      "nst": "21406112-KR9",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my27-21406112-kr9"
+    },
+    {
+      "name": "G 580 with EQ Technology",
+      "year": "MY27",
+      "nst": "46560112-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my27-46560112-kr1"
+    },
+    {
+      "name": "G 580 with EQ Technology MANUFAKTUR",
+      "year": "MY27",
+      "nst": "46560112-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my27-46560112-kr2"
+    },
+    {
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
+      "year": "MY26",
+      "nst": "21406312-KR4",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10% · 24/36개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my26-21406312-kr4"
+    },
+    {
+      "name": "S 350 d 4MATIC (CY25/2)",
+      "year": "MY26",
+      "nst": "22302112-KR3",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my26-22302112-kr3"
+    },
+    {
+      "name": "S 450 4MATIC",
+      "year": "MY26",
+      "nst": "22306112-KR1",
+      "base": 7,
+      "rate": 11,
+      "condition": "기본 7% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 16% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my26-22306112-kr1"
+    },
+    {
+      "name": "S 450 4MATIC Long (CY25/2)",
+      "year": "MY26",
+      "nst": "22316112-KR6",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my26-22316112-kr6"
+    },
+    {
+      "name": "A 220",
+      "year": "MY26",
+      "nst": "17704412-KR7",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-1"
+    },
+    {
+      "name": "CLE 200 Coupe AMG Line",
+      "year": "MY26",
+      "nst": "23635012-KR3",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-58"
+    },
+    {
+      "name": "CLE 450 4MATIC Coupe AMG Line",
+      "year": "MY26",
+      "nst": "23636112-KR3",
+      "base": 9,
+      "rate": 9,
+      "condition": "기본 9%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-62"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupé AMG Line (MY27 초기 생산분)",
+      "year": "MY27",
+      "nst": "25434712-KR1",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-97"
+    },
+    {
+      "name": "GLC 300 4MATIC Coupe AMG Line",
+      "year": "MY27",
+      "nst": "25434712-KR9",
+      "base": 7,
+      "rate": 8,
+      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-100"
+    },
+    {
+      "name": "GLC 300 4MATIC AMG Line electric (Launch Edition)",
+      "year": "MY27",
+      "nst": "54062212-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-92"
+    },
+    {
+      "name": "GLC 300 4MATIC AMG Line+ electric (Launch Edition)",
+      "year": "MY27",
+      "nst": "54062212-KR3",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-93"
+    },
+    {
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupe",
+      "year": "MY26",
+      "nst": "23636212-KR1",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-64"
+    },
+    {
+      "name": "Mercedes-AMG GT 55 4MATIC+",
+      "year": "MY26",
+      "nst": "19238012-KR2",
+      "base": 3,
+      "rate": 3,
+      "condition": "기본 3%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-69"
     },
     {
       "name": "Mercedes-Maybach EQS 680 SUV",
@@ -834,7 +1278,71 @@
       "nst": "29695512-KR3",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%"
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-137"
+    },
+    {
+      "name": "Mercedes-Maybach GLS 600",
+      "year": "MY26",
+      "nst": "16798712-KR1",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-my26"
+    },
+    {
+      "name": "Mercedes-Maybach GLS 600 MANUFKATUR",
+      "year": "MY26",
+      "nst": "16798712-KR2",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-manufaktur-my26"
+    },
+    {
+      "name": "Mercedes-Maybach S 580",
+      "year": "MY27",
+      "nst": "22397712-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-55"
+    },
+    {
+      "name": "Mercedes-Maybach S 580 MANUFAKTUR",
+      "year": "MY27",
+      "nst": "22397712-KR2",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-56"
+    },
+    {
+      "name": "Mercedes-Maybach S 680",
+      "year": "MY27",
+      "nst": "22397912-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-57"
+    },
+    {
+      "name": "Mercedes-Maybach S 580",
+      "year": "MY26",
+      "nst": "22397612-KR9",
+      "base": 9,
+      "rate": 11,
+      "condition": "기본 9% + 대상 금융 추가 2% · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-47"
+    },
+    {
+      "name": "Mercedes-Maybach S 680",
+      "year": "MY26",
+      "nst": "22397912-KR7",
+      "base": 9,
+      "rate": 11,
+      "condition": "기본 9% + 대상 금융 추가 2% · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-s680-my26"
     },
     {
       "name": "Mercedes-Maybach SL 680",
@@ -842,7 +1350,1938 @@
       "nst": "23298112-KR1",
       "base": 2,
       "rate": 2,
-      "condition": "기본 2%"
+      "condition": "기본 2%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-71"
+    },
+    {
+      "name": "S 450 4MATIC",
+      "year": "MY27",
+      "nst": "22306512-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-50"
+    },
+    {
+      "name": "S 450 4MATIC Long Exclusive",
+      "year": "MY27",
+      "nst": "22316512-KR1",
+      "base": 0,
+      "rate": 0,
+      "condition": "기본 0%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-51"
+    },
+    {
+      "name": "S 450 4MATIC (CY25/2)",
+      "year": "MY26",
+      "nst": "22306112-KR2",
+      "base": 7,
+      "rate": 11,
+      "condition": "기본 7% + 대상 금융 추가 4% · 24개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 16% (고객별 추가 전)",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-42"
+    },
+    {
+      "name": "S 450 4MATIC",
+      "year": "MY26",
+      "nst": "22316112-KR5",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-43"
+    },
+    {
+      "name": "S 450 4MATIC (CY25/2)",
+      "year": "MY26",
+      "nst": "22316112-KR6",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#price-my26-22316112-kr6"
+    },
+    {
+      "name": "S 500 4MATIC",
+      "year": "MY26",
+      "nst": "22316312-KR7",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-44"
+    },
+    {
+      "name": "S 580 4MATIC",
+      "year": "MY26",
+      "nst": "22317612-KR6",
+      "base": 10,
+      "rate": 10,
+      "condition": "기본 10%",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-45"
+    }
+  ],
+  "price_date": "2026-10-27",
+  "prices": [
+    {
+      "year": "MY27",
+      "nst": "17705412-KR6",
+      "name": "Mercedes-AMG A 45 S 4MATIC+",
+      "price": 82300000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "17834612-KR1",
+      "name": "CLA 220",
+      "price": 59900000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "17834612-KR2",
+      "name": "CLA 220 AMG Line",
+      "price": 62900000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "17431112-KR2",
+      "name": "CLA 200 electric Essential",
+      "price": 52900000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "17431112-KR3",
+      "name": "CLA 200 electric Advanced",
+      "price": 55800000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "17431112-KR4",
+      "name": "CLA 200 electric AMG Line",
+      "price": 58900000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "17431312-KR1",
+      "name": "CLA 250+ electric",
+      "price": 63700000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "17431312-KR2",
+      "name": "CLA 250+ electric AMG Line",
+      "price": 67700000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "24774712-KR3",
+      "name": "GLA 250 4MATIC AMG Line",
+      "price": 70800000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "24461312-KR1",
+      "name": "GLB 250+ electric",
+      "price": 69900000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "24370112-KR7",
+      "name": "EQA 250 Progressive",
+      "price": 70800000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "24370112-KR8",
+      "name": "EQA 250 AMG Line",
+      "price": 76700000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "23635012-KR4",
+      "name": "CLE 200 Coupé",
+      "price": 77600000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "23636112-KR4",
+      "name": "CLE 450 4MATIC Coupé",
+      "price": 100800000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "23636212-KR3",
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupé",
+      "price": 110600000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "23645012-KR4",
+      "name": "CLE 200 Cabriolet",
+      "price": 84100000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "23646112-KR4",
+      "name": "CLE 450 4MATIC Cabriolet",
+      "price": 105200000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "23646212-KR5",
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "price": 116600000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21405012-KR6",
+      "name": "E 200 EXCLUSIVE",
+      "price": 77500000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21405012-KR7",
+      "name": "E 200 AMG Line",
+      "price": 81000000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21400512-KR4",
+      "name": "E 220 d 4MATIC AVANTGARDE",
+      "price": 87500000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21404712-KR7",
+      "name": "E 300 4MATIC EXCLUSIVE",
+      "price": 94800000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21404712-KR8",
+      "name": "E 300 4MATIC AMG Line",
+      "price": 100100000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21405612-KR3",
+      "name": "E 350 e 4MATIC EXCLUSIVE",
+      "price": 101100000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21406112-KR9",
+      "name": "E 450 4MATIC AMG Line",
+      "price": 112200000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21406112-KR7",
+      "name": "E 450 4MATIC AMG Line",
+      "price": 117200000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21406112-KR8",
+      "name": "E 450 4MATIC EXCLUSIVE",
+      "price": 129500000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "21406312-KR5",
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
+      "price": 149900000,
+      "date": "2026-10-27",
+      "source_page": 1
+    },
+    {
+      "year": "MY27",
+      "nst": "25460512-KR5",
+      "name": "GLC 220 d 4MATIC",
+      "price": 82200000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25464712-KR8",
+      "name": "GLC 300 4MATIC",
+      "price": 77000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25464712-KR9",
+      "name": "GLC 300 4MATIC AVANTGARDE",
+      "price": 82500000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25464712-KR1",
+      "name": "GLC 300 4MATIC AMG Line",
+      "price": 95500000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25467412-KR1",
+      "name": "Mercedes-AMG GLC 53 4MATIC+",
+      "price": 105100000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25434712-KR7",
+      "name": "GLC 300 4MATIC Coupé",
+      "price": 80000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25434712-KR8",
+      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "price": 86600000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25434712-KR1",
+      "name": "GLC 300 4MATIC Coupé AMG Line (MY27 초기 생산분)",
+      "price": 96900000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25434712-KR9",
+      "name": "GLC 300 4MATIC Coupé AMG Line",
+      "price": 97900000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "25437412-KR1",
+      "name": "Mercedes-AMG GLC 53 4MATIC+ Coupé",
+      "price": 109800000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "54062212-KR2",
+      "name": "GLC 300 4MATIC electric AMG Line (Launch Edition)",
+      "price": 90000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "54062212-KR3",
+      "name": "GLC 300 4MATIC electric AMG Line+ (Launch Edition)",
+      "price": 94800000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22302412-KR1",
+      "name": "S 350 d 4MATIC",
+      "price": 154000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22306512-KR1",
+      "name": "S 450 4MATIC",
+      "price": 162400000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22316512-KR1",
+      "name": "S 450 4MATIC Long Exclusive",
+      "price": 175400000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22316512-KR2",
+      "name": "S 450 4MATIC Long AMG Line",
+      "price": 195400000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22316412-KR1",
+      "name": "S 500 4MATIC Long",
+      "price": 220000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22317712-KR1",
+      "name": "S 580 4MATIC Long",
+      "price": 270000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22397712-KR1",
+      "name": "Mercedes-Maybach S 580",
+      "price": 317000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22397712-KR2",
+      "name": "Mercedes-Maybach S 580 MANUFAKTUR",
+      "price": 336000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "22397912-KR1",
+      "name": "Mercedes-Maybach S 680",
+      "price": 407000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "23245012-KR3",
+      "name": "Mercedes-AMG SL 43",
+      "price": 161800000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "23248112-KR8",
+      "name": "Mercedes-AMG SL 63 4MATIC+",
+      "price": 252800000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "23298112-KR2",
+      "name": "Mercedes-Maybach SL 680",
+      "price": 348000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "19234212-KR2",
+      "name": "Mercedes-AMG GT 43",
+      "price": 149500000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "19238012-KR3",
+      "name": "Mercedes-AMG GT 55 4MATIC+",
+      "price": 212600000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "19238212-KR3",
+      "name": "Mercedes-AMG GT 63 S E Performance",
+      "price": 283100000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "46531012-KR6",
+      "name": "G 450 d",
+      "price": 199700000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "46531012-KR7",
+      "name": "G 450 d MANUFAKTUR",
+      "price": 228200000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "46525012-KR5",
+      "name": "Mercedes-AMG G 63",
+      "price": 275000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "46525012-KR6",
+      "name": "Mercedes-AMG G 63 MANUFAKTUR",
+      "price": 301000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "46560112-KR1",
+      "name": "G 580 with EQ Technology",
+      "price": 219000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "46560112-KR2",
+      "name": "G 580 with EQ Technology MANUFAKTUR",
+      "price": 238500000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY27",
+      "nst": "44781313-KR1",
+      "name": "V 300 d 4MATIC EXCLUSIVE",
+      "price": 124000000,
+      "date": "2026-10-27",
+      "source_page": 2
+    },
+    {
+      "year": "MY26",
+      "nst": "17704412-KR7",
+      "name": "A 220",
+      "price": 48700000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "17705412-KR4",
+      "name": "Mercedes-AMG A 45 S 4MATIC+",
+      "price": 81400000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "17714412-KR7",
+      "name": "A 220 Sedan",
+      "price": 50500000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "17715112-KR7",
+      "name": "Mercedes-AMG A 35 4MATIC",
+      "price": 68600000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "11834712-KR1",
+      "name": "CLA 250 4MATIC AMG Line",
+      "price": 64500000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "11835412-KR8",
+      "name": "Mercedes-AMG CLA 45 S 4MATIC+",
+      "price": 91800000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "11835412-KR9",
+      "name": "Mercedes-AMG CLA 45 S 4MATIC+ Final Edition",
+      "price": 97000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "24774712-KR2",
+      "name": "GLA 250 4MATIC AMG Line",
+      "price": 70000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "24761212-KR8",
+      "name": "GLB 200 d",
+      "price": 64300000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "24764712-KR6",
+      "name": "GLB 250 4MATIC",
+      "price": 72000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "24765112-KR8",
+      "name": "Mercedes-AMG GLB 35 4MATIC",
+      "price": 79500000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "20605012-KR6",
+      "name": "C 200 AVANTGARDE",
+      "price": 65100000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "20605012-KR7",
+      "name": "C 200 AMG Line",
+      "price": 68300000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "20605012-KR8",
+      "name": "C 200 Special Edition",
+      "price": 66300000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "23635012-KR3",
+      "name": "CLE 200 Coupe AMG Line",
+      "price": 76700000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "23636112-KR3",
+      "name": "CLE 450 4MATIC Coupe AMG Line",
+      "price": 99700000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "23636212-KR1",
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupe",
+      "price": 109100000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "23636212-KR2",
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Coupe Limited Edition",
+      "price": 132700000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "23645012-KR3",
+      "name": "CLE 200 Cabriolet AMG Line",
+      "price": 83100000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "23646112-KR3",
+      "name": "CLE 450 4MATIC Cabriolet AMG Line",
+      "price": 104000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "23646212-KR3",
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "price": 115000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "23646212-KR4",
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet Limited Edition",
+      "price": 138700000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21405012-KR4",
+      "name": "E 200 AVANTGARDE",
+      "price": 77500000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21405012-KR9",
+      "name": "E 200 EXCLUSIVE",
+      "price": 77500000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21405012-KR5",
+      "name": "E 200 AMG Line",
+      "price": 81000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21400512-KR3",
+      "name": "E 220 d 4MATIC EXCLUSIVE",
+      "price": 87200000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21404712-KR5",
+      "name": "E 300 4MATIC EXCLUSIVE",
+      "price": 94800000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21404712-KR6",
+      "name": "E 300 4MATIC AMG Line",
+      "price": 99000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21405612-KR2",
+      "name": "E 350 e 4MATIC EXCLUSIVE",
+      "price": 100000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21406112-KR6",
+      "name": "E 450 4MATIC AMG Line",
+      "price": 116000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21406112-KR5",
+      "name": "E 450 4MATIC EXCLUSIVE",
+      "price": 129600000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21406312-KR3",
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
+      "price": 143000000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "21406312-KR4",
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
+      "price": 148400000,
+      "date": "2026-10-27",
+      "source_page": 3
+    },
+    {
+      "year": "MY26",
+      "nst": "22302112-KR2",
+      "name": "S 350 d 4MATIC",
+      "price": 154000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22302112-KR3",
+      "name": "S 350 d 4MATIC (CY25/2)",
+      "price": 155000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22306112-KR1",
+      "name": "S 450 4MATIC",
+      "price": 161000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22306112-KR2",
+      "name": "S 450 4MATIC (CY25/2)",
+      "price": 162000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22316112-KR5",
+      "name": "S 450 4MATIC",
+      "price": 193000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22316112-KR6",
+      "name": "S 450 4MATIC (CY25/2)",
+      "price": 195000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22316312-KR7",
+      "name": "S 500 4MATIC",
+      "price": 215000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22316312-KR8",
+      "name": "S 500 4MATIC (CY25/2)",
+      "price": 217000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22317612-KR6",
+      "name": "S 580 4MATIC",
+      "price": 260000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22318212-KR3",
+      "name": "Mercedes-AMG S 63 E Performance",
+      "price": 299000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22397612-KR9",
+      "name": "Mercedes-Maybach S 580",
+      "price": 317000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22397912-KR7",
+      "name": "Mercedes-Maybach S 680",
+      "price": 403000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "22397912-KR8",
+      "name": "Mercedes-Maybach S 680 \"V12 Edition\"",
+      "price": 479400000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "23245012-KR2",
+      "name": "Mercedes-AMG SL 43",
+      "price": 160000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "23248112-KR7",
+      "name": "Mercedes-AMG SL 63 4MATIC+",
+      "price": 250000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "23298112-KR1",
+      "name": "Mercedes-Maybach SL 680",
+      "price": 344000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "19234212-KR1",
+      "name": "Mercedes-AMG GT 43",
+      "price": 149500000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "19238012-KR2",
+      "name": "Mercedes-AMG GT 55 4MATIC+",
+      "price": 210000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "19238212-KR2",
+      "name": "Mercedes-AMG GT 63 S E Performance",
+      "price": 280000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "29065912-KR2",
+      "name": "Mercedes-AMG GT 43 4MATIC+",
+      "price": 164000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "25460512-KR4",
+      "name": "GLC 220 d 4MATIC",
+      "price": 82200000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "25464712-KR6",
+      "name": "GLC 300 4MATIC AVANTGARDE",
+      "price": 82500000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "25464712-KR5",
+      "name": "GLC 300 4MATIC AMG Line",
+      "price": 92500000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "25468712-KR3",
+      "name": "Mercedes-AMG GLC 43 4MATIC",
+      "price": 103600000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "25434712-KR5",
+      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "price": 86600000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "25434712-KR4",
+      "name": "GLC 300 4MATIC Coupé AMG Line",
+      "price": 96900000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "25438712-KR3",
+      "name": "Mercedes-AMG GLC 43 4MATIC Coupé",
+      "price": 108300000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16710912-KR6",
+      "name": "GLE 300 d 4MATIC",
+      "price": 119200000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16714512-KR2",
+      "name": "GLE 350 4MATIC",
+      "price": 118000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16715912-KR8",
+      "name": "GLE 450 4MATIC",
+      "price": 129000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16715912-KR9",
+      "name": "GLE 450 4MATIC AMG Line",
+      "price": 139000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16716112-KR8",
+      "name": "Mercedes-AMG GLE 53 4MATIC+",
+      "price": 166000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16733312-KR4",
+      "name": "GLE 450 d 4MATIC Coupé AMG Line",
+      "price": 134000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16735912-KR2",
+      "name": "GLE 450 4MATIC Coupé AMG Line",
+      "price": 142500000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16736112-KR8",
+      "name": "Mercedes-AMG GLE 53 4MATIC+ Coupé",
+      "price": 170000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16793312-KR3",
+      "name": "GLS 450 d 4MATIC AMG Line",
+      "price": 154000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16795912-KR2",
+      "name": "GLS 450 4MATIC AMG Line",
+      "price": 154000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16793312-KR4",
+      "name": "GLS 450 d 4MATIC AMG Line Premium",
+      "price": 158500000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16795912-KR3",
+      "name": "GLS 450 4MATIC AMG Line Premium",
+      "price": 158500000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16798512-KR3",
+      "name": "GLS 580 4MATIC AMG Line",
+      "price": 193400000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16798712-KR1",
+      "name": "Mercedes-Maybach GLS 600",
+      "price": 295000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16798712-KR2",
+      "name": "Mercedes-Maybach GLS 600 MANUFKATUR",
+      "price": 337000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "16798912-KR1",
+      "name": "Mercedes-AMG GLS 63 4MATIC+",
+      "price": 210000000,
+      "date": "2026-10-27",
+      "source_page": 4
+    },
+    {
+      "year": "MY26",
+      "nst": "46531012-KR4",
+      "name": "G 450 d",
+      "price": 194900000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "46531012-KR5",
+      "name": "G 450 d MANUFAKTUR",
+      "price": 219100000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "46525012-KR3",
+      "name": "Mercedes-AMG G 63",
+      "price": 262600000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "46525012-KR4",
+      "name": "Mercedes-AMG G 63 MANUFAKTUR",
+      "price": 289800000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "46560012-KR3",
+      "name": "G 580 with EQ Technology",
+      "price": 216100000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "24370112-KR5",
+      "name": "EQA 250 Progressive",
+      "price": 70000000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "24370112-KR6",
+      "name": "EQA 250 AMG Line",
+      "price": 75800000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "24360812-KR5",
+      "name": "EQB 300 4MATIC Progressive",
+      "price": 78800000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "24360812-KR6",
+      "name": "EQB 300 4MATIC AMG Line",
+      "price": 84300000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "29462112-KR1",
+      "name": "EQE 350+ SUV",
+      "price": 106000000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "29462212-KR6",
+      "name": "EQE 500 4MATIC SUV",
+      "price": 141000000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "29512112-KR6",
+      "name": "EQE 350+",
+      "price": 110000000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "29662412-KR5",
+      "name": "EQS 450 4MATIC SUV",
+      "price": 166000000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "29664412-KR5",
+      "name": "EQS 580 4MATIC SUV",
+      "price": 192000000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY26",
+      "nst": "29695512-KR3",
+      "name": "Mercedes-Maybach EQS 680 SUV",
+      "price": 235000000,
+      "date": "2026-10-27",
+      "source_page": 5
+    },
+    {
+      "year": "MY25",
+      "nst": "17704412-KR6",
+      "name": "A 220",
+      "price": 48700000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "17705412-KR2",
+      "name": "Mercedes-AMG A 45 S 4MATIC+",
+      "price": 81400000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "17705412-KR3",
+      "name": "Mercedes-AMG A 45 S 4MATIC+ Limited Edition",
+      "price": 88800000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "17714412-KR6",
+      "name": "A 220 Sedan",
+      "price": 50500000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "17715112-KR6",
+      "name": "Mercedes-AMG A 35 4MATIC",
+      "price": 68600000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "11834712-KR7",
+      "name": "CLA 250 4MATIC Progressive",
+      "price": 58200000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "11834712-KR8",
+      "name": "CLA 250 4MATIC AMG Line",
+      "price": 64500000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "11835412-KR7",
+      "name": "Mercedes-AMG CLA 45 S 4MATIC+",
+      "price": 91800000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "24774712-KR8",
+      "name": "GLA 250 4MATIC AMG Line",
+      "price": 70000000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "24761212-KR7",
+      "name": "GLB 200 d",
+      "price": 64300000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "24764712-KR4",
+      "name": "GLB 250 4MATIC",
+      "price": 72000000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "24765112-KR7",
+      "name": "Mercedes-AMG GLB 35 4MATIC",
+      "price": 79500000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "20605012-KR4",
+      "name": "C 200 AVANTGARDE",
+      "price": 63600000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "20605012-KR5",
+      "name": "C 200 AMG Line",
+      "price": 66700000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "23635012-KR2",
+      "name": "CLE 200 Coupe",
+      "price": 75200000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "23636112-KR2",
+      "name": "CLE 450 4MATIC Coupe",
+      "price": 99500000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "23645012-KR2",
+      "name": "CLE 200 Cabriolet",
+      "price": 81500000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "23646112-KR2",
+      "name": "CLE 450 4MATIC Cabriolet",
+      "price": 102500000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "23646212-KR1",
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "price": 111700000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "23646212-KR2",
+      "name": "Mercedes-AMG CLE 53 4MATIC+ Cabriolet",
+      "price": 113500000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21405012-KR2",
+      "name": "E 200 AVANTGARDE",
+      "price": 76000000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21405012-KR3",
+      "name": "E 200 AVANTGARDE Limited",
+      "price": 69900000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21400512-KR2",
+      "name": "E 220 d 4MATIC EXCLUSIVE",
+      "price": 85500000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21404712-KR3",
+      "name": "E 300 4MATIC EXCLUSIVE",
+      "price": 92700000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21404712-KR4",
+      "name": "E 300 4MATIC AMG Line",
+      "price": 96900000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21405612-KR1",
+      "name": "E 350 e 4MATIC EXCLUSIVE",
+      "price": 98900000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21406112-KR3",
+      "name": "E 450 4MATIC",
+      "price": 99900000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21406112-KR4",
+      "name": "E 450 4MATIC EXCLUSIVE",
+      "price": 127000000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21406312-KR1",
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+",
+      "price": 140000000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "21406312-KR2",
+      "name": "Mercedes-AMG E 53 HYBRID 4MATIC+ Edition 1",
+      "price": 162200000,
+      "date": "2026-10-27",
+      "source_page": 6
+    },
+    {
+      "year": "MY25",
+      "nst": "25460512-KR3",
+      "name": "GLC 220 d 4MATIC",
+      "price": 81300000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "25464712-KR3",
+      "name": "GLC 300 4MATIC AVANTGARDE",
+      "price": 81600000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "25464712-KR4",
+      "name": "GLC 300 4MATIC AMG Line",
+      "price": 91500000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "25468712-KR2",
+      "name": "Mercedes-AMG GLC 43 4MATIC",
+      "price": 102400000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "25434712-KR2",
+      "name": "GLC 300 4MATIC Coupé AVANTGARDE",
+      "price": 85600000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "25434712-KR3",
+      "name": "GLC 300 4MATIC Coupé AMG Line",
+      "price": 95700000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "25438712-KR2",
+      "name": "Mercedes-AMG GLC 43 4MATIC Coupé",
+      "price": 107000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16710912-KR5",
+      "name": "GLE 300 d 4MATIC",
+      "price": 118000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16714512-KR1",
+      "name": "GLE 350 4MATIC",
+      "price": 118000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16715912-KR7",
+      "name": "GLE 450 4MATIC",
+      "price": 139000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16716112-KR7",
+      "name": "Mercedes-AMG GLE 53 4MATIC+",
+      "price": 162500000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16733312-KR3",
+      "name": "GLE 450 d 4MATIC Coupé",
+      "price": 142500000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16735912-KR1",
+      "name": "GLE 450 4MATIC Coupé",
+      "price": 142500000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16736112-KR7",
+      "name": "Mercedes-AMG GLE 53 4MATIC+ Coupé",
+      "price": 166000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16793312-KR2",
+      "name": "GLS 450 d 4MATIC",
+      "price": 158500000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16795912-KR1",
+      "name": "GLS 450 4MATIC",
+      "price": 158500000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16798512-KR2",
+      "name": "GLS 580 4MATIC",
+      "price": 188000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16798712-KR8",
+      "name": "Mercedes-Maybach GLS 600",
+      "price": 289000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "16798712-KR9",
+      "name": "Mercedes-Maybach GLS 600 MANUFKATUR",
+      "price": 330000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "46531012-KRB",
+      "name": "G 450 d",
+      "price": 189000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "46531012-KR1",
+      "name": "G 450 d",
+      "price": 189000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "46531012-KR2",
+      "name": "G 450 d MANUFAKTUR",
+      "price": 212700000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "46525012-KR1",
+      "name": "Mercedes-AMG G 63",
+      "price": 254500000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "46525012-KR2",
+      "name": "Mercedes-AMG G 63 MANUFAKTUR",
+      "price": 281000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "46560012-KR1",
+      "name": "G 580 with EQ Technology",
+      "price": 209000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "46560012-KR2",
+      "name": "G 580 with EQ Technology Edition ONE",
+      "price": 244000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "22302112-KR1",
+      "name": "S 350 d 4MATIC",
+      "price": 153000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "22302312-KR3",
+      "name": "S 450 d 4MATIC AMG Line",
+      "price": 169200000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "22316112-KR4",
+      "name": "S 450 4MATIC",
+      "price": 189000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "22316312-KR6",
+      "name": "S 500 4MATIC",
+      "price": 210500000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "22317612-KR5",
+      "name": "S 580 4MATIC",
+      "price": 255000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "22318212-KR2",
+      "name": "Mercedes-AMG S 63 E Performance",
+      "price": 293000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "22397612-KR8",
+      "name": "Mercedes-Maybach S 580",
+      "price": 311000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "22397912-KR6",
+      "name": "Mercedes-Maybach S 680",
+      "price": 395000000,
+      "date": "2026-10-27",
+      "source_page": 7
+    },
+    {
+      "year": "MY25",
+      "nst": "23245012-KR1",
+      "name": "Mercedes-AMG SL 43",
+      "price": 157000000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "23248112-KR5",
+      "name": "Mercedes-AMG SL 63 4MATIC+",
+      "price": 245400000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "23248112-KR6",
+      "name": "Mercedes-AMG SL 63 4MATIC+ Performance",
+      "price": 271200000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "19238012-KR1",
+      "name": "Mercedes-AMG GT 55 4MATIC+",
+      "price": 207000000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "19238212-KR1",
+      "name": "Mercedes-AMG GT 63 S E Performance",
+      "price": 276000000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "29065912-KR1",
+      "name": "Mercedes-AMG GT 43 4MATIC+",
+      "price": 160700000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "24370112-KR3",
+      "name": "EQA 250 Progressive",
+      "price": 69300000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "24370112-KR4",
+      "name": "EQA 250 AMG Line",
+      "price": 75100000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "24360812-KR3",
+      "name": "EQB 300 4MATIC Progressive",
+      "price": 78100000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "24360812-KR4",
+      "name": "EQB 300 4MATIC AMG Line",
+      "price": 83600000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "29461212-KR5",
+      "name": "EQE 350 4MATIC SUV",
+      "price": 113100000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "29462212-KR5",
+      "name": "EQE 500 4MATIC SUV",
+      "price": 136200000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "29712112-KR2",
+      "name": "EQS 350",
+      "price": 149000000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "29662412-KR4",
+      "name": "EQS 450 4MATIC SUV",
+      "price": 164100000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "29664412-KR4",
+      "name": "EQS 580 4MATIC SUV",
+      "price": 191400000,
+      "date": "2026-10-27",
+      "source_page": 8
+    },
+    {
+      "year": "MY25",
+      "nst": "29695512-KR2",
+      "name": "Mercedes-Maybach EQS 680 SUV",
+      "price": 229500000,
+      "date": "2026-10-27",
+      "source_page": 8
     }
   ]
 }

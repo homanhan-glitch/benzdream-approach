@@ -39,7 +39,7 @@
     const same=vehicle.trims.filter(t=>t.year===selected.year && t.options.length);
     const all=new Map();same.forEach(t=>t.options.forEach(r=>{const k=r.code+'|'+r.name;if(!all.has(k))all.set(k,r)}));
     const q=$('option-search').value.toLowerCase();const entries=[...all.entries()].filter(([,r])=>(r.code+' '+r.name).toLowerCase().includes(q));
-    $('option-table').innerHTML=entries.length?`<div class="table-scroll" role="region" tabindex="0" aria-label="트림별 전체 옵션 비교"><table class="option-matrix"><caption>${esc(selected.year)} 장비·옵션 비교 · 옆으로 이동해 다른 트림을 확인하세요.</caption><thead><tr><th scope="col">장비</th>${same.map(t=>`<th scope="col" class="${t.id===selected.id?'selected':''}">${esc(t.name)}<br><small>${esc(t.nst)}</small></th>`).join('')}</tr></thead><tbody>${entries.map(([key,r])=>`<tr><th scope="row">${esc(r.name)}<br><small>${esc(r.code)}</small></th>${same.map(t=>{const v=t.options.find(x=>x.code+'|'+x.name===key);return `<td class="${t.id===selected.id?'selected':''}">${esc(v?.state||'확인 필요')}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>`:'<p class="notice">일치하는 장비 항목이 없습니다. 아래 참고 자료 또는 상담으로 확인해 주세요.</p>';
+    $('option-table').innerHTML=entries.length?`<div class="table-scroll" role="region" tabindex="0" aria-label="트림별 전체 옵션 비교"><table class="option-matrix"><caption>${esc(selected.year)} 장비·옵션 비교 · 옆으로 이동해 다른 트림을 확인하세요.</caption><thead><tr><th scope="col">장비</th>${same.map(t=>`<th scope="col" class="${t.id===selected.id?'selected':''}">${esc(t.name)}</th>`).join('')}</tr></thead><tbody>${entries.map(([key,r])=>`<tr><th scope="row">${esc(r.name)}</th>${same.map(t=>{const v=t.options.find(x=>x.code+'|'+x.name===key);return `<td class="${t.id===selected.id?'selected':''}">${esc(v?.state||'확인 필요')}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>`:'<p class="notice">일치하는 장비 항목이 없습니다. 아래 참고 자료 또는 상담으로 확인해 주세요.</p>';
   }
 
   const equipmentCategories=['주행·승차감','안전·주차','시트·공간','디스플레이·오디오','실내 편의','외관·생활 편의','충전·전기차 기능'];
@@ -68,6 +68,7 @@
   }
 
   let comparePair=null,compareYear=null;
+  const priceDate=t=>t?.price_date?t.price_date.replaceAll('-','.'):'2026.09.25';
   const trimLabel=t=>(t.display_name||t.name)+(t.price?'':' · 가격 안내 전');
   const activeComparison=()=>vehicle.customer_compare.years[selected.year];
   const customerValue=(t,f)=>f.values?.[t.id]||'확인 필요';
@@ -102,10 +103,10 @@
     const differs=f=>!f.values.some(unknown)&&f.values[0]!==f.values[1];
     const differences=all.filter(differs),pending=all.filter(f=>f.values.some(unknown));
     const shown=single?all:($('differences-only').checked?all.filter(f=>differs(f)||f.values.some(unknown)):all);
-    $('difference-count').textContent=left.id===right.id&&!single?'같은 트림을 선택했습니다.':`확인된 주요 사양 ${differences.length}가지 차이${pending.length?' · '+pending.length+'개 확인 필요':''}`;
+    $('difference-count').textContent=left.id===right.id&&!single?'같은 트림을 선택했습니다.':`주요 사양 ${differences.length}가지 차이${pending.length?' · '+pending.length+'개 상담 안내':''}`;
     const price=t=>t.price?(t.price/10000).toLocaleString('ko-KR')+'만원':'가격 안내 전';
     const delta=!single&&left.price&&right.price?`<p class="comparison-price">권장 소비자가 차이 <strong>${(Math.abs(left.price-right.price)/10000).toLocaleString('ko-KR')}만원</strong></p>`:'';
-    $('customer-option-table').innerHTML=delta+`<div class="table-scroll customer-table-scroll"><table class="customer-matrix ${single?'single-trim':''}"><caption>${esc(selected.year)} 주요 사양 · 가격은 2026.09.25 기준</caption><thead><tr><th scope="col">주요 항목</th><th scope="col">${esc(left.display_name||left.name)}</th>${single?'':`<th scope="col">${esc(right.display_name||right.name)}</th>`}</tr></thead><tbody><tr class="price-row"><th scope="row">권장 소비자가</th><td>${price(left)}</td>${single?'':`<td>${price(right)}</td>`}</tr>${shown.map(f=>`<tr class="${!single&&differs(f)?'is-different':f.values.some(unknown)?'is-pending':'is-common'}"><th scope="row">${esc(f.label)}${!single&&differs(f)?'<span class="difference-label">차이</span>':''}</th>${(single?f.values.slice(0,1):f.values).map(v=>`<td>${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${shown.length?'':`<p class="notice">${all.length?'선택한 주요 사양은 같습니다. 다른 트림을 선택하거나 전체 주요 사양을 펼쳐 보세요.':'트림별 주요 장비 확인 후 비교 항목을 추가하겠습니다.'}</p>`}`;
+    $('customer-option-table').innerHTML=delta+`<div class="table-scroll customer-table-scroll"><table class="customer-matrix ${single?'single-trim':''}"><caption>${esc(selected.year)} 주요 사양 · 권장가 기준 ${priceDate(left)}${!single&&priceDate(right)!==priceDate(left)?' / '+priceDate(right):''}</caption><thead><tr><th scope="col">주요 항목</th><th scope="col">${esc(left.display_name||left.name)}</th>${single?'':`<th scope="col">${esc(right.display_name||right.name)}</th>`}</tr></thead><tbody><tr class="price-row"><th scope="row">권장 소비자가</th><td>${price(left)}</td>${single?'':`<td>${price(right)}</td>`}</tr>${shown.map(f=>`<tr class="${!single&&differs(f)?'is-different':f.values.some(unknown)?'is-pending':'is-common'}"><th scope="row">${esc(f.label)}${!single&&differs(f)?'<span class="difference-label">차이</span>':''}</th>${(single?f.values.slice(0,1):f.values).map(v=>`<td>${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${shown.length?'':`<p class="notice">${all.length?'선택한 주요 사양은 같습니다. 다른 트림을 선택하거나 전체 주요 사양을 펼쳐 보세요.':'트림별 주요 장비 확인 후 비교 항목을 추가하겠습니다.'}</p>`}`;
   }
   const swatch=name=>{const a=[[/화이트|white/i,'#edece6'],[/블랙|black/i,'#242625'],[/베이지|beige/i,'#c5b28d'],[/브라운|brown/i,'#785440'],[/블루|blue/i,'#224969'],[/레드|red/i,'#813b42'],[/실버|silver/i,'#b7babe'],[/그레이|grey|gray/i,'#858b89'],[/그린|green|베르데/i,'#73867b']];return a.find(([r])=>r.test(name))?.[1]||'#a7a5a2'};
   function showColor(c){
@@ -130,11 +131,11 @@
   function renderBuying(){
     $('selected-name').textContent=selected.year+' · '+selected.name;
     $('current-price').textContent=selected.price?(selected.price/10000).toLocaleString('ko-KR')+'만원':'가격 확인 중';
-    $('price-date').textContent=selected.price?'2026.09.25 권장 소비자가 · VAT 포함':'선택 연식의 공식 가격 확인 후 안내';
+    $('price-date').textContent=selected.price?priceDate(selected)+' 권장 소비자가 · VAT 포함':'선택 연식의 공식 가격 확인 후 안내';
     const offer=reportMonth===kst().slice(0,7)?offers.find(x=>x.year===selected.year&&x.nst===selected.nst&&normalize(x.name)===normalize(selected.name)):null;
-    $('offer-rate').textContent=offer?(offer.rate===0?'기본 할인 없음':offer.rate+'%'):'개별 조건 확인';
+    $('offer-rate').textContent=offer?(offer.display_label||(offer.rate===0?'기본 할인 없음':offer.rate+'%')):'개별 조건 확인';
     $('offer-note').textContent=offer?`${reportMonth.replace('-','.')} · ${selected.year} · ${offer.condition}. 고객별 추가 혜택은 가격·프로모션에서 확인하세요.`:'선택 연식·트림의 이번 달 조건은 가격·프로모션에서 확인하세요.';
-    $('report-link').href=reportUrl;$('report-link').textContent=(reportMonth===kst().slice(0,7)?Number(reportMonth.slice(5))+'월 ':'')+'가격·프로모션 확인 ↗';
+    $('report-link').href=offer&&offer.url?offer.url:reportUrl;$('report-link').textContent=(reportMonth===kst().slice(0,7)?Number(reportMonth.slice(5))+'월 ':'')+'가격·프로모션 확인 ↗';
     $('stock-link').href='BenzDream_Stock.html?model='+encodeURIComponent(selected.name);
     $('stock-colors').replaceChildren();
     if(!stock){$('stock-value').textContent='재고 확인 필요';$('stock-note').textContent='재고 연결을 확인 중입니다. 전국 재고 페이지에서 확인할 수 있습니다.';return;}
