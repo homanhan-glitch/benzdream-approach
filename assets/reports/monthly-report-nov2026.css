@@ -1,0 +1,4 @@
+/* November report: preserve the established hierarchy and mobile card tables. */
+html:has(body.bd-november-report){scroll-padding-top:0}
+.bd-november-report .r-subhead{margin-top:32px}.bd-november-report .r-cell{min-width:0}.bd-november-report .r-data-table td>a,.bd-november-report .r-cell>a{display:block;padding:8px 0;min-height:44px}.bd-november-report .r-hero-image img{height:auto;object-fit:contain}.bd-november-report .r-data-table td:has(.r-cell):first-child .r-cell{grid-column:auto}
+@media(max-width:650px){.bd-november-report .r-data-table td{grid-template-columns:1fr;gap:4px}.bd-november-report .r-data-table td>.r-cell{grid-column:1}.bd-november-report .r-data-table td:before{font-size:16px}.bd-november-report .r-data-table td:first-child{font-size:21px}.bd-november-report .r-model-table tr{padding:18px}.bd-november-report .r-nav select{font-size:17px}}
