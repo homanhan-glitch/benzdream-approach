@@ -8,3 +8,31 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 @media(max-width:760px){.hero-photo>img{aspect-ratio:4/3;object-fit:cover;object-position:72% center}.hero-intro p{word-break:keep-all}.hero-intro .launch-status{font-size:17px;color:var(--purple)}}
+
+/* November product update: native photo proportions and complete, readable option groups. */
+.trim-card .studio-photo{background:#000}
+.trim-card .landscape-photo img{object-fit:cover;object-position:50% 54%}
+.option-list{list-style:none;padding:0;margin:0;color:var(--ink)}
+.option-list li{border-bottom:1px solid var(--line);padding:9px 0;line-height:1.65}
+.option-list li:last-child{border-bottom:0}
+.gls-editorial{display:block}
+.seat-layout-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-bottom:32px}
+.gls-editorial .seat-layout-pair img{aspect-ratio:auto;object-fit:contain}
+.gls-editorial>div:not(.seat-layout-pair){max-width:960px}
+.interior-view{display:block}
+.interior-copy{margin-bottom:24px}
+.interior-copy h3{margin-bottom:12px}
+.seat-buttons{display:flex;flex-direction:row;flex-wrap:wrap;gap:10px}
+.seat-buttons button{flex:1 1 200px;word-break:keep-all;overflow-wrap:anywhere}
+#seat-label{font-weight:600;color:var(--purple)}
+.seat-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 24px}
+.seat-gallery .seat-stage img{width:100%;min-width:0;height:auto;aspect-ratio:auto;object-fit:contain}
+.seat-gallery figcaption{font-size:18px;text-align:left;padding-top:10px}
+.seat-gallery-note{grid-column:1/-1;margin-bottom:0}
+@media(max-width:760px){
+ .seat-layout-pair,.seat-gallery{grid-template-columns:1fr;gap:22px}
+ .seat-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .seat-buttons button{min-height:52px}
+ .option-list li{padding:10px 0}
+}
+@media(max-width:360px){.seat-buttons{grid-template-columns:1fr}}
