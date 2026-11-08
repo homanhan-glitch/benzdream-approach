@@ -15,6 +15,7 @@ document.querySelectorAll('[data-color-group]').forEach(group=>{
  }));
 });
 const chapterNav=document.querySelector('.chapter-nav'),picker=document.querySelector('#chapter-picker');
+if(chapterNav&&picker){
 const chapters=[...document.querySelectorAll('.chapter-block')];
 new ResizeObserver(()=>document.documentElement.style.setProperty('--chapter-offset',(chapterNav.offsetHeight+14)+'px')).observe(chapterNav);
 picker.addEventListener('change',()=>{
@@ -24,6 +25,13 @@ picker.addEventListener('change',()=>{
 let scheduled=false;
 function activeChapter(){scheduled=false;let current='lineup';const offset=chapterNav.offsetHeight+35;for(const section of chapters){if(section.getBoundingClientRect().top<=offset)current=section.id;else break}picker.value=current;document.querySelectorAll('[data-nav-chapter]').forEach(a=>{if(a.dataset.navChapter===current)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
 addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(activeChapter)}},{passive:true});addEventListener('resize',activeChapter);activeChapter();
+}
+const routesNode=document.querySelector("#legacy-routes");
+if(routesNode){
+ const routes=JSON.parse(routesNode.textContent);
+ const follow=()=>{let key;try{key=decodeURIComponent(location.hash.slice(1))}catch{return}if(!Object.prototype.hasOwnProperty.call(routes,key))return;const target=routes[key];if(target){const next=new URL(target,location.href);next.search=location.search;location.replace(next.href)}};
+ addEventListener("hashchange",follow);follow();
+}
 // The site analytics configuration remains inactive in file/localhost previews.
 if(['mb-hansdream.co.kr','www.mb-hansdream.co.kr','homanhan-glitch.github.io'].includes(location.hostname)){
  const start=()=>{window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());gtag('config','G-7T2ECBWN0K',{content_group:'신차 사전계약'});const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-7T2ECBWN0K';document.head.append(s)};
