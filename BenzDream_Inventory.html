@@ -35,61 +35,15 @@
 <div class="bd-top"><div class="bd-brand">Benz<span>Dream</span> <span class="bd-tag">/ SALES DESK</span></div><div class="bd-tag">내부 영업용</div></div>
 <main class="bd-main">
 <div class="bd-title"><div><h1>재고를 보고, 다음 계약을 결정하다.</h1><p>전국 판매 흐름 · 차종 · 연식 · 색상별 재고</p></div><span class="bd-date">데이터 확인 중</span></div>
-<div class="bd-kpis" id="bd-kpis"></div>
+<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:16px 0"><label>분석 자료 <select id="bd-source"><option value="current">효성더클래스 · 새 전국재고</option><option value="legacy">이전 모터원 이력 · 별도 보관</option></select></label><span id="bd-baseline" style="font-size:12px;color:#607080"></span><a href="BenzDream_Stock.html">고객용 재고 ↗</a></div><div class="bd-kpis" id="bd-kpis"></div>
 <section class="bd-panel"><div class="bd-panelhead"><div><h2>기간 실적 분석</h2><p id="bd-analysis-caption">최근 주간의 전국 계약 추정과 입출고 흐름</p></div><div class="bd-seg" id="bd-analysis-period"><button type="button" data-analysis-period="week" aria-pressed="true">최근 1주</button><button type="button" data-analysis-period="month" aria-pressed="false">최근 1개월</button></div></div><div class="bd-analysis" id="bd-analysis"></div></section>
-<section class="bd-panel"><div class="bd-panelhead"><div><h2>계약 흐름</h2><p id="bd-chartcaption">전국 계약·소진 추정 · 모터원 신규계약 + 타 파트너 소진</p></div><div class="bd-seg" id="bd-period"><button type="button" data-period="daily" aria-pressed="true">일간</button><button type="button" data-period="weekly" aria-pressed="false">주간</button><button type="button" data-period="monthly" aria-pressed="false">월간</button></div></div><div class="bd-chart" id="bd-chart" role="img" aria-label="기간별 전국 계약·소진 추정"></div><div class="bd-chartfoot" id="bd-flowfoot"></div></section>
+<section class="bd-panel"><div class="bd-panelhead"><div><h2>계약 흐름</h2><p id="bd-chartcaption">전국 계약·계약 추정 · 순계약 추정 · 취소·재등장 차감</p></div><div class="bd-seg" id="bd-period"><button type="button" data-period="daily" aria-pressed="true">일간</button><button type="button" data-period="weekly" aria-pressed="false">주간</button><button type="button" data-period="monthly" aria-pressed="false">월간</button></div></div><div class="bd-chart" id="bd-chart" role="img" aria-label="기간별 전국 계약·계약 추정"></div><div class="bd-chartfoot" id="bd-flowfoot"></div></section>
 
 
-<section class="bd-panel"><div class="bd-panelhead"><div><h2>차종·색상별 재고</h2><p>차종 선택으로 외장·내장 조합별 잔여 확인</p></div><span class="bd-tag" id="bd-count"></span></div><div class="bd-controls"><input aria-label="차종 검색" id="bd-search" placeholder="차종 검색 · E 300, GLE"><div id="bd-categories" style="display:flex;gap:6px;flex-wrap:wrap"></div></div><div class="bd-split"><div class="bd-list"><div class="bd-gridhead"><span>차종 / 트림</span><span>재고 대수</span><span id="bd-colperiod">최근일 소진</span></div><div id="bd-models"></div><button class="bd-more" type="button" id="bd-more">전체 차종 보기 ↓</button></div><aside class="bd-detail" id="bd-detail" aria-live="polite"></aside></div></section>
-<div class="bd-footer">전국 소진은 모터원 신규계약과 타 파트너 VIN 이탈의 합계이며 확정 전국 계약 건수가 아닙니다. 일간은 파일 간 관측 구간이며 주·월 경계의 정확한 계약일은 확인되지 않을 수 있습니다.</div>
+<section class="bd-panel"><div class="bd-panelhead"><div><h2>차종·색상별 재고</h2><p>차종 선택으로 외장·내장 조합별 잔여 확인</p></div><span class="bd-tag" id="bd-count"></span></div><div class="bd-controls"><input aria-label="차종 검색" id="bd-search" placeholder="차종 검색 · E 300, GLE"><div id="bd-categories" style="display:flex;gap:6px;flex-wrap:wrap"></div></div><div class="bd-split"><div class="bd-list"><div class="bd-gridhead"><span>차종 / 트림</span><span>재고 대수</span><span id="bd-colperiod">최근일 계약</span></div><div id="bd-models"></div><button class="bd-more" type="button" id="bd-more">전체 차종 보기 ↓</button></div><aside class="bd-detail" id="bd-detail" aria-live="polite"></aside></div></section>
+<div class="bd-footer"></div>
 </main>
 
-<script>
-(async()=>{const root=document.getElementById('bd-sales-desk'),D=await loadData(); async function loadData(){const r=await fetch('contracts_web.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('데이터 응답 '+r.status);return r.json()}const $=id=>root.querySelector('#'+id),fmt=n=>Number(n||0).toLocaleString('ko-KR'),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let period='daily',cat='전체',query='',all=false,selected='E 300 4MATIC AMG Line';const dates=Object.keys(D.daily).sort(),last=dates.at(-1),cur=D.daily[last],wk=D.weekly.at(-1),mon=D.monthly.at(-1);const previous=D.daily[dates.at(-2)];const delta=previous?cur.sell-previous.sell:0;root.querySelector('.bd-date').textContent='데이터 기준 '+last;const periodText=p=>p.start+' ~ '+p.end;
-$('bd-kpis').innerHTML=[['전국 판매가능 재고',D.sellable_now+'',`전일 대비 ${delta>0?'+':''}${fmt(delta)}대`],['최근일 전국 소진 추정',cur.mo_new+cur.nat_other,last+' · 전국 추정'],['최근 주 전국 소진 추정',wk.mo_new+wk.nat_other,periodText(wk)+' · 전국 추정'],['최근 월 전국 소진 추정',mon.mo_new+mon.nat_other,periodText(mon)+' · 전국 추정']].map(([k,v,s],i)=>`<div class="bd-stat"><label>${k}</label><strong>${fmt(v)}<span style="font-size:13px;margin-left:5px;letter-spacing:0">대</span></strong><small>${s}</small></div>`).join('');
-function periodDates(){return period==='daily'?[last]:period==='weekly'?wk.days:mon.days}function count(r){const h=D.heat[r.cat+'|'+r.model]||{};return periodDates().reduce((s,d)=>s+(h[d]?.[0]||0)+(h[d]?.[1]||0),0)}
-function chart(){let a=period==='daily'?dates.slice(-9).map(d=>({label:d.slice(5).replace('-','/'),...D.daily[d]})):D[period].slice(-8).map(p=>({...p,label:period==='weekly'?p.start.slice(5).replace('-','/')+'~':p.start.slice(0,7)}));const max=Math.max(1,...a.map(x=>x.mo_new+x.nat_other));$('bd-chart').innerHTML=a.map(x=>`<div class="bd-baritem"><div class="bd-value">${fmt(x.mo_new+x.nat_other)}</div><div class="bd-bar" style="height:${Math.max(2,88*(x.mo_new+x.nat_other)/max)}px"></div><div class="bd-label">${x.label}</div></div>`).join('');const p=period==='daily'?cur:period==='weekly'?wk:mon;$('bd-flowfoot').innerHTML=`<span>모터원 신규계약 <b>${fmt(p.mo_new)}건</b></span><span>타 파트너 소진 <b>${fmt(p.nat_other)}대</b></span><span>전국 합계 추정 <b>${fmt(p.mo_new+p.nat_other)}대</b></span>`;$('bd-colperiod').textContent=period==='daily'?'최근일 소진':period==='weekly'?'최근 주 소진':'최근 월 소진'}
-function yearGroups(r){return D.year_stock?.[r.cat+'|'+r.model]||{}}
-function yearLabel(r){const ys=Object.keys(yearGroups(r)).filter(y=>y!=='unknown');return ys.length>1?' · '+ys.sort().map(y=>esc(y)+'년식').join(' / '):''}
-function yearDetail(r){const groups=yearGroups(r),ys=Object.keys(groups);if(ys.filter(y=>y!=='unknown').length<2)return '';return ys.sort().map(y=>`<details open style="margin-top:12px"><summary style="cursor:pointer;color:var(--bd-accent);font-size:12px">${y==='unknown'?'연식 미확인':esc(y)+'년식'} · ${fmt(groups[y].stock)}대</summary>${Object.entries(groups[y].combos).sort((a,b)=>b[1]-a[1]).map(([c,n])=>`<div class="bd-combo"><div class="bd-cn">${esc(c.split('|')[0])}<small>${esc(c.split('|')[1]||'미기재')}</small></div><b>${fmt(n)}대</b></div>`).join('')}</details>`).join('')}
-function detail(){const r=D.rows.find(x=>x.model===selected);if(!r)return;const combos=Object.entries(r.combos).sort((a,b)=>b[1]-a[1]);const col=s=>/화이트/.test(s)?'#f5f6f8':/블랙/.test(s)?'#202630':/그레이/.test(s)?'#89929f':/실버/.test(s)?'#b5c0cd':/블루/.test(s)?'#355779':/레드/.test(s)?'#9d414d':'#b6a38a';$('bd-detail').innerHTML=`<div class="bd-detailtop">선택한 차종 · ${esc(r.cat)}${yearLabel(r)}</div><h3>${esc(r.model)}</h3><div class="bd-detailnums"><div><span>판매가능 재고</span><b>${fmt(r.stock)}<small style="font-size:12px"> 대</small></b></div><div><span>${$('bd-colperiod').textContent} · 전국 추정</span><b>${count(r)}<small style="font-size:12px"> 대</small></b></div><div><span>색상 조합</span><b>${combos.length}<small style="font-size:12px"> 종</small></b></div></div><div class="bd-tag">외장 / 내장별 재고</div>${yearDetail(r)||combos.map(([s,n])=>{const [e,i]=s.split('|');return `<div class="bd-combo"><span class="bd-dot" style="background:${col(e)}"></span><div class="bd-cn">${esc(e)}<small>${esc(i||'미기재')}</small></div><b>${fmt(n)}대</b></div>`}).join('')||'<p>판매가능 색상 재고 없음</p>'}`}
-function list(){const rows=D.rows.filter(r=>r.stock>0&&(cat==='전체'||r.cat===cat)&&(!query||(r.model+' '+r.cat).toLowerCase().includes(query))).sort((a,b)=>b.stock-a.stock);$('bd-count').textContent=`${rows.length}개 트림 · ${fmt(rows.reduce((s,r)=>s+r.stock,0))}대`;if(rows.length&&!rows.some(r=>r.model===selected))selected=rows[0].model;$('bd-models').innerHTML=(all?rows:rows.slice(0,7)).map(r=>`<button class="bd-model" type="button" data-model="${esc(r.model)}" aria-pressed="${selected===r.model}"><span><small>${esc(r.cat)}${yearLabel(r)}</small><strong>${esc(r.model)}</strong></span><span class="bd-n">${fmt(r.stock)}</span><span class="bd-n">${count(r)}</span></button>`).join('')||'<div class="bd-empty">일치하는 차종이 없습니다.</div>';$('bd-more').hidden=rows.length<=7;$('bd-more').textContent=all?'접기 ↑':`전체 ${rows.length}개 트림 보기 ↓`;if(rows.length)detail();else $('bd-detail').innerHTML='';}
-function categories(){const cs=['전체','E클래스','GLC','GLE','S클래스'];$('bd-categories').innerHTML=cs.map(c=>`<button class="bd-chip" data-cat="${c}" type="button" aria-pressed="${c===cat}">${c}</button>`).join('')}
-$('bd-period').onclick=e=>{const b=e.target.closest('[data-period]');if(!b)return;period=b.dataset.period;$('bd-period').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));chart();list()};$('bd-categories').onclick=e=>{const b=e.target.closest('[data-cat]');if(!b)return;cat=b.dataset.cat;categories();list()};$('bd-search').oninput=e=>{query=e.target.value.trim().toLowerCase();list()};$('bd-models').onclick=e=>{const b=e.target.closest('[data-model]');if(!b)return;selected=b.dataset.model;list()};$('bd-more').onclick=()=>{all=!all;list()};chart();categories();list();
-
-})().catch(error=>{const root=document.getElementById('bd-sales-desk');const msg=document.createElement('p');msg.setAttribute('role','alert');msg.textContent='데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요. '+error.message;root.querySelector('.bd-main').prepend(msg);root.querySelector('.bd-date').textContent='데이터 확인 실패';});
-</script>
+<script src="assets/inventory/sales-desk.js?v=20261110"></script>
 </div>
-
-<script>
-(()=>{
-  const root=document.getElementById('bd-sales-desk');
-  const normalize=s=>s.replaceAll('전국 계약·소진 추정','전국 계약 추정').replaceAll('전국 소진은','전국 계약 추정은').replaceAll('소진','계약');
-  const normalizeNode=node=>{const walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT);let text;while(text=walker.nextNode())text.nodeValue=normalize(text.nodeValue)};
-  normalizeNode(root);
-  new MutationObserver(items=>items.forEach(item=>item.addedNodes.forEach(node=>{if(node.nodeType===Node.TEXT_NODE)node.nodeValue=normalize(node.nodeValue);else normalizeNode(node)}))).observe(root,{childList:true,subtree:true});
-  const chart=root.querySelector('#bd-chart'); if(chart)chart.setAttribute('aria-label','기간별 전국 계약 추정');
-  (async()=>{
-    const D=await fetch('contracts_web.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('데이터 응답 '+r.status);return r.json()});
-    const $=id=>root.querySelector('#'+id),fmt=n=>Number(n||0).toLocaleString('ko-KR');
-    let selected='week';
-    const period=()=>selected==='week'?D.weekly.at(-1):D.monthly.at(-1);
-    function render(){
-      const p=period(),title=selected==='week'?'최근 1주':'최근 1개월';
-      $('bd-analysis-caption').textContent=`${title} · ${p.start} ~ ${p.end}`;
-      const signed=p.sell_delta==null?'–':`${p.sell_delta>0?'+':''}${fmt(p.sell_delta)}대`;
-      $('bd-analysis').innerHTML=[
-        ['전국 계약 추정',fmt(p.mo_new+p.nat_other)+'대','모터원 신규계약 + 타 파트너 계약 추정'],
-        ['모터원 신규계약',fmt(p.mo_new)+'건',`계약 확정 ${fmt(p.mo_confirm)}건`],
-        ['타 파트너 계약 추정',fmt(p.nat_other)+'대','전국 미배정 재고 이탈 기준'],
-        ['재고 증감',signed,`신규 입고 ${fmt(p.new_stock)}대 · 취소 ${fmt(p.mo_cancel)}건`]
-      ].map(([label,value,sub])=>`<div class="bd-analysis-stat"><span>${label}</span><b>${value}</b><span>${sub}</span></div>`).join('')+
-      `<div class="bd-analysis-rank"><h3>${title} 전국 계약 추정 상위 차종</h3>${p.top_models.slice(0,5).map((x,i)=>`<div class="bd-rank-row"><span>${i+1}</span><strong>${x.model}</strong><b>${fmt(x.n)}대</b></div>`).join('')||'<p>분석할 차종 데이터가 없습니다.</p>'}</div>`;
-    }
-    $('bd-analysis-period').onclick=e=>{const button=e.target.closest('[data-analysis-period]');if(!button)return;selected=button.dataset.analysisPeriod;$('bd-analysis-period').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===button));render()};
-    render();
-  })().catch(()=>{const panel=root.querySelector('#bd-analysis');if(panel)panel.innerHTML='<p class="bd-empty">기간 실적 데이터를 불러오지 못했습니다.</p>'});
-})();
-</script>
-
 </body></html>

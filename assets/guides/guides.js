@@ -136,7 +136,18 @@
     $('offer-rate').textContent=offer?(offer.display_label||(offer.rate===0?'기본 할인 없음':offer.rate+'%')):'개별 조건 확인';
     $('offer-note').textContent=offer?`${reportMonth.replace('-','.')} · ${selected.year} · ${offer.condition}. 고객별 추가 혜택은 가격·프로모션에서 확인하세요.`:'선택 연식·트림의 이번 달 조건은 가격·프로모션에서 확인하세요.';
     $('report-link').href=offer&&offer.url?offer.url:reportUrl;$('report-link').textContent=(reportMonth===kst().slice(0,7)?Number(reportMonth.slice(5))+'월 ':'')+'가격·프로모션 확인 ↗';
-    // Nationwide inventory is temporarily unavailable.
+    $('stock-link').href='BenzDream_Stock.html?model='+encodeURIComponent(selected.name);
+    $('stock-colors').replaceChildren();
+    if(!stock){$('stock-value').textContent='재고 확인 필요';$('stock-note').textContent='재고 연결을 확인 중입니다. 전국 재고 페이지에서 확인할 수 있습니다.';return;}
+    const age=(Date.parse(kst()+'T00:00:00Z')-Date.parse(stock.date+'T00:00:00Z'))/86400000;
+    const entries=Object.entries(stock.models||{}).filter(([n])=>normalize(n)===normalize(selected.name));
+    const year=/^MY\d{2}$/.test(selected.year)?selected.year.replace('MY','20'):selected.year;
+    const groups=entries.map(([,m])=>m.year_groups?.[year]).filter(Boolean);
+    const match=groups.length?{colors:{}}:null;
+    groups.forEach(g=>Object.entries(g.colors||{}).forEach(([key,value])=>{match.colors[key]=(match.colors[key]||0)+Number(typeof value==='number'?value:value.total||0)}));
+    $('stock-value').textContent=age>1?'최신 재고 재확인':match?'색상 조합 확인':'개별 재고 확인';
+    $('stock-note').textContent=`${stock.date} 공개 재고 기준. ${age>1?'지난 자료이므로 현재 출고 가능 여부를 확인해 주세요. ':''}${match?'선택 연식의 색상 조합입니다. 배정·출고 가능 여부는 별도 확인이 필요합니다.':'일치 항목이 없더라도 재고가 없다는 뜻은 아닙니다.'}`;
+    if(match)Object.entries(match.colors||{}).filter(([,v])=>Number(typeof v==='number'?v:v?.total)>0).slice(0,8).forEach(([name])=>{const span=document.createElement('span');span.textContent=name.replace('|',' / ');$('stock-colors').append(span)});
   }
   function selectTrim(id,send=true){
     selected=vehicle.trims.find(t=>t.id===id)||vehicle.trims[0];
@@ -161,6 +172,10 @@
     if(reportMonth===kst().slice(0,7))offers=data.offers;
     renderBuying();
   }
-  loadOffers().catch(()=>renderBuying());
-  setInterval(()=>{offers=[];loadOffers().catch(()=>renderBuying())},300000);
+  Promise.allSettled([
+    fetch('latest_stock.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(d.date)||!d.models)throw Error('invalid stock');stock=d;renderBuying()}),
+    loadOffers()
+  ]).then(()=>renderBuying());
+  // Refresh retained pages when the customer returns and every five minutes.
+  setInterval(()=>{fetch('latest_stock.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{if(/^\d{4}-\d{2}-\d{2}$/.test(d.date)&&d.models){stock=d;renderBuying()}}).catch(()=>{stock=null;renderBuying()});offers=[];loadOffers().catch(()=>renderBuying())},300000);
 })();
