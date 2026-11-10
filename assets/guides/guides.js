@@ -142,6 +142,8 @@
     const age=(Date.parse(kst()+'T00:00:00Z')-Date.parse(stock.date+'T00:00:00Z'))/86400000;
     const entries=Object.entries(stock.models||{}).filter(([n])=>normalize(n)===normalize(selected.name));
     const year=/^MY\d{2}$/.test(selected.year)?selected.year.replace('MY','20'):selected.year;
+    const unavailable=(stock.availability_overrides||[]).find(rule=>rule.year===year&&new RegExp(rule.model_pattern).test(selected.name));
+    if(unavailable){$('stock-value').textContent='현재 조회 재고 없음';$('stock-note').textContent=unavailable.label+' · '+unavailable.confirmed_date+' 확인';return;}
     const groups=entries.map(([,m])=>m.year_groups?.[year]).filter(Boolean);
     const match=groups.length?{colors:{}}:null;
     groups.forEach(g=>Object.entries(g.colors||{}).forEach(([key,value])=>{match.colors[key]=(match.colors[key]||0)+Number(typeof value==='number'?value:value.total||0)}));

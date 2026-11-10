@@ -1,0 +1,15 @@
+{
+  "rules": [
+    {
+      "id": "sts-e200-my26-20261110",
+      "model_pattern": "^E 200(?: |$)",
+      "year": "2026",
+      "status": "unavailable",
+      "active": true,
+      "confirmed_date": "2026-11-10",
+      "label": "2026년식 · 현재 조회 재고 없음",
+      "basis": "사용자 STS 현재 조회 확인 및 홈페이지 정정 지시",
+      "review": "STS 재고 재확인 전까지 유지. 오전 엑셀만으로 자동 해제하지 않음."
+    }
+  ]
+}

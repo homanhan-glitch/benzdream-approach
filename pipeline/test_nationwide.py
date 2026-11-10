@@ -3,7 +3,7 @@ import unittest
 import tempfile
 from pathlib import Path
 from openpyxl import Workbook
-from update_nationwide import transition, saleable, stock_snapshot, build_web, load_source, REQUIRED
+from update_nationwide import transition, saleable, stock_snapshot, customer_snapshot, build_web, load_source, REQUIRED
 from vehicle_identity import commission_id
 
 def row(**updates):
@@ -16,6 +16,18 @@ def contracted(**updates):
     return row(sale='가계약 체결',vehicle='가계약',dealer='HS효성더클래스 강남대로',**updates)
 
 class NationwideTests(unittest.TestCase):
+    def test_display_correction_preserves_history_and_other_years(self):
+        rows={'a':row(),'b':row(year='2027'),'c':row(model='E 300 4MATIC AMG Line')}
+        original=copy.deepcopy(rows)
+        rules=[dict(id='test',model_pattern=r'^E 200(?: |$)',year='2026',status='unavailable',active=True,confirmed_date='2026-11-10',label='현재 조회 재고 없음')]
+        public=customer_snapshot(rows,'2026-11-10',rules)
+        self.assertEqual(public['sellable_total'],2)
+        self.assertEqual(public['display_excluded_total'],1)
+        self.assertEqual(rows,original)
+        self.assertEqual(stock_snapshot(rows,'2026-11-10')['sellable_total'],3)
+        self.assertNotIn('2026',public['models']['E 200 AMG Line']['year_groups'])
+        self.assertIn('2026',public['models']['E 300 4MATIC AMG Line']['year_groups'])
+
     def fixture(self, keys, name='전국재고_1110.xlsx', company='HS HYOSUNG The Class Corp.'):
         folder=tempfile.TemporaryDirectory();self.addCleanup(folder.cleanup)
         path=Path(folder.name)/name;w=Workbook();s=w.active;s.title='Sheet1'

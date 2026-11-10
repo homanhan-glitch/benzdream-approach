@@ -201,6 +201,21 @@ def stock_snapshot(rows, day):
     return dict(date=day,source_format='hs_nationwide_v1',scope='전국 미배정 입고·판매가능·가용 차량',
                 sellable_total=sum(expected.values()),models=models)
 
+def customer_snapshot(rows, day, rules=None):
+    """Apply confirmed display corrections without inventing contract transitions."""
+    if rules is None:
+        path=ROOT/'pipeline/customer_stock_overrides.json'
+        rules=json.loads(path.read_text(encoding='utf-8'))['rules'] if path.exists() else []
+    active=[r for r in rules if r.get('active') and r['status']=='unavailable']
+    def blocked(row):
+        return any(row['year']==rule['year'] and re.search(rule['model_pattern'],row['model']) for rule in active)
+    result=stock_snapshot({k:r for k,r in rows.items() if not blocked(r)},day)
+    result['source_sellable_total']=sum(saleable(r) for r in rows.values())
+    result['display_excluded_total']=sum(saleable(r) and blocked(r) for r in rows.values())
+    result['availability_overrides']=[{k:r[k] for k in ['id','model_pattern','year','status','confirmed_date','label']} for r in active]
+    assert result['source_sellable_total']-result['display_excluded_total']==result['sellable_total']
+    return result
+
 def build_web(daily, stock, rows):
     dates = sorted(daily); heat = defaultdict(dict)
     for d in dates:
@@ -291,7 +306,10 @@ def run(source_dir, state_dir, report_path):
             model_year_color_coverage=True,stock_balance=True,own_contract_balance=True,
             notes=['Stock Balance Report is a duplicate view, not summed','Baseline has zero new contracts','No source identifiers or customer data in public aggregates'])
     # All validations complete before publishing any generated data. Git deploys the set atomically.
-    write_json(daily_path,daily); write_json(ROOT/'latest_stock.json',stock); write_json(oldweb,web)
+    customer=customer_snapshot(rows,stock['date'])
+    qa['customer_display_total']=customer['sellable_total']
+    qa['customer_display_excluded']=customer['display_excluded_total']
+    write_json(daily_path,daily); write_json(ROOT/'latest_stock.json',customer); write_json(oldweb,web)
     render_snapshot(ROOT/'latest_stock.json')
     write_json(state_file,dict(date=stock['date'],rows=rows,outstanding=outstanding))
     write_json(report_path,qa)
