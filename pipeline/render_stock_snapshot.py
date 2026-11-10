@@ -22,12 +22,13 @@ def render_snapshot(stock_path, page_path=None):
             raise ValueError('Invalid stock colors; do not publish')
         names = [escape(k.replace('|', ' / ')) for k in colors]
         years = sorted(y for y in model.get('year_groups', {}) if y.isdigit())
-        label = (' <small>(MY' + ' / MY'.join(y[-2:] for y in years) + ')</small>') if len(years) > 1 else ''
+        has_override=any(re.search(rule['model_pattern'],name) for rule in data.get('availability_overrides',[]))
+        label = (' <small>(MY' + ' / MY'.join(y[-2:] for y in years) + ')</small>') if years and (len(years)>1 or has_override) else ''
         rows.append('<li><strong>' + escape(name) + '</strong>' + label + '<br>' + ' · '.join(names) + '</li>')
     block = START + '\n<section id="stockSnapshot" data-date="' + stamp + '">\n'
-    block += '<details><summary>' + stamp + ' 기준 차종·색상 목록</summary><p>재고는 변동될 수 있습니다. 현재 배정 가능 여부는 상담으로 확인해 주세요.</p><ul>'
+    block += '<details><summary>' + stamp + ' 기준 차종·색상 목록</summary><p>재고는 변동될 수 있습니다. 현재 배정 가능 여부는 상담으로 확인해 주세요.</p>'
     notices=''.join('<p>'+escape(r['label'])+' (E 200 · '+escape(r['confirmed_date'])+' 확인)</p>' for r in data.get('availability_overrides',[]))
-    block += notices + ''.join(rows) + '</ul></details></section>\n' + END
+    block += notices + '<ul>' + ''.join(rows) + '</ul></details></section>\n' + END
     page = page_path.read_text(encoding='utf-8')
     if START not in page or END not in page:
         raise ValueError('Stock snapshot markers missing; do not publish')
