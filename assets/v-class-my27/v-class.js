@@ -26,8 +26,8 @@ load('latest_stock.json').then(data=>{
  const age=date?(Date.parse(kst()+'T00:00:00Z')-Date.parse(date+'T00:00:00Z'))/86400000:Infinity;
  const colors=new Set();if(!override)entries.forEach(([,m])=>Object.entries(m.year_groups?.['2027']?.colors||{}).forEach(([name,n])=>{if(Number(typeof n==='number'?n:n?.total)>0)colors.add(name)}));
  const fresh=age>=0&&age<=1;
- $('stock-title').textContent=colors.size?(fresh?'확인 가능한 외장·실내 조합':'색상·출고 일정 재확인'):'색상·출고 일정 상담';
- $('stock-note').textContent=(date?date+' 재고 기준. ':'')+(colors.size?(fresh?'아래 색상 조합을 상담할 수 있습니다. 배정·출고 가능 여부는 별도 확인해 주세요.':'지난 자료의 색상 조합입니다. 현재 배정 가능 여부와 출고 일정을 확인해 주세요.'):'원하시는 조합의 배정 가능 차량과 입항 예정 차량을 개별 안내해 드립니다.');
+ $('stock-title').textContent=colors.size?(fresh?'확인 가능한 외장·실내 조합':'색상·출고 일정 재확인'):'입항 예정 차량 상담';
+ $('stock-note').textContent=(date?date+' 재고 기준. ':'')+(colors.size?(fresh?'아래 색상 조합을 상담할 수 있습니다. 배정·출고 가능 여부는 별도 확인해 주세요.':'지난 자료의 색상 조합입니다. 현재 배정 가능 여부와 출고 일정을 확인해 주세요.'):'입항 예정 물량까지 포함해 상담 가능합니다. 원하시는 조합의 배정 가능 여부와 예상 출고 일정을 안내해 드립니다.');
  colors.forEach(name=>{const tag=document.createElement('span');tag.textContent=name.replaceAll('|',' / ');$('stock-colors').append(tag)});
 }).catch(()=>{$('stock-note').textContent='재고를 불러오지 못했습니다. 원하시는 색상을 알려주시면 배정 가능 차량과 출고 일정을 안내해 드립니다.'});
 if(['mb-hansdream.co.kr','www.mb-hansdream.co.kr','homanhan-glitch.github.io'].includes(location.hostname)){
