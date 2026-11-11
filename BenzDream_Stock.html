@@ -319,9 +319,10 @@ function renderCats(){
 
 function matches(m){
   if(!searchTerm) return true;
-  const s = searchTerm.toLowerCase();
-  if(m.model.toLowerCase().includes(s)) return true;
-  return m.combos.some(c=>(c.en+' '+c.inn).toLowerCase().includes(s));
+  const normal = value => String(value).toLowerCase().replace(/\s+/g, '');
+  const s = normal(searchTerm);
+  if(normal(m.model).includes(s)) return true;
+  return m.combos.some(c=>normal(c.en+' '+c.inn).includes(s));
 }
 
 /* 외장색 CSS 컬러 매핑 */
