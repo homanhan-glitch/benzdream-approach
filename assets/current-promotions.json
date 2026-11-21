@@ -1,7 +1,7 @@
 {
   "month": "2026-11",
-  "updated": "2026-11-02",
-  "source_date": "2026-11-02",
+  "updated": "2026-11-21",
+  "source_date": "2026-11-20",
   "url": "BenzDream_PriceAndPromotion_2026.html#price-models",
   "offers": [
     {
@@ -270,7 +270,7 @@
       "nst": "21404712-KR7",
       "base": 8,
       "rate": 12,
-      "condition": "기본 8% + 대상 금융 추가 4% · 해당 모빌리티 장기렌트 총 15% (고객별 추가 전)",
+      "condition": "기본 8% + 대상 금융 추가 4% · 특별 저금리 신설(24개월 최대 선수금 무이자) · 지정 재고·전시 차량 최대 15%는 별도 조건",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-35"
     },
     {
@@ -279,7 +279,7 @@
       "nst": "21404712-KR8",
       "base": 8,
       "rate": 12,
-      "condition": "기본 8% + 대상 금융 추가 4% · 해당 모빌리티 장기렌트 총 15% (고객별 추가 전)",
+      "condition": "기본 8% + 대상 금융 추가 4% · 특별 저금리 신설(24개월 최대 선수금 무이자) · 지정 재고·전시 차량 최대 15%는 별도 조건",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-36"
     },
     {
@@ -747,7 +747,7 @@
       "nst": "25464712-KR9",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 해당 모빌리티 장기렌트 총 11% (고객별 추가 전)",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-94"
     },
     {
@@ -756,7 +756,7 @@
       "nst": "25464712-KR1",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 해당 모빌리티 장기렌트 총 11% (고객별 추가 전)",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-95"
     },
     {
@@ -765,7 +765,7 @@
       "nst": "25434712-KR8",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-96"
     },
     {
@@ -774,7 +774,7 @@
       "nst": "25434712-KR1",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-97"
     },
     {
@@ -783,7 +783,7 @@
       "nst": "25464712-KR8",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 해당 모빌리티 장기렌트 총 11% (고객별 추가 전)",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-98"
     },
     {
@@ -792,7 +792,7 @@
       "nst": "25434712-KR7",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-99"
     },
     {
@@ -801,7 +801,7 @@
       "nst": "25434712-KR9",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-100"
     },
     {
@@ -1098,8 +1098,9 @@
       "nst": "29695512-KR3",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-137"
+      "condition": "재구매 추가 9% 또는 타브랜드 보유 추가 7% · 중복 불가",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-137",
+      "display_label": "재구매 9% / 타브랜드 7%"
     },
     {
       "name": "EQA 250 Progressive",
@@ -1224,7 +1225,7 @@
       "nst": "25434712-KR1",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-97"
     },
     {
@@ -1233,7 +1234,7 @@
       "nst": "25434712-KR9",
       "base": 7,
       "rate": 8,
-      "condition": "기본 7% + 대상 금융 추가 1% · 24개월 무이자 상품, 선수금 확인",
+      "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-100"
     },
     {
@@ -1278,8 +1279,9 @@
       "nst": "29695512-KR3",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-137"
+      "condition": "재구매 추가 9% 또는 타브랜드 보유 추가 7% · 중복 불가",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-137",
+      "display_label": "재구매 9% / 타브랜드 7%"
     },
     {
       "name": "Mercedes-Maybach GLS 600",
@@ -1415,6 +1417,14 @@
       "rate": 10,
       "condition": "기본 10%",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-45"
+    },
+    {
+      "name": "GLE 450 4MATIC AMG Line",
+      "year": "MY27",
+      "base": 5,
+      "rate": 5,
+      "condition": "기본 5% · SUV 기준 · 쿠페 제외",
+      "url": "BenzDream_PriceAndPromotion_2026.html#gle-450-my27"
     }
   ],
   "price_date": "2026-10-27",
