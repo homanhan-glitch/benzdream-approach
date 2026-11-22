@@ -132,10 +132,11 @@
     $('selected-name').textContent=selected.year+' · '+selected.name;
     $('current-price').textContent=selected.price?(selected.price/10000).toLocaleString('ko-KR')+'만원':'가격 확인 중';
     $('price-date').textContent=selected.price?priceDate(selected)+' 권장 소비자가 · VAT 포함':'선택 연식의 공식 가격 확인 후 안내';
-    const offer=reportMonth===kst().slice(0,7)?offers.find(x=>x.year===selected.year&&x.nst===selected.nst&&normalize(x.name)===normalize(selected.name)):null;
+    const offer=reportMonth===kst().slice(0,7)?(window.BenzDreamPromotions?window.BenzDreamPromotions.match(offers,selected):offers.find(x=>x.year===selected.year&&x.nst===selected.nst&&normalize(x.name)===normalize(selected.name))):null;
     $('offer-rate').textContent=offer?(offer.display_label||(offer.rate===0?'기본 할인 없음':offer.rate+'%')):'개별 조건 확인';
     $('offer-note').textContent=offer?`${reportMonth.replace('-','.')} · ${selected.year} · ${offer.condition}. 고객별 추가 혜택은 가격·프로모션에서 확인하세요.`:'선택 연식·트림의 이번 달 조건은 가격·프로모션에서 확인하세요.';
     $('report-link').href=offer&&offer.url?offer.url:reportUrl;$('report-link').textContent=(reportMonth===kst().slice(0,7)?Number(reportMonth.slice(5))+'월 ':'')+'가격·프로모션 확인 ↗';
+    window.BenzDreamPromotions?.render($('linked-selected-promotion'),selected,offer,reportMonth);
     $('stock-link').href='BenzDream_Stock.html?model='+encodeURIComponent(selected.name);
     $('stock-colors').replaceChildren();
     if(!stock){$('stock-value').textContent='재고 확인 필요';$('stock-note').textContent='재고 연결을 확인 중입니다. 전국 재고 페이지에서 확인할 수 있습니다.';return;}
@@ -178,6 +179,7 @@
     fetch('latest_stock.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(d=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(d.date)||!d.models)throw Error('invalid stock');stock=d;renderBuying()}),
     loadOffers()
   ]).then(()=>renderBuying());
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){offers=[];loadOffers().catch(()=>renderBuying())}});
   // Refresh retained pages when the customer returns and every five minutes.
   setInterval(()=>{fetch('latest_stock.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{if(/^\d{4}-\d{2}-\d{2}$/.test(d.date)&&d.models){stock=d;renderBuying()}}).catch(()=>{stock=null;renderBuying()});offers=[];loadOffers().catch(()=>renderBuying())},300000);
 })();

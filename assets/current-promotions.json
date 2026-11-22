@@ -275,17 +275,17 @@
       "display_label": "일반 12% · 대상 차량 최대 15%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 12%",
           "rate": 12,
           "price": 83420000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 14%",
           "rate": 14,
           "price": 81520000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 15%",
           "rate": 15,
           "price": 80580000
         }
@@ -302,17 +302,17 @@
       "display_label": "일반 12% · 대상 차량 최대 15%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 12%",
           "rate": 12,
           "price": 88080000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 14%",
           "rate": 14,
           "price": 86080000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 15%",
           "rate": 15,
           "price": 85080000
         }
@@ -424,7 +424,19 @@
       "base": 9,
       "rate": 11,
       "condition": "기본 9% + 대상 금융 추가 2% · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
-      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-s680-my26"
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-s680-my26",
+      "conditional_prices": [
+        {
+          "condition": "재구매 · 총 20%",
+          "rate": 20,
+          "price": 322400000
+        },
+        {
+          "condition": "타브랜드 · 총 18%",
+          "rate": 18,
+          "price": 330460000
+        }
+      ]
     },
     {
       "name": "S 350 d 4MATIC",
@@ -434,7 +446,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-49",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 150920000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 150920000
+        }
+      ]
     },
     {
       "name": "S 450 4MATIC Sedan (SWB)",
@@ -444,7 +468,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-50",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 159150000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 159150000
+        }
+      ]
     },
     {
       "name": "S 450 4MATIC Long EXCLUSIVE",
@@ -454,7 +490,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-51",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 171890000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 171890000
+        }
+      ]
     },
     {
       "name": "S 450 4MATIC Long AMG Line",
@@ -464,7 +512,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-52",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 191490000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 191490000
+        }
+      ]
     },
     {
       "name": "S 500 4MATIC Long",
@@ -474,7 +534,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-53",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 215600000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 215600000
+        }
+      ]
     },
     {
       "name": "S 580 4MATIC Long",
@@ -484,7 +556,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-54",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 264600000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 264600000
+        }
+      ]
     },
     {
       "name": "Maybach S 580 4MATIC",
@@ -494,7 +578,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-55",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 310660000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 310660000
+        }
+      ]
     },
     {
       "name": "Maybach S 580 MANUFAKTUR",
@@ -504,7 +600,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-56",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 329280000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 329280000
+        }
+      ]
     },
     {
       "name": "Maybach S 680 4MATIC",
@@ -514,7 +622,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-57",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 398860000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 398860000
+        }
+      ]
     },
     {
       "name": "CLE 200 Coupé AMG Line",
@@ -797,17 +917,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 75900000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 72600000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 71770000
         }
@@ -824,17 +944,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 87860000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 84040000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 83080000
         }
@@ -851,17 +971,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 79670000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 76200000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 75340000
         }
@@ -878,17 +998,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 89140000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 85270000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 84300000
         }
@@ -905,17 +1025,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 70840000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 67760000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 66990000
         }
@@ -932,17 +1052,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 73600000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 70400000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 69600000
         }
@@ -959,17 +1079,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 90060000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 86150000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 85170000
         }
@@ -1090,7 +1210,19 @@
       "base": 5,
       "rate": 5,
       "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
-      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-my26"
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-my26",
+      "conditional_prices": [
+        {
+          "condition": "재구매 · 총 14%",
+          "rate": 14,
+          "price": 253700000
+        },
+        {
+          "condition": "타브랜드 · 총 12%",
+          "rate": 12,
+          "price": 259600000
+        }
+      ]
     },
     {
       "name": "Maybach GLS 600 MANUFAKTUR",
@@ -1099,7 +1231,19 @@
       "base": 5,
       "rate": 5,
       "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
-      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-manufaktur-my26"
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-manufaktur-my26",
+      "conditional_prices": [
+        {
+          "condition": "재구매 · 총 14%",
+          "rate": 14,
+          "price": 289820000
+        },
+        {
+          "condition": "타브랜드 · 총 12%",
+          "rate": 12,
+          "price": 296560000
+        }
+      ]
     },
     {
       "name": "G 450 d",
@@ -1271,7 +1415,19 @@
       "rate": 0,
       "condition": "재구매 추가 9% 또는 타브랜드 보유 추가 7% · 중복 불가",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-137",
-      "display_label": "재구매 9% / 타브랜드 7%"
+      "display_label": "재구매 9% / 타브랜드 7%",
+      "conditional_prices": [
+        {
+          "condition": "재구매 · 9%",
+          "rate": 9,
+          "price": 213850000
+        },
+        {
+          "condition": "타브랜드 · 7%",
+          "rate": 7,
+          "price": 218550000
+        }
+      ]
     },
     {
       "name": "EQA 250 Progressive",
@@ -1401,17 +1557,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 89140000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 85270000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 84300000
         }
@@ -1428,17 +1584,17 @@
       "display_label": "일반 8% · 대상 차량 최대 13%",
       "conditional_prices": [
         {
-          "condition": "일반 차량 · 대상 금융",
+          "condition": "일반 차량 · 금융 · 8%",
           "rate": 8,
           "price": 90060000
         },
         {
-          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "condition": "지정 재고·전시 · 금융 · 12%",
           "rate": 12,
           "price": 86150000
         },
         {
-          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "condition": "장기 전시차 조건까지 · 13%",
           "rate": 13,
           "price": 85170000
         }
@@ -1488,7 +1644,19 @@
       "rate": 0,
       "condition": "재구매 추가 9% 또는 타브랜드 보유 추가 7% · 중복 불가",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-137",
-      "display_label": "재구매 9% / 타브랜드 7%"
+      "display_label": "재구매 9% / 타브랜드 7%",
+      "conditional_prices": [
+        {
+          "condition": "재구매 · 9%",
+          "rate": 9,
+          "price": 213850000
+        },
+        {
+          "condition": "타브랜드 · 7%",
+          "rate": 7,
+          "price": 218550000
+        }
+      ]
     },
     {
       "name": "Mercedes-Maybach GLS 600",
@@ -1497,7 +1665,19 @@
       "base": 5,
       "rate": 5,
       "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
-      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-my26"
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-my26",
+      "conditional_prices": [
+        {
+          "condition": "재구매 · 총 14%",
+          "rate": 14,
+          "price": 253700000
+        },
+        {
+          "condition": "타브랜드 · 총 12%",
+          "rate": 12,
+          "price": 259600000
+        }
+      ]
     },
     {
       "name": "Mercedes-Maybach GLS 600 MANUFKATUR",
@@ -1506,7 +1686,19 @@
       "base": 5,
       "rate": 5,
       "condition": "기본 5% · 24/36개월 무이자 상품, 선수금 확인 · 해당 모빌리티 장기렌트 총 8% (고객별 추가 전)",
-      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-manufaktur-my26"
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-gls600-manufaktur-my26",
+      "conditional_prices": [
+        {
+          "condition": "재구매 · 총 14%",
+          "rate": 14,
+          "price": 289820000
+        },
+        {
+          "condition": "타브랜드 · 총 12%",
+          "rate": 12,
+          "price": 296560000
+        }
+      ]
     },
     {
       "name": "Mercedes-Maybach S 580",
@@ -1516,7 +1708,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-55",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 310660000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 310660000
+        }
+      ]
     },
     {
       "name": "Mercedes-Maybach S 580 MANUFAKTUR",
@@ -1526,7 +1730,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-56",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 329280000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 329280000
+        }
+      ]
     },
     {
       "name": "Mercedes-Maybach S 680",
@@ -1536,7 +1752,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-57",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 398860000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 398860000
+        }
+      ]
     },
     {
       "name": "Mercedes-Maybach S 580",
@@ -1554,7 +1782,19 @@
       "base": 9,
       "rate": 11,
       "condition": "기본 9% + 대상 금융 추가 2% · 해당 모빌리티 장기렌트 총 14% (고객별 추가 전)",
-      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-s680-my26"
+      "url": "BenzDream_PriceAndPromotion_2026.html#maybach-s680-my26",
+      "conditional_prices": [
+        {
+          "condition": "재구매 · 총 20%",
+          "rate": 20,
+          "price": 322400000
+        },
+        {
+          "condition": "타브랜드 · 총 18%",
+          "rate": 18,
+          "price": 330460000
+        }
+      ]
     },
     {
       "name": "Mercedes-Maybach SL 680",
@@ -1573,7 +1813,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-50",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 159150000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 159150000
+        }
+      ]
     },
     {
       "name": "S 450 4MATIC Long Exclusive",
@@ -1583,7 +1835,19 @@
       "rate": 0,
       "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
       "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-51",
-      "display_label": "재구매 2% · 대상 차량 추가 혜택"
+      "display_label": "재구매 2% · 대상 차량 추가 혜택",
+      "conditional_prices": [
+        {
+          "condition": "일반 재구매 기준 · 2%",
+          "rate": 2,
+          "price": 171890000
+        },
+        {
+          "condition": "타브랜드 · 대상 재고·전시 · 2%",
+          "rate": 2,
+          "price": 171890000
+        }
+      ]
     },
     {
       "name": "S 450 4MATIC (CY25/2)",
