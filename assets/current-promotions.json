@@ -1,6 +1,6 @@
 {
   "month": "2026-11",
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "source_date": "2026-11-20",
   "url": "BenzDream_PriceAndPromotion_2026.html#price-models",
   "offers": [
@@ -271,7 +271,25 @@
       "base": 8,
       "rate": 12,
       "condition": "기본 8% + 대상 금융 추가 4% · 특별 저금리 신설(24개월 최대 선수금 무이자) · 지정 재고·전시 차량 최대 15%는 별도 조건",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-35"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-35",
+      "display_label": "일반 12% · 대상 차량 최대 15%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 12,
+          "price": 83420000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 14,
+          "price": 81520000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 15,
+          "price": 80580000
+        }
+      ]
     },
     {
       "name": "E 300 4MATIC AMG Line",
@@ -280,7 +298,25 @@
       "base": 8,
       "rate": 12,
       "condition": "기본 8% + 대상 금융 추가 4% · 특별 저금리 신설(24개월 최대 선수금 무이자) · 지정 재고·전시 차량 최대 15%는 별도 조건",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-36"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-36",
+      "display_label": "일반 12% · 대상 차량 최대 15%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 12,
+          "price": 88080000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 14,
+          "price": 86080000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 15,
+          "price": 85080000
+        }
+      ]
     },
     {
       "name": "E 450 4MATIC EXCLUSIVE",
@@ -396,8 +432,9 @@
       "nst": "22302412-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-49"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-49",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "S 450 4MATIC Sedan (SWB)",
@@ -405,8 +442,9 @@
       "nst": "22306512-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-50"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-50",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "S 450 4MATIC Long EXCLUSIVE",
@@ -414,8 +452,9 @@
       "nst": "22316512-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-51"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-51",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "S 450 4MATIC Long AMG Line",
@@ -423,8 +462,9 @@
       "nst": "22316512-KR2",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-52"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-52",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "S 500 4MATIC Long",
@@ -432,8 +472,9 @@
       "nst": "22316412-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-53"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-53",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "S 580 4MATIC Long",
@@ -441,8 +482,9 @@
       "nst": "22317712-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-54"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-54",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "Maybach S 580 4MATIC",
@@ -450,8 +492,9 @@
       "nst": "22397712-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-55"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-55",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "Maybach S 580 MANUFAKTUR",
@@ -459,8 +502,9 @@
       "nst": "22397712-KR2",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-56"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-56",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "Maybach S 680 4MATIC",
@@ -468,8 +512,9 @@
       "nst": "22397912-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-57"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-57",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "CLE 200 Coupé AMG Line",
@@ -748,7 +793,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-94"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-94",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 75900000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 72600000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 71770000
+        }
+      ]
     },
     {
       "name": "GLC 300 4MATIC AMG Line",
@@ -757,7 +820,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-95"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-95",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 87860000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 84040000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 83080000
+        }
+      ]
     },
     {
       "name": "GLC 300 4MATIC Coupé AVANTGARDE",
@@ -766,7 +847,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-96"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-96",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 79670000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 76200000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 75340000
+        }
+      ]
     },
     {
       "name": "GLC 300 4MATIC Coupé AMG Line",
@@ -775,7 +874,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-97"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-97",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 89140000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 85270000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 84300000
+        }
+      ]
     },
     {
       "name": "GLC 300 4MATIC",
@@ -784,7 +901,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-98"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-98",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 70840000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 67760000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 66990000
+        }
+      ]
     },
     {
       "name": "GLC 300 4MATIC Coupé",
@@ -793,7 +928,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-99"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-99",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 73600000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 70400000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 69600000
+        }
+      ]
     },
     {
       "name": "GLC 300 4MATIC Coupé AMG Line",
@@ -802,7 +955,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-100"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-100",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 90060000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 86150000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 85170000
+        }
+      ]
     },
     {
       "name": "GLE 350 4MATIC",
@@ -1226,7 +1397,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-97"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-97",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 89140000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 85270000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 84300000
+        }
+      ]
     },
     {
       "name": "GLC 300 4MATIC Coupe AMG Line",
@@ -1235,7 +1424,25 @@
       "base": 7,
       "rate": 8,
       "condition": "기본 7% + 대상 금융 추가 1% · 지정 재고·전시 차량 최대 13%는 별도 조건 · 2027년 GLC 일렉트릭 우선배정 대상",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-100"
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-100",
+      "display_label": "일반 8% · 대상 차량 최대 13%",
+      "conditional_prices": [
+        {
+          "condition": "일반 차량 · 대상 금융",
+          "rate": 8,
+          "price": 90060000
+        },
+        {
+          "condition": "지정 재고·전시 차량 · 대상 금융",
+          "rate": 12,
+          "price": 86150000
+        },
+        {
+          "condition": "장기 전시차 및 금융 조건 모두 충족",
+          "rate": 13,
+          "price": 85170000
+        }
+      ]
     },
     {
       "name": "GLC 300 4MATIC AMG Line electric (Launch Edition)",
@@ -1307,8 +1514,9 @@
       "nst": "22397712-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-55"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-55",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "Mercedes-Maybach S 580 MANUFAKTUR",
@@ -1316,8 +1524,9 @@
       "nst": "22397712-KR2",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-56"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-56",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "Mercedes-Maybach S 680",
@@ -1325,8 +1534,9 @@
       "nst": "22397912-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-57"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-57",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "Mercedes-Maybach S 580",
@@ -1361,8 +1571,9 @@
       "nst": "22306512-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-50"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-50",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "S 450 4MATIC Long Exclusive",
@@ -1370,8 +1581,9 @@
       "nst": "22316512-KR1",
       "base": 0,
       "rate": 0,
-      "condition": "기본 0%",
-      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-51"
+      "condition": "일반 재구매 2% 또는 대상 프리미엄 브랜드 보유 지정 재고·전시 차량 2% · 중복 불가. 기존 S클래스 재구매 대상 차량의 취득세 지원4%·특별 트레이드인3%는 자격 및 합산 조건 상담.",
+      "url": "BenzDream_PriceAndPromotion_2026.html#nov-model-51",
+      "display_label": "재구매 2% · 대상 차량 추가 혜택"
     },
     {
       "name": "S 450 4MATIC (CY25/2)",
